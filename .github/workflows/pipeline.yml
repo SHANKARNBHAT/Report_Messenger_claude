@@ -1,10 +1,10 @@
-name: Market Pipeline & Report Messenger
+name: Market Report Pipeline
 
 on:
+  push:
   schedule:
     - cron: '30 11 * * *'
   workflow_dispatch:
-  push:
 
 permissions:
   contents: write
@@ -25,57 +25,7 @@ jobs:
         run: |
           pip install pandas numpy requests yfinance
 
-      - name: Run Market Messenger Script
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: |
-          python Market_messenger.py
-
-      - name: Run Confirmed Trend Report Script
-        run: |
-          python run_confirmed_trend_report.py
-
-      - name: Commit and Push Report Text Files
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add *.txt stock_market_data.db
-          git commit -m "chore: auto-update market intelligence reports [skip ci]" || echo "No changes to commit"
-          git push
-name: Market Pipeline & Report Messenger
-
-on:
-  schedule:
-    - cron: '30 11 * * *'
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: write
-
-jobs:
-  run-pipeline:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Install Dependencies
-        run: |
-          pip install pandas numpy requests yfinance
-
-      - name: Run Market Messenger Script
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      - name: Generate Market Reports
         run: |
           python Market_messenger.py
 
