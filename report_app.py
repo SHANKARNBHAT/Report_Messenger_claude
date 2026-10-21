@@ -136,11 +136,13 @@ for tab, (report_name, file_target) in zip(tabs, reports.items()):
             col1, col2 = st.columns(2)
 
             with col1:
-                st.markdown("### Relevant active stocks")
+                st.markdown("### Active stocks with confirmed trends")
+                st.caption("These stocks are active today and also meet the Confirmed trends report criteria.")
                 render_report(file_target[0])
 
             with col2:
-                st.markdown("### Stocks to watch")
+                st.markdown("### Active stocks with recent trigger signals")
+                st.caption("These stocks are active today and also had a bullish or bearish trigger in the past 14 days. A trigger is a signal to review, not a recommendation to trade.")
                 render_report(file_target[1])
         else:
             render_report(file_target)
