@@ -1,3 +1,4 @@
+import os
 import html
 import re
 from urllib.parse import quote
@@ -32,17 +33,6 @@ st.markdown(
       margin: .1rem 0 .55rem; color: #55708b; font-size: .72rem;
       font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
     }
-    .report-card {
-      overflow: auto; max-height: 72vh;
-      border: 1px solid #e0e7ef; border-radius: 13px; background: #fff;
-      box-shadow: 0 5px 18px rgba(26, 48, 72, .055);
-    }
-    .report-card pre {
-      margin: 0; padding: 1rem; color: #27364a;
-      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
-      font-size: .84rem; line-height: 1.6; white-space: pre;
-    }
-    .report-card a { color: #126e72; font-weight: 700; text-decoration: underline; }
     [data-testid="stTabs"] [data-baseweb="tab-list"] { gap: .3rem; }
     [data-testid="stTabs"] button[role="tab"] {
       min-height: 2.9rem; padding: 0 .85rem; color: #52657a; font-weight: 600;
@@ -68,15 +58,45 @@ st.markdown(
 
 reports = {
     "⚡ Active Stocks": "active_stocks_report.txt",
-    "📈 Confirmed trends": "confirmed_bullish_bearish_report.txt",
-    "🎯 Active & watchlist": [
-        "relevant_active_stocks_report.txt",
-        "rvol_active_signals_report.txt",
-    ],
+    "🎯 Active & watchlist": "rvol_active_signals_report.txt",
     "🧭 Bullish/Bearish Consolidated": "consolidated_strategy_report.txt",
     "↗ Bullish Triggers": "bullish_report.txt",
     "↘ Bearish Triggers": "bearish_report.txt",
 }
+
+github_token = st.secrets.get("GITHUB_TOKEN", "").strip()
+
+
+def trigger_github_workflow():
+    if not github_token:
+        st.sidebar.error("⚠️ GITHUB_TOKEN is not configured in Streamlit secrets.")
+        return False
+
+    owner = "SHANKARNBHAT"
+    repo = "Report_Messenger_Claude"
+    url = (
+        f"https://api.github.com/repos/{owner}/{repo}/actions/workflows/"
+        "pipeline.yml/dispatches"
+    )
+    headers = {
+        "Authorization": f"Bearer {github_token}",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+
+    try:
+        response = requests.post(
+            url, json={"ref": "main"}, headers=headers, timeout=10
+        )
+    except requests.exceptions.RequestException as exc:
+        st.sidebar.error(f"Failed to trigger workflow: {exc}")
+        return False
+
+    if response.status_code == 204:
+        return True
+
+    st.sidebar.error(f"Failed to trigger workflow: {response.text}")
+    return False
 
 
 def load_report_text(filename):
@@ -95,12 +115,15 @@ def load_report_text(filename):
     except requests.exceptions.RequestException as exc:
         st.sidebar.warning(f"Could not load {filename} from GitHub: {exc}")
 
-    try:
+    if os.path.exists(filename):
+        st.sidebar.info(f"Showing the bundled snapshot for {filename}.")
         with open(filename, "r", encoding="utf-8") as report_file:
-            st.sidebar.info(f"Showing the bundled snapshot for {filename}.")
             return report_file.read()
-    except OSError as exc:
-        return f"Could not load report '{filename}' from GitHub or local snapshot: {exc}"
+
+    return (
+        f"Report file '{filename}' could not be loaded from GitHub. "
+        "No bundled snapshot is available."
+    )
 
 
 def render_report(filename):
@@ -122,8 +145,8 @@ def render_report(filename):
             )
             rendered_line = (
                 f"{html.escape(leading)}"
-                f'<a href="{chart_url}" target="_blank" rel="noopener noreferrer">'
-                f"{html.escape(symbol)}</a>"
+                f'<a href="{chart_url}" target="_blank" '
+                f'rel="noopener noreferrer">{html.escape(symbol)}</a>'
                 f"{html.escape(line[match.end():])}"
             )
             linked_lines.append(rendered_line)
@@ -131,8 +154,25 @@ def render_report(filename):
             linked_lines.append(html.escape(line))
     rendered_content = "\n".join(linked_lines)
     st.components.v1.html(
-        f'<div style="overflow:auto;max-height:680px;border:1px solid #e0e7ef;border-radius:13px;background:#fff;box-shadow:0 5px 18px rgba(26,48,72,.055)"><pre style="margin:0;padding:1rem;color:#27364a;font-family:monospace;font-size:.84rem;line-height:1.6;white-space:pre">{rendered_content}</pre></div>',
-        height=700, scrolling=True,
+        f"""
+        <style>
+          body {{ margin: 0; }}
+          .report-card {{
+            overflow: auto; max-height: 680px;
+            border: 1px solid #e0e7ef; border-radius: 13px; background: #fff;
+            box-shadow: 0 5px 18px rgba(26, 48, 72, .055);
+          }}
+          pre {{
+            margin: 0; padding: 1rem; color: #27364a;
+            font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+            font-size: .84rem; line-height: 1.6; white-space: pre;
+          }}
+          a {{ color: #126e72; font-weight: 700; text-decoration: underline; }}
+        </style>
+        <div class="report-card"><pre>{rendered_content}</pre></div>
+        """,
+        height=700,
+        scrolling=True,
     )
 
 
@@ -140,13 +180,27 @@ st.sidebar.markdown(
     '<p class="section-label">Dashboard controls</p>',
     unsafe_allow_html=True,
 )
-st.sidebar.subheader("Market reports")
-st.sidebar.markdown("Reports refresh when the GitHub pipeline completes.")
+st.sidebar.subheader("Market pipeline")
+st.sidebar.markdown(
+    "Refresh reports or run a new data and signal scan. Telegram delivery is paused."
+)
+
+if st.sidebar.button("🚀 Run Workflow Now"):
+    with st.spinner("Triggering GitHub Actions workflow..."):
+        if trigger_github_workflow():
+            st.sidebar.success(
+                "Pipeline started. Refresh after it completes to see the latest reports."
+            )
+
+st.sidebar.divider()
 
 if st.sidebar.button("↻ Refresh reports", use_container_width=True):
     st.rerun()
 
-st.sidebar.caption("Reports are read from the public GitHub repository.")
+st.sidebar.caption(
+    "Reports are read from the public GitHub repository. A GitHub token is only "
+    "needed to start the workflow."
+)
 tabs = st.tabs(list(reports.keys()))
 
 for tab, (report_name, file_target) in zip(tabs, reports.items()):
@@ -157,16 +211,12 @@ for tab, (report_name, file_target) in zip(tabs, reports.items()):
         )
 
         if report_name == "🎯 Active & watchlist":
-            col1, col2 = st.columns(2)
-
-            with col1:
-                st.markdown("### Active stocks with confirmed trends")
-                st.caption("These stocks are active today and also meet the Confirmed trends report criteria.")
-                render_report(file_target[0])
-
-            with col2:
-                st.markdown("### Active stocks with recent trigger signals")
-                st.caption("These stocks are active today and also had a bullish or bearish trigger in the past 14 days. A trigger is a signal to review, not a recommendation to trade.")
-                render_report(file_target[1])
+            st.markdown("### Active stocks with recent trigger signals")
+            st.caption(
+                "These stocks are active today and also had a bullish or "
+                "bearish trigger in the past 14 days. A trigger is a signal "
+                "to review, not a recommendation to trade."
+            )
+            render_report(file_target)
         else:
             render_report(file_target)
