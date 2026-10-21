@@ -217,10 +217,14 @@ for tab, (report_name, file_target) in zip(tabs, reports.items()):
             )
             render_report(file_target)
 
-            st.markdown("### ↗ Bullish Triggers")
-            render_report("bullish_report.txt")
+            bullish_col, bearish_col = st.columns(2)
 
-            st.markdown("### ↘ Bearish Triggers")
-            render_report("bearish_report.txt")
+            with bullish_col:
+                st.markdown("### ↗ Bullish Triggers")
+                render_report("bullish_report.txt")
+
+            with bearish_col:
+                st.markdown("### ↘ Bearish Triggers")
+                render_report("bearish_report.txt")
         else:
             render_report(file_target)
