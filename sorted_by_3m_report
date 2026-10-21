@@ -1,0 +1,120 @@
+import os
+import sqlite3
+import pandas as pd
+from datetime import datetime
+
+# ==========================================
+# CONFIGURATION
+# ==========================================
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(SCRIPT_DIR, "stock_market_data.db")
+INITIAL_INVESTMENT_PER_STOCK = 1000000.0  # ₹10 Lakhs
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', 130)
+pd.set_option('expand_frame_repr', False)
+
+def generate_3m_sorted_report():
+    if not os.path.exists(DB_PATH):
+        print(f"Error: Database not found at {DB_PATH}.")
+        return
+
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT DISTINCT symbol FROM stock_ohlc_indicators WHERE symbol != '^NSEI';")
+    symbols = [row[0] for row in cursor.fetchall()]
+
+    performance_records = []
+
+    for symbol in symbols:
+        query = """
+            SELECT date, close, sma_20, sma_50, sma_200, rsi_20, rsi_sma_20
+            FROM stock_ohlc_indicators 
+            WHERE symbol = ? 
+            ORDER BY date ASC;
+        """
+        df = pd.read_sql_query(query, conn, params=(symbol,))
+        
+        if len(df) < 63:
+            continue
+
+        latest_close = df.iloc[-1]['close']
+        
+        idx_3m = -min(len(df), 63)
+        idx_6m = -min(len(df), 126)
+        idx_1y = -min(len(df), 252)
+
+        close_3m_ago = df.iloc[idx_3m]['close']
+        close_6m_ago = df.iloc[idx_6m]['close'] if len(df) >= 126 else df.iloc[0]['close']
+        close_1y_ago = df.iloc[idx_1y]['close'] if len(df) >= 252 else df.iloc[0]['close']
+
+        return_3m = ((latest_close - close_3m_ago) / close_3m_ago) * 100
+        return_6m = ((latest_close - close_6m_ago) / close_6m_ago) * 100 if len(df) >= 126 else 0.0
+        return_1y = ((latest_close - close_1y_ago) / close_1y_ago) * 100 if len(df) >= 252 else 0.0
+
+        # Keep stock if ANY timeframe has a positive return (> 0%)
+        if not (return_1y > 0 or return_6m > 0 or return_3m > 0):
+            continue
+
+        # Calculate investment value for ₹10 Lakhs based on 1Y return
+        current_value_1y = INITIAL_INVESTMENT_PER_STOCK * (1 + (return_1y / 100))
+        net_profit_1y = current_value_1y - INITIAL_INVESTMENT_PER_STOCK
+
+        latest_row = df.iloc[-1]
+        s20, s50, s200 = latest_row['sma_20'], latest_row['sma_50'], latest_row['sma_200']
+        
+        trend = "Undetermined"
+        if pd.notna(s20) and pd.notna(s50) and pd.notna(s200):
+            if (s20 > s50) and (latest_close > s200):
+                trend = "Bullish"
+            elif (s20 < s50) and (latest_close < s200):
+                trend = "Bearish"
+
+        performance_records.append({
+            'symbol': symbol,
+            'return_3m': return_3m,
+            'return_6m': return_6m,
+            'return_1y': return_1y,
+            'trend': trend,
+            'current_value_1y': current_value_1y,
+            'net_profit_1y': net_profit_1y
+        })
+
+    conn.close()
+
+    if not performance_records:
+        print("No stocks with positive returns found across any timeframe.")
+        return
+
+    df_perf = pd.DataFrame(performance_records)
+    
+    # SORT BY 3-MONTH RETURN DESCENDING
+    df_sorted = df_perf.sort_values(by='return_3m', ascending=False).copy()
+
+    # Format output columns
+    df_sorted['return_3m'] = df_sorted['return_3m'].map('{:+.2f}%'.format)
+    df_sorted['return_6m'] = df_sorted['return_6m'].map('{:+.2f}%'.format)
+    df_sorted['return_1y'] = df_sorted['return_1y'].map('{:+.2f}%'.format)
+    df_sorted['current_value_1y'] = df_sorted['current_value_1y'].map('₹{:,.2f}'.format)
+    df_sorted['net_profit_1y'] = df_sorted['net_profit_1y'].map('₹{:+,.2f}'.format)
+
+    report_filename = os.path.join(SCRIPT_DIR, "sorted_by_3m_report.txt")
+    with open(report_filename, "w", encoding="utf-8") as f:
+        f.write("=========================================================================================\n")
+        f.write(" 📈 STOCKS SORTED BY LAST 3 MONTHS RETURN (₹10L SIMULATION)\n")
+        f.write(f" Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        f.write("=========================================================================================\n\n")
+        f.write(df_sorted.to_string(index=False))
+        f.write("\n=========================================================================================\n")
+
+    print(f"\nReport successfully saved to: {report_filename}")
+    
+    print("\n=========================================================================================")
+    print(f" 📈 STOCKS SORTED BY 3-MONTH PERFORMANCE ({len(df_sorted)} stocks found)")
+    print("=========================================================================================")
+    print(df_sorted[['symbol', 'return_3m', 'return_6m', 'return_1y', 'trend', 'current_value_1y', 'net_profit_1y']].to_string(index=False))
+    print("=========================================================================================\n")
+
+if __name__ == "__main__":
+    generate_3m_sorted_report()

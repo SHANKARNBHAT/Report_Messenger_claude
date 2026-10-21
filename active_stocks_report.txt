@@ -1,0 +1,59 @@
+==================================================
+ ⚡ ALL ACTIVE STOCKS REPORT (RVOL > 1.0)
+ Generated on: 2026-10-20 16:49:18
+==================================================
+REPORT CRITERIA & DESCRIPTION:
+• Market Baseline: Nifty 50 is currently Bearish (Close vs 200 SMA & SMA 20 vs SMA 50).
+• Tracks all NSE futures stocks where Relative Volume (RVOL) > 1.0.
+• Action Logic:
+    - 1.Long  : Bullish Trend AND (Daily Range > ATR 14)
+    - 2.Short : Bearish Trend AND (Daily Range > ATR 14)
+    - 3.Watch : Undetermined Trend AND (Daily Range > ATR 14)
+    - 4.Wait  : Otherwise (Daily Range <= ATR 14 / Compression)
+• Grouped & Ordered by Action (1.Long -> 2.Short -> 3.Watch -> 4.Wait):
+    - Bullish     : SMA 20 > SMA 50 AND Close > SMA 200
+    - Bearish     : SMA 20 < SMA 50 AND Close < SMA 200
+    - Undetermined: Any other moving average alignment
+--------------------------------------------------
+
+    symbol rvol    close daily_range atr_14  is_active        trend  action
+    SMLMAH 1.28  6112.00      285.50 252.50          0      Bullish  1.Long
+MOTILALOFS 1.02  1021.00       50.70  37.79          0      Bullish  1.Long
+      SJVN 2.14    51.11        2.21   1.92          1      Bearish 2.Short
+   SYNGENE 2.06   397.50       19.50  13.25          1      Bearish 2.Short
+BANKBARODA 1.85   238.20        8.95   5.81          1      Bearish 2.Short
+       LTM 1.84  4264.90      218.60 155.08          1      Bearish 2.Short
+  AXISBANK 1.80  1236.00       39.60  29.20          1      Bearish 2.Short
+   SBICARD 1.66   567.40       16.10  14.22          1      Bearish 2.Short
+      SBIN 1.63   973.70       23.10  17.33          1      Bearish 2.Short
+     CANBK 1.58   122.00        3.84   3.50          1      Bearish 2.Short
+ HOMEFIRST 1.54  1055.20       44.60  37.54          1      Bearish 2.Short
+    M&MFIN 1.39   304.90       13.25  10.44          0      Bearish 2.Short
+    BIOCON 1.22   340.00        9.90   8.24          0      Bearish 2.Short
+       SRF 1.14  2432.00       59.60  57.34          0      Bearish 2.Short
+BHARTIARTL 1.12  1875.20       65.70  44.16          0      Bearish 2.Short
+  RELIANCE 1.09  1202.00       27.20  25.29          0      Bearish 2.Short
+SONATSOFTW 1.08   239.70       14.65  12.60          0      Bearish 2.Short
+BAJFINANCE 1.06   957.35       29.90  26.43          0      Bearish 2.Short
+ZENSARTECH 1.04   513.15       24.80  18.63          0      Bearish 2.Short
+       PNB 4.58   121.90        5.22   3.70          1 Undetermined 3.Watch
+FEDERALBNK 3.54   348.85       34.15  10.29          1 Undetermined 3.Watch
+ ICICIBANK 2.27  1381.00       33.90  27.10          1 Undetermined 3.Watch
+PERSISTENT 2.00  5690.00      274.00 204.50          1 Undetermined 3.Watch
+    VRLLOG 1.94   286.85        8.90   6.12          0 Undetermined 3.Watch
+    360ONE 1.75  1055.00       31.80  27.40          1 Undetermined 3.Watch
+      LTTS 1.38  3611.30      155.60 139.66          0 Undetermined 3.Watch
+  RATEGAIN 1.32   799.55       35.65  31.32          0 Undetermined 3.Watch
+  GRANULES 1.28   806.05       37.65  29.60          0 Undetermined 3.Watch
+  HDFCBANK 1.09   712.00       26.25  15.86          0 Undetermined 3.Watch
+INDUSTOWER 1.08   382.40       11.10  10.16          0 Undetermined 3.Watch
+       UBL 2.58  1204.80       17.40  36.36          1      Bearish  4.Wait
+       TCS 1.59  2460.90       64.90  78.05          1 Undetermined  4.Wait
+     CIPLA 1.48  1324.10       17.40  25.99          0      Bearish  4.Wait
+   MPHASIS 1.30  2500.00       62.80  79.49          0 Undetermined  4.Wait
+ EICHERMOT 1.26  7349.00      130.50 163.75          0 Undetermined  4.Wait
+BALKRISIND 1.22  2071.20       47.10  52.19          0      Bearish  4.Wait
+     TECHM 1.12  1779.10       43.30  56.49          0 Undetermined  4.Wait
+      NHPC 1.10    70.70        1.37   1.55          0      Bearish  4.Wait
+      INFY 1.05  1130.70       31.85  34.34          0      Bearish  4.Wait
+    MARUTI 1.01 11475.00      262.00 266.57          0      Bearish  4.Wait
