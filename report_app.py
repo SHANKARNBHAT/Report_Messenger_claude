@@ -58,7 +58,7 @@ st.markdown(
 
 reports = {
     "⚡ Active Stocks": "active_stocks_report.txt",
-    "🎯 Active & watchlist": "rvol_active_signals_report.txt",
+    "🎯 Active Watchlist": "rvol_active_signals_report.txt",
     "🧭 Bullish/Bearish Consolidated": "consolidated_strategy_report.txt",
     "↗ Bullish Triggers": "bullish_report.txt",
     "↘ Bearish Triggers": "bearish_report.txt",
@@ -210,7 +210,7 @@ for tab, (report_name, file_target) in zip(tabs, reports.items()):
             unsafe_allow_html=True,
         )
 
-        if report_name == "🎯 Active & watchlist":
+        if report_name == "🎯 Active Watchlist":
             st.markdown("### Active stocks with recent trigger signals")
             st.caption(
                 "These stocks are active today and also had a bullish or "
