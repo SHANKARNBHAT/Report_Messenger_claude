@@ -1,6 +1,4 @@
-import os
 import html
-import base64
 from urllib.parse import quote
 
 import requests
@@ -33,14 +31,13 @@ st.markdown(
       margin: .1rem 0 .55rem; color: #55708b; font-size: .72rem;
       font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
     }
-    .report-meta { margin: .2rem 0 .7rem; color: #687b90; font-size: .82rem; }
-    .report-panel {
-      overflow: auto; max-height: 72vh; padding: 1.1rem 1.25rem;
+    [data-testid="stCode"] {
+      overflow: auto; max-height: 72vh;
       border: 1px solid #e0e7ef; border-radius: 13px; background: #fff;
       box-shadow: 0 5px 18px rgba(26, 48, 72, .055);
     }
-    .report-panel pre {
-      margin: 0; color: #27364a;
+    [data-testid="stCode"] pre {
+      color: #27364a;
       font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
       font-size: .84rem; line-height: 1.6; white-space: pre;
     }
@@ -55,7 +52,7 @@ st.markdown(
     @media (max-width: 700px) {
       [data-testid="stMainBlockContainer"] { padding: 1rem .8rem 2rem; }
       .hero { padding: 1.3rem; border-radius: 14px; }
-      .report-panel { max-height: 65vh; padding: .85rem; }
+      [data-testid="stCode"] { max-height: 65vh; }
     }
     </style>
     <div class="hero">
@@ -79,83 +76,29 @@ reports = {
     "↘ Bearish": "bearish_report.txt",
 }
 
-github_token = st.secrets.get("GITHUB_TOKEN", "").strip()
-
-
-def trigger_github_workflow():
-    if not github_token:
-        st.sidebar.error("⚠️ GITHUB_TOKEN is not configured in Streamlit secrets.")
-        return False
-
-    owner = "SHANKARNBHAT"
-    repo = "Report_Messenger_Claude"
-    url = (
-        f"https://api.github.com/repos/{owner}/{repo}/actions/workflows/"
-        "pipeline.yml/dispatches"
-    )
-    headers = {
-        "Authorization": f"Bearer {github_token}",
-        "Accept": "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-    }
-
-    try:
-        response = requests.post(
-            url, json={"ref": "main"}, headers=headers, timeout=10
-        )
-    except requests.exceptions.RequestException as exc:
-        st.sidebar.error(f"Failed to trigger workflow: {exc}")
-        return False
-
-    if response.status_code == 204:
-        return True
-
-    st.sidebar.error(f"Failed to trigger workflow: {response.text}")
-    return False
-
 
 def load_report_text(filename):
     owner = "SHANKARNBHAT"
     repo = "Report_Messenger_Claude"
     branch = "main"
-    api_url = (
-        f"https://api.github.com/repos/{owner}/{repo}/contents/{quote(filename)}"
+    raw_url = (
+        f"https://raw.githubusercontent.com/{owner}/{repo}/{branch}/"
+        f"{quote(filename)}"
     )
 
-    if github_token:
-        headers = {
-            "Authorization": f"Bearer {github_token}",
-            "Accept": "application/vnd.github+json",
-            "X-GitHub-Api-Version": "2022-11-28",
-        }
-        try:
-            response = requests.get(
-                api_url, headers=headers, params={"ref": branch}, timeout=5
-            )
-            response.raise_for_status()
-            encoded_content = response.json().get("content")
-            if not isinstance(encoded_content, str):
-                raise ValueError(f"GitHub returned no file content for {filename}.")
-            return base64.b64decode(encoded_content).decode("utf-8")
-        except (
-            requests.exceptions.RequestException,
-            ValueError,
-            UnicodeDecodeError,
-        ) as exc:
-            st.sidebar.warning(f"Could not load {filename} from GitHub: {exc}")
-    else:
-        st.sidebar.warning(
-            "GITHUB_TOKEN is not configured; private reports use local snapshots."
-        )
+    try:
+        response = requests.get(raw_url, timeout=10)
+        response.raise_for_status()
+        return response.text
+    except requests.exceptions.RequestException as exc:
+        st.sidebar.warning(f"Could not load {filename} from GitHub: {exc}")
 
-    if os.path.exists(filename):
+    try:
         with open(filename, "r", encoding="utf-8") as report_file:
+            st.sidebar.info(f"Showing the bundled snapshot for {filename}.")
             return report_file.read()
-
-    return (
-        f"⚠️ Report file '{filename}' not found on GitHub. Click 'Run Workflow"
-        " Now' in the sidebar to generate reports."
-    )
+    except OSError as exc:
+        return f"Could not load report '{filename}' from GitHub or local snapshot: {exc}"
 
 
 def render_report(filename):
@@ -165,40 +108,21 @@ def render_report(filename):
         None,
     )
     if generated_line:
-        st.markdown(
-            f'<div class="report-meta">{html.escape(generated_line)}</div>',
-            unsafe_allow_html=True,
-        )
-    st.markdown(
-        '<div class="report-panel"><pre>'
-        f"{html.escape(content)}"
-        "</pre></div>",
-        unsafe_allow_html=True,
-    )
+        st.caption(generated_line)
+    st.code(content, language="text")
 
 
 st.sidebar.markdown(
     '<p class="section-label">Dashboard controls</p>',
     unsafe_allow_html=True,
 )
-st.sidebar.subheader("Market pipeline")
-st.sidebar.markdown(
-    "Refresh the reports or run a new data and signal scan."
-)
-
-if st.sidebar.button("🚀 Run Workflow Now"):
-    with st.spinner("Triggering GitHub Actions workflow..."):
-        if trigger_github_workflow():
-            st.sidebar.success(
-                "Pipeline started. Refresh after it completes to see the latest reports."
-            )
-
-st.sidebar.divider()
+st.sidebar.subheader("Market reports")
+st.sidebar.markdown("Reports refresh when the GitHub pipeline completes.")
 
 if st.sidebar.button("↻ Refresh reports", use_container_width=True):
     st.rerun()
 
-st.sidebar.caption("Reports are read from the private GitHub repository.")
+st.sidebar.caption("Reports are read from the public GitHub repository.")
 tabs = st.tabs(list(reports.keys()))
 
 for tab, (report_name, file_target) in zip(tabs, reports.items()):
