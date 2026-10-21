@@ -151,12 +151,14 @@ def render_report(filename):
         else:
             linked_lines.append(html.escape(line))
     rendered_content = "\n".join(linked_lines)
+    # Fit short reports; cap long ones at 700px so the card scrolls.
+    frame_height = min(700, max(120, int(len(linked_lines) * 21.5) + 60))
     st.components.v1.html(
         f"""
         <style>
           body {{ margin: 0; }}
           .report-card {{
-            overflow: auto; max-height: 680px;
+            overflow: auto; max-height: {frame_height - 20}px;
             border: 1px solid #e0e7ef; border-radius: 13px; background: #fff;
             box-shadow: 0 5px 18px rgba(26, 48, 72, .055);
           }}
@@ -169,7 +171,7 @@ def render_report(filename):
         </style>
         <div class="report-card"><pre>{rendered_content}</pre></div>
         """,
-        height=700,
+        height=frame_height,
         scrolling=True,
     )
 
