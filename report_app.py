@@ -1,5 +1,6 @@
 import os
-import time
+import base64
+from urllib.parse import quote
 
 import requests
 import streamlit as st
@@ -26,10 +27,11 @@ reports = {
     "📉 Bearish Report": "bearish_report.txt",
 }
 
+github_token = st.secrets.get("GITHUB_TOKEN", "").strip()
+
 
 def trigger_github_workflow():
-    token = st.secrets.get("GITHUB_TOKEN", "").strip()
-    if not token:
+    if not github_token:
         st.sidebar.error("⚠️ GITHUB_TOKEN is not configured in Streamlit secrets.")
         return False
 
@@ -40,7 +42,7 @@ def trigger_github_workflow():
         "pipeline.yml/dispatches"
     )
     headers = {
-        "Authorization": f"Bearer {token}",
+        "Authorization": f"Bearer {github_token}",
         "Accept": "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28",
     }
@@ -64,20 +66,35 @@ def load_report_text(filename):
     owner = "SHANKARNBHAT"
     repo = "Report_Messenger_Claude"
     branch = "main"
-    raw_url = (
-        f"https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{filename}"
+    api_url = (
+        f"https://api.github.com/repos/{owner}/{repo}/contents/{quote(filename)}"
     )
 
-    try:
-        response = requests.get(
-            raw_url,
-            params={"_cache_bust": int(time.time())},
-            timeout=5,
+    if github_token:
+        headers = {
+            "Authorization": f"Bearer {github_token}",
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+        try:
+            response = requests.get(
+                api_url, headers=headers, params={"ref": branch}, timeout=5
+            )
+            response.raise_for_status()
+            encoded_content = response.json().get("content")
+            if not isinstance(encoded_content, str):
+                raise ValueError(f"GitHub returned no file content for {filename}.")
+            return base64.b64decode(encoded_content).decode("utf-8")
+        except (
+            requests.exceptions.RequestException,
+            ValueError,
+            UnicodeDecodeError,
+        ) as exc:
+            st.sidebar.warning(f"Could not load {filename} from GitHub: {exc}")
+    else:
+        st.sidebar.warning(
+            "GITHUB_TOKEN is not configured; private reports use local snapshots."
         )
-        if response.status_code == 200:
-            return response.text
-    except requests.exceptions.RequestException:
-        pass
 
     if os.path.exists(filename):
         with open(filename, "r", encoding="utf-8") as report_file:
