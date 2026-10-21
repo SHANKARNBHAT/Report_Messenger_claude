@@ -158,7 +158,7 @@ def render_report(filename):
         <style>
           body {{ margin: 0; }}
           .report-card {{
-            overflow: auto; max-height: {frame_height - 20}px;
+            overflow: scroll; max-height: {frame_height - 20}px;
             border: 1px solid #e0e7ef; border-radius: 13px; background: #fff;
             box-shadow: 0 5px 18px rgba(26, 48, 72, .055);
           }}
