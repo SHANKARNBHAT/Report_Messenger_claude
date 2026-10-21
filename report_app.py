@@ -71,9 +71,9 @@ reports = {
         "relevant_active_stocks_report.txt",
         "rvol_active_signals_report.txt",
     ],
-    "🧭 Strategy overview": "consolidated_strategy_report.txt",
-    "↗ Bullish": "bullish_report.txt",
-    "↘ Bearish": "bearish_report.txt",
+    "🧭 Bullish/Bearish Consolidated": "consolidated_strategy_report.txt",
+    "↗ Bullish Triggers": "bullish_report.txt",
+    "↘ Bearish Triggers": "bearish_report.txt",
 }
 
 
