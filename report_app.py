@@ -130,9 +130,9 @@ def render_report(filename):
         else:
             linked_lines.append(html.escape(line))
     rendered_content = "\n".join(linked_lines)
-    st.markdown(
-        f'<div class="report-card"><pre>{rendered_content}</pre></div>',
-        unsafe_allow_html=True,
+    st.components.v1.html(
+        f'<div style="overflow:auto;max-height:680px;border:1px solid #e0e7ef;border-radius:13px;background:#fff;box-shadow:0 5px 18px rgba(26,48,72,.055)"><pre style="margin:0;padding:1rem;color:#27364a;font-family:monospace;font-size:.84rem;line-height:1.6;white-space:pre">{rendered_content}</pre></div>',
+        height=700, scrolling=True,
     )
 
 
