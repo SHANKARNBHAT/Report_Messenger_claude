@@ -60,8 +60,6 @@ reports = {
     "⚡ Active Stocks": "active_stocks_report.txt",
     "🎯 Active Watchlist": "rvol_active_signals_report.txt",
     "🧭 Bullish/Bearish Consolidated": "consolidated_strategy_report.txt",
-    "↗ Bullish Triggers": "bullish_report.txt",
-    "↘ Bearish Triggers": "bearish_report.txt",
 }
 
 github_token = st.secrets.get("GITHUB_TOKEN", "").strip()
@@ -218,5 +216,11 @@ for tab, (report_name, file_target) in zip(tabs, reports.items()):
                 "to review, not a recommendation to trade."
             )
             render_report(file_target)
+
+            st.markdown("### ↗ Bullish Triggers")
+            render_report("bullish_report.txt")
+
+            st.markdown("### ↘ Bearish Triggers")
+            render_report("bearish_report.txt")
         else:
             render_report(file_target)
