@@ -700,5 +700,5 @@ if __name__ == "__main__":
     print("=== Starting Unified Master Market Pipeline ===")
     run_market_update("futures stocks.csv")
     run_strategy_scans_and_reports()
-    dispatch_to_telegram()
+    print("Telegram delivery is paused.")
     print("Master pipeline execution completed successfully!")
