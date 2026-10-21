@@ -4,7 +4,6 @@ import sqlite3
 import warnings
 import numpy as np
 import pandas as pd
-import requests
 import yfinance as yf
 
 # Suppress pandas future warnings and configure text table formatting
@@ -12,12 +11,6 @@ warnings.simplefilter(action="ignore", category=FutureWarning)
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 120)
 pd.set_option('expand_frame_repr', False)
-
-# ==========================================
-# CONFIGURATION & CREDENTIALS
-# ==========================================
-TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(SCRIPT_DIR, "stock_market_data.db")
@@ -450,7 +443,6 @@ def run_strategy_scans_and_reports():
 
     market_baseline_sentence = f"• Market Baseline: Nifty 50 is currently {nifty_trend_status} (Close vs 200 SMA & SMA 20 vs SMA 50)."
 
-
     fourteen_days_ago = (datetime.datetime.now() - datetime.timedelta(days=14)).strftime("%Y-%m-%d")
 
     active_df = pd.read_sql_query(
@@ -530,7 +522,7 @@ def run_strategy_scans_and_reports():
 
     active_rvol_all = active_df[active_df['rvol'] > 1.0][['symbol', 'rvol', 'close', 'daily_range', 'atr_14', 'is_active', 'trend', 'action']].copy()
     
-    # Format columns neatly to prevent line wrapping inside Telegram code blocks
+    # Format columns neatly to prevent line wrapping in text reports.
     active_rvol_all['rvol'] = active_rvol_all['rvol'].map(lambda x: f"{x:.2f}" if pd.notna(x) else "0.00")
     active_rvol_all['close'] = active_rvol_all['close'].map(lambda x: f"{x:.2f}" if pd.notna(x) else "0.00")
     active_rvol_all['daily_range'] = active_rvol_all['daily_range'].map(lambda x: f"{x:.2f}" if pd.notna(x) else "0.00")
@@ -622,8 +614,8 @@ def run_strategy_scans_and_reports():
 
     if common_rvol_symbols and not fourteen_day_history_df.empty:
         rvol_report_lines.append(f"Found {len(common_rvol_symbols)} stock(s) from 14-day signal log active with RVOL > 1 today:\n")
-        rvol_report_lines.append(f"{'Symbol':<12} {'Strategy':<16} {'Bias':<10} {'Lot Size':<10} {'RVOL':<8} {'ATR14':<8} {'Daily Range':<12} {'Close':<10}")
-        rvol_report_lines.append("-" * 92)
+        rvol_report_lines.append(f"{'Symbol':<12} {'Strategy':<16} {'Bias':<10} {'Last Trigger':<13} {'Lot Size':<10} {'RVOL':<8} {'ATR14':<8} {'Daily Range':<12} {'Close':<10}")
+        rvol_report_lines.append("-" * 106)
 
         for sym in sorted(common_rvol_symbols):
             sym_signals = fourteen_day_history_df[fourteen_day_history_df["symbol"].str.upper() == sym].sort_values(by="signal_date", ascending=False)
@@ -634,6 +626,7 @@ def run_strategy_scans_and_reports():
                 f"{sym:<12} "
                 f"{latest_sig['strategy_type']:<16} "
                 f"{latest_sig['bias']:<10} "
+                f"{str(latest_sig['signal_date'])[:10]:<13} "
                 f"{int(latest_sig['lot_size']):<10} "
                 f"{active_match['rvol']:<8.2f} "
                 f"{(active_match['atr_14'] if pd.notna(active_match['atr_14']) else 0):<8.2f} "
@@ -650,55 +643,8 @@ def run_strategy_scans_and_reports():
     print("All 5 reports successfully generated and updated!")
 
 
-# ==========================================
-# 3. TELEGRAM DISPATCHER
-# ==========================================
-def dispatch_to_telegram():
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        raise RuntimeError(
-            "TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID must be configured."
-        )
-
-    reports = [
-        ("bullish_report.txt", "📈 Bullish Strategy Report"),
-        ("bearish_report.txt", "📉 Bearish Strategy Report"),
-        ("active_stocks_report.txt", "⚡ Active Stocks Report"),
-        ("consolidated_strategy_report.txt", "🎯 Consolidated Strategy & Activity Report"),
-        ("rvol_active_signals_report.txt", "👁️ Stocks to Watch"),
-    ]
-
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    for filename, title in reports:
-        path = os.path.join(SCRIPT_DIR, filename)
-        if os.path.exists(path):
-            with open(path, "r", encoding="utf-8") as f:
-                content = f.read()
-
-            content = content.replace(">", " GT ").replace("<", " LT ")
-
-            max_len = 4000
-            chunks = [content[i : i + max_len] for i in range(0, len(content), max_len)]
-
-            for idx, chunk in enumerate(chunks):
-                chunk_title = f"{title} (Part {idx+1})" if len(chunks) > 1 else title
-                payload = {
-                    "chat_id": TELEGRAM_CHAT_ID,
-                    "text": f"<b>{chunk_title}</b>\n<pre>{chunk}</pre>",
-                    "parse_mode": "HTML",
-                }
-                try:
-                    response = requests.post(url, json=payload, timeout=10)
-                    if response.status_code != 200:
-                        print(f"Telegram error for {chunk_title}: {response.text}")
-                    else:
-                        print(f"Dispatched {chunk_title} to Telegram.")
-                except Exception as e:
-                    print(f"Failed to dispatch {chunk_title}: {e}")
-
-
 if __name__ == "__main__":
     print("=== Starting Unified Master Market Pipeline ===")
     run_market_update("futures stocks.csv")
     run_strategy_scans_and_reports()
-    print("Telegram delivery is paused.")
     print("Master pipeline execution completed successfully!")
