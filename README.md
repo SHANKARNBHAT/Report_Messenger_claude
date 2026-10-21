@@ -18,7 +18,7 @@ The automated workflow reads `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` from Gi
 
 ## Run the dashboard
 
-Install the dependencies, configure `GITHUB_TOKEN` as a Streamlit secret with permission to dispatch the workflow, and start the app:
+Install the dependencies, configure `GITHUB_TOKEN` as a Streamlit secret with Contents read and Actions write access to this repository, and start the app:
 
 ```powershell
 streamlit run report_app.py
