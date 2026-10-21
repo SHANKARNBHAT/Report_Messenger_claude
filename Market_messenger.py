@@ -450,7 +450,7 @@ def run_strategy_scans_and_reports():
 
     market_baseline_sentence = f"• Market Baseline: Nifty 50 is currently {nifty_trend_status} (Close vs 200 SMA & SMA 20 vs SMA 50)."
 
-    seven_days_ago = (datetime.datetime.now() - datetime.timedelta(days=7)).strftime("%Y-%m-%d")
+
     fourteen_days_ago = (datetime.datetime.now() - datetime.timedelta(days=14)).strftime("%Y-%m-%d")
 
     active_df = pd.read_sql_query(
@@ -500,7 +500,7 @@ def run_strategy_scans_and_reports():
         f"""
         SELECT symbol, signal_date, strategy_type, bias, close, lot_size 
         FROM strategy_signal_history 
-        WHERE signal_date >= '{seven_days_ago}'
+        WHERE signal_date >= '{fourteen_days_ago}'
     """,
         conn,
     )
@@ -519,14 +519,14 @@ def run_strategy_scans_and_reports():
     bearish_records = history_df[history_df["bias"] == "BEARISH"] if not history_df.empty else pd.DataFrame()
 
     with open(os.path.join(SCRIPT_DIR, "bullish_report.txt"), "w", encoding="utf-8") as f:
-        f.write("=== BULLISH REPORT (Last 7 Days) ===\n")
+        f.write("=== BULLISH REPORT (Last 14 Days) ===\n")
         f.write(f"{market_baseline_sentence}\n\n")
-        f.write(bullish_records.to_string(index=False) if not bullish_records.empty else "No bullish records in past 7 days.")
+        f.write(bullish_records.to_string(index=False) if not bullish_records.empty else "No bullish records in past 14 days.")
 
     with open(os.path.join(SCRIPT_DIR, "bearish_report.txt"), "w", encoding="utf-8") as f:
-        f.write("=== BEARISH REPORT (Last 7 Days) ===\n")
+        f.write("=== BEARISH REPORT (Last 14 Days) ===\n")
         f.write(f"{market_baseline_sentence}\n\n")
-        f.write(bearish_records.to_string(index=False) if not bearish_records.empty else "No bearish records in past 7 days.")
+        f.write(bearish_records.to_string(index=False) if not bearish_records.empty else "No bearish records in past 14 days.")
 
     active_rvol_all = active_df[active_df['rvol'] > 1.0][['symbol', 'rvol', 'close', 'daily_range', 'atr_14', 'is_active', 'trend', 'action']].copy()
     
