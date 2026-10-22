@@ -1,6 +1,7 @@
 import os
 import html
 import re
+import time
 from urllib.parse import quote
 
 import pandas as pd
@@ -115,7 +116,8 @@ def load_report_text(filename):
     )
 
     try:
-        response = requests.get(raw_url, timeout=10)
+        # A changing query string skips GitHub's ~5 minute raw-file cache.
+        response = requests.get(raw_url, params={"t": int(time.time())}, timeout=10)
         response.raise_for_status()
         return response.text
     except requests.exceptions.RequestException as exc:
