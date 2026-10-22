@@ -1,4 +1,5 @@
 import os
+import re
 import sqlite3
 import pandas as pd
 from datetime import datetime
@@ -24,30 +25,21 @@ def parse_active_stocks_symbols():
     with open(ACTIVE_REPORT_PATH, "r", encoding="utf-8") as f:
         lines = f.readlines()
     
-    # Read line-by-line looking for stock symbols in the report layout
-    parsing_started = False
+    # The report is a data-only file: metadata lines, then a table whose header starts with 'symbol'.
+    in_table = False
     for line in lines:
-        if "---" in line or "===" in line:
-            if parsing_started:
-                # If we hit another separator after starting, we might be done or headers finished
-                pass
-            continue
-        
         parts = line.strip().split()
         if not parts:
+            in_table = False
             continue
-            
-        # Skip header rows
-        if parts[0].lower() in ["symbol", "market", "active", "report"]:
-            parsing_started = True
+
+        if parts[0].lower() == "symbol":
+            in_table = True
             continue
-            
-        if parsing_started or len(parts) > 1:
-            # The first column is typically the stock symbol
-            symbol = parts[0]
-            # Validate it looks like a ticker name (alphanumeric)
-            if symbol.isalnum() and symbol.upper() != "SYMBOL":
-                active_symbols.add(symbol.upper())
+
+        # The first column of each table row is the stock symbol
+        if in_table and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9&.-]*", parts[0]):
+            active_symbols.add(parts[0].upper())
 
     return active_symbols
 

@@ -361,6 +361,28 @@ def run_market_update(csv_filename="futures stocks.csv"):
 # ==========================================
 # 2. STRATEGY SCANNING & REPORTS GENERATION
 # ==========================================
+def write_report_file(path, baseline_sentence, sections):
+    """Write a data-only report: timestamp, market baseline, then tables.
+
+    `sections` is a list of (tag, DataFrame). A tag adds a '## tag' line so the
+    Streamlit app can attach its own heading; use None for a single untagged table.
+    An empty DataFrame writes only the tag, and the app shows its own empty message.
+    """
+    lines = [
+        f"Generated on: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+        baseline_sentence,
+        "",
+    ]
+    for tag, table in sections:
+        if tag:
+            lines.append(f"## {tag}")
+        if table is not None and not table.empty:
+            lines.append(table.to_string(index=False))
+        lines.append("")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+
+
 def run_strategy_scans_and_reports():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -507,49 +529,28 @@ def run_strategy_scans_and_reports():
     )
     conn.close()
 
-    bullish_records = history_df[history_df["bias"] == "BULLISH"] if not history_df.empty else pd.DataFrame()
-    bearish_records = history_df[history_df["bias"] == "BEARISH"] if not history_df.empty else pd.DataFrame()
+    # Newest signals first
+    sorted_history_df = history_df.sort_values(by=["signal_date", "symbol"], ascending=[False, True]) if not history_df.empty else history_df
+    bullish_records = sorted_history_df[sorted_history_df["bias"] == "BULLISH"] if not sorted_history_df.empty else pd.DataFrame()
+    bearish_records = sorted_history_df[sorted_history_df["bias"] == "BEARISH"] if not sorted_history_df.empty else pd.DataFrame()
 
-    with open(os.path.join(SCRIPT_DIR, "bullish_report.txt"), "w", encoding="utf-8") as f:
-        f.write("=== BULLISH REPORT (Last 14 Days) ===\n")
-        f.write(f"{market_baseline_sentence}\n\n")
-        f.write(bullish_records.to_string(index=False) if not bullish_records.empty else "No bullish records in past 14 days.")
-
-    with open(os.path.join(SCRIPT_DIR, "bearish_report.txt"), "w", encoding="utf-8") as f:
-        f.write("=== BEARISH REPORT (Last 14 Days) ===\n")
-        f.write(f"{market_baseline_sentence}\n\n")
-        f.write(bearish_records.to_string(index=False) if not bearish_records.empty else "No bearish records in past 14 days.")
+    # Reports hold data only (timestamp, baseline, tables); the wording lives in report_app.py.
+    for report_name, records in (("bullish_report.txt", bullish_records), ("bearish_report.txt", bearish_records)):
+        if not records.empty:
+            records = records.copy()
+            records["close"] = records["close"].map(lambda x: f"{x:.2f}" if pd.notna(x) else "0.00")
+        write_report_file(os.path.join(SCRIPT_DIR, report_name), market_baseline_sentence, [(None, records)])
 
     active_rvol_all = active_df[active_df['rvol'] > 1.0][['symbol', 'rvol', 'close', 'daily_range', 'atr_14', 'is_active', 'trend', 'action']].copy()
-    
-    # Format columns neatly to prevent line wrapping in text reports.
-    active_rvol_all['rvol'] = active_rvol_all['rvol'].map(lambda x: f"{x:.2f}" if pd.notna(x) else "0.00")
-    active_rvol_all['close'] = active_rvol_all['close'].map(lambda x: f"{x:.2f}" if pd.notna(x) else "0.00")
-    active_rvol_all['daily_range'] = active_rvol_all['daily_range'].map(lambda x: f"{x:.2f}" if pd.notna(x) else "0.00")
-    active_rvol_all['atr_14'] = active_rvol_all['atr_14'].map(lambda x: f"{x:.2f}" if pd.notna(x) else "0.00")
 
     # Sort strictly by action (1.Long -> 2.Short -> 3.Watch -> 4.Wait), then by RVOL descending
     active_rvol_all = active_rvol_all.sort_values(by=['action', 'rvol'], ascending=[True, False])
 
-    with open(os.path.join(SCRIPT_DIR, "active_stocks_report.txt"), "w", encoding="utf-8") as f:
-        f.write("==================================================\n")
-        f.write(" ⚡ ALL ACTIVE STOCKS REPORT (RVOL > 1.0)\n")
-        f.write(f" Generated on: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-        f.write("==================================================\n")
-        f.write("REPORT CRITERIA & DESCRIPTION:\n")
-        f.write(f"{market_baseline_sentence}\n")
-        f.write("• Tracks all NSE futures stocks where Relative Volume (RVOL) > 1.0.\n")
-        f.write("• Action Logic:\n")
-        f.write("    - 1.Long  : Bullish Trend AND (Daily Range > ATR 14)\n")
-        f.write("    - 2.Short : Bearish Trend AND (Daily Range > ATR 14)\n")
-        f.write("    - 3.Watch : Undetermined Trend AND (Daily Range > ATR 14)\n")
-        f.write("    - 4.Wait  : Otherwise (Daily Range <= ATR 14 / Compression)\n")
-        f.write("• Grouped & Ordered by Action (1.Long -> 2.Short -> 3.Watch -> 4.Wait):\n")
-        f.write("    - Bullish     : SMA 20 > SMA 50 AND Close > SMA 200\n")
-        f.write("    - Bearish     : SMA 20 < SMA 50 AND Close < SMA 200\n")
-        f.write("    - Undetermined: Any other moving average alignment\n")
-        f.write("--------------------------------------------------\n\n")
-        f.write(active_rvol_all.to_string(index=False) if not active_rvol_all.empty else "No stocks found with RVOL > 1.0.")
+    # Format columns neatly to prevent line wrapping in text reports.
+    for numeric_col in ('rvol', 'close', 'daily_range', 'atr_14'):
+        active_rvol_all[numeric_col] = active_rvol_all[numeric_col].map(lambda x: f"{x:.2f}" if pd.notna(x) else "0.00")
+
+    write_report_file(os.path.join(SCRIPT_DIR, "active_stocks_report.txt"), market_baseline_sentence, [(None, active_rvol_all)])
 
     bullish_14d_records = fourteen_day_history_df[fourteen_day_history_df["bias"] == "BULLISH"] if not fourteen_day_history_df.empty else pd.DataFrame()
     bearish_14d_records = fourteen_day_history_df[fourteen_day_history_df["bias"] == "BEARISH"] if not fourteen_day_history_df.empty else pd.DataFrame()
@@ -558,87 +559,62 @@ def run_strategy_scans_and_reports():
     bearish_overlap = set(bearish_14d_records[bearish_14d_records["strategy_type"] == "SMA_Crossover"]["symbol"]).intersection(set(bearish_14d_records[bearish_14d_records["strategy_type"] == "RSI_Strategy"]["symbol"])) if not bearish_14d_records.empty else set()
     active_symbols = set(active_df[active_df["is_active"] == 1]["symbol"].str.upper())
 
-    consolidated_path = os.path.join(SCRIPT_DIR, "consolidated_strategy_report.txt")
-    with open(consolidated_path, "w", encoding="utf-8") as f:
-        f.write("==================================================\n")
-        f.write(" 🎯 CONSOLIDATED MARKET INTELLIGENCE REPORT (2-WEEK WINDOW)\n")
-        f.write(f" Generated on: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-        f.write("==================================================\n")
-        f.write(f"{market_baseline_sentence}\n\n")
+    def build_overlap_df(overlap_symbols, records):
+        rows = []
+        for sym in sorted(overlap_symbols):
+            sample_row = records[records["symbol"] == sym].iloc[0]
+            rows.append({
+                "symbol": sym,
+                "lot_size": int(sample_row["lot_size"]),
+                "last_close": f"{sample_row['close']:.2f}",
+                "active": "ACTIVE" if sym in active_symbols else "-",
+            })
+        return pd.DataFrame(rows)
 
-        f.write("【 🟢 HIGH-CONVICTION BULLISH OVERLAPS (SMA Crossover + RSI in Last 14D) 】\n")
-        if bullish_overlap:
-            for sym in sorted(bullish_overlap):
-                sample_row = bullish_14d_records[bullish_14d_records["symbol"] == sym].iloc[0]
-                is_act = "⚡ ACTIVE" if sym in active_symbols else ""
-                f.write(f"• {sym:<12} | Lot Size: {sample_row['lot_size']:<5} | Last Close: {sample_row['close']:<8.2f} {is_act}\n")
-        else:
-            f.write("No multi-strategy overlapping bullish stocks found in the past 2 weeks.\n")
-
-        f.write("\n【 🔴 HIGH-CONVICTION BEARISH OVERLAPS (SMA Crossover + RSI in Last 14D) 】\n")
-        if bearish_overlap:
-            for sym in sorted(bearish_overlap):
-                sample_row = bearish_14d_records[bearish_14d_records["symbol"] == sym].iloc[0]
-                is_act = "⚡ ACTIVE" if sym in active_symbols else ""
-                f.write(f"• {sym:<12} | Lot Size: {sample_row['lot_size']:<5} | Last Close: {sample_row['close']:<8.2f} {is_act}\n")
-        else:
-            f.write("No multi-strategy overlapping bearish stocks found in the past 2 weeks.\n")
-
-        f.write("\n--------------------------------------------------\n")
-        f.write("📋 FULL 14-DAY SIGNAL LOG:\n")
-        if not fourteen_day_history_df.empty:
-            f.write(fourteen_day_history_df[["symbol", "signal_date", "strategy_type", "bias", "lot_size"]].to_string(index=False))
-        else:
-            f.write("No entries logged yet.")
+    signal_log_df = (
+        fourteen_day_history_df[["symbol", "signal_date", "strategy_type", "bias", "lot_size"]]
+        if not fourteen_day_history_df.empty
+        else pd.DataFrame()
+    )
+    write_report_file(
+        os.path.join(SCRIPT_DIR, "consolidated_strategy_report.txt"),
+        market_baseline_sentence,
+        [
+            ("bullish_overlaps", build_overlap_df(bullish_overlap, bullish_14d_records)),
+            ("bearish_overlaps", build_overlap_df(bearish_overlap, bearish_14d_records)),
+            ("signal_log", signal_log_df),
+        ],
+    )
 
     active_rvol_df = active_df[active_df["rvol"] > 1.0]
     active_rvol_symbols = set(active_rvol_symbol.upper() for active_rvol_symbol in active_rvol_df["symbol"].tolist())
     watchlist_signal_symbols = set(fourteen_day_history_df["symbol"].str.upper().tolist()) if not fourteen_day_history_df.empty else set()
     common_rvol_symbols = watchlist_signal_symbols.intersection(active_rvol_symbols)
 
-    rvol_report_lines = [
-        "==================================================",
-        " 👁️ STOCKS TO WATCH",
-        f" Generated on: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
-        "==================================================",
-        f"{market_baseline_sentence}",
-        "",
-        "WHAT IS RVOL (RELATIVE VOLUME)?",
-        "• Relative Volume (RVOL) compares today's trading volume against its historical average.",
-        "• High RVOL (> 1.5) highlights institutional participation or breakouts.",
-        "",
-        "REPORT CRITERIA:",
-        "• Cross-references past 14-day technical signals with stocks exhibiting RVOL > 1.0 today.",
-        "--------------------------------------------------\n",
-    ]
-
+    watch_rows = []
     if common_rvol_symbols and not fourteen_day_history_df.empty:
-        rvol_report_lines.append(f"Found {len(common_rvol_symbols)} stock(s) from 14-day signal log active with RVOL > 1 today:\n")
-        rvol_report_lines.append(f"{'Symbol':<12} {'Strategy':<16} {'Bias':<10} {'Last Trigger':<13} {'Lot Size':<10} {'RVOL':<8} {'ATR14':<8} {'Daily Range':<12} {'Close':<10}")
-        rvol_report_lines.append("-" * 106)
-
         for sym in sorted(common_rvol_symbols):
             sym_signals = fourteen_day_history_df[fourteen_day_history_df["symbol"].str.upper() == sym].sort_values(by="signal_date", ascending=False)
             latest_sig = sym_signals.iloc[0]
             active_match = active_rvol_df[active_rvol_df["symbol"].str.upper() == sym].iloc[0]
 
-            rvol_report_lines.append(
-                f"{sym:<12} "
-                f"{latest_sig['strategy_type']:<16} "
-                f"{latest_sig['bias']:<10} "
-                f"{str(latest_sig['signal_date'])[:10]:<13} "
-                f"{int(latest_sig['lot_size']):<10} "
-                f"{active_match['rvol']:<8.2f} "
-                f"{(active_match['atr_14'] if pd.notna(active_match['atr_14']) else 0):<8.2f} "
-                f"{(active_match['daily_range'] if pd.notna(active_match['daily_range']) else 0):<12.2f} "
-                f"{active_match['close']:<10.2f}"
-            )
-    else:
-        rvol_report_lines.append("ℹ️ No stocks from 14-day signal log match the RVOL > 1 active list filter today.")
+            watch_rows.append({
+                "symbol": sym,
+                "strategy": latest_sig["strategy_type"],
+                "bias": latest_sig["bias"],
+                "last_trigger": str(latest_sig["signal_date"])[:10],
+                "lot_size": int(latest_sig["lot_size"]),
+                "rvol": f"{active_match['rvol']:.2f}",
+                "atr14": f"{(active_match['atr_14'] if pd.notna(active_match['atr_14']) else 0):.2f}",
+                "daily_range": f"{(active_match['daily_range'] if pd.notna(active_match['daily_range']) else 0):.2f}",
+                "close": f"{active_match['close']:.2f}",
+            })
 
-    rvol_report_path = os.path.join(SCRIPT_DIR, "rvol_active_signals_report.txt")
-    with open(rvol_report_path, "w", encoding="utf-8") as f:
-        f.write("\n".join(rvol_report_lines))
+    write_report_file(
+        os.path.join(SCRIPT_DIR, "rvol_active_signals_report.txt"),
+        market_baseline_sentence,
+        [(None, pd.DataFrame(watch_rows))],
+    )
 
     print("All 5 reports successfully generated and updated!")
 

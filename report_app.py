@@ -3,6 +3,7 @@ import html
 import re
 from urllib.parse import quote
 
+import pandas as pd
 import requests
 import streamlit as st
 
@@ -33,6 +34,13 @@ st.markdown(
       margin: .1rem 0 .55rem; color: #55708b; font-size: .72rem;
       font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
     }
+    .report-intro, .report-note {
+      margin: 0 0 1rem; padding: .9rem 1.1rem; white-space: pre-wrap;
+      border: 1px solid #e0e7ef; border-radius: 13px; background: #fff;
+      color: #27364a; font-size: .86rem; line-height: 1.6;
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+    }
+    .report-note { padding: .5rem 1.1rem; background: #f7fafc; }
     [data-testid="stTabs"] [data-baseweb="tab-list"] { gap: .3rem; }
     [data-testid="stTabs"] button[role="tab"] {
       min-height: 2.9rem; padding: 0 .85rem; color: #52657a; font-weight: 600;
@@ -124,56 +132,196 @@ def load_report_text(filename):
     )
 
 
-def render_report(filename):
-    content = load_report_text(filename)
-    generated_line = next(
-        (line.strip() for line in content.splitlines() if "Generated on:" in line),
-        None,
+# ---------------------------------------------------------------------------
+# Report wording. Edit the text here; the report files only carry data.
+#   title        bold first line of the card above the tables (optional)
+#   description  static explanation shown in the card under the baseline
+#   sections     one entry per table in the report file, shown in this order:
+#                  heading  title above the table (optional)
+#                  found    note above the table; {n} is the number of rows
+#                  empty    message shown when the table has no rows
+#                "main" is the table that has no '## tag' line in the file.
+# ---------------------------------------------------------------------------
+REPORT_TEXT = {
+    "active_stocks_report.txt": {
+        "title": "⚡ ALL ACTIVE STOCKS REPORT (RVOL > 1.0)",
+        "description": """REPORT CRITERIA & DESCRIPTION:
+• Tracks all NSE futures stocks where Relative Volume (RVOL) > 1.0.
+• Action Logic:
+    - 1.Long  : Bullish Trend AND (Daily Range > ATR 14)
+    - 2.Short : Bearish Trend AND (Daily Range > ATR 14)
+    - 3.Watch : Undetermined Trend AND (Daily Range > ATR 14)
+    - 4.Wait  : Otherwise (Daily Range ≤ ATR 14 / Compression)
+• Grouped & Ordered by Action (1.Long → 2.Short → 3.Watch → 4.Wait):
+    - Bullish     : SMA 20 > SMA 50 AND Close > SMA 200
+    - Bearish     : SMA 20 < SMA 50 AND Close < SMA 200
+    - Undetermined: Any other moving average alignment""",
+        "sections": {"main": {"empty": "No stocks found with RVOL > 1.0."}},
+    },
+    "rvol_active_signals_report.txt": {
+        "title": "👁️ STOCKS TO WATCH",
+        "description": """WHAT IS RVOL (RELATIVE VOLUME)?
+• Relative Volume (RVOL) compares today's trading volume against its historical average.
+• High RVOL (> 1.5) highlights institutional participation or breakouts.
+
+REPORT CRITERIA:
+• Cross-references past 14-day technical signals with stocks exhibiting RVOL > 1.0 today.""",
+        "sections": {
+            "main": {
+                "found": "Found {n} stock(s) from 14-day signal log active with RVOL > 1 today:",
+                "empty": "ℹ️ No stocks from 14-day signal log match the RVOL > 1 active list filter today.",
+            }
+        },
+    },
+    "consolidated_strategy_report.txt": {
+        "title": "🎯 CONSOLIDATED MARKET INTELLIGENCE REPORT (2-WEEK WINDOW)",
+        "description": "",
+        "sections": {
+            "bullish_overlaps": {
+                "heading": "🟢 High-conviction bullish overlaps (SMA Crossover + RSI in last 14D)",
+                "empty": "No multi-strategy overlapping bullish stocks found in the past 2 weeks.",
+            },
+            "bearish_overlaps": {
+                "heading": "🔴 High-conviction bearish overlaps (SMA Crossover + RSI in last 14D)",
+                "empty": "No multi-strategy overlapping bearish stocks found in the past 2 weeks.",
+            },
+            "signal_log": {
+                "heading": "📋 Full 14-day signal log",
+                "empty": "No entries logged yet.",
+            },
+        },
+    },
+    "bullish_report.txt": {
+        "title": "",
+        "description": "",
+        "sections": {"main": {"empty": "No bullish records in past 14 days."}},
+    },
+    "bearish_report.txt": {
+        "title": "",
+        "description": "",
+        "sections": {"main": {"empty": "No bearish records in past 14 days."}},
+    },
+}
+
+
+def split_header(header_line, first_row):
+    """Column names from a to_string()-style header; handles 'Lot Size'."""
+    columns = re.split(r"\s{2,}", header_line.strip())
+    if len(columns) != len(first_row.split()):
+        columns = header_line.split()
+    return columns
+
+
+def parse_table(header_line, row_lines):
+    rows = [line.split() for line in row_lines]
+    columns = split_header(header_line, row_lines[0])
+    rows = [row for row in rows if len(row) == len(columns)]
+    if not rows:
+        return None
+    table = pd.DataFrame(rows, columns=columns)
+    for column in table.columns:
+        try:
+            table[column] = pd.to_numeric(table[column])
+        except (ValueError, TypeError):
+            pass
+    return table
+
+
+def parse_report(content):
+    """Read a data-only report file into (meta, tables).
+
+    meta   : {"generated": str | None, "baseline": str | None}
+    tables : {tag: DataFrame}; the table before any '## tag' line is "main".
+    """
+    meta = {"generated": None, "baseline": None}
+    tables = {}
+    lines = content.splitlines()
+    current = "main"
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        if line.startswith("Generated on:"):
+            meta["generated"] = line
+        elif line.startswith("• Market Baseline"):
+            meta["baseline"] = line
+        elif line.startswith("## "):
+            current = line[3:].strip()
+        elif line.lower().startswith("symbol"):
+            j = i + 1
+            while j < len(lines) and lines[j].strip() and not lines[j].startswith("## "):
+                j += 1
+            if j > i + 1:
+                table = parse_table(lines[i], lines[i + 1 : j])
+                if table is not None:
+                    tables[current] = table
+            i = j
+            continue
+        i += 1
+    return meta, tables
+
+
+def show_note(text, css_class="report-note"):
+    st.markdown(
+        f'<div class="{css_class}">{html.escape(text)}</div>',
+        unsafe_allow_html=True,
     )
-    if generated_line:
-        st.caption(generated_line)
-    linked_lines = []
-    for line in content.splitlines():
-        match = re.match(r"^(\s*)([A-Z0-9][A-Z0-9&.-]*)(?=\s{2,}\S)", line)
-        if match:
-            leading, symbol = match.groups()
-            chart_url = (
-                "https://in.tradingview.com/chart/jGqNo1TB/?symbol="
+
+
+def render_report(filename):
+    info = REPORT_TEXT.get(filename, {})
+    content = load_report_text(filename)
+    meta, tables = parse_report(content)
+
+    if meta["generated"] is None and not tables:
+        st.warning(content.strip() or f"{filename} is empty.")
+        return
+
+    card_lines = []
+    if info.get("title"):
+        card_lines.append(f"<b>{html.escape(info['title'])}</b>")
+    for key in ("generated", "baseline"):
+        if meta[key]:
+            card_lines.append(html.escape(meta[key]))
+    if info.get("description"):
+        card_lines.append("")
+        card_lines.extend(html.escape(line) for line in info["description"].splitlines())
+    # One physical line: markdown ends an HTML block at a blank line and turns
+    # indented lines into code, so line breaks go in as <br> (CSS keeps the spaces).
+    st.markdown(
+        f'<div class="report-intro">{"<br>".join(card_lines)}</div>',
+        unsafe_allow_html=True,
+    )
+
+    for tag, section in info.get("sections", {"main": {}}).items():
+        if section.get("heading"):
+            st.markdown(f"##### {section['heading']}")
+        payload = tables.get(tag)
+        if payload is None:
+            show_note(section.get("empty", "No data."))
+            continue
+        if section.get("found"):
+            show_note(section["found"].format(n=len(payload)))
+
+        table = payload.copy()
+        symbol_column = table.columns[0]
+        column_config = {}
+        if symbol_column.lower() == "symbol":
+            table[symbol_column] = table[symbol_column].map(
+                lambda symbol: "https://in.tradingview.com/chart/jGqNo1TB/?symbol="
                 f"{quote(f'NSE:{symbol}', safe='')}"
             )
-            rendered_line = (
-                f"{html.escape(leading)}"
-                f'<a href="{chart_url}" target="_blank" '
-                f'rel="noopener noreferrer">{html.escape(symbol)}</a>'
-                f"{html.escape(line[match.end():])}"
+            column_config[symbol_column] = st.column_config.LinkColumn(
+                symbol_column,
+                display_text=r"symbol=NSE%3A(.+)$",
+                help="Opens the TradingView chart",
             )
-            linked_lines.append(rendered_line)
-        else:
-            linked_lines.append(html.escape(line))
-    rendered_content = "\n".join(linked_lines)
-    # Fit short reports; cap long ones at 700px so the card scrolls.
-    frame_height = min(700, max(120, int(len(linked_lines) * 21.5) + 60))
-    st.components.v1.html(
-        f"""
-        <style>
-          body {{ margin: 0; }}
-          .report-card {{
-            overflow: scroll; max-height: {frame_height - 20}px;
-            border: 1px solid #e0e7ef; border-radius: 13px; background: #fff;
-            box-shadow: 0 5px 18px rgba(26, 48, 72, .055);
-          }}
-          pre {{
-            margin: 0; padding: 1rem; color: #27364a;
-            font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
-            font-size: .84rem; line-height: 1.6; white-space: pre;
-          }}
-          a {{ color: #126e72; font-weight: 700; text-decoration: underline; }}
-        </style>
-        <div class="report-card"><pre>{rendered_content}</pre></div>
-        """,
-        height=frame_height,
-        scrolling=True,
-    )
+        st.dataframe(
+            table,
+            column_config=column_config,
+            hide_index=True,
+            use_container_width=True,
+            height=min(600, 38 + 35 * len(table)),
+        )
 
 
 st.sidebar.markdown(
