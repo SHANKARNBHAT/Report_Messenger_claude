@@ -36,6 +36,9 @@ st.markdown(
       margin: .1rem 0 .55rem; color: #55708b; font-size: .72rem;
       font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
     }
+    /* Hide the Fork / GitHub / Deploy buttons; the sidebar arrow and ⋮ menu stay. */
+    [data-testid="stToolbarActions"], [data-testid="stAppDeployButton"],
+    .stAppDeployButton, .viewerBadge_container__r5tak { display: none !important; }
     .report-intro, .report-note {
       margin: 0 0 1rem; padding: .9rem 1.1rem; white-space: pre-wrap;
       border: 1px solid #e0e7ef; border-radius: 13px; background: #fff;
