@@ -12,13 +12,14 @@ st.set_page_config(
     page_title="Market Intelligence | NSE Futures",
     page_icon="📊",
     layout="wide",
+    initial_sidebar_state="collapsed",
 )
 
 st.markdown(
     """
     <style>
     .stApp { background: linear-gradient(180deg, #f3f7fb 0%, #fff 340px); }
-    [data-testid="stMainBlockContainer"] { max-width: 1440px; padding-top: 1.5rem; }
+    [data-testid="stMainBlockContainer"] { max-width: 1440px; padding-top: 4.5rem; }
     [data-testid="stSidebar"] { background: #f0f4f9; border-right: 1px solid #e0e7f0; }
     .hero {
       padding: 1.7rem 2rem; margin-bottom: 1.3rem; border: 1px solid #dce6f3;
@@ -51,7 +52,7 @@ st.markdown(
       min-height: 2.7rem; border-radius: 10px; font-weight: 600;
     }
     @media (max-width: 700px) {
-      [data-testid="stMainBlockContainer"] { padding: 1rem .8rem 2rem; }
+      [data-testid="stMainBlockContainer"] { padding: 4rem .8rem 2rem; }
       .hero { padding: 1.3rem; border-radius: 14px; }
       .report-card { max-height: 65vh; }
     }
@@ -305,6 +306,9 @@ def render_report(filename):
             show_note(section["found"].format(n=len(payload)))
 
         table = payload.copy()
+        if "signal_date" in table.columns:
+            # Newest signals first by default; the order within a date is kept.
+            table = table.sort_values("signal_date", ascending=False, kind="stable")
         symbol_column = table.columns[0]
         column_config = {}
         if symbol_column.lower() == "symbol":
