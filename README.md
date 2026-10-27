@@ -37,6 +37,7 @@ The app has two pages, switched from the menu at the top:
   reports are read from the `Report_Messenger_cash` repository.
 - **Chartink dashboard** (`chartink_dashboard.py`): the live results of a public
   Chartink dashboard, one tab per timeframe, with bullish and bearish tables.
+  The first tab, COMMON, lists the stocks found in two or more timeframes.
   Widgets are sorted by name: `2H`, `4h`, `DAILY` or `WEEKLY` picks the tab, and
   `SHORT`, `BEAR` or `SELL` marks a bearish widget. The dashboard and chart
   snapshot links are set at the top of the file; the snapshot link can also be

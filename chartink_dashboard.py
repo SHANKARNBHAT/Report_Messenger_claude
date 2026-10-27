@@ -207,13 +207,41 @@ def show_table(table: pd.DataFrame) -> None:
         ),
     }
     for column in table.columns[1:]:
-        if pd.api.types.is_numeric_dtype(table[column]):
-            whole = "volume" in column.lower() and "perc" not in column.lower()
-            config[column] = st.column_config.NumberColumn(column, format="localized" if whole else "%.2f")
+        if "volume" in column.lower() and "perc" not in column.lower():
+            config[column] = st.column_config.NumberColumn(column, format="localized")
+        elif pd.api.types.is_float_dtype(table[column]):
+            config[column] = st.column_config.NumberColumn(column, format="%.2f")
     link = CHART_SITES[site]
     shown = table.assign(Symbol=table["Symbol"].map(lambda s: link(s, snapshot and snapshot.group(1))))
     st.dataframe(shown, column_config=config, hide_index=True, width="stretch",
                  height=min(600, 38 + 35 * len(shown)))
+
+
+def common_stocks(widgets: list[dict]) -> pd.DataFrame:
+    """Stocks found in two or more timeframes, with bullish or bearish for each."""
+    found: dict[str, dict[str, set[str]]] = {}  # symbol -> timeframe -> {"Bullish", "Bearish"}
+    for widget in widgets:
+        if widget["timeframe"] is None or widget["table"] is None:
+            continue
+        side = "Bearish" if widget["bearish"] else "Bullish"
+        for symbol in widget["table"]["Symbol"]:
+            found.setdefault(symbol, {}).setdefault(widget["timeframe"], set()).add(side)
+
+    marks = {"Bullish": "🟢 Bullish", "Bearish": "🔴 Bearish"}
+    rows = []
+    for symbol, timeframes in found.items():
+        if len(timeframes) < 2:
+            continue
+        sides = set().union(*timeframes.values())
+        row = {"Symbol": symbol, "Timeframes": len(timeframes),
+               "Signal": next(iter(sides)) if len(sides) == 1 else "Mixed"}
+        for timeframe in TIMEFRAMES:
+            row[timeframe] = " / ".join(marks[s] for s in sorted(timeframes.get(timeframe, ()), reverse=True))
+        rows.append(row)
+    table = pd.DataFrame(rows, columns=["Symbol", "Timeframes", "Signal", *TIMEFRAMES])
+    order = {"Bullish": 0, "Bearish": 1, "Mixed": 2}
+    return table.sort_values(["Timeframes", "Signal", "Symbol"], ascending=[False, True, True],
+                             key=lambda c: c.map(order) if c.name == "Signal" else c)
 
 
 def live_dashboard(link: str, refresh: str) -> None:
@@ -239,12 +267,20 @@ def live_dashboard(link: str, refresh: str) -> None:
         f"Updated {data['fetched_at']:%d %b %Y, %H:%M:%S} IST · refreshes every {refresh}"
     )
 
-    names = list(TIMEFRAMES)
+    names = ["COMMON", *TIMEFRAMES]
     others = [w for w in data["widgets"] if w["timeframe"] is None]
     if others:
         names.append("OTHER")
     for tab, timeframe in zip(st.tabs(names), names):
         with tab:
+            if timeframe == "COMMON":
+                common = common_stocks(data["widgets"])
+                st.caption(f"{len(common)} stock(s) found in two or more timeframes")
+                if common.empty:
+                    st.info("No stock is in more than one timeframe right now.")
+                else:
+                    show_table(common)
+                continue
             if timeframe == "OTHER":
                 for widget in others:
                     show_widget("⚪", widget)
