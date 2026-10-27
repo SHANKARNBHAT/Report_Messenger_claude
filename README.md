@@ -30,3 +30,13 @@ The dashboard reads reports directly from the public repository without a
 GitHub token. To start the report workflow from the dashboard, configure
 `GITHUB_TOKEN` as a Streamlit secret with Actions write access to this
 repository.
+
+The app has two pages, switched from the menu at the top:
+
+- **Market reports** (`reports_page.py`): the Futures and Cash reports. The Cash
+  reports are read from the `Report_Messenger_cash` repository.
+- **Chartink dashboard** (`chartink_dashboard.py`): the live results of a public
+  Chartink dashboard, one tab per timeframe, with bullish and bearish tables.
+  Widgets are sorted by name: `2H`, `4h`, `DAILY` or `WEEKLY` picks the tab, and
+  `SHORT`, `BEAR` or `SELL` marks a bearish widget. The dashboard and chart
+  snapshot links are set at the top of the file and can be changed in the sidebar.
