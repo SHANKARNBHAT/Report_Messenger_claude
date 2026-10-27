@@ -69,6 +69,14 @@ DEFAULT_SNAPSHOT = (
     "moving-averag-chart-snapshot"
 )
 MY_LAYOUT = "My indicators"
+# Active Watchlist of the Market reports, compared with the dashboard on the COMMON tab.
+# Segment -> the report file in that segment's GitHub repository.
+WATCHLISTS = {
+    "Futures": "https://raw.githubusercontent.com/SHANKARNBHAT/Report_Messenger_Claude/main/"
+               "rvol_active_signals_report.txt",
+    "Cash": "https://raw.githubusercontent.com/SHANKARNBHAT/Report_Messenger_cash/main/"
+            "rvol_active_signals_report.txt",
+}
 # Chart site -> link to a stock's chart on it, given the snapshot's name.
 CHART_SITES = {
     MY_LAYOUT: lambda symbol, snapshot: (
@@ -193,6 +201,35 @@ def fetch_dashboard(link: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Market reports
+# ---------------------------------------------------------------------------
+def parse_watchlist(text: str) -> pd.DataFrame:
+    """The table of an Active Watchlist report: symbol, strategy, bias, last_trigger, ..."""
+    lines = text.splitlines()
+    start = next((i for i, line in enumerate(lines) if line.strip().lower().startswith("symbol")), None)
+    if start is None:
+        return pd.DataFrame(columns=["symbol", "strategy", "bias", "last_trigger"])
+    columns = lines[start].split()
+    rows = [line.split() for line in lines[start + 1:] if line.strip()]
+    return pd.DataFrame([row for row in rows if len(row) == len(columns)], columns=columns)
+
+
+@st.cache_data(ttl=50, show_spinner=False)
+def fetch_watchlists() -> tuple[dict[str, pd.DataFrame], list[str]]:
+    """Each segment's Active Watchlist from GitHub, and messages for any that failed."""
+    watchlists, errors = {}, []
+    for segment, url in WATCHLISTS.items():
+        try:
+            # A changing query string skips GitHub's ~5 minute raw-file cache.
+            response = requests.get(url, params={"t": int(datetime.now().timestamp())}, timeout=15)
+            response.raise_for_status()
+            watchlists[segment] = parse_watchlist(response.text)
+        except requests.RequestException as exc:
+            errors.append(f"Could not load the {segment} watchlist: {exc}")
+    return watchlists, errors
+
+
+# ---------------------------------------------------------------------------
 # Page
 # ---------------------------------------------------------------------------
 def show_table(table: pd.DataFrame) -> None:
@@ -217,26 +254,65 @@ def show_table(table: pd.DataFrame) -> None:
                  height=min(600, 38 + 35 * len(shown)))
 
 
-def common_stocks(widgets: list[dict]) -> pd.DataFrame:
-    """Stocks found in two or more timeframes, with bullish or bearish for each."""
-    found: dict[str, dict[str, set[str]]] = {}  # symbol -> timeframe -> {"Bullish", "Bearish"}
+MARKS = {"Bullish": "🟢 Bullish", "Bearish": "🔴 Bearish"}
+
+
+def chartink_sides(widgets: list[dict]) -> dict[str, dict[str, set[str]]]:
+    """symbol -> timeframe -> {"Bullish", "Bearish"}, for every stock on the dashboard."""
+    found: dict[str, dict[str, set[str]]] = {}
     for widget in widgets:
         if widget["timeframe"] is None or widget["table"] is None:
             continue
         side = "Bearish" if widget["bearish"] else "Bullish"
         for symbol in widget["table"]["Symbol"]:
             found.setdefault(symbol, {}).setdefault(widget["timeframe"], set()).add(side)
+    return found
 
-    marks = {"Bullish": "🟢 Bullish", "Bearish": "🔴 Bearish"}
+
+def timeframe_columns(timeframes: dict[str, set[str]]) -> dict[str, str]:
+    """One column per timeframe: "🟢 Bullish", "🔴 Bearish", both, or blank."""
+    return {timeframe: " / ".join(MARKS[s] for s in sorted(timeframes.get(timeframe, ()), reverse=True))
+            for timeframe in TIMEFRAMES}
+
+
+def watchlist_matches(widgets: list[dict], watchlists: dict[str, pd.DataFrame]) -> pd.DataFrame:
+    """Stocks on both the dashboard and a Market reports Active Watchlist."""
+    found = chartink_sides(widgets)
+    reports: dict[str, list[tuple[str, pd.Series]]] = {}  # symbol -> [(segment, report row)]
+    for segment, table in watchlists.items():
+        for _, row in table.iterrows():
+            if row["symbol"] in found:
+                reports.setdefault(row["symbol"], []).append((segment, row))
+
     rows = []
-    for symbol, timeframes in found.items():
+    for symbol, entries in reports.items():
+        biases = {str(row["bias"]).title() for _, row in entries}
+        sides = set().union(*found[symbol].values())
+        rows.append({
+            "Symbol": symbol,
+            "Watchlist": ", ".join(segment for segment, _ in entries),
+            "Report bias": " / ".join(MARKS.get(b, b) for b in sorted(biases, reverse=True)),
+            "Strategy": ", ".join(dict.fromkeys(str(row["strategy"]) for _, row in entries)),
+            "Last trigger": max(str(row["last_trigger"]) for _, row in entries),
+            "Agrees": "✅ Yes" if biases == sides and len(sides) == 1 else "⚠️ No",
+            **timeframe_columns(found[symbol]),
+        })
+    columns = ["Symbol", "Watchlist", "Report bias", "Strategy", "Last trigger", "Agrees", *TIMEFRAMES]
+    table = pd.DataFrame(rows, columns=columns)
+    # Stocks where the report and Chartink agree first.
+    return table.sort_values(["Agrees", "Symbol"], key=lambda c: c.ne("✅ Yes") if c.name == "Agrees" else c)
+
+
+def common_stocks(widgets: list[dict]) -> pd.DataFrame:
+    """Stocks found in two or more timeframes, with bullish or bearish for each."""
+    rows = []
+    for symbol, timeframes in chartink_sides(widgets).items():
         if len(timeframes) < 2:
             continue
         sides = set().union(*timeframes.values())
         row = {"Symbol": symbol, "Timeframes": len(timeframes),
                "Signal": next(iter(sides)) if len(sides) == 1 else "Mixed"}
-        for timeframe in TIMEFRAMES:
-            row[timeframe] = " / ".join(marks[s] for s in sorted(timeframes.get(timeframe, ()), reverse=True))
+        row.update(timeframe_columns(timeframes))
         rows.append(row)
     table = pd.DataFrame(rows, columns=["Symbol", "Timeframes", "Signal", *TIMEFRAMES])
     order = {"Bullish": 0, "Bearish": 1, "Mixed": 2}
@@ -262,6 +338,7 @@ def live_dashboard(link: str, refresh: str) -> None:
         st.rerun()  # the whole page, so the new refresh interval takes effect
     if button_col.button("↻ Refresh now", width="stretch"):
         fetch_dashboard.clear()
+        fetch_watchlists.clear()
         st.rerun(scope="fragment")
     st.caption(
         f"Updated {data['fetched_at']:%d %b %Y, %H:%M:%S} IST · refreshes every {refresh}"
@@ -274,12 +351,7 @@ def live_dashboard(link: str, refresh: str) -> None:
     for tab, timeframe in zip(st.tabs(names), names):
         with tab:
             if timeframe == "COMMON":
-                common = common_stocks(data["widgets"])
-                st.caption(f"{len(common)} stock(s) found in two or more timeframes")
-                if common.empty:
-                    st.info("No stock is in more than one timeframe right now.")
-                else:
-                    show_table(common)
+                show_common(data["widgets"])
                 continue
             if timeframe == "OTHER":
                 for widget in others:
@@ -295,6 +367,29 @@ def live_dashboard(link: str, refresh: str) -> None:
                             f"Add one{hint} on Chartink and it will show here.")
                 for widget in widgets:
                     show_widget(None, widget)
+
+
+def show_common(widgets: list[dict]) -> None:
+    """COMMON tab: stocks shared with the Market reports, then across timeframes."""
+    st.subheader("🔗 Common between Chartink and Market reports")
+    watchlists, errors = fetch_watchlists()
+    for error in errors:
+        st.warning(error)
+    matches = watchlist_matches(widgets, watchlists)
+    st.caption(f"{len(matches)} stock(s) on this Chartink dashboard that are also on the Active "
+               "Watchlist of the Market reports. Agrees: the report's bias matches every Chartink signal.")
+    if matches.empty:
+        st.info("No stock is on both the Chartink dashboard and the Active Watchlist right now.")
+    else:
+        show_table(matches)
+
+    st.subheader("🔁 Common across Chartink timeframes")
+    common = common_stocks(widgets)
+    st.caption(f"{len(common)} stock(s) found in two or more timeframes")
+    if common.empty:
+        st.info("No stock is in more than one timeframe right now.")
+    else:
+        show_table(common)
 
 
 def show_widget(icon: str | None, widget: dict) -> None:
