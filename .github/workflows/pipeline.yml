@@ -2,12 +2,17 @@ name: Market Report Pipeline
 
 on:
   # GitHub starts scheduled runs late (often hours) or drops them when busy,
-  # mostly around :00 and :30. So the times use odd minutes, and the later two
-  # are backups that stop straight away if today's reports already exist.
+  # mostly around :00 and :30. So the times use odd minutes, and the backups
+  # stop straight away if the reports for the last market close already exist.
+  # The reports must be ready by 9 AM IST the next morning.
   schedule:
     - cron: '13 11 * * 1-5' # Mon-Fri 4:43 PM IST
     - cron: '17 13 * * 1-5' # Mon-Fri 6:47 PM IST (backup)
     - cron: '19 15 * * 1-5' # Mon-Fri 8:49 PM IST (backup)
+    - cron: '23 18 * * 1-5' # Mon-Fri 11:53 PM IST (backup)
+    - cron: '27 21 * * 1-5' # Tue-Sat 2:57 AM IST (backup)
+    - cron: '41 0 * * 2-6'  # Tue-Sat 6:11 AM IST (backup)
+    - cron: '7 2 * * 2-6'   # Tue-Sat 7:37 AM IST (last backup)
   workflow_dispatch:
   # Only a change to the pipeline itself starts a run, not every push.
   push:
@@ -31,16 +36,20 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # A scheduled run stops here if an earlier run already made today's reports
-      # after the market closed (3:30 PM IST = 10:00 UTC; "Generated on" is in UTC,
-      # like the runner's clock). Manual runs always go ahead.
+      # A scheduled run stops here if an earlier run already made the reports after
+      # the last market close: 3:30 PM IST = 10:00 UTC today, or yesterday when run
+      # before then ("Generated on" is in UTC, like the runner's clock; the morning
+      # runs are Tue-Sat, so yesterday is always a weekday). Manual runs always go ahead.
       - name: Check for today's reports
         id: today
         run: |
           generated=$(grep -m1 '^Generated on:' active_stocks_report.txt 2>/dev/null | cut -d' ' -f3-4)
-          echo "Reports last generated: ${generated:-never} (UTC)"
-          if [ "${{ github.event_name }}" = "schedule" ] && [[ "$generated" > "$(date -u +%F) 10:00" ]]; then
-            echo "Today's reports already exist; nothing to do."
+          now=$(date -u +%s)
+          if [ "$(date -u -d "@$now" +%H)" -ge 10 ]; then close_day=$now; else close_day=$((now - 86400)); fi
+          last_close="$(date -u -d "@$close_day" +%F) 10:00"
+          echo "Reports last generated: ${generated:-never}; last market close: $last_close (UTC)"
+          if [ "${{ github.event_name }}" = "schedule" ] && [[ "$generated" > "$last_close" ]]; then
+            echo "The reports for the last market close already exist; nothing to do."
             echo "done=true" >> "$GITHUB_OUTPUT"
           fi
 
