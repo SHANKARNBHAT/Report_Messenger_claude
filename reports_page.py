@@ -378,12 +378,6 @@ st.sidebar.markdown(
     '<p class="section-label">Dashboard controls</p>',
     unsafe_allow_html=True,
 )
-st.sidebar.subheader("Market pipeline")
-st.sidebar.markdown(
-    f"Refresh reports or run a new data and signal scan for the **{SEGMENT_NAME}** "
-    "report. Telegram delivery is paused."
-)
-
 if st.sidebar.button(f"🚀 Run {SEGMENT_NAME} Workflow Now"):
     with st.spinner("Triggering GitHub Actions workflow..."):
         if trigger_github_workflow():

@@ -225,8 +225,7 @@ def live_dashboard(link: str, refresh: str) -> None:
         st.error(f"Chartink: {exc}")
         return
 
-    title_col, charts_col, refresh_col, button_col = st.columns([3, 2.2, 1, 1], vertical_alignment="bottom")
-    title_col.title(f"📊 {data['name']}")
+    charts_col, refresh_col, button_col = st.columns([2.2, 1, 1], vertical_alignment="bottom")
     charts_col.radio("Open charts on", list(CHART_SITES), key="charts", horizontal=True,
                      on_change=remember, args=("charts",))
     refresh_col.selectbox("Refresh every", list(REFRESH_CHOICES), key="refresh",
@@ -237,8 +236,7 @@ def live_dashboard(link: str, refresh: str) -> None:
         fetch_dashboard.clear()
         st.rerun(scope="fragment")
     st.caption(
-        f"Updated {data['fetched_at']:%d %b %Y, %H:%M:%S} IST · refreshes every "
-        f"{refresh} · [open on Chartink]({data['link']})"
+        f"Updated {data['fetched_at']:%d %b %Y, %H:%M:%S} IST · refreshes every {refresh}"
     )
 
     names = list(TIMEFRAMES)
@@ -282,15 +280,13 @@ def show_widget(icon: str | None, widget: dict) -> None:
 def main() -> None:
     st.set_page_config(page_title="Chartink Dashboard", page_icon="📊", layout="wide",
                        initial_sidebar_state="collapsed")
-    link = st.sidebar.text_input("Chartink dashboard link", value=DEFAULT_DASHBOARD)
-    st.sidebar.caption("The dashboard must be public. Results come straight from Chartink.")
     st.session_state.setdefault("snapshot", DEFAULT_SNAPSHOT)
     st.sidebar.text_input(f'Chart snapshot link (for "{MY_LAYOUT}")', key="snapshot",
                           on_change=remember, args=("snapshot",))
     st.sidebar.caption("On a Chartink chart with your indicators, click Share and paste the link here.")
     st.session_state.setdefault("refresh", DEFAULT_REFRESH)
     refresh = st.session_state.refresh
-    st.fragment(live_dashboard, run_every=REFRESH_CHOICES[refresh])(link, refresh)
+    st.fragment(live_dashboard, run_every=REFRESH_CHOICES[refresh])(DEFAULT_DASHBOARD, refresh)
 
 
 if __name__ == "__main__":

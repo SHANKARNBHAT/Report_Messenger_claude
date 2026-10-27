@@ -39,4 +39,5 @@ The app has two pages, switched from the menu at the top:
   Chartink dashboard, one tab per timeframe, with bullish and bearish tables.
   Widgets are sorted by name: `2H`, `4h`, `DAILY` or `WEEKLY` picks the tab, and
   `SHORT`, `BEAR` or `SELL` marks a bearish widget. The dashboard and chart
-  snapshot links are set at the top of the file and can be changed in the sidebar.
+  snapshot links are set at the top of the file; the snapshot link can also be
+  changed in the sidebar.
