@@ -114,8 +114,8 @@ st.radio(
 st.query_params["view"] = st.session_state["segment"].lower()
 
 reports = {
-    "⚡ Active Stocks": "active_stocks_report.txt",
     "🎯 Active Watchlist": "rvol_active_signals_report.txt",
+    "⚡ Active Stocks": "active_stocks_report.txt",
     "🧭 Bullish/Bearish Consolidated": "consolidated_strategy_report.txt",
 }
 
