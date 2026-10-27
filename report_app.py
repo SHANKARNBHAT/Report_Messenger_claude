@@ -11,6 +11,23 @@ from page_settings import restore
 # Choices made on one page, kept while another page is open (see page_settings.py).
 restore(["segment", "refresh", "charts", "snapshot"])
 
+# Menu at the top: the page links share the width equally and are larger.
+st.html(
+    """
+    <style>
+    [data-testid="stToolbar"] .rc-overflow { flex: 1 1 auto; }
+    [data-testid="stToolbar"] .rc-overflow-item:has([data-testid="stTopNavLink"]) { flex: 1 1 0; }
+    [data-testid="stToolbar"] .rc-overflow-item:has([data-testid="stTopNavLink"]) > div,
+    [data-testid="stTopNavLinkContainer"] { width: 100%; }
+    [data-testid="stTopNavLink"] {
+      width: calc(100% - .5rem); margin: 0 .25rem; min-height: 3rem; justify-content: center; gap: .5rem;
+      border: 1px solid #dce6f3; border-radius: 12px;
+    }
+    [data-testid="stTopNavLink"] * { font-size: 1.15rem !important; font-weight: 600; }
+    </style>
+    """
+)
+
 pages = [
     st.Page("reports_page.py", title="Market reports", icon="📰", url_path="reports", default=True),
     st.Page("chartink_dashboard.py", title="Chartink dashboard", icon="📊", url_path="chartink"),
