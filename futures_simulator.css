@@ -48,7 +48,11 @@ input {
   background: var(--bg); color: var(--text); border: 1px solid var(--line2); border-radius: 8px;
   padding: 7px 9px; font: inherit; width: 100%; font-variant-numeric: tabular-nums;
 }
-input:focus { outline: 2px solid var(--blue); outline-offset: -1px; }
+input:focus, select:focus { outline: 2px solid var(--blue); outline-offset: -1px; }
+select { background: var(--bg); color: var(--text); border: 1px solid var(--line2); border-radius: 8px; padding: 5px 8px; font: inherit; }
+.seg.tf { display: inline-grid; grid-auto-flow: column; grid-template-columns: none; }
+.seg.tf button { padding: 6px 12px; font-size: 13px; }
+.seg.tf button.on { background: var(--blue); color: #fff; }
 input[type="checkbox"] { width: auto; accent-color: var(--blue); }
 .num { width: 140px; }
 .num.sm { width: 64px; padding: 5px 7px; }

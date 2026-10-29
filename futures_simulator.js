@@ -5,6 +5,7 @@
 // (trigger "check"), answered in data.result.
 
 const STORE = "futures_simulator_v1"
+const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/target on or off
 const instances = new WeakMap()
 
 // ---------------------------------------------------------------------------
@@ -24,6 +25,15 @@ function loadAccount(capital) {
 
 function saveAccount(account) {
   try { localStorage.setItem(STORE, JSON.stringify(account)) } catch (e) { /* storage blocked */ }
+}
+
+function loadPrefs() {
+  try { return JSON.parse(localStorage.getItem(PREFS)) || {} } catch (e) { return {} }
+}
+
+function savePrefs(ctx) {
+  const prefs = { timeframe: ctx.timeframe, entry: ctx.ref("entry-mode").value, risk: ctx.ref("auto-risk").checked }
+  try { localStorage.setItem(PREFS, JSON.stringify(prefs)) } catch (e) { /* storage blocked */ }
 }
 
 // ---------------------------------------------------------------------------
@@ -91,6 +101,19 @@ function setup(root, data) {
   ref("instruments").innerHTML = data.instruments
     .map((i) => `<option value="${esc(i.symbol)}">${esc(i.name)} · lot ${i.lot}</option>`).join("")
   ref("capital").value = ctx.account.capital
+  const prefs = loadPrefs()
+  ctx.timeframe = data.timeframes.includes(prefs.timeframe) ? prefs.timeframe : data.settings.default_timeframe
+  if (prefs.entry) ref("entry-mode").value = prefs.entry
+  if (prefs.risk === false) ref("auto-risk").checked = false
+  ref("timeframes").innerHTML = data.timeframes
+    .map((tf) => `<button type="button" data-tf="${esc(tf)}">${esc(tf.replace(" HOUR", "H"))}</button>`).join("")
+
+  root.addEventListener("change", (event) => {
+    if (["entry-mode", "auto-risk"].includes(event.target.dataset.ref)) {
+      savePrefs(ctx)
+      render(ctx)
+    }
+  })
 
   root.addEventListener("click", (event) => {
     const button = event.target.closest("button")
@@ -100,11 +123,17 @@ function setup(root, data) {
       render(ctx)
       return
     }
+    if (button.dataset.tf) {
+      ctx.timeframe = button.dataset.tf
+      savePrefs(ctx)
+      render(ctx)
+      return
+    }
     const act = button.dataset.act
     const actions = {
       refresh: () => sendCheck(ctx, "auto", true),
       eod: () => runEod(ctx),
-      "auto-all": () => autoExecute(ctx, ctx.data.signals),
+      "auto-all": () => autoExecute(ctx, shownSignals(ctx)),
       "auto-one": () => autoExecute(ctx, [ctx.data.signals[Number(button.dataset.row)]]),
       "use-ltp": () => { ctx.priceEdited = false; fillPrice(ctx); render(ctx) },
       preset: () => presetRisk(ctx),
@@ -210,7 +239,7 @@ function placeOrder(ctx, order) {
   account.positions.push({
     id: `${Date.now()}-${account.seq}`, symbol: order.symbol, side: order.side, lots: order.lots,
     qty: order.qty, entry: order.entry, sl: order.sl, tp: order.tp,
-    tsl: order.tsl.on ? order.tsl : { on: false }, stop: order.sl, time: Date.now(),
+    tsl: order.tsl.on ? order.tsl : { on: false }, stop: order.sl, time: order.time || Date.now(),
     source: order.source || "Manual", status: "open",
   })
   saveAccount(account)
@@ -238,28 +267,44 @@ function presetRisk(ctx) {
   render(ctx)
 }
 
-// Market orders for signals at the latest price, with the preset SL and target.
+function shownSignals(ctx) {
+  return ctx.data.signals.filter((s) => s.timeframe === ctx.timeframe)
+}
+
+const shortTf = (tf) => tf.replace(" HOUR", "H")
+
+// Entry price and time of a signal: the latest price, or the open of the candle it is on.
+function signalEntry(ctx, signal) {
+  if (ctx.ref("entry-mode").value === "candle") return signal.open ? { price: signal.open.price, time: signal.open.time } : null
+  const ltp = quote(ctx, signal.symbol)
+  return ltp == null ? null : { price: tick(ltp), time: null }
+}
+
+// Market orders for signals, with the preset SL and target if ticked.
 function autoExecute(ctx, signals) {
   const { auto_sl_pct: slPct, auto_tp_pct: tpPct } = ctx.data.settings
   const lots = Math.max(1, Math.floor(num(ctx.ref("auto-lots").value) ?? 1))
-  const sides = {}
-  for (const s of signals) (sides[s.symbol] ||= new Set()).add(s.bias)
+  const risk = ctx.ref("auto-risk").checked
+  const bySymbol = {}
+  for (const s of signals) (bySymbol[s.symbol] ||= []).push(s)
   const placed = [], skipped = []
-  for (const symbol of Object.keys(sides)) {
+  for (const [symbol, found] of Object.entries(bySymbol)) {
     const info = instrument(ctx, symbol)
-    const ltp = quote(ctx, symbol)
-    if (sides[symbol].size > 1) { skipped.push(`${symbol} (mixed signals)`); continue }
-    const side = sides[symbol].has("Bullish") ? "BUY" : "SELL"
+    const biases = new Set(found.map((s) => s.bias))
+    if (biases.size > 1) { skipped.push(`${symbol} (mixed signals)`); continue }
+    const side = biases.has("Bullish") ? "BUY" : "SELL"
     if (!info) { skipped.push(`${symbol} (not F&O)`); continue }
-    if (ltp == null) { skipped.push(`${symbol} (no price)`); continue }
+    const start = signalEntry(ctx, found[0])
+    if (!start) { skipped.push(`${symbol} (no price)`); continue }
     if (ctx.account.positions.some((p) => p.symbol === symbol && p.side === side)) {
       skipped.push(`${symbol} (already open)`); continue
     }
-    const entry = tick(ltp), long = side === "BUY"
+    const entry = start.price, long = side === "BUY"
     const order = {
-      symbol, side, lots, qty: lots * info.lot, entry, source: "Auto 2H",
-      sl: tick(entry * (1 + (long ? -slPct : slPct) / 100)),
-      tp: tick(entry * (1 + (long ? tpPct : -tpPct) / 100)),
+      symbol, side, lots, qty: lots * info.lot, entry, time: start.time,
+      source: `Auto ${shortTf(found[0].timeframe)}`,
+      sl: risk ? tick(entry * (1 + (long ? -slPct : slPct) / 100)) : null,
+      tp: risk ? tick(entry * (1 + (long ? tpPct : -tpPct) / 100)) : null,
       tsl: { on: false },
     }
     if (entry * order.qty * ctx.data.settings.margin_rate > balance(ctx) - usedMargin(ctx)) {
@@ -273,6 +318,8 @@ function autoExecute(ctx, signals) {
   toast(ctx, message, !placed.length)
   render(ctx)
   syncSymbols(ctx)
+  // An entry in the past may have hit its SL or target already.
+  if (placed.length && ctx.ref("entry-mode").value === "candle") sendCheck(ctx, "auto")
 }
 
 // ---------------------------------------------------------------------------
@@ -398,24 +445,34 @@ function renderStats(ctx) {
 
 function renderSignals(ctx) {
   const { signals, signals_note: note, settings } = ctx.data
+  const tf = shortTf(ctx.timeframe)
+  const candle = ctx.ref("entry-mode").value === "candle"
+  const risk = ctx.ref("auto-risk").checked
+  ctx.ref("timeframes").querySelectorAll("button").forEach((b) => b.classList.toggle("on", b.dataset.tf === ctx.timeframe))
   ctx.ref("signals-note").textContent = note
-  ctx.ref("auto-note").textContent = `Auto orders buy bullish and sell bearish signals at the latest price, ` +
-    `with SL ${settings.auto_sl_pct}% and target ${settings.auto_tp_pct}% away. Agrees: the Market reports ` +
-    `Active Watchlist has the same bias.`
+  ctx.ref("auto-risk-label").textContent = `SL ${settings.auto_sl_pct}% / target ${settings.auto_tp_pct}%`
+  ctx.ref("auto-note").textContent = `Auto orders buy bullish and sell bearish ${tf} signals ` +
+    (candle ? `at the open of the ${tf} candle the signal is on, timed at that candle's start` : "at the latest price") +
+    (risk ? `, with SL ${settings.auto_sl_pct}% and target ${settings.auto_tp_pct}% away.` : ", with no SL or target.") +
+    " Agrees: the Market reports Active Watchlist has the same bias."
   const agree = { Yes: "yes", No: "no", "Not on watchlist": "none" }
+  const shown = signals.map((s, row) => ({ ...s, row })).filter((s) => s.timeframe === ctx.timeframe)
   ctx.ref("signals").innerHTML = `<tr><th>Symbol</th><th>Strategy</th><th>Bias</th><th>Agrees</th>
-    <th class="r">LTP</th><th class="r">Lot</th><th></th></tr>` + (signals.length ? signals.map((s, row) => {
-    const ltp = quote(ctx, s.symbol), info = instrument(ctx, s.symbol)
+    <th class="r">LTP</th><th class="r">${tf} candle open</th><th class="r">Lot</th><th></th></tr>` + (shown.length ? shown.map((s) => {
+    const ltp = quote(ctx, s.symbol), info = instrument(ctx, s.symbol), start = signalEntry(ctx, s)
     const open = ctx.account.positions.some((p) => p.symbol === s.symbol && p.side === (s.bias === "Bullish" ? "BUY" : "SELL"))
-    const label = !info ? "Not F&O" : open ? "Open" : ltp == null ? "No price" : "⚡ Execute"
+    const label = !info ? "Not F&O" : open ? "Open" : !start ? "No price" : "⚡ Execute"
     return `<tr><td><b>${esc(s.symbol)}</b></td><td class="muted">${esc(s.strategy)}</td>
       <td><span class="pill ${s.bias === "Bullish" ? "long" : "short"}">${s.bias}</span></td>
       <td><span class="pill ${agree[s.agrees]}">${esc(s.agrees)}</span></td>
-      <td class="r">${inr(ltp)}</td><td class="r">${info ? info.lot : "—"}</td>
+      <td class="r">${inr(ltp)}</td>
+      <td class="r">${s.open ? `${inr(s.open.price)} <span class="muted small">${when(s.open.time)}</span>` : "—"}</td>
+      <td class="r">${info ? info.lot : "—"}</td>
       <td class="r"><button type="button" class="btn xs ${s.bias === "Bullish" ? "buy" : "sell"}" data-act="auto-one"
-        data-row="${row}" ${!info || open || ltp == null ? "disabled" : ""}>${label}</button></td></tr>`
-  }).join("") : `<tr><td class="empty" colspan="7">No stocks on the 2-hour Chartink widgets right now.</td></tr>`)
-  ctx.root.querySelector('[data-act="auto-all"]').disabled = !signals.some((s) => s.fno)
+        data-row="${s.row}" ${!info || open || !start ? "disabled" : ""}>${label}</button></td></tr>`
+  }).join("") : `<tr><td class="empty" colspan="8">No stocks on the ${tf} Chartink widgets right now.</td></tr>`)
+  ctx.root.querySelector('[data-act="auto-all"]').disabled = !shown.some((s) => s.fno)
+  ctx.root.querySelector('[data-act="auto-all"]').textContent = `⚡ Auto-execute all ${tf} signals`
 }
 
 function renderOrder(ctx) {
@@ -464,7 +521,7 @@ function renderPositions(ctx) {
       <td>${when(p.time)}${status}</td>
       <td class="r"><button type="button" class="btn xs ghost" data-act="exit" data-id="${esc(p.id)}"
         ${ltp == null ? "disabled" : ""}>Exit at LTP</button></td></tr>`
-  }).join("") : `<tr><td class="empty" colspan="10">No open positions. Place an order or auto-execute a 2H signal.</td></tr>`)
+  }).join("") : `<tr><td class="empty" colspan="10">No open positions. Place an order or auto-execute a signal.</td></tr>`)
 }
 
 function renderLedger(ctx) {

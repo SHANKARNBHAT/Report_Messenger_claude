@@ -4,8 +4,10 @@ Futures Trade Simulator
 
 Paper trading for NSE futures. Shown as the "Futures simulator" page of report_app.py.
 
-  * 2H signals  the 2-hour widgets of the Chartink dashboard (chartink_dashboard.py),
-                checked against the Active Watchlist of the Market reports
+  * Signals     the widgets of the Chartink dashboard (chartink_dashboard.py) of a
+                timeframe (2H first), checked against the Active Watchlist of the
+                Market reports; executed at the latest price or at the open of the
+                candle the signal is on
   * Order form  buy or sell, lots from futures stocks.csv, SL, target, trailing SL
   * Positions   entry price, latest price and unrealized P&L
   * EOD         intraday positions are squared off at 3:15 PM IST
@@ -34,7 +36,7 @@ import pandas as pd
 import requests
 import streamlit as st
 
-from chartink_dashboard import (CHARTINK_HEADERS, DEFAULT_DASHBOARD, IST, ChartinkError,
+from chartink_dashboard import (CHARTINK_HEADERS, DEFAULT_DASHBOARD, IST, TIMEFRAMES, ChartinkError,
                                 fetch_dashboard, fetch_watchlists)
 
 # ---------------------------------------------------------------------------
@@ -50,7 +52,9 @@ START_CAPITAL = 1_000_000
 MARGIN_RATE = 0.20          # required margin, as a share of turnover
 AUTO_SL_PCT = 1.5           # stop loss and target of auto-executed signals
 AUTO_TP_PCT = 3.0
-SIGNAL_TIMEFRAME = "2 HOUR"  # tab name in chartink_dashboard.TIMEFRAMES
+DEFAULT_TIMEFRAME = "2 HOUR"  # tab name in chartink_dashboard.TIMEFRAMES
+# Candle length in minutes of the intraday timeframes; candles start at 9:15 AM.
+CANDLE_MINUTES = {"2 HOUR": 120, "4 HOUR": 240}
 SESSION_OPEN = time(9, 15)
 SQUARE_OFF = time(15, 15)
 # Estimated statutory charges on NSE futures, as a share of turnover.
@@ -167,8 +171,9 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
         return datetime.fromtimestamp(bar[0], IST).date()
 
     # The session of the trade: the entry day if entered during market hours on a
-    # trading day, else the next session. Bars count from the first full one after entry.
-    first = (int(entered.timestamp()) // BAR_SECONDS + 1) * BAR_SECONDS
+    # trading day, else the next session. Bars count from the first one starting at
+    # or after the entry (an entry at a bar's open, such as a candle open, includes it).
+    first = -(-int(entered.timestamp()) // BAR_SECONDS) * BAR_SECONDS
     later = [bar for bar in bars if bar[0] >= first]
     day = None
     if SESSION_OPEN <= entered.time() < SQUARE_OFF and any(day_of(bar) == entered.date() for bar in bars):
@@ -239,10 +244,31 @@ def run_check() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 2H signals
+# Signals
 # ---------------------------------------------------------------------------
+def candle_open(timeframe: str, bars: list, now: datetime) -> dict | None:
+    """Open price and time (ms) of the candle a signal on `timeframe` is on: the
+    latest candle of the latest session (Chartink does not say when a stock matched)."""
+    if not bars:
+        return None
+    last = datetime.fromtimestamp(bars[-1][0], IST)
+    if last.date() != now.date():  # no trading yet today: the last session's last candle
+        now = last
+    session = datetime.combine(now.date(), SESSION_OPEN, IST)
+    minutes = CANDLE_MINUTES.get(timeframe)
+    if timeframe == "WEEKLY":
+        start = session - timedelta(days=now.weekday())
+    elif minutes:
+        length = timedelta(minutes=minutes)
+        start = session + max(now - session, timedelta(0)) // length * length
+    else:
+        start = session
+    bar = next((bar for bar in bars if bar[0] >= start.timestamp()), None)
+    return {"price": round(bar[1], 2), "time": bar[0] * 1000} if bar else None
+
+
 def signal_rows(instruments: dict[str, dict]) -> tuple[list[dict], str]:
-    """Stocks on the 2-hour Chartink widgets, with bias and agreement with the Market reports."""
+    """Stocks on the Chartink widgets of each timeframe, with bias and agreement with the Market reports."""
     try:
         dashboard = fetch_dashboard(DEFAULT_DASHBOARD)
     except ChartinkError as exc:
@@ -255,13 +281,13 @@ def signal_rows(instruments: dict[str, dict]) -> tuple[list[dict], str]:
 
     rows = []
     for widget in dashboard["widgets"]:
-        if widget["timeframe"] != SIGNAL_TIMEFRAME or widget["table"] is None:
+        if widget["timeframe"] is None or widget["table"] is None:
             continue
         bias = "Bearish" if widget["bearish"] else "Bullish"
         for symbol in widget["table"]["Symbol"]:
             report = report_bias.get(symbol)
             rows.append({
-                "symbol": symbol, "strategy": widget["name"], "bias": bias,
+                "symbol": symbol, "timeframe": widget["timeframe"], "strategy": widget["name"], "bias": bias,
                 "agrees": "Not on watchlist" if not report else "Yes" if report == {bias} else "No",
                 "fno": symbol in instruments,
             })
@@ -292,13 +318,20 @@ def main() -> None:
                        initial_sidebar_state="collapsed")
     instruments = load_instruments()
     by_symbol = {i["symbol"]: i for i in instruments}
-    with st.spinner("Loading 2H signals from Chartink..."):
+    with st.spinner("Loading signals from Chartink..."):
         signals, signals_note = signal_rows(by_symbol)
 
     # Prices of the tradable signals, and of the stocks the simulator asked for
     # (open positions and the instrument picked in the order form).
-    wanted = {s["symbol"] for s in signals if s["fno"]} | set(component_value("symbols") or [])
+    tradable = {s["symbol"] for s in signals if s["fno"]}
+    wanted = tradable | set(component_value("symbols") or [])
     quotes = fetch_quotes(tuple(sorted((s, by_symbol[s]["yahoo"]) for s in wanted if s in by_symbol)))
+    # Open of the candle each tradable signal is on, to enter at the signal's candle.
+    bars = fetch_bars(tuple(sorted((by_symbol[s]["yahoo"], "5d") for s in tradable)))
+    now = datetime.now(IST)
+    for signal in signals:
+        found = bars.get((by_symbol[signal["symbol"]]["yahoo"], "5d")) if signal["fno"] else None
+        signal["open"] = candle_open(signal["timeframe"], found, now) if isinstance(found, list) else None
 
     _SIMULATOR(
         key=KEY,
@@ -308,7 +341,9 @@ def main() -> None:
             "signals_note": signals_note,
             "quotes": quotes,
             "result": st.session_state.get(RESULT),
+            "timeframes": list(TIMEFRAMES),
             "settings": {"start_capital": START_CAPITAL, "margin_rate": MARGIN_RATE,
+                         "default_timeframe": DEFAULT_TIMEFRAME,
                          "auto_sl_pct": AUTO_SL_PCT, "auto_tp_pct": AUTO_TP_PCT, "charges": CHARGES},
         },
         on_check_change=run_check,

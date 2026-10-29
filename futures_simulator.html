@@ -17,11 +17,22 @@
 
   <section class="card">
     <div class="head">
-      <h3>2H signals · Chartink &amp; Market reports</h3>
+      <h3>Signals · Chartink &amp; Market reports</h3>
       <span class="muted small" data-ref="signals-note"></span>
       <span class="spacer"></span>
+      <div class="seg tf" data-ref="timeframes"></div>
+    </div>
+    <div class="head">
       <label class="inline">Lots <input type="number" min="1" step="1" value="1" class="num sm" data-ref="auto-lots"></label>
-      <button type="button" class="btn primary" data-act="auto-all">⚡ Auto-execute all 2H signals</button>
+      <label class="inline">Entry
+        <select data-ref="entry-mode">
+          <option value="ltp">Latest price</option>
+          <option value="candle">Signal candle open</option>
+        </select>
+      </label>
+      <label class="inline"><input type="checkbox" checked data-ref="auto-risk"> <span data-ref="auto-risk-label">SL / target</span></label>
+      <span class="spacer"></span>
+      <button type="button" class="btn primary" data-act="auto-all">⚡ Auto-execute all</button>
     </div>
     <p class="muted small" data-ref="auto-note"></p>
     <div class="wrap"><table data-ref="signals"></table></div>
