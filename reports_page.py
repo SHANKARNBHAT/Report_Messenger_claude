@@ -369,7 +369,7 @@ def render_report(filename):
             table,
             column_config=column_config,
             hide_index=True,
-            use_container_width=True,
+            width="stretch",
             height=min(600, 38 + 35 * len(table)),
         )
 
@@ -387,7 +387,7 @@ if st.sidebar.button(f"🚀 Run {SEGMENT_NAME} Workflow Now"):
 
 st.sidebar.divider()
 
-if st.sidebar.button("↻ Refresh reports", use_container_width=True):
+if st.sidebar.button("↻ Refresh reports", width="stretch"):
     st.rerun()
 
 st.sidebar.caption(
