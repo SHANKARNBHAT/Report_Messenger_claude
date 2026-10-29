@@ -15,8 +15,9 @@ Paper trading for NSE futures. Shown as the "Futures simulator" page of report_a
 
 Prices are not streamed. An order is entered at the latest price, or at a price
 typed in. Latest prices come from the price-list widgets of the Chartink dashboard
-("Futures stocks below 325"...), else from Yahoo Finance; the 5-minute bars that
-settlement replays come from Yahoo Finance. Open positions are checked whenever the page opens, on
+("Futures stocks below 325"...), else from Yahoo Finance. The 5-minute bars that
+settlement replays come from the 5-minute Open, High, Low and Close columns of the
+same widgets (about the last 4 sessions), else from Yahoo Finance. Open positions are checked whenever the page opens, on
 "Refresh prices" and on "Run EOD settlement": the 5-minute bars since each entry
 are replayed, so a trade that touched its SL, trailing SL or target closes at that
 level, and one still open at 3:15 PM closes at the 3:15 PM price. "Run EOD
@@ -39,7 +40,7 @@ import requests
 import streamlit as st
 
 from chartink_dashboard import (CHARTINK_HEADERS, DEFAULT_DASHBOARD, IST, TIMEFRAMES, ChartinkError,
-                                fetch_dashboard, fetch_watchlists)
+                                fetch_dashboard, fetch_price_bars, fetch_watchlists)
 
 # ---------------------------------------------------------------------------
 # Settings
@@ -256,17 +257,27 @@ def run_check() -> None:
         fetch_quotes.clear()
         fetch_bars.clear()
         fetch_dashboard.clear()
+        fetch_price_bars.clear()
     now = datetime.now(IST)
     instruments = {i["symbol"]: i for i in load_instruments()}
     positions = [p for p in request.get("positions") or [] if p.get("symbol") in instruments]
+    # Chartink's 5-minute bars when they reach back to the entry, else Yahoo Finance's.
+    try:
+        chartink = fetch_price_bars(DEFAULT_DASHBOARD) if positions else {}
+    except ChartinkError:
+        chartink = {}
+    bars = {p["id"]: chartink[p["symbol"]] for p in positions
+            if chartink.get(p["symbol"]) and chartink[p["symbol"]][0][0] <= p["time"] / 1000}
     wanted = {p["id"]: (instruments[p["symbol"]]["yahoo"],
-                        bars_range(datetime.fromtimestamp(p["time"] / 1000, IST), now)) for p in positions}
-    bars = fetch_bars(tuple(sorted(set(wanted.values()))))
+                        bars_range(datetime.fromtimestamp(p["time"] / 1000, IST), now))
+              for p in positions if p["id"] not in bars}
+    yahoo = fetch_bars(tuple(sorted(set(wanted.values()))))
+    bars.update({id_: yahoo[request_] for id_, request_ in wanted.items()})
     quotes = latest_prices({p["symbol"] for p in positions}, instruments, load_dashboard()[0])
 
     results = []
     for position in positions:
-        found = bars[wanted[position["id"]]]
+        found = bars[position["id"]]
         if isinstance(found, str):
             results.append({"id": position["id"], "status": "error", "error": found})
             continue

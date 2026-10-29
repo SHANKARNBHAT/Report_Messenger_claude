@@ -55,6 +55,9 @@ BEARISH_WORDS = r"short|bear|sell"
 # the tabs, read in full, and used by the Futures simulator for the latest prices.
 PRICE_WIDGETS = r"^\s*futures stocks\b"
 PRICE_WIDGET_ROWS = 500
+# 5-minute bars read from the price-list widgets for the simulator: about 4 sessions
+# (Chartink returns at most 300).
+PRICE_WIDGET_BARS = 300
 IST = ZoneInfo("Asia/Kolkata")
 
 CHARTINK_DASHBOARD_URL = "https://chartink.com/dashboard/{}"
@@ -140,33 +143,52 @@ def widget_table(query: str, payload: dict) -> tuple[pd.DataFrame, datetime | No
     return pd.DataFrame(rows, columns=["Symbol"] + columns), as_of
 
 
-# Shorter than the quickest refresh, so every refresh gets new results.
-@st.cache_data(ttl=50, show_spinner=False)
-def fetch_dashboard(link: str) -> dict:
-    """Name of a public dashboard and the current results of each of its widgets."""
+def open_dashboard(session: requests.Session, link: str) -> tuple[str, str, dict, list[dict]]:
+    """Link, CSRF token, details and raw widgets of a public dashboard."""
     match = re.search(r"(\d+)\s*/?\s*$", link.strip())
     if not match:
         raise ChartinkError("Enter a dashboard link like https://chartink.com/dashboard/501779.")
     url = CHARTINK_DASHBOARD_URL.format(match.group(1))
+    try:
+        page = session.get(url, timeout=20)
+        page.raise_for_status()
+    except requests.RequestException as exc:
+        raise ChartinkError(f"Could not open the dashboard: {exc}") from exc
 
+    soup = BeautifulSoup(page.text, "html.parser")
+    token = soup.find("meta", attrs={"name": "csrf-token"})
+    tag = soup.find("dashboard")
+    if token is None or tag is None or not tag.get(":widgets"):
+        raise ChartinkError("No widgets found. The dashboard may be private, or Chartink's page changed.")
+    try:
+        details = json.loads(tag.get(":dashboard") or "{}")
+        details.setdefault("name", f"Dashboard {match.group(1)}")
+        return url, token["content"], details, json.loads(tag[":widgets"])
+    except ValueError as exc:
+        raise ChartinkError("The dashboard's widget data could not be read.") from exc
+
+
+def widget_payload(session: requests.Session, url: str, token: str, widget: dict, limit: int, size: int) -> dict:
+    """A widget's results: `limit` stocks, each column a series over the last `size` candles."""
+    # The same request the dashboard page makes for each widget.
+    response = session.post(
+        CHARTINK_WIDGET_URL,
+        data={"query": widget.get("query") or "", "use_live": "1", "limit": limit, "size": size,
+              "widget_id": widget.get("id")},
+        headers={"x-csrf-token": token, "X-Requested-With": "XMLHttpRequest", "Referer": url},
+        timeout=30,
+    )
+    response.raise_for_status()
+    return response.json()
+
+
+# Shorter than the quickest refresh, so every refresh gets new results.
+@st.cache_data(ttl=50, show_spinner=False)
+def fetch_dashboard(link: str) -> dict:
+    """Name of a public dashboard and the current results of each of its widgets."""
     with requests.Session() as session:
         session.headers.update(CHARTINK_HEADERS)
-        try:
-            page = session.get(url, timeout=20)
-            page.raise_for_status()
-        except requests.RequestException as exc:
-            raise ChartinkError(f"Could not open the dashboard: {exc}") from exc
-
-        soup = BeautifulSoup(page.text, "html.parser")
-        token = soup.find("meta", attrs={"name": "csrf-token"})
-        tag = soup.find("dashboard")
-        if token is None or tag is None or not tag.get(":widgets"):
-            raise ChartinkError("No widgets found. The dashboard may be private, or Chartink's page changed.")
-        try:
-            details = json.loads(tag.get(":dashboard") or "{}")
-            raw_widgets = json.loads(tag[":widgets"])
-        except ValueError as exc:
-            raise ChartinkError("The dashboard's widget data could not be read.") from exc
+        url, token, details, raw_widgets = open_dashboard(session, link)
 
         widgets = []
         for widget in raw_widgets:
@@ -178,32 +200,54 @@ def fetch_dashboard(link: str) -> dict:
                       "bearish": bool(re.search(BEARISH_WORDS, name, re.IGNORECASE))}
             limit = groups.get("limit") or 50
             try:
-                # The same request the dashboard page makes for each widget.
-                response = session.post(
-                    CHARTINK_WIDGET_URL,
-                    data={
-                        "query": widget.get("query") or "",
-                        "use_live": "1",
-                        "limit": max(limit, PRICE_WIDGET_ROWS) if prices else limit,
-                        "size": groups.get("size") or 10,
-                        "widget_id": widget.get("id"),
-                    },
-                    headers={"x-csrf-token": token["content"], "X-Requested-With": "XMLHttpRequest",
-                             "Referer": url},
-                    timeout=30,
-                )
-                response.raise_for_status()
-                result["table"], result["as_of"] = widget_table(widget.get("query") or "", response.json())
+                payload = widget_payload(session, url, token, widget,
+                                         max(limit, PRICE_WIDGET_ROWS) if prices else limit,
+                                         groups.get("size") or 10)
+                result["table"], result["as_of"] = widget_table(widget.get("query") or "", payload)
             except (requests.RequestException, ValueError, ChartinkError) as exc:
                 result["error"] = str(exc) or type(exc).__name__
             widgets.append(result)
 
     return {
-        "name": details.get("name") or f"Dashboard {match.group(1)}",
+        "name": details["name"],
         "link": url,
         "widgets": widgets,
         "fetched_at": datetime.now(IST),
     }
+
+
+@st.cache_data(ttl=120, show_spinner=False)
+def fetch_price_bars(link: str, size: int = PRICE_WIDGET_BARS) -> dict[str, list[tuple]]:
+    """symbol -> its last `size` 5-minute bars (start in seconds, open, high, low, close),
+    from the price-list widgets that have 5-minute Open, High, Low and Close columns."""
+    bars: dict[str, list[tuple]] = {}
+    with requests.Session() as session:
+        session.headers.update(CHARTINK_HEADERS)
+        url, token, _, raw_widgets = open_dashboard(session, link)
+        for widget in raw_widgets:
+            if not re.search(PRICE_WIDGETS, widget.get("name") or "", re.IGNORECASE):
+                continue
+            # Chartink sometimes answers a long series with an empty list: then ask for fewer bars.
+            payload = None
+            for bars_wanted in dict.fromkeys((size, min(size, 150), min(size, 75))):
+                try:
+                    payload = widget_payload(session, url, token, widget, PRICE_WIDGET_ROWS, bars_wanted)
+                except (requests.RequestException, ValueError):
+                    payload = None
+                if isinstance(payload, dict) and payload.get("groupData"):
+                    break
+            if not isinstance(payload, dict):
+                continue
+            meta = (payload.get("metaData") or [{}])[0]
+            starts = [t // 1000 for t in meta.get("tradeTimes") or []]
+            for group in payload.get("groupData") or []:
+                columns = {alias: values for result in group.get("results") or [] for alias, values in result.items()}
+                ohlc = [next((v for a, v in columns.items() if re.fullmatch(rf"5\s*min\w*\s+{part}", a, re.I)), None)
+                        for part in ("open", "high", "low", "close")]
+                if any(series is None or len(series) != len(starts) for series in ohlc):
+                    continue
+                bars[group.get("name")] = [row for row in zip(starts, *ohlc) if None not in row]
+    return bars
 
 
 # ---------------------------------------------------------------------------
