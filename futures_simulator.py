@@ -309,9 +309,8 @@ def candle_open(timeframe: str, bars: list, now: datetime) -> dict | None:
     latest candle of the latest session (Chartink does not say when a stock matched)."""
     if not bars:
         return None
-    last = datetime.fromtimestamp(bars[-1][0], IST)
-    if last.date() != now.date():  # no trading yet today: the last session's last candle
-        now = last
+    # After the close, or before today's open, the candle of the session's last bar.
+    now = min(now, datetime.fromtimestamp(bars[-1][0], IST))
     session = datetime.combine(now.date(), SESSION_OPEN, IST)
     minutes = CANDLE_MINUTES.get(timeframe)
     if timeframe == "WEEKLY":
