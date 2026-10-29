@@ -90,8 +90,10 @@ RESULT = "_futures_simulator_result"
 # Instruments and prices
 # ---------------------------------------------------------------------------
 @st.cache_data(show_spinner=False)
-def load_instruments() -> list[dict]:
-    """NSE futures from futures stocks.csv: symbol, name, lot size and Yahoo symbol."""
+def _load_instruments(modified: float) -> list[dict]:
+    """NSE futures from futures stocks.csv: symbol, name, lot size and Yahoo symbol.
+
+    `modified` is the file's timestamp, so an updated CSV is read again."""
     table = pd.read_csv(FUTURES_CSV).drop_duplicates("Symbol")
     rows = []
     for _, row in table.iterrows():
@@ -104,6 +106,10 @@ def load_instruments() -> list[dict]:
         rows.append({"symbol": symbol, "name": str(row["Stock Name"]).strip(),
                      "lot": int(row["Lot size"]), "yahoo": yahoo})
     return sorted(rows, key=lambda r: r["symbol"])
+
+
+def load_instruments() -> list[dict]:
+    return _load_instruments(FUTURES_CSV.stat().st_mtime)
 
 
 def yahoo_chart(yahoo: str, interval: str, period: str) -> dict:
