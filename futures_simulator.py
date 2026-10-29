@@ -29,6 +29,7 @@ survive a refresh, but each browser has its own account.
 
 from __future__ import annotations
 
+import importlib
 import math
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, time, timedelta
@@ -38,6 +39,14 @@ from urllib.parse import quote
 import pandas as pd
 import requests
 import streamlit as st
+
+import chartink_dashboard
+
+# Streamlit Cloud keeps imported modules in memory when it pulls new code, so a
+# chartink_dashboard.py changed since the server started is reloaded here.
+if Path(chartink_dashboard.__file__).stat().st_mtime > getattr(chartink_dashboard, "_loaded_at", 0):
+    chartink_dashboard = importlib.reload(chartink_dashboard)
+    chartink_dashboard._loaded_at = Path(chartink_dashboard.__file__).stat().st_mtime
 
 from chartink_dashboard import (CHARTINK_HEADERS, DEFAULT_DASHBOARD, IST, TIMEFRAMES, ChartinkError,
                                 fetch_dashboard, fetch_price_bars, fetch_watchlists)
