@@ -1,0 +1,114 @@
+<div class="fs">
+  <header class="top">
+    <div class="brand">
+      <span class="dot"></span>
+      <div>
+        <div class="title">Futures Trade Simulator</div>
+        <div class="muted small">Paper trading · NSE futures · saved in this browser</div>
+      </div>
+    </div>
+    <div class="stats" data-ref="stats"></div>
+    <div class="actions">
+      <button type="button" class="btn ghost" data-act="refresh">↻ Refresh prices</button>
+      <button type="button" class="btn warn" data-act="eod">⏱ Run EOD settlement</button>
+    </div>
+  </header>
+  <div class="toast" data-ref="toast" hidden></div>
+
+  <section class="card">
+    <div class="head">
+      <h3>2H signals · Chartink &amp; Market reports</h3>
+      <span class="muted small" data-ref="signals-note"></span>
+      <span class="spacer"></span>
+      <label class="inline">Lots <input type="number" min="1" step="1" value="1" class="num sm" data-ref="auto-lots"></label>
+      <button type="button" class="btn primary" data-act="auto-all">⚡ Auto-execute all 2H signals</button>
+    </div>
+    <p class="muted small" data-ref="auto-note"></p>
+    <div class="wrap"><table data-ref="signals"></table></div>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <div class="head"><h3>Order</h3><span class="spacer"></span><span class="tag">INTRADAY · FUT</span></div>
+      <div class="seg" data-ref="side">
+        <button type="button" data-side="BUY" class="on">BUY / LONG</button>
+        <button type="button" data-side="SELL">SELL / SHORT</button>
+      </div>
+
+      <label class="field">Instrument
+        <input list="fs-instruments" data-ref="symbol" placeholder="Search, e.g. RELIANCE" autocomplete="off">
+        <datalist id="fs-instruments" data-ref="instruments"></datalist>
+      </label>
+      <div class="ltp-row">
+        <span data-ref="ltp" class="muted">Pick an instrument to load its price</span>
+        <button type="button" class="link" data-act="use-ltp">Use LTP</button>
+      </div>
+
+      <div class="row2">
+        <label class="field">Entry price ₹
+          <input type="number" min="0" step="0.05" data-ref="price" placeholder="Auto from LTP">
+        </label>
+        <label class="field">Lots
+          <input type="number" min="1" step="1" value="1" data-ref="lots">
+        </label>
+      </div>
+      <div class="muted small" data-ref="qty">Qty —</div>
+
+      <div class="row2">
+        <label class="field">Stop loss ₹
+          <input type="number" min="0" step="0.05" data-ref="sl" placeholder="Optional">
+        </label>
+        <label class="field">Target ₹
+          <input type="number" min="0" step="0.05" data-ref="tp" placeholder="Optional">
+        </label>
+      </div>
+      <div class="chips">
+        <button type="button" class="chip" data-act="preset">SL 1.5% · TP 3%</button>
+        <button type="button" class="chip" data-act="clear-risk">Clear</button>
+      </div>
+
+      <div class="tsl">
+        <label class="inline"><input type="checkbox" data-ref="tsl-on"> Trailing stop loss</label>
+        <div class="row2">
+          <label class="field">Trail by ₹
+            <input type="number" min="0" step="0.05" value="5" data-ref="tsl-trail">
+          </label>
+          <label class="field">Jump step ₹
+            <input type="number" min="0" step="0.05" value="2" data-ref="tsl-step">
+          </label>
+        </div>
+        <p class="muted small">Every time the price moves a full jump step in your favour, the stop moves up
+          (long) or down (short) to stay "trail by" behind it. It never moves back.</p>
+      </div>
+
+      <div class="margin" data-ref="margin"></div>
+      <button type="button" class="btn place buy" data-act="place">BUY</button>
+      <p class="error small" data-ref="order-error"></p>
+    </section>
+
+    <section class="card">
+      <div class="head">
+        <h3>Open positions</h3>
+        <span class="muted small" data-ref="positions-note"></span>
+      </div>
+      <div class="wrap"><table data-ref="positions"></table></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <div class="head">
+      <h3>Performance &amp; ledger</h3>
+      <span class="spacer"></span>
+      <button type="button" class="btn ghost" data-act="export">⬇ Export CSV</button>
+    </div>
+    <div class="tiles" data-ref="tiles"></div>
+    <div class="wrap"><table data-ref="history"></table></div>
+    <div class="reset">
+      <label class="inline">Starting capital ₹
+        <input type="number" min="0" step="10000" class="num" data-ref="capital">
+      </label>
+      <button type="button" class="btn danger" data-act="reset">Reset account</button>
+      <span class="muted small">Clears open positions and the trade log.</span>
+    </div>
+  </section>
+</div>

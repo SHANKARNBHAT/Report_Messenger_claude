@@ -31,7 +31,7 @@ GitHub token. To start the report workflow from the dashboard, configure
 `GITHUB_TOKEN` as a Streamlit secret with Actions write access to this
 repository.
 
-The app has two pages, switched from the menu at the top:
+The app has three pages, switched from the menu at the top:
 
 - **Market reports** (`reports_page.py`): the Futures and Cash reports. The Cash
   reports are read from the `Report_Messenger_cash` repository.
@@ -44,3 +44,14 @@ The app has two pages, switched from the menu at the top:
   `SHORT`, `BEAR` or `SELL` marks a bearish widget. The dashboard and chart
   snapshot links are set at the top of the file; the snapshot link can also be
   changed in the sidebar.
+- **Futures simulator** (`futures_simulator.py`, with its `.html`, `.css` and `.js`
+  files): paper trading of NSE futures. Orders are entered at the latest Yahoo
+  Finance price (or a price typed in), with lots from `futures stocks.csv`, a stop
+  loss, target and trailing stop loss. The 2H Chartink signals can be executed
+  automatically with a 1.5% stop loss and 3% target. Open positions are checked
+  against the 5-minute bars since entry when the page opens, on Refresh and on
+  Run EOD settlement: a trade that touched its SL, trailing SL or target closes
+  there, the rest at 3:15 PM IST. Settled trades are charged estimated brokerage,
+  STT, exchange fees, stamp duty and GST. The account is saved in the browser
+  (localStorage), so each browser has its own. Margin, auto SL/target and charge
+  rates are set at the top of `futures_simulator.py`.
