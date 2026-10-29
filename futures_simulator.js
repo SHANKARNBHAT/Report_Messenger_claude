@@ -513,7 +513,7 @@ function renderOrder(ctx) {
   const ltp = quote(ctx, order.symbol)
   ref("ltp").innerHTML = !info ? "Pick an instrument to load its price"
     : ltp == null ? `${esc(info.name)} · loading price… (or type one)`
-    : `${esc(info.name)} · LTP <b>${inr(ltp)}</b> · ${when(ctx.data.quotes[order.symbol].time)}`
+    : `${esc(info.name)} · LTP <b>${inr(ltp)}</b> · ${esc(ctx.data.quotes[order.symbol].source)} ${when(ctx.data.quotes[order.symbol].time)}`
   ref("qty").textContent = info ? `Qty ${order.qty.toLocaleString("en-IN")} = ${order.lots || 0} lot(s) × ${info.lot}` : "Qty —"
 
   const turnover = order.entry && order.qty ? order.entry * order.qty : null
@@ -546,7 +546,8 @@ function renderPositions(ctx) {
     const status = p.status === "waiting" ? '<span class="muted small"> · waits for market</span>' : ""
     return `<tr><td><b>${esc(p.symbol)}</b><div class="muted small">${esc(p.source)}</div></td>
       <td><span class="pill ${p.side === "BUY" ? "long" : "short"}">${p.side === "BUY" ? "LONG" : "SHORT"}</span></td>
-      <td class="r">${p.qty.toLocaleString("en-IN")}</td><td class="r">${inr(p.entry)}</td><td class="r">${inr(ltp)}</td>
+      <td class="r">${p.qty.toLocaleString("en-IN")}</td><td class="r">${inr(p.entry)}</td>
+      <td class="r">${inr(ltp)}${ltp == null ? "" : `<div class="muted small">${esc(ctx.data.quotes[p.symbol].source)} ${when(ctx.data.quotes[p.symbol].time)}</div>`}</td>
       <td class="r">${stop}</td><td class="r">${inr(p.tp)}</td><td class="r">${ltp == null ? "—" : signed(pnl(p, ltp))}</td>
       <td>${when(p.time)}${status}</td>
       <td class="r"><button type="button" class="btn xs ghost" data-act="exit" data-id="${esc(p.id)}"

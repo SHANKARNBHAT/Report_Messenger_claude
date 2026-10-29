@@ -13,8 +13,10 @@ Paper trading for NSE futures. Shown as the "Futures simulator" page of report_a
   * EOD         intraday positions are squared off at 3:15 PM IST
   * Ledger      statutory charges, net P&L, win rate and the trade log
 
-Prices are not streamed. An order is entered at the latest Yahoo Finance price, or
-at a price typed in. Open positions are checked whenever the page opens, on
+Prices are not streamed. An order is entered at the latest price, or at a price
+typed in. Latest prices come from the price-list widgets of the Chartink dashboard
+("Futures stocks below 325"...), else from Yahoo Finance; the 5-minute bars that
+settlement replays come from Yahoo Finance. Open positions are checked whenever the page opens, on
 "Refresh prices" and on "Run EOD settlement": the 5-minute bars since each entry
 are replayed, so a trade that touched its SL, trailing SL or target closes at that
 level, and one still open at 3:15 PM closes at the 3:15 PM price. "Run EOD
@@ -119,6 +121,36 @@ def fetch_quotes(symbols: tuple[tuple[str, str], ...]) -> dict[str, dict]:
 
     with ThreadPoolExecutor(8) as pool:
         return {symbol: q for symbol, q in pool.map(one, symbols) if q}
+
+
+def chartink_prices(dashboard: dict | None) -> dict[str, dict]:
+    """symbol -> latest price and its time (ms), from the price-list widgets of the dashboard."""
+    prices = {}
+    for widget in (dashboard or {}).get("widgets", []):
+        table = widget["table"]
+        if not widget["prices"] or table is None or "Price" not in table:
+            continue
+        when = int(widget["as_of"].timestamp() * 1000) if widget["as_of"] else None
+        for symbol, price in zip(table["Symbol"], table["Price"]):
+            if pd.notna(price):
+                prices[symbol] = {"price": round(float(price), 2), "time": when, "source": "Chartink"}
+    return prices
+
+
+def latest_prices(symbols: set[str], instruments: dict[str, dict], dashboard: dict | None) -> dict[str, dict]:
+    """symbol -> latest price, time (ms) and source: Chartink first, else Yahoo Finance."""
+    found = {s: q for s, q in chartink_prices(dashboard).items() if s in symbols}
+    rest = tuple(sorted((s, instruments[s]["yahoo"]) for s in symbols if s in instruments and s not in found))
+    found.update({s: {**q, "source": "Yahoo"} for s, q in fetch_quotes(rest).items()})
+    return found
+
+
+def load_dashboard() -> tuple[dict | None, str | None]:
+    """The Chartink dashboard, or None and the error."""
+    try:
+        return fetch_dashboard(DEFAULT_DASHBOARD), None
+    except ChartinkError as exc:
+        return None, f"Chartink: {exc}"
 
 
 @st.cache_data(ttl=120, show_spinner=False)
@@ -230,7 +262,7 @@ def run_check() -> None:
     wanted = {p["id"]: (instruments[p["symbol"]]["yahoo"],
                         bars_range(datetime.fromtimestamp(p["time"] / 1000, IST), now)) for p in positions}
     bars = fetch_bars(tuple(sorted(set(wanted.values()))))
-    quotes = fetch_quotes(tuple(sorted({(p["symbol"], instruments[p["symbol"]]["yahoo"]) for p in positions})))
+    quotes = latest_prices({p["symbol"] for p in positions}, instruments, load_dashboard()[0])
 
     results = []
     for position in positions:
@@ -267,12 +299,8 @@ def candle_open(timeframe: str, bars: list, now: datetime) -> dict | None:
     return {"price": round(bar[1], 2), "time": bar[0] * 1000} if bar else None
 
 
-def signal_rows(instruments: dict[str, dict]) -> tuple[list[dict], str]:
+def signal_rows(dashboard: dict, instruments: dict[str, dict]) -> tuple[list[dict], str]:
     """Stocks on the Chartink widgets of each timeframe, with bias and agreement with the Market reports."""
-    try:
-        dashboard = fetch_dashboard(DEFAULT_DASHBOARD)
-    except ChartinkError as exc:
-        return [], f"Chartink: {exc}"
     watchlists, _ = fetch_watchlists()
     report_bias: dict[str, set[str]] = {}
     for table in watchlists.values():
@@ -319,13 +347,13 @@ def main() -> None:
     instruments = load_instruments()
     by_symbol = {i["symbol"]: i for i in instruments}
     with st.spinner("Loading signals from Chartink..."):
-        signals, signals_note = signal_rows(by_symbol)
+        dashboard, error = load_dashboard()
+        signals, signals_note = signal_rows(dashboard, by_symbol) if dashboard else ([], error)
 
     # Prices of the tradable signals, and of the stocks the simulator asked for
     # (open positions and the instrument picked in the order form).
     tradable = {s["symbol"] for s in signals if s["fno"]}
-    wanted = tradable | set(component_value("symbols") or [])
-    quotes = fetch_quotes(tuple(sorted((s, by_symbol[s]["yahoo"]) for s in wanted if s in by_symbol)))
+    quotes = latest_prices(tradable | set(component_value("symbols") or []), by_symbol, dashboard)
     # Open of the candle each tradable signal is on, to enter at the signal's candle.
     bars = fetch_bars(tuple(sorted((by_symbol[s]["yahoo"], "5d") for s in tradable)))
     now = datetime.now(IST)

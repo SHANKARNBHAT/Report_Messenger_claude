@@ -51,6 +51,10 @@ TIMEFRAMES = {
     "WEEKLY": (r"\bweekly\b|\bwkly\b|\bweek\b", r"\bweekly\b|\bweek ago\b"),
 }
 BEARISH_WORDS = r"short|bear|sell"
+# Widgets that list prices, not signals ("Futures stocks below 325"...): kept out of
+# the tabs, read in full, and used by the Futures simulator for the latest prices.
+PRICE_WIDGETS = r"^\s*futures stocks\b"
+PRICE_WIDGET_ROWS = 500
 IST = ZoneInfo("Asia/Kolkata")
 
 CHARTINK_DASHBOARD_URL = "https://chartink.com/dashboard/{}"
@@ -168,9 +172,11 @@ def fetch_dashboard(link: str) -> dict:
         for widget in raw_widgets:
             groups = (widget.get("jsondetails") or {}).get("groups") or {}
             name = (widget.get("name") or f"Widget {widget.get('id')}").strip()
-            result = {"name": name, "table": None, "as_of": None, "error": None,
-                      "timeframe": timeframe_of(name, widget.get("query") or ""),
+            prices = bool(re.search(PRICE_WIDGETS, name, re.IGNORECASE))
+            result = {"name": name, "table": None, "as_of": None, "error": None, "prices": prices,
+                      "timeframe": None if prices else timeframe_of(name, widget.get("query") or ""),
                       "bearish": bool(re.search(BEARISH_WORDS, name, re.IGNORECASE))}
+            limit = groups.get("limit") or 50
             try:
                 # The same request the dashboard page makes for each widget.
                 response = session.post(
@@ -178,7 +184,7 @@ def fetch_dashboard(link: str) -> dict:
                     data={
                         "query": widget.get("query") or "",
                         "use_live": "1",
-                        "limit": groups.get("limit") or 50,
+                        "limit": max(limit, PRICE_WIDGET_ROWS) if prices else limit,
                         "size": groups.get("size") or 10,
                         "widget_id": widget.get("id"),
                     },
@@ -345,7 +351,7 @@ def live_dashboard(link: str, refresh: str) -> None:
     )
 
     names = ["COMMON", *TIMEFRAMES]
-    others = [w for w in data["widgets"] if w["timeframe"] is None]
+    others = [w for w in data["widgets"] if w["timeframe"] is None and not w["prices"]]
     if others:
         names.append("OTHER")
     for tab, timeframe in zip(st.tabs(names), names):

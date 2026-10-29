@@ -41,12 +41,14 @@ The app has three pages, switched from the menu at the top:
   of the Market reports (Futures or Cash), and the stocks found in two or more
   timeframes.
   Widgets are sorted by name: `2H`, `4h`, `DAILY` or `WEEKLY` picks the tab, and
-  `SHORT`, `BEAR` or `SELL` marks a bearish widget. The dashboard and chart
+  `SHORT`, `BEAR` or `SELL` marks a bearish widget. Widgets named
+  `Futures stocks ...` list prices, not signals: they are left out of the tabs,
+  read in full, and give the Futures simulator its latest prices. The dashboard and chart
   snapshot links are set at the top of the file; the snapshot link can also be
   changed in the sidebar.
 - **Futures simulator** (`futures_simulator.py`, with its `.html`, `.css` and `.js`
-  files): paper trading of NSE futures. Orders are entered at the latest Yahoo
-  Finance price (or a price typed in), with lots from `futures stocks.csv`, a stop
+  files): paper trading of NSE futures. Orders are entered at the latest price
+  from the Chartink price-list widgets, else Yahoo Finance (or a price typed in), with lots from `futures stocks.csv`, a stop
   loss, target and trailing stop loss. The 2H Chartink signals can be executed
   automatically with a 1.5% stop loss and 3% target. Open positions are checked
   against the 5-minute bars since entry when the page opens, on Refresh and on
