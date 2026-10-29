@@ -380,8 +380,11 @@ def main() -> None:
     tradable = {s["symbol"] for s in signals if s["fno"]}
     quotes = latest_prices(tradable | set(component_value("symbols") or []), by_symbol, dashboard)
     # Open of the candle each tradable signal is on, to enter at the signal's candle.
-    bars = fetch_bars(tuple(sorted((by_symbol[s]["yahoo"], "5d") for s in tradable)))
+    # NIFTY's bars give the date of the latest session, for carrying signals over.
+    bars = fetch_bars(tuple(sorted({(by_symbol[s]["yahoo"], "5d") for s in tradable} | {("^NSEI", "5d")})))
     now = datetime.now(IST)
+    nifty = bars.get(("^NSEI", "5d"))
+    session = (datetime.fromtimestamp(nifty[-1][0], IST) if isinstance(nifty, list) and nifty else now).date()
     for signal in signals:
         found = bars.get((by_symbol[signal["symbol"]]["yahoo"], "5d")) if signal["fno"] else None
         signal["open"] = candle_open(signal["timeframe"], found, now) if isinstance(found, list) else None
@@ -392,6 +395,7 @@ def main() -> None:
             "instruments": [{k: i[k] for k in ("symbol", "name", "lot")} for i in instruments],
             "signals": signals,
             "signals_note": signals_note,
+            "session_date": session.isoformat(),
             "quotes": quotes,
             "result": st.session_state.get(RESULT),
             "timeframes": list(TIMEFRAMES),

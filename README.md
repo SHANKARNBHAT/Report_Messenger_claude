@@ -50,7 +50,9 @@ The app has three pages, switched from the menu at the top:
   files): paper trading of NSE futures. Orders are entered at the latest price
   from the Chartink price-list widgets, else Yahoo Finance (or a price typed in), with lots from `futures stocks.csv`, a stop
   loss, target and trailing stop loss. The 2H Chartink signals can be executed
-  automatically with a 1.5% stop loss and 3% target. Open positions are checked
+  automatically with a 1.5% stop loss and 3% target. Signals last seen in the
+  previous session stay in the table, marked with their date, until 3:30 PM of
+  the next session (saved in the browser when the page is opened). Open positions are checked
   against the 5-minute bars since entry when the page opens, on Refresh and on
   Run EOD settlement: a trade that touched its SL, trailing SL or target closes
   there, the rest at 3:15 PM IST. Settled trades are charged estimated brokerage,

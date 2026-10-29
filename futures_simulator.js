@@ -6,6 +6,8 @@
 
 const STORE = "futures_simulator_v1"
 const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/target on or off
+const SIGNALS = "futures_simulator_signals"  // session date -> the signals last seen in that session
+const SESSION_CLOSE = "15:30"  // carried-over signals are shown until the next session closes
 const instances = new WeakMap()
 
 // ---------------------------------------------------------------------------
@@ -49,6 +51,28 @@ function savePrefs(ctx) {
   try { localStorage.setItem(PREFS, JSON.stringify(prefs)) } catch (e) { /* storage blocked */ }
 }
 
+// Today's signals with the previous session's added, until the current session closes.
+// Each page load saves the signals under the session they belong to, so the list
+// carried over is the last one seen in that session. Carried signals are marked with
+// their session date (`from`).
+function withCarriedSignals(data) {
+  const live = data.signals, today = data.session_date
+  let saved = {}
+  try { saved = JSON.parse(localStorage.getItem(SIGNALS)) || {} } catch (e) { /* storage blocked */ }
+  saved[today] = live.map(({ symbol, timeframe, strategy, bias, agrees, fno, open }) =>
+    ({ symbol, timeframe, strategy, bias, agrees, fno, open }))
+  const dates = Object.keys(saved).sort().slice(-5)
+  try { localStorage.setItem(SIGNALS, JSON.stringify(Object.fromEntries(dates.map((d) => [d, saved[d]])))) } catch (e) { /* storage blocked */ }
+
+  const previous = dates.filter((d) => d < today).pop()
+  const now = new Date().toLocaleString("sv-SE", { timeZone: "Asia/Kolkata" })  // "YYYY-MM-DD HH:MM:SS"
+  if (!previous || now >= `${today} ${SESSION_CLOSE}`) return live
+  const current = new Set(live.map((s) => `${s.symbol}|${s.timeframe}`))
+  return [...live, ...saved[previous]
+    .filter((s) => !current.has(`${s.symbol}|${s.timeframe}`))
+    .map((s) => ({ ...s, from: previous }))]
+}
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -58,6 +82,7 @@ const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "
 const inr = (x, digits = 2) => x == null ? "—" :
   "₹" + Number(x).toLocaleString("en-IN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
 const signed = (x) => x == null ? "—" : `<span class="${x >= 0 ? "pos" : "neg"}">${x >= 0 ? "+" : "−"}${inr(Math.abs(x))}</span>`
+const sessionDay = (iso) => new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-IN", { day: "2-digit", month: "short", timeZone: "UTC" })
 const when = (ms) => ms ? new Date(ms).toLocaleString("en-IN", {
   timeZone: "Asia/Kolkata", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit", hour12: false,
 }) : "—"
@@ -89,6 +114,7 @@ export default function (component) {
     instances.set(parentElement, ctx)
   }
   ctx.data = data
+  ctx.signals = withCarriedSignals(data)
   ctx.setStateValue = setStateValue
   ctx.setTriggerValue = setTriggerValue
 
@@ -159,7 +185,7 @@ function setup(root, data) {
       refresh: () => sendCheck(ctx, "auto", true),
       eod: () => runEod(ctx),
       "auto-all": () => autoExecute(ctx, shownSignals(ctx)),
-      "auto-one": () => autoExecute(ctx, [ctx.data.signals[Number(button.dataset.row)]]),
+      "auto-one": () => autoExecute(ctx, [ctx.signals[Number(button.dataset.row)]]),
       "use-ltp": () => { ctx.priceEdited = false; fillPrice(ctx); render(ctx) },
       preset: () => presetRisk(ctx),
       "clear-risk": () => { ref("sl").value = ""; ref("tp").value = ""; render(ctx) },
@@ -193,9 +219,11 @@ function quote(ctx, symbol) {
   return ctx.data.quotes[symbol]?.price ?? null
 }
 
-// Symbols that need a price: open positions and the instrument in the order form.
+// Symbols that need a price: open positions, carried-over signals and the instrument
+// in the order form.
 function syncSymbols(ctx) {
   const symbols = new Set(ctx.account.positions.map((p) => p.symbol))
+  for (const s of ctx.signals) if (s.from && s.fno) symbols.add(s.symbol)
   const picked = ctx.ref("symbol").value.trim().toUpperCase()
   if (instrument(ctx, picked)) symbols.add(picked)
   const list = [...symbols].sort()
@@ -294,7 +322,7 @@ function presetRisk(ctx) {
 }
 
 function shownSignals(ctx) {
-  return ctx.data.signals.filter((s) => s.timeframe === ctx.timeframe)
+  return ctx.signals.filter((s) => s.timeframe === ctx.timeframe)
 }
 
 const shortTf = (tf) => tf.replace(" HOUR", "H")
@@ -474,7 +502,8 @@ function renderStats(ctx) {
 }
 
 function renderSignals(ctx) {
-  const { signals, signals_note: note, settings } = ctx.data
+  const { signals_note: note, settings } = ctx.data
+  const signals = ctx.signals
   const tf = shortTf(ctx.timeframe)
   const candle = ctx.ref("entry-mode").value === "candle"
   const risk = ctx.ref("auto-risk").checked
@@ -484,7 +513,8 @@ function renderSignals(ctx) {
   ctx.ref("auto-note").textContent = `Auto orders buy bullish and sell bearish ${tf} signals ` +
     (candle ? `at the open of the ${tf} candle the signal is on, timed at that candle's start` : "at the latest price") +
     (risk ? `, with SL ${settings.auto_sl_pct}% and target ${settings.auto_tp_pct}% away.` : ", with no SL or target.") +
-    " Agrees: the Market reports Active Watchlist has the same bias."
+    " Agrees: the Market reports Active Watchlist has the same bias." +
+    " Signals with a date are from the last session, kept until 3:30 PM."
   const agree = { Yes: "yes", No: "no", "Not on watchlist": "none" }
   const shown = signals.map((s, row) => ({ ...s, row })).filter((s) => s.timeframe === ctx.timeframe)
   ctx.ref("signals").innerHTML = `<tr><th>Symbol</th><th>Strategy</th><th>Bias</th><th>Agrees</th>
@@ -492,7 +522,8 @@ function renderSignals(ctx) {
     const ltp = quote(ctx, s.symbol), info = instrument(ctx, s.symbol), start = signalEntry(ctx, s)
     const open = ctx.account.positions.some((p) => p.symbol === s.symbol && p.side === (s.bias === "Bullish" ? "BUY" : "SELL"))
     const label = !info ? "Not F&O" : open ? "Open" : !start ? "No price" : "⚡ Execute"
-    return `<tr><td><b>${esc(s.symbol)}</b></td><td class="muted">${esc(s.strategy)}</td>
+    const from = s.from ? ` <span class="tag" title="From the last session">${esc(sessionDay(s.from))}</span>` : ""
+    return `<tr><td><b>${esc(s.symbol)}</b>${from}</td><td class="muted">${esc(s.strategy)}</td>
       <td><span class="pill ${s.bias === "Bullish" ? "long" : "short"}">${s.bias}</span></td>
       <td><span class="pill ${agree[s.agrees]}">${esc(s.agrees)}</span></td>
       <td class="r">${inr(ltp)}</td>
