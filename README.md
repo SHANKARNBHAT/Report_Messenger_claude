@@ -37,9 +37,9 @@ The app has three pages, switched from the menu at the top:
   reports are read from the `Report_Messenger_cash` repository.
 - **Chartink dashboard** (`chartink_dashboard.py`): the live results of a public
   Chartink dashboard, one tab per timeframe, with bullish and bearish tables.
-  The first tab, COMMON, lists the stocks that are also on the Active Watchlist
-  of the Market reports (Futures or Cash), and the stocks found in two or more
-  timeframes.
+  The first tab, COMMON, lists the stocks that are also on the Futures Active
+  Watchlist of the Market reports (the Cash watchlist is left out, since the
+  dashboard scans F&O stocks), and the stocks found in two or more timeframes.
   Widgets are sorted by name: `2H`, `4h`, `DAILY` or `WEEKLY` picks the tab, and
   `SHORT`, `BEAR` or `SELL` marks a bearish widget. Widgets named
   `Futures stocks ...` list prices, not signals: they are left out of the tabs,

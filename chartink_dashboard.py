@@ -77,12 +77,11 @@ DEFAULT_SNAPSHOT = (
 )
 MY_LAYOUT = "My indicators"
 # Active Watchlist of the Market reports, compared with the dashboard on the COMMON tab.
-# Segment -> the report file in that segment's GitHub repository.
+# Segment -> the report file in that segment's GitHub repository. Only Futures: the
+# Chartink dashboard scans F&O stocks, so the Cash watchlist is left out.
 WATCHLISTS = {
     "Futures": "https://raw.githubusercontent.com/SHANKARNBHAT/Report_Messenger_Claude/main/"
                "rvol_active_signals_report.txt",
-    "Cash": "https://raw.githubusercontent.com/SHANKARNBHAT/Report_Messenger_cash/main/"
-            "rvol_active_signals_report.txt",
 }
 # Chart site -> link to a stock's chart on it, given the snapshot's name.
 CHART_SITES = {
@@ -427,7 +426,7 @@ def show_common(widgets: list[dict]) -> None:
         st.warning(error)
     matches = watchlist_matches(widgets, watchlists)
     st.caption(f"{len(matches)} stock(s) on this Chartink dashboard that are also on the Active "
-               "Watchlist of the Market reports. Agrees: the report's bias matches every Chartink signal.")
+               "Watchlist of the Futures Market reports. Agrees: the report's bias matches every Chartink signal.")
     if matches.empty:
         st.info("No stock is on both the Chartink dashboard and the Active Watchlist right now.")
     else:
