@@ -27,6 +27,19 @@ function saveAccount(account) {
   try { localStorage.setItem(STORE, JSON.stringify(account)) } catch (e) { /* storage blocked */ }
 }
 
+function storageWorks() {
+  try {
+    localStorage.setItem(`${STORE}_test`, "1")
+    localStorage.removeItem(`${STORE}_test`)
+    return true
+  } catch (e) { return false }
+}
+
+// The account as last saved, possibly by another tab of the page, before changing it.
+function latest(ctx) {
+  if (ctx.storageOk) ctx.account = loadAccount(ctx.data.settings.start_capital)
+}
+
 function loadPrefs() {
   try { return JSON.parse(localStorage.getItem(PREFS)) || {} } catch (e) { return {} }
 }
@@ -96,7 +109,19 @@ function setup(root, data) {
     priceEdited: false,  // entry price typed in: stop filling it from the LTP
     pending: null,       // id of the check waiting for an answer
     sentSymbols: "",
+    storageOk: storageWorks(),
   }
+  ref("storage-warning").hidden = ctx.storageOk
+
+  // Another tab of the page changed the account: show its version.
+  const onStorage = (event) => {
+    if (!root.isConnected) { window.removeEventListener("storage", onStorage); return }
+    if (event.key !== STORE) return
+    latest(ctx)
+    render(ctx)
+    syncSymbols(ctx)
+  }
+  window.addEventListener("storage", onStorage)
 
   ref("instruments").innerHTML = data.instruments
     .map((i) => `<option value="${esc(i.symbol)}">${esc(i.name)} · lot ${i.lot}</option>`).join("")
@@ -246,6 +271,7 @@ function placeOrder(ctx, order) {
 }
 
 function placeFromForm(ctx) {
+  latest(ctx)
   const order = formOrder(ctx)
   if (order.error) {
     ctx.ref("order-error").textContent = order.error
@@ -282,6 +308,7 @@ function signalEntry(ctx, signal) {
 
 // Market orders for signals, with the preset SL and target if ticked.
 function autoExecute(ctx, signals) {
+  latest(ctx)
   const { auto_sl_pct: slPct, auto_tp_pct: tpPct } = ctx.data.settings
   const lots = Math.max(1, Math.floor(num(ctx.ref("auto-lots").value) ?? 1))
   const risk = ctx.ref("auto-risk").checked
@@ -326,6 +353,7 @@ function autoExecute(ctx, signals) {
 // Settlement
 // ---------------------------------------------------------------------------
 function sendCheck(ctx, mode, refresh = false) {
+  latest(ctx)
   const positions = ctx.account.positions
   if (!positions.length && !refresh) return
   ctx.pending = `${Date.now()}-${mode}`
@@ -356,6 +384,7 @@ function closePosition(ctx, position, price, time, reason) {
 }
 
 function applyResult(ctx, result) {
+  if (result) latest(ctx)
   if (!result || ctx.account.applied.includes(result.id)) {
     if (result && result.id === ctx.pending) ctx.pending = null
     return
@@ -386,6 +415,7 @@ function applyResult(ctx, result) {
 }
 
 function manualExit(ctx, id) {
+  latest(ctx)
   const position = ctx.account.positions.find((p) => p.id === id)
   const ltp = position && quote(ctx, position.symbol)
   if (ltp == null) return
