@@ -5,7 +5,7 @@
 // (trigger "check"), answered in data.result.
 
 const STORE = "futures_simulator_v1"
-const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/target on or off
+const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/target on or off, chart site
 const SIGNALS = "futures_simulator_signals"  // session date -> the signals last seen in that session
 const SESSION_CLOSE = "15:30"  // carried-over signals are shown until the next session closes
 const instances = new WeakMap()
@@ -47,7 +47,8 @@ function loadPrefs() {
 }
 
 function savePrefs(ctx) {
-  const prefs = { timeframe: ctx.timeframe, entry: ctx.ref("entry-mode").value, risk: ctx.ref("auto-risk").checked }
+  const prefs = { timeframe: ctx.timeframe, entry: ctx.ref("entry-mode").value, risk: ctx.ref("auto-risk").checked,
+    chart: ctx.ref("chart-site").value }
   try { localStorage.setItem(PREFS, JSON.stringify(prefs)) } catch (e) { /* storage blocked */ }
 }
 
@@ -156,11 +157,14 @@ function setup(root, data) {
   ctx.timeframe = data.timeframes.includes(prefs.timeframe) ? prefs.timeframe : data.settings.default_timeframe
   if (prefs.entry) ref("entry-mode").value = prefs.entry
   if (prefs.risk === false) ref("auto-risk").checked = false
+  const sites = Object.keys(data.charts)
+  ref("chart-site").innerHTML = sites.map((site) => `<option>${esc(site)}</option>`).join("")
+  ref("chart-site").value = [prefs.chart, data.default_chart].find((site) => sites.includes(site)) || sites[0]
   ref("timeframes").innerHTML = data.timeframes
     .map((tf) => `<button type="button" data-tf="${esc(tf)}">${esc(tf.replace(" HOUR", "H"))}</button>`).join("")
 
   root.addEventListener("change", (event) => {
-    if (["entry-mode", "auto-risk"].includes(event.target.dataset.ref)) {
+    if (["entry-mode", "auto-risk", "chart-site"].includes(event.target.dataset.ref)) {
       savePrefs(ctx)
       render(ctx)
     }
@@ -517,13 +521,16 @@ function renderSignals(ctx) {
     " Signals with a date are from the last session, kept until 3:30 PM."
   const agree = { Yes: "yes", No: "no", "Not on watchlist": "none" }
   const shown = signals.map((s, row) => ({ ...s, row })).filter((s) => s.timeframe === ctx.timeframe)
+  const site = ctx.ref("chart-site").value
+  const chartLink = ctx.data.charts[site] || Object.values(ctx.data.charts)[0]
   ctx.ref("signals").innerHTML = `<tr><th>Symbol</th><th>Strategy</th><th>Bias</th><th>Agrees</th>
     <th class="r">LTP</th><th class="r">${tf} candle open</th><th class="r">Lot</th><th></th></tr>` + (shown.length ? shown.map((s) => {
     const ltp = quote(ctx, s.symbol), info = instrument(ctx, s.symbol), start = signalEntry(ctx, s)
     const open = ctx.account.positions.some((p) => p.symbol === s.symbol && p.side === (s.bias === "Bullish" ? "BUY" : "SELL"))
     const label = !info ? "Not F&O" : open ? "Open" : !start ? "No price" : "⚡ Execute"
+    const chart = chartLink.replace("SYMBOL", encodeURIComponent(s.symbol))
     const from = s.from ? ` <span class="tag" title="From the last session">${esc(sessionDay(s.from))}</span>` : ""
-    return `<tr><td><b>${esc(s.symbol)}</b>${from}</td><td class="muted">${esc(s.strategy)}</td>
+    return `<tr><td><a class="sym" href="${esc(chart)}" target="_blank" rel="noopener" title="Open the chart on ${esc(site)}"><b>${esc(s.symbol)}</b></a>${from}</td><td class="muted">${esc(s.strategy)}</td>
       <td><span class="pill ${s.bias === "Bullish" ? "long" : "short"}">${s.bias}</span></td>
       <td><span class="pill ${agree[s.agrees]}">${esc(s.agrees)}</span></td>
       <td class="r">${inr(ltp)}</td>

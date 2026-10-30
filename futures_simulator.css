@@ -50,6 +50,8 @@ input {
 }
 input:focus, select:focus { outline: 2px solid var(--blue); outline-offset: -1px; }
 select { background: var(--bg); color: var(--text); border: 1px solid var(--line2); border-radius: 8px; padding: 5px 8px; font: inherit; }
+a.sym { color: inherit; text-decoration: none; }
+a.sym:hover { color: var(--blue); text-decoration: underline; }
 .seg.tf { display: inline-grid; grid-auto-flow: column; grid-template-columns: none; }
 .seg.tf button { padding: 6px 12px; font-size: 13px; }
 .seg.tf button.on { background: var(--blue); color: #fff; }

@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import importlib
 import math
+import re
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, time, timedelta
 from pathlib import Path
@@ -48,8 +49,9 @@ if Path(chartink_dashboard.__file__).stat().st_mtime > getattr(chartink_dashboar
     chartink_dashboard = importlib.reload(chartink_dashboard)
     chartink_dashboard._loaded_at = Path(chartink_dashboard.__file__).stat().st_mtime
 
-from chartink_dashboard import (CHARTINK_HEADERS, DEFAULT_DASHBOARD, IST, TIMEFRAMES, ChartinkError,
-                                fetch_dashboard, fetch_price_bars, fetch_watchlists)
+from chartink_dashboard import (CHART_SITES, CHARTINK_HEADERS, DEFAULT_DASHBOARD, DEFAULT_SNAPSHOT, IST,
+                                MY_LAYOUT, TIMEFRAMES, ChartinkError, fetch_dashboard, fetch_price_bars,
+                                fetch_watchlists)
 
 # ---------------------------------------------------------------------------
 # Settings
@@ -350,6 +352,16 @@ def signal_rows(dashboard: dict, instruments: dict[str, dict]) -> tuple[list[dic
 # ---------------------------------------------------------------------------
 # Page
 # ---------------------------------------------------------------------------
+def chart_links() -> dict[str, str]:
+    """Chart site -> link to a stock's chart on it, with SYMBOL where the stock goes.
+
+    Uses the snapshot link set on the Chartink dashboard page, as its symbol links do.
+    """
+    snapshot = re.search(r"load-snapshot=([\w-]+)", st.session_state.get("snapshot") or DEFAULT_SNAPSHOT)
+    return {site: link("SYMBOL", snapshot.group(1) if snapshot else None)
+            for site, link in CHART_SITES.items() if snapshot or site != MY_LAYOUT}
+
+
 def component_value(name: str):
     """A state or trigger value the simulator sent, or None."""
     try:
@@ -399,6 +411,8 @@ def main() -> None:
             "quotes": quotes,
             "result": st.session_state.get(RESULT),
             "timeframes": list(TIMEFRAMES),
+            "charts": chart_links(),
+            "default_chart": st.session_state.get("charts") or MY_LAYOUT,
             "settings": {"start_capital": START_CAPITAL, "margin_rate": MARGIN_RATE,
                          "default_timeframe": DEFAULT_TIMEFRAME,
                          "auto_sl_pct": AUTO_SL_PCT, "auto_tp_pct": AUTO_TP_PCT, "charges": CHARGES},
