@@ -39,6 +39,7 @@ SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]
 YOU = "You (simulator)"
 SHORT_TF = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 HOLDS = [(60, "< 1 h"), (180, "1–3 h"), (375, "3 h – same day"), (2 * 1440, "1–2 days"), (float("inf"), "3+ days")]
+MIN_TRADES = 3  # trades on a timeframe before it can be a stock's best one
 MOODS = [(-0.5, "NIFTY down > 0.5%"), (0.5, "NIFTY flat (±0.5%)"), (float("inf"), "NIFTY up > 0.5%")]
 REQUESTS = {
     "trail": "📈 Keep going at target (trailing SL)",
@@ -295,6 +296,49 @@ def show_reach(trades: pd.DataFrame) -> None:
                f"{fs.AUTO_SL_PCT}%: stop losses hit after being up at least as much as the SL.")
 
 
+def show_stocks(trades: pd.DataFrame) -> None:
+    """Each stock's results on each timeframe it was signalled on, and the timeframe that did best."""
+    rows = trades.assign(Timeframe=trades["timeframes"].map(
+        lambda tfs: [SHORT_TF.get(tf, tf) for tf in tfs] if isinstance(tfs, list) and tfs else ["No signal"]))
+    rows = rows.explode("Timeframe")
+    grouped = rows.groupby(["symbol", "Timeframe"])
+    stats = pd.DataFrame({
+        "trades": grouped.size(),
+        "win %": grouped["net"].apply(lambda n: round(100 * (n > 0).mean())),
+        "avg %": grouped["Made %"].mean().round(2),
+    }).reset_index()
+    order = [tf for tf in [*SHORT_TF.values(), "No signal"] if tf in set(stats["Timeframe"])]
+    table = stats.pivot(index="symbol", columns="Timeframe")
+    table.columns = [f"{tf} {measure}" for measure, tf in table.columns]
+    table = table[[f"{tf} {m}" for tf in order for m in ("avg %", "win %", "trades")]]
+    # The timeframe(s) with the highest avg %: ties (often the same trades, on several timeframes) are joined.
+    ranked = stats[stats["trades"] >= MIN_TRADES]
+    top = ranked.groupby("symbol")["avg %"].transform("max")
+    leaders = ranked[ranked["avg %"] >= top - 0.005]
+    table.insert(0, "Best timeframe", leaders.groupby("symbol")["Timeframe"].agg(
+        lambda tfs: " = ".join(sorted(tfs, key=order.index))))
+    table.insert(1, "Best avg %", leaders.groupby("symbol")["avg %"].max())
+    table.insert(2, "Trades", rows.groupby("symbol")["id"].nunique())
+    table = table.sort_values(["Best avg %", "Trades"], ascending=False)
+    table.index = table.index.map(chart_link)
+    st.dataframe(table.rename_axis("Symbol").reset_index(), hide_index=True, width="stretch",
+                 column_config={"Symbol": SYMBOL_LINK, **{c: st.column_config.NumberColumn(c, format="%.2f%%")
+                                for c in table.columns if c.endswith("avg %")},
+                                **{c: st.column_config.NumberColumn(c, format="%d%%")
+                                   for c in table.columns if c.endswith("win %")},
+                                **{c: st.column_config.NumberColumn(c, format="%d")
+                                   for c in table.columns if c.endswith("trades")}})
+    st.caption(f"avg %: the average return of the trades, as % of the entry price (lot sizes differ, so ₹ would "
+               f"favour the big ones); win %: trades in profit after charges. Best timeframe: the one with the "
+               f"highest avg %, among those with at least {MIN_TRADES} trades ('2H = 4H': the same; often the same "
+               "trades, as a trade on stocks found on several timeframes counts under each). With All bot styles, each signal counts once per exit style: pick "
+               "one style for one trade per signal.")
+    by_tf = summary(rows, "Timeframe").reindex([tf for tf in order])
+    by_tf.insert(2, "Avg return %", rows.groupby("Timeframe")["Made %"].mean().round(2))
+    st.markdown("**All stocks, by timeframe**")
+    st.dataframe(by_tf, width="stretch")
+
+
 def show_mood(trades: pd.DataFrame) -> None:
     moods = trades.dropna(subset=["Mood"])
     if moods.empty:
@@ -396,36 +440,38 @@ def show_results(history: pd.DataFrame, signals: pd.DataFrame | None) -> None:
     if history.empty:
         st.caption("No closed trades here yet.")
         return
-    tabs = st.tabs(["Daily report", "Weekly report", "By signal", "By strategy", "By exit", "Price reached",
-                    "Holding time", "Market mood", "Carry forward", "Entry delay", "Trades"])
+    tabs = st.tabs(["Daily report", "Weekly report", "By stock", "By signal", "By strategy", "By exit",
+                    "Price reached", "Holding time", "Market mood", "Carry forward", "Entry delay", "Trades"])
     with tabs[0]:
         st.dataframe(report(history, "Date", signals), width="stretch")
     with tabs[1]:
         st.dataframe(report(history, "Week", signals).rename_axis("Week of"), width="stretch")
     with tabs[2]:
+        show_stocks(history)
+    with tabs[3]:
         counts = history.assign(**{"On timeframes": history["Timeframes"].str.count(r"\+") + 1})
         st.dataframe(summary(counts.sort_values("On timeframes"), "On timeframes"), width="stretch")
         st.caption("How many timeframes (2H, 4H, Daily) the stock was on, the same way, when it was traded.")
         st.dataframe(summary(history, "Timeframes"), width="stretch")
-    with tabs[3]:
+    with tabs[4]:
         strategies = history.assign(Strategy=history.get("strategies", pd.Series(index=history.index, dtype=object))
                                     .map(lambda s: s if isinstance(s, list) and s else ["—"])).explode("Strategy")
         st.dataframe(summary(strategies, "Strategy"), width="stretch")
         st.caption("A trade on stocks found by several strategies counts under each.")
-    with tabs[4]:
-        st.dataframe(summary(history, "reason"), width="stretch")
     with tabs[5]:
-        show_reach(history)
+        st.dataframe(summary(history, "reason"), width="stretch")
     with tabs[6]:
+        show_reach(history)
+    with tabs[7]:
         st.dataframe(summary(history, "Held", sort=True), width="stretch")
         st.caption("From entry to exit.")
-    with tabs[7]:
-        show_mood(history)
     with tabs[8]:
-        show_carry(history)
+        show_mood(history)
     with tabs[9]:
-        show_delay(history)
+        show_carry(history)
     with tabs[10]:
+        show_delay(history)
+    with tabs[11]:
         trades = history.assign(Entered=history["entry_time"].map(when), Exited=history["exit_time"].map(when),
                                 Symbol=history["symbol"].map(chart_link))
         st.dataframe(trades[["Exited", "Symbol", "side", "Style", "Timeframes", "qty", "entry", "exit", "high", "low",
