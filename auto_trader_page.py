@@ -357,6 +357,40 @@ def show_stocks(trades: pd.DataFrame) -> None:
     st.dataframe(by_tf, width="stretch")
 
 
+REPORTS = {"Yes": "Market reports agree", "No": "Market reports disagree", "Not on watchlist": "Not on the watchlist"}
+
+
+def show_confirmation(trades: pd.DataFrame) -> None:
+    """Results by the two confirmations of a signal: the Market reports' Active Watchlist with the
+    same bias, and more Chartink timeframes with the same signal."""
+    count = trades["timeframes"].map(lambda tfs: len(tfs) if isinstance(tfs, list) else 0)
+    rows = trades.assign(
+        Reports=pd.Categorical(trades["agrees"].map(REPORTS).fillna("Not recorded"),
+                               [*REPORTS.values(), "Not recorded"]),
+        Timeframes=pd.Categorical(count.map(lambda n: f"On {n} timeframe{'s' if n > 1 else ''}" if n else "No signal"),
+                                  [f"On {n} timeframe{'s' if n > 1 else ''}" for n in (1, 2, 3, 4)] + ["No signal"]))
+    both = rows[(rows["agrees"] == "Yes") & (count >= 2)]
+    neither = rows[(rows["agrees"] != "Yes") & (count == 1)]
+    cols = st.columns(2)
+    for col, label, group in ((cols[0], "Both: Market reports agree, 2+ timeframes", both),
+                              (cols[1], "Neither: not confirmed, 1 timeframe", neither)):
+        col.metric(label, f"{100 * (group['net'] > 0).mean():.0f}% win · {group['Made %'].mean():+.2f}% avg"
+                   if len(group) else "—", help=f"{len(group)} trades")
+
+    def table(by):
+        t = summary(rows, by, sort=True)
+        t.insert(2, "Avg return %", rows.groupby(by, observed=True)["Made %"].mean().round(2))
+        return t
+
+    st.dataframe(table(["Reports", "Timeframes"]), width="stretch")
+    left, right = st.columns(2)
+    left.dataframe(table("Reports"), width="stretch")
+    right.dataframe(table("Timeframes"), width="stretch")
+    st.caption("Market reports agree: the stock was on the Active Watchlist with the same bias when it was traded "
+               "(the COMMON tab of the Chartink dashboard). Timeframes: on how many of 2H, 4H and Daily it was "
+               "signalled the same way. Avg return: % of the entry price.")
+
+
 def show_mood(trades: pd.DataFrame) -> None:
     moods = trades.dropna(subset=["Mood"])
     if moods.empty:
@@ -525,7 +559,7 @@ def show_results(history: pd.DataFrame, signals: pd.DataFrame | None) -> None:
     if history.empty:
         st.caption("No closed trades here yet.")
         return
-    tabs = st.tabs(["Daily report", "Weekly report", "By stock", "By signal", "By strategy", "By exit",
+    tabs = st.tabs(["Daily report", "Weekly report", "By stock", "Confirmation", "By signal", "By strategy", "By exit",
                     "Price reached", "Holding time", "Market mood", "Carry forward", "Entry delay", "Trades"])
     with tabs[0]:
         st.dataframe(report(history, "Date", signals), width="stretch")
@@ -534,29 +568,31 @@ def show_results(history: pd.DataFrame, signals: pd.DataFrame | None) -> None:
     with tabs[2]:
         show_stocks(history)
     with tabs[3]:
+        show_confirmation(history)
+    with tabs[4]:
         counts = history.assign(**{"On timeframes": history["Timeframes"].str.count(r"\+") + 1})
         st.dataframe(summary(counts.sort_values("On timeframes"), "On timeframes"), width="stretch")
         st.caption("How many timeframes (2H, 4H, Daily) the stock was on, the same way, when it was traded.")
         st.dataframe(summary(history, "Timeframes"), width="stretch")
-    with tabs[4]:
+    with tabs[5]:
         strategies = history.assign(Strategy=history.get("strategies", pd.Series(index=history.index, dtype=object))
                                     .map(lambda s: s if isinstance(s, list) and s else ["—"])).explode("Strategy")
         st.dataframe(summary(strategies, "Strategy"), width="stretch")
         st.caption("A trade on stocks found by several strategies counts under each.")
-    with tabs[5]:
-        st.dataframe(summary(history, "reason"), width="stretch")
     with tabs[6]:
-        show_reach(history)
+        st.dataframe(summary(history, "reason"), width="stretch")
     with tabs[7]:
+        show_reach(history)
+    with tabs[8]:
         st.dataframe(summary(history, "Held", sort=True), width="stretch")
         st.caption("From entry to exit.")
-    with tabs[8]:
-        show_mood(history)
     with tabs[9]:
-        show_carry(history)
+        show_mood(history)
     with tabs[10]:
-        show_delay(history)
+        show_carry(history)
     with tabs[11]:
+        show_delay(history)
+    with tabs[12]:
         trades = history.assign(Entered=history["entry_time"].map(when), Exited=history["exit_time"].map(when),
                                 Symbol=history["symbol"].map(chart_link))
         st.dataframe(trades[["Exited", "Symbol", "side", "Style", "Timeframes", "qty", "entry", "exit", "high", "low",

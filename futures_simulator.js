@@ -96,13 +96,14 @@ function noteSeen(ctx) {
 }
 
 // The signals behind a trade in `symbol` on `side`: their strategies, the timeframes the
-// stock is on that way, and when it was first seen there.
+// stock is on that way, when it was first seen there, and whether the Market reports agree.
 function signalInfo(ctx, symbol, side) {
   const found = ctx.signals.filter((s) => s.symbol === symbol && (s.bias === "Bullish") === (side === "BUY"))
   return {
     strategies: [...new Set(found.map((s) => s.strategy))].sort(),
     timeframes: ctx.data.timeframes.filter((tf) => found.some((s) => s.timeframe === tf)),
     first_seen: found.map((s) => s.first).filter(Boolean).sort((a, b) => a.time - b.time)[0] || null,
+    agrees: found[0]?.agrees ?? null,
   }
 }
 
@@ -514,6 +515,7 @@ function closePosition(ctx, position, price, time, reason) {
     high: Math.max(position.high ?? position.entry, price), low: Math.min(position.low ?? position.entry, price),
     nifty: position.nifty ?? null, passed: !!position.passed,
     strategies: position.strategies || [], timeframes: position.timeframes || [], first_seen: position.first_seen || null,
+    agrees: position.agrees ?? null,
   })
   ctx.account.positions = ctx.account.positions.filter((p) => p.id !== position.id)
 }
@@ -589,7 +591,7 @@ function resetAccount(ctx) {
 
 function exportCsv(ctx) {
   const columns = ["symbol", "side", "lots", "qty", "entry", "exit", "entry_time", "exit_time", "reason", "source", "gross",
-    "charges", "net", "style", "sl", "tp", "carried", "passed", "high", "low", "nifty", "timeframes", "strategies",
+    "charges", "net", "style", "sl", "tp", "carried", "passed", "high", "low", "nifty", "agrees", "timeframes", "strategies",
     "first_seen_time", "first_seen_price"]
   const row = (t) => ({ ...t, timeframes: (t.timeframes || []).join("+"), strategies: (t.strategies || []).join("; "),
     first_seen_time: t.first_seen?.time ?? null, first_seen_price: t.first_seen?.price ?? null })
@@ -758,6 +760,7 @@ function groupRows(trades, key, order) {
 const winRate = (trades) => `${(100 * trades.filter((t) => t.net > 0).length / trades.length).toFixed(0)}%`
 const netSum = (trades) => trades.reduce((s, t) => s + t.net, 0)
 const sign = (t) => t.side === "BUY" ? 1 : -1
+const REPORTS = { Yes: "Market reports agree", No: "Market reports disagree", "Not on watchlist": "Not on the watchlist" }
 const HOLDS = [[60, "< 1 h"], [180, "1–3 h"], [375, "3 h – same day"], [2 * 1440, "1–2 days"], [Infinity, "3+ days"]]
 const MOODS = [[-0.5, "NIFTY down > 0.5%"], [0.5, "NIFTY flat (±0.5%)"], [Infinity, "NIFTY up > 0.5%"]]
 const pct = (x) => `${x >= 0 ? "+" : ""}${x.toFixed(2)}%`
@@ -831,10 +834,24 @@ function renderAnalysis(ctx) {
       moodRows.push({ sub: true, cells: [side.key, ...basic(side)] })
   }
 
+  // Confirmed by the Market reports' Active Watchlist, and by more Chartink timeframes.
+  const reportOf = (t) => REPORTS[t.agrees] || "Not recorded"
+  const onTfs = (t) => (t.timeframes || []).length
+  const confirmRows = []
+  for (const g of groupRows(trades, reportOf, [...Object.values(REPORTS), "Not recorded"])) {
+    confirmRows.push({ cells: [`<b>${g.key}</b>`, ...basic(g), pct(avg(g.trades, made))] })
+    for (const c of groupRows(g.trades, (t) => onTfs(t) ? `On ${onTfs(t)} timeframe${onTfs(t) > 1 ? "s" : ""}` : "No signal",
+      ["On 1 timeframe", "On 2 timeframes", "On 3 timeframes", "On 4 timeframes", "No signal"]))
+      confirmRows.push({ sub: true, cells: [c.key, ...basic(c), pct(avg(c.trades, made))] })
+  }
+
   ctx.ref("analysis").innerHTML = [
     statTable("By exit style", "Square off at 3:15 PM, or held overnight with a trailing SL after the target or until the RSI exit.",
       ["Exit style", "Trades", "Win", "Net"], styles),
     statTable("By strategy", "A trade found by several strategies counts under each.", ["Strategy", "Trades", "Win", "Net"], strategies),
+    statTable("Confirmation", "Whether the Market reports' Active Watchlist had the stock with the same bias, and on " +
+      "how many Chartink timeframes it was signalled the same way. Avg: the average return, % of entry.",
+      ["Confirmation", "Trades", "Win", "Net", "Avg"], confirmRows),
     statTable("By timeframes the stock was on", "The timeframes with a signal the same way when the trade was placed.",
       ["Timeframes", "Trades", "Win", "Net"], tfRows),
     statTable("Carry forward", "Positions kept going past the target with a trailing SL. vs exiting at the target: " +
