@@ -49,80 +49,70 @@
     <div class="wrap"><table data-ref="signals"></table></div>
   </section>
 
-  <div class="grid">
-    <section class="card">
-      <div class="head"><h3>Order</h3><span class="spacer"></span><span class="tag">INTRADAY · FUT</span></div>
-      <div class="seg" data-ref="side">
+  <details class="card order" data-ref="order-card" open>
+    <summary class="head">
+      <h3>Order</h3><span class="tag">INTRADAY · FUT</span>
+      <span class="muted small" data-ref="order-summary"></span>
+      <span class="spacer"></span><span class="muted small toggle"></span>
+    </summary>
+    <div class="order-row">
+      <div class="seg side" data-ref="side">
         <button type="button" data-side="BUY" class="on">BUY / LONG</button>
         <button type="button" data-side="SELL">SELL / SHORT</button>
       </div>
-
-      <label class="field">Instrument
+      <label class="field grow">Instrument
         <input list="fs-instruments" data-ref="symbol" placeholder="Search, e.g. RELIANCE" autocomplete="off">
         <datalist id="fs-instruments" data-ref="instruments"></datalist>
       </label>
-      <div class="ltp-row">
-        <span data-ref="ltp" class="muted">Pick an instrument to load its price</span>
-        <button type="button" class="link" data-act="use-ltp">Use LTP</button>
-      </div>
-
-      <div class="row2">
-        <label class="field">Entry price ₹
-          <input type="number" min="0" step="0.05" data-ref="price" placeholder="Auto from LTP">
-        </label>
-        <label class="field">Lots
-          <input type="number" min="1" step="1" value="1" data-ref="lots">
-        </label>
-      </div>
-      <div class="muted small" data-ref="qty">Qty —</div>
-
-      <div class="row2">
-        <label class="field">Stop loss ₹
-          <input type="number" min="0" step="0.05" data-ref="sl" placeholder="Optional">
-        </label>
-        <label class="field">Target ₹
-          <input type="number" min="0" step="0.05" data-ref="tp" placeholder="Optional">
-        </label>
-      </div>
+      <label class="field w-num"><span>Entry price ₹ · <button type="button" class="link small" data-act="use-ltp">Use LTP</button></span>
+        <input type="number" min="0" step="0.05" data-ref="price" placeholder="Auto from LTP">
+      </label>
+      <label class="field w-lots">Lots
+        <input type="number" min="1" step="1" value="1" data-ref="lots">
+      </label>
+      <label class="field w-num">Stop loss ₹
+        <input type="number" min="0" step="0.05" data-ref="sl" placeholder="Optional">
+      </label>
+      <label class="field w-num">Target ₹
+        <input type="number" min="0" step="0.05" data-ref="tp" placeholder="Optional">
+      </label>
+    </div>
+    <div class="order-row">
       <div class="chips">
         <button type="button" class="chip" data-act="preset">SL 1.5% · TP 3%</button>
         <button type="button" class="chip" data-act="clear-risk">Clear</button>
       </div>
-      <label class="field">At target
+      <label class="inline">At target
         <select data-ref="at-target">
           <option value="exit">Exit at target</option>
           <option value="trail">Keep going with trailing SL</option>
         </select>
       </label>
-
-      <div class="tsl">
-        <label class="inline"><input type="checkbox" data-ref="tsl-on"> Trailing stop loss</label>
-        <div class="row2">
-          <label class="field">Trail by ₹
-            <input type="number" min="0" step="0.05" value="5" data-ref="tsl-trail">
-          </label>
-          <label class="field">Jump step ₹
-            <input type="number" min="0" step="0.05" value="2" data-ref="tsl-step">
-          </label>
-        </div>
-        <p class="muted small">Every time the price moves a full jump step in your favour, the stop moves up
-          (long) or down (short) to stay "trail by" behind it. It never moves back. Tick it to trail from
-          entry; "Keep going with trailing SL" at target trails by these amounts from the target on.</p>
-      </div>
-
+      <label class="inline" title="Every time the price moves a full jump step in your favour, the stop moves to stay &quot;trail by&quot; behind it. It never moves back. Tick to trail from entry; &quot;Keep going with trailing SL&quot; at target trails by these amounts from the target on.">
+        <input type="checkbox" data-ref="tsl-on"> Trailing SL from entry</label>
+      <label class="inline">Trail by ₹ <input type="number" min="0" step="0.05" value="5" class="num sm" data-ref="tsl-trail"></label>
+      <label class="inline">Jump step ₹ <input type="number" min="0" step="0.05" value="2" class="num sm" data-ref="tsl-step"></label>
+      <span class="muted small" data-ref="qty">Qty —</span>
+    </div>
+    <div class="order-row">
+      <div class="muted small" data-ref="ltp">Pick an instrument to load its price</div>
+    </div>
+    <div class="order-row end">
       <div class="margin" data-ref="margin"></div>
-      <button type="button" class="btn place buy" data-act="place">BUY</button>
-      <p class="error small" data-ref="order-error"></p>
-    </section>
-
-    <section class="card">
-      <div class="head">
-        <h3>Open positions</h3>
-        <span class="muted small" data-ref="positions-note"></span>
+      <div class="place-box">
+        <button type="button" class="btn place buy" data-act="place">BUY</button>
+        <p class="error small" data-ref="order-error"></p>
       </div>
-      <div class="wrap"><table data-ref="positions"></table></div>
-    </section>
-  </div>
+    </div>
+  </details>
+
+  <section class="card">
+    <div class="head">
+      <h3>Open positions</h3>
+      <span class="muted small" data-ref="positions-note"></span>
+    </div>
+    <div class="wrap"><table data-ref="positions"></table></div>
+  </section>
 
   <section class="card">
     <div class="head">

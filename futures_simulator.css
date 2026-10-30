@@ -24,8 +24,21 @@ h3 { margin: 0; font-size: 15px; font-weight: 600; }
 
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; min-width: 0; }
 .head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 8px; }
-.grid { display: grid; grid-template-columns: minmax(300px, 380px) minmax(0, 1fr); gap: 14px; align-items: start; }
-@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+.order summary { cursor: pointer; list-style: none; margin-bottom: 0; }
+.order summary::-webkit-details-marker { display: none; }
+.order .toggle::after { content: "Show ▾"; }
+.order[open] .toggle::after { content: "Hide ▴"; }
+.order[open] summary { margin-bottom: 4px; }
+.order[open] [data-ref="order-summary"] { display: none; }
+.order-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 14px; margin-top: 10px; }
+.order-row.end { align-items: stretch; }
+.order-row .field { margin-top: 0; }
+.order-row .grow { flex: 1 1 200px; }
+.w-num { width: 130px; }
+.w-lots { width: 70px; }
+.seg.side { width: 240px; }
+.seg.side button { padding: 7px; }
+.place-box { display: flex; flex-direction: column; justify-content: flex-end; min-width: 220px; }
 
 .btn {
   border: 1px solid var(--line2); background: #1e293b; color: var(--text); border-radius: 8px;
@@ -40,7 +53,7 @@ h3 { margin: 0; font-size: 15px; font-weight: 600; }
 .btn.xs { padding: 3px 8px; font-size: 12px; }
 .btn.buy { background: var(--green); border-color: var(--green); color: #052e16; }
 .btn.sell { background: var(--red); border-color: var(--red); color: #fff; }
-.btn.place { width: 100%; padding: 11px; font-size: 15px; margin-top: 10px; }
+.btn.place { width: 100%; padding: 11px; font-size: 15px; }
 .link { background: none; border: 0; color: var(--blue); cursor: pointer; font: inherit; padding: 0; }
 .tag { font-size: 11px; color: var(--muted); border: 1px solid var(--line2); border-radius: 6px; padding: 2px 6px; }
 
@@ -60,21 +73,20 @@ input[type="checkbox"] { width: auto; accent-color: var(--blue); }
 .num.sm { width: 64px; padding: 5px 7px; }
 .field { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); margin-top: 10px; }
 .inline { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
 .seg { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line2); border-radius: 9px; overflow: hidden; }
 .seg button { background: transparent; color: var(--muted); border: 0; padding: 9px; font: inherit; font-weight: 700; cursor: pointer; }
 .seg button.on[data-side="BUY"] { background: var(--green); color: #052e16; }
 .seg button.on[data-side="SELL"] { background: var(--red); color: #fff; }
-.ltp-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 6px; font-size: 13px; }
-.chips { display: flex; gap: 6px; margin-top: 8px; }
+.chips { display: flex; gap: 6px; }
 .chip { background: transparent; border: 1px solid var(--line2); color: var(--muted); border-radius: 999px; padding: 3px 10px; font: inherit; font-size: 12px; cursor: pointer; }
 .chip:hover { color: var(--text); }
-.tsl { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line2); }
-.tsl p { margin: 6px 0 0; }
-.margin { margin-top: 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: grid; gap: 4px; }
-.margin div { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+.margin { flex: 1 1 420px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 4px 16px; }
+.margin div { display: flex; flex-direction: column; font-variant-numeric: tabular-nums; }
+.margin div span:first-child { font-size: 12px; }
 .margin div span:first-child { color: var(--muted); }
+.margin div span:last-child { font-weight: 600; }
 
 .wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }

@@ -5,7 +5,7 @@
 // (trigger "check"), answered in data.result.
 
 const STORE = "futures_simulator_v1"
-const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/target on or off, at target, chart site
+const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/target on or off, at target, chart site, order card open
 const SIGNALS = "futures_simulator_signals"  // session date -> the signals last seen in that session
 const SESSION_CLOSE = "15:30"  // carried-over signals are shown until the next session closes
 const instances = new WeakMap()
@@ -48,7 +48,8 @@ function loadPrefs() {
 
 function savePrefs(ctx) {
   const prefs = { timeframe: ctx.timeframe, entry: ctx.ref("entry-mode").value, risk: ctx.ref("auto-risk").checked,
-    atTarget: ctx.ref("auto-at-target").value, chart: ctx.ref("chart-site").value }
+    atTarget: ctx.ref("auto-at-target").value, chart: ctx.ref("chart-site").value,
+    orderOpen: ctx.ref("order-card").open }
   try { localStorage.setItem(PREFS, JSON.stringify(prefs)) } catch (e) { /* storage blocked */ }
 }
 
@@ -158,6 +159,8 @@ function setup(root, data) {
   if (prefs.entry) ref("entry-mode").value = prefs.entry
   if (prefs.risk === false) ref("auto-risk").checked = false
   if (prefs.atTarget) ref("auto-at-target").value = prefs.atTarget
+  if (prefs.orderOpen === false) ref("order-card").open = false
+  ref("order-card").addEventListener("toggle", () => savePrefs(ctx))
   const sites = Object.keys(data.charts)
   ref("chart-site").innerHTML = sites.map((site) => `<option>${esc(site)}</option>`).join("")
   ref("chart-site").value = [prefs.chart, data.default_chart].find((site) => sites.includes(site)) || sites[0]
@@ -602,6 +605,8 @@ function renderOrder(ctx) {
     ["Available margin", inr(balance(ctx) - usedMargin(ctx))],
   ].map(([label, value]) => `<div><span>${label}</span><span>${value}</span></div>`).join("")
 
+  ref("order-summary").textContent = info ? `${ctx.side} ${order.symbol} · ${order.lots || 0} lot(s)` +
+    (ltp == null ? "" : ` · LTP ${inr(ltp)}`) : "Click to place a manual order"
   const place = ctx.root.querySelector('[data-act="place"]')
   place.className = `btn place ${ctx.side === "BUY" ? "buy" : "sell"}`
   place.textContent = `${ctx.side} ${info ? `${order.symbol} · ${order.lots || 0} lot(s)` : ""}`.trim()
