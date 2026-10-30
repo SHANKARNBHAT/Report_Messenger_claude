@@ -2,7 +2,8 @@
 // The account (capital, open positions, trade log) lives in localStorage. Python
 // sends instruments, 2H signals and prices in `data`; the simulator sends back the
 // symbols it needs prices for (state "symbols") and checks of its open positions
-// (trigger "check"), answered in data.result.
+// (trigger "check"), answered in data.result, and its closed trades not yet saved to
+// GitHub (state "unsaved"), answered with the ids saved in data.saved.
 
 const STORE = "futures_simulator_v1"
 const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/target on or off, exit style, at target, chart site, order card open
@@ -152,9 +153,11 @@ export default function (component) {
 
   noteSeen(ctx)
   applyResult(ctx, data.result)
+  noteSaved(ctx)
   fillPrice(ctx)
   render(ctx)
   syncSymbols(ctx)
+  sendUnsaved(ctx)
   // Check open positions against the bars since entry each time the page opens.
   if (first && ctx.account.positions.length) setTimeout(() => sendCheck(ctx, "auto"), 0)
 }
@@ -262,6 +265,27 @@ function quote(ctx, symbol) {
 
 // Symbols that need a price: open positions, carried-over signals and the instrument
 // in the order form.
+// The closed trades are backed up to GitHub by the Python side (manual/YYYY-MM.json on
+// the Auto trader's branch), for the reports: the ids it confirmed are kept in the account.
+function noteSaved(ctx) {
+  const saved = new Set(ctx.account.saved || [])
+  const fresh = (ctx.data.saved || []).filter((id) => !saved.has(id))
+  if (!fresh.length) return
+  latest(ctx)
+  ctx.account.saved = [...new Set([...(ctx.account.saved || []), ...fresh])]
+  saveAccount(ctx.account)
+}
+
+function sendUnsaved(ctx) {
+  const saved = new Set(ctx.account.saved || [])
+  const unsaved = ctx.account.history.filter((t) => !saved.has(t.id))
+  const key = unsaved.map((t) => t.id).join(",")
+  if (key !== ctx.sentUnsaved) {
+    ctx.sentUnsaved = key
+    ctx.setStateValue("unsaved", unsaved)
+  }
+}
+
 function syncSymbols(ctx) {
   const symbols = new Set(ctx.account.positions.map((p) => p.symbol))
   for (const s of ctx.signals) if (s.from && s.fno) symbols.add(s.symbol)
@@ -342,7 +366,8 @@ function placeOrder(ctx, order) {
     id: `${Date.now()}-${account.seq}`, symbol: order.symbol, side: order.side, lots: order.lots,
     qty: order.qty, entry: order.entry, sl: order.sl, tp: order.tp,
     tsl: order.tsl.on ? order.tsl : { on: false }, run: order.run || null, stop: order.sl, time: order.time || Date.now(),
-    source: order.source || "Manual", style: order.style || "eod", status: "open", ...signalInfo(ctx, order.symbol, order.side),
+    source: order.source || "Manual", style: order.style || "eod", status: "open",
+    high: order.entry, low: order.entry, nifty: ctx.data.nifty ?? null, ...signalInfo(ctx, order.symbol, order.side),
   })
   saveAccount(account)
 }
@@ -467,7 +492,9 @@ function closePosition(ctx, position, price, time, reason) {
     id: position.id, symbol: position.symbol, side: position.side, lots: position.lots, qty: position.qty,
     entry: position.entry, exit: price, entry_time: position.time, exit_time: time, reason,
     source: position.source, gross, charges: cost, net: gross - cost,
-    style: position.style || "eod", tp: position.tp, carried: !!position.run, passed: !!position.passed,
+    style: position.style || "eod", sl: position.sl, tp: position.tp, carried: !!position.run,
+    high: Math.max(position.high ?? position.entry, price), low: Math.min(position.low ?? position.entry, price),
+    nifty: position.nifty ?? null, passed: !!position.passed,
     strategies: position.strategies || [], timeframes: position.timeframes || [], first_seen: position.first_seen || null,
   })
   ctx.account.positions = ctx.account.positions.filter((p) => p.id !== position.id)
@@ -486,6 +513,7 @@ function applyResult(ctx, result) {
     const position = ctx.account.positions.find((p) => p.id === r.id)
     if (!position) continue
     if (r.status === "closed") {
+      if (r.high != null) Object.assign(position, { high: r.high, low: r.low })
       closePosition(ctx, position, r.exit, r.exit_time, r.reason)
       closed.push(`${position.symbol} ${r.reason}`)
     } else if (r.status === "error") {
@@ -494,6 +522,7 @@ function applyResult(ctx, result) {
       position.stop = r.stop
       position.status = r.status
       position.passed = !!r.passed
+      if (r.high != null) Object.assign(position, { high: r.high, low: r.low })
     }
   }
   saveAccount(ctx.account)
@@ -542,7 +571,8 @@ function resetAccount(ctx) {
 
 function exportCsv(ctx) {
   const columns = ["symbol", "side", "lots", "qty", "entry", "exit", "entry_time", "exit_time", "reason", "source", "gross",
-    "charges", "net", "tp", "carried", "passed", "timeframes", "strategies", "first_seen_time", "first_seen_price"]
+    "charges", "net", "style", "sl", "tp", "carried", "passed", "high", "low", "nifty", "timeframes", "strategies",
+    "first_seen_time", "first_seen_price"]
   const row = (t) => ({ ...t, timeframes: (t.timeframes || []).join("+"), strategies: (t.strategies || []).join("; "),
     first_seen_time: t.first_seen?.time ?? null, first_seen_price: t.first_seen?.price ?? null })
   const cell = (t, c) => c.endsWith("_time") ? (t[c] ? new Date(t[c]).toISOString() : "")
@@ -710,6 +740,9 @@ function groupRows(trades, key, order) {
 const winRate = (trades) => `${(100 * trades.filter((t) => t.net > 0).length / trades.length).toFixed(0)}%`
 const netSum = (trades) => trades.reduce((s, t) => s + t.net, 0)
 const sign = (t) => t.side === "BUY" ? 1 : -1
+const HOLDS = [[60, "< 1 h"], [180, "1–3 h"], [375, "3 h – same day"], [2 * 1440, "1–2 days"], [Infinity, "3+ days"]]
+const MOODS = [[-0.5, "NIFTY down > 0.5%"], [0.5, "NIFTY flat (±0.5%)"], [Infinity, "NIFTY up > 0.5%"]]
+const pct = (x) => `${x >= 0 ? "+" : ""}${x.toFixed(2)}%`
 const DELAYS = [[5, "≤ 5 min"], [15, "5–15 min"], [30, "15–30 min"], [60, "30–60 min"], [120, "1–2 h"], [Infinity, "> 2 h"]]
 
 function statTable(title, note, head, rows) {
@@ -757,6 +790,29 @@ function renderAnalysis(ctx) {
 
   const styles = groupRows(trades, (t) => ctx.data.settings.styles[t.style || "eod"], Object.values(ctx.data.settings.styles))
     .map((g) => ({ cells: [esc(g.key), ...basic(g)] }))
+  // How far trades went for and against them: best and worst price since entry, as % of entry.
+  const ranged = trades.filter((t) => t.high != null && t.low != null)
+  const best = (t) => (t.side === "BUY" ? t.high - t.entry : t.entry - t.low) / t.entry * 100
+  const worst = (t) => (t.side === "BUY" ? t.low - t.entry : t.entry - t.high) / t.entry * 100
+  const made = (t) => (t.exit - t.entry) / t.entry * 100 * sign(t)
+  const avg = (list, f) => list.reduce((s, t) => s + f(t), 0) / list.length
+  const slPct = ctx.data.settings.auto_sl_pct
+  const rangeRows = groupRows(ranged, (t) => ctx.data.settings.styles[t.style || "eod"], Object.values(ctx.data.settings.styles))
+    .map((g) => ({ cells: [esc(g.key), g.trades.length, pct(avg(g.trades, best)), pct(avg(g.trades, worst)),
+      pct(avg(g.trades, (t) => best(t) - made(t))),
+      g.trades.filter((t) => /stop loss/i.test(t.reason) && best(t) >= slPct).length] }))
+
+  const heldFor = (t) => HOLDS.find(([limit]) => (t.exit_time - t.entry_time) / 60000 <= limit)[1]
+  const holdRows = groupRows(trades, heldFor, HOLDS.map(([, label]) => label)).map((g) => ({ cells: [g.key, ...basic(g)] }))
+
+  const moodOf = (t) => MOODS.find(([limit]) => t.nifty <= limit)[1]
+  const moodRows = []
+  for (const mood of groupRows(trades.filter((t) => t.nifty != null), moodOf, MOODS.map(([, label]) => label))) {
+    moodRows.push({ cells: [`<b>${mood.key}</b>`, ...basic(mood)] })
+    for (const side of groupRows(mood.trades, (t) => t.side === "BUY" ? "Longs" : "Shorts", ["Longs", "Shorts"]))
+      moodRows.push({ sub: true, cells: [side.key, ...basic(side)] })
+  }
+
   ctx.ref("analysis").innerHTML = [
     statTable("By exit style", "Square off at 3:15 PM, or held overnight with a trailing SL after the target or until the RSI exit.",
       ["Exit style", "Trades", "Win", "Net"], styles),
@@ -768,11 +824,20 @@ function renderAnalysis(ctx) {
     statTable("Entry delay", "From when the signal was first seen (here or by the Auto trader) to the entry. Moved: " +
       "how far the price went the signal's way meanwhile; positive is a worse entry, Cost is that in ₹.",
       ["Delay", "Trades", "Win", "Net", "Moved", "Cost"], delayRows),
+    statTable("Best and worst price reached", `Since entry, as % of the entry price, the trade's way (+) and against it (−). ` +
+      `Given back: from the best to the exit. Stopped after +${slPct}%: stop losses hit after being up at least as much ` +
+      "as the SL.", ["Exit style", "Trades", "Best", "Worst", "Given back", `Stopped after +${slPct}%`], rangeRows),
+    statTable("Holding time", "From entry to exit.", ["Held", "Trades", "Win", "Net"], holdRows),
+    statTable("Market mood", "NIFTY 50's change on the day when the trade was entered.", ["NIFTY", "Trades", "Win", "Net"], moodRows),
   ].join("")
 }
 
 function renderLedger(ctx) {
   const trades = ctx.account.history
+  const saved = new Set(ctx.account.saved || [])
+  const unsaved = trades.filter((t) => !saved.has(t.id)).length
+  ctx.ref("save-note").innerHTML = ctx.data.save_error ? `<span class="neg">Not backed up: ${esc(ctx.data.save_error)}</span>`
+    : !trades.length ? "" : unsaved ? `Backing up ${unsaved} trade(s) to GitHub…` : "☁ All trades backed up to GitHub"
   const sum = (key) => trades.reduce((s, t) => s + t[key], 0)
   const wins = trades.filter((t) => t.net > 0).length
   ctx.ref("tiles").innerHTML = [

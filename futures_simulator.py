@@ -29,8 +29,11 @@ survive a refresh, but each browser has its own account.
 
 from __future__ import annotations
 
+import base64
 import calendar
 import importlib
+import json
+import time as clock
 import math
 import re
 from concurrent.futures import ThreadPoolExecutor
@@ -102,6 +105,9 @@ CHARGES = {
 # Files the Auto trader (auto_trader.py) keeps on its branch, read through the GitHub API:
 # raw.githubusercontent.com serves them up to 5 minutes old.
 DATA_URL = "https://api.github.com/repos/SHANKARNBHAT/Report_Messenger_Claude/contents/{}?ref=auto-trader-data"
+# The simulator's closed trades are saved there too, by the month they closed in (needs
+# the GITHUB_TOKEN secret with Contents: read and write); retried at most this often.
+SAVE_RETRY = 300  # seconds
 YAHOO_CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart/{}"
 BAR_SECONDS = 300  # 5-minute bars
 KEY = "futures_simulator"
@@ -161,6 +167,16 @@ def fetch_quotes(symbols: tuple[tuple[str, str], ...]) -> dict[str, dict]:
         return {symbol: q for symbol, q in pool.map(one, symbols) if q}
 
 
+@st.cache_data(ttl=60, show_spinner=False)
+def nifty_change() -> float | None:
+    """NIFTY 50's change on the day, in %, or None."""
+    try:
+        meta = yahoo_chart("^NSEI", "1d", "1d")["meta"]
+        return round((meta["regularMarketPrice"] / meta["chartPreviousClose"] - 1) * 100, 2)
+    except (requests.RequestException, ValueError, KeyError, TypeError, ZeroDivisionError):
+        return None
+
+
 def chartink_prices(dashboard: dict | None) -> dict[str, dict]:
     """symbol -> latest price and its time (ms), from the price-list widgets of the dashboard."""
     prices = {}
@@ -184,24 +200,86 @@ def latest_prices(symbols: set[str], instruments: dict[str, dict], dashboard: di
 
 
 @st.cache_data(ttl=60, show_spinner=False)
-def load_seen() -> dict:
-    """Session date -> "SYMBOL|TIMEFRAME|Bias" -> first seen time (ms) and price, from the
-    Auto trader's runs, or {} if not there."""
+def load_seen(day: date) -> dict:
+    """"SYMBOL|TIMEFRAME|Bias" -> when the Auto trader's runs first saw the signal on `day`
+    (time in ms, price), or {} if not there."""
     try:
-        response = data_file("signals_seen.json")
+        response = data_file(f"signals/{day.isoformat()}.json")
         return response.json() if response.ok else {}
     except (requests.RequestException, ValueError):
         return {}
 
 
-def data_file(name: str) -> requests.Response:
-    """A file of the Auto trader's branch, current. With the GITHUB_TOKEN secret if set:
-    the API allows 60 requests an hour without one, 5000 with."""
-    headers = {"Accept": "application/vnd.github.raw+json", "X-GitHub-Api-Version": "2022-11-28"}
+def github_headers(raw: bool = True) -> dict:
+    """With the GITHUB_TOKEN secret if set: the API allows 60 requests an hour without one, 5000 with."""
+    headers = {"Accept": "application/vnd.github.raw+json" if raw else "application/vnd.github+json",
+               "X-GitHub-Api-Version": "2022-11-28"}
     token = st.secrets.get("GITHUB_TOKEN", "").strip() if st.secrets.load_if_toml_exists() else ""
     if token:
         headers["Authorization"] = f"Bearer {token}"
-    return requests.get(DATA_URL.format(name), headers=headers, timeout=15)
+    return headers
+
+
+def data_file(name: str) -> requests.Response:
+    """A file of the Auto trader's branch, current."""
+    return requests.get(DATA_URL.format(name), headers=github_headers(), timeout=15)
+
+
+def save_trades(trades: list[dict]) -> tuple[list[str], str | None]:
+    """Add the simulator's closed trades to manual/YYYY-MM.json on the Auto trader's branch.
+    Returns the ids saved (or there already) and an error message, if any."""
+    by_month: dict[str, list[dict]] = {}
+    for trade in trades:
+        month = datetime.fromtimestamp(trade["exit_time"] / 1000, IST).strftime("%Y-%m")
+        by_month.setdefault(month, []).append(trade)
+    saved = []
+    for month, new in by_month.items():
+        url = DATA_URL.format(f"manual/{month}.json").split("?")[0]
+        for _ in range(3):  # the file can change between reading and writing it
+            try:
+                found = requests.get(url, params={"ref": "auto-trader-data"}, headers=github_headers(raw=False),
+                                     timeout=15)
+                sha, current = None, []
+                if found.ok:
+                    sha = found.json()["sha"]
+                    current = json.loads(data_file(f"manual/{month}.json").text)
+                elif found.status_code != 404:
+                    return saved, f"GitHub answered {found.status_code}: {found.json().get('message', found.text)}"
+                known = {t["id"] for t in current}
+                merged = current + [t for t in new if t["id"] not in known]
+                body = {"message": f"Simulator: {len(merged) - len(current)} trade(s) closed in {month}",
+                        "branch": "auto-trader-data",
+                        "content": base64.b64encode(json.dumps(merged, indent=1).encode()).decode()}
+                if sha:
+                    body["sha"] = sha
+                if len(merged) == len(current):
+                    saved += [t["id"] for t in new]
+                    break
+                put = requests.put(url, json=body, headers=github_headers(raw=False), timeout=15)
+            except (requests.RequestException, ValueError, KeyError) as exc:
+                return saved, f"Could not reach GitHub: {exc}"
+            if put.ok:
+                saved += [t["id"] for t in new]
+                break
+            if put.status_code not in (409, 422):  # 409/422: changed meanwhile, try again
+                message = put.json().get("message", put.text) if put.text else put.reason
+                if put.status_code in (401, 403, 404):
+                    message += (" The GITHUB_TOKEN secret needs Contents: Read and write on the repository "
+                                "to back up the trades.")
+                return saved, f"GitHub answered {put.status_code}: {message}"
+    return saved, None
+
+
+def back_up_trades(trades: list[dict]) -> tuple[list[str], str | None]:
+    """Save the closed trades the simulator has not seen saved; the ids saved this session."""
+    done = st.session_state.setdefault("_trades_saved", set())
+    todo = [t for t in trades if isinstance(t, dict) and t.get("id") and t["id"] not in done]
+    last = st.session_state.get("_trades_tried", 0)
+    if todo and (not st.session_state.get("_trades_error") or clock.time() - last > SAVE_RETRY):
+        st.session_state["_trades_tried"] = clock.time()
+        ids, st.session_state["_trades_error"] = save_trades(todo)
+        done.update(ids)
+    return sorted(done), st.session_state.get("_trades_error")
 
 
 def load_dashboard() -> tuple[dict | None, str | None]:
@@ -261,6 +339,7 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
     price by run["trail"] in jumps of run["step"], and "passed" is set.
     With `settle`, a position whose session is not over closes at the latest price
     (not a held one).
+    Also the highest and lowest price since the entry ("high", "low"; up to the exit).
     """
     long = position["side"] == "BUY"
     entry = float(position["entry"])
@@ -271,10 +350,12 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
     run = position.get("run") or {}
     run_trail, run_step = float(run.get("trail") or 0), float(run.get("step") or 0)
     entered = datetime.fromtimestamp(position["time"] / 1000, IST)
+    high = low = entry
 
     def closed(price, when, reason):
         return {"id": position["id"], "status": "closed", "exit": round(float(price), 2),
-                "exit_time": int(when * 1000), "reason": reason, "stop": stop}
+                "exit_time": int(when * 1000), "reason": reason, "stop": stop,
+                "high": round(max(high, price), 2), "low": round(min(low, price), 2)}
 
     def day_of(bar):
         return datetime.fromtimestamp(bar[0], IST).date()
@@ -292,22 +373,22 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
     if day is None:  # no trading since the entry
         if settle and latest:
             return closed(latest, now.timestamp(), "Settled at LTP")
-        return {"id": position["id"], "status": "waiting", "stop": stop}
+        return {"id": position["id"], "status": "waiting", "stop": stop, "high": high, "low": low}
 
     held = position.get("style") in HELD
     if held:
         day = expiry_after(day)  # entered on an expiry day: next month's contract
     cutoff = datetime.combine(day, SQUARE_OFF, IST).timestamp()
     anchor, trailed, passed = entry, False, False
-    for start, open_, high, low, close in (bar for bar in later if bar[0] < cutoff):
+    for start, open_, bar_high, bar_low, close in (bar for bar in later if bar[0] < cutoff):
         if stop is not None:
             gap = open_ <= stop if long else open_ >= stop
-            if gap or (low <= stop if long else high >= stop):
+            if gap or (bar_low <= stop if long else bar_high >= stop):
                 reason = "TSL after target" if passed else "Trailing SL" if trailed else "Stop loss"
                 return closed(open_ if gap else stop, start, reason)
         if target is not None:
             gap = open_ >= target if long else open_ <= target
-            if gap or (high >= target if long else low <= target):
+            if gap or (bar_high >= target if long else bar_low <= target):
                 hit = open_ if gap else target
                 if run_trail <= 0 or run_step <= 0:
                     return closed(hit, start, "Target")
@@ -317,9 +398,10 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
                 level = round(anchor - trail if long else anchor + trail, 2)
                 if stop is None or (level > stop if long else level < stop):
                     stop, trailed = level, True
+        high, low = max(high, bar_high), min(low, bar_low)
         if trailing:
             # Every full jump step the price moves in favour, the stop follows at `trail` behind.
-            move = high - anchor if long else anchor - low
+            move = bar_high - anchor if long else anchor - bar_low
             if move >= step:
                 anchor += math.floor(move / step) * step * (1 if long else -1)
                 level = round(anchor - trail if long else anchor + trail, 2)
@@ -333,7 +415,8 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
     if settle and not held:
         recent = [bar for bar in later if bar[0] < cutoff]
         return closed(latest or (recent[-1][4] if recent else entry), now.timestamp(), "Settled at LTP")
-    return {"id": position["id"], "status": "open", "stop": stop, "passed": passed}
+    return {"id": position["id"], "status": "open", "stop": stop, "passed": passed,
+            "high": round(high, 2), "low": round(low, 2)}
 
 
 def run_check() -> None:
@@ -380,7 +463,8 @@ def check_positions(positions: list[dict], now: datetime, settle: bool) -> list[
         crossed = rsi_exit(position, dashboard) if result["status"] == "open" else None
         if crossed and latest:
             result = {"id": position["id"], "status": "closed", "exit": round(float(latest), 2),
-                      "exit_time": int(now.timestamp() * 1000), "reason": crossed, "stop": result["stop"]}
+                      "exit_time": int(now.timestamp() * 1000), "reason": crossed, "stop": result["stop"],
+                      "high": max(result["high"], latest), "low": min(result["low"], latest)}
         results.append(result)
     return results
 
@@ -506,11 +590,12 @@ def main() -> None:
         found = bars.get((by_symbol[signal["symbol"]]["yahoo"], "5d")) if signal["fno"] else None
         signal["open"] = candle_open(signal["timeframe"], found, now) if isinstance(found, list) else None
     # When the Auto trader first saw each signal; the page adds when it first saw them itself.
-    seen = load_seen().get(now.date().isoformat(), {})
+    seen = load_seen(now.date())
     for signal in signals:
         first = seen.get(f"{signal['symbol']}|{signal['timeframe']}|{signal['bias']}")
         signal["seen"] = first and {"time": first["time"], "price": first.get("price")}
 
+    saved, save_error = back_up_trades(component_value("unsaved") or [])
     _SIMULATOR(
         key=KEY,
         data={
@@ -519,6 +604,8 @@ def main() -> None:
             "signals_note": signals_note,
             "session_date": session.isoformat(),
             "quotes": quotes,
+            "nifty": nifty_change(),
+            "saved": saved, "save_error": save_error,
             "result": st.session_state.get(RESULT),
             "timeframes": list(TIMEFRAMES),
             "charts": chart_links(),
@@ -531,6 +618,7 @@ def main() -> None:
         },
         on_check_change=run_check,
         on_symbols_change=lambda: None,
+        on_unsaved_change=lambda: None,
         width="stretch",
     )
 

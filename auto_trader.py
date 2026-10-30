@@ -1,6 +1,6 @@
 """
 Auto trader: paper-trades every Chartink signal on the 2H, 4H and Daily
-timeframes, intraday, without the simulator page open.
+timeframes without the simulator page open.
 
 .github/workflows/auto_trader.yml runs it every 15 minutes in market hours. Each run:
   * replays the open positions on the 5-minute bars since entry, closing those that
@@ -21,12 +21,15 @@ started one in the last PAGE_QUIET minutes. When it is closed, the scheduled run
 trade as above, or with "unattended" off (a switch on the page) only close
 positions and take no new signals.
 
-Each run in market hours also notes when a signal (stock, timeframe, bias) was first
-seen and its price then, in signals_seen.json beside the account: trades keep it as
-"first_seen", to measure what entering later than that cost (the simulator reads it too).
-
-The account is kept in auto_trades.json on the auto-trader-data branch, so its
-updates stay out of main.
+Its files, in the folder of ACCOUNT.json (the auto-trader-data branch, out of main),
+split so that each run changes little:
+  auto_trades.json         the account: open positions, settings, the run log
+  trades/YYYY-MM.json      closed trades, by the month they closed in
+  signals/YYYY-MM-DD.json  each signal (stock, timeframe, bias) seen that day: when it
+                           was first and last seen, its price when first seen, and what
+                           was done with it (traded, or why not). Trades keep the first
+                           sighting as "first_seen", to measure the cost of entering later.
+  manual/YYYY-MM.json      the simulator's closed trades (written by the simulator page)
 
     python auto_trader.py ACCOUNT.json [--action ACTION] [--position ID] [--scheduled]
 """
@@ -46,7 +49,6 @@ SHORT = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily"}
 LOTS = 1
 LAST_ENTRY = time(15, 0)  # no new trades after this, ahead of the 3:15 PM square-off
 SESSION_CLOSE = time(15, 30)
-SEEN_DAYS = 10  # sessions kept in signals_seen.json
 PAGE_QUIET = 12  # minutes: scheduled runs skip while the page started a run this recently
 ACTIONS = ["run", "trail", "untrail", "exit", "unattended-on", "unattended-off", "test-chartink"]
 
@@ -66,45 +68,92 @@ def charges(buy_value: float, sell_value: float) -> float:
     return brokerage + exchange + sebi + stt + stamp + (brokerage + exchange + sebi) * rates["gst"]
 
 
-def load(path: Path) -> dict:
-    if path.exists():
-        return json.loads(path.read_text(encoding="utf-8"))
-    return {"capital": fs.START_CAPITAL, "positions": [], "history": [], "seq": 0, "log": []}
+class Files:
+    """The JSON files beside the account, read once and written back if changed."""
+
+    def __init__(self, folder: Path):
+        self.folder, self.data, self.changed = folder, {}, set()
+
+    def get(self, name: str, default):
+        if name not in self.data:
+            path = self.folder / name
+            self.data[name] = json.loads(path.read_text(encoding="utf-8")) if path.exists() else default
+        return self.data[name]
+
+    def save(self) -> None:
+        for name in self.changed:
+            path = self.folder / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(json.dumps(self.data[name], indent=None if name.startswith("signals/") else 1),
+                            encoding="utf-8")
+
+
+def month_of(ms: int) -> str:
+    return datetime.fromtimestamp(ms / 1000, fs.IST).strftime("%Y-%m")
+
+
+def trades_of(files: Files, month: str) -> list[dict]:
+    return files.get(f"trades/{month}.json", [])
+
+
+def load(files: Files, name: str) -> dict:
+    account = files.data[name] = files.get(name, None) or {
+        "capital": fs.START_CAPITAL, "positions": [], "seq": 0, "log": []}
+    # Accounts from before the monthly trade files kept their trades in "history".
+    for trade in account.pop("history", []):
+        trades_of(files, month_of(trade["exit_time"])).append(trade)
+        files.changed.add(f"trades/{month_of(trade['exit_time'])}.json")
+    return account
 
 
 def signal_key(signal: dict) -> str:
     return f"{signal['symbol']}|{signal['timeframe']}|{signal['bias']}"
 
 
-def record_seen(seen: dict, signals: list[dict], dashboard: dict, now: datetime) -> dict:
-    """Note the signals seen for the first time today, with the time and price; returns today's."""
-    today = seen.setdefault(now.date().isoformat(), {})
-    new = [s for s in signals if signal_key(s) not in today]
+def record_seen(seen: dict, signals: list[dict], dashboard: dict, now: datetime) -> None:
+    """Note each signal of today: first seen (time, price) and last seen."""
+    now_ms = int(now.timestamp() * 1000)
+    new = [s for s in signals if signal_key(s) not in seen]
+    quotes = {}
     if new:
         instruments = {i["symbol"]: i for i in fs.load_instruments()}
         quotes = fs.latest_prices({s["symbol"] for s in new}, instruments, dashboard)
-        for signal in new:
-            today[signal_key(signal)] = {"time": int(now.timestamp() * 1000), "strategy": signal["strategy"],
-                                         "price": (quotes.get(signal["symbol"]) or {}).get("price")}
-    for day in sorted(seen)[:-SEEN_DAYS]:
-        del seen[day]
-    return today
+    for signal in signals:
+        entry = seen.setdefault(signal_key(signal), {
+            "symbol": signal["symbol"], "timeframe": signal["timeframe"], "bias": signal["bias"],
+            "strategy": signal["strategy"], "fno": signal["fno"], "time": now_ms,
+            "price": (quotes.get(signal["symbol"]) or {}).get("price"), "status": None})
+        entry["last"] = now_ms
 
 
-def close(account: dict, position: dict, price: float, when_ms: int, reason: str) -> None:
+def mark(seen: dict, signals: list[dict], status: str) -> None:
+    """What was done with signals: kept once traded."""
+    for signal in signals:
+        entry = seen.get(signal_key(signal))
+        if entry and not (entry.get("status") or "").startswith("Traded"):
+            entry["status"] = status
+
+
+def close(files: Files, account: dict, position: dict, price: float, when_ms: int, reason: str,
+          high: float | None = None, low: float | None = None) -> None:
     qty = position["qty"]
     buy, sell = (position["entry"], price) if position["side"] == "BUY" else (price, position["entry"])
     gross = (sell - buy) * qty
     cost = charges(buy * qty, sell * qty)
-    account["history"].append({
+    high = max(high or position.get("high") or position["entry"], price)
+    low = min(low or position.get("low") or position["entry"], price)
+    trades_of(files, month_of(when_ms)).append({
         "id": position["id"], "symbol": position["symbol"], "side": position["side"], "lots": position["lots"],
         "qty": qty, "entry": position["entry"], "exit": round(price, 2), "entry_time": position["time"],
         "exit_time": when_ms, "reason": reason, "source": position["source"], "timeframes": position["timeframes"],
-        "style": position.get("style", "eod"), "passed": position.get("passed", False), "carried": bool(position.get("run")), "tp": position["tp"],
+        "style": position.get("style", "eod"), "passed": position.get("passed", False),
+        "carried": bool(position.get("run")), "sl": position["sl"], "tp": position["tp"],
+        "high": round(high, 2), "low": round(low, 2), "nifty": position.get("nifty"),
         "strategies": position.get("strategies", []), "first_seen": position.get("first_seen"),
         "agrees": position.get("agrees"), "gross": round(gross, 2), "charges": round(cost, 2),
         "net": round(gross - cost, 2),
     })
+    files.changed.add(f"trades/{month_of(when_ms)}.json")
     account["positions"].remove(position)
 
 
@@ -113,7 +162,7 @@ def auto_run(entry: float) -> dict:
     return {"trail": tick(entry * fs.AUTO_TRAIL_PCT / 100), "step": tick(entry * fs.AUTO_STEP_PCT / 100)}
 
 
-def apply_request(account: dict, action: str, position_id: str, now: datetime, note) -> None:
+def apply_request(files: Files, account: dict, action: str, position_id: str, now: datetime, note) -> None:
     position = next((p for p in account["positions"] if p["id"] == position_id), None)
     if position is None:
         note(f"{action}: no open position {position_id}")
@@ -136,23 +185,26 @@ def apply_request(account: dict, action: str, position_id: str, now: datetime, n
         if not quote:
             note(f"{position['symbol']}: no price to exit at")
             return
-        close(account, position, tick(quote["price"]), int(now.timestamp() * 1000), "Manual exit")
+        close(files, account, position, tick(quote["price"]), int(now.timestamp() * 1000), "Manual exit")
         note(f"{position['symbol']}: exited at {tick(quote['price'])}")
 
 
-def settle(account: dict, now: datetime, note) -> None:
-    """Close the positions that hit their SL, trailing SL or target, or the 3:15 PM square-off."""
+def settle(files: Files, account: dict, now: datetime, note) -> None:
+    """Close the positions that hit their SL, trailing SL or target, the 3:15 PM square-off,
+    expiry or their RSI exit; note the highest and lowest price of the others."""
     if not account["positions"]:
         return
     for result in fs.check_positions(account["positions"], now, settle=False):
         position = next(p for p in account["positions"] if p["id"] == result["id"])
         if result["status"] == "closed":
-            close(account, position, result["exit"], result["exit_time"], result["reason"])
-            note(f"{position['symbol']}: {result['reason']} at {result['exit']}")
+            close(files, account, position, result["exit"], result["exit_time"], result["reason"],
+                  result.get("high"), result.get("low"))
+            note(f"{position['symbol']}: {result['reason']} at {result['exit']} ({fs.STYLES[position['style']]})")
         elif result["status"] == "error":
             note(f"{position['symbol']}: no bars ({result['error']})")
         else:
-            position.update(stop=result["stop"], status=result["status"], passed=result.get("passed", False))
+            position.update(stop=result["stop"], status=result["status"], passed=result.get("passed", False),
+                            high=result.get("high"), low=result.get("low"))
 
 
 def test_chartink(note) -> None:
@@ -187,36 +239,52 @@ def market_open(now: datetime) -> bool:
     return isinstance(bars, list) and bool(bars) and datetime.fromtimestamp(bars[-1][0], fs.IST).date() == now.date()
 
 
-def enter_signals(account: dict, signals: list[dict], dashboard: dict, seen: dict, now: datetime, note) -> None:
+def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: dict, seen: dict, now: datetime,
+                  trading: bool, note) -> None:
+    """Trade the signals, and note in `seen` what was done with each."""
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    mark(seen, [s for s in signals if not s["fno"]], "Not F&O")
+    mark(seen, [s for s in signals if s["fno"] and s["timeframe"] not in TIMEFRAMES], "Timeframe not traded")
     by_symbol: dict[str, list[dict]] = {}
     for signal in signals:
         if signal["timeframe"] in TIMEFRAMES and signal["fno"]:
             by_symbol.setdefault(signal["symbol"], []).append(signal)
+    if not trading:
+        mark(seen, [s for found in by_symbol.values() for s in found], "Not traded: switch off, page closed")
+        return
+    if now.time() >= LAST_ENTRY:
+        mark(seen, [s for found in by_symbol.values() for s in found], "After 3:00 PM")
+        return
 
     today = now.date()
+    entered_today = [t for t in trades_of(files, now.strftime("%Y-%m"))
+                     if datetime.fromtimestamp(t["entry_time"] / 1000, fs.IST).date() == today]
     def taken(symbol, side, style):
         """Open in this style, or entered today in it."""
         return any(p["symbol"] == symbol and p.get("style", "eod") == style for p in account["positions"]) or any(
-            t["symbol"] == symbol and t["side"] == side and t.get("style", "eod") == style
-            and datetime.fromtimestamp(t["entry_time"] / 1000, fs.IST).date() == today for t in account["history"])
+            t["symbol"] == symbol and t["side"] == side and t.get("style", "eod") == style for t in entered_today)
 
     wanted = {}
     for symbol, found in by_symbol.items():
         biases = {s["bias"] for s in found}
         if len(biases) > 1:
-            continue  # bullish on one timeframe, bearish on another
+            mark(seen, found, "Mixed: bullish and bearish")
+            continue
         side = "BUY" if biases == {"Bullish"} else "SELL"
         styles = [style for style in fs.STYLES if not taken(symbol, side, style)]
         if styles:
             wanted[symbol] = (side, found, styles)
+        else:
+            mark(seen, found, "Already traded or open")
     if not wanted:
         return
 
     quotes = fs.latest_prices(set(wanted), instruments, dashboard)
+    nifty = fs.nifty_change()
     for symbol, (side, found, styles) in sorted(wanted.items()):
         quote = quotes.get(symbol)
         if not quote:
+            mark(seen, found, "No price")
             note(f"{symbol}: no price, skipped")
             continue
         entry, qty = tick(quote["price"]), LOTS * instruments[symbol]["lot"]
@@ -232,10 +300,12 @@ def enter_signals(account: dict, signals: list[dict], dashboard: dict, seen: dic
                 "qty": qty, "entry": entry, "sl": sl, "tp": None if style == "rsi" else tp, "tsl": {"on": False},
                 "run": auto_run(entry) if style == "trail" else None, "style": style,
                 "stop": sl, "time": int(now.timestamp() * 1000), "status": "open", "passed": False,
+                "high": entry, "low": entry, "nifty": nifty,
                 "source": "Auto " + "+".join(SHORT[tf] for tf in timeframes), "timeframes": timeframes,
                 "strategies": sorted({s["strategy"] for s in found}), "agrees": found[0]["agrees"],
                 "first_seen": first and {"time": first["time"], "price": first["price"]},
             })
+        mark(seen, found, "Traded")
         note(f"{symbol}: {side} {qty} at {entry} ({', '.join(timeframes)}; {', '.join(styles)})")
 
 
@@ -247,7 +317,8 @@ def main() -> None:
     parser.add_argument("--scheduled", action="store_true", help="a run of the schedule, not one the page started")
     args = parser.parse_args()
 
-    account = load(args.account)
+    files, name = Files(args.account.parent), args.account.name
+    account = load(files, name)
     now = datetime.now(fs.IST)
     now_ms = int(now.timestamp() * 1000)
     if args.scheduled and now_ms - account.get("page_run", 0) < PAGE_QUIET * 60_000:
@@ -264,22 +335,20 @@ def main() -> None:
     elif args.action == "test-chartink":
         test_chartink(note)
     elif args.action != "run":
-        apply_request(account, args.action, args.position, now, note)
+        apply_request(files, account, args.action, args.position, now, note)
     if not args.scheduled:
         account["page_run"] = now_ms
-    settle(account, now, note)
-    seen_path = args.account.with_name("signals_seen.json")
+    settle(files, account, now, note)
     if args.action == "run" and market_open(now):
         dashboard, error = fs.load_dashboard()
         if dashboard:
             signals, _ = fs.signal_rows(dashboard, {i["symbol"]: i for i in fs.load_instruments()})
-            seen = json.loads(seen_path.read_text(encoding="utf-8")) if seen_path.exists() else {}
-            today = record_seen(seen, signals, dashboard, now)
-            seen_path.parent.mkdir(parents=True, exist_ok=True)
-            seen_path.write_text(json.dumps(seen), encoding="utf-8")
+            day_file = f"signals/{now.date().isoformat()}.json"
+            seen = files.get(day_file, {})
+            record_seen(seen, signals, dashboard, now)
             trading = not args.scheduled or account.get("unattended", True)
-            if trading and now.time() < LAST_ENTRY:
-                enter_signals(account, signals, dashboard, today, now, note)
+            enter_signals(files, account, signals, dashboard, seen, now, trading, note)
+            files.changed.add(day_file)
         else:
             note(f"No signals: {error}")
 
@@ -288,9 +357,9 @@ def main() -> None:
     account["updated"] = now_ms
     # The last runs' notes, newest first, shown on the Auto trader page.
     stamp = now.strftime("%d %b %H:%M")
-    account["log"] = ([f"{stamp}  {line}" for line in reversed(lines)] + account.get("log", []))[:200]
-    args.account.parent.mkdir(parents=True, exist_ok=True)
-    args.account.write_text(json.dumps(account, indent=1), encoding="utf-8")
+    account["log"] = ([f"{stamp}  {line}" for line in reversed(lines)] + account.get("log", []))[:300]
+    files.changed.add(name)
+    files.save()
 
 
 if __name__ == "__main__":
