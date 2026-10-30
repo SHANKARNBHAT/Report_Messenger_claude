@@ -99,9 +99,9 @@ CHARGES = {
     "gst": 0.18,                  # on brokerage, exchange and SEBI charges
 }
 
-# When the Auto trader runs (auto_trader.py) first saw each signal, and its price then.
-SEEN_URL = ("https://raw.githubusercontent.com/SHANKARNBHAT/Report_Messenger_Claude/auto-trader-data/"
-            "signals_seen.json")
+# Files the Auto trader (auto_trader.py) keeps on its branch, read through the GitHub API:
+# raw.githubusercontent.com serves them up to 5 minutes old.
+DATA_URL = "https://api.github.com/repos/SHANKARNBHAT/Report_Messenger_Claude/contents/{}?ref=auto-trader-data"
 YAHOO_CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart/{}"
 BAR_SECONDS = 300  # 5-minute bars
 KEY = "futures_simulator"
@@ -185,13 +185,23 @@ def latest_prices(symbols: set[str], instruments: dict[str, dict], dashboard: di
 
 @st.cache_data(ttl=60, show_spinner=False)
 def load_seen() -> dict:
-    """Session date -> "SYMBOL|TIMEFRAME|Bias" -> first seen time (ms) and price, or {} if not there."""
+    """Session date -> "SYMBOL|TIMEFRAME|Bias" -> first seen time (ms) and price, from the
+    Auto trader's runs, or {} if not there."""
     try:
-        # A changing query string skips GitHub's ~5 minute raw-file cache.
-        response = requests.get(SEEN_URL, params={"t": int(datetime.now().timestamp()) // 60}, timeout=10)
+        response = data_file("signals_seen.json")
         return response.json() if response.ok else {}
     except (requests.RequestException, ValueError):
         return {}
+
+
+def data_file(name: str) -> requests.Response:
+    """A file of the Auto trader's branch, current. With the GITHUB_TOKEN secret if set:
+    the API allows 60 requests an hour without one, 5000 with."""
+    headers = {"Accept": "application/vnd.github.raw+json", "X-GitHub-Api-Version": "2022-11-28"}
+    token = st.secrets.get("GITHUB_TOKEN", "").strip() if st.secrets.load_if_toml_exists() else ""
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    return requests.get(DATA_URL.format(name), headers=headers, timeout=15)
 
 
 def load_dashboard() -> tuple[dict | None, str | None]:

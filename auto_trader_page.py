@@ -24,7 +24,6 @@ import futures_simulator as fs
 from chartink_dashboard import MY_LAYOUT
 
 GITHUB_OWNER, GITHUB_REPO = "SHANKARNBHAT", "Report_Messenger_Claude"
-ACCOUNT_URL = f"https://raw.githubusercontent.com/{GITHUB_OWNER}/{GITHUB_REPO}/auto-trader-data/auto_trades.json"
 DISPATCH_URL = (f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/actions/workflows/"
                 "auto_trader.yml/dispatches")
 RUNS_URL = f"https://github.com/{GITHUB_OWNER}/{GITHUB_REPO}/actions/workflows/auto_trader.yml"
@@ -40,8 +39,7 @@ REQUESTS = {
 @st.cache_data(ttl=30, show_spinner=False)
 def load_account() -> tuple[dict | None, str | None]:
     try:
-        # A changing query string skips GitHub's ~5 minute raw-file cache.
-        response = requests.get(ACCOUNT_URL, params={"t": int(time.time())}, timeout=15)
+        response = fs.data_file("auto_trades.json")
         if response.status_code == 404:
             return None, "No trades yet: the first scheduled run in market hours starts the account."
         response.raise_for_status()
