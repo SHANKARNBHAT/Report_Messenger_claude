@@ -57,5 +57,6 @@ The app has three pages, switched from the menu at the top:
   Run EOD settlement: a trade that touched its SL, trailing SL or target closes
   there, the rest at 3:15 PM IST. Settled trades are charged estimated brokerage,
   STT, exchange fees, stamp duty and GST. The account is saved in the browser
-  (localStorage), so each browser has its own. Margin, auto SL/target and charge
-  rates are set at the top of `futures_simulator.py`.
+  (localStorage), so each browser has its own open positions and capital; closed
+  trades are saved to GitHub and show in the ledger of every browser. Margin, auto
+  SL/target and charge rates are set at the top of `futures_simulator.py`.

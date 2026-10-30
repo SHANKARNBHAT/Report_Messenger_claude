@@ -3,7 +3,8 @@
 // sends instruments, 2H signals and prices in `data`; the simulator sends back the
 // symbols it needs prices for (state "symbols") and checks of its open positions
 // (trigger "check"), answered in data.result, and its closed trades not yet saved to
-// GitHub (state "unsaved"), answered with the ids saved in data.saved.
+// GitHub (state "unsaved"), answered with the ids saved in data.saved. The trades saved
+// by any browser come back in data.backup and join the trade log.
 
 const STORE = "futures_simulator_v1"
 const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/target on or off, exit style, at target, chart site, order card open
@@ -155,6 +156,7 @@ export default function (component) {
   noteSeen(ctx)
   applyResult(ctx, data.result)
   noteSaved(ctx)
+  restoreTrades(ctx)
   fillPrice(ctx)
   render(ctx)
   syncSymbols(ctx)
@@ -274,6 +276,20 @@ function noteSaved(ctx) {
   if (!fresh.length) return
   latest(ctx)
   ctx.account.saved = [...new Set([...(ctx.account.saved || []), ...fresh])]
+  saveAccount(ctx.account)
+}
+
+// Closed trades another browser saved join this one's log, unless they are from before
+// this account was reset.
+function restoreTrades(ctx) {
+  if (!ctx.data.backup.length) return
+  latest(ctx)
+  const known = new Set(ctx.account.history.map((t) => t.id))
+  const since = ctx.account.reset_at || 0
+  const fresh = ctx.data.backup.filter((t) => !known.has(t.id) && t.exit_time > since)
+  if (!fresh.length) return
+  ctx.account.history = [...ctx.account.history, ...fresh].sort((a, b) => a.exit_time - b.exit_time)
+  ctx.account.saved = [...new Set([...(ctx.account.saved || []), ...fresh.map((t) => t.id)])]
   saveAccount(ctx.account)
 }
 
@@ -582,8 +598,8 @@ function toggleRun(ctx, id) {
 
 function resetAccount(ctx) {
   const capital = num(ctx.ref("capital").value) ?? ctx.data.settings.start_capital
-  if (!confirm(`Reset the account to ${inr(capital, 0)}? Open positions and the trade log are deleted.`)) return
-  ctx.account = freshAccount(capital)
+  if (!confirm(`Reset the account to ${inr(capital, 0)}? Open positions and the trade log are deleted in this browser.`)) return
+  ctx.account = { ...freshAccount(capital), reset_at: Date.now() }
   saveAccount(ctx.account)
   render(ctx)
   syncSymbols(ctx)

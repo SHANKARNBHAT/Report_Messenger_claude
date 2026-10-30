@@ -24,7 +24,8 @@ level, and one still open at 3:15 PM closes at the 3:15 PM price. "Run EOD
 settlement" also closes, at the latest price, positions whose session is not over.
 
 Positions, capital and trade history are kept in the browser (localStorage): they
-survive a refresh, but each browser has its own account.
+survive a refresh, but each browser has its own account. Closed trades are also saved
+to GitHub and added to the trade log of every browser, so the ledger is the same on each.
 """
 
 from __future__ import annotations
@@ -269,6 +270,25 @@ def save_trades(trades: list[dict], folder: str = "manual") -> tuple[list[str], 
                                 "to back up the trades.")
                 return saved, f"GitHub answered {put.status_code}: {message}"
     return saved, None
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def load_backup() -> list[dict]:
+    """The closed trades saved by any browser (manual/ on the Auto trader's branch), or [] if unreachable."""
+    try:
+        found = requests.get(DATA_URL.format("manual"), headers=github_headers(raw=False), timeout=15)
+        if found.status_code == 404:
+            return []
+        found.raise_for_status()
+        trades = []
+        for item in found.json():
+            if item["name"].endswith(".json"):
+                response = data_file(item["path"])
+                response.raise_for_status()
+                trades += response.json()
+        return trades
+    except (requests.RequestException, ValueError, KeyError):
+        return []
 
 
 def back_up_trades(trades: list[dict]) -> tuple[list[str], str | None]:
@@ -614,6 +634,7 @@ def main() -> None:
             "quotes": quotes,
             "nifty": nifty_change(),
             "saved": saved, "save_error": save_error,
+            "backup": load_backup(),
             "result": st.session_state.get(RESULT),
             "timeframes": list(TIMEFRAMES),
             "charts": chart_links(),
