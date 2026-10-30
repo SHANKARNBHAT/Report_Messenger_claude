@@ -652,7 +652,7 @@ function renderLedger(ctx) {
   ctx.ref("history").innerHTML = `<tr><th>Exit</th><th>Symbol</th><th>Side</th><th class="r">Qty</th>
     <th class="r">Entry</th><th class="r">Exit price</th><th>Reason</th><th class="r">Gross</th>
     <th class="r">Charges</th><th class="r">Net</th></tr>` + (trades.length ? trades.slice().reverse().map((t) => `
-    <tr><td>${when(t.exit_time)}</td><td><b>${esc(t.symbol)}</b><div class="muted small">${esc(t.source)}</div></td>
+    <tr><td>${when(t.exit_time)}</td><td>${symbolLink(ctx, t.symbol)}<div class="muted small">${esc(t.source)}</div></td>
       <td><span class="pill ${t.side === "BUY" ? "long" : "short"}">${t.side === "BUY" ? "LONG" : "SHORT"}</span></td>
       <td class="r">${t.qty.toLocaleString("en-IN")}</td><td class="r">${inr(t.entry)}</td><td class="r">${inr(t.exit)}</td>
       <td>${esc(t.reason)}</td><td class="r">${signed(t.gross)}</td><td class="r">${inr(t.charges)}</td>

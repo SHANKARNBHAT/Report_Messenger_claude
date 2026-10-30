@@ -8,13 +8,14 @@ on:
     - cron: '52 3 * * 1-5'            # 9:22 AM IST
     - cron: '7,22,37,52 4-9 * * 1-5'  # 9:37 AM to 3:22 PM IST
     - cron: '13,43 10 * * 1-5'        # 3:43 and 4:13 PM IST
-  # Also started by the Auto trader page, for a request on one position.
+  # Also started by the Auto trader page: every few minutes while it is open (the
+  # scheduled runs then skip), and for a request on a position or a setting.
   workflow_dispatch:
     inputs:
       action:
         description: run, or a request on one position
         type: choice
-        options: [run, trail, untrail, exit]
+        options: [run, trail, untrail, exit, unattended-on, unattended-off]
         default: run
       position:
         description: Position id (for trail, untrail and exit)
@@ -56,14 +57,15 @@ jobs:
         env:
           ACTION: ${{ inputs.action || 'run' }}
           POSITION: ${{ inputs.position }}
+          SCHEDULED: ${{ github.event_name == 'schedule' && '--scheduled' || '' }}
         run: |
-          python auto_trader.py data/auto_trades.json --action "$ACTION" --position "$POSITION"
+          python auto_trader.py data/auto_trades.json --action "$ACTION" --position "$POSITION" $SCHEDULED
 
       - name: Save the account
         working-directory: data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add auto_trades.json
+          git add -A
           git commit -q -m "Auto trader: ${{ inputs.action || 'run' }} $(TZ=Asia/Kolkata date '+%d %b %H:%M') IST" || exit 0
           git push origin auto-trader-data

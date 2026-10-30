@@ -13,10 +13,16 @@ timeframes, intraday, without the simulator page open.
   * applies a request from the Auto trader page (auto_trader_page.py): keep a
     position going past its target with a trailing SL, exit at the target, or exit now
 
+While the Auto trader page is open it starts a run every few minutes itself, on
+time, and the scheduled runs (--scheduled) stay quiet: they skip while the page
+started one in the last PAGE_QUIET minutes. When it is closed, the scheduled runs
+trade as above, or with "unattended" off (a switch on the page) only close
+positions and take no new signals.
+
 The account is kept in auto_trades.json on the auto-trader-data branch, so its
 updates stay out of main.
 
-    python auto_trader.py ACCOUNT.json [--action run|trail|untrail|exit] [--position ID]
+    python auto_trader.py ACCOUNT.json [--action ACTION] [--position ID] [--scheduled]
 """
 
 from __future__ import annotations
@@ -32,6 +38,8 @@ TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY")
 SHORT = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily"}
 LOTS = 1
 LAST_ENTRY = time(15, 0)  # no new trades after this, ahead of the 3:15 PM square-off
+PAGE_QUIET = 12  # minutes: scheduled runs skip while the page started a run this recently
+ACTIONS = ["run", "trail", "untrail", "exit", "unattended-on", "unattended-off"]
 
 
 def tick(price: float) -> float:
@@ -177,26 +185,37 @@ def enter_signals(account: dict, now: datetime, note) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("account", type=Path)
-    parser.add_argument("--action", default="run", choices=["run", "trail", "untrail", "exit"])
+    parser.add_argument("--action", default="run", choices=ACTIONS)
     parser.add_argument("--position", default="")
+    parser.add_argument("--scheduled", action="store_true", help="a run of the schedule, not one the page started")
     args = parser.parse_args()
 
     account = load(args.account)
     now = datetime.now(fs.IST)
+    now_ms = int(now.timestamp() * 1000)
+    if args.scheduled and now_ms - account.get("page_run", 0) < PAGE_QUIET * 60_000:
+        print("The Auto trader page is open and starting the runs: nothing to do.")
+        return
     lines = []
     def note(message):
         lines.append(message)
         print(message)
 
-    if args.action != "run":
+    if args.action.startswith("unattended-"):
+        account["unattended"] = args.action == "unattended-on"
+        note("When the page is closed: " + ("auto-trade" if account["unattended"] else "only close positions"))
+    elif args.action != "run":
         apply_request(account, args.action, args.position, now, note)
+    if not args.scheduled:
+        account["page_run"] = now_ms
     settle(account, now, note)
-    if args.action == "run" and market_open(now):
+    trading = not args.scheduled or account.get("unattended", True)
+    if args.action == "run" and trading and market_open(now):
         enter_signals(account, now, note)
 
     margin = sum(p["entry"] * p["qty"] * fs.MARGIN_RATE for p in account["positions"])
     account["peak_margin"] = round(max(account.get("peak_margin", 0), margin), 2)
-    account["updated"] = int(now.timestamp() * 1000)
+    account["updated"] = now_ms
     # The last runs' notes, newest first, shown on the Auto trader page.
     stamp = now.strftime("%d %b %H:%M")
     account["log"] = ([f"{stamp}  {line}" for line in reversed(lines)] + account.get("log", []))[:200]
