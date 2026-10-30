@@ -14,6 +14,7 @@ trader's (trades/), the simulator's (manual/) and the signal log (signals/).
 
 from __future__ import annotations
 
+import importlib
 import time
 from datetime import datetime
 from pathlib import Path
@@ -25,6 +26,13 @@ import requests
 import streamlit as st
 
 import futures_simulator as fs
+
+# Streamlit Cloud keeps imported modules in memory when it pulls new code, so a
+# futures_simulator.py changed since the server started is reloaded here.
+if Path(fs.__file__).stat().st_mtime > getattr(fs, "_loaded_at", 0):
+    fs = importlib.reload(fs)
+    fs._loaded_at = Path(fs.__file__).stat().st_mtime
+
 from chartink_dashboard import MY_LAYOUT
 
 GITHUB_OWNER, GITHUB_REPO = "SHANKARNBHAT", "Report_Messenger_Claude"
