@@ -29,11 +29,12 @@ survive a refresh, but each browser has its own account.
 
 from __future__ import annotations
 
+import calendar
 import importlib
 import math
 import re
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, time, timedelta
+from datetime import date, datetime, time, timedelta
 from pathlib import Path
 from urllib.parse import quote
 
@@ -73,6 +74,18 @@ AUTO_STEP_PCT = 0.5
 DEFAULT_TIMEFRAME = "2 HOUR"  # tab name in chartink_dashboard.TIMEFRAMES
 # Candle length in minutes of the intraday timeframes; candles start at 9:15 AM.
 CANDLE_MINUTES = {"2 HOUR": 120, "4 HOUR": 240}
+# How a position exits (its "style"):
+#   eod    SL and target (or kept going past it with a trailing SL), squared off at 3:15 PM
+#   trail  held overnight: SL until the target, then a trailing SL from there
+#   rsi    held overnight: exits when the RSI of its timeframe crosses back (below 60 for
+#          a long, above 40 for a short: the "RSI crossed" widgets), or at its SL
+# Held positions close at 3:15 PM on the futures expiry day.
+STYLES = {"eod": "EOD 3:15 PM", "trail": "Hold · trail", "rsi": "Hold · RSI exit"}
+HELD = ("trail", "rsi")
+# The "RSI crossed" widgets list a stock when its RSI on any timeframe crossed the level;
+# their column of each timeframe's RSI tells if the trade's own one is past it.
+RSI_EXITS = {"BUY": (r"rsi crossed below", 60), "SELL": (r"rsi crossed above", 40)}
+RSI_COLUMNS = {"2 HOUR": r"^2 ?h", "4 HOUR": r"^4 ?h", "DAILY": r"^da", "WEEKLY": r"^we"}
 SESSION_OPEN = time(9, 15)
 SQUARE_OFF = time(15, 15)
 # Estimated statutory charges on NSE futures, as a share of turnover.
@@ -215,15 +228,29 @@ def bars_range(entered: datetime, now: datetime) -> str:
 # ---------------------------------------------------------------------------
 # Settlement
 # ---------------------------------------------------------------------------
+def expiry_after(day: date) -> date:
+    """The monthly futures expiry after `day`: the last Tuesday of its month, else of the
+    next month (NSE holidays, which move it a day earlier, are not counted)."""
+    for ahead in (0, 1):
+        year, month = divmod(day.year * 12 + day.month - 1 + ahead, 12)
+        last = date(year, month + 1, calendar.monthrange(year, month + 1)[1])
+        tuesday = last - timedelta(days=(last.weekday() - calendar.TUESDAY) % 7)
+        if tuesday > day:
+            return tuesday
+
+
 def replay(position: dict, bars: list, now: datetime, latest: float | None, settle: bool) -> dict:
     """Where a position stands after the bars since its entry.
 
     Closed at its SL, trailing SL or target if a bar touched it (at the bar's open if
     the price gapped past it; when SL and target fall in the same bar the SL is taken),
     closed at 3:15 PM once its session is over, else still open with its current stop.
+    A held position (style in HELD) runs on over the next sessions until 3:15 PM on the
+    futures expiry day instead.
     A position with `run` is not closed at its target: from there its stop trails the
     price by run["trail"] in jumps of run["step"], and "passed" is set.
-    With `settle`, a position whose session is not over closes at the latest price.
+    With `settle`, a position whose session is not over closes at the latest price
+    (not a held one).
     """
     long = position["side"] == "BUY"
     entry = float(position["entry"])
@@ -257,6 +284,9 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
             return closed(latest, now.timestamp(), "Settled at LTP")
         return {"id": position["id"], "status": "waiting", "stop": stop}
 
+    held = position.get("style") in HELD
+    if held:
+        day = expiry_after(day)  # entered on an expiry day: next month's contract
     cutoff = datetime.combine(day, SQUARE_OFF, IST).timestamp()
     anchor, trailed, passed = entry, False, False
     for start, open_, high, low, close in (bar for bar in later if bar[0] < cutoff):
@@ -289,8 +319,8 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
     if now.timestamp() >= cutoff:
         session = [bar for bar in bars if bar[0] < cutoff and day_of(bar) == day]
         price = session[-1][4] if session else latest or entry
-        return closed(price, cutoff, "EOD 3:15 PM")
-    if settle:
+        return closed(price, cutoff, "Expiry 3:15 PM" if held else "EOD 3:15 PM")
+    if settle and not held:
         recent = [bar for bar in later if bar[0] < cutoff]
         return closed(latest or (recent[-1][4] if recent else entry), now.timestamp(), "Settled at LTP")
     return {"id": position["id"], "status": "open", "stop": stop, "passed": passed}
@@ -328,6 +358,7 @@ def check_positions(positions: list[dict], now: datetime, settle: bool) -> list[
     bars.update({id_: yahoo[request_] for id_, request_ in wanted.items()})
     quotes = latest_prices({p["symbol"] for p in positions}, instruments, load_dashboard()[0])
 
+    dashboard = load_dashboard()[0]
     results = []
     for position in positions:
         found = bars[position["id"]]
@@ -335,8 +366,36 @@ def check_positions(positions: list[dict], now: datetime, settle: bool) -> list[
             results.append({"id": position["id"], "status": "error", "error": found})
             continue
         latest = (quotes.get(position["symbol"]) or {}).get("price")
-        results.append(replay(position, found, now, latest, settle))
+        result = replay(position, found, now, latest, settle)
+        crossed = rsi_exit(position, dashboard) if result["status"] == "open" else None
+        if crossed and latest:
+            result = {"id": position["id"], "status": "closed", "exit": round(float(latest), 2),
+                      "exit_time": int(now.timestamp() * 1000), "reason": crossed, "stop": result["stop"]}
+        results.append(result)
     return results
+
+
+def rsi_exit(position: dict, dashboard: dict | None) -> str | None:
+    """For a position of the rsi style on an "RSI crossed" widget with the RSI of its
+    timeframe (the shortest if several) past the level: the exit reason, else None."""
+    if position.get("style") != "rsi" or not dashboard:
+        return None
+    timeframes = [tf for tf in TIMEFRAMES if tf in (position.get("timeframes") or [])]
+    name, level = RSI_EXITS[position["side"]]
+    if not timeframes:
+        return None
+    for widget in dashboard["widgets"]:
+        table = widget["table"]
+        if not re.search(name, widget["name"], re.IGNORECASE) or table is None or table.empty:
+            continue
+        column = next((c for c in table.columns if re.search(RSI_COLUMNS[timeframes[0]], c.strip().lower())), None)
+        row = table[table["Symbol"] == position["symbol"]]
+        if column is None or row.empty or pd.isna(row[column].iloc[0]):
+            continue
+        rsi = float(row[column].iloc[0])
+        if rsi < level if position["side"] == "BUY" else rsi > level:
+            return f"RSI exit ({timeframes[0].replace(' HOUR', 'H').title()} {rsi:.1f})"
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -457,7 +516,8 @@ def main() -> None:
             "settings": {"start_capital": START_CAPITAL, "margin_rate": MARGIN_RATE,
                          "default_timeframe": DEFAULT_TIMEFRAME,
                          "auto_sl_pct": AUTO_SL_PCT, "auto_tp_pct": AUTO_TP_PCT,
-                         "auto_trail_pct": AUTO_TRAIL_PCT, "auto_step_pct": AUTO_STEP_PCT, "charges": CHARGES},
+                         "auto_trail_pct": AUTO_TRAIL_PCT, "auto_step_pct": AUTO_STEP_PCT, "charges": CHARGES,
+                         "styles": STYLES},
         },
         on_check_change=run_check,
         on_symbols_change=lambda: None,

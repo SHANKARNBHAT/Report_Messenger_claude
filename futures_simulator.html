@@ -36,6 +36,13 @@
       </label>
       <label class="inline">Charts <select data-ref="chart-site" title="Where a symbol opens its chart"></select></label>
       <label class="inline"><input type="checkbox" checked data-ref="auto-risk"> <span data-ref="auto-risk-label">SL / target</span></label>
+      <label class="inline" title="Hold: kept overnight until the stop or the RSI exit, closed on expiry day at 3:15 PM">Exit
+        <select data-ref="auto-style">
+          <option value="trail">Hold · trail after target</option>
+          <option value="rsi">Hold · RSI exit</option>
+          <option value="eod">Square off 3:15 PM</option>
+        </select>
+      </label>
       <label class="inline">At target
         <select data-ref="auto-at-target">
           <option value="exit">Exit</option>
@@ -82,6 +89,13 @@
         <button type="button" class="chip" data-act="preset">SL 1.5% · TP 3%</button>
         <button type="button" class="chip" data-act="clear-risk">Clear</button>
       </div>
+      <label class="inline" title="Hold: kept overnight until the stop or the RSI exit, closed on expiry day at 3:15 PM">Exit
+        <select data-ref="style">
+          <option value="trail">Hold · trail after target</option>
+          <option value="rsi">Hold · RSI exit</option>
+          <option value="eod">Square off 3:15 PM</option>
+        </select>
+      </label>
       <label class="inline">At target
         <select data-ref="at-target">
           <option value="exit">Exit at target</option>

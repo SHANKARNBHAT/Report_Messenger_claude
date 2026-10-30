@@ -182,13 +182,47 @@ def show_delay(history: pd.DataFrame) -> None:
                "worse entry than at first sight, and Delay cost is what it cost in ₹.")
 
 
+def show_results(history: pd.DataFrame) -> None:
+    if history.empty:
+        st.caption("No closed trades in this style yet.")
+        return
+    tabs = st.tabs(["By day", "By signal", "By strategy", "By exit", "Carry forward", "Entry delay", "Trades"])
+    with tabs[0]:
+        st.dataframe(summary(history, "Day"), width="stretch")
+    with tabs[1]:
+        counts = history.assign(**{"On timeframes": history["Timeframes"].str.count(r"\+") + 1})
+        st.dataframe(summary(counts.sort_values("On timeframes"), "On timeframes"), width="stretch")
+        st.caption("How many timeframes (2H, 4H, Daily) the stock was on, the same way, when it was traded.")
+        st.dataframe(summary(history, "Timeframes"), width="stretch")
+    with tabs[2]:
+        strategies = history.assign(Strategy=history.get("strategies", pd.Series(index=history.index, dtype=object))
+                                    .map(lambda s: s if isinstance(s, list) and s else ["—"])).explode("Strategy")
+        st.dataframe(summary(strategies, "Strategy"), width="stretch")
+        st.caption("A trade on stocks found by several strategies counts under each.")
+    with tabs[3]:
+        st.dataframe(summary(history, "reason"), width="stretch")
+    with tabs[4]:
+        show_carry(history)
+    with tabs[5]:
+        show_delay(history)
+    with tabs[6]:
+        trades = history.assign(Entered=history["entry_time"].map(when), Exited=history["exit_time"].map(when),
+                                Symbol=history["symbol"].map(chart_link))
+        st.dataframe(trades[["Exited", "Symbol", "side", "Style", "Timeframes", "qty", "entry", "exit", "reason",
+                             "gross", "charges", "net", "Entered"]], hide_index=True, width="stretch",
+                     column_config={"Symbol": SYMBOL_LINK})
+
+
 def main() -> None:
     st.set_page_config(page_title="Auto Trader", page_icon="🤖", layout="wide")
     st.title("🤖 Auto trader")
     st.caption(
-        f"Paper-trades every 2H, 4H and Daily Chartink signal, 1 lot, intraday: SL {fs.AUTO_SL_PCT}%, "
-        f"target {fs.AUTO_TP_PCT}%, squared off at 3:15 PM. Runs every 15 minutes in market hours on "
-        f"GitHub, no need to keep this page open. A stock is traded once per side per day.")
+        f"Paper-trades every 2H, 4H and Daily Chartink signal, 1 lot, SL {fs.AUTO_SL_PCT}%, in three exit styles "
+        f"side by side: **EOD** (target {fs.AUTO_TP_PCT}%, squared off at 3:15 PM), **Hold · trail** (held "
+        f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · RSI exit** (held until "
+        f"the RSI of its timeframe crosses back below 60 / above 40). Held trades close on expiry day at 3:15 PM. "
+        f"A stock is traded once per side and style per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
+        f"this page is open in market hours, else every 15 minutes if the switch below is on.")
 
     account, error = load_account()
     top = st.columns([1, 1, 4])
@@ -236,10 +270,12 @@ def main() -> None:
     if positions:
         table = pd.DataFrame([{
             "Symbol": chart_link(p["symbol"]),
-            "Side": "LONG" if p["side"] == "BUY" else "SHORT", "Signal": p["source"], "Qty": p["qty"],
+            "Side": "LONG" if p["side"] == "BUY" else "SHORT", "Style": fs.STYLES[p.get("style", "eod")],
+            "Signal": p["source"], "Qty": p["qty"],
             "Entry": p["entry"], "LTP": (quotes.get(p["symbol"]) or {}).get("price"),
             "SL / TSL": p["stop"], "Target": p["tp"],
-            "At target": "Passed · trailing" if p.get("passed") else "Trail" if p.get("run") else "Exit",
+            "At target": "—" if p.get("style") == "rsi" else "Passed · trailing" if p.get("passed")
+            else "Trail" if p.get("run") else "Exit",
             "Unrealized ₹": unrealized(p), "Entered": when(p["time"]), "Agrees": p.get("agrees"),
         } for p in positions])
         picked = st.dataframe(
@@ -249,13 +285,16 @@ def main() -> None:
         rows = picked.selection.rows
         if rows:
             position = positions[rows[0]]
+            # Only an EOD position has a choice at its target.
+            actions = {a: l for a, l in REQUESTS.items() if a == "exit" or position.get("style", "eod") == "eod"}
             cols = st.columns(len(REQUESTS))
-            for col, (action, label) in zip(cols, REQUESTS.items()):
+            for col, (action, label) in zip(cols, actions.items()):
                 if col.button(f"{label}: {position['symbol']}", key=f"{action}-{position['id']}", width="stretch"):
                     if dispatch(action, position["id"]):
                         st.toast(f"Sent: {label} for {position['symbol']}. Applies in about a minute; Reload then.")
         else:
-            st.caption("Select a row to keep it going past its target, set it back to exit there, or exit it now.")
+            st.caption("Select a row to exit it now, or for an EOD one, to keep it going past its target "
+                       "or set it back to exit there.")
     else:
         st.caption("None open.")
 
@@ -264,31 +303,13 @@ def main() -> None:
         history = history.sort_values("exit_time", ascending=False)
         history["Day"] = history["exit_time"].map(lambda ms: when(ms)[:6])
         history["Timeframes"] = history["source"].str.removeprefix("Auto ")
-        tabs = st.tabs(["By day", "By signal", "By strategy", "By exit", "Carry forward", "Entry delay", "Trades"])
-        with tabs[0]:
-            st.dataframe(summary(history, "Day"), width="stretch")
-        with tabs[1]:
-            counts = history.assign(**{"On timeframes": history["Timeframes"].str.count(r"\+") + 1})
-            st.dataframe(summary(counts.sort_values("On timeframes"), "On timeframes"), width="stretch")
-            st.caption("How many timeframes (2H, 4H, Daily) the stock was on, the same way, when it was traded.")
-            st.dataframe(summary(history, "Timeframes"), width="stretch")
-        with tabs[2]:
-            strategies = history.assign(Strategy=history.get("strategies", pd.Series(index=history.index, dtype=object))
-                                        .map(lambda s: s if isinstance(s, list) and s else ["—"])).explode("Strategy")
-            st.dataframe(summary(strategies, "Strategy"), width="stretch")
-            st.caption("A trade on stocks found by several strategies counts under each.")
-        with tabs[3]:
-            st.dataframe(summary(history, "reason"), width="stretch")
-        with tabs[4]:
-            show_carry(history)
-        with tabs[5]:
-            show_delay(history)
-        with tabs[6]:
-            trades = history.assign(Entered=history["entry_time"].map(when), Exited=history["exit_time"].map(when),
-                                    Symbol=history["symbol"].map(chart_link))
-            st.dataframe(trades[["Exited", "Symbol", "side", "Timeframes", "qty", "entry", "exit", "reason",
-                                 "gross", "charges", "net", "Entered"]], hide_index=True, width="stretch",
-                         column_config={"Symbol": SYMBOL_LINK})
+        history["Style"] = history.get("style", pd.Series("eod", index=history.index)).fillna("eod").map(fs.STYLES)
+        st.dataframe(summary(history, "Style"), width="stretch")
+        # Each signal is traded in every style, so the other results are for one style at a time.
+        style = st.segmented_control("Results for", ["All styles", *fs.STYLES.values()], default="All styles")
+        if style and style != "All styles":
+            history = history[history["Style"] == style]
+        show_results(history)
     else:
         st.caption("No closed trades yet.")
 

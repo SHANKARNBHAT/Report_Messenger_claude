@@ -4,12 +4,14 @@ timeframes, intraday, without the simulator page open.
 
 .github/workflows/auto_trader.yml runs it every 15 minutes in market hours. Each run:
   * replays the open positions on the 5-minute bars since entry, closing those that
-    touched their SL, trailing SL or target, and all of them at the 3:15 PM square-off
-    (the same rules as the simulator: futures_simulator.replay)
+    touched their SL, trailing SL or target, at the 3:15 PM square-off or expiry, or
+    on an RSI exit (the same rules as the simulator: futures_simulator.check_positions)
   * buys bullish and sells bearish signals at the latest price, with SL AUTO_SL_PCT
-    and target AUTO_TP_PCT away; a stock is traded once per side per session. Every
-    signal is taken, to test the strategy, so the margin used can exceed the capital:
-    the most it reached is kept as "peak_margin"
+    and target AUTO_TP_PCT away, once in each exit style (futures_simulator.STYLES) to
+    compare them on the same signals: squared off at 3:15 PM, held with a trailing SL
+    after the target, held until the RSI exit. A stock is traded once per side and
+    style per session. Every signal is taken, to test the strategy, so the margin used
+    can exceed the capital: the most it reached is kept as "peak_margin"
   * applies a request from the Auto trader page (auto_trader_page.py): keep a
     position going past its target with a trailing SL, exit at the target, or exit now
 
@@ -97,7 +99,7 @@ def close(account: dict, position: dict, price: float, when_ms: int, reason: str
         "id": position["id"], "symbol": position["symbol"], "side": position["side"], "lots": position["lots"],
         "qty": qty, "entry": position["entry"], "exit": round(price, 2), "entry_time": position["time"],
         "exit_time": when_ms, "reason": reason, "source": position["source"], "timeframes": position["timeframes"],
-        "passed": position.get("passed", False), "carried": bool(position.get("run")), "tp": position["tp"],
+        "style": position.get("style", "eod"), "passed": position.get("passed", False), "carried": bool(position.get("run")), "tp": position["tp"],
         "strategies": position.get("strategies", []), "first_seen": position.get("first_seen"),
         "agrees": position.get("agrees"), "gross": round(gross, 2), "charges": round(cost, 2),
         "net": round(gross - cost, 2),
@@ -114,6 +116,9 @@ def apply_request(account: dict, action: str, position_id: str, now: datetime, n
     position = next((p for p in account["positions"] if p["id"] == position_id), None)
     if position is None:
         note(f"{action}: no open position {position_id}")
+        return
+    if action in ("trail", "untrail") and position.get("style", "eod") != "eod":
+        note(f"{position['symbol']}: a {fs.STYLES[position['style']]} position, no target exit to change")
         return
     if action == "trail":
         position["run"] = auto_run(position["entry"])
@@ -165,10 +170,11 @@ def enter_signals(account: dict, signals: list[dict], dashboard: dict, seen: dic
             by_symbol.setdefault(signal["symbol"], []).append(signal)
 
     today = now.date()
-    def traded_today(symbol, side):
-        return any(t["symbol"] == symbol and t["side"] == side
-                   and datetime.fromtimestamp(t["entry_time"] / 1000, fs.IST).date() == today
-                   for t in account["history"])
+    def taken(symbol, side, style):
+        """Open in this style, or entered today in it."""
+        return any(p["symbol"] == symbol and p.get("style", "eod") == style for p in account["positions"]) or any(
+            t["symbol"] == symbol and t["side"] == side and t.get("style", "eod") == style
+            and datetime.fromtimestamp(t["entry_time"] / 1000, fs.IST).date() == today for t in account["history"])
 
     wanted = {}
     for symbol, found in by_symbol.items():
@@ -176,14 +182,14 @@ def enter_signals(account: dict, signals: list[dict], dashboard: dict, seen: dic
         if len(biases) > 1:
             continue  # bullish on one timeframe, bearish on another
         side = "BUY" if biases == {"Bullish"} else "SELL"
-        if any(p["symbol"] == symbol for p in account["positions"]) or traded_today(symbol, side):
-            continue
-        wanted[symbol] = (side, found)
+        styles = [style for style in fs.STYLES if not taken(symbol, side, style)]
+        if styles:
+            wanted[symbol] = (side, found, styles)
     if not wanted:
         return
 
     quotes = fs.latest_prices(set(wanted), instruments, dashboard)
-    for symbol, (side, found) in sorted(wanted.items()):
+    for symbol, (side, found, styles) in sorted(wanted.items()):
         quote = quotes.get(symbol)
         if not quote:
             note(f"{symbol}: no price, skipped")
@@ -191,19 +197,21 @@ def enter_signals(account: dict, signals: list[dict], dashboard: dict, seen: dic
         entry, qty = tick(quote["price"]), LOTS * instruments[symbol]["lot"]
         long = side == "BUY"
         sl = tick(entry * (1 - fs.AUTO_SL_PCT / 100 * (1 if long else -1)))
-        account["seq"] += 1
+        tp = tick(entry * (1 + fs.AUTO_TP_PCT / 100 * (1 if long else -1)))
         timeframes = sorted({s["timeframe"] for s in found}, key=TIMEFRAMES.index)
         first = min((seen[signal_key(s)] for s in found if signal_key(s) in seen), key=lambda f: f["time"], default=None)
-        account["positions"].append({
-            "id": f"{int(now.timestamp() * 1000)}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
-            "qty": qty, "entry": entry, "sl": sl,
-            "tp": tick(entry * (1 + fs.AUTO_TP_PCT / 100 * (1 if long else -1))), "tsl": {"on": False}, "run": None,
-            "stop": sl, "time": int(now.timestamp() * 1000), "status": "open", "passed": False,
-            "source": "Auto " + "+".join(SHORT[tf] for tf in timeframes), "timeframes": timeframes,
-            "strategies": sorted({s["strategy"] for s in found}), "agrees": found[0]["agrees"],
-            "first_seen": first and {"time": first["time"], "price": first["price"]},
-        })
-        note(f"{symbol}: {side} {qty} at {entry} ({', '.join(timeframes)})")
+        for style in styles:
+            account["seq"] += 1
+            account["positions"].append({
+                "id": f"{int(now.timestamp() * 1000)}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
+                "qty": qty, "entry": entry, "sl": sl, "tp": None if style == "rsi" else tp, "tsl": {"on": False},
+                "run": auto_run(entry) if style == "trail" else None, "style": style,
+                "stop": sl, "time": int(now.timestamp() * 1000), "status": "open", "passed": False,
+                "source": "Auto " + "+".join(SHORT[tf] for tf in timeframes), "timeframes": timeframes,
+                "strategies": sorted({s["strategy"] for s in found}), "agrees": found[0]["agrees"],
+                "first_seen": first and {"time": first["time"], "price": first["price"]},
+            })
+        note(f"{symbol}: {side} {qty} at {entry} ({', '.join(timeframes)}; {', '.join(styles)})")
 
 
 def main() -> None:

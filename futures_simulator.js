@@ -5,7 +5,7 @@
 // (trigger "check"), answered in data.result.
 
 const STORE = "futures_simulator_v1"
-const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/target on or off, at target, chart site, order card open
+const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/target on or off, exit style, at target, chart site, order card open
 const SIGNALS = "futures_simulator_signals"  // session date -> the signals last seen in that session
 const SEEN = "futures_simulator_seen"  // session date -> "SYMBOL|TIMEFRAME|Bias" -> first seen here: time, price
 const SESSION_CLOSE = "15:30"  // carried-over signals are shown until the next session closes
@@ -49,7 +49,7 @@ function loadPrefs() {
 
 function savePrefs(ctx) {
   const prefs = { timeframe: ctx.timeframe, entry: ctx.ref("entry-mode").value, risk: ctx.ref("auto-risk").checked,
-    atTarget: ctx.ref("auto-at-target").value, chart: ctx.ref("chart-site").value,
+    style: ctx.ref("auto-style").value, atTarget: ctx.ref("auto-at-target").value, chart: ctx.ref("chart-site").value,
     orderOpen: ctx.ref("order-card").open }
   try { localStorage.setItem(PREFS, JSON.stringify(prefs)) } catch (e) { /* storage blocked */ }
 }
@@ -190,6 +190,7 @@ function setup(root, data) {
   if (prefs.entry) ref("entry-mode").value = prefs.entry
   if (prefs.risk === false) ref("auto-risk").checked = false
   if (prefs.atTarget) ref("auto-at-target").value = prefs.atTarget
+  if (prefs.style) ref("auto-style").value = prefs.style
   if (prefs.orderOpen === false) ref("order-card").open = false
   ref("order-card").addEventListener("toggle", () => savePrefs(ctx))
   const sites = Object.keys(data.charts)
@@ -199,7 +200,7 @@ function setup(root, data) {
     .map((tf) => `<button type="button" data-tf="${esc(tf)}">${esc(tf.replace(" HOUR", "H"))}</button>`).join("")
 
   root.addEventListener("change", (event) => {
-    if (["entry-mode", "auto-risk", "auto-at-target", "chart-site"].includes(event.target.dataset.ref)) {
+    if (["entry-mode", "auto-risk", "auto-style", "auto-at-target", "chart-site"].includes(event.target.dataset.ref)) {
       savePrefs(ctx)
       render(ctx)
     }
@@ -311,8 +312,12 @@ function formOrder(ctx) {
     qty: info ? lots * info.lot : 0, sl: num(ref("sl").value), tp: num(ref("tp").value),
     tsl: { on: ref("tsl-on").checked, trail: num(ref("tsl-trail").value) ?? 0, step: num(ref("tsl-step").value) ?? 0 },
   }
-  // Kept going past the target: trails by the trailing SL amounts from there.
-  order.run = ref("at-target").value === "trail" && order.tp != null ? { trail: order.tsl.trail, step: order.tsl.step } : null
+  // Held with a trailing SL after the target, or (squared off) kept going past it: trails by
+  // the trailing SL amounts from there. The RSI exit has no target.
+  order.style = ref("style").value
+  if (order.style === "rsi") order.tp = null
+  const trails = order.style === "trail" || (order.style === "eod" && ref("at-target").value === "trail")
+  order.run = trails && order.tp != null ? { trail: order.tsl.trail, step: order.tsl.step } : null
   const long = order.side === "BUY"
   if (!info) order.error = symbol ? `${symbol} is not in futures stocks.csv.` : "Pick an instrument."
   else if (!order.entry || order.entry <= 0) order.error = "Enter an entry price."
@@ -321,6 +326,8 @@ function formOrder(ctx) {
     order.error = `Stop loss must be ${long ? "below" : "above"} the entry price for a ${long ? "long" : "short"}.`
   else if (order.tp != null && (long ? order.tp <= order.entry : order.tp >= order.entry))
     order.error = `Target must be ${long ? "above" : "below"} the entry price for a ${long ? "long" : "short"}.`
+  else if (order.style === "trail" && order.tp == null)
+    order.error = "Hold · trail needs a target: the trailing SL starts there."
   else if ((order.tsl.on || order.run) && (order.tsl.trail <= 0 || order.tsl.step <= 0))
     order.error = "Trailing SL needs a trail and a jump step above ₹0."
   else if (order.entry * order.qty * ctx.data.settings.margin_rate > balance(ctx) - usedMargin(ctx))
@@ -335,7 +342,7 @@ function placeOrder(ctx, order) {
     id: `${Date.now()}-${account.seq}`, symbol: order.symbol, side: order.side, lots: order.lots,
     qty: order.qty, entry: order.entry, sl: order.sl, tp: order.tp,
     tsl: order.tsl.on ? order.tsl : { on: false }, run: order.run || null, stop: order.sl, time: order.time || Date.now(),
-    source: order.source || "Manual", status: "open", ...signalInfo(ctx, order.symbol, order.side),
+    source: order.source || "Manual", style: order.style || "eod", status: "open", ...signalInfo(ctx, order.symbol, order.side),
   })
   saveAccount(account)
 }
@@ -387,8 +394,10 @@ function autoExecute(ctx, signals) {
   latest(ctx)
   const { auto_sl_pct: slPct, auto_tp_pct: tpPct } = ctx.data.settings
   const lots = Math.max(1, Math.floor(num(ctx.ref("auto-lots").value) ?? 1))
-  const risk = ctx.ref("auto-risk").checked
-  const run = risk && ctx.ref("auto-at-target").value === "trail"
+  const style = ctx.ref("auto-style").value
+  // Held orders always have their SL (and target, where the trailing starts).
+  const risk = style !== "eod" || ctx.ref("auto-risk").checked
+  const run = style === "trail" || (style === "eod" && risk && ctx.ref("auto-at-target").value === "trail")
   const bySymbol = {}
   for (const s of signals) (bySymbol[s.symbol] ||= []).push(s)
   const placed = [], skipped = []
@@ -408,7 +417,7 @@ function autoExecute(ctx, signals) {
       symbol, side, lots, qty: lots * info.lot, entry, time: start.time,
       source: `Auto ${shortTf(found[0].timeframe)}`,
       sl: risk ? tick(entry * (1 + (long ? -slPct : slPct) / 100)) : null,
-      tp: risk ? tick(entry * (1 + (long ? tpPct : -tpPct) / 100)) : null,
+      tp: risk && style !== "rsi" ? tick(entry * (1 + (long ? tpPct : -tpPct) / 100)) : null, style,
       tsl: { on: false },
       run: run ? autoRun(ctx, entry) : null,
     }
@@ -437,7 +446,8 @@ function sendCheck(ctx, mode, refresh = false) {
   ctx.pending = `${Date.now()}-${mode}`
   ctx.setTriggerValue("check", {
     id: ctx.pending, mode, refresh,
-    positions: positions.map(({ id, symbol, side, entry, sl, tp, tsl, run, time }) => ({ id, symbol, side, entry, sl, tp, tsl, run, time })),
+    positions: positions.map(({ id, symbol, side, entry, sl, tp, tsl, run, time, style, timeframes }) =>
+      ({ id, symbol, side, entry, sl, tp, tsl, run, time, style, timeframes })),
   })
   render(ctx)
 }
@@ -457,7 +467,7 @@ function closePosition(ctx, position, price, time, reason) {
     id: position.id, symbol: position.symbol, side: position.side, lots: position.lots, qty: position.qty,
     entry: position.entry, exit: price, entry_time: position.time, exit_time: time, reason,
     source: position.source, gross, charges: cost, net: gross - cost,
-    tp: position.tp, carried: !!position.run, passed: !!position.passed,
+    style: position.style || "eod", tp: position.tp, carried: !!position.run, passed: !!position.passed,
     strategies: position.strategies || [], timeframes: position.timeframes || [], first_seen: position.first_seen || null,
   })
   ctx.account.positions = ctx.account.positions.filter((p) => p.id !== position.id)
@@ -512,7 +522,7 @@ function manualExit(ctx, id) {
 function toggleRun(ctx, id) {
   latest(ctx)
   const position = ctx.account.positions.find((p) => p.id === id)
-  if (!position || position.tp == null || position.passed) return
+  if (!position || position.tp == null || position.passed || (position.style || "eod") !== "eod") return
   position.run = position.run ? null : position.tsl?.on ? { trail: position.tsl.trail, step: position.tsl.step }
     : autoRun(ctx, position.entry)
   saveAccount(ctx.account)
@@ -583,18 +593,26 @@ function renderSignals(ctx) {
   const signals = ctx.signals
   const tf = shortTf(ctx.timeframe)
   const candle = ctx.ref("entry-mode").value === "candle"
-  const risk = ctx.ref("auto-risk").checked
-  const run = risk && ctx.ref("auto-at-target").value === "trail"
-  ctx.ref("auto-at-target").disabled = !risk
+  const style = ctx.ref("auto-style").value
+  const risk = style !== "eod" || ctx.ref("auto-risk").checked
+  const run = style === "eod" && risk && ctx.ref("auto-at-target").value === "trail"
+  ctx.ref("auto-at-target").disabled = style !== "eod" || !risk
+  ctx.ref("auto-risk").disabled = style !== "eod"
   ctx.ref("auto-trail-label").textContent = `Keep going, trail ${settings.auto_trail_pct}%`
   ctx.ref("timeframes").querySelectorAll("button").forEach((b) => b.classList.toggle("on", b.dataset.tf === ctx.timeframe))
   ctx.ref("signals-note").textContent = note
   ctx.ref("auto-risk-label").textContent = `SL ${settings.auto_sl_pct}% / target ${settings.auto_tp_pct}%`
   ctx.ref("auto-note").textContent = `Auto orders buy bullish and sell bearish ${tf} signals ` +
     (candle ? `at the open of the ${tf} candle the signal is on, timed at that candle's start` : "at the latest price") +
-    (risk ? `, with SL ${settings.auto_sl_pct}% and target ${settings.auto_tp_pct}% away` : ", with no SL or target") +
-    (run ? `; at the target they keep going with a stop trailing ${settings.auto_trail_pct}% behind the price` +
-      ` (moved in steps of ${settings.auto_step_pct}%).` : risk ? ", exiting at the target." : ".") +
+    (style === "trail" ? `, held overnight with SL ${settings.auto_sl_pct}% until the ${settings.auto_tp_pct}% target, then a ` +
+      `stop trailing ${settings.auto_trail_pct}% behind the price, closed on expiry day at 3:15 PM.`
+    : style === "rsi" ? `, held overnight with SL ${settings.auto_sl_pct}% until the RSI of the signal's timeframe ` +
+      "crosses back (below 60 for a long, above 40 for a short), checked when the page opens and on Refresh; " +
+      "closed on expiry day at 3:15 PM."
+    : (risk ? `, with SL ${settings.auto_sl_pct}% and target ${settings.auto_tp_pct}% away` : ", with no SL or target") +
+      (run ? `; at the target they keep going with a stop trailing ${settings.auto_trail_pct}% behind the price` +
+        ` (moved in steps of ${settings.auto_step_pct}%)` : risk ? ", exiting at the target" : "") +
+      ", squared off at 3:15 PM.") +
     " Agrees: the Market reports Active Watchlist has the same bias." +
     " Signals with a date are from the last session, kept until 3:30 PM."
   const agree = { Yes: "yes", No: "no", "Not on watchlist": "none" }
@@ -620,6 +638,8 @@ function renderSignals(ctx) {
 
 function renderOrder(ctx) {
   const ref = ctx.ref
+  ref("at-target").disabled = ref("style").value !== "eod"
+  ref("tp").disabled = ref("style").value === "rsi"
   ref("side").querySelectorAll("button").forEach((b) => b.classList.toggle("on", b.dataset.side === ctx.side))
   const order = formOrder(ctx)
   const info = instrument(ctx, order.symbol)
@@ -652,17 +672,20 @@ function renderOrder(ctx) {
 function renderPositions(ctx) {
   const positions = ctx.account.positions
   ctx.ref("positions-note").textContent = ctx.pending ? "Checking against the latest bars…"
-    : "SL, trailing SL and target are checked on the 5-minute bars when the page opens, on Refresh and at EOD."
+    : "SL, trailing SL, target and RSI exits are checked when the page opens and on Refresh (SL, trailing SL and " +
+      "target on the 5-minute bars since entry). EOD settles only the 3:15 PM ones; held ones stay open."
   ctx.ref("positions").innerHTML = `<tr><th>Symbol</th><th>Side</th><th class="r">Qty</th><th class="r">Avg entry</th>
     <th class="r">LTP</th><th class="r">SL / TSL</th><th class="r">Target</th><th class="r">Unrealized P&amp;L</th>
     <th>Entered</th><th></th></tr>` + (positions.length ? positions.map((p) => {
     const ltp = quote(ctx, p.symbol)
     const stop = p.stop == null ? "—" : inr(p.stop) + (p.tsl?.on || p.passed ? (p.stop !== p.sl ? " ↗ TSL" : " · TSL") : "")
+    const style = p.style || "eod"
     const target = p.tp == null ? "—" : p.passed ? `${inr(p.tp)}<div class="small pos">Passed · trailing</div>`
+      : style === "trail" ? `${inr(p.tp)}<div class="muted small">Trails from target</div>`
       : `${inr(p.tp)}<div><button type="button" class="link small" data-act="toggle-run" data-id="${esc(p.id)}"
         title="What happens at the target. Click to switch">${p.run ? "Trails from target ⇄" : "Exits at target ⇄"}</button></div>`
     const status = p.status === "waiting" ? '<span class="muted small"> · waits for market</span>' : ""
-    return `<tr><td>${symbolLink(ctx, p.symbol)}<div class="muted small">${esc(p.source)}</div></td>
+    return `<tr><td>${symbolLink(ctx, p.symbol)}<div class="muted small">${esc(p.source)} · ${esc(ctx.data.settings.styles[style])}</div></td>
       <td><span class="pill ${p.side === "BUY" ? "long" : "short"}">${p.side === "BUY" ? "LONG" : "SHORT"}</span></td>
       <td class="r">${p.qty.toLocaleString("en-IN")}</td><td class="r">${inr(p.entry)}</td>
       <td class="r">${inr(ltp)}${ltp == null ? "" : `<div class="muted small">${esc(ctx.data.quotes[p.symbol].source)} ${when(ctx.data.quotes[p.symbol].time)}</div>`}</td>
@@ -732,7 +755,11 @@ function renderAnalysis(ctx) {
     return { cells: [g.key, ...basic(g), `${avgMoved >= 0 ? "+" : ""}${avgMoved.toFixed(2)}%`, inr(cost)] }
   })
 
+  const styles = groupRows(trades, (t) => ctx.data.settings.styles[t.style || "eod"], Object.values(ctx.data.settings.styles))
+    .map((g) => ({ cells: [esc(g.key), ...basic(g)] }))
   ctx.ref("analysis").innerHTML = [
+    statTable("By exit style", "Square off at 3:15 PM, or held overnight with a trailing SL after the target or until the RSI exit.",
+      ["Exit style", "Trades", "Win", "Net"], styles),
     statTable("By strategy", "A trade found by several strategies counts under each.", ["Strategy", "Trades", "Win", "Net"], strategies),
     statTable("By timeframes the stock was on", "The timeframes with a signal the same way when the trade was placed.",
       ["Timeframes", "Trades", "Win", "Net"], tfRows),
@@ -760,7 +787,7 @@ function renderLedger(ctx) {
   ctx.ref("history").innerHTML = `<tr><th>Exit</th><th>Symbol</th><th>Side</th><th class="r">Qty</th>
     <th class="r">Entry</th><th class="r">Exit price</th><th>Reason</th><th class="r">Gross</th>
     <th class="r">Charges</th><th class="r">Net</th></tr>` + (trades.length ? trades.slice().reverse().map((t) => `
-    <tr><td>${when(t.exit_time)}</td><td>${symbolLink(ctx, t.symbol)}<div class="muted small">${esc(t.source)}</div></td>
+    <tr><td>${when(t.exit_time)}</td><td>${symbolLink(ctx, t.symbol)}<div class="muted small">${esc(t.source)} · ${esc(ctx.data.settings.styles[t.style || "eod"])}</div></td>
       <td><span class="pill ${t.side === "BUY" ? "long" : "short"}">${t.side === "BUY" ? "LONG" : "SHORT"}</span></td>
       <td class="r">${t.qty.toLocaleString("en-IN")}</td><td class="r">${inr(t.entry)}</td><td class="r">${inr(t.exit)}</td>
       <td>${esc(t.reason)}</td><td class="r">${signed(t.gross)}</td><td class="r">${inr(t.charges)}</td>
