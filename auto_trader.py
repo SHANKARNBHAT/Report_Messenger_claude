@@ -35,6 +35,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from datetime import datetime, time
 from pathlib import Path
 
@@ -47,7 +48,7 @@ LAST_ENTRY = time(15, 0)  # no new trades after this, ahead of the 3:15 PM squar
 SESSION_CLOSE = time(15, 30)
 SEEN_DAYS = 10  # sessions kept in signals_seen.json
 PAGE_QUIET = 12  # minutes: scheduled runs skip while the page started a run this recently
-ACTIONS = ["run", "trail", "untrail", "exit", "unattended-on", "unattended-off"]
+ACTIONS = ["run", "trail", "untrail", "exit", "unattended-on", "unattended-off", "test-chartink"]
 
 
 def tick(price: float) -> float:
@@ -154,6 +155,30 @@ def settle(account: dict, now: datetime, note) -> None:
             position.update(stop=result["stop"], status=result["status"], passed=result.get("passed", False))
 
 
+def test_chartink(note) -> None:
+    """Fetch the dashboard and the 5-minute bars from here (GitHub), and note what came back."""
+    dashboard, error = fs.load_dashboard()
+    if not dashboard:
+        note(f"Chartink test FAILED: {error}")
+        return
+    counts = {}
+    for widget in dashboard["widgets"]:
+        if widget["table"] is not None and widget["timeframe"]:
+            counts[widget["timeframe"]] = counts.get(widget["timeframe"], 0) + len(widget["table"])
+    exits = {name: next((len(w["table"]) for w in dashboard["widgets"] if w["table"] is not None
+                         and re.search(pattern, w["name"], re.IGNORECASE)), None)
+             for name, pattern in (("RSI below 60", r"rsi crossed below"), ("RSI above 40", r"rsi crossed above"))}
+    failed = [w["name"] for w in dashboard["widgets"] if w["error"]]
+    try:
+        bars = f"5-minute bars for {len(fs.fetch_price_bars(fs.DEFAULT_DASHBOARD))} stocks"
+    except fs.ChartinkError as exc:
+        bars = f"5-minute bars FAILED ({exc})"
+    note(f"Chartink test OK: {len(dashboard['widgets'])} widgets; signals "
+         + ", ".join(f"{tf.replace(' HOUR', 'H').title()} {n}" for tf, n in counts.items())
+         + "; exit lists " + ", ".join(f"{name} {n}" for name, n in exits.items()) + f"; {bars}"
+         + (f"; widgets with errors: {', '.join(failed)}" if failed else ""))
+
+
 def market_open(now: datetime) -> bool:
     """Whether NSE is trading now: in session hours, with NIFTY bars from today (not a holiday)."""
     if now.weekday() >= 5 or not fs.SESSION_OPEN <= now.time() < SESSION_CLOSE:
@@ -236,6 +261,8 @@ def main() -> None:
     if args.action.startswith("unattended-"):
         account["unattended"] = args.action == "unattended-on"
         note("When the page is closed: " + ("auto-trade" if account["unattended"] else "only close positions"))
+    elif args.action == "test-chartink":
+        test_chartink(note)
     elif args.action != "run":
         apply_request(account, args.action, args.position, now, note)
     if not args.scheduled:

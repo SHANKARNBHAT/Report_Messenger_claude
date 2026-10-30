@@ -225,14 +225,18 @@ def main() -> None:
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")
 
     account, error = load_account()
-    top = st.columns([1, 1, 4])
+    top = st.columns([1, 1, 1, 3])
     if top[0].button("↻ Reload", width="stretch"):
         load_account.clear()
         st.rerun()
     if top[1].button("▶ Run now", width="stretch", help="Check the positions and take new signals now"):
         if dispatch("run"):
             st.toast("Started a run: it takes about a minute. Reload then.")
-    top[2].caption(f"[Runs on GitHub]({RUNS_URL}) · requests from here apply in about a minute.")
+    if top[2].button("🧪 Test Chartink", width="stretch", help="Check that GitHub can read the Chartink "
+                     "dashboard: the result shows in the Run log in about a minute"):
+        if dispatch("test-chartink"):
+            st.toast("Started a Chartink test: Reload in about a minute and open the Run log.")
+    top[3].caption(f"[Runs on GitHub]({RUNS_URL}) · requests from here apply in about a minute.")
     live((account or {}).get("updated"))
     if account is None:
         st.info(error)
