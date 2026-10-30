@@ -66,6 +66,10 @@ START_CAPITAL = 1_000_000
 MARGIN_RATE = 0.20          # required margin, as a share of turnover
 AUTO_SL_PCT = 1.5           # stop loss and target of auto-executed signals
 AUTO_TP_PCT = 3.0
+# A position kept going past its target with no trailing SL amounts of its own trails
+# this far behind the price, in jump steps of AUTO_STEP_PCT (of the entry price).
+AUTO_TRAIL_PCT = 1.5
+AUTO_STEP_PCT = 0.5
 DEFAULT_TIMEFRAME = "2 HOUR"  # tab name in chartink_dashboard.TIMEFRAMES
 # Candle length in minutes of the intraday timeframes; candles start at 9:15 AM.
 CANDLE_MINUTES = {"2 HOUR": 120, "4 HOUR": 240}
@@ -203,6 +207,8 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
     Closed at its SL, trailing SL or target if a bar touched it (at the bar's open if
     the price gapped past it; when SL and target fall in the same bar the SL is taken),
     closed at 3:15 PM once its session is over, else still open with its current stop.
+    A position with `run` is not closed at its target: from there its stop trails the
+    price by run["trail"] in jumps of run["step"], and "passed" is set.
     With `settle`, a position whose session is not over closes at the latest price.
     """
     long = position["side"] == "BUY"
@@ -211,6 +217,8 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
     tsl = position.get("tsl") or {}
     trail, step = float(tsl.get("trail") or 0), float(tsl.get("step") or 0)
     trailing = bool(tsl.get("on")) and trail > 0 and step > 0
+    run = position.get("run") or {}
+    run_trail, run_step = float(run.get("trail") or 0), float(run.get("step") or 0)
     entered = datetime.fromtimestamp(position["time"] / 1000, IST)
 
     def closed(price, when, reason):
@@ -236,16 +244,25 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
         return {"id": position["id"], "status": "waiting", "stop": stop}
 
     cutoff = datetime.combine(day, SQUARE_OFF, IST).timestamp()
-    anchor, trailed = entry, False
+    anchor, trailed, passed = entry, False, False
     for start, open_, high, low, close in (bar for bar in later if bar[0] < cutoff):
         if stop is not None:
             gap = open_ <= stop if long else open_ >= stop
             if gap or (low <= stop if long else high >= stop):
-                return closed(open_ if gap else stop, start, "Trailing SL" if trailed else "Stop loss")
+                reason = "TSL after target" if passed else "Trailing SL" if trailed else "Stop loss"
+                return closed(open_ if gap else stop, start, reason)
         if target is not None:
             gap = open_ >= target if long else open_ <= target
             if gap or (high >= target if long else low <= target):
-                return closed(open_ if gap else target, start, "Target")
+                hit = open_ if gap else target
+                if run_trail <= 0 or run_step <= 0:
+                    return closed(hit, start, "Target")
+                # Kept going: from the target on, the stop trails the price.
+                anchor = max(anchor, hit) if long else min(anchor, hit)
+                trail, step, trailing, target, passed = run_trail, run_step, True, None, True
+                level = round(anchor - trail if long else anchor + trail, 2)
+                if stop is None or (level > stop if long else level < stop):
+                    stop, trailed = level, True
         if trailing:
             # Every full jump step the price moves in favour, the stop follows at `trail` behind.
             move = high - anchor if long else anchor - low
@@ -262,7 +279,7 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
     if settle:
         recent = [bar for bar in later if bar[0] < cutoff]
         return closed(latest or (recent[-1][4] if recent else entry), now.timestamp(), "Settled at LTP")
-    return {"id": position["id"], "status": "open", "stop": stop}
+    return {"id": position["id"], "status": "open", "stop": stop, "passed": passed}
 
 
 def run_check() -> None:
@@ -415,7 +432,8 @@ def main() -> None:
             "default_chart": st.session_state.get("charts") or MY_LAYOUT,
             "settings": {"start_capital": START_CAPITAL, "margin_rate": MARGIN_RATE,
                          "default_timeframe": DEFAULT_TIMEFRAME,
-                         "auto_sl_pct": AUTO_SL_PCT, "auto_tp_pct": AUTO_TP_PCT, "charges": CHARGES},
+                         "auto_sl_pct": AUTO_SL_PCT, "auto_tp_pct": AUTO_TP_PCT,
+                         "auto_trail_pct": AUTO_TRAIL_PCT, "auto_step_pct": AUTO_STEP_PCT, "charges": CHARGES},
         },
         on_check_change=run_check,
         on_symbols_change=lambda: None,
