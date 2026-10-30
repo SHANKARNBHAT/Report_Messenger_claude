@@ -215,13 +215,39 @@ def series(bot: pd.DataFrame, you: pd.DataFrame) -> pd.DataFrame:
     return pd.concat(parts, ignore_index=True)
 
 
-def show_compare(both: pd.DataFrame) -> None:
-    """Each bot style and the simulator side by side: results, drawdown and the running P&L."""
+def margin_needed(trades: pd.DataFrame, positions: list[dict]) -> float:
+    """The most margin the trades (and the open positions) held at the same time: what trading
+    them all would have needed, with no capital limit."""
+    trades = trades.dropna(subset=["entry", "qty", "entry_time", "exit_time"])
+    events = [(t.entry_time, t.entry * t.qty * fs.MARGIN_RATE) for t in trades.itertuples()]
+    events += [(t.exit_time, -t.entry * t.qty * fs.MARGIN_RATE) for t in trades.itertuples()]
+    events += [(p["time"], p["entry"] * p["qty"] * fs.MARGIN_RATE) for p in positions]
+    held = peak = 0.0
+    for _, change in sorted(events):  # at the same time, exits (negative) first
+        held += change
+        peak = max(peak, held)
+    return round(peak, 2)
+
+
+def show_compare(both: pd.DataFrame, positions: list[dict]) -> None:
+    """Each bot style and the simulator side by side: results, the money they needed,
+    drawdown and the running P&L."""
     order = [name for name in [*fs.STYLES.values(), YOU] if name in set(both["Series"])]
     table = summary(both, "Series").reindex(order)
     table["Max drawdown ₹"] = [round(drawdown(both[both["Series"] == name].sort_values("exit_time")["net"]), 2)
                                for name in order]
+    table["Margin needed ₹"] = [
+        margin_needed(both[both["Series"] == name],
+                      [] if name == YOU else [p for p in positions if fs.STYLES[p.get("style", "eod")] == name])
+        for name in order]
+    table["Return on margin %"] = (table["Net P&L ₹"] / table["Margin needed ₹"].where(table["Margin needed ₹"] > 0)
+                                   * 100).round(2)
+    table["Turnover ₹"] = [round((both[both["Series"] == name]["entry"] * both[both["Series"] == name]["qty"]).sum())
+                           for name in order]
     st.dataframe(table, width="stretch")
+    st.caption(f"Margin needed: the most margin ({fs.MARGIN_RATE:.0%} of the futures' value) the style's trades held "
+               "at the same time, open positions included: the money to take every one of its signals, with no "
+               "capital limit. Return on margin: net P&L on that. Turnover: the value of all the entries.")
     curve = (both.sort_values("exit_time").assign(Running=lambda t: t.groupby("Series")["net"].cumsum())
              .pivot_table(index="Exited at", columns="Series", values="Running", aggfunc="last")
              .reindex(columns=order).ffill())
@@ -465,8 +491,10 @@ def main() -> None:
     stats[1].metric("Open P&L", f"₹{open_pnl:,.0f}")
     stats[2].metric("Trades closed", len(history))
     stats[3].metric("Win rate", f"{100 * (history['net'] > 0).mean():.1f}%" if len(history) else "—")
-    stats[4].metric("Peak margin used", f"₹{account.get('peak_margin', 0):,.0f}",
-                    help=f"Every signal is taken; capital ₹{account['capital']:,.0f}")
+    stats[4].metric("Margin needed", f"₹{margin_needed(history, positions):,.0f}",
+                    help=f"No capital limit: every signal is taken, in all three styles. This is the most margin "
+                         f"({fs.MARGIN_RATE:.0%} of the futures' value) the trades held at the same time, open "
+                         "positions included: the money to take them all. Each style alone needs less: see Results.")
     stats[5].metric("Last run", when(account.get("updated")))
 
     # Open positions, with requests on the one selected.
@@ -504,7 +532,7 @@ def main() -> None:
 
     st.subheader("Results")
     if len(history) or len(you):
-        show_compare(series(history, you))
+        show_compare(series(history, you), positions)
         # Each signal is traded in every style, so the other results are for one style at a time.
         picked = st.segmented_control("Results for", ["All bot styles", *fs.STYLES.values(), YOU],
                                       default="All bot styles")

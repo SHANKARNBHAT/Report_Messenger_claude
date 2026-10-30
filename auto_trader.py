@@ -10,8 +10,8 @@ timeframes without the simulator page open.
     and target AUTO_TP_PCT away, once in each exit style (futures_simulator.STYLES) to
     compare them on the same signals: squared off at 3:15 PM, held with a trailing SL
     after the target, held until the RSI exit. A stock is traded once per side and
-    style per session. Every signal is taken, to test the strategy, so the margin used
-    can exceed the capital: the most it reached is kept as "peak_margin"
+    style per session. Every signal is taken, with no capital limit, to test the
+    strategy: the Auto trader page works out the margin that needed from the trades
   * applies a request from the Auto trader page (auto_trader_page.py): keep a
     position going past its target with a trailing SL, exit at the target, or exit now
 
