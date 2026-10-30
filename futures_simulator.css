@@ -106,6 +106,13 @@ td.empty { color: var(--muted); text-align: center; padding: 18px; white-space: 
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 12px; }
 .tile { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
 .tile b { display: block; font-size: 18px; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.analysis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 10px; margin-bottom: 12px; }
+.stat-box { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-width: 0; overflow-x: auto; }
+.stat-box h4 { margin: 0 0 6px; font-size: 13px; font-weight: 600; }
+.stat-box td, .stat-box th { padding: 4px 6px; }
+.stat-box td:first-child { white-space: normal; }
+.stat-box tr.sub td:first-child { padding-left: 18px; color: var(--muted); }
+.stat-box p { margin: 6px 0 0; }
 .reset { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
 
 .toast { background: #1e3a5f; border: 1px solid var(--blue); border-radius: 10px; padding: 9px 12px; }

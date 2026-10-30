@@ -86,6 +86,9 @@ CHARGES = {
     "gst": 0.18,                  # on brokerage, exchange and SEBI charges
 }
 
+# When the Auto trader runs (auto_trader.py) first saw each signal, and its price then.
+SEEN_URL = ("https://raw.githubusercontent.com/SHANKARNBHAT/Report_Messenger_Claude/auto-trader-data/"
+            "signals_seen.json")
 YAHOO_CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart/{}"
 BAR_SECONDS = 300  # 5-minute bars
 KEY = "futures_simulator"
@@ -165,6 +168,17 @@ def latest_prices(symbols: set[str], instruments: dict[str, dict], dashboard: di
     rest = tuple(sorted((s, instruments[s]["yahoo"]) for s in symbols if s in instruments and s not in found))
     found.update({s: {**q, "source": "Yahoo"} for s, q in fetch_quotes(rest).items()})
     return found
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def load_seen() -> dict:
+    """Session date -> "SYMBOL|TIMEFRAME|Bias" -> first seen time (ms) and price, or {} if not there."""
+    try:
+        # A changing query string skips GitHub's ~5 minute raw-file cache.
+        response = requests.get(SEEN_URL, params={"t": int(datetime.now().timestamp()) // 60}, timeout=10)
+        return response.json() if response.ok else {}
+    except (requests.RequestException, ValueError):
+        return {}
 
 
 def load_dashboard() -> tuple[dict | None, str | None]:
@@ -422,6 +436,11 @@ def main() -> None:
     for signal in signals:
         found = bars.get((by_symbol[signal["symbol"]]["yahoo"], "5d")) if signal["fno"] else None
         signal["open"] = candle_open(signal["timeframe"], found, now) if isinstance(found, list) else None
+    # When the Auto trader first saw each signal; the page adds when it first saw them itself.
+    seen = load_seen().get(now.date().isoformat(), {})
+    for signal in signals:
+        first = seen.get(f"{signal['symbol']}|{signal['timeframe']}|{signal['bias']}")
+        signal["seen"] = first and {"time": first["time"], "price": first.get("price")}
 
     _SIMULATOR(
         key=KEY,

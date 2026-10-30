@@ -119,6 +119,69 @@ def summary(trades: pd.DataFrame, by: str) -> pd.DataFrame:
     return table
 
 
+def direction(trades: pd.DataFrame) -> pd.Series:
+    return trades["side"].map({"BUY": 1, "SELL": -1})
+
+
+def show_carry(history: pd.DataFrame) -> None:
+    """The positions kept going past the target with a trailing SL: a success is a trade in profit."""
+    carried = history[history.get("carried", pd.Series(False, index=history.index)).eq(True)]
+    if carried.empty:
+        st.caption("No carry-forward decisions yet: select an open position and choose Keep going at target.")
+        return
+    passed = carried[carried["passed"].eq(True)]
+    extra = ((passed["exit"] - passed["tp"]) * passed["qty"] * direction(passed)).sum()
+    cols = st.columns(4)
+    cols[0].metric("Decisions", len(carried))
+    cols[1].metric("Successful (in profit)", f"{(carried['net'] > 0).sum()} · {100 * (carried['net'] > 0).mean():.0f}%")
+    cols[2].metric("Reached the target", len(passed), help="Trailing only started for these; the rest closed "
+                   "before the target, as they would have anyway")
+    cols[3].metric("vs exiting at target", f"₹{extra:,.0f}", help="Gained (or lost) past the target by "
+                   "trailing instead of exiting there, before charges")
+    table = carried.assign(Symbol=carried["symbol"].map(chart_link), Exited=carried["exit_time"].map(when),
+                           **{"vs target ₹": ((carried["exit"] - carried["tp"]) * carried["qty"] * direction(carried))
+                              .where(carried["passed"].eq(True)).round(2)})
+    st.dataframe(table[["Exited", "Symbol", "side", "entry", "tp", "exit", "reason", "net", "vs target ₹"]],
+                 hide_index=True, width="stretch", column_config={"Symbol": SYMBOL_LINK})
+
+
+DELAYS = [(5, "≤ 5 min"), (15, "5–15 min"), (30, "15–30 min"), (60, "30–60 min"), (120, "1–2 h"), (float("inf"), "> 2 h")]
+
+
+def delay_table(trades: pd.DataFrame) -> pd.DataFrame | None:
+    """Trades with a first-seen signal: minutes from first seen to entry, and the price move in between."""
+    seen = trades.get("first_seen", pd.Series(index=trades.index, dtype=object))
+    has = seen.map(lambda f: isinstance(f, dict) and f.get("time") is not None)
+    trades, seen = trades[has], seen[has]
+    if trades.empty:
+        return None
+    price = seen.map(lambda f: f.get("price"))
+    minutes = (trades["entry_time"] - seen.map(lambda f: f["time"])) / 60000
+    return trades.assign(
+        Delay=pd.cut(minutes.clip(lower=0), [-1] + [d for d, _ in DELAYS], labels=[label for _, label in DELAYS]),
+        **{"Seen at": price,
+           "Moved before entry %": ((trades["entry"] - price) / price * 100 * direction(trades)).round(2),
+           "Delay cost ₹": ((trades["entry"] - price) * trades["qty"] * direction(trades)).round(2)})
+
+
+def show_delay(history: pd.DataFrame) -> None:
+    table = delay_table(history)
+    if table is None:
+        st.caption("No trades with a first-seen time yet.")
+        return
+    grouped = table.groupby("Delay", observed=True)
+    st.dataframe(pd.DataFrame({
+        "Trades": grouped.size(),
+        "Win rate %": grouped["net"].apply(lambda n: round(100 * (n > 0).mean(), 1)),
+        "Avg net ₹": grouped["net"].mean().round(2),
+        "Avg moved before entry %": grouped["Moved before entry %"].mean().round(2),
+        "Delay cost ₹": grouped["Delay cost ₹"].sum().round(2),
+    }), width="stretch")
+    st.caption("Delay: from when the signal was first seen (by this page or the scheduled runs) to the entry. "
+               "Moved before entry: how far the price went the signal's way in that time; positive means a "
+               "worse entry than at first sight, and Delay cost is what it cost in ₹.")
+
+
 def main() -> None:
     st.set_page_config(page_title="Auto Trader", page_icon="🤖", layout="wide")
     st.title("🤖 Auto trader")
@@ -201,14 +264,26 @@ def main() -> None:
         history = history.sort_values("exit_time", ascending=False)
         history["Day"] = history["exit_time"].map(lambda ms: when(ms)[:6])
         history["Timeframes"] = history["source"].str.removeprefix("Auto ")
-        tabs = st.tabs(["By day", "By signal", "By exit", "Trades"])
+        tabs = st.tabs(["By day", "By signal", "By strategy", "By exit", "Carry forward", "Entry delay", "Trades"])
         with tabs[0]:
             st.dataframe(summary(history, "Day"), width="stretch")
         with tabs[1]:
+            counts = history.assign(**{"On timeframes": history["Timeframes"].str.count(r"\+") + 1})
+            st.dataframe(summary(counts.sort_values("On timeframes"), "On timeframes"), width="stretch")
+            st.caption("How many timeframes (2H, 4H, Daily) the stock was on, the same way, when it was traded.")
             st.dataframe(summary(history, "Timeframes"), width="stretch")
         with tabs[2]:
-            st.dataframe(summary(history, "reason"), width="stretch")
+            strategies = history.assign(Strategy=history.get("strategies", pd.Series(index=history.index, dtype=object))
+                                        .map(lambda s: s if isinstance(s, list) and s else ["—"])).explode("Strategy")
+            st.dataframe(summary(strategies, "Strategy"), width="stretch")
+            st.caption("A trade on stocks found by several strategies counts under each.")
         with tabs[3]:
+            st.dataframe(summary(history, "reason"), width="stretch")
+        with tabs[4]:
+            show_carry(history)
+        with tabs[5]:
+            show_delay(history)
+        with tabs[6]:
             trades = history.assign(Entered=history["entry_time"].map(when), Exited=history["exit_time"].map(when),
                                     Symbol=history["symbol"].map(chart_link))
             st.dataframe(trades[["Exited", "Symbol", "side", "Timeframes", "qty", "entry", "exit", "reason",

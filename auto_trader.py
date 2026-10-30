@@ -19,6 +19,10 @@ started one in the last PAGE_QUIET minutes. When it is closed, the scheduled run
 trade as above, or with "unattended" off (a switch on the page) only close
 positions and take no new signals.
 
+Each run in market hours also notes when a signal (stock, timeframe, bias) was first
+seen and its price then, in signals_seen.json beside the account: trades keep it as
+"first_seen", to measure what entering later than that cost (the simulator reads it too).
+
 The account is kept in auto_trades.json on the auto-trader-data branch, so its
 updates stay out of main.
 
@@ -38,6 +42,8 @@ TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY")
 SHORT = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily"}
 LOTS = 1
 LAST_ENTRY = time(15, 0)  # no new trades after this, ahead of the 3:15 PM square-off
+SESSION_CLOSE = time(15, 30)
+SEEN_DAYS = 10  # sessions kept in signals_seen.json
 PAGE_QUIET = 12  # minutes: scheduled runs skip while the page started a run this recently
 ACTIONS = ["run", "trail", "untrail", "exit", "unattended-on", "unattended-off"]
 
@@ -63,6 +69,25 @@ def load(path: Path) -> dict:
     return {"capital": fs.START_CAPITAL, "positions": [], "history": [], "seq": 0, "log": []}
 
 
+def signal_key(signal: dict) -> str:
+    return f"{signal['symbol']}|{signal['timeframe']}|{signal['bias']}"
+
+
+def record_seen(seen: dict, signals: list[dict], dashboard: dict, now: datetime) -> dict:
+    """Note the signals seen for the first time today, with the time and price; returns today's."""
+    today = seen.setdefault(now.date().isoformat(), {})
+    new = [s for s in signals if signal_key(s) not in today]
+    if new:
+        instruments = {i["symbol"]: i for i in fs.load_instruments()}
+        quotes = fs.latest_prices({s["symbol"] for s in new}, instruments, dashboard)
+        for signal in new:
+            today[signal_key(signal)] = {"time": int(now.timestamp() * 1000), "strategy": signal["strategy"],
+                                         "price": (quotes.get(signal["symbol"]) or {}).get("price")}
+    for day in sorted(seen)[:-SEEN_DAYS]:
+        del seen[day]
+    return today
+
+
 def close(account: dict, position: dict, price: float, when_ms: int, reason: str) -> None:
     qty = position["qty"]
     buy, sell = (position["entry"], price) if position["side"] == "BUY" else (price, position["entry"])
@@ -72,7 +97,9 @@ def close(account: dict, position: dict, price: float, when_ms: int, reason: str
         "id": position["id"], "symbol": position["symbol"], "side": position["side"], "lots": position["lots"],
         "qty": qty, "entry": position["entry"], "exit": round(price, 2), "entry_time": position["time"],
         "exit_time": when_ms, "reason": reason, "source": position["source"], "timeframes": position["timeframes"],
-        "passed": position.get("passed", False), "gross": round(gross, 2), "charges": round(cost, 2),
+        "passed": position.get("passed", False), "carried": bool(position.get("run")), "tp": position["tp"],
+        "strategies": position.get("strategies", []), "first_seen": position.get("first_seen"),
+        "agrees": position.get("agrees"), "gross": round(gross, 2), "charges": round(cost, 2),
         "net": round(gross - cost, 2),
     })
     account["positions"].remove(position)
@@ -124,19 +151,14 @@ def settle(account: dict, now: datetime, note) -> None:
 
 def market_open(now: datetime) -> bool:
     """Whether NSE is trading now: in session hours, with NIFTY bars from today (not a holiday)."""
-    if not fs.SESSION_OPEN <= now.time() < LAST_ENTRY:
+    if now.weekday() >= 5 or not fs.SESSION_OPEN <= now.time() < SESSION_CLOSE:
         return False
     bars = fs.fetch_bars((("^NSEI", "1d"),)).get(("^NSEI", "1d"))
     return isinstance(bars, list) and bool(bars) and datetime.fromtimestamp(bars[-1][0], fs.IST).date() == now.date()
 
 
-def enter_signals(account: dict, now: datetime, note) -> None:
-    dashboard, error = fs.load_dashboard()
-    if not dashboard:
-        note(f"No signals: {error}")
-        return
+def enter_signals(account: dict, signals: list[dict], dashboard: dict, seen: dict, now: datetime, note) -> None:
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
-    signals, _ = fs.signal_rows(dashboard, instruments)
     by_symbol: dict[str, list[dict]] = {}
     for signal in signals:
         if signal["timeframe"] in TIMEFRAMES and signal["fno"]:
@@ -171,6 +193,7 @@ def enter_signals(account: dict, now: datetime, note) -> None:
         sl = tick(entry * (1 - fs.AUTO_SL_PCT / 100 * (1 if long else -1)))
         account["seq"] += 1
         timeframes = sorted({s["timeframe"] for s in found}, key=TIMEFRAMES.index)
+        first = min((seen[signal_key(s)] for s in found if signal_key(s) in seen), key=lambda f: f["time"], default=None)
         account["positions"].append({
             "id": f"{int(now.timestamp() * 1000)}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
             "qty": qty, "entry": entry, "sl": sl,
@@ -178,6 +201,7 @@ def enter_signals(account: dict, now: datetime, note) -> None:
             "stop": sl, "time": int(now.timestamp() * 1000), "status": "open", "passed": False,
             "source": "Auto " + "+".join(SHORT[tf] for tf in timeframes), "timeframes": timeframes,
             "strategies": sorted({s["strategy"] for s in found}), "agrees": found[0]["agrees"],
+            "first_seen": first and {"time": first["time"], "price": first["price"]},
         })
         note(f"{symbol}: {side} {qty} at {entry} ({', '.join(timeframes)})")
 
@@ -209,9 +233,20 @@ def main() -> None:
     if not args.scheduled:
         account["page_run"] = now_ms
     settle(account, now, note)
-    trading = not args.scheduled or account.get("unattended", True)
-    if args.action == "run" and trading and market_open(now):
-        enter_signals(account, now, note)
+    seen_path = args.account.with_name("signals_seen.json")
+    if args.action == "run" and market_open(now):
+        dashboard, error = fs.load_dashboard()
+        if dashboard:
+            signals, _ = fs.signal_rows(dashboard, {i["symbol"]: i for i in fs.load_instruments()})
+            seen = json.loads(seen_path.read_text(encoding="utf-8")) if seen_path.exists() else {}
+            today = record_seen(seen, signals, dashboard, now)
+            seen_path.parent.mkdir(parents=True, exist_ok=True)
+            seen_path.write_text(json.dumps(seen), encoding="utf-8")
+            trading = not args.scheduled or account.get("unattended", True)
+            if trading and now.time() < LAST_ENTRY:
+                enter_signals(account, signals, dashboard, today, now, note)
+        else:
+            note(f"No signals: {error}")
 
     margin = sum(p["entry"] * p["qty"] * fs.MARGIN_RATE for p in account["positions"])
     account["peak_margin"] = round(max(account.get("peak_margin", 0), margin), 2)

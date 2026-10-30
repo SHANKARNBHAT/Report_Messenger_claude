@@ -7,6 +7,7 @@
 const STORE = "futures_simulator_v1"
 const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/target on or off, at target, chart site, order card open
 const SIGNALS = "futures_simulator_signals"  // session date -> the signals last seen in that session
+const SEEN = "futures_simulator_seen"  // session date -> "SYMBOL|TIMEFRAME|Bias" -> first seen here: time, price
 const SESSION_CLOSE = "15:30"  // carried-over signals are shown until the next session closes
 const instances = new WeakMap()
 
@@ -61,8 +62,8 @@ function withCarriedSignals(data) {
   const live = data.signals, today = data.session_date
   let saved = {}
   try { saved = JSON.parse(localStorage.getItem(SIGNALS)) || {} } catch (e) { /* storage blocked */ }
-  saved[today] = live.map(({ symbol, timeframe, strategy, bias, agrees, fno, open }) =>
-    ({ symbol, timeframe, strategy, bias, agrees, fno, open }))
+  saved[today] = live.map(({ symbol, timeframe, strategy, bias, agrees, fno, open, seen }) =>
+    ({ symbol, timeframe, strategy, bias, agrees, fno, open, seen }))
   const dates = Object.keys(saved).sort().slice(-5)
   try { localStorage.setItem(SIGNALS, JSON.stringify(Object.fromEntries(dates.map((d) => [d, saved[d]])))) } catch (e) { /* storage blocked */ }
 
@@ -73,6 +74,35 @@ function withCarriedSignals(data) {
   return [...live, ...saved[previous]
     .filter((s) => !current.has(`${s.symbol}|${s.timeframe}`))
     .map((s) => ({ ...s, from: previous }))]
+}
+
+// When each signal was first seen: the earlier of the Auto trader's runs (data.signals[].seen)
+// and this browser, which notes the time and latest price the first time it shows a signal.
+function noteSeen(ctx) {
+  const today = ctx.data.session_date
+  let saved = {}
+  try { saved = JSON.parse(localStorage.getItem(SEEN)) || {} } catch (e) { /* storage blocked */ }
+  const mine = saved[today] ||= {}
+  for (const s of ctx.signals) {
+    const key = `${s.symbol}|${s.timeframe}|${s.bias}`
+    const ltp = quote(ctx, s.symbol)
+    if (!s.from && !mine[key] && ltp != null) mine[key] = { time: Date.now(), price: ltp }
+    const here = (saved[s.from || today] || {})[key]
+    s.first = [s.seen, here].filter((f) => f && f.time).sort((a, b) => a.time - b.time)[0] || null
+  }
+  const dates = Object.keys(saved).sort().slice(-10)
+  try { localStorage.setItem(SEEN, JSON.stringify(Object.fromEntries(dates.map((d) => [d, saved[d]])))) } catch (e) { /* storage blocked */ }
+}
+
+// The signals behind a trade in `symbol` on `side`: their strategies, the timeframes the
+// stock is on that way, and when it was first seen there.
+function signalInfo(ctx, symbol, side) {
+  const found = ctx.signals.filter((s) => s.symbol === symbol && (s.bias === "Bullish") === (side === "BUY"))
+  return {
+    strategies: [...new Set(found.map((s) => s.strategy))].sort(),
+    timeframes: ctx.data.timeframes.filter((tf) => found.some((s) => s.timeframe === tf)),
+    first_seen: found.map((s) => s.first).filter(Boolean).sort((a, b) => a.time - b.time)[0] || null,
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -120,6 +150,7 @@ export default function (component) {
   ctx.setStateValue = setStateValue
   ctx.setTriggerValue = setTriggerValue
 
+  noteSeen(ctx)
   applyResult(ctx, data.result)
   fillPrice(ctx)
   render(ctx)
@@ -304,7 +335,7 @@ function placeOrder(ctx, order) {
     id: `${Date.now()}-${account.seq}`, symbol: order.symbol, side: order.side, lots: order.lots,
     qty: order.qty, entry: order.entry, sl: order.sl, tp: order.tp,
     tsl: order.tsl.on ? order.tsl : { on: false }, run: order.run || null, stop: order.sl, time: order.time || Date.now(),
-    source: order.source || "Manual", status: "open",
+    source: order.source || "Manual", status: "open", ...signalInfo(ctx, order.symbol, order.side),
   })
   saveAccount(account)
 }
@@ -426,6 +457,8 @@ function closePosition(ctx, position, price, time, reason) {
     id: position.id, symbol: position.symbol, side: position.side, lots: position.lots, qty: position.qty,
     entry: position.entry, exit: price, entry_time: position.time, exit_time: time, reason,
     source: position.source, gross, charges: cost, net: gross - cost,
+    tp: position.tp, carried: !!position.run, passed: !!position.passed,
+    strategies: position.strategies || [], timeframes: position.timeframes || [], first_seen: position.first_seen || null,
   })
   ctx.account.positions = ctx.account.positions.filter((p) => p.id !== position.id)
 }
@@ -498,10 +531,13 @@ function resetAccount(ctx) {
 }
 
 function exportCsv(ctx) {
-  const columns = ["symbol", "side", "lots", "qty", "entry", "exit", "entry_time", "exit_time", "reason", "source", "gross", "charges", "net"]
-  const cell = (t, c) => c.endsWith("_time") ? new Date(t[c]).toISOString()
+  const columns = ["symbol", "side", "lots", "qty", "entry", "exit", "entry_time", "exit_time", "reason", "source", "gross",
+    "charges", "net", "tp", "carried", "passed", "timeframes", "strategies", "first_seen_time", "first_seen_price"]
+  const row = (t) => ({ ...t, timeframes: (t.timeframes || []).join("+"), strategies: (t.strategies || []).join("; "),
+    first_seen_time: t.first_seen?.time ?? null, first_seen_price: t.first_seen?.price ?? null })
+  const cell = (t, c) => c.endsWith("_time") ? (t[c] ? new Date(t[c]).toISOString() : "")
     : typeof t[c] === "number" ? t[c].toFixed(2).replace(/\.00$/, "") : `"${String(t[c] ?? "").replace(/"/g, '""')}"`
-  const lines = [columns.join(","), ...ctx.account.history.map((t) => columns.map((c) => cell(t, c)).join(","))]
+  const lines = [columns.join(","), ...ctx.account.history.map(row).map((t) => columns.map((c) => cell(t, c)).join(","))]
   const link = document.createElement("a")
   link.href = URL.createObjectURL(new Blob([lines.join("\n")], { type: "text/csv" }))
   link.download = "futures_trades.csv"
@@ -637,6 +673,77 @@ function renderPositions(ctx) {
   }).join("") : `<tr><td class="empty" colspan="10">No open positions. Place an order or auto-execute a signal.</td></tr>`)
 }
 
+// Trades, win rate and net P&L of each group of trades, in the order the groups first appear.
+function groupRows(trades, key, order) {
+  const groups = new Map()
+  for (const t of trades) for (const k of [key(t)].flat()) {
+    if (!groups.has(k)) groups.set(k, [])
+    groups.get(k).push(t)
+  }
+  const keys = order ? order.filter((k) => groups.has(k)) : [...groups.keys()]
+  return keys.map((k) => ({ key: k, trades: groups.get(k) }))
+}
+
+const winRate = (trades) => `${(100 * trades.filter((t) => t.net > 0).length / trades.length).toFixed(0)}%`
+const netSum = (trades) => trades.reduce((s, t) => s + t.net, 0)
+const sign = (t) => t.side === "BUY" ? 1 : -1
+const DELAYS = [[5, "≤ 5 min"], [15, "5–15 min"], [30, "15–30 min"], [60, "30–60 min"], [120, "1–2 h"], [Infinity, "> 2 h"]]
+
+function statTable(title, note, head, rows) {
+  return `<div class="stat-box"><h4>${title}</h4><table><tr>${head.map((h, i) => `<th${i ? ' class="r"' : ""}>${h}</th>`).join("")}</tr>
+    ${rows.length ? rows.map((r) => `<tr${r.sub ? ' class="sub"' : ""}>${r.cells.map((c, i) => `<td${i ? ' class="r"' : ""}>${c}</td>`).join("")}</tr>`).join("")
+      : `<tr><td class="empty" colspan="${head.length}">No trades yet.</td></tr>`}</table>
+    ${note ? `<p class="muted small">${note}</p>` : ""}</div>`
+}
+
+// Strategy win rates, results by the timeframes a stock was on, the carry-forward
+// decisions (kept going past the target) and the cost of entering after a signal appeared.
+function renderAnalysis(ctx) {
+  const trades = ctx.account.history
+  const basic = (g) => [g.trades.length, winRate(g.trades), signed(netSum(g.trades))]
+
+  const strategies = groupRows(trades, (t) => t.strategies?.length ? t.strategies : ["No signal (manual)"])
+    .map((g) => ({ cells: [esc(g.key), ...basic(g)] }))
+
+  const tfKey = (t) => (t.timeframes || []).map(shortTf).join("+") || "No signal"
+  const tfRows = []
+  for (const count of groupRows(trades, (t) => (t.timeframes || []).length, [1, 2, 3, 4, 0])) {
+    tfRows.push({ cells: [count.key ? `<b>On ${count.key} timeframe${count.key > 1 ? "s" : ""}</b>` : "<b>No signal</b>", ...basic(count)] })
+    if (count.key) for (const combo of groupRows(count.trades, tfKey)) tfRows.push({ sub: true, cells: [esc(combo.key), ...basic(combo)] })
+  }
+
+  const carried = trades.filter((t) => t.carried)
+  const passed = carried.filter((t) => t.passed)
+  const extra = passed.reduce((s, t) => s + (t.exit - t.tp) * t.qty * sign(t), 0)
+  const carryRows = carried.length ? [
+    { cells: ["Decisions to keep going", carried.length] },
+    { cells: ["In profit (success)", `${carried.filter((t) => t.net > 0).length} · ${winRate(carried)}`] },
+    { cells: ["Reached the target, then trailed", passed.length] },
+    { cells: ["vs exiting at the target", signed(extra)] },
+    { cells: ["Net P&L of these trades", signed(netSum(carried))] },
+  ] : []
+
+  const timed = trades.filter((t) => t.first_seen?.time && t.first_seen.price)
+  const delayOf = (t) => DELAYS.find(([limit]) => Math.max(0, (t.entry_time - t.first_seen.time) / 60000) <= limit)[1]
+  const moved = (t) => (t.entry - t.first_seen.price) / t.first_seen.price * 100 * sign(t)
+  const delayRows = groupRows(timed, delayOf, DELAYS.map(([, label]) => label)).map((g) => {
+    const avgMoved = g.trades.reduce((s, t) => s + moved(t), 0) / g.trades.length
+    const cost = g.trades.reduce((s, t) => s + (t.entry - t.first_seen.price) * t.qty * sign(t), 0)
+    return { cells: [g.key, ...basic(g), `${avgMoved >= 0 ? "+" : ""}${avgMoved.toFixed(2)}%`, inr(cost)] }
+  })
+
+  ctx.ref("analysis").innerHTML = [
+    statTable("By strategy", "A trade found by several strategies counts under each.", ["Strategy", "Trades", "Win", "Net"], strategies),
+    statTable("By timeframes the stock was on", "The timeframes with a signal the same way when the trade was placed.",
+      ["Timeframes", "Trades", "Win", "Net"], tfRows),
+    statTable("Carry forward", "Positions kept going past the target with a trailing SL. vs exiting at the target: " +
+      "gained or lost after the target, before charges.", ["Decisions", "Count"], carryRows),
+    statTable("Entry delay", "From when the signal was first seen (here or by the Auto trader) to the entry. Moved: " +
+      "how far the price went the signal's way meanwhile; positive is a worse entry, Cost is that in ₹.",
+      ["Delay", "Trades", "Win", "Net", "Moved", "Cost"], delayRows),
+  ].join("")
+}
+
 function renderLedger(ctx) {
   const trades = ctx.account.history
   const sum = (key) => trades.reduce((s, t) => s + t[key], 0)
@@ -649,6 +756,7 @@ function renderLedger(ctx) {
     ["Brokerage & taxes", inr(sum("charges"))],
     ["Return on capital", ctx.account.capital ? `${(100 * sum("net") / ctx.account.capital).toFixed(2)}%` : "—"],
   ].map(([label, value]) => `<div class="tile"><span class="muted small">${label}</span><b>${value}</b></div>`).join("")
+  renderAnalysis(ctx)
   ctx.ref("history").innerHTML = `<tr><th>Exit</th><th>Symbol</th><th>Side</th><th class="r">Qty</th>
     <th class="r">Entry</th><th class="r">Exit price</th><th>Reason</th><th class="r">Gross</th>
     <th class="r">Charges</th><th class="r">Net</th></tr>` + (trades.length ? trades.slice().reverse().map((t) => `
