@@ -278,12 +278,22 @@ function noteSaved(ctx) {
 
 function sendUnsaved(ctx) {
   const saved = new Set(ctx.account.saved || [])
-  const unsaved = ctx.account.history.filter((t) => !saved.has(t.id))
+  const unsaved = [...ctx.account.history, ...(ctx.account.skips || [])].filter((t) => !saved.has(t.id))
   const key = unsaved.map((t) => t.id).join(",")
   if (key !== ctx.sentUnsaved) {
     ctx.sentUnsaved = key
     ctx.setStateValue("unsaved", unsaved)
   }
+}
+
+// A signal not taken for lack of margin, kept (once a day per stock and side) to compare
+// with the Auto trader's trade on it.
+function noteSkip(ctx, symbol, side, entry, source) {
+  const day = (ms) => new Date(ms).toLocaleDateString("sv-SE", { timeZone: "Asia/Kolkata" })
+  const skips = ctx.account.skips ||= []
+  if (skips.some((s) => s.symbol === symbol && s.side === side && day(s.time) === day(Date.now()))) return
+  skips.push({ id: `skip-${Date.now()}-${symbol}`, kind: "skip", time: Date.now(), symbol, side, entry,
+    reason: "Not enough margin", source })
 }
 
 function syncSymbols(ctx) {
@@ -377,6 +387,11 @@ function placeFromForm(ctx) {
   const order = formOrder(ctx)
   if (order.error) {
     ctx.ref("order-error").textContent = order.error
+    if (order.error.startsWith("Not enough margin")) {
+      noteSkip(ctx, order.symbol, order.side, order.entry, "Manual")
+      saveAccount(ctx.account)
+      sendUnsaved(ctx)
+    }
     return
   }
   placeOrder(ctx, order)
@@ -447,11 +462,14 @@ function autoExecute(ctx, signals) {
       run: run ? autoRun(ctx, entry) : null,
     }
     if (entry * order.qty * ctx.data.settings.margin_rate > balance(ctx) - usedMargin(ctx)) {
+      noteSkip(ctx, symbol, side, entry, order.source)
       skipped.push(`${symbol} (margin)`); continue
     }
     placeOrder(ctx, order)
     placed.push(symbol)
   }
+  saveAccount(ctx.account)  // the skips, if nothing was placed
+  sendUnsaved(ctx)
   const message = (placed.length ? `Placed ${placed.length}: ${placed.join(", ")}.` : "No orders placed.") +
     (skipped.length ? ` Skipped ${skipped.join(", ")}.` : "")
   toast(ctx, message, !placed.length)

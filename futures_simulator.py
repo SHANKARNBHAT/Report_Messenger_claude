@@ -225,16 +225,17 @@ def data_file(name: str) -> requests.Response:
     return requests.get(DATA_URL.format(name), headers=github_headers(), timeout=15)
 
 
-def save_trades(trades: list[dict]) -> tuple[list[str], str | None]:
-    """Add the simulator's closed trades to manual/YYYY-MM.json on the Auto trader's branch.
+def save_trades(trades: list[dict], folder: str = "manual") -> tuple[list[str], str | None]:
+    """Add the simulator's closed trades (or its skips) to FOLDER/YYYY-MM.json on the Auto
+    trader's branch, by the month they closed (or happened) in.
     Returns the ids saved (or there already) and an error message, if any."""
     by_month: dict[str, list[dict]] = {}
     for trade in trades:
-        month = datetime.fromtimestamp(trade["exit_time"] / 1000, IST).strftime("%Y-%m")
+        month = datetime.fromtimestamp((trade.get("exit_time") or trade["time"]) / 1000, IST).strftime("%Y-%m")
         by_month.setdefault(month, []).append(trade)
     saved = []
     for month, new in by_month.items():
-        url = DATA_URL.format(f"manual/{month}.json").split("?")[0]
+        url = DATA_URL.format(f"{folder}/{month}.json").split("?")[0]
         for _ in range(3):  # the file can change between reading and writing it
             try:
                 found = requests.get(url, params={"ref": "auto-trader-data"}, headers=github_headers(raw=False),
@@ -242,12 +243,12 @@ def save_trades(trades: list[dict]) -> tuple[list[str], str | None]:
                 sha, current = None, []
                 if found.ok:
                     sha = found.json()["sha"]
-                    current = json.loads(data_file(f"manual/{month}.json").text)
+                    current = json.loads(data_file(f"{folder}/{month}.json").text)
                 elif found.status_code != 404:
                     return saved, f"GitHub answered {found.status_code}: {found.json().get('message', found.text)}"
                 known = {t["id"] for t in current}
                 merged = current + [t for t in new if t["id"] not in known]
-                body = {"message": f"Simulator: {len(merged) - len(current)} trade(s) closed in {month}",
+                body = {"message": f"Simulator: {len(merged) - len(current)} {folder} record(s), {month}",
                         "branch": "auto-trader-data",
                         "content": base64.b64encode(json.dumps(merged, indent=1).encode()).decode()}
                 if sha:
@@ -271,14 +272,21 @@ def save_trades(trades: list[dict]) -> tuple[list[str], str | None]:
 
 
 def back_up_trades(trades: list[dict]) -> tuple[list[str], str | None]:
-    """Save the closed trades the simulator has not seen saved; the ids saved this session."""
+    """Save the closed trades and the skips (signals not taken for lack of margin, "kind":
+    "skip", to manual-skips/) the simulator has not seen saved; the ids saved this session."""
     done = st.session_state.setdefault("_trades_saved", set())
     todo = [t for t in trades if isinstance(t, dict) and t.get("id") and t["id"] not in done]
     last = st.session_state.get("_trades_tried", 0)
     if todo and (not st.session_state.get("_trades_error") or clock.time() - last > SAVE_RETRY):
         st.session_state["_trades_tried"] = clock.time()
-        ids, st.session_state["_trades_error"] = save_trades(todo)
-        done.update(ids)
+        errors = []
+        for folder, records in (("manual", [t for t in todo if t.get("kind") != "skip"]),
+                                ("manual-skips", [t for t in todo if t.get("kind") == "skip"])):
+            if records:
+                ids, error = save_trades(records, folder)
+                done.update(ids)
+                errors.append(error)
+        st.session_state["_trades_error"] = next((e for e in errors if e), None)
     return sorted(done), st.session_state.get("_trades_error")
 
 

@@ -87,6 +87,16 @@ def load_trades(folder: str) -> pd.DataFrame:
     return prepare(pd.DataFrame(rows))
 
 
+def load_skips() -> pd.DataFrame:
+    """The signals the simulator did not take for lack of margin (manual-skips/)."""
+    try:
+        rows = [skip for path, sha in listing("manual-skips") for skip in branch_file(path, sha)]
+    except (requests.RequestException, ValueError) as exc:
+        st.warning(f"Could not load manual-skips/: {exc}")
+        rows = []
+    return pd.DataFrame(rows, columns=["id", "time", "symbol", "side", "entry", "reason", "source"])
+
+
 def load_signals() -> pd.DataFrame:
     try:
         rows = [{**entry, "date": Path(path).stem} for path, sha in listing("signals")
@@ -369,6 +379,73 @@ def show_signals(signals: pd.DataFrame) -> None:
         hide_index=True, width="stretch", column_config={"Symbol": SYMBOL_LINK})
 
 
+def ist_date(ms: pd.Series) -> pd.Series:
+    return pd.to_datetime(ms, unit="ms", utc=True).dt.tz_convert("Asia/Kolkata").dt.date
+
+
+def show_decisions(bot: pd.DataFrame, you: pd.DataFrame, skips: pd.DataFrame) -> None:
+    """Your simulator trades against the Auto trader's trades on the same signals (stock, side,
+    day): the signals you took against those you passed on, and your timing."""
+    if you.empty and skips.empty:
+        st.caption("Your simulator trades show here once they are backed up: which signals you took and passed "
+                   "on, compared with the Auto trader's trades on the same signals.")
+        return
+    style = st.selectbox("Judge the signals by the Auto trader's trades in", list(fs.STYLES.values()), index=1,
+                         help="The Auto trader trades every signal in each style; its trades in this one tell "
+                              "how good each signal was.")
+    ref = bot[bot["Style"] == style].assign(day=lambda t: ist_date(t["entry_time"]))
+    ref = ref.sort_values("entry_time").drop_duplicates(["day", "symbol", "side"])
+    yours = you.assign(day=ist_date(you["entry_time"])) if len(you) else you.assign(day=None)
+    skipped = skips.assign(day=ist_date(skips["time"])) if len(skips) else skips.assign(day=None)
+    # Only the days you traded (or tried to): the signals of other days were not your decision.
+    days = set(yours["day"].dropna()) | set(skipped["day"].dropna())
+    signals = ref[ref["day"].isin(days)]
+    if signals.empty:
+        st.caption(f"No Auto trader trades in {style} on the days you traded yet.")
+        return
+    key = lambda t: list(zip(t["day"], t["symbol"], t["side"]))
+    taken, no_funds = set(key(yours)), set(key(skipped))
+    signals = signals.assign(Decision=[
+        "Taken" if k in taken else "Skipped: not enough margin" if k in no_funds else "Skipped"
+        for k in key(signals)])
+    grouped = signals.groupby("Decision")
+    table = pd.DataFrame({
+        "Signals": grouped.size(),
+        "Bot win rate %": grouped["net"].apply(lambda n: round(100 * (n > 0).mean(), 1)),
+        "Bot avg return %": grouped["Made %"].mean().round(2),
+        "Bot net P&L ₹": grouped["net"].sum().round(2),
+    }).reindex(["Taken", "Skipped: not enough margin", "Skipped"]).dropna(how="all")
+    st.dataframe(table, width="stretch")
+    st.caption(f"The Auto trader's results ({style}) on the signals of the days you traded: did you take the "
+               "better ones? Skipped: not enough margin: signals the simulator could not afford.")
+
+    matched = yours.merge(ref[["day", "symbol", "side", "entry_time", "entry", "Made %"]],
+                          on=["day", "symbol", "side"], suffixes=("", " bot"))
+    if len(matched):
+        sign = direction(matched)
+        matched = matched.assign(**{
+            "Later by min": ((matched["entry_time"] - matched["entry_time bot"]) / 60000).round(),
+            "Entry vs bot %": ((matched["entry"] - matched["entry bot"]) / matched["entry bot"] * 100 * sign).round(2),
+            "Your return %": matched["Made %"].round(2), "Bot return %": matched["Made % bot"].round(2)})
+        cols = st.columns(4)
+        cols[0].metric("Your trades on bot signals", len(matched))
+        cols[1].metric("Entered later than the bot by", f"{matched['Later by min'].median():.0f} min",
+                       help="Median; negative: earlier")
+        cols[2].metric("Entry price vs the bot", f"{matched['Entry vs bot %'].mean():+.2f}%",
+                       help="Average, the signal's way: positive is a worse entry than the bot's")
+        cols[3].metric("Your return vs the bot's", f"{matched['Your return %'].mean():+.2f}%",
+                       delta=f"{matched['Your return %'].mean() - matched['Bot return %'].mean():+.2f}% vs bot",
+                       help=f"Average return per trade, % of entry: yours against the bot's in {style}")
+        st.dataframe(matched.assign(Symbol=matched["symbol"].map(chart_link), Entered=matched["entry_time"].map(when),
+                                    Style=matched["Style"])[
+            ["Entered", "Symbol", "side", "Style", "Later by min", "Entry vs bot %", "Your return %", "Bot return %",
+             "net"]].sort_values("Entered", ascending=False),
+            hide_index=True, width="stretch", column_config={"Symbol": SYMBOL_LINK})
+    unmatched = len(yours) - len(matched)
+    if unmatched > 0:
+        st.caption(f"{unmatched} of your trades had no Auto trader trade in {style} on the same stock, side and day.")
+
+
 def csv(frame: pd.DataFrame) -> bytes:
     return frame.drop(columns=["Exited at"], errors="ignore").to_csv(index=False).encode()
 
@@ -521,6 +598,7 @@ def main() -> None:
     if account.get("history"):
         history = prepare(pd.concat([history[COLUMNS], pd.DataFrame(account["history"])], ignore_index=True))
     you = load_trades("manual")
+    skips = load_skips()
     signals = load_signals()
     positions = account["positions"]
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
@@ -588,6 +666,9 @@ def main() -> None:
             show_results(history if picked in (None, "All bot styles") else history[history["Style"] == picked], signals)
     else:
         st.caption("No closed trades yet. The simulator's trades show here too once they are backed up.")
+
+    st.subheader("Your decisions")
+    show_decisions(history, you, skips)
 
     st.subheader("Signals")
     show_signals(signals)
