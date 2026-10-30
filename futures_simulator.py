@@ -292,9 +292,14 @@ def run_check() -> None:
         fetch_bars.clear()
         fetch_dashboard.clear()
         fetch_price_bars.clear()
-    now = datetime.now(IST)
+    results = check_positions(request.get("positions") or [], datetime.now(IST), request.get("mode") == "eod")
+    st.session_state[RESULT] = {"id": request.get("id"), "mode": request.get("mode"), "results": results}
+
+
+def check_positions(positions: list[dict], now: datetime, settle: bool) -> list[dict]:
+    """Replay each position on the 5-minute bars since its entry (see replay); also used by auto_trader.py."""
     instruments = {i["symbol"]: i for i in load_instruments()}
-    positions = [p for p in request.get("positions") or [] if p.get("symbol") in instruments]
+    positions = [p for p in positions if p.get("symbol") in instruments]
     # Chartink's 5-minute bars when they reach back to the entry, else Yahoo Finance's.
     try:
         chartink = fetch_price_bars(DEFAULT_DASHBOARD) if positions else {}
@@ -316,8 +321,8 @@ def run_check() -> None:
             results.append({"id": position["id"], "status": "error", "error": found})
             continue
         latest = (quotes.get(position["symbol"]) or {}).get("price")
-        results.append(replay(position, found, now, latest, request.get("mode") == "eod"))
-    st.session_state[RESULT] = {"id": request.get("id"), "mode": request.get("mode"), "results": results}
+        results.append(replay(position, found, now, latest, settle))
+    return results
 
 
 # ---------------------------------------------------------------------------

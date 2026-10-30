@@ -1,0 +1,69 @@
+name: Auto Trader
+
+on:
+  # Every 15 minutes in market hours (IST = UTC + 5:30), then after the 3:15 PM
+  # square-off to close the day's positions. Odd minutes: GitHub delays or drops
+  # scheduled runs most around :00 and :30.
+  schedule:
+    - cron: '52 3 * * 1-5'            # 9:22 AM IST
+    - cron: '7,22,37,52 4-9 * * 1-5'  # 9:37 AM to 3:22 PM IST
+    - cron: '13,43 10 * * 1-5'        # 3:43 and 4:13 PM IST
+  # Also started by the Auto trader page, for a request on one position.
+  workflow_dispatch:
+    inputs:
+      action:
+        description: run, or a request on one position
+        type: choice
+        options: [run, trail, untrail, exit]
+        default: run
+      position:
+        description: Position id (for trail, untrail and exit)
+        type: string
+        default: ''
+
+permissions:
+  contents: write  # pushes the account to the auto-trader-data branch
+
+# One run at a time: each reads the account the last one saved.
+concurrency:
+  group: auto-trader
+  cancel-in-progress: false
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # The account lives on its own branch, so its updates stay out of main.
+      - name: Check out the account
+        run: |
+          git fetch --depth 1 origin auto-trader-data
+          git worktree add data FETCH_HEAD
+          git -C data switch -c auto-trader-data
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          pip install pandas requests streamlit beautifulsoup4
+
+      - name: Trade
+        env:
+          ACTION: ${{ inputs.action || 'run' }}
+          POSITION: ${{ inputs.position }}
+        run: |
+          python auto_trader.py data/auto_trades.json --action "$ACTION" --position "$POSITION"
+
+      - name: Save the account
+        working-directory: data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add auto_trades.json
+          git commit -q -m "Auto trader: ${{ inputs.action || 'run' }} $(TZ=Asia/Kolkata date '+%d %b %H:%M') IST" || exit 0
+          git push origin auto-trader-data
