@@ -505,6 +505,13 @@ function renderStats(ctx) {
   ctx.root.querySelector('[data-act="eod"]').textContent = ctx.pending ? "Checking…" : "⏱ Run EOD settlement"
 }
 
+// A stock's name, linked to its chart on the site picked under Charts.
+function symbolLink(ctx, symbol) {
+  const site = ctx.ref("chart-site").value
+  const link = (ctx.data.charts[site] || Object.values(ctx.data.charts)[0]).replace("SYMBOL", encodeURIComponent(symbol))
+  return `<a class="sym" href="${esc(link)}" target="_blank" rel="noopener" title="Open the chart on ${esc(site)}"><b>${esc(symbol)}</b></a>`
+}
+
 function renderSignals(ctx) {
   const { signals_note: note, settings } = ctx.data
   const signals = ctx.signals
@@ -521,16 +528,13 @@ function renderSignals(ctx) {
     " Signals with a date are from the last session, kept until 3:30 PM."
   const agree = { Yes: "yes", No: "no", "Not on watchlist": "none" }
   const shown = signals.map((s, row) => ({ ...s, row })).filter((s) => s.timeframe === ctx.timeframe)
-  const site = ctx.ref("chart-site").value
-  const chartLink = ctx.data.charts[site] || Object.values(ctx.data.charts)[0]
   ctx.ref("signals").innerHTML = `<tr><th>Symbol</th><th>Strategy</th><th>Bias</th><th>Agrees</th>
     <th class="r">LTP</th><th class="r">${tf} candle open</th><th class="r">Lot</th><th></th></tr>` + (shown.length ? shown.map((s) => {
     const ltp = quote(ctx, s.symbol), info = instrument(ctx, s.symbol), start = signalEntry(ctx, s)
     const open = ctx.account.positions.some((p) => p.symbol === s.symbol && p.side === (s.bias === "Bullish" ? "BUY" : "SELL"))
     const label = !info ? "Not F&O" : open ? "Open" : !start ? "No price" : "⚡ Execute"
-    const chart = chartLink.replace("SYMBOL", encodeURIComponent(s.symbol))
     const from = s.from ? ` <span class="tag" title="From the last session">${esc(sessionDay(s.from))}</span>` : ""
-    return `<tr><td><a class="sym" href="${esc(chart)}" target="_blank" rel="noopener" title="Open the chart on ${esc(site)}"><b>${esc(s.symbol)}</b></a>${from}</td><td class="muted">${esc(s.strategy)}</td>
+    return `<tr><td>${symbolLink(ctx, s.symbol)}${from}</td><td class="muted">${esc(s.strategy)}</td>
       <td><span class="pill ${s.bias === "Bullish" ? "long" : "short"}">${s.bias}</span></td>
       <td><span class="pill ${agree[s.agrees]}">${esc(s.agrees)}</span></td>
       <td class="r">${inr(ltp)}</td>
@@ -582,7 +586,7 @@ function renderPositions(ctx) {
     const ltp = quote(ctx, p.symbol)
     const stop = p.stop == null ? "—" : inr(p.stop) + (p.tsl?.on ? (p.stop !== p.sl ? " ↗ TSL" : " · TSL") : "")
     const status = p.status === "waiting" ? '<span class="muted small"> · waits for market</span>' : ""
-    return `<tr><td><b>${esc(p.symbol)}</b><div class="muted small">${esc(p.source)}</div></td>
+    return `<tr><td>${symbolLink(ctx, p.symbol)}<div class="muted small">${esc(p.source)}</div></td>
       <td><span class="pill ${p.side === "BUY" ? "long" : "short"}">${p.side === "BUY" ? "LONG" : "SHORT"}</span></td>
       <td class="r">${p.qty.toLocaleString("en-IN")}</td><td class="r">${inr(p.entry)}</td>
       <td class="r">${inr(ltp)}${ltp == null ? "" : `<div class="muted small">${esc(ctx.data.quotes[p.symbol].source)} ${when(ctx.data.quotes[p.symbol].time)}</div>`}</td>
