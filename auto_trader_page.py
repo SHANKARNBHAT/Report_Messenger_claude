@@ -63,8 +63,13 @@ def dispatch(action: str, position: str = "") -> bool:
     except requests.RequestException as exc:
         st.error(f"Could not start the auto trader: {exc}")
         return False
-    if response.status_code != 204:
-        st.error(f"Could not start the auto trader: {response.text}")
+    if not response.ok:  # 204 No Content when started
+        try:
+            message = response.json().get("message") or response.text
+        except ValueError:
+            message = response.text
+        st.error(f"Could not start the auto trader: GitHub answered {response.status_code} "
+                 f"{response.reason}. {message}".strip())
         return False
     return True
 

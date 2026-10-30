@@ -68,4 +68,13 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -q -m "Auto trader: ${{ inputs.action || 'run' }} $(TZ=Asia/Kolkata date '+%d %b %H:%M') IST" || exit 0
-          git push origin auto-trader-data
+          # The branch may have moved since this run checked it out: put this run's
+          # account on top (it is the newest) and retry.
+          for i in 1 2 3; do
+            git push origin auto-trader-data && exit 0
+            git fetch origin auto-trader-data
+            git rebase -X theirs FETCH_HEAD || { git rebase --abort || true; git reset --soft FETCH_HEAD; git commit -q -m "Auto trader: save"; }
+            sleep 3
+          done
+          echo "Could not save the account"
+          exit 1
