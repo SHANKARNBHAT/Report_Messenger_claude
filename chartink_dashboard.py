@@ -63,8 +63,8 @@ PRICE_WIDGET_BARS = 300
 # and how many of its candles (about a week of 2H candles, more of the others).
 HA_COLUMNS = {"2 HOUR": "[0] 2 hour", "4 HOUR": "[0] 4 hour", "DAILY": "Daily"}
 HA_CANDLES = 20
-HA_QUERY = ("select {0} Close as 'Close', {0} ha-low as 'HA low', {0} ha-high as 'HA high' "
-            "WHERE( {{33489}} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
+HA_QUERY = ("select {0} Close as 'Close', {0} ha-low as 'HA low', {0} ha-high as 'HA high', "
+            "{0} ha-open as 'HA open', {0} ha-close as 'HA close' WHERE( {{33489}} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
 NO_VALUE = 1e300  # Chartink fills the candles a stock has no data for with 1.7e308
 IST = ZoneInfo("Asia/Kolkata")
 
@@ -260,7 +260,8 @@ def fetch_price_bars(link: str, size: int = PRICE_WIDGET_BARS) -> dict[str, list
 @st.cache_data(ttl=120, show_spinner=False)
 def fetch_ha_candles(link: str = HA_DASHBOARD) -> dict[str, dict[str, list[tuple]]]:
     """timeframe -> symbol -> its last HA_CANDLES candles (start in seconds, close, HA low,
-    HA high), oldest first, for the F&O stocks. The dashboard only lends a widget to ask with."""
+    HA high, HA open, HA close), oldest first, for the F&O stocks. The dashboard only lends a
+    widget to ask with."""
     candles: dict[str, dict[str, list[tuple]]] = {}
     with requests.Session() as session:
         session.headers.update(CHARTINK_HEADERS)
@@ -277,7 +278,7 @@ def fetch_ha_candles(link: str = HA_DASHBOARD) -> dict[str, dict[str, list[tuple
             candles[timeframe] = {}
             for group in payload.get("groupData") or []:
                 columns = {alias: values for result in group.get("results") or [] for alias, values in result.items()}
-                rows = zip(starts, columns.get("close") or [], columns.get("ha low") or [], columns.get("ha high") or [])
+                rows = zip(starts, *(columns.get(c) or [] for c in ("close", "ha low", "ha high", "ha open", "ha close")))
                 candles[timeframe][group.get("name")] = [
                     row for row in rows if all(v is not None and v < NO_VALUE for v in row)]
     return candles

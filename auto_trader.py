@@ -49,6 +49,8 @@ import futures_simulator as fs
 TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY")
 SHORT = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily"}
 LOTS = 1
+# The column of the HA widgets with the SMA of the RSI of the signal's own timeframe.
+HA_SMA_RSI = {"2 HOUR": "Sma 2hr rsi", "4 HOUR": "Sma 4hr rsi", "DAILY": "Dly SMA RSI"}
 LAST_ENTRY = time(15, 0)  # no new trades after this, ahead of the 3:15 PM square-off
 SESSION_CLOSE = time(15, 30)
 PAGE_QUIET = 12  # minutes: scheduled runs skip while the page started a run this recently
@@ -155,7 +157,8 @@ def close(files: Files, account: dict, position: dict, price: float, when_ms: in
         "carried": bool(position.get("run")), "sl": position["sl"], "tp": position["tp"],
         "high": round(high, 2), "low": round(low, 2), "nifty": position.get("nifty"),
         "strategies": position.get("strategies", []), "first_seen": position.get("first_seen"),
-        "agrees": position.get("agrees"), "gross": round(gross, 2), "charges": round(cost, 2),
+        "agrees": position.get("agrees"), "sma_rsi": position.get("sma_rsi"),
+        "gross": round(gross, 2), "charges": round(cost, 2),
         "net": round(gross - cost, 2),
     })
     files.changed.add(f"trades/{month_of(when_ms)}.json")
@@ -206,21 +209,34 @@ def candle_end(timeframe: str, start: int) -> float:
     return (session_close if end.time() >= fs.SQUARE_OFF else end).timestamp()
 
 
+def ha_level(rows: list[tuple], index: int, long: bool, style: str) -> float | None:
+    """The price the candle at `index` must close past: the low (a long) or high (a short) of
+    the HA candle before it or, in the ha_green style, of the last HA candle before it that
+    was green (a long) or red (a short). None if there is none."""
+    earlier = rows[:index]
+    if style == "ha_green":
+        earlier = [row for row in earlier if row[5] != row[4] and (row[5] > row[4]) == long]
+    return earlier[-1][2 if long else 3] if earlier else None
+
+
 def ha_exit(position: dict, candles: dict, now: datetime) -> dict | None:
     """The HA exit of a position, if due: the first candle of its timeframe (the shortest if
-    several) since the entry whose close, live while it runs, went below the previous HA
-    candle's low (a long) or above its high (a short). A finished candle, in case the runs
-    missed it, exits at its end. Exit price, time (ms) and reason, else None."""
+    several) since the entry whose close, live while it runs, went past its level (ha_level).
+    A finished candle, in case the runs missed it, exits at its end. Exit price, time (ms)
+    and reason, else None."""
     timeframe = position["timeframes"][0]
     rows = (candles.get(timeframe) or {}).get(position["symbol"]) or []
     long = position["side"] == "BUY"
-    for previous, candle in zip(rows, rows[1:]):
+    style = position.get("style")
+    name = "HA exit" if style != "ha_green" else "HA green exit" if long else "HA red exit"
+    for index, candle in enumerate(rows):
         end = candle_end(timeframe, candle[0])
-        if end * 1000 <= position["time"]:
+        level = ha_level(rows, index, long, style)
+        if end * 1000 <= position["time"] or level is None:
             continue
-        if candle[1] < previous[2] if long else candle[1] > previous[3]:
+        if candle[1] < level if long else candle[1] > level:
             return {"exit": tick(candle[1]), "exit_time": int(min(end, now.timestamp()) * 1000),
-                    "reason": f"HA exit ({SHORT[timeframe]})"}
+                    "reason": f"{name} ({SHORT[timeframe]})"}
     return None
 
 
@@ -230,7 +246,7 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
     if not account["positions"]:
         return
     candles = {}
-    if any(p.get("style") == "ha" for p in account["positions"]):
+    if any(p.get("style") in fs.HA_EXITS for p in account["positions"]):
         try:
             candles = fs.fetch_ha_candles()
         except fs.ChartinkError as exc:
@@ -238,7 +254,7 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
     for result in fs.check_positions(account["positions"], now, settle=False):
         position = next(p for p in account["positions"] if p["id"] == result["id"])
         # A candle that went past since the last run may have come before what the bars show.
-        due = ha_exit(position, candles, now) if position.get("style") == "ha" else None
+        due = ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS else None
         if due and (result["status"] != "closed" or due["exit_time"] < result["exit_time"]):
             result = {**result, **due, "status": "closed"}
         if result["status"] == "closed":
@@ -294,6 +310,20 @@ def market_open(now: datetime) -> bool:
         return False
     bars = fs.fetch_bars((("^NSEI", "1d"),)).get(("^NSEI", "1d"))
     return isinstance(bars, list) and bool(bars) and datetime.fromtimestamp(bars[-1][0], fs.IST).date() == now.date()
+
+
+def ha_sma_rsi(dashboard: dict) -> dict[tuple[str, str], float]:
+    """(widget, symbol) -> the SMA RSI of the signal's timeframe, from the HA signal widgets."""
+    values = {}
+    for widget in dashboard["widgets"]:
+        column = HA_SMA_RSI.get(widget["timeframe"])
+        table = widget["table"]
+        if column is None or table is None or column not in table:
+            continue
+        for symbol, value in zip(table["Symbol"], table[column]):
+            if value is not None and 0 <= value <= 100:
+                values[(widget["name"], symbol)] = round(float(value), 2)
+    return values
 
 
 def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: dict, seen: dict, now: datetime,
@@ -352,17 +382,20 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
         tp = tick(entry * (1 + fs.AUTO_TP_PCT / 100 * (1 if long else -1)))
         timeframes = sorted({s["timeframe"] for s in found}, key=TIMEFRAMES.index)
         first = min((seen[signal_key(s)] for s in found if signal_key(s) in seen), key=lambda f: f["time"], default=None)
+        # The SMA RSI of the shortest timeframe, as for the exit.
+        sma_rsi = next((s["sma_rsi"] for s in sorted(found, key=lambda s: TIMEFRAMES.index(s["timeframe"]))
+                        if s.get("sma_rsi") is not None), None)
         for style in styles:
             account["seq"] += 1
             account["positions"].append({
                 "id": f"{int(now.timestamp() * 1000)}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
-                "qty": qty, "entry": entry, "sl": sl, "tp": None if style in ("rsi", "ha") else tp, "tsl": {"on": False},
+                "qty": qty, "entry": entry, "sl": sl, "tp": None if style == "rsi" or style in fs.HA_EXITS else tp, "tsl": {"on": False},
                 "run": auto_run(entry) if style == "trail" else None, "style": style, "system": system,
                 "stop": sl, "time": int(now.timestamp() * 1000), "status": "open", "passed": False,
                 "high": entry, "low": entry, "nifty": nifty,
                 "source": ("Auto " if system == "RSI" else f"Auto {system} ") + "+".join(SHORT[tf] for tf in timeframes),
                 "timeframes": timeframes,
-                "strategies": sorted({s["strategy"] for s in found}), "agrees": found[0]["agrees"],
+                "strategies": sorted({s["strategy"] for s in found}), "agrees": found[0]["agrees"], "sma_rsi": sma_rsi,
                 "first_seen": first and {"time": first["time"], "price": first["price"]},
             })
         mark(seen, found, "Traded")
@@ -406,7 +439,9 @@ def main() -> None:
             signals = [{**s, "system": "RSI"} for s in fs.signal_rows(dashboard, instruments)[0]]
             ha_dashboard, ha_error = fs.load_dashboard(fs.HA_DASHBOARD)
             if ha_dashboard:
-                signals += [{**s, "system": "HA"} for s in fs.signal_rows(ha_dashboard, instruments)[0]]
+                sma_rsi = ha_sma_rsi(ha_dashboard)
+                signals += [{**s, "system": "HA", "sma_rsi": sma_rsi.get((s["strategy"], s["symbol"]))}
+                            for s in fs.signal_rows(ha_dashboard, instruments)[0]]
             else:
                 note(f"No HA signals: {ha_error}")
             day_file = f"signals/{now.date().isoformat()}.json"

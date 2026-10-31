@@ -46,6 +46,7 @@ LIVE_HOURS = (clock(9, 15), clock(15, 35))  # IST, weekdays: through the 3:15 PM
 SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]
 YOU = "You (simulator)"
 SYSTEM_NAMES = {"RSI": "RSI", "HA": "Heikin Ashi"}
+SMA_FILTERS = ["Against: long below 50, short above 50", "With: long above 50, short below 50", "Not recorded"]
 SHORT_TF = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 HOLDS = [(60, "< 1 h"), (180, "1–3 h"), (375, "3 h – same day"), (2 * 1440, "1–2 days"), (float("inf"), "3+ days")]
 MIN_TRADES = 3  # trades on a timeframe before it can be a stock's best one
@@ -118,7 +119,7 @@ def load_signals() -> pd.DataFrame:
 
 COLUMNS = ["id", "symbol", "side", "qty", "entry", "exit", "entry_time", "exit_time", "reason", "source", "system",
            "style", "timeframes", "strategies", "first_seen", "carried", "passed", "sl", "tp", "high", "low", "nifty", "agrees",
-           "gross", "charges", "net"]
+           "sma_rsi", "gross", "charges", "net"]
 
 
 DERIVED = ["Date", "Week", "Exited at", "System", "Style", "Timeframes", "Best %", "Worst %", "Made %", "Held", "Mood"]
@@ -289,6 +290,18 @@ def show_versus(history: pd.DataFrame, positions: list[dict]) -> None:
         st.dataframe(table, width="stretch")
     else:
         st.caption("No closed trades in either strategy yet.")
+
+
+def show_sma_filter(trades: pd.DataFrame) -> None:
+    """Heikin Ashi results by how the trade stood against the SMA of its timeframe's RSI at entry."""
+    gap = (pd.to_numeric(trades["sma_rsi"], errors="coerce") - 50) * direction(trades)
+    rows = trades.assign(Filter=pd.Categorical(
+        gap.map(lambda g: SMA_FILTERS[0] if g < 0 else SMA_FILTERS[1] if g > 0 else SMA_FILTERS[2]), SMA_FILTERS))
+    table = summary(rows, ["Filter", "Style"], sort=True)
+    table.insert(2, "Avg return %", rows.groupby(["Filter", "Style"], observed=True)["Made %"].mean().round(2))
+    st.dataframe(table, width="stretch")
+    st.caption("The SMA(14) of the RSI(14) of the signal's timeframe at entry. Against: the idea of trading against "
+               "it. With: the usual trend filter. Same signals, split by this one reading.")
 
 
 def show_compare(both: pd.DataFrame, positions: list[dict], styles: list[str]) -> None:
@@ -637,11 +650,12 @@ def main() -> None:
     st.title("🤖 Auto trader")
     st.caption(
         f"Paper-trades every 2H, 4H and Daily Chartink signal of two strategies, RSI and Heikin Ashi (a stock on "
-        f"both gets a trade in each), 1 lot, SL {fs.AUTO_SL_PCT}%, in three exit styles "
+        f"both gets a trade in each), 1 lot, SL {fs.AUTO_SL_PCT}%, in its exit styles "
         f"side by side: **EOD** (target {fs.AUTO_TP_PCT}%, squared off at 3:15 PM), **Hold · trail** (held "
         f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · RSI exit** (held until "
         f"the RSI of its timeframe crosses back below 60 / above 40; for Heikin Ashi, **Hold · HA exit**: held "
-        f"until the live candle of its timeframe goes below the previous HA low / above the previous HA high). "
+        f"until the live candle of its timeframe goes below the previous HA low / above the previous HA high, and "
+        f"**Hold · HA green/red exit**: the same past the last green HA candle's low / last red one's high). "
         f"Held trades close on expiry day at 3:15 PM. "
         f"A stock is traded once per side, style and strategy per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")
@@ -710,7 +724,7 @@ def main() -> None:
             "Signal": p["source"], "Qty": p["qty"],
             "Entry": p["entry"], "LTP": (quotes.get(p["symbol"]) or {}).get("price"),
             "SL / TSL": p["stop"], "Target": p["tp"],
-            "At target": "—" if p.get("style") in ("rsi", "ha") else "Passed · trailing" if p.get("passed")
+            "At target": "—" if p.get("style") == "rsi" or p.get("style") in fs.HA_EXITS else "Passed · trailing" if p.get("passed")
             else "Trail" if p.get("run") else "Exit",
             "Unrealized ₹": unrealized(p), "Entered": when(p["time"]), "Agrees": p.get("agrees"),
         } for p in positions])
@@ -747,6 +761,9 @@ def main() -> None:
         logged = signals[signals["system"] == system] if len(signals) else signals
         if len(trades) or len(mine):
             show_compare(series(trades, mine), held, styles)
+            if system == "HA":
+                st.markdown("**SMA RSI filter**")
+                show_sma_filter(trades)
             # Each signal is traded in every style, so the other results are for one style at a time.
             picked = st.segmented_control("Results for", ["All bot styles", *styles, *([YOU] if len(mine) else [])],
                                           default="All bot styles", key=f"results-{system}")
