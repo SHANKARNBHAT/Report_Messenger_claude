@@ -1,6 +1,8 @@
 """
 Auto trader: paper-trades every Chartink signal on the 2H, 4H and Daily
-timeframes without the simulator page open.
+timeframes without the simulator page open, for two strategies apart (fs.SYSTEMS):
+RSI (chartink_dashboard.DEFAULT_DASHBOARD) and Heikin Ashi (HA_DASHBOARD). A stock
+on both gets a trade in each, so that each strategy's results stay its own.
 
 .github/workflows/auto_trader.yml runs it every 15 minutes in market hours. Each run:
   * replays the open positions on the 5-minute bars since entry, closing those that
@@ -9,9 +11,9 @@ timeframes without the simulator page open.
   * buys bullish and sells bearish signals at the latest price, with SL AUTO_SL_PCT
     and target AUTO_TP_PCT away, once in each exit style (futures_simulator.STYLES) to
     compare them on the same signals: squared off at 3:15 PM, held with a trailing SL
-    after the target, held until the RSI exit. A stock is traded once per side and
-    style per session. Every signal is taken, with no capital limit, to test the
-    strategy: the Auto trader page works out the margin that needed from the trades
+    after the target, held until the RSI exit (for Heikin Ashi: the HA exit, see
+    ha_exit). A stock is traded once per side and style per session, in each strategy.
+    Every signal is taken, with no capital limit, to test the strategy: the Auto trader page works out the margin that needed from the trades
   * applies a request from the Auto trader page (auto_trader_page.py): keep a
     position going past its target with a trailing SL, exit at the target, or exit now
 
@@ -39,7 +41,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
-from datetime import datetime, time
+from datetime import datetime, time, timedelta
 from pathlib import Path
 
 import futures_simulator as fs
@@ -107,7 +109,9 @@ def load(files: Files, name: str) -> dict:
 
 
 def signal_key(signal: dict) -> str:
-    return f"{signal['symbol']}|{signal['timeframe']}|{signal['bias']}"
+    """RSI signals keep the plain key: the simulator looks them up by it (load_seen)."""
+    key = f"{signal['symbol']}|{signal['timeframe']}|{signal['bias']}"
+    return key if signal["system"] == "RSI" else f"{signal['system']}|{key}"
 
 
 def record_seen(seen: dict, signals: list[dict], dashboard: dict, now: datetime) -> None:
@@ -121,7 +125,7 @@ def record_seen(seen: dict, signals: list[dict], dashboard: dict, now: datetime)
     for signal in signals:
         entry = seen.setdefault(signal_key(signal), {
             "symbol": signal["symbol"], "timeframe": signal["timeframe"], "bias": signal["bias"],
-            "strategy": signal["strategy"], "fno": signal["fno"], "time": now_ms,
+            "strategy": signal["strategy"], "system": signal["system"], "fno": signal["fno"], "time": now_ms,
             "price": (quotes.get(signal["symbol"]) or {}).get("price"), "status": None})
         entry["last"] = now_ms
 
@@ -146,7 +150,8 @@ def close(files: Files, account: dict, position: dict, price: float, when_ms: in
         "id": position["id"], "symbol": position["symbol"], "side": position["side"], "lots": position["lots"],
         "qty": qty, "entry": position["entry"], "exit": round(price, 2), "entry_time": position["time"],
         "exit_time": when_ms, "reason": reason, "source": position["source"], "timeframes": position["timeframes"],
-        "style": position.get("style", "eod"), "passed": position.get("passed", False),
+        "system": position.get("system", "RSI"), "style": position.get("style", "eod"),
+        "passed": position.get("passed", False),
         "carried": bool(position.get("run")), "sl": position["sl"], "tp": position["tp"],
         "high": round(high, 2), "low": round(low, 2), "nifty": position.get("nifty"),
         "strategies": position.get("strategies", []), "first_seen": position.get("first_seen"),
@@ -168,7 +173,7 @@ def apply_request(files: Files, account: dict, action: str, position_id: str, no
         note(f"{action}: no open position {position_id}")
         return
     if action in ("trail", "untrail") and position.get("style", "eod") != "eod":
-        note(f"{position['symbol']}: a {fs.STYLES[position['style']]} position, no target exit to change")
+        note(f"{position['symbol']}: a {fs.BOT_STYLES[position['style']]} position, no target exit to change")
         return
     if action == "trail":
         position["run"] = auto_run(position["entry"])
@@ -189,17 +194,57 @@ def apply_request(files: Files, account: dict, action: str, position_id: str, no
         note(f"{position['symbol']}: exited at {tick(quote['price'])}")
 
 
+def candle_end(timeframe: str, start: int) -> float:
+    """When a candle of `timeframe` that started at `start` (seconds) ends: its length on
+    from 9:15 AM, with the day's last one running to the close (Chartink's 2H and 4H do)."""
+    opened = datetime.fromtimestamp(start, fs.IST)
+    session_close = datetime.combine(opened.date(), SESSION_CLOSE, fs.IST)
+    minutes = fs.CANDLE_MINUTES.get(timeframe)
+    if not minutes:
+        return session_close.timestamp()
+    end = opened + timedelta(minutes=minutes)
+    return (session_close if end.time() >= fs.SQUARE_OFF else end).timestamp()
+
+
+def ha_exit(position: dict, candles: dict, now: datetime) -> dict | None:
+    """The HA exit of a position, if due: the first candle of its timeframe (the shortest if
+    several) since the entry whose close, live while it runs, went below the previous HA
+    candle's low (a long) or above its high (a short). A finished candle, in case the runs
+    missed it, exits at its end. Exit price, time (ms) and reason, else None."""
+    timeframe = position["timeframes"][0]
+    rows = (candles.get(timeframe) or {}).get(position["symbol"]) or []
+    long = position["side"] == "BUY"
+    for previous, candle in zip(rows, rows[1:]):
+        end = candle_end(timeframe, candle[0])
+        if end * 1000 <= position["time"]:
+            continue
+        if candle[1] < previous[2] if long else candle[1] > previous[3]:
+            return {"exit": tick(candle[1]), "exit_time": int(min(end, now.timestamp()) * 1000),
+                    "reason": f"HA exit ({SHORT[timeframe]})"}
+    return None
+
+
 def settle(files: Files, account: dict, now: datetime, note) -> None:
     """Close the positions that hit their SL, trailing SL or target, the 3:15 PM square-off,
-    expiry or their RSI exit; note the highest and lowest price of the others."""
+    expiry or their RSI or HA exit; note the highest and lowest price of the others."""
     if not account["positions"]:
         return
+    candles = {}
+    if any(p.get("style") == "ha" for p in account["positions"]):
+        try:
+            candles = fs.fetch_ha_candles()
+        except fs.ChartinkError as exc:
+            note(f"No candles for the HA exits: {exc}")
     for result in fs.check_positions(account["positions"], now, settle=False):
         position = next(p for p in account["positions"] if p["id"] == result["id"])
+        # A candle that went past since the last run may have come before what the bars show.
+        due = ha_exit(position, candles, now) if position.get("style") == "ha" else None
+        if due and (result["status"] != "closed" or due["exit_time"] < result["exit_time"]):
+            result = {**result, **due, "status": "closed"}
         if result["status"] == "closed":
             close(files, account, position, result["exit"], result["exit_time"], result["reason"],
                   result.get("high"), result.get("low"))
-            note(f"{position['symbol']}: {result['reason']} at {result['exit']} ({fs.STYLES[position['style']]})")
+            note(f"{position['symbol']}: {result['reason']} at {result['exit']} ({fs.BOT_STYLES[position['style']]})")
         elif result["status"] == "error":
             note(f"{position['symbol']}: no bars ({result['error']})")
         else:
@@ -221,13 +266,25 @@ def test_chartink(note) -> None:
                          and re.search(pattern, w["name"], re.IGNORECASE)), None)
              for name, pattern in (("RSI below 60", r"rsi crossed below"), ("RSI above 40", r"rsi crossed above"))}
     failed = [w["name"] for w in dashboard["widgets"] if w["error"]]
+    ha_dashboard, ha_error = fs.load_dashboard(fs.HA_DASHBOARD)
+    if ha_dashboard:
+        failed += [w["name"] for w in ha_dashboard["widgets"] if w["error"]]
+        ha_signals = sum(len(w["table"]) for w in ha_dashboard["widgets"]
+                         if w["table"] is not None and w["timeframe"] in TIMEFRAMES)
+        try:
+            found = ", ".join(f"{SHORT[tf]} {len(c)}" for tf, c in fs.fetch_ha_candles().items())
+            ha = f"HA signals {ha_signals}; HA candles {found}"
+        except fs.ChartinkError as exc:
+            ha = f"HA signals {ha_signals}; HA candles FAILED ({exc})"
+    else:
+        ha = f"HA dashboard FAILED ({ha_error})"
     try:
         bars = f"5-minute bars for {len(fs.fetch_price_bars(fs.DEFAULT_DASHBOARD))} stocks"
     except fs.ChartinkError as exc:
         bars = f"5-minute bars FAILED ({exc})"
     note(f"Chartink test OK: {len(dashboard['widgets'])} widgets; signals "
          + ", ".join(f"{tf.replace(' HOUR', 'H').title()} {n}" for tf, n in counts.items())
-         + "; exit lists " + ", ".join(f"{name} {n}" for name, n in exits.items()) + f"; {bars}"
+         + "; exit lists " + ", ".join(f"{name} {n}" for name, n in exits.items()) + f"; {bars}; {ha}"
          + (f"; widgets with errors: {', '.join(failed)}" if failed else ""))
 
 
@@ -240,8 +297,8 @@ def market_open(now: datetime) -> bool:
 
 
 def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: dict, seen: dict, now: datetime,
-                  trading: bool, note) -> None:
-    """Trade the signals, and note in `seen` what was done with each."""
+                  trading: bool, note, system: str) -> None:
+    """Trade one strategy's signals, and note in `seen` what was done with each."""
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
     mark(seen, [s for s in signals if not s["fno"]], "Not F&O")
     mark(seen, [s for s in signals if s["fno"] and s["timeframe"] not in TIMEFRAMES], "Timeframe not traded")
@@ -260,9 +317,11 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
     entered_today = [t for t in trades_of(files, now.strftime("%Y-%m"))
                      if datetime.fromtimestamp(t["entry_time"] / 1000, fs.IST).date() == today]
     def taken(symbol, side, style):
-        """Open in this style, or entered today in it."""
-        return any(p["symbol"] == symbol and p.get("style", "eod") == style for p in account["positions"]) or any(
-            t["symbol"] == symbol and t["side"] == side and t.get("style", "eod") == style for t in entered_today)
+        """Open in this style, or entered today in it, in this strategy."""
+        return any(p["symbol"] == symbol and p.get("style", "eod") == style and p.get("system", "RSI") == system
+                   for p in account["positions"]) or any(
+            t["symbol"] == symbol and t["side"] == side and t.get("style", "eod") == style
+            and t.get("system", "RSI") == system for t in entered_today)
 
     wanted = {}
     for symbol, found in by_symbol.items():
@@ -271,7 +330,7 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
             mark(seen, found, "Mixed: bullish and bearish")
             continue
         side = "BUY" if biases == {"Bullish"} else "SELL"
-        styles = [style for style in fs.STYLES if not taken(symbol, side, style)]
+        styles = [style for style in fs.SYSTEMS[system] if not taken(symbol, side, style)]
         if styles:
             wanted[symbol] = (side, found, styles)
         else:
@@ -297,16 +356,17 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
             account["seq"] += 1
             account["positions"].append({
                 "id": f"{int(now.timestamp() * 1000)}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
-                "qty": qty, "entry": entry, "sl": sl, "tp": None if style == "rsi" else tp, "tsl": {"on": False},
-                "run": auto_run(entry) if style == "trail" else None, "style": style,
+                "qty": qty, "entry": entry, "sl": sl, "tp": None if style in ("rsi", "ha") else tp, "tsl": {"on": False},
+                "run": auto_run(entry) if style == "trail" else None, "style": style, "system": system,
                 "stop": sl, "time": int(now.timestamp() * 1000), "status": "open", "passed": False,
                 "high": entry, "low": entry, "nifty": nifty,
-                "source": "Auto " + "+".join(SHORT[tf] for tf in timeframes), "timeframes": timeframes,
+                "source": ("Auto " if system == "RSI" else f"Auto {system} ") + "+".join(SHORT[tf] for tf in timeframes),
+                "timeframes": timeframes,
                 "strategies": sorted({s["strategy"] for s in found}), "agrees": found[0]["agrees"],
                 "first_seen": first and {"time": first["time"], "price": first["price"]},
             })
         mark(seen, found, "Traded")
-        note(f"{symbol}: {side} {qty} at {entry} ({', '.join(timeframes)}; {', '.join(styles)})")
+        note(f"{symbol}: {system} {side} {qty} at {entry} ({', '.join(timeframes)}; {', '.join(styles)})")
 
 
 def main() -> None:
@@ -342,12 +402,20 @@ def main() -> None:
     if args.action == "run" and market_open(now):
         dashboard, error = fs.load_dashboard()
         if dashboard:
-            signals, _ = fs.signal_rows(dashboard, {i["symbol"]: i for i in fs.load_instruments()})
+            instruments = {i["symbol"]: i for i in fs.load_instruments()}
+            signals = [{**s, "system": "RSI"} for s in fs.signal_rows(dashboard, instruments)[0]]
+            ha_dashboard, ha_error = fs.load_dashboard(fs.HA_DASHBOARD)
+            if ha_dashboard:
+                signals += [{**s, "system": "HA"} for s in fs.signal_rows(ha_dashboard, instruments)[0]]
+            else:
+                note(f"No HA signals: {ha_error}")
             day_file = f"signals/{now.date().isoformat()}.json"
             seen = files.get(day_file, {})
             record_seen(seen, signals, dashboard, now)
             trading = not args.scheduled or account.get("unattended", True)
-            enter_signals(files, account, signals, dashboard, seen, now, trading, note)
+            for system in fs.SYSTEMS:
+                enter_signals(files, account, [s for s in signals if s["system"] == system], dashboard, seen, now,
+                              trading, note, system)
             files.changed.add(day_file)
         else:
             note(f"No signals: {error}")

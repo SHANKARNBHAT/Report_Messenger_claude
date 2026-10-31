@@ -38,6 +38,7 @@ except ImportError:
 # Settings
 # ---------------------------------------------------------------------------
 DEFAULT_DASHBOARD = "https://chartink.com/dashboard/501779"
+HA_DASHBOARD = "https://chartink.com/dashboard/502621"  # the Heikin Ashi strategy, on the COMMON tab
 REFRESH_CHOICES = {
     "1 min": 60, "3 min": 180, "5 min": 300, "10 min": 600,
     "15 min": 900, "30 min": 1800, "1 hr": 3600, "2 hr": 7200,
@@ -58,6 +59,13 @@ PRICE_WIDGET_ROWS = 500
 # 5-minute bars read from the price-list widgets for the simulator: about 4 sessions
 # (Chartink returns at most 300).
 PRICE_WIDGET_BARS = 300
+# Candles read for the Heikin Ashi exit of the Auto trader: the column of each timeframe
+# and how many of its candles (about a week of 2H candles, more of the others).
+HA_COLUMNS = {"2 HOUR": "[0] 2 hour", "4 HOUR": "[0] 4 hour", "DAILY": "Daily"}
+HA_CANDLES = 20
+HA_QUERY = ("select {0} Close as 'Close', {0} ha-low as 'HA low', {0} ha-high as 'HA high' "
+            "WHERE( {{33489}} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
+NO_VALUE = 1e300  # Chartink fills the candles a stock has no data for with 1.7e308
 IST = ZoneInfo("Asia/Kolkata")
 
 CHARTINK_DASHBOARD_URL = "https://chartink.com/dashboard/{}"
@@ -249,6 +257,32 @@ def fetch_price_bars(link: str, size: int = PRICE_WIDGET_BARS) -> dict[str, list
     return bars
 
 
+@st.cache_data(ttl=120, show_spinner=False)
+def fetch_ha_candles(link: str = HA_DASHBOARD) -> dict[str, dict[str, list[tuple]]]:
+    """timeframe -> symbol -> its last HA_CANDLES candles (start in seconds, close, HA low,
+    HA high), oldest first, for the F&O stocks. The dashboard only lends a widget to ask with."""
+    candles: dict[str, dict[str, list[tuple]]] = {}
+    with requests.Session() as session:
+        session.headers.update(CHARTINK_HEADERS)
+        url, token, _, raw_widgets = open_dashboard(session, link)
+        for timeframe, column in HA_COLUMNS.items():
+            widget = {"query": HA_QUERY.format(column), "id": raw_widgets[0].get("id")}
+            try:
+                payload = widget_payload(session, url, token, widget, PRICE_WIDGET_ROWS, HA_CANDLES)
+            except (requests.RequestException, ValueError) as exc:
+                raise ChartinkError(f"Could not read the {timeframe} candles: {exc}") from exc
+            if payload.get("error"):
+                raise ChartinkError(str(payload["error"]))
+            starts = [t // 1000 for t in (payload.get("metaData") or [{}])[0].get("tradeTimes") or []]
+            candles[timeframe] = {}
+            for group in payload.get("groupData") or []:
+                columns = {alias: values for result in group.get("results") or [] for alias, values in result.items()}
+                rows = zip(starts, columns.get("close") or [], columns.get("ha low") or [], columns.get("ha high") or [])
+                candles[timeframe][group.get("name")] = [
+                    row for row in rows if all(v is not None and v < NO_VALUE for v in row)]
+    return candles
+
+
 # ---------------------------------------------------------------------------
 # Market reports
 # ---------------------------------------------------------------------------
@@ -419,7 +453,7 @@ def live_dashboard(link: str, refresh: str) -> None:
 
 
 def show_common(widgets: list[dict]) -> None:
-    """COMMON tab: stocks shared with the Market reports, then across timeframes."""
+    """COMMON tab: stocks shared with the Market reports, then across timeframes per strategy."""
     st.subheader("🔗 Common between Chartink and Market reports")
     watchlists, errors = fetch_watchlists()
     for error in errors:
@@ -432,7 +466,18 @@ def show_common(widgets: list[dict]) -> None:
     else:
         show_table(matches)
 
-    st.subheader("🔁 Common across Chartink timeframes")
+    show_common_triggers("🔁 Common RSI triggers across Chartink timeframes", widgets)
+    try:
+        ha_widgets = fetch_dashboard(HA_DASHBOARD)["widgets"]
+    except ChartinkError as exc:
+        st.error(f"Chartink (Heikin Ashi dashboard): {exc}")
+        return
+    show_common_triggers("🔁 Common Heikin Ashi triggers across Chartink timeframes", ha_widgets)
+
+
+def show_common_triggers(title: str, widgets: list[dict]) -> None:
+    """One strategy's stocks found in two or more timeframes."""
+    st.subheader(title)
     common = common_stocks(widgets)
     st.caption(f"{len(common)} stock(s) found in two or more timeframes")
     if common.empty:

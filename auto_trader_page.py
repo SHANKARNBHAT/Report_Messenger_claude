@@ -45,6 +45,7 @@ LIVE_HOURS = (clock(9, 15), clock(15, 35))  # IST, weekdays: through the 3:15 PM
 # skill): the three bot styles, then the simulator's trades.
 SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]
 YOU = "You (simulator)"
+SYSTEM_NAMES = {"RSI": "RSI", "HA": "Heikin Ashi"}
 SHORT_TF = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 HOLDS = [(60, "< 1 h"), (180, "1–3 h"), (375, "3 h – same day"), (2 * 1440, "1–2 days"), (float("inf"), "3+ days")]
 MIN_TRADES = 3  # trades on a timeframe before it can be a stock's best one
@@ -107,7 +108,7 @@ def load_skips() -> pd.DataFrame:
 
 def load_signals() -> pd.DataFrame:
     try:
-        rows = [{**entry, "date": Path(path).stem} for path, sha in listing("signals")
+        rows = [{"system": "RSI", **entry, "date": Path(path).stem} for path, sha in listing("signals")
                 for entry in branch_file(path, sha).values()]
     except (requests.RequestException, ValueError) as exc:
         st.warning(f"Could not load the signal log: {exc}")
@@ -115,12 +116,12 @@ def load_signals() -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-COLUMNS = ["id", "symbol", "side", "qty", "entry", "exit", "entry_time", "exit_time", "reason", "source", "style",
-           "timeframes", "strategies", "first_seen", "carried", "passed", "sl", "tp", "high", "low", "nifty", "agrees",
+COLUMNS = ["id", "symbol", "side", "qty", "entry", "exit", "entry_time", "exit_time", "reason", "source", "system",
+           "style", "timeframes", "strategies", "first_seen", "carried", "passed", "sl", "tp", "high", "low", "nifty", "agrees",
            "gross", "charges", "net"]
 
 
-DERIVED = ["Date", "Week", "Exited at", "Style", "Timeframes", "Best %", "Worst %", "Made %", "Held", "Mood"]
+DERIVED = ["Date", "Week", "Exited at", "System", "Style", "Timeframes", "Best %", "Worst %", "Made %", "Held", "Mood"]
 
 
 def prepare(trades: pd.DataFrame) -> pd.DataFrame:
@@ -133,7 +134,8 @@ def prepare(trades: pd.DataFrame) -> pd.DataFrame:
     trades["Date"] = exited.dt.date
     trades["Week"] = (exited - pd.to_timedelta(exited.dt.weekday, unit="D")).dt.date
     trades["Exited at"] = exited.dt.tz_localize(None)
-    trades["Style"] = trades["style"].fillna("eod").map(fs.STYLES)
+    trades["System"] = trades["system"].fillna("RSI")
+    trades["Style"] = trades["style"].fillna("eod").map(fs.BOT_STYLES)
     trades["Timeframes"] = [
         "+".join(SHORT_TF.get(tf, tf) for tf in tfs) if isinstance(tfs, list) and tfs else str(src).removeprefix("Auto ")
         for tfs, src in zip(trades["timeframes"], trades["source"])]
@@ -248,22 +250,52 @@ def margin_needed(trades: pd.DataFrame, positions: list[dict]) -> float:
     return round(peak, 2)
 
 
-def show_compare(both: pd.DataFrame, positions: list[dict]) -> None:
-    """Each bot style and the simulator side by side: results, the money they needed,
-    drawdown and the running P&L."""
-    order = [name for name in [*fs.STYLES.values(), YOU] if name in set(both["Series"])]
+def compare_table(both: pd.DataFrame, positions: list[dict], order: list[str]) -> pd.DataFrame:
+    """Results of each series in `order`, with the money it needed and its drawdown."""
     table = summary(both, "Series").reindex(order)
     table["Max drawdown ₹"] = [round(drawdown(both[both["Series"] == name].sort_values("exit_time")["net"]), 2)
                                for name in order]
     table["Margin needed ₹"] = [
         margin_needed(both[both["Series"] == name],
-                      [] if name == YOU else [p for p in positions if fs.STYLES[p.get("style", "eod")] == name])
+                      [] if name == YOU else [p for p in positions if series_of(p) == name])
         for name in order]
     table["Return on margin %"] = (table["Net P&L ₹"] / table["Margin needed ₹"].where(table["Margin needed ₹"] > 0)
                                    * 100).round(2)
     table["Turnover ₹"] = [round((both[both["Series"] == name]["entry"] * both[both["Series"] == name]["qty"]).sum())
                            for name in order]
-    st.dataframe(table, width="stretch")
+    return table
+
+
+def series_of(position: dict) -> str:
+    return fs.BOT_STYLES[position.get("style", "eod")]
+
+
+def style_names(system: str) -> list[str]:
+    return [fs.BOT_STYLES[style] for style in fs.SYSTEMS[system]]
+
+
+def show_versus(history: pd.DataFrame, positions: list[dict]) -> None:
+    """The strategies side by side, in each exit style."""
+    rows = []
+    for system, name in SYSTEM_NAMES.items():
+        trades = history[history["System"] == system]
+        held = [p for p in positions if p.get("system", "RSI") == system]
+        order = [style for style in style_names(system) if style in set(trades["Style"])]
+        if order:
+            table = compare_table(trades.assign(Series=trades["Style"]), held, order).reset_index(names="Style")
+            rows.append(table.assign(Strategy=name))
+    if rows:
+        table = pd.concat(rows, ignore_index=True).set_index(["Strategy", "Style"])
+        st.dataframe(table, width="stretch")
+    else:
+        st.caption("No closed trades in either strategy yet.")
+
+
+def show_compare(both: pd.DataFrame, positions: list[dict], styles: list[str]) -> None:
+    """Each bot style and the simulator side by side: results, the money they needed,
+    drawdown and the running P&L."""
+    order = [name for name in [*styles, YOU] if name in set(both["Series"])]
+    st.dataframe(compare_table(both, positions, order), width="stretch")
     st.caption(f"Margin needed: the most margin ({fs.MARGIN_RATE:.0%} of the futures' value) the style's trades held "
                "at the same time, open positions included: the money to take every one of its signals, with no "
                "capital limit. Return on margin: net P&L on that. Turnover: the value of all the entries.")
@@ -271,7 +303,7 @@ def show_compare(both: pd.DataFrame, positions: list[dict]) -> None:
              .pivot_table(index="Exited at", columns="Series", values="Running", aggfunc="last")
              .reindex(columns=order).ffill())
     st.markdown("**Running net P&L ₹**, by exit time")
-    st.line_chart(curve, color=[SERIES_COLORS[[*fs.STYLES.values(), YOU].index(name)] for name in order],
+    st.line_chart(curve, color=[SERIES_COLORS[[*styles, YOU].index(name)] for name in order],
                   x_label="Exit time", y_label="Net P&L ₹")
     st.caption("Max drawdown: the largest fall of the running P&L from its high. Each signal is traded by the "
                "Auto trader in every style, so the styles compare on the same signals.")
@@ -417,7 +449,7 @@ def show_signals(signals: pd.DataFrame) -> None:
     st.dataframe(shown.assign(
         Symbol=shown["symbol"].map(chart_link), Timeframe=shown["timeframe"].map(lambda t: SHORT_TF.get(t, t)),
         **{"First seen": shown["time"].map(when), "Last seen": shown["last"].map(when)})[
-        ["First seen", "Last seen", "Symbol", "Timeframe", "bias", "strategy", "price", "status"]],
+        ["First seen", "Last seen", "Symbol", "Timeframe", "bias", "system", "strategy", "price", "status"]],
         hide_index=True, width="stretch", column_config={"Symbol": SYMBOL_LINK})
 
 
@@ -604,11 +636,14 @@ def main() -> None:
     st.set_page_config(page_title="Auto Trader", page_icon="🤖", layout="wide")
     st.title("🤖 Auto trader")
     st.caption(
-        f"Paper-trades every 2H, 4H and Daily Chartink signal, 1 lot, SL {fs.AUTO_SL_PCT}%, in three exit styles "
+        f"Paper-trades every 2H, 4H and Daily Chartink signal of two strategies, RSI and Heikin Ashi (a stock on "
+        f"both gets a trade in each), 1 lot, SL {fs.AUTO_SL_PCT}%, in three exit styles "
         f"side by side: **EOD** (target {fs.AUTO_TP_PCT}%, squared off at 3:15 PM), **Hold · trail** (held "
         f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · RSI exit** (held until "
-        f"the RSI of its timeframe crosses back below 60 / above 40). Held trades close on expiry day at 3:15 PM. "
-        f"A stock is traded once per side and style per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
+        f"the RSI of its timeframe crosses back below 60 / above 40; for Heikin Ashi, **Hold · HA exit**: held "
+        f"until the live candle of its timeframe goes below the previous HA low / above the previous HA high). "
+        f"Held trades close on expiry day at 3:15 PM. "
+        f"A stock is traded once per side, style and strategy per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")
 
     account, error = load_account()
@@ -660,7 +695,7 @@ def main() -> None:
     stats[2].metric("Trades closed", len(history))
     stats[3].metric("Win rate", f"{100 * (history['net'] > 0).mean():.1f}%" if len(history) else "—")
     stats[4].metric("Margin needed", f"₹{margin_needed(history, positions):,.0f}",
-                    help=f"No capital limit: every signal is taken, in all three styles. This is the most margin "
+                    help=f"No capital limit: every signal is taken, in every style of both strategies. This is the most margin "
                          f"({fs.MARGIN_RATE:.0%} of the futures' value) the trades held at the same time, open "
                          "positions included: the money to take them all. Each style alone needs less: see Results.")
     stats[5].metric("Last run", when(account.get("updated")))
@@ -670,11 +705,12 @@ def main() -> None:
     if positions:
         table = pd.DataFrame([{
             "Symbol": chart_link(p["symbol"]),
-            "Side": "LONG" if p["side"] == "BUY" else "SHORT", "Style": fs.STYLES[p.get("style", "eod")],
+            "Side": "LONG" if p["side"] == "BUY" else "SHORT", "Strategy": p.get("system", "RSI"),
+            "Style": series_of(p),
             "Signal": p["source"], "Qty": p["qty"],
             "Entry": p["entry"], "LTP": (quotes.get(p["symbol"]) or {}).get("price"),
             "SL / TSL": p["stop"], "Target": p["tp"],
-            "At target": "—" if p.get("style") == "rsi" else "Passed · trailing" if p.get("passed")
+            "At target": "—" if p.get("style") in ("rsi", "ha") else "Passed · trailing" if p.get("passed")
             else "Trail" if p.get("run") else "Exit",
             "Unrealized ₹": unrealized(p), "Entered": when(p["time"]), "Agrees": p.get("agrees"),
         } for p in positions])
@@ -700,19 +736,31 @@ def main() -> None:
 
     st.subheader("Results")
     if len(history) or len(you):
-        show_compare(series(history, you), positions)
-        # Each signal is traded in every style, so the other results are for one style at a time.
-        picked = st.segmented_control("Results for", ["All bot styles", *fs.STYLES.values(), YOU],
-                                      default="All bot styles")
-        if picked == YOU:
-            show_results(you, None)
+        st.markdown("**RSI against Heikin Ashi**")
+        show_versus(history, positions)
+        system = st.segmented_control("Strategy", list(SYSTEM_NAMES), format_func=SYSTEM_NAMES.get, default="RSI") or "RSI"
+        trades = history[history["System"] == system]
+        held = [p for p in positions if p.get("system", "RSI") == system]
+        styles = style_names(system)
+        # The simulator trades the RSI signals only, so it shows beside that strategy.
+        mine = you if system == "RSI" else you.iloc[0:0]
+        logged = signals[signals["system"] == system] if len(signals) else signals
+        if len(trades) or len(mine):
+            show_compare(series(trades, mine), held, styles)
+            # Each signal is traded in every style, so the other results are for one style at a time.
+            picked = st.segmented_control("Results for", ["All bot styles", *styles, *([YOU] if len(mine) else [])],
+                                          default="All bot styles", key=f"results-{system}")
+            if picked == YOU:
+                show_results(you, None)
+            else:
+                show_results(trades if picked in (None, "All bot styles") else trades[trades["Style"] == picked], logged)
         else:
-            show_results(history if picked in (None, "All bot styles") else history[history["Style"] == picked], signals)
+            st.caption(f"No closed {SYSTEM_NAMES[system]} trades yet.")
     else:
         st.caption("No closed trades yet. The simulator's trades show here too once they are backed up.")
 
     st.subheader("Your decisions")
-    show_decisions(history, you, skips)
+    show_decisions(history[history["System"] == "RSI"], you, skips)
 
     st.subheader("Signals")
     show_signals(signals)

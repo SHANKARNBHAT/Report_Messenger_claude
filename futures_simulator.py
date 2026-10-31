@@ -54,9 +54,9 @@ if Path(chartink_dashboard.__file__).stat().st_mtime > getattr(chartink_dashboar
     chartink_dashboard = importlib.reload(chartink_dashboard)
     chartink_dashboard._loaded_at = Path(chartink_dashboard.__file__).stat().st_mtime
 
-from chartink_dashboard import (CHART_SITES, CHARTINK_HEADERS, DEFAULT_DASHBOARD, DEFAULT_SNAPSHOT, IST,
-                                MY_LAYOUT, TIMEFRAMES, ChartinkError, fetch_dashboard, fetch_price_bars,
-                                fetch_watchlists)
+from chartink_dashboard import (CHART_SITES, CHARTINK_HEADERS, DEFAULT_DASHBOARD, DEFAULT_SNAPSHOT, HA_DASHBOARD, IST,
+                                MY_LAYOUT, TIMEFRAMES, ChartinkError, fetch_dashboard, fetch_ha_candles,
+                                fetch_price_bars, fetch_watchlists)
 
 # ---------------------------------------------------------------------------
 # Settings
@@ -85,7 +85,13 @@ CANDLE_MINUTES = {"2 HOUR": 120, "4 HOUR": 240}
 #          a long, above 40 for a short: the "RSI crossed" widgets), or at its SL
 # Held positions close at 3:15 PM on the futures expiry day.
 STYLES = {"eod": "EOD 3:15 PM", "trail": "Hold · trail", "rsi": "Hold · RSI exit"}
-HELD = ("trail", "rsi")
+HELD = ("trail", "rsi", "ha")
+# The Auto trader's strategies and their exit styles. Only it trades Heikin Ashi, with one
+# more style: held until the running candle of its timeframe goes past the previous HA
+# candle's low (long) or high (short), or at its SL (auto_trader.ha_exit). Not in STYLES,
+# which is what the simulator offers.
+BOT_STYLES = {**STYLES, "ha": "Hold · HA exit"}
+SYSTEMS = {"RSI": ("eod", "trail", "rsi"), "HA": ("eod", "trail", "ha")}
 # The "RSI crossed" widgets list a stock when its RSI on any timeframe crossed the level;
 # their column of each timeframe's RSI tells if the trade's own one is past it.
 RSI_EXITS = {"BUY": (r"rsi crossed below", 60), "SELL": (r"rsi crossed above", 40)}
@@ -310,10 +316,10 @@ def back_up_trades(trades: list[dict]) -> tuple[list[str], str | None]:
     return sorted(done), st.session_state.get("_trades_error")
 
 
-def load_dashboard() -> tuple[dict | None, str | None]:
+def load_dashboard(link: str = DEFAULT_DASHBOARD) -> tuple[dict | None, str | None]:
     """The Chartink dashboard, or None and the error."""
     try:
-        return fetch_dashboard(DEFAULT_DASHBOARD), None
+        return fetch_dashboard(link), None
     except ChartinkError as exc:
         return None, f"Chartink: {exc}"
 
