@@ -5,7 +5,8 @@ Chartink Dashboard Viewer
 Shows the live results of every widget on a public Chartink dashboard, one tab
 per widget, with the same columns the widget has on Chartink. The page
 refreshes itself every 5 minutes, or as often as chosen on the page. All data
-comes from Chartink.
+comes from Chartink, but for the COMMON tab's watchlist and the VOLUME PROFILE
+tab, which show files the report pipeline writes.
 
 Shown as the "Chartink dashboard" page of report_app.py.
 """
@@ -15,6 +16,7 @@ from __future__ import annotations
 import json
 import re
 from datetime import datetime
+from pathlib import Path
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
@@ -91,6 +93,12 @@ WATCHLISTS = {
     "Futures": "https://raw.githubusercontent.com/SHANKARNBHAT/Report_Messenger_Claude/main/"
                "rvol_active_signals_report.txt",
 }
+# Volume profile levels of the futures stocks, written after each close by volume_profile.py.
+VOLUME_PROFILE_FILE = "volume_profile_levels.json"
+VOLUME_PROFILE_URL = ("https://raw.githubusercontent.com/SHANKARNBHAT/Report_Messenger_Claude/main/"
+                      + VOLUME_PROFILE_FILE)
+VOLUME_PROFILE_PERIODS = ("Weekly", "Monthly", "3M", "6M", "1Y")
+VOLUME_PROFILE_TAB = "VOLUME PROFILE"
 # Chart site -> link to a stock's chart on it, given the snapshot's name.
 CHART_SITES = {
     MY_LAYOUT: lambda symbol, snapshot: (
@@ -313,6 +321,18 @@ def fetch_watchlists() -> tuple[dict[str, pd.DataFrame], list[str]]:
     return watchlists, errors
 
 
+@st.cache_data(ttl=600, show_spinner=False)
+def fetch_volume_profile() -> dict:
+    """The volume profile file from GitHub, else the copy beside this page."""
+    try:
+        # A changing query string skips GitHub's ~5 minute raw-file cache.
+        response = requests.get(VOLUME_PROFILE_URL, params={"t": int(datetime.now().timestamp())}, timeout=15)
+        response.raise_for_status()
+        return response.json()
+    except (requests.RequestException, ValueError):
+        return json.loads(Path(__file__).with_name(VOLUME_PROFILE_FILE).read_text(encoding="utf-8"))
+
+
 # ---------------------------------------------------------------------------
 # Page
 # ---------------------------------------------------------------------------
@@ -432,6 +452,7 @@ def live_dashboard(link: str, refresh: str) -> None:
     others = [w for w in data["widgets"] if w["timeframe"] is None and not w["prices"]]
     if others:
         names.append("OTHER")
+    names.append(VOLUME_PROFILE_TAB)
     for tab, timeframe in zip(st.tabs(names), names):
         with tab:
             if timeframe == "COMMON":
@@ -440,6 +461,9 @@ def live_dashboard(link: str, refresh: str) -> None:
             if timeframe == "OTHER":
                 for widget in others:
                     show_widget("⚪", widget)
+                continue
+            if timeframe == VOLUME_PROFILE_TAB:
+                show_volume_profile(data["widgets"])
                 continue
             for bearish, label in ((False, "🟢 Bullish"), (True, "🔴 Bearish")):
                 widgets = [w for w in data["widgets"]
@@ -485,6 +509,35 @@ def show_common_triggers(title: str, widgets: list[dict]) -> None:
         st.info("No stock is in more than one timeframe right now.")
     else:
         show_table(common)
+
+
+def show_volume_profile(widgets: list[dict]) -> None:
+    """VOLUME PROFILE tab: POC, VAH and VAL of each futures stock, over each period."""
+    try:
+        levels = fetch_volume_profile()
+    except (OSError, ValueError) as exc:
+        st.error(f"Could not load the volume profile levels: {exc}")
+        return
+    periods_col, stocks_col = st.columns([3, 1], vertical_alignment="bottom")
+    periods = periods_col.multiselect("Periods", VOLUME_PROFILE_PERIODS, default=VOLUME_PROFILE_PERIODS,
+                                      key="volume_profile_periods")
+    on_dashboard = stocks_col.toggle("Dashboard stocks only", key="volume_profile_dashboard")
+    table = pd.DataFrame(levels["stocks"])
+    if on_dashboard:
+        table = table[table["Symbol"].isin(chartink_sides(widgets))]
+    dates = " · ".join(f"{period}: {pd.Timestamp(first):%d %b %Y} to {pd.Timestamp(last):%d %b %Y}"
+                       for period, (first, last) in levels["periods"].items())
+    st.caption(f"{len(table)} stock(s) · worked out {levels['generated']} IST · {dates}")
+    columns = ["Symbol", "Close", *(f"{period} {level}" for period in periods for level in ("POC", "VAH", "VAL"))]
+    if table.empty:
+        st.info("None of the dashboard's stocks has levels.")
+    else:
+        show_table(table[columns])
+    st.caption("POC: the price with the most volume. VAH and VAL: the top and bottom of the 70% of volume around it. "
+               "Weekly and Monthly are the last finished week and month; 3M, 6M and 1Y are rolling, up to the last "
+               "close. From Yahoo's 15-minute bars (60-minute before the last 60 days), in bins of 0.25% of the price, "
+               "with each bar's volume spread evenly over its range. Cash stock on NSE, so a futures chart sits apart "
+               "by the premium. A blank means too little history for the period, as after a listing or demerger.")
 
 
 def show_widget(icon: str | None, widget: dict) -> None:

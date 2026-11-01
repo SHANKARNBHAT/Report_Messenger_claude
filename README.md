@@ -43,7 +43,10 @@ The app has three pages, switched from the menu at the top:
   Widgets are sorted by name: `2H`, `4h`, `DAILY` or `WEEKLY` picks the tab, and
   `SHORT`, `BEAR` or `SELL` marks a bearish widget. Widgets named
   `Futures stocks ...` list prices, not signals: they are left out of the tabs,
-  read in full, and give the Futures simulator its latest prices. The dashboard and chart
+  read in full, and give the Futures simulator its latest prices. The VOLUME PROFILE tab
+  shows each futures stock's POC, VAH and VAL over five periods, from the
+  `volume_profile_levels.json` that `volume_profile.py` writes after each close
+  (the method is at the top of that file). The dashboard and chart
   snapshot links are set at the top of the file; the snapshot link can also be
   changed in the sidebar.
 - **Futures simulator** (`futures_simulator.py`, with its `.html`, `.css` and `.js`
