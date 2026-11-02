@@ -4386,5 +4386,116 @@
   "gross": 1555.0,
   "charges": 318.62,
   "net": 1236.38
+ },
+ {
+  "id": "1793596239780-265",
+  "symbol": "AMBER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 100,
+  "entry": 6187.5,
+  "exit": 6187.0,
+  "entry_time": 1793596239780,
+  "exit_time": 1793596538031,
+  "reason": "HA green exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 6094.7,
+  "tp": null,
+  "high": 6187.5,
+  "low": 6187.0,
+  "nifty": 1.21,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793596239780,
+   "price": 6187.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 40.18,
+  "gross": -50.0,
+  "charges": 395.65,
+  "net": -445.65
+ },
+ {
+  "id": "1793596239780-269",
+  "symbol": "ASTRAL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 425,
+  "entry": 1353.1,
+  "exit": 1352.3,
+  "entry_time": 1793596239780,
+  "exit_time": 1793596538031,
+  "reason": "HA green exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 1332.8,
+  "tp": null,
+  "high": 1353.1,
+  "low": 1352.3,
+  "nifty": 1.21,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793596239780,
+   "price": 1353.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 39.37,
+  "gross": -340.0,
+  "charges": 370.89,
+  "net": -710.89
+ },
+ {
+  "id": "1793596239780-273",
+  "symbol": "KEI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 3827.8,
+  "exit": 3837.0,
+  "entry_time": 1793596239780,
+  "exit_time": 1793596538031,
+  "reason": "HA green exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 3770.4,
+  "tp": null,
+  "high": 3837.0,
+  "low": 3827.8,
+  "nifty": 1.21,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793596239780,
+   "price": 3827.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 33.72,
+  "gross": 1610.0,
+  "charges": 425.3,
+  "net": 1184.7
  }
 ]
