@@ -91,6 +91,16 @@ st.markdown(
       [data-testid="stMainBlockContainer"] { padding: 4rem .8rem 2rem; }
       .hero { padding: 1.3rem; border-radius: 14px; }
       .report-card { max-height: 65vh; }
+      /* Wrap the report tabs onto more lines so none hide off-screen on a phone. */
+      [data-testid="stTabs"] [data-baseweb="tab-list"] { flex-wrap: wrap; row-gap: .3rem; }
+      [data-testid="stTabs"] [data-baseweb="tab-highlight"],
+      [data-testid="stTabs"] [data-baseweb="tab-border"] { display: none; }
+      [data-testid="stTabs"] button[role="tab"] {
+        min-height: 2.4rem; padding: 0 .7rem; border: 1px solid #dce6f3; border-radius: 10px;
+      }
+      [data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
+        background: #e6f3f2; border-color: #126e72;
+      }
     }
     </style>
     <div class="hero">
