@@ -1284,7 +1284,7 @@
    "time": 1793592048932,
    "status": "open",
    "passed": false,
-   "high": 176.64,
+   "high": 176.87,
    "low": 173.44,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -1323,7 +1323,7 @@
    "time": 1793592048932,
    "status": "open",
    "passed": false,
-   "high": 176.64,
+   "high": 176.87,
    "low": 173.44,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -1359,7 +1359,7 @@
    "time": 1793592048932,
    "status": "open",
    "passed": false,
-   "high": 176.64,
+   "high": 176.87,
    "low": 173.44,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -1395,7 +1395,7 @@
    "time": 1793592048932,
    "status": "open",
    "passed": false,
-   "high": 176.64,
+   "high": 176.87,
    "low": 173.44,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -7045,7 +7045,7 @@
    "time": 1793602856277,
    "status": "open",
    "passed": false,
-   "high": 165.24,
+   "high": 165.25,
    "low": 163.72,
    "nifty": 1.17,
    "source": "Auto 2H",
@@ -7084,7 +7084,7 @@
    "time": 1793602856277,
    "status": "open",
    "passed": false,
-   "high": 165.24,
+   "high": 165.25,
    "low": 163.72,
    "nifty": 1.17,
    "source": "Auto 2H",
@@ -8117,7 +8117,7 @@
    "status": "open",
    "passed": false,
    "high": 1156.5,
-   "low": 1151.6,
+   "low": 1151,
    "nifty": 0.98,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -8156,7 +8156,7 @@
    "status": "open",
    "passed": false,
    "high": 1156.5,
-   "low": 1151.6,
+   "low": 1151,
    "nifty": 0.98,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -8192,7 +8192,7 @@
    "status": "open",
    "passed": false,
    "high": 1156.5,
-   "low": 1151.6,
+   "low": 1151,
    "nifty": 0.98,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -8596,7 +8596,7 @@
    "time": 1793605541107,
    "status": "open",
    "passed": false,
-   "high": 976,
+   "high": 976.1,
    "low": 970,
    "nifty": 0.76,
    "source": "Auto HA 4H",
@@ -8635,7 +8635,7 @@
    "time": 1793605541107,
    "status": "open",
    "passed": false,
-   "high": 976,
+   "high": 976.1,
    "low": 970,
    "nifty": 0.76,
    "source": "Auto HA 4H",
@@ -8671,7 +8671,7 @@
    "time": 1793605541107,
    "status": "open",
    "passed": false,
-   "high": 976,
+   "high": 976.1,
    "low": 970,
    "nifty": 0.76,
    "source": "Auto HA 4H",
@@ -8707,7 +8707,7 @@
    "time": 1793605541107,
    "status": "open",
    "passed": false,
-   "high": 976,
+   "high": 976.1,
    "low": 970,
    "nifty": 0.76,
    "source": "Auto HA 4H",
@@ -8743,7 +8743,7 @@
    "time": 1793605846785,
    "status": "open",
    "passed": false,
-   "high": 1752.3,
+   "high": 1753.2,
    "low": 1739.5,
    "nifty": 0.89,
    "source": "Auto Daily",
@@ -8782,7 +8782,7 @@
    "time": 1793605846785,
    "status": "open",
    "passed": false,
-   "high": 1752.3,
+   "high": 1753.2,
    "low": 1739.5,
    "nifty": 0.89,
    "source": "Auto Daily",
@@ -8818,7 +8818,7 @@
    "time": 1793605846785,
    "status": "open",
    "passed": false,
-   "high": 1752.3,
+   "high": 1753.2,
    "low": 1739.5,
    "nifty": 0.89,
    "source": "Auto Daily",
@@ -9056,10 +9056,122 @@
     "time": 1793606736767,
     "price": 1252.9
    }
+  },
+  {
+   "id": "1793607934002-393",
+   "symbol": "GVT&D",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4135.5,
+   "sl": 4197.55,
+   "tp": 4011.45,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 4197.55,
+   "time": 1793607934002,
+   "status": "open",
+   "passed": false,
+   "high": 4135.5,
+   "low": 4135.5,
+   "nifty": 0.78,
+   "source": "Auto Daily",
+   "timeframes": [
+    "DAILY"
+   ],
+   "strategies": [
+    "DAILY RSI BEARISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793607934002,
+    "price": 4135.5
+   }
+  },
+  {
+   "id": "1793607934002-394",
+   "symbol": "GVT&D",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4135.5,
+   "sl": 4197.55,
+   "tp": 4011.45,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 62.05,
+    "step": 20.7
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 4197.55,
+   "time": 1793607934002,
+   "status": "open",
+   "passed": false,
+   "high": 4135.5,
+   "low": 4135.5,
+   "nifty": 0.78,
+   "source": "Auto Daily",
+   "timeframes": [
+    "DAILY"
+   ],
+   "strategies": [
+    "DAILY RSI BEARISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793607934002,
+    "price": 4135.5
+   }
+  },
+  {
+   "id": "1793607934002-395",
+   "symbol": "GVT&D",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4135.5,
+   "sl": 4197.55,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 4197.55,
+   "time": 1793607934002,
+   "status": "open",
+   "passed": false,
+   "high": 4135.5,
+   "low": 4135.5,
+   "nifty": 0.78,
+   "source": "Auto Daily",
+   "timeframes": [
+    "DAILY"
+   ],
+   "strategies": [
+    "DAILY RSI BEARISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793607934002,
+    "price": 4135.5
+   }
   }
  ],
- "seq": 392,
+ "seq": 395,
  "log": [
+  "02 Nov 13:55  GVT&D: RSI SELL 125 at 4135.5 (DAILY; eod, trail, rsi)",
   "02 Nov 13:45  DIXON: TSL after target at 12312.45 (Hold \u00b7 trail)",
   "02 Nov 13:35  CDSL: RSI SELL 475 at 1252.9 (DAILY; eod, trail, rsi)",
   "02 Nov 13:30  COFORGE: TSL after target at 2075.65 (Hold \u00b7 trail)",
@@ -9328,8 +9440,8 @@
   "30 Oct 19:58  Chartink test OK: 14 widgets; signals Weekly 17, Daily 16, 4H 19, 2H 25; exit lists RSI below 60 29, RSI above 40 51; 5-minute bars for 220 stocks",
   "30 Oct 19:58  Chartink test OK: 14 widgets; signals Weekly 17, Daily 16, 4H 19, 2H 25; exit lists RSI below 60 29, RSI above 40 51; 5-minute bars for 220 stocks"
  ],
- "page_run": 1793607642140,
- "peak_margin": 29143699.95,
- "updated": 1793607642140,
+ "page_run": 1793607934002,
+ "peak_margin": 29338252.45,
+ "updated": 1793607934002,
  "unattended": false
 }
