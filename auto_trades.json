@@ -3628,7 +3628,7 @@
    "time": 1793593852038,
    "status": "open",
    "passed": true,
-   "high": 75.75,
+   "high": 75.85,
    "low": 73.45,
    "nifty": 1.09,
    "source": "Auto HA 2H",
@@ -3664,7 +3664,7 @@
    "time": 1793593852038,
    "status": "open",
    "passed": false,
-   "high": 75.75,
+   "high": 75.85,
    "low": 73.45,
    "nifty": 1.09,
    "source": "Auto HA 2H",
@@ -3700,7 +3700,7 @@
    "time": 1793593852038,
    "status": "open",
    "passed": false,
-   "high": 75.75,
+   "high": 75.85,
    "low": 73.45,
    "nifty": 1.09,
    "source": "Auto HA 2H",
@@ -5360,7 +5360,7 @@
    "status": "open",
    "passed": false,
    "high": 9911,
-   "low": 9860,
+   "low": 9856.5,
    "nifty": 1.29,
    "source": "Auto 2H",
    "timeframes": [
@@ -5399,7 +5399,7 @@
    "status": "open",
    "passed": false,
    "high": 9911,
-   "low": 9860,
+   "low": 9856.5,
    "nifty": 1.29,
    "source": "Auto 2H",
    "timeframes": [
@@ -5435,7 +5435,7 @@
    "status": "open",
    "passed": false,
    "high": 9911,
-   "low": 9860,
+   "low": 9856.5,
    "nifty": 1.29,
    "source": "Auto 2H",
    "timeframes": [
@@ -7460,7 +7460,7 @@
    "status": "open",
    "passed": false,
    "high": 164.6,
-   "low": 164.6,
+   "low": 164.41,
    "nifty": 1.17,
    "source": "Auto 2H",
    "timeframes": [
@@ -7499,7 +7499,7 @@
    "status": "open",
    "passed": false,
    "high": 164.6,
-   "low": 164.6,
+   "low": 164.41,
    "nifty": 1.17,
    "source": "Auto 2H",
    "timeframes": [
@@ -7535,7 +7535,7 @@
    "status": "open",
    "passed": false,
    "high": 348.0,
-   "low": 348.0,
+   "low": 346.9,
    "nifty": 1.17,
    "source": "Auto HA 4H",
    "timeframes": [
@@ -7574,7 +7574,7 @@
    "status": "open",
    "passed": false,
    "high": 348.0,
-   "low": 348.0,
+   "low": 346.9,
    "nifty": 1.17,
    "source": "Auto HA 4H",
    "timeframes": [
@@ -7610,7 +7610,7 @@
    "status": "open",
    "passed": false,
    "high": 348.0,
-   "low": 348.0,
+   "low": 346.9,
    "nifty": 1.17,
    "source": "Auto HA 4H",
    "timeframes": [
@@ -7646,7 +7646,7 @@
    "status": "open",
    "passed": false,
    "high": 348.0,
-   "low": 348.0,
+   "low": 346.9,
    "nifty": 1.17,
    "source": "Auto HA 4H",
    "timeframes": [
@@ -7808,10 +7808,122 @@
     "time": 1793603136943,
     "price": 1019.8
    }
+  },
+  {
+   "id": "1793603747477-347",
+   "symbol": "MAHABANK",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 6500,
+   "entry": 79.25,
+   "sl": 80.45,
+   "tp": 76.85,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 80.45,
+   "time": 1793603747477,
+   "status": "open",
+   "passed": false,
+   "high": 79.25,
+   "low": 79.25,
+   "nifty": 1.02,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI  BEARISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793603747477,
+    "price": 79.24
+   }
+  },
+  {
+   "id": "1793603747477-348",
+   "symbol": "MAHABANK",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 6500,
+   "entry": 79.25,
+   "sl": 80.45,
+   "tp": 76.85,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 1.2,
+    "step": 0.4
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 80.45,
+   "time": 1793603747477,
+   "status": "open",
+   "passed": false,
+   "high": 79.25,
+   "low": 79.25,
+   "nifty": 1.02,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI  BEARISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793603747477,
+    "price": 79.24
+   }
+  },
+  {
+   "id": "1793603747477-349",
+   "symbol": "MAHABANK",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 6500,
+   "entry": 79.25,
+   "sl": 80.45,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 80.45,
+   "time": 1793603747477,
+   "status": "open",
+   "passed": false,
+   "high": 79.25,
+   "low": 79.25,
+   "nifty": 1.02,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI  BEARISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793603747477,
+    "price": 79.24
+   }
   }
  ],
- "seq": 346,
+ "seq": 349,
  "log": [
+  "02 Nov 12:45  MAHABANK: RSI SELL 6500 at 79.25 (4 HOUR; eod, trail, rsi)",
   "02 Nov 12:40  TCS: RSI exit (2H 58.2) at 2515.3 (Hold \u00b7 RSI exit)",
   "02 Nov 12:35  HAVELLS: HA BUY 500 at 1019.8 (4 HOUR; eod, trail, ha, ha_green)",
   "02 Nov 12:35  SAIL: RSI exit (2H 48.1) at 164.75 (Hold \u00b7 RSI exit)",
@@ -8054,8 +8166,8 @@
   "30 Oct 19:58  Chartink test OK: 14 widgets; signals Weekly 17, Daily 16, 4H 19, 2H 25; exit lists RSI below 60 29, RSI above 40 51; 5-minute bars for 220 stocks",
   "30 Oct 19:58  Chartink test OK: 14 widgets; signals Weekly 17, Daily 16, 4H 19, 2H 25; exit lists RSI below 60 29, RSI above 40 51; 5-minute bars for 220 stocks"
  ],
- "page_run": 1793603441014,
- "peak_margin": 25018488.0,
- "updated": 1793603441014,
+ "page_run": 1793603747477,
+ "peak_margin": 25213101.0,
+ "updated": 1793603747477,
  "unattended": false
 }
