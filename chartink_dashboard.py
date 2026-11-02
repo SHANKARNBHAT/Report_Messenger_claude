@@ -5,8 +5,9 @@ Chartink Dashboard Viewer
 Shows the live results of every widget on a public Chartink dashboard, one tab
 per widget, with the same columns the widget has on Chartink. The page
 refreshes itself every 5 minutes, or as often as chosen on the page. All data
-comes from Chartink, but for the COMMON tab's watchlist and the VOLUME PROFILE
-tab, which show files the report pipeline writes.
+comes from Chartink, but for the VOLUME PROFILE tab, which shows a file the report
+pipeline writes. The COMMON tab also compares the futures stocks with the lists of the
+Fundamentals dashboard (FUNDAMENTALS_DASHBOARD).
 
 Shown as the "Chartink dashboard" page of report_app.py.
 """
@@ -41,6 +42,14 @@ except ImportError:
 # ---------------------------------------------------------------------------
 DEFAULT_DASHBOARD = "https://chartink.com/dashboard/501779"
 HA_DASHBOARD = "https://chartink.com/dashboard/502621"  # the Heikin Ashi strategy, on the COMMON tab
+# The long-term dashboard of the Fundamentals page (fundamentals_page.py), also compared with
+# the futures stocks on the COMMON tab. Its widgets list stocks institutions are buying, but
+# BREAKOUT_WIDGET, a weekly breakout scan. Each widget is read in full, up to
+# FUNDAMENTALS_ROWS stocks, not only the first 50 its Chartink limit allows.
+FUNDAMENTALS_DASHBOARD = "https://chartink.com/dashboard/503131"
+FUNDAMENTALS_ROWS = 300
+BREAKOUT_WIDGET = "All cash RSI scan"
+BREAKOUT_MARK = "🚀"
 REFRESH_CHOICES = {
     "1 min": 60, "3 min": 180, "5 min": 300, "10 min": 600,
     "15 min": 900, "30 min": 1800, "1 hr": 3600, "2 hr": 7200,
@@ -86,12 +95,16 @@ DEFAULT_SNAPSHOT = (
     "moving-averag-chart-snapshot"
 )
 MY_LAYOUT = "My indicators"
-# Active Watchlist of the Market reports, compared with the dashboard on the COMMON tab.
-# Segment -> the report file in that segment's GitHub repository. Only Futures: the
-# Chartink dashboard scans F&O stocks, so the Cash watchlist is left out.
+# Active Watchlist of the Market reports: segment -> the report file in that segment's GitHub
+# repository. The Futures one sets whether a signal agrees with the reports (in the simulator
+# and Auto trader); the Cash one is compared with the dashboard on the COMMON tab.
 WATCHLISTS = {
     "Futures": "https://raw.githubusercontent.com/SHANKARNBHAT/Report_Messenger_Claude/main/"
                "rvol_active_signals_report.txt",
+}
+CASH_WATCHLISTS = {
+    "Cash": "https://raw.githubusercontent.com/SHANKARNBHAT/Report_Messenger_cash/main/"
+            "rvol_active_signals_report.txt",
 }
 # Volume profile levels of the futures stocks, written after each close by volume_profile.py.
 VOLUME_PROFILE_FILE = "volume_profile_levels.json"
@@ -310,10 +323,11 @@ def parse_watchlist(text: str) -> pd.DataFrame:
 
 
 @st.cache_data(ttl=50, show_spinner=False)
-def fetch_watchlists() -> tuple[dict[str, pd.DataFrame], list[str]]:
-    """Each segment's Active Watchlist from GitHub, and messages for any that failed."""
+def fetch_watchlists(cash: bool = False) -> tuple[dict[str, pd.DataFrame], list[str]]:
+    """Each segment's Active Watchlist from GitHub (the Cash one if `cash`, else the Futures one),
+    and messages for any that failed."""
     watchlists, errors = {}, []
-    for segment, url in WATCHLISTS.items():
+    for segment, url in (CASH_WATCHLISTS if cash else WATCHLISTS).items():
         try:
             # A changing query string skips GitHub's ~5 minute raw-file cache.
             response = requests.get(url, params={"t": int(datetime.now().timestamp())}, timeout=15)
@@ -410,6 +424,28 @@ def watchlist_matches(widgets: list[dict], watchlists: dict[str, pd.DataFrame]) 
     return table.sort_values(["Agrees", "Symbol"], key=lambda c: c.ne("✅ Yes") if c.name == "Agrees" else c)
 
 
+def fundamentals_matches(widgets: list[dict], fundamentals: list[dict]) -> pd.DataFrame:
+    """Futures stocks (the dashboard's price widgets) on a list of the Fundamentals dashboard:
+    a ✅ under each list it is on, and its Chartink signals. Stocks with a signal come first."""
+    futures = set().union(*(set(w["table"]["Symbol"]) for w in widgets if w["prices"] and w["table"] is not None))
+    # The institutional lists, then the breakout scan.
+    lists = sorted((w for w in fundamentals if w["table"] is not None), key=lambda w: w["name"] == BREAKOUT_WIDGET)
+    found = chartink_sides(widgets)
+    rows = []
+    for symbol in sorted(futures):
+        on = {(f"{BREAKOUT_MARK} Breakout" if w["name"] == BREAKOUT_WIDGET else w["name"]):
+              "✅" if symbol in set(w["table"]["Symbol"]) else "" for w in lists}
+        if any(on.values()):
+            rows.append({"Symbol": symbol, **on, **timeframe_columns(found.get(symbol, {}))})
+    table = pd.DataFrame(rows)
+    if table.empty:
+        return table
+    signalled = table[list(TIMEFRAMES)].ne("").any(axis=1)
+    count = table[[c for c in table.columns if c not in ("Symbol", *TIMEFRAMES)]].eq("✅").sum(axis=1)
+    order = pd.DataFrame({"signalled": signalled, "count": count, "Symbol": table["Symbol"]})
+    return table.loc[order.sort_values(["signalled", "count", "Symbol"], ascending=[False, False, True]).index]
+
+
 def common_stocks(widgets: list[dict]) -> pd.DataFrame:
     """Stocks found in two or more timeframes, with bullish or bearish for each."""
     rows = []
@@ -481,16 +517,31 @@ def live_dashboard(link: str, refresh: str) -> None:
 
 
 def show_common(widgets: list[dict]) -> None:
-    """COMMON tab: stocks shared with the Market reports, then across timeframes per strategy."""
-    st.subheader("🔗 Common between Chartink and Market reports")
-    watchlists, errors = fetch_watchlists()
+    """COMMON tab: futures stocks on the Fundamentals lists, stocks on the Cash Active Watchlist,
+    then stocks across timeframes per strategy."""
+    st.subheader("🔗 Common between Chartink and Fundamentals")
+    try:
+        fundamentals = fetch_dashboard(FUNDAMENTALS_DASHBOARD, FUNDAMENTALS_ROWS)["widgets"]
+    except ChartinkError as exc:
+        st.error(f"Chartink (Fundamentals dashboard): {exc}")
+    else:
+        matches = fundamentals_matches(widgets, fundamentals)
+        st.caption(f"{len(matches)} futures stock(s) on a list of the Fundamentals page: a ✅ under each list, "
+                   "then the stock's signals on this dashboard. Stocks with a signal first.")
+        if matches.empty:
+            st.info("No futures stock is on a Fundamentals list right now.")
+        else:
+            show_table(matches)
+
+    st.subheader("🔗 Common between Chartink and CASH")
+    watchlists, errors = fetch_watchlists(cash=True)
     for error in errors:
         st.warning(error)
     matches = watchlist_matches(widgets, watchlists)
-    st.caption(f"{len(matches)} stock(s) on this Chartink dashboard that are also on the Active "
-               "Watchlist of the Futures Market reports. Agrees: the report's bias matches every Chartink signal.")
+    st.caption(f"{len(matches)} stock(s) on this Chartink dashboard that are also on the Active Watchlist of the "
+               "Cash Market reports. Agrees: the report's bias matches every Chartink signal.")
     if matches.empty:
-        st.info("No stock is on both the Chartink dashboard and the Active Watchlist right now.")
+        st.info("No stock is on both the Chartink dashboard and the Cash Active Watchlist right now.")
     else:
         show_table(matches)
 

@@ -1,7 +1,8 @@
 """
 Entry point of the dashboard. A menu at the top switches between:
   * Chartink dashboard  chartink_dashboard.py: live results of a Chartink dashboard (opens first)
-  * Market reports      reports_page.py: Futures and Cash reports from the pipeline
+  * (Market reports      reports_page.py: Futures and Cash reports from the pipeline; off
+    the menu for now, see the commented line in `pages`)
   * Fundamentals        fundamentals_page.py: stocks institutions are buying (long term)
   * Futures simulator   futures_simulator.py: paper trading of NSE futures and 2H signals
   * Auto trader         auto_trader_page.py: the account auto_trader.py trades on a schedule
@@ -53,7 +54,7 @@ st.html(
 
 pages = [
     st.Page("chartink_dashboard.py", title="Chartink dashboard", icon="📊", url_path="chartink", default=True),
-    st.Page("reports_page.py", title="Market reports", icon="📰", url_path="reports"),
+    # st.Page("reports_page.py", title="Market reports", icon="📰", url_path="reports"),
     st.Page("fundamentals_page.py", title="Fundamentals", icon="🏛️", url_path="fundamentals"),
     st.Page("futures_simulator.py", title="Futures simulator", icon="🧪", url_path="simulator"),
     st.Page("auto_trader_page.py", title="Auto trader", icon="🤖", url_path="auto"),

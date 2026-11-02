@@ -11,13 +11,10 @@ report_app.py.
 import pandas as pd
 import streamlit as st
 
-from chartink_dashboard import (CHART_SITES, DEFAULT_SNAPSHOT, ChartinkError, fetch_dashboard, show_table,
-                                show_widget)
+from chartink_dashboard import (BREAKOUT_MARK, BREAKOUT_WIDGET, CHART_SITES, DEFAULT_SNAPSHOT, FUNDAMENTALS_DASHBOARD,
+                                FUNDAMENTALS_ROWS, ChartinkError, fetch_dashboard, show_table, show_widget)
 from page_settings import remember
 
-FUNDAMENTALS_DASHBOARD = "https://chartink.com/dashboard/503131"
-# Every stock a widget finds, not only the first 50 its Chartink limit allows.
-MIN_ROWS = 300
 # What each widget finds, by its name on Chartink. "DII" is mutual funds plus insurance
 # companies; "good fundamentals" is the filter written out in FUNDAMENTALS_NOTE.
 WIDGET_NOTES = {
@@ -45,9 +42,6 @@ WIDGET_NOTES = {
         "its 14-week average."
     ),
 }
-# The widget whose stocks are breaking out; the others list institutional buying.
-BREAKOUT_WIDGET = "All cash RSI scan"
-BREAKOUT_MARK = "🚀"
 FUNDAMENTALS_NOTE = (
     "Good fundamentals: market cap over ₹1000 Cr; yearly sales and profit both up 18% or more "
     "on last year, with a profit last year; this quarter's sales above the same quarter last "
@@ -73,7 +67,7 @@ if button_col.button("↻ Refresh now", width="stretch"):
 
 try:
     with st.spinner("Loading the dashboard from Chartink..."):
-        data = fetch_dashboard(FUNDAMENTALS_DASHBOARD, MIN_ROWS)
+        data = fetch_dashboard(FUNDAMENTALS_DASHBOARD, FUNDAMENTALS_ROWS)
 except ChartinkError as exc:
     st.error(f"Chartink: {exc}")
     st.stop()
