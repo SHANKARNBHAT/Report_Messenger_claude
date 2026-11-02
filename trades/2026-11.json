@@ -4127,5 +4127,116 @@
   "gross": -10422.5,
   "charges": 438.79,
   "net": -10861.29
+ },
+ {
+  "id": "1793592647336-164",
+  "symbol": "BANKBARODA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2925,
+  "entry": 247.1,
+  "exit": 243.4,
+  "entry_time": 1793592647336,
+  "exit_time": 1793594700000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 243.4,
+  "tp": 254.5,
+  "high": 247.58,
+  "low": 243.4,
+  "nifty": 1.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793592647336,
+   "price": 247.12
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": -10822.5,
+  "charges": 448.61,
+  "net": -11271.11
+ },
+ {
+  "id": "1793592647336-165",
+  "symbol": "BANKBARODA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2925,
+  "entry": 247.1,
+  "exit": 243.4,
+  "entry_time": 1793592647336,
+  "exit_time": 1793594700000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 243.4,
+  "tp": 254.5,
+  "high": 247.58,
+  "low": 243.4,
+  "nifty": 1.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793592647336,
+   "price": 247.12
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": -10822.5,
+  "charges": 448.61,
+  "net": -11271.11
+ },
+ {
+  "id": "1793592647336-166",
+  "symbol": "BANKBARODA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2925,
+  "entry": 247.1,
+  "exit": 243.4,
+  "entry_time": 1793592647336,
+  "exit_time": 1793594700000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 243.4,
+  "tp": null,
+  "high": 247.58,
+  "low": 243.4,
+  "nifty": 1.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793592647336,
+   "price": 247.12
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": -10822.5,
+  "charges": 448.61,
+  "net": -11271.11
  }
 ]
