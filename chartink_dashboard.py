@@ -199,8 +199,11 @@ def widget_payload(session: requests.Session, url: str, token: str, widget: dict
 
 # Shorter than the quickest refresh, so every refresh gets new results.
 @st.cache_data(ttl=50, show_spinner=False)
-def fetch_dashboard(link: str) -> dict:
-    """Name of a public dashboard and the current results of each of its widgets."""
+def fetch_dashboard(link: str, min_rows: int = 0) -> dict:
+    """Name of a public dashboard and the current results of each of its widgets.
+
+    Each widget lists as many stocks as its limit on Chartink, or `min_rows` if more.
+    """
     with requests.Session() as session:
         session.headers.update(CHARTINK_HEADERS)
         url, token, details, raw_widgets = open_dashboard(session, link)
@@ -213,7 +216,7 @@ def fetch_dashboard(link: str) -> dict:
             result = {"name": name, "table": None, "as_of": None, "error": None, "prices": prices,
                       "timeframe": None if prices else timeframe_of(name, widget.get("query") or ""),
                       "bearish": bool(re.search(BEARISH_WORDS, name, re.IGNORECASE))}
-            limit = groups.get("limit") or 50
+            limit = max(int(groups.get("limit") or 50), min_rows)
             try:
                 payload = widget_payload(session, url, token, widget,
                                          max(limit, PRICE_WIDGET_ROWS) if prices else limit,

@@ -8,6 +8,7 @@ import pandas as pd
 import requests
 import streamlit as st
 
+from chartink_dashboard import CHART_SITES, DEFAULT_SNAPSHOT, MY_LAYOUT
 from page_settings import remember
 
 # ---------------------------------------------------------------------------
@@ -313,6 +314,22 @@ def show_note(text, css_class="report-note"):
     )
 
 
+def chart_link():
+    """The chart site picked under "Open charts on", and symbol -> link to its chart there.
+
+    Same choice as the Chartink dashboard page; TradingView opens your saved chart layout.
+    """
+    site = st.session_state.get("charts") or MY_LAYOUT
+    snapshot = re.search(r"load-snapshot=([\w-]+)", st.session_state.get("snapshot") or "")
+    if site == MY_LAYOUT and not snapshot:
+        site = "Chartink"  # no usable snapshot link
+    if site == "TradingView":
+        return site, lambda symbol: (
+            "https://in.tradingview.com/chart/jGqNo1TB/?symbol=" + quote(f"NSE:{symbol}", safe="")
+        )
+    return site, lambda symbol: CHART_SITES[site](symbol, snapshot and snapshot.group(1))
+
+
 def render_report(filename):
     info = REPORT_TEXT.get(filename, {})
     content = load_report_text(filename)
@@ -356,14 +373,13 @@ def render_report(filename):
         symbol_column = table.columns[0]
         column_config = {}
         if symbol_column.lower() == "symbol":
-            table[symbol_column] = table[symbol_column].map(
-                lambda symbol: "https://in.tradingview.com/chart/jGqNo1TB/?symbol="
-                f"{quote(f'NSE:{symbol}', safe='')}"
-            )
+            site, link = chart_link()
+            table[symbol_column] = table[symbol_column].map(link)
             column_config[symbol_column] = st.column_config.LinkColumn(
                 symbol_column,
-                display_text=r"symbol=NSE%3A(.+)$",
-                help="Opens the TradingView chart",
+                display_text=r"[?&]symbol=(?:NSE%3A)?([^&]+)$",
+                help="Opens the chart"
+                + (" with your indicators" if site == MY_LAYOUT else f" on {site}"),
             )
         st.dataframe(
             table,
@@ -394,6 +410,10 @@ st.sidebar.caption(
     "Reports are read from the public GitHub repository. A GitHub token is only "
     "needed to start the workflow."
 )
+st.session_state.setdefault("snapshot", DEFAULT_SNAPSHOT)
+st.radio("Open charts on", list(CHART_SITES), key="charts", horizontal=True,
+         on_change=remember, args=("charts",))
+
 tabs = st.tabs(list(reports.keys()))
 
 for tab, (report_name, file_target) in zip(tabs, reports.items()):
