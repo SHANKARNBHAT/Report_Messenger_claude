@@ -5535,5 +5535,227 @@
   "gross": 37572.5,
   "charges": 392.35,
   "net": 37180.15
+ },
+ {
+  "id": "1793604040016-350",
+  "symbol": "UPL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1355,
+  "entry": 513.15,
+  "exit": 520.85,
+  "entry_time": 1793604040016,
+  "exit_time": 1793610900000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 520.85,
+  "tp": 497.75,
+  "high": 520.85,
+  "low": 504.65,
+  "nifty": 1.06,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793604040016,
+   "price": 513.15
+  },
+  "agrees": "Yes",
+  "sma_rsi": null,
+  "gross": -10433.5,
+  "charges": 439.23,
+  "net": -10872.73
+ },
+ {
+  "id": "1793604040016-351",
+  "symbol": "UPL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1355,
+  "entry": 513.15,
+  "exit": 520.85,
+  "entry_time": 1793604040016,
+  "exit_time": 1793610900000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 520.85,
+  "tp": 497.75,
+  "high": 520.85,
+  "low": 504.65,
+  "nifty": 1.06,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793604040016,
+   "price": 513.15
+  },
+  "agrees": "Yes",
+  "sma_rsi": null,
+  "gross": -10433.5,
+  "charges": 439.23,
+  "net": -10872.73
+ },
+ {
+  "id": "1793604040016-352",
+  "symbol": "UPL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1355,
+  "entry": 513.15,
+  "exit": 520.85,
+  "entry_time": 1793604040016,
+  "exit_time": 1793610900000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 520.85,
+  "tp": null,
+  "high": 520.85,
+  "low": 504.65,
+  "nifty": 1.06,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793604040016,
+   "price": 513.15
+  },
+  "agrees": "Yes",
+  "sma_rsi": null,
+  "gross": -10433.5,
+  "charges": 439.23,
+  "net": -10872.73
+ },
+ {
+  "id": "1793605541107-370",
+  "symbol": "HDFCBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 650,
+  "entry": 689.0,
+  "exit": 699.35,
+  "entry_time": 1793605541107,
+  "exit_time": 1793610900000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 699.35,
+  "tp": 668.35,
+  "high": 699.35,
+  "low": 688.6,
+  "nifty": 0.76,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793605541107,
+   "price": 689.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6727.5,
+  "charges": 299.7,
+  "net": -7027.2
+ },
+ {
+  "id": "1793605541107-371",
+  "symbol": "HDFCBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 650,
+  "entry": 689.0,
+  "exit": 699.35,
+  "entry_time": 1793605541107,
+  "exit_time": 1793610900000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 699.35,
+  "tp": 668.35,
+  "high": 699.35,
+  "low": 688.6,
+  "nifty": 0.76,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793605541107,
+   "price": 689.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6727.5,
+  "charges": 299.7,
+  "net": -7027.2
+ },
+ {
+  "id": "1793605541107-372",
+  "symbol": "HDFCBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 650,
+  "entry": 689.0,
+  "exit": 699.35,
+  "entry_time": 1793605541107,
+  "exit_time": 1793610900000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 699.35,
+  "tp": null,
+  "high": 699.35,
+  "low": 688.6,
+  "nifty": 0.76,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793605541107,
+   "price": 689.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6727.5,
+  "charges": 299.7,
+  "net": -7027.2
  }
 ]
