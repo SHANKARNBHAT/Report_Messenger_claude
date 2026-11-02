@@ -5498,5 +5498,42 @@
   "gross": 14558.75,
   "charges": 601.86,
   "net": 13956.89
+ },
+ {
+  "id": "1793592647336-172",
+  "symbol": "DIXON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 50,
+  "entry": 11561.0,
+  "exit": 12312.45,
+  "entry_time": 1793592647336,
+  "exit_time": 1793606700000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 11387.6,
+  "tp": 11907.85,
+  "high": 12490,
+  "low": 11561.0,
+  "nifty": 1.09,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793592647336,
+   "price": 11561.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 32.82,
+  "gross": 37572.5,
+  "charges": 392.35,
+  "net": 37180.15
  }
 ]
