@@ -5091,5 +5091,79 @@
   "gross": -6367.5,
   "charges": 366.2,
   "net": -6733.7
+ },
+ {
+  "id": "1793591141854-124",
+  "symbol": "ANANDRATHI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2252.0,
+  "exit": 2285.8,
+  "entry_time": 1793591141854,
+  "exit_time": 1793603400000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 2285.8,
+  "tp": 2184.45,
+  "high": 2285.8,
+  "low": 2252.0,
+  "nifty": 0.89,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 2252.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 72.73,
+  "gross": -8450.0,
+  "charges": 364.63,
+  "net": -8814.63
+ },
+ {
+  "id": "1793591141854-125",
+  "symbol": "ANANDRATHI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2252.0,
+  "exit": 2285.8,
+  "entry_time": 1793591141854,
+  "exit_time": 1793603400000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2285.8,
+  "tp": 2184.45,
+  "high": 2285.8,
+  "low": 2252.0,
+  "nifty": 0.89,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 2252.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 72.73,
+  "gross": -8450.0,
+  "charges": 364.63,
+  "net": -8814.63
  }
 ]
