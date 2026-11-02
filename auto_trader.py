@@ -1,6 +1,6 @@
 """
-Auto trader: paper-trades every Chartink signal on the 2H, 4H and Daily
-timeframes without the simulator page open, for two strategies apart (fs.SYSTEMS):
+Auto trader: paper-trades every Chartink signal on the 2H timeframe (TRADED_TIMEFRAMES;
+4H, Daily and Weekly signals are recorded but not traded) without the simulator page open, for two strategies apart (fs.SYSTEMS):
 RSI (chartink_dashboard.DEFAULT_DASHBOARD) and Heikin Ashi (HA_DASHBOARD). A stock
 on both gets a trade in each, so that each strategy's results stay its own.
 
@@ -47,6 +47,8 @@ from pathlib import Path
 import futures_simulator as fs
 
 TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY")
+# The timeframes whose signals are traded; the others are only recorded, as "Timeframe not traded".
+TRADED_TIMEFRAMES = ("2 HOUR",)
 SHORT = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily"}
 LOTS = 1
 # The column of the HA widgets with the SMA of the RSI of the signal's own timeframe.
@@ -331,10 +333,10 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
     """Trade one strategy's signals, and note in `seen` what was done with each."""
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
     mark(seen, [s for s in signals if not s["fno"]], "Not F&O")
-    mark(seen, [s for s in signals if s["fno"] and s["timeframe"] not in TIMEFRAMES], "Timeframe not traded")
+    mark(seen, [s for s in signals if s["fno"] and s["timeframe"] not in TRADED_TIMEFRAMES], "Timeframe not traded")
     by_symbol: dict[str, list[dict]] = {}
     for signal in signals:
-        if signal["timeframe"] in TIMEFRAMES and signal["fno"]:
+        if signal["timeframe"] in TRADED_TIMEFRAMES and signal["fno"]:
             by_symbol.setdefault(signal["symbol"], []).append(signal)
     if not trading:
         mark(seen, [s for found in by_symbol.values() for s in found], "Not traded: switch off, page closed")

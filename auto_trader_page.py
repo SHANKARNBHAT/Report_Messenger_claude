@@ -649,7 +649,7 @@ def main() -> None:
     st.set_page_config(page_title="Auto Trader", page_icon="🤖", layout="wide")
     st.title("🤖 Auto trader")
     st.caption(
-        f"Paper-trades every 2H, 4H and Daily Chartink signal of two strategies, RSI and Heikin Ashi (a stock on "
+        f"Paper-trades every 2H Chartink signal (4H, Daily and Weekly ones are recorded, not traded) of two strategies, RSI and Heikin Ashi (a stock on "
         f"both gets a trade in each), 1 lot, SL {fs.AUTO_SL_PCT}%, in its exit styles "
         f"side by side: **EOD** (target {fs.AUTO_TP_PCT}%, squared off at 3:15 PM), **Hold · trail** (held "
         f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · RSI exit** (held until "
