@@ -3675,5 +3675,309 @@
   "gross": 17342.5,
   "charges": 381.8,
   "net": 16960.7
+ },
+ {
+  "id": "1793591141854-1",
+  "symbol": "ABB",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 6413.0,
+  "exit": 6509.2,
+  "entry_time": 1793591141854,
+  "exit_time": 1793593800000,
+  "reason": "Stop loss",
+  "source": "Auto 2H+4H+Daily",
+  "timeframes": [
+   "2 HOUR",
+   "4 HOUR",
+   "DAILY"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 6509.2,
+  "tp": 6220.6,
+  "high": 6509.2,
+  "low": 6383.5,
+  "nifty": 0.89,
+  "strategies": [
+   "2H RSI Bearish Strategy",
+   "4h RSI  BEARISH STRATEGY",
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 6413.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12025.0,
+  "charges": 499.17,
+  "net": -12524.17
+ },
+ {
+  "id": "1793591141854-2",
+  "symbol": "ABB",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 6413.0,
+  "exit": 6509.2,
+  "entry_time": 1793591141854,
+  "exit_time": 1793593800000,
+  "reason": "Stop loss",
+  "source": "Auto 2H+4H+Daily",
+  "timeframes": [
+   "2 HOUR",
+   "4 HOUR",
+   "DAILY"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 6509.2,
+  "tp": 6220.6,
+  "high": 6509.2,
+  "low": 6383.5,
+  "nifty": 0.89,
+  "strategies": [
+   "2H RSI Bearish Strategy",
+   "4h RSI  BEARISH STRATEGY",
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 6413.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12025.0,
+  "charges": 499.17,
+  "net": -12524.17
+ },
+ {
+  "id": "1793591141854-152",
+  "symbol": "SHREECEM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 25,
+  "entry": 22995.0,
+  "exit": 23339.9,
+  "entry_time": 1793591141854,
+  "exit_time": 1793593800000,
+  "reason": "Stop loss",
+  "source": "Auto HA Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 23339.9,
+  "tp": 22305.15,
+  "high": 23339.9,
+  "low": 22925,
+  "nifty": 0.89,
+  "strategies": [
+   "DAILY HA BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 22995.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 50.94,
+  "gross": -8622.5,
+  "charges": 371.32,
+  "net": -8993.82
+ },
+ {
+  "id": "1793591141854-153",
+  "symbol": "SHREECEM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 25,
+  "entry": 22995.0,
+  "exit": 23339.9,
+  "entry_time": 1793591141854,
+  "exit_time": 1793593800000,
+  "reason": "Stop loss",
+  "source": "Auto HA Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 23339.9,
+  "tp": 22305.15,
+  "high": 23339.9,
+  "low": 22925,
+  "nifty": 0.89,
+  "strategies": [
+   "DAILY HA BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 22995.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 50.94,
+  "gross": -8622.5,
+  "charges": 371.32,
+  "net": -8993.82
+ },
+ {
+  "id": "1793592647336-167",
+  "symbol": "CDSL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 1292.0,
+  "exit": 1272.6,
+  "entry_time": 1793592647336,
+  "exit_time": 1793593800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 1272.6,
+  "tp": 1330.75,
+  "high": 1292.0,
+  "low": 1272.6,
+  "nifty": 1.09,
+  "strategies": [
+   "4h HA  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793592647336,
+   "price": 1292.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 43.42,
+  "gross": -9215.0,
+  "charges": 388.02,
+  "net": -9603.02
+ },
+ {
+  "id": "1793592647336-168",
+  "symbol": "CDSL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 1292.0,
+  "exit": 1272.6,
+  "entry_time": 1793592647336,
+  "exit_time": 1793593800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1272.6,
+  "tp": 1330.75,
+  "high": 1292.0,
+  "low": 1272.6,
+  "nifty": 1.09,
+  "strategies": [
+   "4h HA  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793592647336,
+   "price": 1292.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 43.42,
+  "gross": -9215.0,
+  "charges": 388.02,
+  "net": -9603.02
+ },
+ {
+  "id": "1793592647336-169",
+  "symbol": "CDSL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 1292.0,
+  "exit": 1272.6,
+  "entry_time": 1793592647336,
+  "exit_time": 1793593800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1272.6,
+  "tp": null,
+  "high": 1292.0,
+  "low": 1272.6,
+  "nifty": 1.09,
+  "strategies": [
+   "4h HA  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793592647336,
+   "price": 1292.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 43.42,
+  "gross": -9215.0,
+  "charges": 388.02,
+  "net": -9603.02
+ },
+ {
+  "id": "1793592647336-170",
+  "symbol": "CDSL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 1292.0,
+  "exit": 1272.6,
+  "entry_time": 1793592647336,
+  "exit_time": 1793593800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 1272.6,
+  "tp": null,
+  "high": 1292.0,
+  "low": 1272.6,
+  "nifty": 1.09,
+  "strategies": [
+   "4h HA  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793592647336,
+   "price": 1292.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 43.42,
+  "gross": -9215.0,
+  "charges": 388.02,
+  "net": -9603.02
  }
 ]
