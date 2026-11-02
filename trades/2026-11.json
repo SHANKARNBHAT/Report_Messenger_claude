@@ -5165,5 +5165,79 @@
   "gross": -8450.0,
   "charges": 364.63,
   "net": -8814.63
+ },
+ {
+  "id": "1793591141854-138",
+  "symbol": "INDUSTOWER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1700,
+  "entry": 378.3,
+  "exit": 383.1,
+  "entry_time": 1793591141854,
+  "exit_time": 1793604643186,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 383.95,
+  "tp": null,
+  "high": 383.35,
+  "low": 378.3,
+  "nifty": 0.89,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 378.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 50.37,
+  "gross": -8160.0,
+  "charges": 409.73,
+  "net": -8569.73
+ },
+ {
+  "id": "1793591141854-139",
+  "symbol": "INDUSTOWER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1700,
+  "entry": 378.3,
+  "exit": 383.1,
+  "entry_time": 1793591141854,
+  "exit_time": 1793604643186,
+  "reason": "HA red exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 383.95,
+  "tp": null,
+  "high": 383.35,
+  "low": 378.3,
+  "nifty": 0.89,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 378.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 50.37,
+  "gross": -8160.0,
+  "charges": 409.73,
+  "net": -8569.73
  }
 ]
