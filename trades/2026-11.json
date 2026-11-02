@@ -3601,5 +3601,42 @@
   "gross": -6425.0,
   "charges": 364.54,
   "net": -6789.54
+ },
+ {
+  "id": "1793591141854-28",
+  "symbol": "COFORGE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 2045.0,
+  "exit": 2106.35,
+  "entry_time": 1793591141854,
+  "exit_time": 1793593200000,
+  "reason": "Target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 2014.3,
+  "tp": 2106.35,
+  "high": 2106.35,
+  "low": 2045.0,
+  "nifty": 0.89,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 2045.0
+  },
+  "agrees": "Yes",
+  "sma_rsi": null,
+  "gross": 29141.25,
+  "charges": 609.47,
+  "net": 28531.78
  }
 ]
