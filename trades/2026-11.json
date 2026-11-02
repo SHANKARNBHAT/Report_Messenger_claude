@@ -2615,5 +2615,124 @@
   "gross": -3750.0,
   "charges": 371.12,
   "net": -4121.12
+ },
+ {
+  "id": "1793591141854-46",
+  "symbol": "GODFRYPHLP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1690.2,
+  "exit": 1715.55,
+  "entry_time": 1793591141854,
+  "exit_time": 1793591700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H+4H+Daily",
+  "timeframes": [
+   "2 HOUR",
+   "4 HOUR",
+   "DAILY"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 1715.55,
+  "tp": 1639.5,
+  "high": 1715.55,
+  "low": 1690.2,
+  "nifty": 0.89,
+  "strategies": [
+   "2H RSI Bearish Strategy",
+   "4h RSI  BEARISH STRATEGY",
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 1690.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6971.25,
+  "charges": 309.26,
+  "net": -7280.51
+ },
+ {
+  "id": "1793591141854-47",
+  "symbol": "GODFRYPHLP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1690.2,
+  "exit": 1715.55,
+  "entry_time": 1793591141854,
+  "exit_time": 1793591700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H+4H+Daily",
+  "timeframes": [
+   "2 HOUR",
+   "4 HOUR",
+   "DAILY"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1715.55,
+  "tp": 1639.5,
+  "high": 1715.55,
+  "low": 1690.2,
+  "nifty": 0.89,
+  "strategies": [
+   "2H RSI Bearish Strategy",
+   "4h RSI  BEARISH STRATEGY",
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 1690.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6971.25,
+  "charges": 309.26,
+  "net": -7280.51
+ },
+ {
+  "id": "1793591141854-105",
+  "symbol": "RECLTD",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1575,
+  "entry": 285.6,
+  "exit": 287.1,
+  "entry_time": 1793591141854,
+  "exit_time": 1793592334291,
+  "reason": "RSI exit (4H 40.3)",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 289.9,
+  "tp": null,
+  "high": 287.7,
+  "low": 285.6,
+  "nifty": 0.89,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 285.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -2362.5,
+  "charges": 300.63,
+  "net": -2663.13
  }
 ]
