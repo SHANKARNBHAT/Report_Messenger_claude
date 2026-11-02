@@ -26,6 +26,26 @@ st.html(
       border: 1px solid #dce6f3; border-radius: 12px;
     }
     [data-testid="stTopNavLink"] * { font-size: 1.15rem !important; font-weight: 600; }
+
+    /* Phones: the page menu moves into the sidebar, so make its button easy to see, and
+       wrap tabs onto more lines on every page so none hide off the right edge. */
+    @media (max-width: 700px) {
+      [data-testid="stExpandSidebarButton"] {
+        width: auto !important; height: auto !important; padding: .35rem .8rem;
+        border: 1px solid #126e72; border-radius: 10px; background: #e6f3f2; color: #126e72;
+      }
+      [data-testid="stExpandSidebarButton"] > * { display: none; }
+      [data-testid="stExpandSidebarButton"]::after { content: "☰ Menu"; font-weight: 600; }
+      [data-testid="stTabs"] [role="tablist"] { flex-wrap: wrap; gap: .3rem; overflow: visible !important; }
+      [data-testid="stTabs"] [data-baseweb="tab-highlight"],
+      [data-testid="stTabs"] [data-baseweb="tab-border"] { display: none; }
+      [data-testid="stTabs"] [role="tab"] {
+        min-height: 2.4rem; padding: 0 .7rem; border: 1px solid #dce6f3; border-radius: 10px;
+      }
+      [data-testid="stTabs"] [role="tab"][aria-selected="true"] {
+        background: #e6f3f2; border-color: #126e72;
+      }
+    }
     </style>
     """
 )
