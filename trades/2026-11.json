@@ -4534,5 +4534,44 @@
   "gross": 11200.0,
   "charges": 265.34,
   "net": 10934.66
+ },
+ {
+  "id": "1793591141854-69",
+  "symbol": "INDUSINDBK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 700,
+  "entry": 838.0,
+  "exit": 834.6,
+  "entry_time": 1793591141854,
+  "exit_time": 1793599542113,
+  "reason": "RSI exit (2H 40.5)",
+  "source": "Auto 2H+4H",
+  "timeframes": [
+   "2 HOUR",
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 850.55,
+  "tp": null,
+  "high": 844.45,
+  "low": 832.35,
+  "nifty": 0.89,
+  "strategies": [
+   "2H RSI Bearish Strategy",
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 838.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 2380.0,
+  "charges": 377.47,
+  "net": 2002.53
  }
 ]
