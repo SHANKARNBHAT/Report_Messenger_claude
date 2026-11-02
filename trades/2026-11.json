@@ -4497,5 +4497,42 @@
   "gross": 1610.0,
   "charges": 425.3,
   "net": 1184.7
+ },
+ {
+  "id": "1793593235818-201",
+  "symbol": "INOXWIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6400,
+  "entry": 58.9,
+  "exit": 60.65,
+  "entry_time": 1793593235818,
+  "exit_time": 1793598000000,
+  "reason": "Target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 58.0,
+  "tp": 60.65,
+  "high": 60.65,
+  "low": 58.9,
+  "nifty": 1.18,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793593235818,
+   "price": 58.89
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 29.78,
+  "gross": 11200.0,
+  "charges": 265.34,
+  "net": 10934.66
  }
 ]
