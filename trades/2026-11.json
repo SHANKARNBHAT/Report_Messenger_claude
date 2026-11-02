@@ -5017,5 +5017,42 @@
   "gross": 25016.25,
   "charges": 543.29,
   "net": 24472.96
+ },
+ {
+  "id": "1793602856277-338",
+  "symbol": "SAIL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 4700,
+  "entry": 164.6,
+  "exit": 164.75,
+  "entry_time": 1793602856277,
+  "exit_time": 1793603136943,
+  "reason": "RSI exit (2H 48.1)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 167.05,
+  "tp": null,
+  "high": 164.75,
+  "low": 164.6,
+  "nifty": 1.17,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793602856277,
+   "price": 164.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -705.0,
+  "charges": 482.92,
+  "net": -1187.92
  }
 ]
