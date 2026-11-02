@@ -4647,5 +4647,79 @@
   "gross": 940.0,
   "charges": 484.71,
   "net": 455.29
+ },
+ {
+  "id": "1793591141854-43",
+  "symbol": "GMRAIRPORT",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6975,
+  "entry": 86.9,
+  "exit": 88.2,
+  "entry_time": 1793591141854,
+  "exit_time": 1793600700000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 88.2,
+  "tp": 84.3,
+  "high": 88.2,
+  "low": 86.9,
+  "nifty": 0.89,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 86.92
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -9067.5,
+  "charges": 388.94,
+  "net": -9456.44
+ },
+ {
+  "id": "1793591141854-44",
+  "symbol": "GMRAIRPORT",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6975,
+  "entry": 86.9,
+  "exit": 88.2,
+  "entry_time": 1793591141854,
+  "exit_time": 1793600700000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 88.2,
+  "tp": 84.3,
+  "high": 88.2,
+  "low": 86.9,
+  "nifty": 0.89,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 86.92
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -9067.5,
+  "charges": 388.94,
+  "net": -9456.44
  }
 ]
