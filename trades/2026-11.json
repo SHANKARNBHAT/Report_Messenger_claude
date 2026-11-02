@@ -5424,5 +5424,42 @@
   "gross": -1725.0,
   "charges": 315.57,
   "net": -2040.57
+ },
+ {
+  "id": "1793593852038-225",
+  "symbol": "NBCC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6500,
+  "entry": 73.45,
+  "exit": 75.25,
+  "entry_time": 1793593852038,
+  "exit_time": 1793605500000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 72.35,
+  "tp": 75.65,
+  "high": 76.4,
+  "low": 73.45,
+  "nifty": 1.09,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793593852038,
+   "price": 73.45
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 41.51,
+  "gross": 11700.0,
+  "charges": 322.18,
+  "net": 11377.82
  }
 ]
