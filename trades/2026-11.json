@@ -8244,5 +8244,116 @@
   "gross": -4312.5,
   "charges": 338.51,
   "net": -4651.01
+ },
+ {
+  "id": "1793591141854-35",
+  "symbol": "CUMMINSIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 4452.6,
+  "exit": 4519.4,
+  "entry_time": 1793591141854,
+  "exit_time": 1793612400000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 4519.4,
+  "tp": 4319.0,
+  "high": 4519.4,
+  "low": 4422.2,
+  "nifty": 0.89,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793591141854,
+   "price": 4452.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -13360.0,
+  "charges": 549.29,
+  "net": -13909.29
+ },
+ {
+  "id": "1793594142508-230",
+  "symbol": "FORCEMOT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 17816.0,
+  "exit": 17603.0,
+  "entry_time": 1793594142508,
+  "exit_time": 1793613052201,
+  "reason": "RSI exit (2H 59.1)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 17548.75,
+  "tp": null,
+  "high": 17913,
+  "low": 17603,
+  "nifty": 1.08,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793594142508,
+   "price": 17816.0
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": -5325.0,
+  "charges": 295.27,
+  "net": -5620.27
+ },
+ {
+  "id": "1793598036392-290",
+  "symbol": "TATAELXSI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 3825.0,
+  "exit": 3767.6,
+  "entry_time": 1793598036392,
+  "exit_time": 1793612400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 3767.6,
+  "tp": 3939.75,
+  "high": 3832.9,
+  "low": 3767.6,
+  "nifty": 1.22,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793598036392,
+   "price": 3825.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -7175.0,
+  "charges": 312.73,
+  "net": -7487.73
  }
 ]
