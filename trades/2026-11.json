@@ -4610,5 +4610,42 @@
   "gross": 13952.0,
   "charges": 266.78,
   "net": 13685.22
+ },
+ {
+  "id": "1793600147080-318",
+  "symbol": "SAIL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4700,
+  "entry": 165.1,
+  "exit": 165.3,
+  "entry_time": 1793600147080,
+  "exit_time": 1793600443529,
+  "reason": "HA green exit (4H)",
+  "source": "Auto HA 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 162.6,
+  "tp": null,
+  "high": 165.3,
+  "low": 165.1,
+  "nifty": 1.08,
+  "strategies": [
+   "4h HA  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1793600147080,
+   "price": 165.12
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 40.64,
+  "gross": 940.0,
+  "charges": 484.71,
+  "net": 455.29
  }
 ]
