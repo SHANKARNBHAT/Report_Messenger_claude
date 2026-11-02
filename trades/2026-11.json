@@ -4349,5 +4349,42 @@
   "gross": 10500.0,
   "charges": 243.9,
   "net": 10256.1
+ },
+ {
+  "id": "1793595939780-261",
+  "symbol": "YESBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 31100,
+  "entry": 15.45,
+  "exit": 15.5,
+  "entry_time": 1793595939780,
+  "exit_time": 1793596239780,
+  "reason": "HA green exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 15.2,
+  "tp": null,
+  "high": 15.5,
+  "low": 15.45,
+  "nifty": 1.2,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793595939780,
+   "price": 15.47
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 19.62,
+  "gross": 1555.0,
+  "charges": 318.62,
+  "net": 1236.38
  }
 ]
