@@ -92,9 +92,10 @@ HELD = ("trail", "rsi", "ha", "ha_green")
 # more style: held until the running candle of its timeframe goes past the previous HA
 # candle's low (long) or high (short), or at its SL (auto_trader.ha_exit). Not in STYLES,
 # which is what the simulator offers.
-# ha_green is the same with the last green HA candle's low (long) or last red one's high (short).
+# ha_green is the same with the last green HA candle's low (long) or last red one's high (short): no
+# longer traded (it nearly always exited with "ha"), kept so the positions open in it still close.
 BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/red exit"}
-SYSTEMS = {"RSI": ("eod", "trail", "rsi"), "HA": ("eod", "trail", "ha", "ha_green")}
+SYSTEMS = {"RSI": ("eod", "trail", "rsi"), "HA": ("eod", "trail", "ha")}
 HA_EXITS = ("ha", "ha_green")
 # The "RSI crossed" widgets list a stock when its RSI on any timeframe crossed the level;
 # their column of each timeframe's RSI tells if the trade's own one is past it.

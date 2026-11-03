@@ -650,12 +650,12 @@ def main() -> None:
     st.title("🤖 Auto trader")
     st.caption(
         f"Paper-trades every 2H Chartink signal (4H, Daily and Weekly ones are recorded, not traded) of two strategies, RSI and Heikin Ashi (a stock on "
-        f"both gets a trade in each), 1 lot, SL {fs.AUTO_SL_PCT}%, in its exit styles "
+        f"both gets a trade in each), 1 lot, SL at the previous 2H candle (Heikin Ashi: the previous HA "
+        f"candle's low / high; RSI: the candle's low / high or {fs.AUTO_SL_PCT}%, whichever is further), in its exit styles "
         f"side by side: **EOD** (target {fs.AUTO_TP_PCT}%, squared off at 3:15 PM), **Hold · trail** (held "
         f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · RSI exit** (held until "
         f"the RSI of its timeframe crosses back below 60 / above 40; for Heikin Ashi, **Hold · HA exit**: held "
-        f"until the live candle of its timeframe goes below the previous HA low / above the previous HA high, and "
-        f"**Hold · HA green/red exit**: the same past the last green HA candle's low / last red one's high). "
+        f"until the live candle of its timeframe goes below the previous HA low / above the previous HA high). "
         f"Held trades close on expiry day at 3:15 PM. "
         f"A stock is traded once per side, style and strategy per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")
