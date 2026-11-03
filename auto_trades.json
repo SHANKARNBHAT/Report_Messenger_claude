@@ -960,10 +960,158 @@
     "time": 1793677837339,
     "price": 2868.8
    }
+  },
+  {
+   "id": "1793678456917-425",
+   "symbol": "AXISBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 625,
+   "entry": 1220.3,
+   "sl": 1202.0,
+   "tp": 1256.9,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 1202.0,
+   "time": 1793678456917,
+   "status": "open",
+   "passed": false,
+   "high": 1220.3,
+   "low": 1220.3,
+   "nifty": 0.74,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 44.34,
+   "first_seen": {
+    "time": 1793678456917,
+    "price": 1220.3
+   }
+  },
+  {
+   "id": "1793678456917-426",
+   "symbol": "AXISBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 625,
+   "entry": 1220.3,
+   "sl": 1202.0,
+   "tp": 1256.9,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 18.3,
+    "step": 6.1
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 1202.0,
+   "time": 1793678456917,
+   "status": "open",
+   "passed": false,
+   "high": 1220.3,
+   "low": 1220.3,
+   "nifty": 0.74,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 44.34,
+   "first_seen": {
+    "time": 1793678456917,
+    "price": 1220.3
+   }
+  },
+  {
+   "id": "1793678456917-427",
+   "symbol": "AXISBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 625,
+   "entry": 1220.3,
+   "sl": 1202.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 1202.0,
+   "time": 1793678456917,
+   "status": "open",
+   "passed": false,
+   "high": 1220.3,
+   "low": 1220.3,
+   "nifty": 0.74,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 44.34,
+   "first_seen": {
+    "time": 1793678456917,
+    "price": 1220.3
+   }
+  },
+  {
+   "id": "1793678456917-428",
+   "symbol": "AXISBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 625,
+   "entry": 1220.3,
+   "sl": 1202.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha_green",
+   "system": "HA",
+   "stop": 1202.0,
+   "time": 1793678456917,
+   "status": "open",
+   "passed": false,
+   "high": 1220.3,
+   "low": 1220.3,
+   "nifty": 0.74,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 44.34,
+   "first_seen": {
+    "time": 1793678456917,
+    "price": 1220.3
+   }
   }
  ],
- "seq": 424,
+ "seq": 428,
  "log": [
+  "03 Nov 09:30  AXISBANK: HA BUY 625 at 1220.3 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 09:25  FORTIS: HA red exit (2H) at 769.2 (Hold \u00b7 HA green/red exit)",
   "03 Nov 09:25  FORTIS: HA exit (2H) at 769.2 (Hold \u00b7 HA exit)",
   "03 Nov 09:25  OFSS: RSI exit (2H 44.6) at 9865.0 (Hold \u00b7 RSI exit)",
@@ -977,8 +1125,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793678146268,
- "updated": 1793678146268,
+ "page_run": 1793678456917,
+ "updated": 1793678456917,
  "unattended": true,
- "peak_margin": 4095598.0
+ "peak_margin": 4274803.0
 }
