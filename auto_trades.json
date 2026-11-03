@@ -464,7 +464,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 2009.9,
+   "high": 2012.1,
    "low": 1992.9,
    "nifty": 0.62,
    "source": "Auto HA 2H",
@@ -503,79 +503,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 2009.9,
-   "low": 1992.9,
-   "nifty": 0.62,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 62.04,
-   "first_seen": {
-    "time": 1793677837339,
-    "price": 1996.5
-   }
-  },
-  {
-   "id": "1793677837339-419",
-   "symbol": "LUPIN",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 425,
-   "entry": 1996.5,
-   "sl": 2026.45,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA",
-   "stop": 2026.45,
-   "time": 1793677837339,
-   "status": "open",
-   "passed": false,
-   "high": 2009.9,
-   "low": 1992.9,
-   "nifty": 0.62,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 62.04,
-   "first_seen": {
-    "time": 1793677837339,
-    "price": 1996.5
-   }
-  },
-  {
-   "id": "1793677837339-420",
-   "symbol": "LUPIN",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 425,
-   "entry": 1996.5,
-   "sl": 2026.45,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_green",
-   "system": "HA",
-   "stop": 2026.45,
-   "time": 1793677837339,
-   "status": "open",
-   "passed": false,
-   "high": 2009.9,
+   "high": 2012.1,
    "low": 1992.9,
    "nifty": 0.62,
    "source": "Auto HA 2H",
@@ -1497,7 +1425,7 @@
    "status": "open",
    "passed": false,
    "high": 361.15,
-   "low": 355.8,
+   "low": 355.5,
    "nifty": 0.82,
    "source": "Auto 2H",
    "timeframes": [
@@ -1536,7 +1464,7 @@
    "status": "open",
    "passed": false,
    "high": 361.15,
-   "low": 355.8,
+   "low": 355.5,
    "nifty": 0.82,
    "source": "Auto 2H",
    "timeframes": [
@@ -1572,7 +1500,7 @@
    "status": "open",
    "passed": false,
    "high": 361.15,
-   "low": 355.8,
+   "low": 355.5,
    "nifty": 0.82,
    "source": "Auto 2H",
    "timeframes": [
@@ -3211,6 +3139,8 @@
  ],
  "seq": 494,
  "log": [
+  "03 Nov 12:10  LUPIN: HA red exit (2H) at 2010.2 (Hold \u00b7 HA green/red exit)",
+  "03 Nov 12:10  LUPIN: HA exit (2H) at 2010.2 (Hold \u00b7 HA exit)",
   "03 Nov 11:05  BHEL: HA BUY 2625 at 400.45, SL 393.5 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 11:01  PAYTM: HA BUY 725 at 1697.0, SL 1640.9 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 11:00  PFC: HA BUY 1300 at 320.05, SL 315.65 (2 HOUR; eod, trail, ha, ha_green)",
@@ -3252,8 +3182,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793687747315,
- "updated": 1793687747315,
+ "page_run": 1793688041483,
+ "updated": 1793688041483,
  "unattended": true,
  "peak_margin": 11640670.5
 }

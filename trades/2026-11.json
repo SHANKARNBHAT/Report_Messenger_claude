@@ -442,5 +442,79 @@
   "gross": -8240.0,
   "charges": 370.68,
   "net": -8610.68
+ },
+ {
+  "id": "1793677837339-419",
+  "symbol": "LUPIN",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 425,
+  "entry": 1996.5,
+  "exit": 2010.2,
+  "entry_time": 1793677837339,
+  "exit_time": 1793688041483,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 2026.45,
+  "tp": null,
+  "high": 2012.1,
+  "low": 1992.9,
+  "nifty": 0.62,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 1996.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 62.04,
+  "gross": -5822.5,
+  "charges": 525.31,
+  "net": -6347.81
+ },
+ {
+  "id": "1793677837339-420",
+  "symbol": "LUPIN",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 425,
+  "entry": 1996.5,
+  "exit": 2010.2,
+  "entry_time": 1793677837339,
+  "exit_time": 1793688041483,
+  "reason": "HA red exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 2026.45,
+  "tp": null,
+  "high": 2012.1,
+  "low": 1992.9,
+  "nifty": 0.62,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 1996.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 62.04,
+  "gross": -5822.5,
+  "charges": 525.31,
+  "net": -6347.81
  }
 ]
