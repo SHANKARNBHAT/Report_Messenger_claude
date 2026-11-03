@@ -98,7 +98,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": true,
-   "high": 397.35,
+   "high": 397.5,
    "low": 383.0,
    "nifty": 0.62,
    "source": "Auto 2H",
@@ -134,7 +134,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 397.35,
+   "high": 397.5,
    "low": 383.0,
    "nifty": 0.62,
    "source": "Auto 2H",
@@ -911,7 +911,7 @@
    "time": 1793679943957,
    "status": "open",
    "passed": false,
-   "high": 4868.7,
+   "high": 4871.9,
    "low": 4726.6,
    "nifty": 0.78,
    "source": "Auto HA 2H",
@@ -950,7 +950,7 @@
    "time": 1793679943957,
    "status": "open",
    "passed": false,
-   "high": 4868.7,
+   "high": 4871.9,
    "low": 4726.6,
    "nifty": 0.78,
    "source": "Auto HA 2H",
@@ -986,7 +986,7 @@
    "time": 1793679943957,
    "status": "open",
    "passed": false,
-   "high": 4868.7,
+   "high": 4871.9,
    "low": 4726.6,
    "nifty": 0.78,
    "source": "Auto HA 2H",
@@ -1022,7 +1022,7 @@
    "time": 1793679943957,
    "status": "open",
    "passed": false,
-   "high": 4868.7,
+   "high": 4871.9,
    "low": 4726.6,
    "nifty": 0.78,
    "source": "Auto HA 2H",
@@ -1907,7 +1907,7 @@
    "time": 1793682054415,
    "status": "open",
    "passed": false,
-   "high": 1429,
+   "high": 1429.3,
    "low": 1407.2,
    "nifty": 0.93,
    "source": "Auto 2H",
@@ -1946,7 +1946,7 @@
    "time": 1793682054415,
    "status": "open",
    "passed": false,
-   "high": 1429,
+   "high": 1429.3,
    "low": 1407.2,
    "nifty": 0.93,
    "source": "Auto 2H",
@@ -1982,7 +1982,7 @@
    "time": 1793682054415,
    "status": "open",
    "passed": false,
-   "high": 1429,
+   "high": 1429.3,
    "low": 1407.2,
    "nifty": 0.93,
    "source": "Auto 2H",
@@ -2313,7 +2313,7 @@
    "status": "open",
    "passed": false,
    "high": 320.05,
-   "low": 317.85,
+   "low": 317.6,
    "nifty": 0.94,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2352,79 +2352,7 @@
    "status": "open",
    "passed": false,
    "high": 320.05,
-   "low": 317.85,
-   "nifty": 0.94,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 43.26,
-   "first_seen": {
-    "time": 1793683854659,
-    "price": 320.05
-   }
-  },
-  {
-   "id": "1793683854659-485",
-   "symbol": "PFC",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 1300,
-   "entry": 320.05,
-   "sl": 315.65,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA",
-   "stop": 315.65,
-   "time": 1793683854659,
-   "status": "open",
-   "passed": false,
-   "high": 320.05,
-   "low": 317.85,
-   "nifty": 0.94,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 43.26,
-   "first_seen": {
-    "time": 1793683854659,
-    "price": 320.05
-   }
-  },
-  {
-   "id": "1793683854659-486",
-   "symbol": "PFC",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 1300,
-   "entry": 320.05,
-   "sl": 315.65,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_green",
-   "system": "HA",
-   "stop": 315.65,
-   "time": 1793683854659,
-   "status": "open",
-   "passed": false,
-   "high": 320.05,
-   "low": 317.85,
+   "low": 317.6,
    "nifty": 0.94,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2865,7 +2793,7 @@
    "status": "open",
    "passed": false,
    "high": 431.5,
-   "low": 430.6,
+   "low": 429.7,
    "nifty": 1.09,
    "source": "Auto 2H",
    "timeframes": [
@@ -2904,7 +2832,7 @@
    "status": "open",
    "passed": false,
    "high": 431.5,
-   "low": 430.6,
+   "low": 429.7,
    "nifty": 1.09,
    "source": "Auto 2H",
    "timeframes": [
@@ -2923,6 +2851,8 @@
  ],
  "seq": 500,
  "log": [
+  "03 Nov 13:35  PFC: HA green exit (2H) at 317.6 (Hold \u00b7 HA green/red exit)",
+  "03 Nov 13:35  PFC: HA exit (2H) at 317.6 (Hold \u00b7 HA exit)",
   "03 Nov 13:20  CONCOR: RSI exit (2H 57.1) at 430.65 (Hold \u00b7 RSI exit)",
   "03 Nov 13:20  INDUSTOWER: Target at 394.5 (EOD 3:15 PM)",
   "03 Nov 13:15  CONCOR: RSI SELL 1250 at 431.5, SL 437.95 (2 HOUR; eod, trail, rsi)",
@@ -2980,8 +2910,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793692855831,
- "updated": 1793692855831,
+ "page_run": 1793693137846,
+ "updated": 1793693137846,
  "unattended": true,
  "peak_margin": 11640670.5
 }
