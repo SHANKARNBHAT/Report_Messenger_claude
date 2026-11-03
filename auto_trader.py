@@ -8,8 +8,8 @@ on both gets a trade in each, so that each strategy's results stay its own.
   * replays the open positions on the 5-minute bars since entry, closing those that
     touched their SL, trailing SL or target, at the 3:15 PM square-off or expiry, or
     on an RSI exit (the same rules as the simulator: futures_simulator.check_positions)
-  * buys bullish and sells bearish signals at the latest price, with SL AUTO_SL_PCT
-    and target AUTO_TP_PCT away, once in each exit style (futures_simulator.STYLES) to
+  * buys bullish and sells bearish signals at the latest price, with the SL at the
+    previous candle's low (a long) or high (a short), see entry_sl, and target AUTO_TP_PCT away, once in each exit style (futures_simulator.STYLES) to
     compare them on the same signals: squared off at 3:15 PM, held with a trailing SL
     after the target, held until the RSI exit (for Heikin Ashi: the HA exit, see
     ha_exit). A stock is traded once per side and style per session, in each strategy.
@@ -221,6 +221,57 @@ def ha_level(rows: list[tuple], index: int, long: bool, style: str) -> float | N
     return earlier[-1][2 if long else 3] if earlier else None
 
 
+def candle_key(timeframe: str, start: int) -> tuple:
+    """The candle of `timeframe` a 5-minute bar starting at `start` (seconds) is in: its day and
+    number in the day, from 9:15 AM, with the day's last one running to the close (as candle_end)."""
+    opened = datetime.fromtimestamp(start, fs.IST)
+    minutes = fs.CANDLE_MINUTES.get(timeframe)
+    if not minutes:
+        return (opened.date(), 0)
+    since = opened - datetime.combine(opened.date(), fs.SESSION_OPEN, fs.IST)
+    last = (fs.SQUARE_OFF.hour * 60 + fs.SQUARE_OFF.minute - 1
+            - fs.SESSION_OPEN.hour * 60 - fs.SESSION_OPEN.minute) // minutes
+    return (opened.date(), min(max(int(since.total_seconds() // 60), 0) // minutes, last))
+
+
+def previous_candle(bars: list[tuple], timeframe: str, now: datetime) -> tuple[float, float] | None:
+    """Low and high of the candle of `timeframe` before the running one, from 5-minute bars
+    (start in seconds, open, high, low, close). None if the bars do not reach back to it."""
+    current = candle_key(timeframe, int(now.timestamp()))
+    candles: dict[tuple, list[tuple]] = {}
+    for bar in bars:
+        if bar[0] <= now.timestamp():
+            candles.setdefault(candle_key(timeframe, bar[0]), []).append(bar)
+    earlier = [key for key in candles if key < current]
+    if not earlier:
+        return None
+    found = candles[max(earlier)]
+    return min(bar[3] for bar in found), max(bar[2] for bar in found)
+
+
+def entry_sl(entry: float, long: bool, system: str, timeframe: str, symbol: str, sources: dict,
+             now: datetime) -> float:
+    """The SL of a new position. RSI: the low (a long) or high (a short) of the previous candle
+    of its timeframe, or AUTO_SL_PCT away, whichever is lower (a long) or higher (a short).
+    HA: the low (a long) or high (a short) of the previous HA candle. AUTO_SL_PCT away when
+    the candle is not known, or is on the wrong side of the entry."""
+    percent = tick(entry * (1 - fs.AUTO_SL_PCT / 100 * (1 if long else -1)))
+    level = None
+    if system == "HA":
+        rows = (sources.get(timeframe) or {}).get(symbol) or []
+        done = [row for row in rows if candle_end(timeframe, row[0]) <= now.timestamp()]
+        level = done[-1][2 if long else 3] if done else None
+    else:
+        found = previous_candle(sources.get(symbol) or [], timeframe, now)
+        level = found and found[0 if long else 1]
+    if level is None or (level >= entry if long else level <= entry):
+        return percent
+    level = tick(level)
+    if system == "HA":
+        return level
+    return min(level, percent) if long else max(level, percent)
+
+
 def ha_exit(position: dict, candles: dict, now: datetime) -> dict | None:
     """The HA exit of a position, if due: the first candle of its timeframe (the shortest if
     several) since the entry whose close, live while it runs, went past its level (ha_level).
@@ -372,6 +423,12 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
 
     quotes = fs.latest_prices(set(wanted), instruments, dashboard)
     nifty = fs.nifty_change()
+    # For the SL (entry_sl): the HA candles, or the 5-minute bars to make the RSI ones from.
+    try:
+        sources = fs.fetch_ha_candles() if system == "HA" else fs.fetch_price_bars(fs.DEFAULT_DASHBOARD)
+    except fs.ChartinkError as exc:
+        sources = {}
+        note(f"No candles for the {system} SL, using {fs.AUTO_SL_PCT}%: {exc}")
     for symbol, (side, found, styles) in sorted(wanted.items()):
         quote = quotes.get(symbol)
         if not quote:
@@ -380,9 +437,9 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
             continue
         entry, qty = tick(quote["price"]), LOTS * instruments[symbol]["lot"]
         long = side == "BUY"
-        sl = tick(entry * (1 - fs.AUTO_SL_PCT / 100 * (1 if long else -1)))
         tp = tick(entry * (1 + fs.AUTO_TP_PCT / 100 * (1 if long else -1)))
         timeframes = sorted({s["timeframe"] for s in found}, key=TIMEFRAMES.index)
+        sl = entry_sl(entry, long, system, timeframes[0], symbol, sources, now)
         first = min((seen[signal_key(s)] for s in found if signal_key(s) in seen), key=lambda f: f["time"], default=None)
         # The SMA RSI of the shortest timeframe, as for the exit.
         sma_rsi = next((s["sma_rsi"] for s in sorted(found, key=lambda s: TIMEFRAMES.index(s["timeframe"]))
@@ -401,7 +458,7 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
                 "first_seen": first and {"time": first["time"], "price": first["price"]},
             })
         mark(seen, found, "Traded")
-        note(f"{symbol}: {system} {side} {qty} at {entry} ({', '.join(timeframes)}; {', '.join(styles)})")
+        note(f"{symbol}: {system} {side} {qty} at {entry}, SL {sl} ({', '.join(timeframes)}; {', '.join(styles)})")
 
 
 def main() -> None:
