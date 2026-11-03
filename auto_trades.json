@@ -941,7 +941,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 1765.1,
+   "high": 1782.9,
    "low": 1765.1,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -980,7 +980,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 1765.1,
+   "high": 1782.9,
    "low": 1765.1,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -1016,7 +1016,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 1765.1,
+   "high": 1782.9,
    "low": 1765.1,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -1052,7 +1052,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 1765.1,
+   "high": 1782.9,
    "low": 1765.1,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -1088,7 +1088,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 540.7,
+   "high": 543.05,
    "low": 540.7,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -1127,7 +1127,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 540.7,
+   "high": 543.05,
    "low": 540.7,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -1163,7 +1163,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 540.7,
+   "high": 543.05,
    "low": 540.7,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -1199,7 +1199,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 540.7,
+   "high": 543.05,
    "low": 540.7,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -1326,10 +1326,158 @@
     "time": 1793679342213,
     "price": 161.15
    }
+  },
+  {
+   "id": "1793679943957-440",
+   "symbol": "BRITANNIA",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4790.3,
+   "sl": 4718.45,
+   "tp": 4934.0,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 4718.45,
+   "time": 1793679943957,
+   "status": "open",
+   "passed": false,
+   "high": 4790.3,
+   "low": 4790.3,
+   "nifty": 0.78,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 45.57,
+   "first_seen": {
+    "time": 1793679943957,
+    "price": 4790.3
+   }
+  },
+  {
+   "id": "1793679943957-441",
+   "symbol": "BRITANNIA",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4790.3,
+   "sl": 4718.45,
+   "tp": 4934.0,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 71.85,
+    "step": 23.95
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 4718.45,
+   "time": 1793679943957,
+   "status": "open",
+   "passed": false,
+   "high": 4790.3,
+   "low": 4790.3,
+   "nifty": 0.78,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 45.57,
+   "first_seen": {
+    "time": 1793679943957,
+    "price": 4790.3
+   }
+  },
+  {
+   "id": "1793679943957-442",
+   "symbol": "BRITANNIA",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4790.3,
+   "sl": 4718.45,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 4718.45,
+   "time": 1793679943957,
+   "status": "open",
+   "passed": false,
+   "high": 4790.3,
+   "low": 4790.3,
+   "nifty": 0.78,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 45.57,
+   "first_seen": {
+    "time": 1793679943957,
+    "price": 4790.3
+   }
+  },
+  {
+   "id": "1793679943957-443",
+   "symbol": "BRITANNIA",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4790.3,
+   "sl": 4718.45,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha_green",
+   "system": "HA",
+   "stop": 4718.45,
+   "time": 1793679943957,
+   "status": "open",
+   "passed": false,
+   "high": 4790.3,
+   "low": 4790.3,
+   "nifty": 0.78,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 45.57,
+   "first_seen": {
+    "time": 1793679943957,
+    "price": 4790.3
+   }
   }
  ],
- "seq": 439,
+ "seq": 443,
  "log": [
+  "03 Nov 09:55  BRITANNIA: HA BUY 125 at 4790.3 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 09:50  BIOCON: Target at 344.05 (EOD 3:15 PM)",
   "03 Nov 09:45  MOTHERSON: RSI BUY 6150 at 161.15 (2 HOUR; eod, trail, rsi)",
   "03 Nov 09:40  SBICARD: HA BUY 800 at 540.7 (2 HOUR; eod, trail, ha, ha_green)",
@@ -1352,8 +1500,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793679640131,
- "updated": 1793679640131,
+ "page_run": 1793679943957,
+ "updated": 1793679943957,
  "unattended": true,
- "peak_margin": 4977991.5
+ "peak_margin": 5279671.5
 }
