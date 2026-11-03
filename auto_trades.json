@@ -1,12 +1,1089 @@
 {
  "capital": 1000000,
- "positions": [],
- "seq": 395,
+ "positions": [
+  {
+   "id": "1793677837339-396",
+   "symbol": "HAL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 150,
+   "entry": 4855.0,
+   "sl": 4782.2,
+   "tp": 5000.65,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 4782.2,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 4855.0,
+   "low": 4855.0,
+   "nifty": 0.62,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 4855.0
+   }
+  },
+  {
+   "id": "1793677837339-397",
+   "symbol": "HAL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 150,
+   "entry": 4855.0,
+   "sl": 4782.2,
+   "tp": 5000.65,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 72.8,
+    "step": 24.3
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 4782.2,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 4855.0,
+   "low": 4855.0,
+   "nifty": 0.62,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 4855.0
+   }
+  },
+  {
+   "id": "1793677837339-398",
+   "symbol": "HAL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 150,
+   "entry": 4855.0,
+   "sl": 4782.2,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 4782.2,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 4855.0,
+   "low": 4855.0,
+   "nifty": 0.62,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 4855.0
+   }
+  },
+  {
+   "id": "1793677837339-399",
+   "symbol": "INDUSTOWER",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1700,
+   "entry": 383.0,
+   "sl": 377.25,
+   "tp": 394.5,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 377.25,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 383.0,
+   "low": 383.0,
+   "nifty": 0.62,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 383.0
+   }
+  },
+  {
+   "id": "1793677837339-400",
+   "symbol": "INDUSTOWER",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1700,
+   "entry": 383.0,
+   "sl": 377.25,
+   "tp": 394.5,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 5.75,
+    "step": 1.9
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 377.25,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 383.0,
+   "low": 383.0,
+   "nifty": 0.62,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 383.0
+   }
+  },
+  {
+   "id": "1793677837339-401",
+   "symbol": "INDUSTOWER",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1700,
+   "entry": 383.0,
+   "sl": 377.25,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 377.25,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 383.0,
+   "low": 383.0,
+   "nifty": 0.62,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 383.0
+   }
+  },
+  {
+   "id": "1793677837339-402",
+   "symbol": "OFSS",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 100,
+   "entry": 9744.0,
+   "sl": 9890.15,
+   "tp": 9451.7,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 9890.15,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 9744.0,
+   "low": 9744.0,
+   "nifty": 0.62,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 9744.0
+   }
+  },
+  {
+   "id": "1793677837339-403",
+   "symbol": "OFSS",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 100,
+   "entry": 9744.0,
+   "sl": 9890.15,
+   "tp": 9451.7,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 146.15,
+    "step": 48.7
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 9890.15,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 9744.0,
+   "low": 9744.0,
+   "nifty": 0.62,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 9744.0
+   }
+  },
+  {
+   "id": "1793677837339-404",
+   "symbol": "OFSS",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 100,
+   "entry": 9744.0,
+   "sl": 9890.15,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 9890.15,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 9744.0,
+   "low": 9744.0,
+   "nifty": 0.62,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 9744.0
+   }
+  },
+  {
+   "id": "1793677837339-405",
+   "symbol": "BIOCON",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 2500,
+   "entry": 354.7,
+   "sl": 360.0,
+   "tp": 344.05,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 360.0,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 354.7,
+   "low": 354.7,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 60.49,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 354.7
+   }
+  },
+  {
+   "id": "1793677837339-406",
+   "symbol": "BIOCON",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 2500,
+   "entry": 354.7,
+   "sl": 360.0,
+   "tp": 344.05,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 5.3,
+    "step": 1.75
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 360.0,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 354.7,
+   "low": 354.7,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 60.49,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 354.7
+   }
+  },
+  {
+   "id": "1793677837339-407",
+   "symbol": "BIOCON",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 2500,
+   "entry": 354.7,
+   "sl": 360.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 360.0,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 354.7,
+   "low": 354.7,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 60.49,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 354.7
+   }
+  },
+  {
+   "id": "1793677837339-408",
+   "symbol": "BIOCON",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 2500,
+   "entry": 354.7,
+   "sl": 360.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha_green",
+   "system": "HA",
+   "stop": 360.0,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 354.7,
+   "low": 354.7,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 60.49,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 354.7
+   }
+  },
+  {
+   "id": "1793677837339-409",
+   "symbol": "FORTIS",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 775,
+   "entry": 761.5,
+   "sl": 772.9,
+   "tp": 738.65,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 772.9,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 761.5,
+   "low": 761.5,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 58.77,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 761.5
+   }
+  },
+  {
+   "id": "1793677837339-410",
+   "symbol": "FORTIS",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 775,
+   "entry": 761.5,
+   "sl": 772.9,
+   "tp": 738.65,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 11.4,
+    "step": 3.8
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 772.9,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 761.5,
+   "low": 761.5,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 58.77,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 761.5
+   }
+  },
+  {
+   "id": "1793677837339-411",
+   "symbol": "FORTIS",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 775,
+   "entry": 761.5,
+   "sl": 772.9,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 772.9,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 761.5,
+   "low": 761.5,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 58.77,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 761.5
+   }
+  },
+  {
+   "id": "1793677837339-412",
+   "symbol": "FORTIS",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 775,
+   "entry": 761.5,
+   "sl": 772.9,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha_green",
+   "system": "HA",
+   "stop": 772.9,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 761.5,
+   "low": 761.5,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 58.77,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 761.5
+   }
+  },
+  {
+   "id": "1793677837339-413",
+   "symbol": "HDFCBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 650,
+   "entry": 700.0,
+   "sl": 689.5,
+   "tp": 721.0,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 689.5,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 700.0,
+   "low": 700.0,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 39.9,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 700.0
+   }
+  },
+  {
+   "id": "1793677837339-414",
+   "symbol": "HDFCBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 650,
+   "entry": 700.0,
+   "sl": 689.5,
+   "tp": 721.0,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 10.5,
+    "step": 3.5
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 689.5,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 700.0,
+   "low": 700.0,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 39.9,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 700.0
+   }
+  },
+  {
+   "id": "1793677837339-415",
+   "symbol": "HDFCBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 650,
+   "entry": 700.0,
+   "sl": 689.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 689.5,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 700.0,
+   "low": 700.0,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 39.9,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 700.0
+   }
+  },
+  {
+   "id": "1793677837339-416",
+   "symbol": "HDFCBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 650,
+   "entry": 700.0,
+   "sl": 689.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha_green",
+   "system": "HA",
+   "stop": 689.5,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 700.0,
+   "low": 700.0,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 39.9,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 700.0
+   }
+  },
+  {
+   "id": "1793677837339-417",
+   "symbol": "LUPIN",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 425,
+   "entry": 1996.5,
+   "sl": 2026.45,
+   "tp": 1936.6,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 2026.45,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 1996.5,
+   "low": 1996.5,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 62.04,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 1996.5
+   }
+  },
+  {
+   "id": "1793677837339-418",
+   "symbol": "LUPIN",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 425,
+   "entry": 1996.5,
+   "sl": 2026.45,
+   "tp": 1936.6,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 29.95,
+    "step": 10.0
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 2026.45,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 1996.5,
+   "low": 1996.5,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 62.04,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 1996.5
+   }
+  },
+  {
+   "id": "1793677837339-419",
+   "symbol": "LUPIN",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 425,
+   "entry": 1996.5,
+   "sl": 2026.45,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 2026.45,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 1996.5,
+   "low": 1996.5,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 62.04,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 1996.5
+   }
+  },
+  {
+   "id": "1793677837339-420",
+   "symbol": "LUPIN",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 425,
+   "entry": 1996.5,
+   "sl": 2026.45,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha_green",
+   "system": "HA",
+   "stop": 2026.45,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 1996.5,
+   "low": 1996.5,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 62.04,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 1996.5
+   }
+  },
+  {
+   "id": "1793677837339-421",
+   "symbol": "M&M",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2868.8,
+   "sl": 2911.85,
+   "tp": 2782.75,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 2911.85,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 2868.8,
+   "low": 2868.8,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.65,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 2868.8
+   }
+  },
+  {
+   "id": "1793677837339-422",
+   "symbol": "M&M",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2868.8,
+   "sl": 2911.85,
+   "tp": 2782.75,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 43.05,
+    "step": 14.35
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 2911.85,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 2868.8,
+   "low": 2868.8,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.65,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 2868.8
+   }
+  },
+  {
+   "id": "1793677837339-423",
+   "symbol": "M&M",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2868.8,
+   "sl": 2911.85,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 2911.85,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 2868.8,
+   "low": 2868.8,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.65,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 2868.8
+   }
+  },
+  {
+   "id": "1793677837339-424",
+   "symbol": "M&M",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2868.8,
+   "sl": 2911.85,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha_green",
+   "system": "HA",
+   "stop": 2911.85,
+   "time": 1793677837339,
+   "status": "open",
+   "passed": false,
+   "high": 2868.8,
+   "low": 2868.8,
+   "nifty": 0.62,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.65,
+   "first_seen": {
+    "time": 1793677837339,
+    "price": 2868.8
+   }
+  }
+ ],
+ "seq": 424,
  "log": [
+  "03 Nov 09:20  M&M: HA SELL 200 at 2868.8 (2 HOUR; eod, trail, ha, ha_green)",
+  "03 Nov 09:20  LUPIN: HA SELL 425 at 1996.5 (2 HOUR; eod, trail, ha, ha_green)",
+  "03 Nov 09:20  HDFCBANK: HA BUY 650 at 700.0 (2 HOUR; eod, trail, ha, ha_green)",
+  "03 Nov 09:20  FORTIS: HA SELL 775 at 761.5 (2 HOUR; eod, trail, ha, ha_green)",
+  "03 Nov 09:20  BIOCON: HA SELL 2500 at 354.7 (2 HOUR; eod, trail, ha, ha_green)",
+  "03 Nov 09:20  OFSS: RSI SELL 100 at 9744.0 (2 HOUR; eod, trail, rsi)",
+  "03 Nov 09:20  INDUSTOWER: RSI BUY 1700 at 383.0 (2 HOUR; eod, trail, rsi)",
+  "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793677543840,
- "updated": 1793677543840,
+ "page_run": 1793677837339,
+ "updated": 1793677837339,
  "unattended": true,
- "peak_margin": 0
+ "peak_margin": 4095598.0
 }
