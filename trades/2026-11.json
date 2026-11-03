@@ -109,5 +109,153 @@
   "gross": -5967.5,
   "charges": 379.82,
   "net": -6347.32
+ },
+ {
+  "id": "1793677837339-402",
+  "symbol": "OFSS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 100,
+  "entry": 9744.0,
+  "exit": 9948.5,
+  "entry_time": 1793677837339,
+  "exit_time": 1793678100000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 9890.15,
+  "tp": 9451.7,
+  "high": 9948.5,
+  "low": 9744.0,
+  "nifty": 0.62,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 9744.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -20450.0,
+  "charges": 596.82,
+  "net": -21046.82
+ },
+ {
+  "id": "1793677837339-403",
+  "symbol": "OFSS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 100,
+  "entry": 9744.0,
+  "exit": 9948.5,
+  "entry_time": 1793677837339,
+  "exit_time": 1793678100000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 9890.15,
+  "tp": 9451.7,
+  "high": 9948.5,
+  "low": 9744.0,
+  "nifty": 0.62,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 9744.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -20450.0,
+  "charges": 596.82,
+  "net": -21046.82
+ },
+ {
+  "id": "1793677837339-409",
+  "symbol": "FORTIS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 775,
+  "entry": 761.5,
+  "exit": 772.9,
+  "entry_time": 1793677837339,
+  "exit_time": 1793678100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 772.9,
+  "tp": 738.65,
+  "high": 772.9,
+  "low": 761.5,
+  "nifty": 0.62,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 761.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 58.77,
+  "gross": -8835.0,
+  "charges": 379.94,
+  "net": -9214.94
+ },
+ {
+  "id": "1793677837339-410",
+  "symbol": "FORTIS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 775,
+  "entry": 761.5,
+  "exit": 772.9,
+  "entry_time": 1793677837339,
+  "exit_time": 1793678100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 772.9,
+  "tp": 738.65,
+  "high": 772.9,
+  "low": 761.5,
+  "nifty": 0.62,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 761.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 58.77,
+  "gross": -8835.0,
+  "charges": 379.94,
+  "net": -9214.94
  }
 ]
