@@ -5,7 +5,7 @@ Futures Trade Simulator
 Paper trading for NSE futures. Shown as the "Futures simulator" page of report_app.py.
 
   * Signals     the widgets of the Chartink dashboard (chartink_dashboard.py) of a
-                timeframe (2H first), checked against the Active Watchlist of the
+                2H timeframe (SIM_TIMEFRAMES), checked against the Active Watchlist of the
                 Market reports; executed at the latest price or at the open of the
                 candle the signal is on
   * Order form  buy or sell, lots from futures stocks.csv, SL, target, trailing SL
@@ -76,6 +76,8 @@ AUTO_TP_PCT = 3.0
 AUTO_TRAIL_PCT = 1.5
 AUTO_STEP_PCT = 0.5
 DEFAULT_TIMEFRAME = "2 HOUR"  # tab name in chartink_dashboard.TIMEFRAMES
+# The timeframes the simulator shows and trades signals of (as the Auto trader, TRADED_TIMEFRAMES).
+SIM_TIMEFRAMES = ("2 HOUR",)
 # Candle length in minutes of the intraday timeframes; candles start at 9:15 AM.
 CANDLE_MINUTES = {"2 HOUR": 120, "4 HOUR": 240}
 # How a position exits (its "style"):
@@ -611,6 +613,7 @@ def main() -> None:
     with st.spinner("Loading signals from Chartink..."):
         dashboard, error = load_dashboard()
         signals, signals_note = signal_rows(dashboard, by_symbol) if dashboard else ([], error)
+        signals = [s for s in signals if s["timeframe"] in SIM_TIMEFRAMES]
 
     # Prices of the tradable signals, and of the stocks the simulator asked for
     # (open positions and the instrument picked in the order form).
@@ -644,7 +647,7 @@ def main() -> None:
             "saved": saved, "save_error": save_error,
             "backup": load_backup(),
             "result": st.session_state.get(RESULT),
-            "timeframes": list(TIMEFRAMES),
+            "timeframes": [tf for tf in TIMEFRAMES if tf in SIM_TIMEFRAMES],
             "charts": chart_links(),
             "default_chart": st.session_state.get("charts") or MY_LAYOUT,
             "settings": {"start_capital": START_CAPITAL, "margin_rate": MARGIN_RATE,

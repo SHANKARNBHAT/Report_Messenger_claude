@@ -11,6 +11,7 @@ const PREFS = "futures_simulator_prefs"  // signal timeframe, entry mode, SL/tar
 const SIGNALS = "futures_simulator_signals"  // session date -> the signals last seen in that session
 const SEEN = "futures_simulator_seen"  // session date -> "SYMBOL|TIMEFRAME|Bias" -> first seen here: time, price
 const SESSION_CLOSE = "15:30"  // carried-over signals are shown until the next session closes
+const CARRY_OVER = false  // show the last session's signals in the next one (off: only today's)
 const instances = new WeakMap()
 
 // ---------------------------------------------------------------------------
@@ -71,7 +72,7 @@ function withCarriedSignals(data) {
 
   const previous = dates.filter((d) => d < today).pop()
   const now = new Date().toLocaleString("sv-SE", { timeZone: "Asia/Kolkata" })  // "YYYY-MM-DD HH:MM:SS"
-  if (!previous || now >= `${today} ${SESSION_CLOSE}`) return live
+  if (!CARRY_OVER || !previous || now >= `${today} ${SESSION_CLOSE}`) return live
   const current = new Set(live.map((s) => `${s.symbol}|${s.timeframe}`))
   return [...live, ...saved[previous]
     .filter((s) => !current.has(`${s.symbol}|${s.timeframe}`))
@@ -680,7 +681,7 @@ function renderSignals(ctx) {
         ` (moved in steps of ${settings.auto_step_pct}%)` : risk ? ", exiting at the target" : "") +
       ", squared off at 3:15 PM.") +
     " Agrees: the Market reports Active Watchlist has the same bias." +
-    " Signals with a date are from the last session, kept until 3:30 PM."
+    (CARRY_OVER ? " Signals with a date are from the last session, kept until 3:30 PM." : "")
   const agree = { Yes: "yes", No: "no", "Not on watchlist": "none" }
   const shown = signals.map((s, row) => ({ ...s, row })).filter((s) => s.timeframe === ctx.timeframe)
   ctx.ref("signals").innerHTML = `<tr><th>Symbol</th><th>Strategy</th><th>Bias</th><th>Agrees</th>
