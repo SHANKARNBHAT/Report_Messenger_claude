@@ -331,5 +331,116 @@
   "gross": -852.5,
   "charges": 295.46,
   "net": -1147.96
+ },
+ {
+  "id": "1793677837339-413",
+  "symbol": "HDFCBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 650,
+  "entry": 700.0,
+  "exit": 721.0,
+  "entry_time": 1793677837339,
+  "exit_time": 1793681100000,
+  "reason": "Target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 689.5,
+  "tp": 721.0,
+  "high": 721.0,
+  "low": 700.0,
+  "nifty": 0.62,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 700.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 39.9,
+  "gross": 13650.0,
+  "charges": 310.57,
+  "net": 13339.43
+ },
+ {
+  "id": "1793677837339-423",
+  "symbol": "M&M",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 2868.8,
+  "exit": 2910.0,
+  "entry_time": 1793677837339,
+  "exit_time": 1793681740131,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 2911.85,
+  "tp": null,
+  "high": 2910,
+  "low": 2868.8,
+  "nifty": 0.62,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 2868.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 52.65,
+  "gross": -8240.0,
+  "charges": 370.68,
+  "net": -8610.68
+ },
+ {
+  "id": "1793677837339-424",
+  "symbol": "M&M",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 2868.8,
+  "exit": 2910.0,
+  "entry_time": 1793677837339,
+  "exit_time": 1793681740131,
+  "reason": "HA red exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 2911.85,
+  "tp": null,
+  "high": 2910,
+  "low": 2868.8,
+  "nifty": 0.62,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 2868.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 52.65,
+  "gross": -8240.0,
+  "charges": 370.68,
+  "net": -8610.68
  }
 ]
