@@ -627,5 +627,42 @@
   "gross": -10935.0,
   "charges": 451.83,
   "net": -11386.83
+ },
+ {
+  "id": "1793677837339-398",
+  "symbol": "HAL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 150,
+  "entry": 4855.0,
+  "exit": 4940.2,
+  "entry_time": 1793677837339,
+  "exit_time": 1793688938748,
+  "reason": "RSI exit (2H 59.5)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 4782.2,
+  "tp": null,
+  "high": 4974.6,
+  "low": 4855.0,
+  "nifty": 0.62,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 4855.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 12780.0,
+  "charges": 464.01,
+  "net": 12315.99
  }
 ]
