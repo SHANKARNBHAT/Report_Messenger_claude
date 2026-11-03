@@ -20,7 +20,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 4925.5,
+   "high": 4944.6,
    "low": 4855.0,
    "nifty": 0.62,
    "source": "Auto 2H",
@@ -59,7 +59,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 4925.5,
+   "high": 4944.6,
    "low": 4855.0,
    "nifty": 0.62,
    "source": "Auto 2H",
@@ -95,7 +95,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 4925.5,
+   "high": 4944.6,
    "low": 4855.0,
    "nifty": 0.62,
    "source": "Auto 2H",
@@ -941,7 +941,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 1786,
+   "high": 1802.9,
    "low": 1765.1,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -980,7 +980,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 1786,
+   "high": 1802.9,
    "low": 1765.1,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -1016,7 +1016,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 1786,
+   "high": 1802.9,
    "low": 1765.1,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -1052,7 +1052,7 @@
    "time": 1793679053257,
    "status": "open",
    "passed": false,
-   "high": 1786,
+   "high": 1802.9,
    "low": 1765.1,
    "nifty": 0.69,
    "source": "Auto HA 2H",
@@ -1089,7 +1089,7 @@
    "status": "open",
    "passed": false,
    "high": 543.05,
-   "low": 540.7,
+   "low": 540.5,
    "nifty": 0.69,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1128,7 +1128,7 @@
    "status": "open",
    "passed": false,
    "high": 543.05,
-   "low": 540.7,
+   "low": 540.5,
    "nifty": 0.69,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1164,7 +1164,7 @@
    "status": "open",
    "passed": false,
    "high": 543.05,
-   "low": 540.7,
+   "low": 540.5,
    "nifty": 0.69,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1200,7 +1200,7 @@
    "status": "open",
    "passed": false,
    "high": 543.05,
-   "low": 540.7,
+   "low": 540.5,
    "nifty": 0.69,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1235,7 +1235,7 @@
    "time": 1793679342213,
    "status": "open",
    "passed": false,
-   "high": 161.8,
+   "high": 161.83,
    "low": 161.15,
    "nifty": 0.75,
    "source": "Auto 2H",
@@ -1274,7 +1274,7 @@
    "time": 1793679342213,
    "status": "open",
    "passed": false,
-   "high": 161.8,
+   "high": 161.83,
    "low": 161.15,
    "nifty": 0.75,
    "source": "Auto 2H",
@@ -1310,7 +1310,7 @@
    "time": 1793679342213,
    "status": "open",
    "passed": false,
-   "high": 161.8,
+   "high": 161.83,
    "low": 161.15,
    "nifty": 0.75,
    "source": "Auto 2H",
@@ -1842,10 +1842,306 @@
     "time": 1793680250528,
     "price": 515.25
    }
+  },
+  {
+   "id": "1793680539141-454",
+   "symbol": "BANDHANBNK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 3600,
+   "entry": 159.5,
+   "sl": 157.1,
+   "tp": 164.3,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 157.1,
+   "time": 1793680539141,
+   "status": "open",
+   "passed": false,
+   "high": 159.5,
+   "low": 159.5,
+   "nifty": 0.77,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 47.05,
+   "first_seen": {
+    "time": 1793680539141,
+    "price": 159.5
+   }
+  },
+  {
+   "id": "1793680539141-455",
+   "symbol": "BANDHANBNK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 3600,
+   "entry": 159.5,
+   "sl": 157.1,
+   "tp": 164.3,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 2.4,
+    "step": 0.8
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 157.1,
+   "time": 1793680539141,
+   "status": "open",
+   "passed": false,
+   "high": 159.5,
+   "low": 159.5,
+   "nifty": 0.77,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 47.05,
+   "first_seen": {
+    "time": 1793680539141,
+    "price": 159.5
+   }
+  },
+  {
+   "id": "1793680539141-456",
+   "symbol": "BANDHANBNK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 3600,
+   "entry": 159.5,
+   "sl": 157.1,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 157.1,
+   "time": 1793680539141,
+   "status": "open",
+   "passed": false,
+   "high": 159.5,
+   "low": 159.5,
+   "nifty": 0.77,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 47.05,
+   "first_seen": {
+    "time": 1793680539141,
+    "price": 159.5
+   }
+  },
+  {
+   "id": "1793680539141-457",
+   "symbol": "BANDHANBNK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 3600,
+   "entry": 159.5,
+   "sl": 157.1,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha_green",
+   "system": "HA",
+   "stop": 157.1,
+   "time": 1793680539141,
+   "status": "open",
+   "passed": false,
+   "high": 159.5,
+   "low": 159.5,
+   "nifty": 0.77,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 47.05,
+   "first_seen": {
+    "time": 1793680539141,
+    "price": 159.5
+   }
+  },
+  {
+   "id": "1793680539141-458",
+   "symbol": "COLPAL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 275,
+   "entry": 1605.8,
+   "sl": 1581.7,
+   "tp": 1653.95,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 1581.7,
+   "time": 1793680539141,
+   "status": "open",
+   "passed": false,
+   "high": 1605.8,
+   "low": 1605.8,
+   "nifty": 0.77,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 32.58,
+   "first_seen": {
+    "time": 1793680539141,
+    "price": 1605.8
+   }
+  },
+  {
+   "id": "1793680539141-459",
+   "symbol": "COLPAL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 275,
+   "entry": 1605.8,
+   "sl": 1581.7,
+   "tp": 1653.95,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 24.1,
+    "step": 8.05
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 1581.7,
+   "time": 1793680539141,
+   "status": "open",
+   "passed": false,
+   "high": 1605.8,
+   "low": 1605.8,
+   "nifty": 0.77,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 32.58,
+   "first_seen": {
+    "time": 1793680539141,
+    "price": 1605.8
+   }
+  },
+  {
+   "id": "1793680539141-460",
+   "symbol": "COLPAL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 275,
+   "entry": 1605.8,
+   "sl": 1581.7,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 1581.7,
+   "time": 1793680539141,
+   "status": "open",
+   "passed": false,
+   "high": 1605.8,
+   "low": 1605.8,
+   "nifty": 0.77,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 32.58,
+   "first_seen": {
+    "time": 1793680539141,
+    "price": 1605.8
+   }
+  },
+  {
+   "id": "1793680539141-461",
+   "symbol": "COLPAL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 275,
+   "entry": 1605.8,
+   "sl": 1581.7,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha_green",
+   "system": "HA",
+   "stop": 1581.7,
+   "time": 1793680539141,
+   "status": "open",
+   "passed": false,
+   "high": 1605.8,
+   "low": 1605.8,
+   "nifty": 0.77,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 32.58,
+   "first_seen": {
+    "time": 1793680539141,
+    "price": 1605.8
+   }
   }
  ],
- "seq": 453,
+ "seq": 461,
  "log": [
+  "03 Nov 10:05  COLPAL: HA BUY 275 at 1605.8 (2 HOUR; eod, trail, ha, ha_green)",
+  "03 Nov 10:05  BANDHANBNK: HA BUY 3600 at 159.5 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 10:00  KALYANKJIL: HA BUY 1350 at 515.25 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 10:00  HINDPETRO: RSI BUY 2025 at 359.8 (2 HOUR; eod, trail, rsi)",
   "03 Nov 10:00  BSE: RSI BUY 200 at 3550.2 (2 HOUR; eod, trail, rsi)",
@@ -1872,8 +2168,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793680250528,
- "updated": 1793680250528,
+ "page_run": 1793680539141,
+ "updated": 1793680539141,
  "unattended": true,
- "peak_margin": 6699322.5
+ "peak_margin": 7511958.5
 }
