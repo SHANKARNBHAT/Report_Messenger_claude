@@ -1737,5 +1737,42 @@
   "gross": -8640.0,
   "charges": 366.08,
   "net": -9006.08
+ },
+ {
+  "id": "1793677837339-401",
+  "symbol": "INDUSTOWER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1700,
+  "entry": 383.0,
+  "exit": 389.85,
+  "entry_time": 1793677837339,
+  "exit_time": 1793697715866,
+  "reason": "RSI exit (2H 60.0)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 377.25,
+  "tp": null,
+  "high": 399.5,
+  "low": 383.0,
+  "nifty": 0.62,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 383.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 11645.0,
+  "charges": 419.97,
+  "net": 11225.03
  }
 ]
