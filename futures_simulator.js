@@ -98,7 +98,7 @@ function noteSeen(ctx) {
 }
 
 // The signals behind a trade in `symbol` on `side`: their strategies, the timeframes the
-// stock is on that way, when it was first seen there, and whether the Market reports agree.
+// stock is on that way, when it was first seen there, and whether it agrees (on a Fundamentals list).
 function signalInfo(ctx, symbol, side) {
   const found = ctx.signals.filter((s) => s.symbol === symbol && (s.bias === "Bullish") === (side === "BUY"))
   return {
@@ -680,9 +680,9 @@ function renderSignals(ctx) {
       (run ? `; at the target they keep going with a stop trailing ${settings.auto_trail_pct}% behind the price` +
         ` (moved in steps of ${settings.auto_step_pct}%)` : risk ? ", exiting at the target" : "") +
       ", squared off at 3:15 PM.") +
-    " Agrees: the Market reports Active Watchlist has the same bias." +
+    " Agrees: on Common between Chartink and Fundamentals (a list of the Fundamentals dashboard)." +
     (CARRY_OVER ? " Signals with a date are from the last session, kept until 3:30 PM." : "")
-  const agree = { Yes: "yes", No: "no", "Not on watchlist": "none" }
+  const agree = { Yes: "yes", No: "no", "Not on watchlist": "none", "Not on list": "none", "Not loaded": "none" }
   const shown = signals.map((s, row) => ({ ...s, row })).filter((s) => s.timeframe === ctx.timeframe)
   ctx.ref("signals").innerHTML = `<tr><th>Symbol</th><th>Strategy</th><th>Bias</th><th>Agrees</th>
     <th class="r">LTP</th><th class="r">${tf} candle open</th><th class="r">Lot</th><th></th></tr>` + (shown.length ? shown.map((s) => {
@@ -777,7 +777,9 @@ function groupRows(trades, key, order) {
 const winRate = (trades) => `${(100 * trades.filter((t) => t.net > 0).length / trades.length).toFixed(0)}%`
 const netSum = (trades) => trades.reduce((s, t) => s + t.net, 0)
 const sign = (t) => t.side === "BUY" ? 1 : -1
-const REPORTS = { Yes: "Market reports agree", No: "Market reports disagree", "Not on watchlist": "Not on the watchlist" }
+// Agrees: "Yes" or "Not on list" (the Fundamentals lists) since 3 Nov 2026; the Market reports before.
+const REPORTS = { Yes: "Agrees", "Not on list": "Not on the Fundamentals lists", No: "Market reports disagree",
+  "Not on watchlist": "Not on the watchlist" }
 const HOLDS = [[60, "< 1 h"], [180, "1–3 h"], [375, "3 h – same day"], [2 * 1440, "1–2 days"], [Infinity, "3+ days"]]
 const MOODS = [[-0.5, "NIFTY down > 0.5%"], [0.5, "NIFTY flat (±0.5%)"], [Infinity, "NIFTY up > 0.5%"]]
 const pct = (x) => `${x >= 0 ? "+" : ""}${x.toFixed(2)}%`
@@ -851,7 +853,7 @@ function renderAnalysis(ctx) {
       moodRows.push({ sub: true, cells: [side.key, ...basic(side)] })
   }
 
-  // Confirmed by the Market reports' Active Watchlist, and by more Chartink timeframes.
+  // Confirmed by the Fundamentals lists (the Market reports' Active Watchlist before), and by more Chartink timeframes.
   const reportOf = (t) => REPORTS[t.agrees] || "Not recorded"
   const onTfs = (t) => (t.timeframes || []).length
   const confirmRows = []
@@ -866,7 +868,8 @@ function renderAnalysis(ctx) {
     statTable("By exit style", "Square off at 3:15 PM, or held overnight with a trailing SL after the target or until the RSI exit.",
       ["Exit style", "Trades", "Win", "Net"], styles),
     statTable("By strategy", "A trade found by several strategies counts under each.", ["Strategy", "Trades", "Win", "Net"], strategies),
-    statTable("Confirmation", "Whether the Market reports' Active Watchlist had the stock with the same bias, and on " +
+    statTable("Confirmation", "Whether the stock was on a Fundamentals list (trades before 3 Nov 2026: the Market reports' " +
+      "Active Watchlist with the same bias), and on " +
       "how many Chartink timeframes it was signalled the same way. Avg: the average return, % of entry.",
       ["Confirmation", "Trades", "Win", "Net", "Avg"], confirmRows),
     statTable("By timeframes the stock was on", "The timeframes with a signal the same way when the trade was placed.",

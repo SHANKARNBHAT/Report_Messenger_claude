@@ -5,8 +5,8 @@ Futures Trade Simulator
 Paper trading for NSE futures. Shown as the "Futures simulator" page of report_app.py.
 
   * Signals     the widgets of the Chartink dashboard (chartink_dashboard.py) of a
-                2H timeframe (SIM_TIMEFRAMES), checked against the Active Watchlist of the
-                Market reports; executed at the latest price or at the open of the
+                2H timeframe (SIM_TIMEFRAMES), agreeing when on a list of the Fundamentals
+                dashboard; executed at the latest price or at the open of the
                 candle the signal is on
   * Order form  buy or sell, lots from futures stocks.csv, SL, target, trailing SL
   * Positions   entry price, latest price and unrealized P&L
@@ -54,9 +54,9 @@ if Path(chartink_dashboard.__file__).stat().st_mtime > getattr(chartink_dashboar
     chartink_dashboard = importlib.reload(chartink_dashboard)
     chartink_dashboard._loaded_at = Path(chartink_dashboard.__file__).stat().st_mtime
 
-from chartink_dashboard import (CHART_SITES, CHARTINK_HEADERS, DEFAULT_DASHBOARD, DEFAULT_SNAPSHOT, HA_DASHBOARD, IST,
-                                MY_LAYOUT, TIMEFRAMES, ChartinkError, fetch_dashboard, fetch_ha_candles,
-                                fetch_price_bars, fetch_watchlists)
+from chartink_dashboard import (CHART_SITES, CHARTINK_HEADERS, DEFAULT_DASHBOARD, DEFAULT_SNAPSHOT, FUNDAMENTALS_DASHBOARD,
+                                FUNDAMENTALS_ROWS, HA_DASHBOARD, IST, MY_LAYOUT, TIMEFRAMES, ChartinkError,
+                                fetch_dashboard, fetch_ha_candles, fetch_price_bars, fetch_watchlists)
 
 # ---------------------------------------------------------------------------
 # Settings
@@ -614,6 +614,16 @@ def main() -> None:
         dashboard, error = load_dashboard()
         signals, signals_note = signal_rows(dashboard, by_symbol) if dashboard else ([], error)
         signals = [s for s in signals if s["timeframe"] in SIM_TIMEFRAMES]
+        # Agrees: the stock is on "Common between Chartink and Fundamentals" (chartink_dashboard.fundamentals_matches),
+        # that is on a list of the Fundamentals dashboard. (signal_rows' Market reports check stays for the Auto trader.)
+        try:
+            fundamentals = fetch_dashboard(FUNDAMENTALS_DASHBOARD, FUNDAMENTALS_ROWS)["widgets"]
+            listed = set().union(*(set(w["table"]["Symbol"]) for w in fundamentals if w["table"] is not None))
+            for signal in signals:
+                signal["agrees"] = "Yes" if signal["symbol"] in listed else "Not on list"
+        except ChartinkError:
+            for signal in signals:
+                signal["agrees"] = "Not loaded"
 
     # Prices of the tradable signals, and of the stocks the simulator asked for
     # (open positions and the instrument picked in the order form).
