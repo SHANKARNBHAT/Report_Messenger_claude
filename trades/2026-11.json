@@ -2551,5 +2551,79 @@
   "gross": -185.5,
   "charges": 428.01,
   "net": -613.51
+ },
+ {
+  "id": "1793680841722-464",
+  "symbol": "FORCEMOT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 17934.0,
+  "exit": 17765.0,
+  "entry_time": 1793680841722,
+  "exit_time": 1793699440763,
+  "reason": "RSI exit (2H 59.9)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 17665.0,
+  "tp": null,
+  "high": 17975,
+  "low": 17760,
+  "nifty": 0.75,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793680841722,
+   "price": 17934.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -4225.0,
+  "charges": 297.5,
+  "net": -4522.5
+ },
+ {
+  "id": "1793683854659-484",
+  "symbol": "PFC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1300,
+  "entry": 320.05,
+  "exit": 315.65,
+  "entry_time": 1793683854659,
+  "exit_time": 1793698800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 315.65,
+  "tp": 329.65,
+  "high": 320.05,
+  "low": 315.65,
+  "nifty": 0.94,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793683854659,
+   "price": 320.05
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 43.26,
+  "gross": -5720.0,
+  "charges": 278.54,
+  "net": -5998.54
  }
 ]
