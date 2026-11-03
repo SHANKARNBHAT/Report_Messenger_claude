@@ -516,5 +516,116 @@
   "gross": -5822.5,
   "charges": 525.31,
   "net": -6347.81
+ },
+ {
+  "id": "1793680250528-447",
+  "symbol": "HINDPETRO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2025,
+  "entry": 359.8,
+  "exit": 354.4,
+  "entry_time": 1793680250528,
+  "exit_time": 1793688000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 354.4,
+  "tp": 370.6,
+  "high": 361.15,
+  "low": 354.4,
+  "nifty": 0.82,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793680250528,
+   "price": 359.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -10935.0,
+  "charges": 451.83,
+  "net": -11386.83
+ },
+ {
+  "id": "1793680250528-448",
+  "symbol": "HINDPETRO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2025,
+  "entry": 359.8,
+  "exit": 354.4,
+  "entry_time": 1793680250528,
+  "exit_time": 1793688000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 354.4,
+  "tp": 370.6,
+  "high": 361.15,
+  "low": 354.4,
+  "nifty": 0.82,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793680250528,
+   "price": 359.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -10935.0,
+  "charges": 451.83,
+  "net": -11386.83
+ },
+ {
+  "id": "1793680250528-449",
+  "symbol": "HINDPETRO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2025,
+  "entry": 359.8,
+  "exit": 354.4,
+  "entry_time": 1793680250528,
+  "exit_time": 1793688000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 354.4,
+  "tp": null,
+  "high": 361.15,
+  "low": 354.4,
+  "nifty": 0.82,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793680250528,
+   "price": 359.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -10935.0,
+  "charges": 451.83,
+  "net": -11386.83
  }
 ]
