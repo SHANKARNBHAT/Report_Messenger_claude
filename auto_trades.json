@@ -1281,7 +1281,7 @@
    "status": "open",
    "passed": false,
    "high": 159.62,
-   "low": 157.45,
+   "low": 157.4,
    "nifty": 0.77,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1320,7 +1320,7 @@
    "status": "open",
    "passed": false,
    "high": 159.62,
-   "low": 157.45,
+   "low": 157.4,
    "nifty": 0.77,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1356,7 +1356,7 @@
    "status": "open",
    "passed": false,
    "high": 159.62,
-   "low": 157.45,
+   "low": 157.4,
    "nifty": 0.77,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1392,7 +1392,7 @@
    "status": "open",
    "passed": false,
    "high": 159.62,
-   "low": 157.45,
+   "low": 157.4,
    "nifty": 0.77,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2775,10 +2775,158 @@
     "time": 1793691941028,
     "price": 431.5
    }
+  },
+  {
+   "id": "1793694651378-501",
+   "symbol": "INDIANB",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1000,
+   "entry": 854.0,
+   "sl": 866.3,
+   "tp": 828.4,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 866.3,
+   "time": 1793694651378,
+   "status": "open",
+   "passed": false,
+   "high": 854.0,
+   "low": 854.0,
+   "nifty": 1.15,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 58.66,
+   "first_seen": {
+    "time": 1793694651378,
+    "price": 854.0
+   }
+  },
+  {
+   "id": "1793694651378-502",
+   "symbol": "INDIANB",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1000,
+   "entry": 854.0,
+   "sl": 866.3,
+   "tp": 828.4,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 12.8,
+    "step": 4.25
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 866.3,
+   "time": 1793694651378,
+   "status": "open",
+   "passed": false,
+   "high": 854.0,
+   "low": 854.0,
+   "nifty": 1.15,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 58.66,
+   "first_seen": {
+    "time": 1793694651378,
+    "price": 854.0
+   }
+  },
+  {
+   "id": "1793694651378-503",
+   "symbol": "INDIANB",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1000,
+   "entry": 854.0,
+   "sl": 866.3,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 866.3,
+   "time": 1793694651378,
+   "status": "open",
+   "passed": false,
+   "high": 854.0,
+   "low": 854.0,
+   "nifty": 1.15,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 58.66,
+   "first_seen": {
+    "time": 1793694651378,
+    "price": 854.0
+   }
+  },
+  {
+   "id": "1793694651378-504",
+   "symbol": "INDIANB",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1000,
+   "entry": 854.0,
+   "sl": 866.3,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha_green",
+   "system": "HA",
+   "stop": 866.3,
+   "time": 1793694651378,
+   "status": "open",
+   "passed": false,
+   "high": 854.0,
+   "low": 854.0,
+   "nifty": 1.15,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 58.66,
+   "first_seen": {
+    "time": 1793694651378,
+    "price": 854.0
+   }
   }
  ],
- "seq": 500,
+ "seq": 504,
  "log": [
+  "03 Nov 14:00  INDIANB: HA SELL 1000 at 854.0, SL 866.3 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 13:58  SWIGGY: HA green exit (2H) at 177.85 (Hold \u00b7 HA green/red exit)",
   "03 Nov 13:58  SWIGGY: HA exit (2H) at 177.85 (Hold \u00b7 HA exit)",
   "03 Nov 13:58  Chartink test OK: 14 widgets; signals Weekly 10, Daily 7, 4H 0, 2H 0; exit lists RSI below 60 20, RSI above 40 53; 5-minute bars for 220 stocks; HA signals 8; HA candles 2H 220, 4H 220, Daily 220",
@@ -2841,8 +2989,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793694535491,
- "updated": 1793694535491,
+ "page_run": 1793694651378,
+ "updated": 1793694651378,
  "unattended": true,
  "peak_margin": 11640670.5
 }
