@@ -1761,7 +1761,7 @@
    "status": "open",
    "passed": false,
    "high": 528.45,
-   "low": 523,
+   "low": 522,
    "nifty": 0.85,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1800,79 +1800,7 @@
    "status": "open",
    "passed": false,
    "high": 528.45,
-   "low": 523,
-   "nifty": 0.85,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 41.73,
-   "first_seen": {
-    "time": 1793681490455,
-    "price": 523.25
-   }
-  },
-  {
-   "id": "1793681490455-470",
-   "symbol": "HDFCLIFE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 1100,
-   "entry": 523.25,
-   "sl": 515.4,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA",
-   "stop": 515.4,
-   "time": 1793681490455,
-   "status": "open",
-   "passed": false,
-   "high": 528.45,
-   "low": 523,
-   "nifty": 0.85,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 41.73,
-   "first_seen": {
-    "time": 1793681490455,
-    "price": 523.25
-   }
-  },
-  {
-   "id": "1793681490455-471",
-   "symbol": "HDFCLIFE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 1100,
-   "entry": 523.25,
-   "sl": 515.4,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_green",
-   "system": "HA",
-   "stop": 515.4,
-   "time": 1793681490455,
-   "status": "open",
-   "passed": false,
-   "high": 528.45,
-   "low": 523,
+   "low": 522,
    "nifty": 0.85,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2019,7 +1947,7 @@
    "status": "open",
    "passed": false,
    "high": 180.89,
-   "low": 177.36,
+   "low": 177.34,
    "nifty": 0.95,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2058,7 +1986,7 @@
    "status": "open",
    "passed": false,
    "high": 180.89,
-   "low": 177.36,
+   "low": 177.34,
    "nifty": 0.95,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2926,6 +2854,8 @@
  ],
  "seq": 504,
  "log": [
+  "03 Nov 14:10  HDFCLIFE: HA green exit (2H) at 522.0 (Hold \u00b7 HA green/red exit)",
+  "03 Nov 14:10  HDFCLIFE: HA exit (2H) at 522.0 (Hold \u00b7 HA exit)",
   "03 Nov 14:00  INDIANB: HA SELL 1000 at 854.0, SL 866.3 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 13:58  SWIGGY: HA green exit (2H) at 177.85 (Hold \u00b7 HA green/red exit)",
   "03 Nov 13:58  SWIGGY: HA exit (2H) at 177.85 (Hold \u00b7 HA exit)",
@@ -2989,8 +2919,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793694940664,
- "updated": 1793694940664,
+ "page_run": 1793695246127,
+ "updated": 1793695246127,
  "unattended": true,
  "peak_margin": 11640670.5
 }
