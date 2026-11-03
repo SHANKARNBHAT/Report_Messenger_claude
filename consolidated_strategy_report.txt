@@ -1,17 +1,15 @@
-Generated on: 2026-11-02 20:44:54
+Generated on: 2026-11-03 18:24:58
 • Market Baseline: Nifty 50 is currently Bearish (Close vs 200 SMA & SMA 20 vs SMA 50).
 
 ## bullish_overlaps
     symbol  lot_size last_close active
   DIVISLAB       100    9190.00      -
-LAURUSLABS      1700    2058.90      -
+LAURUSLABS      1700    2058.90 ACTIVE
 
 ## bearish_overlaps
 
 ## signal_log
     symbol signal_date strategy_type    bias  lot_size
-       KEI  2026-10-19 SMA_Hierarchy BEARISH       175
-       PNB  2026-10-19  RSI_Strategy BULLISH         1
 BANKBARODA  2026-10-21 SMA_Crossover BEARISH      2925
    COFORGE  2026-10-21  RSI_Strategy BULLISH       150
   DIVISLAB  2026-10-21 SMA_Crossover BULLISH       100
@@ -82,3 +80,21 @@ PERSISTENT  2026-10-30  RSI_Strategy BULLISH       125
 ULTRACEMCO  2026-10-30 SMA_Crossover BEARISH        50
        UPL  2026-10-30 SMA_Crossover BEARISH      1355
  ZYDUSLIFE  2026-10-30  RSI_Strategy BULLISH       900
+  ANGELONE  2026-11-03 SMA_Crossover BULLISH      2500
+ BANKINDIA  2026-11-03 SMA_Crossover BEARISH      5200
+    BIOCON  2026-11-03 SMA_Crossover BEARISH      2500
+  BOSCHLTD  2026-11-03  RSI_Strategy BULLISH        25
+       BSE  2026-11-03  RSI_Strategy BULLISH       200
+     CANBK  2026-11-03 SMA_Crossover BEARISH      6750
+       DLF  2026-11-03  RSI_Strategy BULLISH       950
+      GAIL  2026-11-03  RSI_Strategy BULLISH      3550
+ JSWENERGY  2026-11-03 SMA_Crossover BEARISH      1075
+  JUBLFOOD  2026-11-03 SMA_Crossover BEARISH      1250
+  KPITTECH  2026-11-03 SMA_Crossover BEARISH       775
+       MCX  2026-11-03  RSI_Strategy BULLISH       225
+NATIONALUM  2026-11-03 SMA_Crossover BEARISH      1875
+PHOENIXLTD  2026-11-03  RSI_Strategy BULLISH       350
+ POWERGRID  2026-11-03 SMA_Crossover BEARISH      1900
+TATACONSUM  2026-11-03  RSI_Strategy BULLISH       550
+  TVSMOTOR  2026-11-03  RSI_Strategy BULLISH       175
+ULTRACEMCO  2026-11-03  RSI_Strategy BULLISH        50
