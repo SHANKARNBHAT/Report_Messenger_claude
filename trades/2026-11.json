@@ -738,5 +738,153 @@
   "gross": 21300.0,
   "charges": 458.2,
   "net": 20841.8
+ },
+ {
+  "id": "1793679053257-429",
+  "symbol": "GODFRYPHLP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1765.1,
+  "exit": 1738.6,
+  "entry_time": 1793679053257,
+  "exit_time": 1793691000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 1738.6,
+  "tp": 1818.05,
+  "high": 1814.4,
+  "low": 1738.6,
+  "nifty": 0.69,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793679053257,
+   "price": 1765.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 45.5,
+  "gross": -7287.5,
+  "charges": 316.77,
+  "net": -7604.27
+ },
+ {
+  "id": "1793679053257-430",
+  "symbol": "GODFRYPHLP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1765.1,
+  "exit": 1738.6,
+  "entry_time": 1793679053257,
+  "exit_time": 1793691000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1738.6,
+  "tp": 1818.05,
+  "high": 1814.4,
+  "low": 1738.6,
+  "nifty": 0.69,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793679053257,
+   "price": 1765.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 45.5,
+  "gross": -7287.5,
+  "charges": 316.77,
+  "net": -7604.27
+ },
+ {
+  "id": "1793679053257-431",
+  "symbol": "GODFRYPHLP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1765.1,
+  "exit": 1738.6,
+  "entry_time": 1793679053257,
+  "exit_time": 1793691000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1738.6,
+  "tp": null,
+  "high": 1814.4,
+  "low": 1738.6,
+  "nifty": 0.69,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793679053257,
+   "price": 1765.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 45.5,
+  "gross": -7287.5,
+  "charges": 316.77,
+  "net": -7604.27
+ },
+ {
+  "id": "1793679053257-432",
+  "symbol": "GODFRYPHLP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1765.1,
+  "exit": 1738.6,
+  "entry_time": 1793679053257,
+  "exit_time": 1793691000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 1738.6,
+  "tp": null,
+  "high": 1814.4,
+  "low": 1738.6,
+  "nifty": 0.69,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793679053257,
+   "price": 1765.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 45.5,
+  "gross": -7287.5,
+  "charges": 316.77,
+  "net": -7604.27
  }
 ]
