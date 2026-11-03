@@ -226,7 +226,8 @@ def fetch_dashboard(link: str, min_rows: int = 0) -> dict:
             groups = (widget.get("jsondetails") or {}).get("groups") or {}
             name = (widget.get("name") or f"Widget {widget.get('id')}").strip()
             prices = bool(re.search(PRICE_WIDGETS, name, re.IGNORECASE))
-            result = {"name": name, "table": None, "as_of": None, "error": None, "prices": prices,
+            result = {"name": name, "query": widget.get("query") or "", "table": None, "as_of": None,
+                      "error": None, "prices": prices,
                       "timeframe": None if prices else timeframe_of(name, widget.get("query") or ""),
                       "bearish": bool(re.search(BEARISH_WORDS, name, re.IGNORECASE))}
             limit = max(int(groups.get("limit") or 50), min_rows)

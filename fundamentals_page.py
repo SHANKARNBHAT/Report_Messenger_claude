@@ -8,6 +8,8 @@ quarter, so the page does not refresh by itself. Shown as the "Fundamentals" pag
 report_app.py.
 """
 
+import re
+
 import pandas as pd
 import streamlit as st
 
@@ -42,6 +44,8 @@ WIDGET_NOTES = {
         "its 14-week average."
     ),
 }
+# On phones the holding history stops at 4 quarters ago, to keep the tables narrow.
+PHONE_QUARTERS = 4
 FUNDAMENTALS_NOTE = (
     "Good fundamentals: market cap over ₹1000 Cr; yearly sales and profit both up 18% or more "
     "on last year, with a profit last year; this quarter's sales above the same quarter last "
@@ -52,10 +56,8 @@ st.set_page_config(page_title="Fundamentals", page_icon="🏛️", layout="wide"
                    initial_sidebar_state="collapsed")
 st.title("🏛️ Fundamentals")
 st.caption(
-    "Stocks institutions are steadily buying, from the Chartink dashboard "
-    f"[{FUNDAMENTALS_DASHBOARD.rsplit('/', 1)[1]}]({FUNDAMENTALS_DASHBOARD}). Shareholding is "
-    "published once a quarter, about three weeks after the quarter ends, so these lists "
-    "change slowly."
+    "Stocks institutions are steadily buying. Shareholding is published once a quarter, about "
+    "three weeks after the quarter ends, so these lists change slowly."
 )
 
 st.session_state.setdefault("snapshot", DEFAULT_SNAPSHOT)  # for "My indicators"
@@ -85,6 +87,49 @@ widgets = holdings + ([w for w in widgets if w["name"] == BREAKOUT_WIDGET])
 breaking = set(breakout["table"]["Symbol"]) if breakout else set()
 
 
+def old_quarters(widget: dict) -> list[str]:
+    """The widget's columns of a holding more than PHONE_QUARTERS quarters ago ("5 quarters ago
+    Mutual funds or uti percentage"), not changes worked out from one."""
+    select = re.split(r"\bWHERE\b", widget["query"], maxsplit=1, flags=re.IGNORECASE)[0]
+    expressions = re.findall(r"([^,]*?)\s+as\s+'[^']*'", select, re.IGNORECASE)
+    columns = list(widget["table"].columns[1:])
+    if len(expressions) != len(columns):
+        return []
+    return [column for column, expression in zip(columns, expressions)
+            if (m := re.match(r"\s*(?:select\s+)?(\d+)\s+quarters?\s+ago\b", expression, re.IGNORECASE))
+            and int(m.group(1)) > PHONE_QUARTERS and not re.search(r"[-+*/]", expression)]
+
+
+def change_columns(table: pd.DataFrame) -> tuple[str, str] | None:
+    """The table's FII change and DII change columns ("FII 3Q change", "DII 3Q change"), if it has both."""
+    def find(who):
+        return next((c for c in table.columns if re.search(rf"\b{who}\b", c, re.IGNORECASE)
+                     and "change" in c.lower() and pd.api.types.is_numeric_dtype(table[c])), None)
+    fii, dii = find("FII"), find("DII")
+    return (fii, dii) if fii and dii else None
+
+
+def show_groups(widget: dict, fii: str, dii: str) -> None:
+    """A widget's stocks in three groups: FIIs and DIIs both buying, both selling, or one each way."""
+    table = widget["table"]
+    as_of = f" · data as of {widget['as_of']:%d %b, %H:%M} IST" if widget["as_of"] else ""
+    st.caption(f"{widget['name']} · {len(table)} stock(s){as_of}")
+    up, down = table[fii].gt(0) & table[dii].gt(0), table[fii].lt(0) & table[dii].lt(0)
+    for label, rows, note in (
+        ("🟢 Both buying", up, f"{fii} and {dii} both above 0"),
+        ("🔴 Both selling", down, f"{fii} and {dii} both below 0"),
+        ("↔️ Mixed (sideways)", ~up & ~down, "one buying, the other selling (or unchanged)"),
+    ):
+        group = table[rows]
+        st.markdown(f"**{label}** · {len(group)} stock(s)")
+        st.caption(note)
+        if group.empty:
+            st.info("None right now.")
+        else:
+            # Biggest combined change first.
+            show_table(group.loc[(group[fii] + group[dii]).sort_values(ascending=False).index])
+
+
 def breakouts_table() -> pd.DataFrame:
     """Stocks breaking out that institutions are buying, with the lists each one is in."""
     found = [w for w in holdings if w["table"] is not None]
@@ -95,6 +140,9 @@ def breakouts_table() -> pd.DataFrame:
     return table
 
 
+phone = bool(re.search(r"Mobi|Android|iPhone", st.context.headers.get("User-Agent", "")))
+all_quarters = not phone or st.toggle("Show all 8 quarters", help=f"On a phone the tables show the holding up to "
+                                      f"{PHONE_QUARTERS} quarters ago, to keep them narrow.")
 tabs = st.tabs([f"{BREAKOUT_MARK} Breakouts"] * bool(breakout) + [w["name"] for w in widgets])
 if breakout:
     with tabs[0]:
@@ -113,9 +161,15 @@ for tab, widget in zip(tabs[bool(breakout):], widgets):
     with tab:
         if widget["name"] in WIDGET_NOTES:
             st.markdown(WIDGET_NOTES[widget["name"]])
-        if breakout and widget is not breakout and widget["table"] is not None:
-            # Mark this list's stocks that are breaking out, right after the symbol.
-            marked = widget["table"].copy()
-            marked.insert(1, "Breakout", marked["Symbol"].map(lambda s: BREAKOUT_MARK if s in breaking else ""))
-            widget = {**widget, "table": marked}
-        show_widget(None, widget)
+        if widget is not breakout and widget["table"] is not None:
+            table = widget["table"] if all_quarters else widget["table"].drop(columns=old_quarters(widget))
+            if breakout:
+                # Mark this list's stocks that are breaking out, right after the symbol.
+                table = table.copy()
+                table.insert(1, "Breakout", table["Symbol"].map(lambda s: BREAKOUT_MARK if s in breaking else ""))
+            widget = {**widget, "table": table}
+        changes = change_columns(widget["table"]) if widget["table"] is not None else None
+        if changes and not widget["error"] and not widget["table"].empty:
+            show_groups(widget, *changes)
+        else:
+            show_widget(None, widget)

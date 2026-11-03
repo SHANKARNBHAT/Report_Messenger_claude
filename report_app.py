@@ -15,6 +15,44 @@ from page_settings import restore
 # Choices made on one page, kept while another page is open (see page_settings.py).
 restore(["segment", "refresh", "charts", "snapshot"])
 
+# A second sideways scrollbar above every table, moving with the table's own at the bottom:
+# Streamlit's tables only have the bottom one. Checked every second, as tables come and go.
+st.html(
+    """
+    <script>
+    if (!window.topScrollbars) {
+      window.topScrollbars = true;
+      const attach = (frame) => {
+        const scroller = frame.querySelector(".dvn-scroller");
+        if (!scroller) return;
+        let bar = frame.previousElementSibling;
+        if (!bar || !bar.classList.contains("top-scrollbar")) {
+          bar = document.createElement("div");
+          bar.className = "top-scrollbar";
+          bar.style.cssText = "overflow-x: auto; overflow-y: hidden; height: 16px;";
+          bar.appendChild(document.createElement("div")).style.height = "1px";
+          bar.addEventListener("scroll", () => {
+            if (bar.table && bar.table.scrollLeft !== bar.scrollLeft) bar.table.scrollLeft = bar.scrollLeft;
+          });
+          frame.parentNode.insertBefore(bar, frame);
+        }
+        if (bar.table !== scroller) {  // a new table, or the same one drawn again
+          bar.table = scroller;
+          scroller.addEventListener("scroll", () => {
+            if (bar.table === scroller && bar.scrollLeft !== scroller.scrollLeft) bar.scrollLeft = scroller.scrollLeft;
+          });
+        }
+        bar.firstChild.style.width = scroller.scrollWidth + "px";
+        bar.style.width = scroller.clientWidth + "px";
+        bar.style.display = scroller.scrollWidth > scroller.clientWidth + 1 ? "block" : "none";
+      };
+      setInterval(() => document.querySelectorAll('[data-testid="stDataFrame"]').forEach(attach), 1000);
+    }
+    </script>
+    """,
+    unsafe_allow_javascript=True,
+)
+
 # Menu at the top: the page links share the width equally and are larger.
 st.html(
     """
