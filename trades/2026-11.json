@@ -1404,5 +1404,338 @@
   "gross": -4562.5,
   "charges": 229.01,
   "net": -4791.51
+ },
+ {
+  "id": "1793677837339-400",
+  "symbol": "INDUSTOWER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1700,
+  "entry": 383.0,
+  "exit": 392.55,
+  "entry_time": 1793677837339,
+  "exit_time": 1793696100000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 377.25,
+  "tp": 394.5,
+  "high": 399.5,
+  "low": 383.0,
+  "nifty": 0.62,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793677837339,
+   "price": 383.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 16235.0,
+  "charges": 422.36,
+  "net": 15812.64
+ },
+ {
+  "id": "1793679053257-433",
+  "symbol": "SBICARD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 800,
+  "entry": 540.7,
+  "exit": 532.6,
+  "entry_time": 1793679053257,
+  "exit_time": 1793696100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 532.6,
+  "tp": 556.9,
+  "high": 543.05,
+  "low": 532.6,
+  "nifty": 0.69,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793679053257,
+   "price": 540.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 37.15,
+  "gross": -6480.0,
+  "charges": 287.43,
+  "net": -6767.43
+ },
+ {
+  "id": "1793679053257-434",
+  "symbol": "SBICARD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 800,
+  "entry": 540.7,
+  "exit": 532.6,
+  "entry_time": 1793679053257,
+  "exit_time": 1793696100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 532.6,
+  "tp": 556.9,
+  "high": 543.05,
+  "low": 532.6,
+  "nifty": 0.69,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793679053257,
+   "price": 540.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 37.15,
+  "gross": -6480.0,
+  "charges": 287.43,
+  "net": -6767.43
+ },
+ {
+  "id": "1793679053257-435",
+  "symbol": "SBICARD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 800,
+  "entry": 540.7,
+  "exit": 532.6,
+  "entry_time": 1793679053257,
+  "exit_time": 1793696100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 532.6,
+  "tp": null,
+  "high": 543.05,
+  "low": 532.6,
+  "nifty": 0.69,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793679053257,
+   "price": 540.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 37.15,
+  "gross": -6480.0,
+  "charges": 287.43,
+  "net": -6767.43
+ },
+ {
+  "id": "1793679053257-436",
+  "symbol": "SBICARD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 800,
+  "entry": 540.7,
+  "exit": 532.6,
+  "entry_time": 1793679053257,
+  "exit_time": 1793696100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 532.6,
+  "tp": null,
+  "high": 543.05,
+  "low": 532.6,
+  "nifty": 0.69,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793679053257,
+   "price": 540.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 37.15,
+  "gross": -6480.0,
+  "charges": 287.43,
+  "net": -6767.43
+ },
+ {
+  "id": "1793680539141-454",
+  "symbol": "BANDHANBNK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3600,
+  "entry": 159.5,
+  "exit": 157.1,
+  "entry_time": 1793680539141,
+  "exit_time": 1793696100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 157.1,
+  "tp": 164.3,
+  "high": 159.62,
+  "low": 157.1,
+  "nifty": 0.77,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793680539141,
+   "price": 159.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 47.05,
+  "gross": -8640.0,
+  "charges": 366.08,
+  "net": -9006.08
+ },
+ {
+  "id": "1793680539141-455",
+  "symbol": "BANDHANBNK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3600,
+  "entry": 159.5,
+  "exit": 157.1,
+  "entry_time": 1793680539141,
+  "exit_time": 1793696100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 157.1,
+  "tp": 164.3,
+  "high": 159.62,
+  "low": 157.1,
+  "nifty": 0.77,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793680539141,
+   "price": 159.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 47.05,
+  "gross": -8640.0,
+  "charges": 366.08,
+  "net": -9006.08
+ },
+ {
+  "id": "1793680539141-456",
+  "symbol": "BANDHANBNK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3600,
+  "entry": 159.5,
+  "exit": 157.1,
+  "entry_time": 1793680539141,
+  "exit_time": 1793696100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 157.1,
+  "tp": null,
+  "high": 159.62,
+  "low": 157.1,
+  "nifty": 0.77,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793680539141,
+   "price": 159.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 47.05,
+  "gross": -8640.0,
+  "charges": 366.08,
+  "net": -9006.08
+ },
+ {
+  "id": "1793680539141-457",
+  "symbol": "BANDHANBNK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3600,
+  "entry": 159.5,
+  "exit": 157.1,
+  "entry_time": 1793680539141,
+  "exit_time": 1793696100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 157.1,
+  "tp": null,
+  "high": 159.62,
+  "low": 157.1,
+  "nifty": 0.77,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793680539141,
+   "price": 159.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 47.05,
+  "gross": -8640.0,
+  "charges": 366.08,
+  "net": -9006.08
  }
 ]
