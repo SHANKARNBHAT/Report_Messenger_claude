@@ -686,7 +686,7 @@
    "time": 1793678456917,
    "status": "open",
    "passed": false,
-   "high": 1227,
+   "high": 1232,
    "low": 1220.3,
    "nifty": 0.74,
    "source": "Auto HA 2H",
@@ -725,7 +725,7 @@
    "time": 1793678456917,
    "status": "open",
    "passed": false,
-   "high": 1227,
+   "high": 1232,
    "low": 1220.3,
    "nifty": 0.74,
    "source": "Auto HA 2H",
@@ -761,7 +761,7 @@
    "time": 1793678456917,
    "status": "open",
    "passed": false,
-   "high": 1227,
+   "high": 1232,
    "low": 1220.3,
    "nifty": 0.74,
    "source": "Auto HA 2H",
@@ -797,7 +797,7 @@
    "time": 1793678456917,
    "status": "open",
    "passed": false,
-   "high": 1227,
+   "high": 1232,
    "low": 1220.3,
    "nifty": 0.74,
    "source": "Auto HA 2H",
@@ -1385,7 +1385,7 @@
    "time": 1793680250528,
    "status": "open",
    "passed": false,
-   "high": 3567,
+   "high": 3569,
    "low": 3550.2,
    "nifty": 0.82,
    "source": "Auto 2H",
@@ -1424,7 +1424,7 @@
    "time": 1793680250528,
    "status": "open",
    "passed": false,
-   "high": 3567,
+   "high": 3569,
    "low": 3550.2,
    "nifty": 0.82,
    "source": "Auto 2H",
@@ -1460,7 +1460,7 @@
    "time": 1793680250528,
    "status": "open",
    "passed": false,
-   "high": 3567,
+   "high": 3569,
    "low": 3550.2,
    "nifty": 0.82,
    "source": "Auto 2H",
@@ -1497,7 +1497,7 @@
    "status": "open",
    "passed": false,
    "high": 361.15,
-   "low": 359.8,
+   "low": 359.45,
    "nifty": 0.82,
    "source": "Auto 2H",
    "timeframes": [
@@ -1536,7 +1536,7 @@
    "status": "open",
    "passed": false,
    "high": 361.15,
-   "low": 359.8,
+   "low": 359.45,
    "nifty": 0.82,
    "source": "Auto 2H",
    "timeframes": [
@@ -1572,7 +1572,7 @@
    "status": "open",
    "passed": false,
    "high": 361.15,
-   "low": 359.8,
+   "low": 359.45,
    "nifty": 0.82,
    "source": "Auto 2H",
    "timeframes": [
@@ -1608,7 +1608,7 @@
    "status": "open",
    "passed": false,
    "high": 516.2,
-   "low": 514.55,
+   "low": 514.2,
    "nifty": 0.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1647,7 +1647,7 @@
    "status": "open",
    "passed": false,
    "high": 516.2,
-   "low": 514.55,
+   "low": 514.2,
    "nifty": 0.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1683,7 +1683,7 @@
    "status": "open",
    "passed": false,
    "high": 516.2,
-   "low": 514.55,
+   "low": 514.2,
    "nifty": 0.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1719,7 +1719,7 @@
    "status": "open",
    "passed": false,
    "high": 516.2,
-   "low": 514.55,
+   "low": 514.2,
    "nifty": 0.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2013,7 +2013,7 @@
    "status": "open",
    "passed": false,
    "high": 17934.0,
-   "low": 17782,
+   "low": 17770,
    "nifty": 0.75,
    "source": "Auto 2H",
    "timeframes": [
@@ -2052,7 +2052,7 @@
    "status": "open",
    "passed": false,
    "high": 17934.0,
-   "low": 17782,
+   "low": 17770,
    "nifty": 0.75,
    "source": "Auto 2H",
    "timeframes": [
@@ -2088,7 +2088,7 @@
    "status": "open",
    "passed": false,
    "high": 17934.0,
-   "low": 17782,
+   "low": 17770,
    "nifty": 0.75,
    "source": "Auto 2H",
    "timeframes": [
@@ -2361,10 +2361,122 @@
     "time": 1793681490455,
     "price": 523.25
    }
+  },
+  {
+   "id": "1793682054415-472",
+   "symbol": "ICICIBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 700,
+   "entry": 1407.7,
+   "sl": 1375.2,
+   "tp": 1449.95,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 1375.2,
+   "time": 1793682054415,
+   "status": "open",
+   "passed": false,
+   "high": 1407.7,
+   "low": 1407.7,
+   "nifty": 0.93,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793682054415,
+    "price": 1407.7
+   }
+  },
+  {
+   "id": "1793682054415-473",
+   "symbol": "ICICIBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 700,
+   "entry": 1407.7,
+   "sl": 1375.2,
+   "tp": 1449.95,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 21.1,
+    "step": 7.05
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 1375.2,
+   "time": 1793682054415,
+   "status": "open",
+   "passed": false,
+   "high": 1407.7,
+   "low": 1407.7,
+   "nifty": 0.93,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793682054415,
+    "price": 1407.7
+   }
+  },
+  {
+   "id": "1793682054415-474",
+   "symbol": "ICICIBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 700,
+   "entry": 1407.7,
+   "sl": 1375.2,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 1375.2,
+   "time": 1793682054415,
+   "status": "open",
+   "passed": false,
+   "high": 1407.7,
+   "low": 1407.7,
+   "nifty": 0.93,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793682054415,
+    "price": 1407.7
+   }
   }
  ],
- "seq": 471,
+ "seq": 474,
  "log": [
+  "03 Nov 10:30  ICICIBANK: RSI BUY 700 at 1407.7, SL 1375.2 (2 HOUR; eod, trail, rsi)",
   "03 Nov 10:25  M&M: HA red exit (2H) at 2910.0 (Hold \u00b7 HA green/red exit)",
   "03 Nov 10:25  M&M: HA exit (2H) at 2910.0 (Hold \u00b7 HA exit)",
   "03 Nov 10:25  HDFCBANK: Target at 721.0 (EOD 3:15 PM)",
@@ -2400,8 +2512,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793681740131,
- "updated": 1793681740131,
+ "page_run": 1793682054415,
+ "updated": 1793682054415,
  "unattended": true,
- "peak_margin": 8442339.5
+ "peak_margin": 8713069.5
 }
