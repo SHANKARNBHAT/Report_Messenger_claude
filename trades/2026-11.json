@@ -1034,5 +1034,79 @@
   "gross": -3185.0,
   "charges": 279.86,
   "net": -3464.86
+ },
+ {
+  "id": "1793682644499-477",
+  "symbol": "SWIGGY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1825,
+  "entry": 179.2,
+  "exit": 177.85,
+  "entry_time": 1793682644499,
+  "exit_time": 1793694535491,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 176.7,
+  "tp": null,
+  "high": 180.89,
+  "low": 177.74,
+  "nifty": 0.95,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793682644499,
+   "price": 179.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 29.38,
+  "gross": -2463.75,
+  "charges": 230.1,
+  "net": -2693.85
+ },
+ {
+  "id": "1793682644499-478",
+  "symbol": "SWIGGY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1825,
+  "entry": 179.2,
+  "exit": 177.85,
+  "entry_time": 1793682644499,
+  "exit_time": 1793694535491,
+  "reason": "HA green exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 176.7,
+  "tp": null,
+  "high": 180.89,
+  "low": 177.74,
+  "nifty": 0.95,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793682644499,
+   "price": 179.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 29.38,
+  "gross": -2463.75,
+  "charges": 230.1,
+  "net": -2693.85
  }
 ]
