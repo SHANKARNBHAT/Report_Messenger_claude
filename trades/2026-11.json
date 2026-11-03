@@ -294,5 +294,42 @@
   "gross": 26625.0,
   "charges": 545.5,
   "net": 26079.5
+ },
+ {
+  "id": "1793680539141-461",
+  "symbol": "COLPAL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1605.8,
+  "exit": 1602.7,
+  "entry_time": 1793680539141,
+  "exit_time": 1793680841722,
+  "reason": "HA green exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 1581.7,
+  "tp": null,
+  "high": 1605.8,
+  "low": 1602.7,
+  "nifty": 0.77,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793680539141,
+   "price": 1605.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 32.58,
+  "gross": -852.5,
+  "charges": 295.46,
+  "net": -1147.96
  }
 ]
