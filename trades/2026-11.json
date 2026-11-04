@@ -2958,5 +2958,42 @@
   "gross": -3982.5,
   "charges": 361.8,
   "net": -4344.3
+ },
+ {
+  "id": "1793763940584-525",
+  "symbol": "PFC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1300,
+  "entry": 318.0,
+  "exit": 319.0,
+  "entry_time": 1793763940584,
+  "exit_time": 1793765142906,
+  "reason": "RSI exit (2H 48.5)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 322.75,
+  "tp": null,
+  "high": 319,
+  "low": 317.7,
+  "nifty": -0.09,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 318.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -1300.0,
+  "charges": 280.08,
+  "net": -1580.08
  }
 ]
