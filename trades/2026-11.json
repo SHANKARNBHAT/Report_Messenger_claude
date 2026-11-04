@@ -3550,5 +3550,42 @@
   "gross": -8437.5,
   "charges": 359.48,
   "net": -8796.98
+ },
+ {
+  "id": "1793695838801-506",
+  "symbol": "TCS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 225,
+  "entry": 2492.0,
+  "exit": 2454.6,
+  "entry_time": 1793695838801,
+  "exit_time": 1793769000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2454.6,
+  "tp": 2566.75,
+  "high": 2496,
+  "low": 2454.6,
+  "nifty": 1.08,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793695838801,
+   "price": 2492.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8415.0,
+  "charges": 358.59,
+  "net": -8773.59
  }
 ]
