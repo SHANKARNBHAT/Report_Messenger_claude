@@ -3106,5 +3106,190 @@
   "gross": -16668.75,
   "charges": 674.09,
   "net": -17342.84
+ },
+ {
+  "id": "1793763940584-523",
+  "symbol": "PFC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1300,
+  "entry": 318.0,
+  "exit": 322.75,
+  "entry_time": 1793763940584,
+  "exit_time": 1793766000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 322.75,
+  "tp": 308.45,
+  "high": 322.75,
+  "low": 317.7,
+  "nifty": -0.09,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 318.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6175.0,
+  "charges": 280.28,
+  "net": -6455.28
+ },
+ {
+  "id": "1793763940584-524",
+  "symbol": "PFC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1300,
+  "entry": 318.0,
+  "exit": 322.75,
+  "entry_time": 1793763940584,
+  "exit_time": 1793766000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 322.75,
+  "tp": 308.45,
+  "high": 322.75,
+  "low": 317.7,
+  "nifty": -0.09,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 318.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6175.0,
+  "charges": 280.28,
+  "net": -6455.28
+ },
+ {
+  "id": "1793763940584-534",
+  "symbol": "BANKINDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 5200,
+  "entry": 133.15,
+  "exit": 134.65,
+  "entry_time": 1793763940584,
+  "exit_time": 1793766000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 134.65,
+  "tp": 129.15,
+  "high": 134.65,
+  "low": 133.15,
+  "nifty": -0.09,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 133.17
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 54.13,
+  "gross": -7800.0,
+  "charges": 437.46,
+  "net": -8237.46
+ },
+ {
+  "id": "1793763940584-535",
+  "symbol": "BANKINDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 5200,
+  "entry": 133.15,
+  "exit": 134.65,
+  "entry_time": 1793763940584,
+  "exit_time": 1793766000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 134.65,
+  "tp": 129.15,
+  "high": 134.65,
+  "low": 133.15,
+  "nifty": -0.09,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 133.17
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 54.13,
+  "gross": -7800.0,
+  "charges": 437.46,
+  "net": -8237.46
+ },
+ {
+  "id": "1793763940584-536",
+  "symbol": "BANKINDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 5200,
+  "entry": 133.15,
+  "exit": 134.65,
+  "entry_time": 1793763940584,
+  "exit_time": 1793766000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 134.65,
+  "tp": null,
+  "high": 134.65,
+  "low": 133.15,
+  "nifty": -0.09,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 133.17
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 54.13,
+  "gross": -7800.0,
+  "charges": 437.46,
+  "net": -8237.46
  }
 ]
