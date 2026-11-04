@@ -3759,7 +3759,7 @@
    "status": "open",
    "passed": false,
    "high": 1600.1,
-   "low": 1581.6,
+   "low": 1579.1,
    "nifty": -0.05,
    "source": "Auto 2H",
    "timeframes": [
@@ -3798,7 +3798,7 @@
    "status": "open",
    "passed": false,
    "high": 1600.1,
-   "low": 1581.6,
+   "low": 1579.1,
    "nifty": -0.05,
    "source": "Auto 2H",
    "timeframes": [
@@ -3834,7 +3834,7 @@
    "status": "open",
    "passed": false,
    "high": 1600.1,
-   "low": 1581.6,
+   "low": 1579.1,
    "nifty": -0.05,
    "source": "Auto 2H",
    "timeframes": [
@@ -3960,10 +3960,122 @@
     "time": 1793770541162,
     "price": 17787.0
    }
+  },
+  {
+   "id": "1793775649574-605",
+   "symbol": "ZYDUSLIFE",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 900,
+   "entry": 1200.9,
+   "sl": 1264.5,
+   "tp": 1164.85,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 1264.5,
+   "time": 1793775649574,
+   "status": "open",
+   "passed": false,
+   "high": 1200.9,
+   "low": 1200.9,
+   "nifty": -0.01,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "No",
+   "sma_rsi": 71.77,
+   "first_seen": {
+    "time": 1793775649574,
+    "price": 1200.9
+   }
+  },
+  {
+   "id": "1793775649574-606",
+   "symbol": "ZYDUSLIFE",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 900,
+   "entry": 1200.9,
+   "sl": 1264.5,
+   "tp": 1164.85,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 18.0,
+    "step": 6.0
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 1264.5,
+   "time": 1793775649574,
+   "status": "open",
+   "passed": false,
+   "high": 1200.9,
+   "low": 1200.9,
+   "nifty": -0.01,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "No",
+   "sma_rsi": 71.77,
+   "first_seen": {
+    "time": 1793775649574,
+    "price": 1200.9
+   }
+  },
+  {
+   "id": "1793775649574-607",
+   "symbol": "ZYDUSLIFE",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 900,
+   "entry": 1200.9,
+   "sl": 1264.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 1264.5,
+   "time": 1793775649574,
+   "status": "open",
+   "passed": false,
+   "high": 1200.9,
+   "low": 1200.9,
+   "nifty": -0.01,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "No",
+   "sma_rsi": 71.77,
+   "first_seen": {
+    "time": 1793775649574,
+    "price": 1200.9
+   }
   }
  ],
- "seq": 604,
+ "seq": 607,
  "log": [
+  "04 Nov 12:30  ZYDUSLIFE: HA SELL 900 at 1200.9, SL 1264.5 (2 HOUR; eod, trail, ha)",
   "04 Nov 12:20  ICICIBANK: RSI exit (2H 59.4) at 1413.7 (Hold \u00b7 RSI exit)",
   "04 Nov 12:00  AXISBANK: HA green exit (2H) at 1223.4 (Hold \u00b7 HA green/red exit)",
   "04 Nov 12:00  AXISBANK: HA exit (2H) at 1223.4 (Hold \u00b7 HA exit)",
@@ -4135,8 +4247,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793775336282,
- "updated": 1793775336282,
+ "page_run": 1793775649574,
+ "updated": 1793775649574,
  "unattended": true,
- "peak_margin": 14188537.75
+ "peak_margin": 14334870.75
 }
