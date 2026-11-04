@@ -3772,5 +3772,42 @@
   "gross": 4200.0,
   "charges": 604.35,
   "net": 3595.65
+ },
+ {
+  "id": "1793681441689-467",
+  "symbol": "YESBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 31100,
+  "entry": 15.5,
+  "exit": 15.6,
+  "entry_time": 1793681441689,
+  "exit_time": 1793776537686,
+  "reason": "RSI exit (2H 40.2)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 15.75,
+  "tp": null,
+  "high": 15.62,
+  "low": 15.22,
+  "nifty": 0.84,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793681441689,
+   "price": 15.49
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -3110.0,
+  "charges": 318.81,
+  "net": -3428.81
  }
 ]
