@@ -263,78 +263,6 @@
    }
   },
   {
-   "id": "1793678456917-427",
-   "symbol": "AXISBANK",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 625,
-   "entry": 1220.3,
-   "sl": 1202.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA",
-   "stop": 1202.0,
-   "time": 1793678456917,
-   "status": "open",
-   "passed": false,
-   "high": 1240.9,
-   "low": 1220.3,
-   "nifty": 0.74,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 44.34,
-   "first_seen": {
-    "time": 1793678456917,
-    "price": 1220.3
-   }
-  },
-  {
-   "id": "1793678456917-428",
-   "symbol": "AXISBANK",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 625,
-   "entry": 1220.3,
-   "sl": 1202.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_green",
-   "system": "HA",
-   "stop": 1202.0,
-   "time": 1793678456917,
-   "status": "open",
-   "passed": false,
-   "high": 1240.9,
-   "low": 1220.3,
-   "nifty": 0.74,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 44.34,
-   "first_seen": {
-    "time": 1793678456917,
-    "price": 1220.3
-   }
-  },
-  {
    "id": "1793679943957-442",
    "symbol": "BRITANNIA",
    "side": "BUY",
@@ -1245,7 +1173,7 @@
    "status": "open",
    "passed": false,
    "high": 1239.9,
-   "low": 1224.2,
+   "low": 1222.9,
    "nifty": -0.09,
    "source": "Auto 2H",
    "timeframes": [
@@ -1284,7 +1212,7 @@
    "status": "open",
    "passed": false,
    "high": 1239.9,
-   "low": 1224.2,
+   "low": 1222.9,
    "nifty": -0.09,
    "source": "Auto 2H",
    "timeframes": [
@@ -1320,7 +1248,7 @@
    "status": "open",
    "passed": false,
    "high": 1239.9,
-   "low": 1224.2,
+   "low": 1222.9,
    "nifty": -0.09,
    "source": "Auto 2H",
    "timeframes": [
@@ -1947,7 +1875,7 @@
    "status": "open",
    "passed": false,
    "high": 77.83,
-   "low": 76.92,
+   "low": 76.87,
    "nifty": 0.53,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1986,7 +1914,7 @@
    "status": "open",
    "passed": false,
    "high": 77.83,
-   "low": 76.92,
+   "low": 76.87,
    "nifty": 0.53,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2022,7 +1950,7 @@
    "status": "open",
    "passed": false,
    "high": 77.83,
-   "low": 76.92,
+   "low": 76.87,
    "nifty": 0.53,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2280,7 +2208,7 @@
    "status": "open",
    "passed": false,
    "high": 105.89,
-   "low": 103.95,
+   "low": 103.9,
    "nifty": 0.38,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2319,7 +2247,7 @@
    "status": "open",
    "passed": false,
    "high": 105.89,
-   "low": 103.95,
+   "low": 103.9,
    "nifty": 0.38,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2355,7 +2283,7 @@
    "status": "open",
    "passed": false,
    "high": 105.89,
-   "low": 103.95,
+   "low": 103.9,
    "nifty": 0.38,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2907,7 +2835,7 @@
    "status": "open",
    "passed": false,
    "high": 44.09,
-   "low": 43.34,
+   "low": 43.29,
    "nifty": 0.19,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2946,7 +2874,7 @@
    "status": "open",
    "passed": false,
    "high": 44.09,
-   "low": 43.34,
+   "low": 43.29,
    "nifty": 0.19,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2982,7 +2910,7 @@
    "status": "open",
    "passed": false,
    "high": 44.09,
-   "low": 43.34,
+   "low": 43.29,
    "nifty": 0.19,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -4072,6 +4000,8 @@
  ],
  "seq": 604,
  "log": [
+  "04 Nov 12:00  AXISBANK: HA green exit (2H) at 1223.4 (Hold \u00b7 HA green/red exit)",
+  "04 Nov 12:00  AXISBANK: HA exit (2H) at 1223.4 (Hold \u00b7 HA exit)",
   "04 Nov 11:05  FORCEMOT: RSI BUY 25 at 17787.0, SL 17520.2 (2 HOUR; eod, trail, rsi)",
   "04 Nov 11:05  COLPAL: TSL after target at 1645.95 (Hold \u00b7 trail)",
   "04 Nov 11:00  BLUESTARCO: RSI BUY 325 at 1600.1, SL 1560.2 (2 HOUR; eod, trail, rsi)",
@@ -4240,8 +4170,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793773537294,
- "updated": 1793773537294,
+ "page_run": 1793773856549,
+ "updated": 1793773856549,
  "unattended": true,
  "peak_margin": 14188537.75
 }
