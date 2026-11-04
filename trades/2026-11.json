@@ -3883,5 +3883,42 @@
   "gross": 18750.0,
   "charges": 545.83,
   "net": 18204.17
+ },
+ {
+  "id": "1793778340880-613",
+  "symbol": "KOTAKBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2000,
+  "entry": 459.75,
+  "exit": 459.05,
+  "entry_time": 1793778340880,
+  "exit_time": 1793779537554,
+  "reason": "RSI exit (2H 59.9)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 452.85,
+  "tp": null,
+  "high": 459.75,
+  "low": 458.95,
+  "nifty": 0.18,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793778340880,
+   "price": 459.75
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -1400.0,
+  "charges": 564.32,
+  "net": -1964.32
  }
 ]
