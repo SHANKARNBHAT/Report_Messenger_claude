@@ -1433,7 +1433,7 @@
    "time": 1793763940584,
    "status": "open",
    "passed": false,
-   "high": 68.8,
+   "high": 68.83,
    "low": 68.03,
    "nifty": -0.09,
    "source": "Auto 2H",
@@ -1472,7 +1472,7 @@
    "time": 1793763940584,
    "status": "open",
    "passed": false,
-   "high": 68.8,
+   "high": 68.83,
    "low": 68.03,
    "nifty": -0.09,
    "source": "Auto 2H",
@@ -1508,7 +1508,7 @@
    "time": 1793763940584,
    "status": "open",
    "passed": false,
-   "high": 68.8,
+   "high": 68.83,
    "low": 68.03,
    "nifty": -0.09,
    "source": "Auto 2H",
@@ -2580,7 +2580,7 @@
    "status": "open",
    "passed": false,
    "high": 911,
-   "low": 893.55,
+   "low": 893.4,
    "nifty": 0.51,
    "source": "Auto 2H",
    "timeframes": [
@@ -2619,7 +2619,7 @@
    "status": "open",
    "passed": false,
    "high": 911,
-   "low": 893.55,
+   "low": 893.4,
    "nifty": 0.51,
    "source": "Auto 2H",
    "timeframes": [
@@ -2655,7 +2655,7 @@
    "status": "open",
    "passed": false,
    "high": 911,
-   "low": 893.55,
+   "low": 893.4,
    "nifty": 0.51,
    "source": "Auto 2H",
    "timeframes": [
@@ -2985,7 +2985,7 @@
    "status": "open",
    "passed": false,
    "high": 44.09,
-   "low": 43.75,
+   "low": 43.72,
    "nifty": 0.19,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3024,7 +3024,7 @@
    "status": "open",
    "passed": false,
    "high": 44.09,
-   "low": 43.75,
+   "low": 43.72,
    "nifty": 0.19,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3060,7 +3060,7 @@
    "status": "open",
    "passed": false,
    "high": 44.09,
-   "low": 43.75,
+   "low": 43.72,
    "nifty": 0.19,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3813,10 +3813,122 @@
     "time": 1793769638585,
     "price": 529.0
    }
+  },
+  {
+   "id": "1793769938701-596",
+   "symbol": "PFC",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1300,
+   "entry": 321.55,
+   "sl": 315.5,
+   "tp": 331.2,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 315.5,
+   "time": 1793769938701,
+   "status": "open",
+   "passed": false,
+   "high": 321.55,
+   "low": 321.55,
+   "nifty": 0.17,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 44.99,
+   "first_seen": {
+    "time": 1793769938701,
+    "price": 321.55
+   }
+  },
+  {
+   "id": "1793769938701-597",
+   "symbol": "PFC",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1300,
+   "entry": 321.55,
+   "sl": 315.5,
+   "tp": 331.2,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 4.8,
+    "step": 1.6
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 315.5,
+   "time": 1793769938701,
+   "status": "open",
+   "passed": false,
+   "high": 321.55,
+   "low": 321.55,
+   "nifty": 0.17,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 44.99,
+   "first_seen": {
+    "time": 1793769938701,
+    "price": 321.55
+   }
+  },
+  {
+   "id": "1793769938701-598",
+   "symbol": "PFC",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1300,
+   "entry": 321.55,
+   "sl": 315.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 315.5,
+   "time": 1793769938701,
+   "status": "open",
+   "passed": false,
+   "high": 321.55,
+   "low": 321.55,
+   "nifty": 0.17,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 44.99,
+   "first_seen": {
+    "time": 1793769938701,
+    "price": 321.55
+   }
   }
  ],
- "seq": 595,
+ "seq": 598,
  "log": [
+  "04 Nov 10:55  PFC: HA BUY 1300 at 321.55, SL 315.5 (2 HOUR; eod, trail, ha)",
   "04 Nov 10:50  HDFCLIFE: HA BUY 1100 at 529.0, SL 519.6 (2 HOUR; eod, ha)",
   "04 Nov 10:50  TCS: Stop loss at 2454.6 (Hold \u00b7 trail)",
   "04 Nov 10:45  WIPRO: HA SELL 3000 at 195.4, SL 197.75 (2 HOUR; eod, trail, ha)",
@@ -3980,8 +4092,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793769638585,
- "updated": 1793769638585,
+ "page_run": 1793769938701,
+ "updated": 1793769938701,
  "unattended": true,
- "peak_margin": 13566980.75
+ "peak_margin": 13817789.75
 }
