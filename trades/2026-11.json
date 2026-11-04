@@ -3920,5 +3920,79 @@
   "gross": -1400.0,
   "charges": 564.32,
   "net": -1964.32
+ },
+ {
+  "id": "1793763940584-540",
+  "symbol": "SBIN",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 750,
+  "entry": 970.25,
+  "exit": 982.85,
+  "entry_time": 1793763940584,
+  "exit_time": 1793779841469,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1006.55,
+  "tp": null,
+  "high": 984.4,
+  "low": 968.35,
+  "nifty": -0.09,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 970.25
+  },
+  "agrees": "Yes",
+  "sma_rsi": 58.03,
+  "gross": -9450.0,
+  "charges": 457.42,
+  "net": -9907.42
+ },
+ {
+  "id": "1793778340880-616",
+  "symbol": "NYKAA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3125,
+  "entry": 349.95,
+  "exit": 349.6,
+  "entry_time": 1793778340880,
+  "exit_time": 1793779841469,
+  "reason": "RSI exit (2H 59.7)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 342.05,
+  "tp": null,
+  "high": 350.45,
+  "low": 349.6,
+  "nifty": 0.18,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793778340880,
+   "price": 349.95
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -1093.75,
+  "charges": 662.53,
+  "net": -1756.28
  }
 ]
