@@ -4142,5 +4142,116 @@
   "gross": -4533.75,
   "charges": 448.18,
   "net": -4981.93
+ },
+ {
+  "id": "1793779537554-617",
+  "symbol": "BIOCON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 341.9,
+  "exit": 346.75,
+  "entry_time": 1793779537554,
+  "exit_time": 1793781000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 346.75,
+  "tp": 331.65,
+  "high": 346.75,
+  "low": 339.45,
+  "nifty": 0.38,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793779537554,
+   "price": 341.9
+  },
+  "agrees": "Yes",
+  "sma_rsi": 57.58,
+  "gross": -12125.0,
+  "charges": 529.09,
+  "net": -12654.09
+ },
+ {
+  "id": "1793779537554-618",
+  "symbol": "BIOCON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 341.9,
+  "exit": 346.75,
+  "entry_time": 1793779537554,
+  "exit_time": 1793781000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 346.75,
+  "tp": 331.65,
+  "high": 346.75,
+  "low": 339.45,
+  "nifty": 0.38,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793779537554,
+   "price": 341.9
+  },
+  "agrees": "Yes",
+  "sma_rsi": 57.58,
+  "gross": -12125.0,
+  "charges": 529.09,
+  "net": -12654.09
+ },
+ {
+  "id": "1793779537554-619",
+  "symbol": "BIOCON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 341.9,
+  "exit": 346.75,
+  "entry_time": 1793779537554,
+  "exit_time": 1793781000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 346.75,
+  "tp": null,
+  "high": 346.75,
+  "low": 339.45,
+  "nifty": 0.38,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793779537554,
+   "price": 341.9
+  },
+  "agrees": "Yes",
+  "sma_rsi": 57.58,
+  "gross": -12125.0,
+  "charges": 529.09,
+  "net": -12654.09
  }
 ]

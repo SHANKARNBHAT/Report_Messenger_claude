@@ -1550,7 +1550,7 @@
    "time": 1793766041034,
    "status": "open",
    "passed": false,
-   "high": 77.83,
+   "high": 77.9,
    "low": 76.87,
    "nifty": 0.53,
    "source": "Auto HA 2H",
@@ -1589,7 +1589,7 @@
    "time": 1793766041034,
    "status": "open",
    "passed": false,
-   "high": 77.83,
+   "high": 77.9,
    "low": 76.87,
    "nifty": 0.53,
    "source": "Auto HA 2H",
@@ -1625,7 +1625,7 @@
    "time": 1793766041034,
    "status": "open",
    "passed": false,
-   "high": 77.83,
+   "high": 77.9,
    "low": 76.87,
    "nifty": 0.53,
    "source": "Auto HA 2H",
@@ -1883,7 +1883,7 @@
    "time": 1793766650703,
    "status": "open",
    "passed": false,
-   "high": 106.15,
+   "high": 106.26,
    "low": 103.88,
    "nifty": 0.38,
    "source": "Auto HA 2H",
@@ -1922,7 +1922,7 @@
    "time": 1793766650703,
    "status": "open",
    "passed": false,
-   "high": 106.15,
+   "high": 106.26,
    "low": 103.88,
    "nifty": 0.38,
    "source": "Auto HA 2H",
@@ -1958,7 +1958,7 @@
    "time": 1793766650703,
    "status": "open",
    "passed": false,
-   "high": 106.15,
+   "high": 106.26,
    "low": 103.88,
    "nifty": 0.38,
    "source": "Auto HA 2H",
@@ -2954,7 +2954,7 @@
    "time": 1793768461201,
    "status": "open",
    "passed": false,
-   "high": 29015,
+   "high": 29020,
    "low": 28310,
    "nifty": 0.04,
    "source": "Auto HA 2H",
@@ -2993,7 +2993,7 @@
    "time": 1793768461201,
    "status": "open",
    "passed": false,
-   "high": 29015,
+   "high": 29020,
    "low": 28310,
    "nifty": 0.04,
    "source": "Auto HA 2H",
@@ -3029,7 +3029,7 @@
    "time": 1793768461201,
    "status": "open",
    "passed": false,
-   "high": 29015,
+   "high": 29020,
    "low": 28310,
    "nifty": 0.04,
    "source": "Auto HA 2H",
@@ -3804,7 +3804,7 @@
    "status": "open",
    "passed": false,
    "high": 78.5,
-   "low": 78.25,
+   "low": 78.1,
    "nifty": 0.13,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3843,7 +3843,7 @@
    "status": "open",
    "passed": false,
    "high": 78.5,
-   "low": 78.25,
+   "low": 78.1,
    "nifty": 0.13,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3879,7 +3879,7 @@
    "status": "open",
    "passed": false,
    "high": 78.5,
-   "low": 78.25,
+   "low": 78.1,
    "nifty": 0.13,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3915,7 +3915,7 @@
    "status": "open",
    "passed": false,
    "high": 459.75,
-   "low": 457.8,
+   "low": 457.1,
    "nifty": 0.18,
    "source": "Auto 2H",
    "timeframes": [
@@ -3954,7 +3954,7 @@
    "status": "open",
    "passed": false,
    "high": 459.75,
-   "low": 457.8,
+   "low": 457.1,
    "nifty": 0.18,
    "source": "Auto 2H",
    "timeframes": [
@@ -3989,7 +3989,7 @@
    "time": 1793778340880,
    "status": "open",
    "passed": false,
-   "high": 353,
+   "high": 353.4,
    "low": 349.45,
    "nifty": 0.18,
    "source": "Auto 2H",
@@ -4028,7 +4028,7 @@
    "time": 1793778340880,
    "status": "open",
    "passed": false,
-   "high": 353,
+   "high": 353.4,
    "low": 349.45,
    "nifty": 0.18,
    "source": "Auto 2H",
@@ -4044,121 +4044,13 @@
     "time": 1793778340880,
     "price": 349.95
    }
-  },
-  {
-   "id": "1793779537554-617",
-   "symbol": "BIOCON",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 2500,
-   "entry": 341.9,
-   "sl": 346.75,
-   "tp": 331.65,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "eod",
-   "system": "HA",
-   "stop": 346.75,
-   "time": 1793779537554,
-   "status": "open",
-   "passed": false,
-   "high": 345.55,
-   "low": 339.45,
-   "nifty": 0.38,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Yes",
-   "sma_rsi": 57.58,
-   "first_seen": {
-    "time": 1793779537554,
-    "price": 341.9
-   }
-  },
-  {
-   "id": "1793779537554-618",
-   "symbol": "BIOCON",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 2500,
-   "entry": 341.9,
-   "sl": 346.75,
-   "tp": 331.65,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 5.15,
-    "step": 1.7
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 346.75,
-   "time": 1793779537554,
-   "status": "open",
-   "passed": false,
-   "high": 345.55,
-   "low": 339.45,
-   "nifty": 0.38,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Yes",
-   "sma_rsi": 57.58,
-   "first_seen": {
-    "time": 1793779537554,
-    "price": 341.9
-   }
-  },
-  {
-   "id": "1793779537554-619",
-   "symbol": "BIOCON",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 2500,
-   "entry": 341.9,
-   "sl": 346.75,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA",
-   "stop": 346.75,
-   "time": 1793779537554,
-   "status": "open",
-   "passed": false,
-   "high": 345.55,
-   "low": 339.45,
-   "nifty": 0.38,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Yes",
-   "sma_rsi": 57.58,
-   "first_seen": {
-    "time": 1793779537554,
-    "price": 341.9
-   }
   }
  ],
  "seq": 619,
  "log": [
+  "04 Nov 14:10  BIOCON: Stop loss at 346.75 (Hold \u00b7 HA exit)",
+  "04 Nov 14:10  BIOCON: Stop loss at 346.75 (Hold \u00b7 trail)",
+  "04 Nov 14:10  BIOCON: Stop loss at 346.75 (EOD 3:15 PM)",
   "04 Nov 13:45  BANKBARODA: HA exit (2H) at 244.85 (Hold \u00b7 HA exit)",
   "04 Nov 13:45  NMDC: RSI exit (2H 55.9) at 68.99 (Hold \u00b7 RSI exit)",
   "04 Nov 13:45  INDIANB: HA red exit (2H) at 855.3 (Hold \u00b7 HA green/red exit)",
@@ -4345,8 +4237,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793781336284,
- "updated": 1793781336284,
+ "page_run": 1793781640290,
+ "updated": 1793781640290,
  "unattended": true,
  "peak_margin": 15773662.0
 }
