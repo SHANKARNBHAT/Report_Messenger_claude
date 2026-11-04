@@ -878,7 +878,7 @@
    "time": 1793690136600,
    "status": "open",
    "passed": false,
-   "high": 1720,
+   "high": 1724.6,
    "low": 1676,
    "nifty": 0.96,
    "source": "Auto 2H",
@@ -914,7 +914,7 @@
    "time": 1793690136600,
    "status": "open",
    "passed": false,
-   "high": 1720,
+   "high": 1724.6,
    "low": 1676,
    "nifty": 0.96,
    "source": "Auto 2H",
@@ -3723,7 +3723,7 @@
    "status": "open",
    "passed": false,
    "high": 1600.1,
-   "low": 1563.3,
+   "low": 1563.1,
    "nifty": -0.05,
    "source": "Auto 2H",
    "timeframes": [
@@ -3762,7 +3762,7 @@
    "status": "open",
    "passed": false,
    "high": 1600.1,
-   "low": 1563.3,
+   "low": 1563.1,
    "nifty": -0.05,
    "source": "Auto 2H",
    "timeframes": [
@@ -3798,7 +3798,7 @@
    "status": "open",
    "passed": false,
    "high": 1600.1,
-   "low": 1563.3,
+   "low": 1563.1,
    "nifty": -0.05,
    "source": "Auto 2H",
    "timeframes": [
@@ -4035,10 +4035,122 @@
     "time": 1793775649574,
     "price": 1200.9
    }
+  },
+  {
+   "id": "1793778036754-608",
+   "symbol": "NHPC",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 6950,
+   "entry": 78.5,
+   "sl": 80.0,
+   "tp": 76.15,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 80.0,
+   "time": 1793778036754,
+   "status": "open",
+   "passed": false,
+   "high": 78.5,
+   "low": 78.5,
+   "nifty": 0.13,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 77.47,
+   "first_seen": {
+    "time": 1793778036754,
+    "price": 78.5
+   }
+  },
+  {
+   "id": "1793778036754-609",
+   "symbol": "NHPC",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 6950,
+   "entry": 78.5,
+   "sl": 80.0,
+   "tp": 76.15,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 1.2,
+    "step": 0.4
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 80.0,
+   "time": 1793778036754,
+   "status": "open",
+   "passed": false,
+   "high": 78.5,
+   "low": 78.5,
+   "nifty": 0.13,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 77.47,
+   "first_seen": {
+    "time": 1793778036754,
+    "price": 78.5
+   }
+  },
+  {
+   "id": "1793778036754-610",
+   "symbol": "NHPC",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 6950,
+   "entry": 78.5,
+   "sl": 80.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 80.0,
+   "time": 1793778036754,
+   "status": "open",
+   "passed": false,
+   "high": 78.5,
+   "low": 78.5,
+   "nifty": 0.13,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 77.47,
+   "first_seen": {
+    "time": 1793778036754,
+    "price": 78.5
+   }
   }
  ],
- "seq": 607,
+ "seq": 610,
  "log": [
+  "04 Nov 13:10  NHPC: HA SELL 6950 at 78.5, SL 80.0 (2 HOUR; eod, trail, ha)",
   "04 Nov 12:45  YESBANK: RSI exit (2H 40.2) at 15.6 (Hold \u00b7 RSI exit)",
   "04 Nov 12:30  ZYDUSLIFE: HA SELL 900 at 1200.9, SL 1264.5 (2 HOUR; eod, trail, ha)",
   "04 Nov 12:20  ICICIBANK: RSI exit (2H 59.4) at 1413.7 (Hold \u00b7 RSI exit)",
@@ -4212,8 +4324,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793777736005,
- "updated": 1793777736005,
+ "page_run": 1793778036754,
+ "updated": 1793778036754,
  "unattended": true,
- "peak_margin": 14334870.75
+ "peak_margin": 14565805.75
 }
