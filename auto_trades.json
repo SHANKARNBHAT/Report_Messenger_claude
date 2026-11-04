@@ -23,7 +23,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": true,
-   "high": 5033.3,
+   "high": 5034.5,
    "low": 4855.0,
    "nifty": 0.62,
    "source": "Auto 2H",
@@ -578,7 +578,7 @@
    "time": 1793681441689,
    "status": "open",
    "passed": false,
-   "high": 15.52,
+   "high": 15.54,
    "low": 15.22,
    "nifty": 0.84,
    "source": "Auto 2H",
@@ -614,7 +614,7 @@
    "time": 1793681441689,
    "status": "open",
    "passed": false,
-   "high": 15.52,
+   "high": 15.54,
    "low": 15.22,
    "nifty": 0.84,
    "source": "Auto 2H",
@@ -1472,7 +1472,7 @@
    "time": 1793763940584,
    "status": "open",
    "passed": false,
-   "high": 68.75,
+   "high": 68.8,
    "low": 68.03,
    "nifty": -0.09,
    "source": "Auto 2H",
@@ -1511,7 +1511,7 @@
    "time": 1793763940584,
    "status": "open",
    "passed": false,
-   "high": 68.75,
+   "high": 68.8,
    "low": 68.03,
    "nifty": -0.09,
    "source": "Auto 2H",
@@ -1547,7 +1547,7 @@
    "time": 1793763940584,
    "status": "open",
    "passed": false,
-   "high": 68.75,
+   "high": 68.8,
    "low": 68.03,
    "nifty": -0.09,
    "source": "Auto 2H",
@@ -1695,7 +1695,7 @@
    "status": "open",
    "passed": false,
    "high": 2499.1,
-   "low": 2472.6,
+   "low": 2464,
    "nifty": -0.09,
    "source": "Auto 2H",
    "timeframes": [
@@ -2433,7 +2433,7 @@
    "status": "open",
    "passed": false,
    "high": 62.1,
-   "low": 61.65,
+   "low": 61.56,
    "nifty": 0.38,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2472,7 +2472,7 @@
    "status": "open",
    "passed": false,
    "high": 62.1,
-   "low": 61.65,
+   "low": 61.56,
    "nifty": 0.38,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2508,7 +2508,7 @@
    "status": "open",
    "passed": false,
    "high": 62.1,
-   "low": 61.65,
+   "low": 61.56,
    "nifty": 0.38,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2654,7 +2654,7 @@
    "time": 1793766650703,
    "status": "open",
    "passed": false,
-   "high": 2364.7,
+   "high": 2367.8,
    "low": 2356.8,
    "nifty": 0.38,
    "source": "Auto HA 2H",
@@ -2693,7 +2693,7 @@
    "time": 1793766650703,
    "status": "open",
    "passed": false,
-   "high": 2364.7,
+   "high": 2367.8,
    "low": 2356.8,
    "nifty": 0.38,
    "source": "Auto HA 2H",
@@ -2729,7 +2729,7 @@
    "time": 1793766650703,
    "status": "open",
    "passed": false,
-   "high": 2364.7,
+   "high": 2367.8,
    "low": 2356.8,
    "nifty": 0.38,
    "source": "Auto HA 2H",
@@ -2766,7 +2766,7 @@
    "status": "open",
    "passed": false,
    "high": 911,
-   "low": 904.2,
+   "low": 903.35,
    "nifty": 0.51,
    "source": "Auto 2H",
    "timeframes": [
@@ -2805,7 +2805,7 @@
    "status": "open",
    "passed": false,
    "high": 911,
-   "low": 904.2,
+   "low": 903.35,
    "nifty": 0.51,
    "source": "Auto 2H",
    "timeframes": [
@@ -2841,7 +2841,7 @@
    "status": "open",
    "passed": false,
    "high": 911,
-   "low": 904.2,
+   "low": 903.35,
    "nifty": 0.51,
    "source": "Auto 2H",
    "timeframes": [
@@ -2876,7 +2876,7 @@
    "time": 1793767244068,
    "status": "open",
    "passed": false,
-   "high": 5006.3,
+   "high": 5034.5,
    "low": 5006.3,
    "nifty": 0.48,
    "source": "Auto 2H",
@@ -2912,7 +2912,7 @@
    "time": 1793767244068,
    "status": "open",
    "passed": false,
-   "high": 5006.3,
+   "high": 5034.5,
    "low": 5006.3,
    "nifty": 0.48,
    "source": "Auto 2H",
@@ -3261,10 +3261,122 @@
     "time": 1793767847804,
     "price": 43.74
    }
+  },
+  {
+   "id": "1793768137385-576",
+   "symbol": "GODFRYPHLP",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 275,
+   "entry": 1793.7,
+   "sl": 1725.5,
+   "tp": 1847.5,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 1725.5,
+   "time": 1793768137385,
+   "status": "open",
+   "passed": false,
+   "high": 1793.7,
+   "low": 1793.7,
+   "nifty": 0.09,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 48.47,
+   "first_seen": {
+    "time": 1793768137385,
+    "price": 1793.7
+   }
+  },
+  {
+   "id": "1793768137385-577",
+   "symbol": "GODFRYPHLP",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 275,
+   "entry": 1793.7,
+   "sl": 1725.5,
+   "tp": 1847.5,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 26.9,
+    "step": 8.95
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 1725.5,
+   "time": 1793768137385,
+   "status": "open",
+   "passed": false,
+   "high": 1793.7,
+   "low": 1793.7,
+   "nifty": 0.09,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 48.47,
+   "first_seen": {
+    "time": 1793768137385,
+    "price": 1793.7
+   }
+  },
+  {
+   "id": "1793768137385-578",
+   "symbol": "GODFRYPHLP",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 275,
+   "entry": 1793.7,
+   "sl": 1725.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 1725.5,
+   "time": 1793768137385,
+   "status": "open",
+   "passed": false,
+   "high": 1793.7,
+   "low": 1793.7,
+   "nifty": 0.09,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 48.47,
+   "first_seen": {
+    "time": 1793768137385,
+    "price": 1793.7
+   }
   }
  ],
- "seq": 575,
+ "seq": 578,
  "log": [
+  "04 Nov 10:25  GODFRYPHLP: HA BUY 275 at 1793.7, SL 1725.5 (2 HOUR; eod, trail, ha)",
   "04 Nov 10:20  SAGILITY: HA BUY 12000 at 43.75, SL 42.0 (2 HOUR; eod, trail, ha)",
   "04 Nov 10:20  RVNL: HA BUY 1925 at 190.3, SL 183.55 (2 HOUR; eod, trail, ha)",
   "04 Nov 10:15  OFSS: HA BUY 100 at 10019.0, SL 9827.0 (2 HOUR; eod, trail, ha)",
@@ -3416,8 +3528,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793767847804,
- "updated": 1793767847804,
+ "page_run": 1793768137385,
+ "updated": 1793768137385,
  "unattended": true,
- "peak_margin": 11640670.5
+ "peak_margin": 11736516.0
 }
