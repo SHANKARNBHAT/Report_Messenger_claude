@@ -395,7 +395,7 @@
    "time": 1793682054415,
    "status": "open",
    "passed": true,
-   "high": 1500,
+   "high": 1501.4,
    "low": 1407.2,
    "nifty": 0.93,
    "source": "Auto 2H",
@@ -545,7 +545,7 @@
    "time": 1793683919570,
    "status": "open",
    "passed": true,
-   "high": 1809.0,
+   "high": 1809,
    "low": 1693.6,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -581,7 +581,7 @@
    "time": 1793683919570,
    "status": "open",
    "passed": false,
-   "high": 1809.0,
+   "high": 1809,
    "low": 1693.6,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -617,7 +617,7 @@
    "time": 1793683919570,
    "status": "open",
    "passed": false,
-   "high": 1809.0,
+   "high": 1809,
    "low": 1693.6,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -632,42 +632,6 @@
    "first_seen": {
     "time": 1793683919570,
     "price": 1697.0
-   }
-  },
-  {
-   "id": "1793684134686-494",
-   "symbol": "BHEL",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 2625,
-   "entry": 400.45,
-   "sl": 393.5,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_green",
-   "system": "HA",
-   "stop": 393.5,
-   "time": 1793684134686,
-   "status": "open",
-   "passed": false,
-   "high": 429.15,
-   "low": 397.7,
-   "nifty": 0.82,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 43.7,
-   "first_seen": {
-    "time": 1793684134686,
-    "price": 400.45
    }
   },
   {
@@ -1398,7 +1362,7 @@
    "status": "open",
    "passed": false,
    "high": 3520,
-   "low": 3426.8,
+   "low": 3424,
    "nifty": 0.04,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1995,7 +1959,7 @@
    "status": "open",
    "passed": false,
    "high": 1968.3,
-   "low": 1780.1,
+   "low": 1770,
    "nifty": 1.58,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -4028,7 +3992,7 @@
    "time": 1793853050893,
    "status": "open",
    "passed": false,
-   "high": 199.2,
+   "high": 199.21,
    "low": 196.73,
    "nifty": 1.85,
    "source": "Auto 2H",
@@ -4067,7 +4031,7 @@
    "time": 1793853050893,
    "status": "open",
    "passed": false,
-   "high": 199.2,
+   "high": 199.21,
    "low": 196.73,
    "nifty": 1.85,
    "source": "Auto 2H",
@@ -4103,7 +4067,7 @@
    "time": 1793853050893,
    "status": "open",
    "passed": false,
-   "high": 199.2,
+   "high": 199.21,
    "low": 196.73,
    "nifty": 1.85,
    "source": "Auto 2H",
@@ -4328,7 +4292,7 @@
    "time": 1793853645768,
    "status": "open",
    "passed": true,
-   "high": 84.59,
+   "high": 84.65,
    "low": 80.93,
    "nifty": 1.72,
    "source": "Auto 2H",
@@ -4364,7 +4328,7 @@
    "time": 1793853645768,
    "status": "open",
    "passed": false,
-   "high": 84.59,
+   "high": 84.65,
    "low": 80.93,
    "nifty": 1.72,
    "source": "Auto 2H",
@@ -4733,7 +4697,7 @@
    "time": 1793854856642,
    "status": "open",
    "passed": false,
-   "high": 2511.5,
+   "high": 2515.4,
    "low": 2475.6,
    "nifty": 1.82,
    "source": "Auto 2H",
@@ -4772,7 +4736,7 @@
    "time": 1793854856642,
    "status": "open",
    "passed": false,
-   "high": 2511.5,
+   "high": 2515.4,
    "low": 2475.6,
    "nifty": 1.82,
    "source": "Auto 2H",
@@ -4808,7 +4772,7 @@
    "time": 1793854856642,
    "status": "open",
    "passed": false,
-   "high": 2511.5,
+   "high": 2515.4,
    "low": 2475.6,
    "nifty": 1.82,
    "source": "Auto 2H",
@@ -5161,6 +5125,7 @@
  ],
  "seq": 735,
  "log": [
+  "05 Nov 14:25  BHEL: HA green exit (2H) at 417.25 (Hold \u00b7 HA green/red exit)",
   "05 Nov 14:20  SIEMENS: HA exit (2H) at 3429.2 (Hold \u00b7 HA exit)",
   "05 Nov 13:55  BHARATFORG: HA SELL 500 at 1755.6, SL 1884.7 (2 HOUR; eod, trail, ha)",
   "05 Nov 13:50  SBIN: Stop loss at 1006.55 (Hold \u00b7 trail)",
@@ -5459,11 +5424,10 @@
   "03 Nov 09:45  MOTHERSON: RSI BUY 6150 at 161.15 (2 HOUR; eod, trail, rsi)",
   "03 Nov 09:40  SBICARD: HA BUY 800 at 540.7 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 09:40  GODFRYPHLP: HA BUY 275 at 1765.1 (2 HOUR; eod, trail, ha, ha_green)",
-  "03 Nov 09:35  FORTIS: Stop loss at 772.9 (Hold \u00b7 trail)",
-  "03 Nov 09:35  FORTIS: Stop loss at 772.9 (EOD 3:15 PM)"
+  "03 Nov 09:35  FORTIS: Stop loss at 772.9 (Hold \u00b7 trail)"
  ],
- "page_run": 1793868641771,
- "updated": 1793868641771,
+ "page_run": 1793868933312,
+ "updated": 1793868933312,
  "unattended": true,
  "peak_margin": 19750802.0
 }
