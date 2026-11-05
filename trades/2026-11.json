@@ -6769,5 +6769,42 @@
   "gross": 4300.0,
   "charges": 276.42,
   "net": 4023.58
+ },
+ {
+  "id": "1793766936226-563",
+  "symbol": "KFINTECH",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 575,
+  "entry": 904.2,
+  "exit": 917.8,
+  "entry_time": 1793766936226,
+  "exit_time": 1793855400000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 864.4,
+  "tp": 931.35,
+  "high": 931.5,
+  "low": 887,
+  "nifty": 0.51,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793766936226,
+   "price": 904.2
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": 7820.0,
+  "charges": 344.09,
+  "net": 7475.91
  }
 ]
