@@ -7287,5 +7287,42 @@
   "gross": 7747.5,
   "charges": 328.19,
   "net": 7419.31
+ },
+ {
+  "id": "1793684134686-493",
+  "symbol": "BHEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2625,
+  "entry": 400.45,
+  "exit": 418.2,
+  "entry_time": 1793684134686,
+  "exit_time": 1793865338994,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 393.5,
+  "tp": null,
+  "high": 429.15,
+  "low": 397.7,
+  "nifty": 0.82,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793684134686,
+   "price": 400.45
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 43.7,
+  "gross": 46593.75,
+  "charges": 663.52,
+  "net": 45930.23
  }
 ]

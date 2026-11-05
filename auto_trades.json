@@ -395,7 +395,7 @@
    "time": 1793682054415,
    "status": "open",
    "passed": true,
-   "high": 1481.9,
+   "high": 1485,
    "low": 1407.2,
    "nifty": 0.93,
    "source": "Auto 2H",
@@ -635,42 +635,6 @@
    }
   },
   {
-   "id": "1793684134686-493",
-   "symbol": "BHEL",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 2625,
-   "entry": 400.45,
-   "sl": 393.5,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA",
-   "stop": 393.5,
-   "time": 1793684134686,
-   "status": "open",
-   "passed": false,
-   "high": 429.15,
-   "low": 397.7,
-   "nifty": 0.82,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 43.7,
-   "first_seen": {
-    "time": 1793684134686,
-    "price": 400.45
-   }
-  },
-  {
    "id": "1793684134686-494",
    "symbol": "BHEL",
    "side": "BUY",
@@ -764,7 +728,7 @@
    "time": 1793763940584,
    "status": "open",
    "passed": false,
-   "high": 1003,
+   "high": 1004,
    "low": 968.35,
    "nifty": -0.09,
    "source": "Auto HA 2H",
@@ -1025,7 +989,7 @@
    "time": 1793766650703,
    "status": "open",
    "passed": true,
-   "high": 109.66,
+   "high": 109.75,
    "low": 103.88,
    "nifty": 0.38,
    "source": "Auto HA 2H",
@@ -1061,7 +1025,7 @@
    "time": 1793766650703,
    "status": "open",
    "passed": false,
-   "high": 109.66,
+   "high": 109.75,
    "low": 103.88,
    "nifty": 0.38,
    "source": "Auto HA 2H",
@@ -2622,7 +2586,7 @@
    "status": "open",
    "passed": false,
    "high": 437.85,
-   "low": 427.9,
+   "low": 427.7,
    "nifty": 1.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2661,7 +2625,7 @@
    "status": "open",
    "passed": false,
    "high": 437.85,
-   "low": 427.9,
+   "low": 427.7,
    "nifty": 1.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2697,7 +2661,7 @@
    "status": "open",
    "passed": false,
    "high": 437.85,
-   "low": 427.9,
+   "low": 427.7,
    "nifty": 1.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -4064,7 +4028,7 @@
    "time": 1793853050893,
    "status": "open",
    "passed": false,
-   "high": 3882,
+   "high": 3892.7,
    "low": 3805.8,
    "nifty": 1.85,
    "source": "Auto 2H",
@@ -4103,7 +4067,7 @@
    "time": 1793853050893,
    "status": "open",
    "passed": false,
-   "high": 3882,
+   "high": 3892.7,
    "low": 3805.8,
    "nifty": 1.85,
    "source": "Auto 2H",
@@ -4139,7 +4103,7 @@
    "time": 1793853050893,
    "status": "open",
    "passed": false,
-   "high": 3882,
+   "high": 3892.7,
    "low": 3805.8,
    "nifty": 1.85,
    "source": "Auto 2H",
@@ -5197,6 +5161,7 @@
  ],
  "seq": 732,
  "log": [
+  "05 Nov 13:25  BHEL: HA exit (2H) at 418.2 (Hold \u00b7 HA exit)",
   "05 Nov 13:10  KAYNES: TSL after target at 3329.95 (Hold \u00b7 trail)",
   "05 Nov 12:50  UNIONBANK: RSI BUY 4425 at 187.05, SL 184.25 (2 HOUR; eod, trail, rsi)",
   "05 Nov 12:45  OFSS: TSL after target at 10169.25 (Hold \u00b7 trail)",
@@ -5495,11 +5460,10 @@
   "03 Nov 09:35  OFSS: Stop loss at 9948.5 (Hold \u00b7 trail)",
   "03 Nov 09:35  OFSS: Stop loss at 9948.5 (EOD 3:15 PM)",
   "03 Nov 09:30  AXISBANK: HA BUY 625 at 1220.3 (2 HOUR; eod, trail, ha, ha_green)",
-  "03 Nov 09:25  FORTIS: HA red exit (2H) at 769.2 (Hold \u00b7 HA green/red exit)",
-  "03 Nov 09:25  FORTIS: HA exit (2H) at 769.2 (Hold \u00b7 HA exit)"
+  "03 Nov 09:25  FORTIS: HA red exit (2H) at 769.2 (Hold \u00b7 HA green/red exit)"
  ],
- "page_run": 1793865042256,
- "updated": 1793865042256,
+ "page_run": 1793865338994,
+ "updated": 1793865338994,
  "unattended": true,
  "peak_margin": 19750802.0
 }
