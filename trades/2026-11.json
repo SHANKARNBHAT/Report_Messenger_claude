@@ -6806,5 +6806,116 @@
   "gross": 7820.0,
   "charges": 344.09,
   "net": 7475.91
+ },
+ {
+  "id": "1793852742831-669",
+  "symbol": "FEDERALBNK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 332.15,
+  "exit": 337.15,
+  "entry_time": 1793852742831,
+  "exit_time": 1793856600000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 337.15,
+  "tp": 322.2,
+  "high": 337.15,
+  "low": 332.15,
+  "nifty": 1.95,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793852742831,
+   "price": 332.15
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12500.0,
+  "charges": 515.38,
+  "net": -13015.38
+ },
+ {
+  "id": "1793852742831-670",
+  "symbol": "FEDERALBNK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 332.15,
+  "exit": 337.15,
+  "entry_time": 1793852742831,
+  "exit_time": 1793856600000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 337.15,
+  "tp": 322.2,
+  "high": 337.15,
+  "low": 332.15,
+  "nifty": 1.95,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793852742831,
+   "price": 332.15
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12500.0,
+  "charges": 515.38,
+  "net": -13015.38
+ },
+ {
+  "id": "1793852742831-671",
+  "symbol": "FEDERALBNK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 332.15,
+  "exit": 337.15,
+  "entry_time": 1793852742831,
+  "exit_time": 1793856600000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 337.15,
+  "tp": null,
+  "high": 337.15,
+  "low": 332.15,
+  "nifty": 1.95,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793852742831,
+   "price": 332.15
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12500.0,
+  "charges": 515.38,
+  "net": -13015.38
  }
 ]
