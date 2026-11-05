@@ -6658,5 +6658,42 @@
   "gross": -16732.5,
   "charges": 516.27,
   "net": -17248.77
+ },
+ {
+  "id": "1793853339876-704",
+  "symbol": "COALINDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1350,
+  "entry": 396.5,
+  "exit": 395.65,
+  "entry_time": 1793853339876,
+  "exit_time": 1793853645768,
+  "reason": "RSI exit (2H 44.0)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 402.45,
+  "tp": null,
+  "high": 396.5,
+  "low": 395.65,
+  "nifty": 1.79,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793853339876,
+   "price": 396.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 1147.5,
+  "charges": 348.61,
+  "net": 798.89
  }
 ]
