@@ -281,7 +281,7 @@
    "time": 1793680250528,
    "status": "open",
    "passed": false,
-   "high": 3746.3,
+   "high": 3749.3,
    "low": 3550.2,
    "nifty": 0.82,
    "source": "Auto 2H",
@@ -434,7 +434,7 @@
    "time": 1793683538243,
    "status": "open",
    "passed": true,
-   "high": 4466,
+   "high": 4476.9,
    "low": 4225,
    "nifty": 0.92,
    "source": "Auto HA 2H",
@@ -470,7 +470,7 @@
    "time": 1793683538243,
    "status": "open",
    "passed": false,
-   "high": 4466,
+   "high": 4476.9,
    "low": 4225,
    "nifty": 0.92,
    "source": "Auto HA 2H",
@@ -506,7 +506,7 @@
    "time": 1793683538243,
    "status": "open",
    "passed": false,
-   "high": 4466,
+   "high": 4476.9,
    "low": 4225,
    "nifty": 0.92,
    "source": "Auto HA 2H",
@@ -541,11 +541,11 @@
    },
    "style": "trail",
    "system": "HA",
-   "stop": 1730.95,
+   "stop": 1739.45,
    "time": 1793683919570,
    "status": "open",
    "passed": true,
-   "high": 1759.9,
+   "high": 1773,
    "low": 1693.6,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -581,7 +581,7 @@
    "time": 1793683919570,
    "status": "open",
    "passed": false,
-   "high": 1759.9,
+   "high": 1773,
    "low": 1693.6,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -617,7 +617,7 @@
    "time": 1793683919570,
    "status": "open",
    "passed": false,
-   "high": 1759.9,
+   "high": 1773,
    "low": 1693.6,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -2340,7 +2340,7 @@
    "status": "open",
    "passed": false,
    "high": 2211.3,
-   "low": 2191.5,
+   "low": 2188,
    "nifty": 1.64,
    "source": "Auto 2H",
    "timeframes": [
@@ -2379,7 +2379,7 @@
    "status": "open",
    "passed": false,
    "high": 2211.3,
-   "low": 2191.5,
+   "low": 2188,
    "nifty": 1.64,
    "source": "Auto 2H",
    "timeframes": [
@@ -2415,7 +2415,7 @@
    "status": "open",
    "passed": false,
    "high": 2211.3,
-   "low": 2191.5,
+   "low": 2188,
    "nifty": 1.64,
    "source": "Auto 2H",
    "timeframes": [
@@ -2468,42 +2468,6 @@
    }
   },
   {
-   "id": "1793850936963-639",
-   "symbol": "PIIND",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 175,
-   "entry": 1968.3,
-   "sl": 2199.4,
-   "tp": 1909.25,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "eod",
-   "system": "HA",
-   "stop": 2199.4,
-   "time": 1793850936963,
-   "status": "open",
-   "passed": false,
-   "high": 1968.3,
-   "low": 1968.3,
-   "nifty": 1.58,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 56.78,
-   "first_seen": {
-    "time": 1793850936963,
-    "price": 1968.3
-   }
-  },
-  {
    "id": "1793850936963-640",
    "symbol": "PIIND",
    "side": "SELL",
@@ -2521,12 +2485,12 @@
    },
    "style": "trail",
    "system": "HA",
-   "stop": 2199.4,
+   "stop": 1899.35,
    "time": 1793850936963,
    "status": "open",
-   "passed": false,
+   "passed": true,
    "high": 1968.3,
-   "low": 1968.3,
+   "low": 1862.4,
    "nifty": 1.58,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2562,7 +2526,7 @@
    "status": "open",
    "passed": false,
    "high": 1968.3,
-   "low": 1968.3,
+   "low": 1862.4,
    "nifty": 1.58,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2577,10 +2541,347 @@
     "time": 1793850936963,
     "price": 1968.3
    }
+  },
+  {
+   "id": "1793851841659-642",
+   "symbol": "MOTHERSON",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 6150,
+   "entry": 164.6,
+   "sl": 157.85,
+   "tp": 169.55,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 157.85,
+   "time": 1793851841659,
+   "status": "open",
+   "passed": false,
+   "high": 164.6,
+   "low": 164.6,
+   "nifty": 1.71,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793851841659,
+    "price": 164.6
+   }
+  },
+  {
+   "id": "1793851841659-643",
+   "symbol": "MOTHERSON",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 6150,
+   "entry": 164.6,
+   "sl": 157.85,
+   "tp": 169.55,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 2.45,
+    "step": 0.8
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 157.85,
+   "time": 1793851841659,
+   "status": "open",
+   "passed": false,
+   "high": 164.6,
+   "low": 164.6,
+   "nifty": 1.71,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793851841659,
+    "price": 164.6
+   }
+  },
+  {
+   "id": "1793851841659-644",
+   "symbol": "MOTHERSON",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 6150,
+   "entry": 164.6,
+   "sl": 157.85,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 157.85,
+   "time": 1793851841659,
+   "status": "open",
+   "passed": false,
+   "high": 164.6,
+   "low": 164.6,
+   "nifty": 1.71,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793851841659,
+    "price": 164.6
+   }
+  },
+  {
+   "id": "1793851841659-645",
+   "symbol": "APOLLOHOSP",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 8274.5,
+   "sl": 8569.0,
+   "tp": 8026.25,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 8569.0,
+   "time": 1793851841659,
+   "status": "open",
+   "passed": false,
+   "high": 8274.5,
+   "low": 8274.5,
+   "nifty": 1.71,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 72.11,
+   "first_seen": {
+    "time": 1793851841659,
+    "price": 8274.5
+   }
+  },
+  {
+   "id": "1793851841659-646",
+   "symbol": "APOLLOHOSP",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 8274.5,
+   "sl": 8569.0,
+   "tp": 8026.25,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 124.1,
+    "step": 41.35
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 8569.0,
+   "time": 1793851841659,
+   "status": "open",
+   "passed": false,
+   "high": 8274.5,
+   "low": 8274.5,
+   "nifty": 1.71,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 72.11,
+   "first_seen": {
+    "time": 1793851841659,
+    "price": 8274.5
+   }
+  },
+  {
+   "id": "1793851841659-647",
+   "symbol": "APOLLOHOSP",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 8274.5,
+   "sl": 8569.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 8569.0,
+   "time": 1793851841659,
+   "status": "open",
+   "passed": false,
+   "high": 8274.5,
+   "low": 8274.5,
+   "nifty": 1.71,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 72.11,
+   "first_seen": {
+    "time": 1793851841659,
+    "price": 8274.5
+   }
+  },
+  {
+   "id": "1793851841659-648",
+   "symbol": "CUMMINSIND",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 4035.2,
+   "sl": 4755.0,
+   "tp": 3914.15,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 4755.0,
+   "time": 1793851841659,
+   "status": "open",
+   "passed": false,
+   "high": 4035.2,
+   "low": 4035.2,
+   "nifty": 1.71,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 51.0,
+   "first_seen": {
+    "time": 1793851841659,
+    "price": 4035.2
+   }
+  },
+  {
+   "id": "1793851841659-649",
+   "symbol": "CUMMINSIND",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 4035.2,
+   "sl": 4755.0,
+   "tp": 3914.15,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 60.55,
+    "step": 20.2
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 4755.0,
+   "time": 1793851841659,
+   "status": "open",
+   "passed": false,
+   "high": 4035.2,
+   "low": 4035.2,
+   "nifty": 1.71,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 51.0,
+   "first_seen": {
+    "time": 1793851841659,
+    "price": 4035.2
+   }
+  },
+  {
+   "id": "1793851841659-650",
+   "symbol": "CUMMINSIND",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 4035.2,
+   "sl": 4755.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 4755.0,
+   "time": 1793851841659,
+   "status": "open",
+   "passed": false,
+   "high": 4035.2,
+   "low": 4035.2,
+   "nifty": 1.71,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 51.0,
+   "first_seen": {
+    "time": 1793851841659,
+    "price": 4035.2
+   }
   }
  ],
- "seq": 641,
+ "seq": 650,
  "log": [
+  "05 Nov 09:40  CUMMINSIND: HA SELL 200 at 4035.2, SL 4755.0 (2 HOUR; eod, trail, ha)",
+  "05 Nov 09:40  APOLLOHOSP: HA SELL 125 at 8274.5, SL 8569.0 (2 HOUR; eod, trail, ha)",
+  "05 Nov 09:40  MOTHERSON: RSI BUY 6150 at 164.6, SL 157.85 (2 HOUR; eod, trail, rsi)",
+  "05 Nov 09:40  PIIND: Target at 1909.25 (EOD 3:15 PM)",
   "05 Nov 09:35  WAAREEENER: TSL after target at 2434.35 (Hold \u00b7 trail)",
   "05 Nov 09:35  AMBER: TSL after target at 6514.85 (Hold \u00b7 trail)",
   "05 Nov 09:30  BLUESTARCO: Stop loss at 1587.3 (EOD 3:15 PM)",
@@ -2841,8 +3142,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793851542021,
- "updated": 1793851542021,
+ "page_run": 1793851841659,
+ "updated": 1793851841659,
  "unattended": true,
  "peak_margin": 15773662.0
 }
