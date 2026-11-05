@@ -6917,5 +6917,79 @@
   "gross": -12500.0,
   "charges": 515.38,
   "net": -13015.38
+ },
+ {
+  "id": "1793691941028-499",
+  "symbol": "CONCOR",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1250,
+  "entry": 431.5,
+  "exit": 437.95,
+  "entry_time": 1793691941028,
+  "exit_time": 1793857200000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 437.95,
+  "tp": 418.55,
+  "high": 437.95,
+  "low": 419.05,
+  "nifty": 1.09,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793691941028,
+   "price": 431.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8062.5,
+  "charges": 351.3,
+  "net": -8413.8
+ },
+ {
+  "id": "1793782855874-622",
+  "symbol": "MANKIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2518.1,
+  "exit": 2507.6,
+  "entry_time": 1793782855874,
+  "exit_time": 1793857842041,
+  "reason": "RSI exit (2H 59.3)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 2476.0,
+  "tp": null,
+  "high": 2561.2,
+  "low": 2503.5,
+  "nifty": 1.96,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793782855874,
+   "price": 2518.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -2625.0,
+  "charges": 400.37,
+  "net": -3025.37
  }
 ]
