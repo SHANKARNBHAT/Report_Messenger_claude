@@ -764,7 +764,7 @@
    "time": 1793763940584,
    "status": "open",
    "passed": false,
-   "high": 999.9,
+   "high": 1000,
    "low": 968.35,
    "nifty": -0.09,
    "source": "Auto HA 2H",
@@ -2294,7 +2294,7 @@
    "time": 1793851841659,
    "status": "open",
    "passed": false,
-   "high": 166.52,
+   "high": 166.53,
    "low": 163.95,
    "nifty": 1.71,
    "source": "Auto 2H",
@@ -2333,7 +2333,7 @@
    "time": 1793851841659,
    "status": "open",
    "passed": false,
-   "high": 166.52,
+   "high": 166.53,
    "low": 163.95,
    "nifty": 1.71,
    "source": "Auto 2H",
@@ -2369,7 +2369,7 @@
    "time": 1793851841659,
    "status": "open",
    "passed": false,
-   "high": 166.52,
+   "high": 166.53,
    "low": 163.95,
    "nifty": 1.71,
    "source": "Auto 2H",
@@ -2739,7 +2739,7 @@
    "status": "open",
    "passed": false,
    "high": 437.85,
-   "low": 431,
+   "low": 429.5,
    "nifty": 1.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2778,7 +2778,7 @@
    "status": "open",
    "passed": false,
    "high": 437.85,
-   "low": 431,
+   "low": 429.5,
    "nifty": 1.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2814,7 +2814,7 @@
    "status": "open",
    "passed": false,
    "high": 437.85,
-   "low": 431,
+   "low": 429.5,
    "nifty": 1.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2961,7 +2961,7 @@
    "status": "open",
    "passed": false,
    "high": 1406.3,
-   "low": 1389,
+   "low": 1388.4,
    "nifty": 1.91,
    "source": "Auto 2H",
    "timeframes": [
@@ -3000,7 +3000,7 @@
    "status": "open",
    "passed": false,
    "high": 1406.3,
-   "low": 1389,
+   "low": 1388.4,
    "nifty": 1.91,
    "source": "Auto 2H",
    "timeframes": [
@@ -3036,7 +3036,7 @@
    "status": "open",
    "passed": false,
    "high": 1406.3,
-   "low": 1389,
+   "low": 1388.4,
    "nifty": 1.91,
    "source": "Auto 2H",
    "timeframes": [
@@ -4592,7 +4592,7 @@
    "time": 1793853645768,
    "status": "open",
    "passed": true,
-   "high": 84.1,
+   "high": 84.2,
    "low": 80.93,
    "nifty": 1.72,
    "source": "Auto 2H",
@@ -4628,7 +4628,7 @@
    "time": 1793853645768,
    "status": "open",
    "passed": false,
-   "high": 84.1,
+   "high": 84.2,
    "low": 80.93,
    "nifty": 1.72,
    "source": "Auto 2H",
@@ -5199,121 +5199,13 @@
     "time": 1793857542630,
     "price": 3374.6
    }
-  },
-  {
-   "id": "1793857842041-727",
-   "symbol": "BLUESTARCO",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 325,
-   "entry": 1586.9,
-   "sl": 1563.1,
-   "tp": 1634.5,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "eod",
-   "system": "RSI",
-   "stop": 1563.1,
-   "time": 1793857842041,
-   "status": "open",
-   "passed": false,
-   "high": 1589.1,
-   "low": 1566.7,
-   "nifty": 1.77,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793857842041,
-    "price": 1586.9
-   }
-  },
-  {
-   "id": "1793857842041-728",
-   "symbol": "BLUESTARCO",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 325,
-   "entry": 1586.9,
-   "sl": 1563.1,
-   "tp": 1634.5,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 23.8,
-    "step": 7.95
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 1563.1,
-   "time": 1793857842041,
-   "status": "open",
-   "passed": false,
-   "high": 1589.1,
-   "low": 1566.7,
-   "nifty": 1.77,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793857842041,
-    "price": 1586.9
-   }
-  },
-  {
-   "id": "1793857842041-729",
-   "symbol": "BLUESTARCO",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 325,
-   "entry": 1586.9,
-   "sl": 1563.1,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "rsi",
-   "system": "RSI",
-   "stop": 1563.1,
-   "time": 1793857842041,
-   "status": "open",
-   "passed": false,
-   "high": 1589.1,
-   "low": 1566.7,
-   "nifty": 1.77,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793857842041,
-    "price": 1586.9
-   }
   }
  ],
  "seq": 729,
  "log": [
+  "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (Hold \u00b7 RSI exit)",
+  "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (Hold \u00b7 trail)",
+  "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (EOD 3:15 PM)",
   "05 Nov 12:25  MAHABANK: Target at 84.1 (EOD 3:15 PM)",
   "05 Nov 11:50  MCX: RSI exit (2H 60.0) at 3375.0 (Hold \u00b7 RSI exit)",
   "05 Nov 11:20  BLUESTARCO: RSI BUY 325 at 1586.9, SL 1563.1 (2 HOUR; eod, trail, rsi)",
@@ -5610,13 +5502,10 @@
   "03 Nov 09:25  OFSS: RSI exit (2H 44.6) at 9865.0 (Hold \u00b7 RSI exit)",
   "03 Nov 09:20  M&M: HA SELL 200 at 2868.8 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 09:20  LUPIN: HA SELL 425 at 1996.5 (2 HOUR; eod, trail, ha, ha_green)",
-  "03 Nov 09:20  HDFCBANK: HA BUY 650 at 700.0 (2 HOUR; eod, trail, ha, ha_green)",
-  "03 Nov 09:20  FORTIS: HA SELL 775 at 761.5 (2 HOUR; eod, trail, ha, ha_green)",
-  "03 Nov 09:20  BIOCON: HA SELL 2500 at 354.7 (2 HOUR; eod, trail, ha, ha_green)",
-  "03 Nov 09:20  OFSS: RSI SELL 100 at 9744.0 (2 HOUR; eod, trail, rsi)"
+  "03 Nov 09:20  HDFCBANK: HA BUY 650 at 700.0 (2 HOUR; eod, trail, ha, ha_green)"
  ],
- "page_run": 1793861737372,
- "updated": 1793861737372,
+ "page_run": 1793862056753,
+ "updated": 1793862056753,
  "unattended": true,
  "peak_margin": 19750802.0
 }
