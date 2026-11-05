@@ -6732,5 +6732,42 @@
   "gross": 6450.0,
   "charges": 277.54,
   "net": 6172.46
+ },
+ {
+  "id": "1793763940584-522",
+  "symbol": "PATANJALI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1075,
+  "entry": 374.9,
+  "exit": 378.9,
+  "entry_time": 1793763940584,
+  "exit_time": 1793855437425,
+  "reason": "RSI exit (2H 59.9)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 369.3,
+  "tp": null,
+  "high": 387.25,
+  "low": 374.9,
+  "nifty": -0.09,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 374.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 4300.0,
+  "charges": 276.42,
+  "net": 4023.58
  }
 ]
