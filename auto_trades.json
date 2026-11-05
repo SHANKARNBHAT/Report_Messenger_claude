@@ -173,7 +173,7 @@
    "time": 1793678456917,
    "status": "open",
    "passed": true,
-   "high": 1278.7,
+   "high": 1279.7,
    "low": 1220.3,
    "nifty": 0.74,
    "source": "Auto HA 2H",
@@ -391,11 +391,11 @@
    },
    "style": "trail",
    "system": "RSI",
-   "stop": 1450.55,
+   "stop": 1457.6,
    "time": 1793682054415,
    "status": "open",
    "passed": true,
-   "high": 1478,
+   "high": 1480,
    "low": 1407.2,
    "nifty": 0.93,
    "source": "Auto 2H",
@@ -434,7 +434,7 @@
    "time": 1793683538243,
    "status": "open",
    "passed": true,
-   "high": 4492.3,
+   "high": 4505.8,
    "low": 4232.6,
    "nifty": 0.92,
    "source": "Auto HA 2H",
@@ -470,7 +470,7 @@
    "time": 1793683538243,
    "status": "open",
    "passed": false,
-   "high": 4492.3,
+   "high": 4505.8,
    "low": 4232.6,
    "nifty": 0.92,
    "source": "Auto HA 2H",
@@ -506,7 +506,7 @@
    "time": 1793683538243,
    "status": "open",
    "passed": false,
-   "high": 4492.3,
+   "high": 4505.8,
    "low": 4232.6,
    "nifty": 0.92,
    "source": "Auto HA 2H",
@@ -1223,45 +1223,6 @@
    "first_seen": {
     "time": 1793767244068,
     "price": 5006.3
-   }
-  },
-  {
-   "id": "1793767542528-568",
-   "symbol": "OFSS",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 100,
-   "entry": 10019.0,
-   "sl": 9827.0,
-   "tp": 10319.55,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 150.3,
-    "step": 50.1
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 10169.25,
-   "time": 1793767542528,
-   "status": "open",
-   "passed": true,
-   "high": 10358,
-   "low": 9990,
-   "nifty": 0.42,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 45.88,
-   "first_seen": {
-    "time": 1793767542528,
-    "price": 10019.0
    }
   },
   {
@@ -2589,7 +2550,7 @@
    "status": "open",
    "passed": false,
    "high": 821.6,
-   "low": 812.35,
+   "low": 797,
    "nifty": 1.82,
    "source": "Auto 2H",
    "timeframes": [
@@ -2628,7 +2589,7 @@
    "status": "open",
    "passed": false,
    "high": 821.6,
-   "low": 812.35,
+   "low": 797,
    "nifty": 1.82,
    "source": "Auto 2H",
    "timeframes": [
@@ -2664,7 +2625,7 @@
    "status": "open",
    "passed": false,
    "high": 821.6,
-   "low": 812.35,
+   "low": 797,
    "nifty": 1.82,
    "source": "Auto 2H",
    "timeframes": [
@@ -2700,7 +2661,7 @@
    "status": "open",
    "passed": false,
    "high": 437.85,
-   "low": 429.5,
+   "low": 429.35,
    "nifty": 1.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2739,7 +2700,7 @@
    "status": "open",
    "passed": false,
    "high": 437.85,
-   "low": 429.5,
+   "low": 429.35,
    "nifty": 1.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2775,7 +2736,7 @@
    "status": "open",
    "passed": false,
    "high": 437.85,
-   "low": 429.5,
+   "low": 429.35,
    "nifty": 1.82,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3699,7 +3660,7 @@
    "status": "open",
    "passed": false,
    "high": 1170.4,
-   "low": 1156.8,
+   "low": 1156.4,
    "nifty": 1.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -3738,7 +3699,7 @@
    "status": "open",
    "passed": false,
    "high": 1170.4,
-   "low": 1156.8,
+   "low": 1156.4,
    "nifty": 1.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -3774,7 +3735,7 @@
    "status": "open",
    "passed": false,
    "high": 1170.4,
-   "low": 1156.8,
+   "low": 1156.4,
    "nifty": 1.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -5164,6 +5125,7 @@
  ],
  "seq": 729,
  "log": [
+  "05 Nov 12:45  OFSS: TSL after target at 10169.25 (Hold \u00b7 trail)",
   "05 Nov 12:35  FORCEMOT: TSL after target at 18539.95 (Hold \u00b7 trail)",
   "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (Hold \u00b7 RSI exit)",
   "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (Hold \u00b7 trail)",
@@ -5462,11 +5424,10 @@
   "03 Nov 09:25  FORTIS: HA red exit (2H) at 769.2 (Hold \u00b7 HA green/red exit)",
   "03 Nov 09:25  FORTIS: HA exit (2H) at 769.2 (Hold \u00b7 HA exit)",
   "03 Nov 09:25  OFSS: RSI exit (2H 44.6) at 9865.0 (Hold \u00b7 RSI exit)",
-  "03 Nov 09:20  M&M: HA SELL 200 at 2868.8 (2 HOUR; eod, trail, ha, ha_green)",
-  "03 Nov 09:20  LUPIN: HA SELL 425 at 1996.5 (2 HOUR; eod, trail, ha, ha_green)"
+  "03 Nov 09:20  M&M: HA SELL 200 at 2868.8 (2 HOUR; eod, trail, ha, ha_green)"
  ],
- "page_run": 1793862644427,
- "updated": 1793862644427,
+ "page_run": 1793862940706,
+ "updated": 1793862940706,
  "unattended": true,
  "peak_margin": 19750802.0
 }
