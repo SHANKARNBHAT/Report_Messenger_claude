@@ -391,11 +391,11 @@
    },
    "style": "trail",
    "system": "RSI",
-   "stop": 1471.7,
+   "stop": 1478.75,
    "time": 1793682054415,
    "status": "open",
    "passed": true,
-   "high": 1498.5,
+   "high": 1500,
    "low": 1407.2,
    "nifty": 0.93,
    "source": "Auto 2H",
@@ -545,7 +545,7 @@
    "time": 1793683919570,
    "status": "open",
    "passed": true,
-   "high": 1809,
+   "high": 1809.0,
    "low": 1693.6,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -581,7 +581,7 @@
    "time": 1793683919570,
    "status": "open",
    "passed": false,
-   "high": 1809,
+   "high": 1809.0,
    "low": 1693.6,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -617,7 +617,7 @@
    "time": 1793683919570,
    "status": "open",
    "passed": false,
-   "high": 1809,
+   "high": 1809.0,
    "low": 1693.6,
    "nifty": 0.96,
    "source": "Auto HA 2H",
@@ -689,7 +689,7 @@
    "time": 1793690136600,
    "status": "open",
    "passed": false,
-   "high": 1778,
+   "high": 1779.9,
    "low": 1676,
    "nifty": 0.96,
    "source": "Auto 2H",
@@ -1415,42 +1415,6 @@
    }
   },
   {
-   "id": "1793768461201-590",
-   "symbol": "SIEMENS",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 175,
-   "entry": 3470.7,
-   "sl": 3377.2,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA",
-   "stop": 3377.2,
-   "time": 1793768461201,
-   "status": "open",
-   "passed": false,
-   "high": 3520,
-   "low": 3426.8,
-   "nifty": 0.04,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 45.69,
-   "first_seen": {
-    "time": 1793768461201,
-    "price": 3470.7
-   }
-  },
-  {
    "id": "1793769638585-595",
    "symbol": "HDFCLIFE",
    "side": "BUY",
@@ -2031,7 +1995,7 @@
    "status": "open",
    "passed": false,
    "high": 1968.3,
-   "low": 1791,
+   "low": 1780.1,
    "nifty": 1.58,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -5102,7 +5066,7 @@
    "time": 1793867144953,
    "status": "open",
    "passed": false,
-   "high": 1773.7,
+   "high": 1775,
    "low": 1755,
    "nifty": 3.06,
    "source": "Auto HA 2H",
@@ -5141,7 +5105,7 @@
    "time": 1793867144953,
    "status": "open",
    "passed": false,
-   "high": 1773.7,
+   "high": 1775,
    "low": 1755,
    "nifty": 3.06,
    "source": "Auto HA 2H",
@@ -5177,7 +5141,7 @@
    "time": 1793867144953,
    "status": "open",
    "passed": false,
-   "high": 1773.7,
+   "high": 1775,
    "low": 1755,
    "nifty": 3.06,
    "source": "Auto HA 2H",
@@ -5197,6 +5161,7 @@
  ],
  "seq": 735,
  "log": [
+  "05 Nov 14:20  SIEMENS: HA exit (2H) at 3429.2 (Hold \u00b7 HA exit)",
   "05 Nov 13:55  BHARATFORG: HA SELL 500 at 1755.6, SL 1884.7 (2 HOUR; eod, trail, ha)",
   "05 Nov 13:50  SBIN: Stop loss at 1006.55 (Hold \u00b7 trail)",
   "05 Nov 13:30  KAYNES: HA exit (2H) at 3307.0 (Hold \u00b7 HA exit)",
@@ -5495,11 +5460,10 @@
   "03 Nov 09:40  SBICARD: HA BUY 800 at 540.7 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 09:40  GODFRYPHLP: HA BUY 275 at 1765.1 (2 HOUR; eod, trail, ha, ha_green)",
   "03 Nov 09:35  FORTIS: Stop loss at 772.9 (Hold \u00b7 trail)",
-  "03 Nov 09:35  FORTIS: Stop loss at 772.9 (EOD 3:15 PM)",
-  "03 Nov 09:35  OFSS: Stop loss at 9948.5 (Hold \u00b7 trail)"
+  "03 Nov 09:35  FORTIS: Stop loss at 772.9 (EOD 3:15 PM)"
  ],
- "page_run": 1793868344808,
- "updated": 1793868344808,
+ "page_run": 1793868641771,
+ "updated": 1793868641771,
  "unattended": true,
  "peak_margin": 19750802.0
 }
