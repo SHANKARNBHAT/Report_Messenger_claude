@@ -395,7 +395,7 @@
    "time": 1793682054415,
    "status": "open",
    "passed": true,
-   "high": 1476.3,
+   "high": 1477.7,
    "low": 1407.2,
    "nifty": 0.93,
    "source": "Auto 2H",
@@ -764,7 +764,7 @@
    "time": 1793763940584,
    "status": "open",
    "passed": false,
-   "high": 1000,
+   "high": 1001,
    "low": 968.35,
    "nifty": -0.09,
    "source": "Auto HA 2H",
@@ -1751,45 +1751,6 @@
    }
   },
   {
-   "id": "1793770541162-603",
-   "symbol": "FORCEMOT",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 25,
-   "entry": 17787.0,
-   "sl": 17520.2,
-   "tp": 18320.6,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 266.8,
-    "step": 88.95
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 18539.95,
-   "time": 1793770541162,
-   "status": "open",
-   "passed": true,
-   "high": 18841,
-   "low": 17745,
-   "nifty": -0.08,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793770541162,
-    "price": 17787.0
-   }
-  },
-  {
    "id": "1793770541162-604",
    "symbol": "FORCEMOT",
    "side": "BUY",
@@ -1996,11 +1957,11 @@
    },
    "style": "trail",
    "system": "RSI",
-   "stop": 870.8,
+   "stop": 875.1,
    "time": 1793783442609,
    "status": "open",
    "passed": true,
-   "high": 887,
+   "high": 891.65,
    "low": 854.2,
    "nifty": 1.97,
    "source": "Auto 2H",
@@ -2036,7 +1997,7 @@
    "time": 1793783442609,
    "status": "open",
    "passed": false,
-   "high": 887,
+   "high": 891.65,
    "low": 854.2,
    "nifty": 1.97,
    "source": "Auto 2H",
@@ -2294,7 +2255,7 @@
    "time": 1793851841659,
    "status": "open",
    "passed": false,
-   "high": 166.53,
+   "high": 166.66,
    "low": 163.95,
    "nifty": 1.71,
    "source": "Auto 2H",
@@ -2333,7 +2294,7 @@
    "time": 1793851841659,
    "status": "open",
    "passed": false,
-   "high": 166.53,
+   "high": 166.66,
    "low": 163.95,
    "nifty": 1.71,
    "source": "Auto 2H",
@@ -2369,7 +2330,7 @@
    "time": 1793851841659,
    "status": "open",
    "passed": false,
-   "high": 166.53,
+   "high": 166.66,
    "low": 163.95,
    "nifty": 1.71,
    "source": "Auto 2H",
@@ -5108,7 +5069,7 @@
    "time": 1793856648814,
    "status": "open",
    "passed": false,
-   "high": 887,
+   "high": 891.65,
    "low": 878.5,
    "nifty": 1.72,
    "source": "Auto 2H",
@@ -5203,6 +5164,7 @@
  ],
  "seq": 729,
  "log": [
+  "05 Nov 12:35  FORCEMOT: TSL after target at 18539.95 (Hold \u00b7 trail)",
   "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (Hold \u00b7 RSI exit)",
   "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (Hold \u00b7 trail)",
   "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (EOD 3:15 PM)",
@@ -5501,11 +5463,10 @@
   "03 Nov 09:25  FORTIS: HA exit (2H) at 769.2 (Hold \u00b7 HA exit)",
   "03 Nov 09:25  OFSS: RSI exit (2H 44.6) at 9865.0 (Hold \u00b7 RSI exit)",
   "03 Nov 09:20  M&M: HA SELL 200 at 2868.8 (2 HOUR; eod, trail, ha, ha_green)",
-  "03 Nov 09:20  LUPIN: HA SELL 425 at 1996.5 (2 HOUR; eod, trail, ha, ha_green)",
-  "03 Nov 09:20  HDFCBANK: HA BUY 650 at 700.0 (2 HOUR; eod, trail, ha, ha_green)"
+  "03 Nov 09:20  LUPIN: HA SELL 425 at 1996.5 (2 HOUR; eod, trail, ha, ha_green)"
  ],
- "page_run": 1793862056753,
- "updated": 1793862056753,
+ "page_run": 1793862337164,
+ "updated": 1793862337164,
  "unattended": true,
  "peak_margin": 19750802.0
 }

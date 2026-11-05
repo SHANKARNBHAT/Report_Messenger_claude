@@ -7176,5 +7176,42 @@
   "gross": -7735.0,
   "charges": 333.63,
   "net": -8068.63
+ },
+ {
+  "id": "1793770541162-603",
+  "symbol": "FORCEMOT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 17787.0,
+  "exit": 18539.95,
+  "entry_time": 1793770541162,
+  "exit_time": 1793861700000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 17520.2,
+  "tp": 18320.6,
+  "high": 18841,
+  "low": 17745,
+  "nifty": -0.08,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793770541162,
+   "price": 17787.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 18823.75,
+  "charges": 307.45,
+  "net": 18516.3
  }
 ]
