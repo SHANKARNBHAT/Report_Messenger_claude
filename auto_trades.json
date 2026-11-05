@@ -281,7 +281,7 @@
    "time": 1793680250528,
    "status": "open",
    "passed": false,
-   "high": 3750,
+   "high": 3753.6,
    "low": 3550.2,
    "nifty": 0.82,
    "source": "Auto 2H",
@@ -953,7 +953,7 @@
    "time": 1793766041034,
    "status": "open",
    "passed": true,
-   "high": 80.13,
+   "high": 80.25,
    "low": 76.87,
    "nifty": 0.53,
    "source": "Auto HA 2H",
@@ -989,7 +989,7 @@
    "time": 1793766041034,
    "status": "open",
    "passed": false,
-   "high": 80.13,
+   "high": 80.25,
    "low": 76.87,
    "nifty": 0.53,
    "source": "Auto HA 2H",
@@ -1700,7 +1700,7 @@
    "time": 1793768461201,
    "status": "open",
    "passed": false,
-   "high": 349.5,
+   "high": 349.6,
    "low": 340,
    "nifty": 0.04,
    "source": "Auto HA 2H",
@@ -2340,7 +2340,7 @@
    "status": "open",
    "passed": false,
    "high": 2211.3,
-   "low": 2188,
+   "low": 2184.1,
    "nifty": 1.64,
    "source": "Auto 2H",
    "timeframes": [
@@ -2379,7 +2379,7 @@
    "status": "open",
    "passed": false,
    "high": 2211.3,
-   "low": 2188,
+   "low": 2184.1,
    "nifty": 1.64,
    "source": "Auto 2H",
    "timeframes": [
@@ -2415,7 +2415,7 @@
    "status": "open",
    "passed": false,
    "high": 2211.3,
-   "low": 2188,
+   "low": 2184.1,
    "nifty": 1.64,
    "source": "Auto 2H",
    "timeframes": [
@@ -2450,7 +2450,7 @@
    "time": 1793850344741,
    "status": "open",
    "passed": false,
-   "high": 2537.9,
+   "high": 2538,
    "low": 2515.4,
    "nifty": 1.64,
    "source": "Auto 2H",
@@ -3168,10 +3168,346 @@
     "time": 1793852138547,
     "price": 229.53
    }
+  },
+  {
+   "id": "1793852439677-660",
+   "symbol": "ASTRAL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 425,
+   "entry": 1389.9,
+   "sl": 1425.0,
+   "tp": 1348.2,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 1425.0,
+   "time": 1793852439677,
+   "status": "open",
+   "passed": false,
+   "high": 1389.9,
+   "low": 1389.9,
+   "nifty": 1.91,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793852439677,
+    "price": 1389.9
+   }
+  },
+  {
+   "id": "1793852439677-661",
+   "symbol": "ASTRAL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 425,
+   "entry": 1389.9,
+   "sl": 1425.0,
+   "tp": 1348.2,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 20.85,
+    "step": 6.95
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 1425.0,
+   "time": 1793852439677,
+   "status": "open",
+   "passed": false,
+   "high": 1389.9,
+   "low": 1389.9,
+   "nifty": 1.91,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793852439677,
+    "price": 1389.9
+   }
+  },
+  {
+   "id": "1793852439677-662",
+   "symbol": "ASTRAL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 425,
+   "entry": 1389.9,
+   "sl": 1425.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 1425.0,
+   "time": 1793852439677,
+   "status": "open",
+   "passed": false,
+   "high": 1389.9,
+   "low": 1389.9,
+   "nifty": 1.91,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793852439677,
+    "price": 1389.9
+   }
+  },
+  {
+   "id": "1793852439677-663",
+   "symbol": "TECHM",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 600,
+   "entry": 1836.0,
+   "sl": 1768.3,
+   "tp": 1891.1,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 1768.3,
+   "time": 1793852439677,
+   "status": "open",
+   "passed": false,
+   "high": 1836.0,
+   "low": 1836.0,
+   "nifty": 1.91,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793852439677,
+    "price": 1836.0
+   }
+  },
+  {
+   "id": "1793852439677-664",
+   "symbol": "TECHM",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 600,
+   "entry": 1836.0,
+   "sl": 1768.3,
+   "tp": 1891.1,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 27.55,
+    "step": 9.2
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 1768.3,
+   "time": 1793852439677,
+   "status": "open",
+   "passed": false,
+   "high": 1836.0,
+   "low": 1836.0,
+   "nifty": 1.91,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793852439677,
+    "price": 1836.0
+   }
+  },
+  {
+   "id": "1793852439677-665",
+   "symbol": "TECHM",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 600,
+   "entry": 1836.0,
+   "sl": 1768.3,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 1768.3,
+   "time": 1793852439677,
+   "status": "open",
+   "passed": false,
+   "high": 1836.0,
+   "low": 1836.0,
+   "nifty": 1.91,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793852439677,
+    "price": 1836.0
+   }
+  },
+  {
+   "id": "1793852439677-666",
+   "symbol": "UJJIVANSFB",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 8000,
+   "entry": 59.5,
+   "sl": 56.65,
+   "tp": 61.3,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 56.65,
+   "time": 1793852439677,
+   "status": "open",
+   "passed": false,
+   "high": 59.5,
+   "low": 59.5,
+   "nifty": 1.91,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 44.65,
+   "first_seen": {
+    "time": 1793852439677,
+    "price": 59.5
+   }
+  },
+  {
+   "id": "1793852439677-667",
+   "symbol": "UJJIVANSFB",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 8000,
+   "entry": 59.5,
+   "sl": 56.65,
+   "tp": 61.3,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 0.9,
+    "step": 0.3
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 56.65,
+   "time": 1793852439677,
+   "status": "open",
+   "passed": false,
+   "high": 59.5,
+   "low": 59.5,
+   "nifty": 1.91,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 44.65,
+   "first_seen": {
+    "time": 1793852439677,
+    "price": 59.5
+   }
+  },
+  {
+   "id": "1793852439677-668",
+   "symbol": "UJJIVANSFB",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 8000,
+   "entry": 59.5,
+   "sl": 56.65,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 56.65,
+   "time": 1793852439677,
+   "status": "open",
+   "passed": false,
+   "high": 59.5,
+   "low": 59.5,
+   "nifty": 1.91,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 44.65,
+   "first_seen": {
+    "time": 1793852439677,
+    "price": 59.5
+   }
   }
  ],
- "seq": 659,
+ "seq": 668,
  "log": [
+  "05 Nov 09:50  UJJIVANSFB: HA BUY 8000 at 59.5, SL 56.65 (2 HOUR; eod, trail, ha)",
+  "05 Nov 09:50  TECHM: RSI BUY 600 at 1836.0, SL 1768.3 (2 HOUR; eod, trail, rsi)",
+  "05 Nov 09:50  ASTRAL: RSI SELL 425 at 1389.9, SL 1425.0 (2 HOUR; eod, trail, rsi)",
   "05 Nov 09:45  ONGC: HA SELL 2250 at 229.55, SL 234.65 (2 HOUR; eod, trail, ha)",
   "05 Nov 09:45  OIL: HA SELL 1400 at 435.3, SL 458.55 (2 HOUR; eod, trail, ha)",
   "05 Nov 09:45  CGPOWER: RSI SELL 850 at 818.35, SL 840.85 (2 HOUR; eod, trail, rsi)",
@@ -3440,8 +3776,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793852138547,
- "updated": 1793852138547,
+ "page_run": 1793852439677,
+ "updated": 1793852439677,
  "unattended": true,
  "peak_margin": 15773662.0
 }
