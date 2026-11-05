@@ -7361,5 +7361,42 @@
   "gross": 4305.0,
   "charges": 326.39,
   "net": 3978.61
+ },
+ {
+  "id": "1793763940584-539",
+  "symbol": "SBIN",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 750,
+  "entry": 970.25,
+  "exit": 1006.55,
+  "entry_time": 1793763940584,
+  "exit_time": 1793866200000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1006.55,
+  "tp": 941.15,
+  "high": 1006.55,
+  "low": 968.35,
+  "nifty": -0.09,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 970.25
+  },
+  "agrees": "Yes",
+  "sma_rsi": 58.03,
+  "gross": -27225.0,
+  "charges": 458.16,
+  "net": -27683.16
  }
 ]
