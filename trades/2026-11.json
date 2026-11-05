@@ -5659,5 +5659,523 @@
   "gross": -780.0,
   "charges": 331.91,
   "net": -1111.91
+ },
+ {
+  "id": "1793694651378-502",
+  "symbol": "INDIANB",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 854.0,
+  "exit": 866.3,
+  "entry_time": 1793694651378,
+  "exit_time": 1793850300000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 866.3,
+  "tp": 828.4,
+  "high": 866.3,
+  "low": 844.6,
+  "nifty": 1.15,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793694651378,
+   "price": 854.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 58.66,
+  "gross": -12300.0,
+  "charges": 528.67,
+  "net": -12828.67
+ },
+ {
+  "id": "1793763940584-512",
+  "symbol": "AXISBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1232.7,
+  "exit": 1251.2,
+  "entry_time": 1793763940584,
+  "exit_time": 1793850300000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1251.2,
+  "tp": 1195.7,
+  "high": 1251.2,
+  "low": 1220.3,
+  "nifty": -0.09,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 1232.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11562.5,
+  "charges": 481.58,
+  "net": -12044.08
+ },
+ {
+  "id": "1793763940584-513",
+  "symbol": "AXISBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1232.7,
+  "exit": 1251.2,
+  "entry_time": 1793763940584,
+  "exit_time": 1793850300000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 1251.2,
+  "tp": null,
+  "high": 1251.2,
+  "low": 1220.3,
+  "nifty": -0.09,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 1232.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11562.5,
+  "charges": 481.58,
+  "net": -12044.08
+ },
+ {
+  "id": "1793763940584-532",
+  "symbol": "BANKBARODA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2925,
+  "entry": 243.3,
+  "exit": 248.3,
+  "entry_time": 1793763940584,
+  "exit_time": 1793850300000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 246.25,
+  "tp": 236.0,
+  "high": 248.3,
+  "low": 242.22,
+  "nifty": -0.09,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793763940584,
+   "price": 243.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 63.33,
+  "gross": -14625.0,
+  "charges": 448.6,
+  "net": -15073.6
+ },
+ {
+  "id": "1793768461201-581",
+  "symbol": "ETERNAL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2425,
+  "entry": 342.95,
+  "exit": 346.7,
+  "entry_time": 1793768461201,
+  "exit_time": 1793850936963,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 349.85,
+  "tp": null,
+  "high": 349.5,
+  "low": 340,
+  "nifty": 0.04,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793768461201,
+   "price": 342.95
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 65.58,
+  "gross": -9093.75,
+  "charges": 515.96,
+  "net": -9609.71
+ },
+ {
+  "id": "1793768461201-583",
+  "symbol": "MOTHERSON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 159.5,
+  "exit": 161.25,
+  "entry_time": 1793768461201,
+  "exit_time": 1793850300000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 161.25,
+  "tp": 154.7,
+  "high": 161.25,
+  "low": 157.85,
+  "nifty": 0.04,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793768461201,
+   "price": 159.51
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 55.44,
+  "gross": -10762.5,
+  "charges": 600.09,
+  "net": -11362.59
+ },
+ {
+  "id": "1793768461201-584",
+  "symbol": "MOTHERSON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 159.5,
+  "exit": 161.25,
+  "entry_time": 1793768461201,
+  "exit_time": 1793850300000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 161.25,
+  "tp": null,
+  "high": 161.25,
+  "low": 157.85,
+  "nifty": 0.04,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793768461201,
+   "price": 159.51
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 55.44,
+  "gross": -10762.5,
+  "charges": 600.09,
+  "net": -11362.59
+ },
+ {
+  "id": "1793769338402-592",
+  "symbol": "WIPRO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3000,
+  "entry": 195.4,
+  "exit": 197.75,
+  "entry_time": 1793769338402,
+  "exit_time": 1793850300000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 197.75,
+  "tp": 189.55,
+  "high": 197.75,
+  "low": 192.4,
+  "nifty": 0.1,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793769338402,
+   "price": 195.42
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 66.22,
+  "gross": -7050.0,
+  "charges": 377.63,
+  "net": -7427.63
+ },
+ {
+  "id": "1793769338402-593",
+  "symbol": "WIPRO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3000,
+  "entry": 195.4,
+  "exit": 197.75,
+  "entry_time": 1793769338402,
+  "exit_time": 1793850300000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 197.75,
+  "tp": null,
+  "high": 197.75,
+  "low": 192.4,
+  "nifty": 0.1,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793769338402,
+   "price": 195.42
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 66.22,
+  "gross": -7050.0,
+  "charges": 377.63,
+  "net": -7427.63
+ },
+ {
+  "id": "1793778036754-609",
+  "symbol": "NHPC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6950,
+  "entry": 78.5,
+  "exit": 82.78,
+  "entry_time": 1793778036754,
+  "exit_time": 1793850300000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 80.0,
+  "tp": 76.15,
+  "high": 82.78,
+  "low": 77.68,
+  "nifty": 0.13,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793778036754,
+   "price": 78.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 77.47,
+  "gross": -29746.0,
+  "charges": 355.7,
+  "net": -30101.7
+ },
+ {
+  "id": "1793778036754-610",
+  "symbol": "NHPC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6950,
+  "entry": 78.5,
+  "exit": 82.78,
+  "entry_time": 1793778036754,
+  "exit_time": 1793850300000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 80.0,
+  "tp": null,
+  "high": 82.78,
+  "low": 77.68,
+  "nifty": 0.13,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793778036754,
+   "price": 78.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 77.47,
+  "gross": -29746.0,
+  "charges": 355.7,
+  "net": -30101.7
+ },
+ {
+  "id": "1793784332973-628",
+  "symbol": "BLUESTARCO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1555.3,
+  "exit": 1588.2,
+  "entry_time": 1793784332973,
+  "exit_time": 1793850936963,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1598.6,
+  "tp": null,
+  "high": 1596.4,
+  "low": 1553,
+  "nifty": 2.04,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793784332973,
+   "price": 1555.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 54.92,
+  "gross": -10692.5,
+  "charges": 332.32,
+  "net": -11024.82
+ },
+ {
+  "id": "1793850344741-634",
+  "symbol": "NYKAA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3125,
+  "entry": 355.5,
+  "exit": 349.8,
+  "entry_time": 1793850344741,
+  "exit_time": 1793850936963,
+  "reason": "RSI exit (2H 58.2)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 349.45,
+  "tp": null,
+  "high": 355.5,
+  "low": 349.8,
+  "nifty": 1.64,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793850344741,
+   "price": 355.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -17812.5,
+  "charges": 663.58,
+  "net": -18476.08
+ },
+ {
+  "id": "1793850344741-637",
+  "symbol": "BIOCON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 344.45,
+  "exit": 351.3,
+  "entry_time": 1793850344741,
+  "exit_time": 1793850936963,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 349.0,
+  "tp": null,
+  "high": 351.3,
+  "low": 344.45,
+  "nifty": 1.64,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793850344741,
+   "price": 344.45
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 57.76,
+  "gross": -17125.0,
+  "charges": 532.89,
+  "net": -17657.89
  }
 ]
