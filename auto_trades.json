@@ -281,7 +281,7 @@
    "time": 1793680250528,
    "status": "open",
    "passed": false,
-   "high": 3713,
+   "high": 3724.6,
    "low": 3550.2,
    "nifty": 0.82,
    "source": "Auto 2H",
@@ -356,7 +356,7 @@
    "time": 1793681490455,
    "status": "open",
    "passed": true,
-   "high": 542.75,
+   "high": 543.1,
    "low": 519.6,
    "nifty": 0.85,
    "source": "Auto HA 2H",
@@ -391,11 +391,11 @@
    },
    "style": "trail",
    "system": "RSI",
-   "stop": 1429.4,
+   "stop": 1436.45,
    "time": 1793682054415,
    "status": "open",
    "passed": true,
-   "high": 1456.7,
+   "high": 1461.8,
    "low": 1407.2,
    "nifty": 0.93,
    "source": "Auto 2H",
@@ -635,45 +635,6 @@
    }
   },
   {
-   "id": "1793684134686-492",
-   "symbol": "BHEL",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 2625,
-   "entry": 400.45,
-   "sl": 393.5,
-   "tp": 412.45,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 6.0,
-    "step": 2.0
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 422.45,
-   "time": 1793684134686,
-   "status": "open",
-   "passed": true,
-   "high": 429.15,
-   "low": 397.7,
-   "nifty": 0.82,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 43.7,
-   "first_seen": {
-    "time": 1793684134686,
-    "price": 400.45
-   }
-  },
-  {
    "id": "1793684134686-493",
    "symbol": "BHEL",
    "side": "BUY",
@@ -743,45 +704,6 @@
    "first_seen": {
     "time": 1793684134686,
     "price": 400.45
-   }
-  },
-  {
-   "id": "1793690136600-496",
-   "symbol": "AUROPHARMA",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 550,
-   "entry": 1681.6,
-   "sl": 1656.2,
-   "tp": 1732.05,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 25.2,
-    "step": 8.4
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 1721.1,
-   "time": 1793690136600,
-   "status": "open",
-   "passed": true,
-   "high": 1748.9,
-   "low": 1676,
-   "nifty": 0.96,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793690136600,
-    "price": 1681.6
    }
   },
   {
@@ -956,7 +878,7 @@
    "time": 1793763940584,
    "status": "open",
    "passed": false,
-   "high": 994.85,
+   "high": 996.9,
    "low": 968.35,
    "nifty": -0.09,
    "source": "Auto HA 2H",
@@ -1216,11 +1138,11 @@
    },
    "style": "trail",
    "system": "HA",
-   "stop": 64.6,
+   "stop": 64.9,
    "time": 1793766650703,
    "status": "open",
    "passed": true,
-   "high": 65.79,
+   "high": 65.88,
    "low": 61.02,
    "nifty": 0.38,
    "source": "Auto HA 2H",
@@ -1256,7 +1178,7 @@
    "time": 1793766650703,
    "status": "open",
    "passed": false,
-   "high": 65.79,
+   "high": 65.88,
    "low": 61.02,
    "nifty": 0.38,
    "source": "Auto HA 2H",
@@ -1896,43 +1818,7 @@
    "status": "open",
    "passed": false,
    "high": 29020,
-   "low": 28135,
-   "nifty": 0.04,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 46.65,
-   "first_seen": {
-    "time": 1793768461201,
-    "price": 28395.0
-   }
-  },
-  {
-   "id": "1793768461201-587",
-   "symbol": "POWERINDIA",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 25,
-   "entry": 28395.0,
-   "sl": 27100.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA",
-   "stop": 27100.0,
-   "time": 1793768461201,
-   "status": "open",
-   "passed": false,
-   "high": 29020,
-   "low": 28135,
+   "low": 28030,
    "nifty": 0.04,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2042,7 +1928,7 @@
    "time": 1793769638585,
    "status": "open",
    "passed": false,
-   "high": 542.75,
+   "high": 543.1,
    "low": 527.55,
    "nifty": 0.25,
    "source": "Auto HA 2H",
@@ -2232,7 +2118,7 @@
    "status": "open",
    "passed": false,
    "high": 1210,
-   "low": 1178.5,
+   "low": 1172.6,
    "nifty": -0.01,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2268,7 +2154,7 @@
    "status": "open",
    "passed": false,
    "high": 1210,
-   "low": 1178.5,
+   "low": 1172.6,
    "nifty": -0.01,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2321,45 +2207,6 @@
    "first_seen": {
     "time": 1793778340880,
     "price": 459.75
-   }
-  },
-  {
-   "id": "1793778340880-615",
-   "symbol": "NYKAA",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 3125,
-   "entry": 349.95,
-   "sl": 342.05,
-   "tp": 360.45,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 5.25,
-    "step": 1.75
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 356.7,
-   "time": 1793778340880,
-   "status": "open",
-   "passed": true,
-   "high": 363.4,
-   "low": 347.1,
-   "nifty": 0.18,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793778340880,
-    "price": 349.95
    }
   },
   {
@@ -2570,8 +2417,8 @@
    "time": 1793850344741,
    "status": "open",
    "passed": false,
-   "high": 2199.8,
-   "low": 2199.8,
+   "high": 2211.3,
+   "low": 2194.9,
    "nifty": 1.64,
    "source": "Auto 2H",
    "timeframes": [
@@ -2609,8 +2456,8 @@
    "time": 1793850344741,
    "status": "open",
    "passed": false,
-   "high": 2199.8,
-   "low": 2199.8,
+   "high": 2211.3,
+   "low": 2194.9,
    "nifty": 1.64,
    "source": "Auto 2H",
    "timeframes": [
@@ -2645,8 +2492,8 @@
    "time": 1793850344741,
    "status": "open",
    "passed": false,
-   "high": 2199.8,
-   "low": 2199.8,
+   "high": 2211.3,
+   "low": 2194.9,
    "nifty": 1.64,
    "source": "Auto 2H",
    "timeframes": [
@@ -2682,7 +2529,7 @@
    "status": "open",
    "passed": false,
    "high": 2537.9,
-   "low": 2537.9,
+   "low": 2521.1,
    "nifty": 1.64,
    "source": "Auto 2H",
    "timeframes": [
@@ -2696,153 +2543,6 @@
    "first_seen": {
     "time": 1793850344741,
     "price": 2537.9
-   }
-  },
-  {
-   "id": "1793850344741-633",
-   "symbol": "NYKAA",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 3125,
-   "entry": 355.5,
-   "sl": 349.45,
-   "tp": 366.15,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "eod",
-   "system": "RSI",
-   "stop": 349.45,
-   "time": 1793850344741,
-   "status": "open",
-   "passed": false,
-   "high": 355.5,
-   "low": 355.5,
-   "nifty": 1.64,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793850344741,
-    "price": 355.5
-   }
-  },
-  {
-   "id": "1793850344741-635",
-   "symbol": "BIOCON",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 2500,
-   "entry": 344.45,
-   "sl": 349.0,
-   "tp": 334.1,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "eod",
-   "system": "HA",
-   "stop": 349.0,
-   "time": 1793850344741,
-   "status": "open",
-   "passed": false,
-   "high": 344.45,
-   "low": 344.45,
-   "nifty": 1.64,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 57.76,
-   "first_seen": {
-    "time": 1793850344741,
-    "price": 344.45
-   }
-  },
-  {
-   "id": "1793850344741-636",
-   "symbol": "BIOCON",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 2500,
-   "entry": 344.45,
-   "sl": 349.0,
-   "tp": 334.1,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 5.15,
-    "step": 1.7
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 349.0,
-   "time": 1793850344741,
-   "status": "open",
-   "passed": false,
-   "high": 344.45,
-   "low": 344.45,
-   "nifty": 1.64,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 57.76,
-   "first_seen": {
-    "time": 1793850344741,
-    "price": 344.45
-   }
-  },
-  {
-   "id": "1793850344741-638",
-   "symbol": "BLUESTARCO",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 325,
-   "entry": 1555.0,
-   "sl": 1581.15,
-   "tp": 1508.35,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "eod",
-   "system": "HA",
-   "stop": 1581.15,
-   "time": 1793850344741,
-   "status": "open",
-   "passed": false,
-   "high": 1555.0,
-   "low": 1555.0,
-   "nifty": 1.64,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 54.89,
-   "first_seen": {
-    "time": 1793850344741,
-    "price": 1555.0
    }
   },
   {
@@ -2959,6 +2659,14 @@
  ],
  "seq": 641,
  "log": [
+  "05 Nov 09:30  BLUESTARCO: Stop loss at 1587.3 (EOD 3:15 PM)",
+  "05 Nov 09:30  BIOCON: Stop loss at 350.95 (Hold \u00b7 trail)",
+  "05 Nov 09:30  BIOCON: Stop loss at 350.95 (EOD 3:15 PM)",
+  "05 Nov 09:30  NYKAA: Stop loss at 349.45 (EOD 3:15 PM)",
+  "05 Nov 09:30  NYKAA: TSL after target at 349.8 (Hold \u00b7 trail)",
+  "05 Nov 09:30  POWERINDIA: HA exit (2H) at 28045.0 (Hold \u00b7 HA exit)",
+  "05 Nov 09:30  AUROPHARMA: TSL after target at 1717.2 (Hold \u00b7 trail)",
+  "05 Nov 09:30  BHEL: TSL after target at 422.45 (Hold \u00b7 trail)",
   "05 Nov 09:25  PIIND: HA SELL 175 at 1968.3, SL 2199.4 (2 HOUR; eod, trail, ha)",
   "05 Nov 09:25  BIOCON: HA exit (2H) at 351.3 (Hold \u00b7 HA exit)",
   "05 Nov 09:25  NYKAA: RSI exit (2H 58.2) at 349.8 (Hold \u00b7 RSI exit)",
@@ -3209,8 +2917,8 @@
   "03 Nov 09:20  HAL: RSI BUY 150 at 4855.0 (2 HOUR; eod, trail, rsi)",
   "02 Nov 22:30 IST: account reset, results start from scratch (2H signals only)"
  ],
- "page_run": 1793850936963,
- "updated": 1793850936963,
+ "page_run": 1793851257924,
+ "updated": 1793851257924,
  "unattended": true,
  "peak_margin": 15773662.0
 }
