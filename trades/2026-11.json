@@ -11690,5 +11690,153 @@
   "gross": 3637.5,
   "charges": 319.17,
   "net": 3318.33
+ },
+ {
+  "id": "1793852138547-659",
+  "symbol": "ONGC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2250,
+  "entry": 229.55,
+  "exit": 231.5,
+  "entry_time": 1793852138547,
+  "exit_time": 1793951738631,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 234.65,
+  "tp": null,
+  "high": 232.11,
+  "low": 225.3,
+  "nifty": 1.82,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793852138547,
+   "price": 229.53
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 61.34,
+  "gross": -4387.5,
+  "charges": 338.26,
+  "net": -4725.76
+ },
+ {
+  "id": "1793943939648-803",
+  "symbol": "JSWSTEEL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 675,
+  "entry": 1340.1,
+  "exit": 1351.7,
+  "entry_time": 1793943939648,
+  "exit_time": 1793951100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 1351.7,
+  "tp": 1299.9,
+  "high": 1351.7,
+  "low": 1336.8,
+  "nifty": 0.32,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793943939648,
+   "price": 1340.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.76,
+  "gross": -7830.0,
+  "charges": 556.97,
+  "net": -8386.97
+ },
+ {
+  "id": "1793943939648-804",
+  "symbol": "JSWSTEEL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 675,
+  "entry": 1340.1,
+  "exit": 1351.7,
+  "entry_time": 1793943939648,
+  "exit_time": 1793951100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1351.7,
+  "tp": 1299.9,
+  "high": 1351.7,
+  "low": 1336.8,
+  "nifty": 0.32,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793943939648,
+   "price": 1340.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.76,
+  "gross": -7830.0,
+  "charges": 556.97,
+  "net": -8386.97
+ },
+ {
+  "id": "1793943939648-805",
+  "symbol": "JSWSTEEL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 675,
+  "entry": 1340.1,
+  "exit": 1351.7,
+  "entry_time": 1793943939648,
+  "exit_time": 1793951100000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1351.7,
+  "tp": null,
+  "high": 1351.7,
+  "low": 1336.8,
+  "nifty": 0.32,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793943939648,
+   "price": 1340.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.76,
+  "gross": -7830.0,
+  "charges": 556.97,
+  "net": -8386.97
  }
 ]
