@@ -11838,5 +11838,42 @@
   "gross": -7830.0,
   "charges": 556.97,
   "net": -8386.97
+ },
+ {
+  "id": "1793943052348-802",
+  "symbol": "SBILIFE",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1717.6,
+  "exit": 1733.7,
+  "entry_time": 1793943052348,
+  "exit_time": 1793952056953,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1745.0,
+  "tp": null,
+  "high": 1734.5,
+  "low": 1710,
+  "nifty": 0.18,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793943052348,
+   "price": 1717.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 58.78,
+  "gross": -6037.5,
+  "charges": 410.2,
+  "net": -6447.7
  }
 ]
