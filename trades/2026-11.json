@@ -12208,5 +12208,116 @@
   "gross": -3946.25,
   "charges": 253.73,
   "net": -4199.98
+ },
+ {
+  "id": "1793942438634-782",
+  "symbol": "SUZLON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 12700,
+  "entry": 37.95,
+  "exit": 38.65,
+  "entry_time": 1793942438634,
+  "exit_time": 1793957100000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 38.65,
+  "tp": 36.8,
+  "high": 38.65,
+  "low": 37.88,
+  "nifty": 0.32,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793942438634,
+   "price": 37.97
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8890.0,
+  "charges": 319.01,
+  "net": -9209.01
+ },
+ {
+  "id": "1793942438634-783",
+  "symbol": "SUZLON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 12700,
+  "entry": 37.95,
+  "exit": 38.65,
+  "entry_time": 1793942438634,
+  "exit_time": 1793957100000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 38.65,
+  "tp": 36.8,
+  "high": 38.65,
+  "low": 37.88,
+  "nifty": 0.32,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793942438634,
+   "price": 37.97
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8890.0,
+  "charges": 319.01,
+  "net": -9209.01
+ },
+ {
+  "id": "1793942438634-784",
+  "symbol": "SUZLON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 12700,
+  "entry": 37.95,
+  "exit": 38.65,
+  "entry_time": 1793942438634,
+  "exit_time": 1793957100000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 38.65,
+  "tp": null,
+  "high": 38.65,
+  "low": 37.88,
+  "nifty": 0.32,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793942438634,
+   "price": 37.97
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8890.0,
+  "charges": 319.01,
+  "net": -9209.01
  }
 ]
