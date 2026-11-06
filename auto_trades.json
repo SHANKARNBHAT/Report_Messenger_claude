@@ -809,7 +809,7 @@
    "time": 1793851841659,
    "status": "open",
    "passed": false,
-   "high": 8480.5,
+   "high": 8481,
    "low": 8274.5,
    "nifty": 1.71,
    "source": "Auto HA 2H",
@@ -2303,7 +2303,7 @@
    "time": 1793937663847,
    "status": "open",
    "passed": false,
-   "high": 920.45,
+   "high": 920.8,
    "low": 894.4,
    "nifty": -0.05,
    "source": "Auto HA 2H",
@@ -2342,7 +2342,7 @@
    "time": 1793937663847,
    "status": "open",
    "passed": false,
-   "high": 920.45,
+   "high": 920.8,
    "low": 894.4,
    "nifty": -0.05,
    "source": "Auto HA 2H",
@@ -2378,7 +2378,7 @@
    "time": 1793937663847,
    "status": "open",
    "passed": false,
-   "high": 920.45,
+   "high": 920.8,
    "low": 894.4,
    "nifty": -0.05,
    "source": "Auto HA 2H",
@@ -2562,7 +2562,7 @@
    "status": "open",
    "passed": false,
    "high": 6448.5,
-   "low": 6412.0,
+   "low": 6411.5,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2601,7 +2601,7 @@
    "status": "open",
    "passed": false,
    "high": 6448.5,
-   "low": 6412.0,
+   "low": 6411.5,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2637,7 +2637,7 @@
    "status": "open",
    "passed": false,
    "high": 6448.5,
-   "low": 6412.0,
+   "low": 6411.5,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2673,7 +2673,7 @@
    "status": "open",
    "passed": false,
    "high": 2153.8,
-   "low": 2130.4,
+   "low": 2128.8,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2712,7 +2712,7 @@
    "status": "open",
    "passed": false,
    "high": 2153.8,
-   "low": 2130.4,
+   "low": 2128.8,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2748,7 +2748,7 @@
    "status": "open",
    "passed": false,
    "high": 2153.8,
-   "low": 2130.4,
+   "low": 2128.8,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2784,7 +2784,7 @@
    "status": "open",
    "passed": false,
    "high": 918.5,
-   "low": 916.25,
+   "low": 916.2,
    "nifty": 0.43,
    "source": "Auto 2H",
    "timeframes": [
@@ -2823,7 +2823,7 @@
    "status": "open",
    "passed": false,
    "high": 918.5,
-   "low": 916.25,
+   "low": 916.2,
    "nifty": 0.43,
    "source": "Auto 2H",
    "timeframes": [
@@ -2859,7 +2859,7 @@
    "status": "open",
    "passed": false,
    "high": 394.85,
-   "low": 394.85,
+   "low": 393.55,
    "nifty": 0.46,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2898,7 +2898,7 @@
    "status": "open",
    "passed": false,
    "high": 394.85,
-   "low": 394.85,
+   "low": 393.55,
    "nifty": 0.46,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2934,7 +2934,7 @@
    "status": "open",
    "passed": false,
    "high": 394.85,
-   "low": 394.85,
+   "low": 393.55,
    "nifty": 0.46,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3210,10 +3210,159 @@
     "time": 1793941265984,
     "price": 153.78
    }
+  },
+  {
+   "id": "1793941844394-776",
+   "symbol": "TCS",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 225,
+   "entry": 2537.0,
+   "sl": 2483.4,
+   "tp": 2613.1,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 2483.4,
+   "time": 1793941844394,
+   "status": "open",
+   "passed": false,
+   "high": 2537.0,
+   "low": 2537.0,
+   "nifty": 0.41,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793941844394,
+    "price": 2537.0
+   }
+  },
+  {
+   "id": "1793941844394-777",
+   "symbol": "BRITANNIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4836.1,
+   "sl": 5010.0,
+   "tp": 4691.0,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 5010.0,
+   "time": 1793941844394,
+   "status": "open",
+   "passed": false,
+   "high": 4836.1,
+   "low": 4836.1,
+   "nifty": 0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 62.71,
+   "first_seen": {
+    "time": 1793941844394,
+    "price": 4836.1
+   }
+  },
+  {
+   "id": "1793941844394-778",
+   "symbol": "BRITANNIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4836.1,
+   "sl": 5010.0,
+   "tp": 4691.0,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 72.55,
+    "step": 24.2
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 5010.0,
+   "time": 1793941844394,
+   "status": "open",
+   "passed": false,
+   "high": 4836.1,
+   "low": 4836.1,
+   "nifty": 0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 62.71,
+   "first_seen": {
+    "time": 1793941844394,
+    "price": 4836.1
+   }
+  },
+  {
+   "id": "1793941844394-779",
+   "symbol": "BRITANNIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4836.1,
+   "sl": 5010.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 5010.0,
+   "time": 1793941844394,
+   "status": "open",
+   "passed": false,
+   "high": 4836.1,
+   "low": 4836.1,
+   "nifty": 0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 62.71,
+   "first_seen": {
+    "time": 1793941844394,
+    "price": 4836.1
+   }
   }
  ],
- "seq": 775,
+ "seq": 779,
  "log": [
+  "06 Nov 10:40  BRITANNIA: HA SELL 125 at 4836.1, SL 5010.0 (2 HOUR; eod, trail, ha)",
+  "06 Nov 10:40  TCS: RSI BUY 225 at 2537.0, SL 2483.4 (2 HOUR; eod)",
   "06 Nov 10:31  MOTHERSON: HA SELL 6150 at 153.8, SL 169.5 (2 HOUR; eod, trail, ha)",
   "06 Nov 10:31  POWERINDIA: RSI SELL 25 at 26910.0, SL 28195.0 (2 HOUR; trail, rsi)",
   "06 Nov 10:31  CGPOWER: RSI SELL 850 at 745.0, SL 812.1 (2 HOUR; trail, rsi)",
@@ -3511,12 +3660,10 @@
   "04 Nov 09:55  RBLBANK: Stop loss at 355.45 (EOD 3:15 PM)",
   "04 Nov 09:50  IRFC: HA BUY 5425 at 76.95, SL 75.5 (2 HOUR; eod, trail, ha)",
   "04 Nov 09:50  BIOCON: TSL after target at 345.85 (Hold \u00b7 trail)",
-  "04 Nov 09:45  AMBER: HA BUY 100 at 6362.0, SL 6210.0 (2 HOUR; eod, trail, ha)",
-  "04 Nov 09:35  PFC: RSI exit (2H 48.5) at 319.0 (Hold \u00b7 RSI exit)",
-  "04 Nov 09:30  CGPOWER: RSI SELL 850 at 798.65, SL 817.8 (2 HOUR; eod, trail, rsi)"
+  "04 Nov 09:45  AMBER: HA BUY 100 at 6362.0, SL 6210.0 (2 HOUR; eod, trail, ha)"
  ],
- "page_run": 1793941540192,
- "updated": 1793941540192,
+ "page_run": 1793941844394,
+ "updated": 1793941844394,
  "unattended": true,
  "peak_margin": 19750802.0
 }
