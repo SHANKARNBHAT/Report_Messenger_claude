@@ -2753,7 +2753,7 @@
    "time": 1793937663847,
    "status": "open",
    "passed": false,
-   "high": 913.3,
+   "high": 915.55,
    "low": 894.4,
    "nifty": -0.05,
    "source": "Auto HA 2H",
@@ -2792,7 +2792,7 @@
    "time": 1793937663847,
    "status": "open",
    "passed": false,
-   "high": 913.3,
+   "high": 915.55,
    "low": 894.4,
    "nifty": -0.05,
    "source": "Auto HA 2H",
@@ -2828,7 +2828,7 @@
    "time": 1793937663847,
    "status": "open",
    "passed": false,
-   "high": 913.3,
+   "high": 915.55,
    "low": 894.4,
    "nifty": -0.05,
    "source": "Auto HA 2H",
@@ -3047,7 +3047,7 @@
    "time": 1793939137632,
    "status": "open",
    "passed": false,
-   "high": 318.2,
+   "high": 319.15,
    "low": 316.75,
    "nifty": 0.49,
    "source": "Auto HA 2H",
@@ -3086,7 +3086,7 @@
    "time": 1793939137632,
    "status": "open",
    "passed": false,
-   "high": 318.2,
+   "high": 319.15,
    "low": 316.75,
    "nifty": 0.49,
    "source": "Auto HA 2H",
@@ -3122,7 +3122,7 @@
    "time": 1793939137632,
    "status": "open",
    "passed": false,
-   "high": 318.2,
+   "high": 319.15,
    "low": 316.75,
    "nifty": 0.49,
    "source": "Auto HA 2H",
@@ -3270,7 +3270,7 @@
    "status": "open",
    "passed": false,
    "high": 2153.8,
-   "low": 2136,
+   "low": 2130.4,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3309,7 +3309,7 @@
    "status": "open",
    "passed": false,
    "high": 2153.8,
-   "low": 2136,
+   "low": 2130.4,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3345,7 +3345,7 @@
    "status": "open",
    "passed": false,
    "high": 2153.8,
-   "low": 2136,
+   "low": 2130.4,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3380,7 +3380,7 @@
    "time": 1793940053931,
    "status": "open",
    "passed": false,
-   "high": 26775.0,
+   "high": 26890,
    "low": 26775.0,
    "nifty": 0.46,
    "source": "Auto 2H",
@@ -3471,10 +3471,122 @@
     "time": 1793940344318,
     "price": 916.25
    }
+  },
+  {
+   "id": "1793940938122-766",
+   "symbol": "LICI",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1400,
+   "entry": 394.85,
+   "sl": 409.85,
+   "tp": 383.0,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 409.85,
+   "time": 1793940938122,
+   "status": "open",
+   "passed": false,
+   "high": 394.85,
+   "low": 394.85,
+   "nifty": 0.46,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 59.04,
+   "first_seen": {
+    "time": 1793940938122,
+    "price": 394.85
+   }
+  },
+  {
+   "id": "1793940938122-767",
+   "symbol": "LICI",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1400,
+   "entry": 394.85,
+   "sl": 409.85,
+   "tp": 383.0,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 5.9,
+    "step": 1.95
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 409.85,
+   "time": 1793940938122,
+   "status": "open",
+   "passed": false,
+   "high": 394.85,
+   "low": 394.85,
+   "nifty": 0.46,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 59.04,
+   "first_seen": {
+    "time": 1793940938122,
+    "price": 394.85
+   }
+  },
+  {
+   "id": "1793940938122-768",
+   "symbol": "LICI",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1400,
+   "entry": 394.85,
+   "sl": 409.85,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 409.85,
+   "time": 1793940938122,
+   "status": "open",
+   "passed": false,
+   "high": 394.85,
+   "low": 394.85,
+   "nifty": 0.46,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 59.04,
+   "first_seen": {
+    "time": 1793940938122,
+    "price": 394.85
+   }
   }
  ],
- "seq": 765,
+ "seq": 768,
  "log": [
+  "06 Nov 10:25  LICI: HA SELL 1400 at 394.85, SL 409.85 (2 HOUR; eod, trail, ha)",
   "06 Nov 10:20  AUBANK: RSI exit (2H 54.6) at 916.9 (Hold \u00b7 RSI exit)",
   "06 Nov 10:15  AUBANK: RSI SELL 1000 at 916.25, SL 947.65 (2 HOUR; eod, trail, rsi)",
   "06 Nov 10:10  POWERINDIA: RSI SELL 25 at 26775.0, SL 28195.0 (2 HOUR; eod)",
@@ -3773,11 +3885,10 @@
   "04 Nov 09:15  PATANJALI: RSI BUY 1075 at 374.9, SL 369.3 (2 HOUR; eod, trail, rsi)",
   "04 Nov 09:15  NMDC: RSI SELL 6750 at 68.2, SL 69.2 (2 HOUR; eod, trail, rsi)",
   "04 Nov 09:15  ENRIN: RSI SELL 175 at 2846.6, SL 2889.3 (2 HOUR; eod, trail, rsi)",
-  "04 Nov 09:15  AXISBANK: RSI SELL 625 at 1232.7, SL 1251.2 (2 HOUR; eod, trail, rsi)",
-  "03 Nov 21:44  Chartink test OK: 14 widgets; signals Weekly 11, Daily 10, 4H 2, 2H 8; exit lists RSI below 60 24, RSI above 40 52; 5-minute bars for 220 stocks; HA signals 20; HA candles 2H 220, 4H 220, Daily 220"
+  "04 Nov 09:15  AXISBANK: RSI SELL 625 at 1232.7, SL 1251.2 (2 HOUR; eod, trail, rsi)"
  ],
- "page_run": 1793940647203,
- "updated": 1793940647203,
+ "page_run": 1793940938122,
+ "updated": 1793940938122,
  "unattended": true,
  "peak_margin": 19750802.0
 }
