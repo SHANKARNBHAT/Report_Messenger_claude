@@ -2,45 +2,6 @@
  "capital": 1000000,
  "positions": [
   {
-   "id": "1793677837339-397",
-   "symbol": "HAL",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 150,
-   "entry": 4855.0,
-   "sl": 4782.2,
-   "tp": 5000.65,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 72.8,
-    "step": 24.3
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 5025.05,
-   "time": 1793677837339,
-   "status": "open",
-   "passed": true,
-   "high": 5119.0,
-   "low": 4855.0,
-   "nifty": 0.62,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793677837339,
-    "price": 4855.0
-   }
-  },
-  {
    "id": "1793677837339-414",
    "symbol": "HDFCBANK",
    "side": "BUY",
@@ -209,7 +170,7 @@
    "time": 1793679943957,
    "status": "open",
    "passed": false,
-   "high": 5020.0,
+   "high": 5051.5,
    "low": 4726.6,
    "nifty": 0.78,
    "source": "Auto HA 2H",
@@ -245,7 +206,7 @@
    "time": 1793679943957,
    "status": "open",
    "passed": false,
-   "high": 5020.0,
+   "high": 5051.5,
    "low": 4726.6,
    "nifty": 0.78,
    "source": "Auto HA 2H",
@@ -3930,10 +3891,309 @@
     "time": 1793867144953,
     "price": 1755.6
    }
+  },
+  {
+   "id": "1793936737933-736",
+   "symbol": "INDUSTOWER",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1700,
+   "entry": 383.2,
+   "sl": 377.45,
+   "tp": 394.7,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 377.45,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 383.2,
+   "low": 383.2,
+   "nifty": -0.37,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 383.2
+   }
+  },
+  {
+   "id": "1793936737933-737",
+   "symbol": "INDUSTOWER",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1700,
+   "entry": 383.2,
+   "sl": 377.45,
+   "tp": 394.7,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 5.75,
+    "step": 1.9
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 377.45,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 383.2,
+   "low": 383.2,
+   "nifty": -0.37,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 383.2
+   }
+  },
+  {
+   "id": "1793936737933-738",
+   "symbol": "INDUSTOWER",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1700,
+   "entry": 383.2,
+   "sl": 377.45,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 377.45,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 383.2,
+   "low": 383.2,
+   "nifty": -0.37,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 383.2
+   }
+  },
+  {
+   "id": "1793936737933-739",
+   "symbol": "MPHASIS",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 275,
+   "entry": 2510.0,
+   "sl": 2472.35,
+   "tp": 2585.3,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 2472.35,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 2510.0,
+   "low": 2510.0,
+   "nifty": -0.37,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 2510.0
+   }
+  },
+  {
+   "id": "1793936737933-740",
+   "symbol": "BHARATFORG",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 500,
+   "entry": 1753.0,
+   "sl": 1833.8,
+   "tp": 1700.4,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 1833.8,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 1753.0,
+   "low": 1753.0,
+   "nifty": -0.37,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.82,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 1753.0
+   }
+  },
+  {
+   "id": "1793936737933-741",
+   "symbol": "KAYNES",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 150,
+   "entry": 3292.5,
+   "sl": 3327.5,
+   "tp": 3193.7,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 3327.5,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 3292.5,
+   "low": 3292.5,
+   "nifty": -0.37,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.15,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 3292.5
+   }
+  },
+  {
+   "id": "1793936737933-742",
+   "symbol": "KAYNES",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 150,
+   "entry": 3292.5,
+   "sl": 3327.5,
+   "tp": 3193.7,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 49.4,
+    "step": 16.45
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 3327.5,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 3292.5,
+   "low": 3292.5,
+   "nifty": -0.37,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.15,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 3292.5
+   }
+  },
+  {
+   "id": "1793936737933-743",
+   "symbol": "KAYNES",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 150,
+   "entry": 3292.5,
+   "sl": 3327.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 3327.5,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 3292.5,
+   "low": 3292.5,
+   "nifty": -0.37,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.15,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 3292.5
+   }
   }
  ],
- "seq": 735,
+ "seq": 743,
  "log": [
+  "06 Nov 09:15  KAYNES: HA SELL 150 at 3292.5, SL 3327.5 (2 HOUR; eod, trail, ha)",
+  "06 Nov 09:15  BHARATFORG: HA SELL 500 at 1753.0, SL 1833.8 (2 HOUR; eod)",
+  "06 Nov 09:15  MPHASIS: RSI BUY 275 at 2510.0, SL 2472.35 (2 HOUR; eod)",
+  "06 Nov 09:15  INDUSTOWER: RSI BUY 1700 at 383.2, SL 377.45 (2 HOUR; eod, trail, rsi)",
+  "06 Nov 09:15  HAL: TSL after target at 4961.7 (Hold \u00b7 trail)",
   "05 Nov 15:15  BHARATFORG: EOD 3:15 PM at 1749.5 (EOD 3:15 PM)",
   "05 Nov 15:15  UNIONBANK: EOD 3:15 PM at 188.68 (EOD 3:15 PM)",
   "05 Nov 15:15  MCX: EOD 3:15 PM at 3373.4 (EOD 3:15 PM)",
@@ -4228,15 +4488,10 @@
   "03 Nov 13:35  PFC: HA green exit (2H) at 317.6 (Hold \u00b7 HA green/red exit)",
   "03 Nov 13:35  PFC: HA exit (2H) at 317.6 (Hold \u00b7 HA exit)",
   "03 Nov 13:20  CONCOR: RSI exit (2H 57.1) at 430.65 (Hold \u00b7 RSI exit)",
-  "03 Nov 13:20  INDUSTOWER: Target at 394.5 (EOD 3:15 PM)",
-  "03 Nov 13:15  CONCOR: RSI SELL 1250 at 431.5, SL 437.95 (2 HOUR; eod, trail, rsi)",
-  "03 Nov 13:10  GODFRYPHLP: Stop loss at 1738.6 (Hold \u00b7 HA green/red exit)",
-  "03 Nov 13:10  GODFRYPHLP: Stop loss at 1738.6 (Hold \u00b7 HA exit)",
-  "03 Nov 13:10  GODFRYPHLP: Stop loss at 1738.6 (Hold \u00b7 trail)",
-  "03 Nov 13:10  GODFRYPHLP: Stop loss at 1738.6 (EOD 3:15 PM)"
+  "03 Nov 13:20  INDUSTOWER: Target at 394.5 (EOD 3:15 PM)"
  ],
- "page_run": 1793936451334,
- "updated": 1793936451334,
+ "page_run": 1793936737933,
+ "updated": 1793936737933,
  "unattended": true,
  "peak_margin": 19750802.0
 }
