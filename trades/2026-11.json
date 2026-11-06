@@ -12911,5 +12911,42 @@
   "gross": 1787.5,
   "charges": 335.13,
   "net": 1452.37
+ },
+ {
+  "id": "1793943052348-793",
+  "symbol": "POWERGRID",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1900,
+  "entry": 255.8,
+  "exit": 258.9,
+  "entry_time": 1793943052348,
+  "exit_time": 1793958640573,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 262.3,
+  "tp": null,
+  "high": 259,
+  "low": 254.4,
+  "nifty": 0.18,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793943052348,
+   "price": 255.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 58.55,
+  "gross": -5890.0,
+  "charges": 321.17,
+  "net": -6211.17
  }
 ]
