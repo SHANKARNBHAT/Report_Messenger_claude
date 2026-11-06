@@ -23,7 +23,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": true,
-   "high": 773.5,
+   "high": 774.5,
    "low": 700.0,
    "nifty": 0.62,
    "source": "Auto HA 2H",
@@ -59,7 +59,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 773.5,
+   "high": 774.5,
    "low": 700.0,
    "nifty": 0.62,
    "source": "Auto HA 2H",
@@ -95,7 +95,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 773.5,
+   "high": 774.5,
    "low": 700.0,
    "nifty": 0.62,
    "source": "Auto HA 2H",
@@ -998,7 +998,7 @@
    "time": 1793852138547,
    "status": "open",
    "passed": false,
-   "high": 440.8,
+   "high": 441.25,
    "low": 427.7,
    "nifty": 1.82,
    "source": "Auto HA 2H",
@@ -2384,7 +2384,7 @@
    "time": 1793857542630,
    "status": "open",
    "passed": false,
-   "high": 3439.8,
+   "high": 3446,
    "low": 3306,
    "nifty": 1.73,
    "source": "Auto 2H",
@@ -2607,7 +2607,7 @@
    "status": "open",
    "passed": false,
    "high": 3292.5,
-   "low": 3225.1,
+   "low": 3218,
    "nifty": -0.37,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2646,7 +2646,7 @@
    "status": "open",
    "passed": false,
    "high": 3292.5,
-   "low": 3225.1,
+   "low": 3218,
    "nifty": -0.37,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2682,7 +2682,7 @@
    "status": "open",
    "passed": false,
    "high": 3292.5,
-   "low": 3225.1,
+   "low": 3218,
    "nifty": -0.37,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2753,7 +2753,7 @@
    "time": 1793937663847,
    "status": "open",
    "passed": false,
-   "high": 911.75,
+   "high": 913.3,
    "low": 894.4,
    "nifty": -0.05,
    "source": "Auto HA 2H",
@@ -2792,7 +2792,7 @@
    "time": 1793937663847,
    "status": "open",
    "passed": false,
-   "high": 911.75,
+   "high": 913.3,
    "low": 894.4,
    "nifty": -0.05,
    "source": "Auto HA 2H",
@@ -2828,7 +2828,7 @@
    "time": 1793937663847,
    "status": "open",
    "passed": false,
-   "high": 911.75,
+   "high": 913.3,
    "low": 894.4,
    "nifty": -0.05,
    "source": "Auto HA 2H",
@@ -3158,7 +3158,7 @@
    "time": 1793939747157,
    "status": "open",
    "passed": false,
-   "high": 6412.0,
+   "high": 6441,
    "low": 6412.0,
    "nifty": 0.3,
    "source": "Auto HA 2H",
@@ -3197,7 +3197,7 @@
    "time": 1793939747157,
    "status": "open",
    "passed": false,
-   "high": 6412.0,
+   "high": 6441,
    "low": 6412.0,
    "nifty": 0.3,
    "source": "Auto HA 2H",
@@ -3233,7 +3233,7 @@
    "time": 1793939747157,
    "status": "open",
    "passed": false,
-   "high": 6412.0,
+   "high": 6441,
    "low": 6412.0,
    "nifty": 0.3,
    "source": "Auto HA 2H",
@@ -3270,7 +3270,7 @@
    "status": "open",
    "passed": false,
    "high": 2153.8,
-   "low": 2153.8,
+   "low": 2136,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3309,7 +3309,7 @@
    "status": "open",
    "passed": false,
    "high": 2153.8,
-   "low": 2153.8,
+   "low": 2136,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3345,7 +3345,7 @@
    "status": "open",
    "passed": false,
    "high": 2153.8,
-   "low": 2153.8,
+   "low": 2136,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3471,46 +3471,11 @@
     "time": 1793940344318,
     "price": 916.25
    }
-  },
-  {
-   "id": "1793940344318-765",
-   "symbol": "AUBANK",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 1000,
-   "entry": 916.25,
-   "sl": 947.65,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "rsi",
-   "system": "RSI",
-   "stop": 947.65,
-   "time": 1793940344318,
-   "status": "open",
-   "passed": false,
-   "high": 916.25,
-   "low": 916.25,
-   "nifty": 0.43,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bearish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793940344318,
-    "price": 916.25
-   }
   }
  ],
  "seq": 765,
  "log": [
+  "06 Nov 10:20  AUBANK: RSI exit (2H 54.6) at 916.9 (Hold \u00b7 RSI exit)",
   "06 Nov 10:15  AUBANK: RSI SELL 1000 at 916.25, SL 947.65 (2 HOUR; eod, trail, rsi)",
   "06 Nov 10:10  POWERINDIA: RSI SELL 25 at 26775.0, SL 28195.0 (2 HOUR; eod)",
   "06 Nov 10:05  TIINDIA: HA SELL 200 at 2153.8, SL 2307.6 (2 HOUR; eod, trail, ha)",
@@ -3809,11 +3774,10 @@
   "04 Nov 09:15  NMDC: RSI SELL 6750 at 68.2, SL 69.2 (2 HOUR; eod, trail, rsi)",
   "04 Nov 09:15  ENRIN: RSI SELL 175 at 2846.6, SL 2889.3 (2 HOUR; eod, trail, rsi)",
   "04 Nov 09:15  AXISBANK: RSI SELL 625 at 1232.7, SL 1251.2 (2 HOUR; eod, trail, rsi)",
-  "03 Nov 21:44  Chartink test OK: 14 widgets; signals Weekly 11, Daily 10, 4H 2, 2H 8; exit lists RSI below 60 24, RSI above 40 52; 5-minute bars for 220 stocks; HA signals 20; HA candles 2H 220, 4H 220, Daily 220",
-  "03 Nov 15:20  PFC: Stop loss at 315.65 (Hold \u00b7 trail)"
+  "03 Nov 21:44  Chartink test OK: 14 widgets; signals Weekly 11, Daily 10, 4H 2, 2H 8; exit lists RSI below 60 24, RSI above 40 52; 5-minute bars for 220 stocks; HA signals 20; HA candles 2H 220, 4H 220, Daily 220"
  ],
- "page_run": 1793940344318,
- "updated": 1793940344318,
+ "page_run": 1793940647203,
+ "updated": 1793940647203,
  "unattended": true,
  "peak_margin": 19750802.0
 }
