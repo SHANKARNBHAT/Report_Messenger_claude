@@ -205,11 +205,11 @@
    },
    "style": "trail",
    "system": "HA",
-   "stop": 541.5,
+   "stop": 544.1,
    "time": 1793681490455,
    "status": "open",
    "passed": true,
-   "high": 551.75,
+   "high": 552.9,
    "low": 519.6,
    "nifty": 0.85,
    "source": "Auto HA 2H",
@@ -788,45 +788,6 @@
    }
   },
   {
-   "id": "1793851841659-643",
-   "symbol": "MOTHERSON",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 6150,
-   "entry": 164.6,
-   "sl": 157.85,
-   "tp": 169.55,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 2.45,
-    "step": 0.8
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 157.85,
-   "time": 1793851841659,
-   "status": "open",
-   "passed": false,
-   "high": 169.49,
-   "low": 158.38,
-   "nifty": 1.71,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793851841659,
-    "price": 164.6
-   }
-  },
-  {
    "id": "1793851841659-646",
    "symbol": "APOLLOHOSP",
    "side": "SELL",
@@ -963,7 +924,7 @@
    "status": "open",
    "passed": true,
    "high": 821.6,
-   "low": 743,
+   "low": 740.3,
    "nifty": 1.82,
    "source": "Auto 2H",
    "timeframes": [
@@ -999,7 +960,7 @@
    "status": "open",
    "passed": false,
    "high": 821.6,
-   "low": 743,
+   "low": 740.3,
    "nifty": 1.82,
    "source": "Auto 2H",
    "timeframes": [
@@ -1032,42 +993,6 @@
     "step": 2.2
    },
    "style": "trail",
-   "system": "HA",
-   "stop": 458.55,
-   "time": 1793852138547,
-   "status": "open",
-   "passed": false,
-   "high": 440.7,
-   "low": 427.7,
-   "nifty": 1.82,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 51.77,
-   "first_seen": {
-    "time": 1793852138547,
-    "price": 435.3
-   }
-  },
-  {
-   "id": "1793852138547-656",
-   "symbol": "OIL",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 1400,
-   "entry": 435.3,
-   "sl": 458.55,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
    "system": "HA",
    "stop": 458.55,
    "time": 1793852138547,
@@ -2940,7 +2865,7 @@
    "status": "open",
    "passed": false,
    "high": 754.05,
-   "low": 743,
+   "low": 740.3,
    "nifty": 0.12,
    "source": "Auto 2H",
    "timeframes": [
@@ -2975,8 +2900,8 @@
    "time": 1793938540975,
    "status": "open",
    "passed": false,
-   "high": 3123.1,
-   "low": 3110,
+   "high": 3123.9,
+   "low": 3106.7,
    "nifty": 0.22,
    "source": "Auto 2H",
    "timeframes": [
@@ -3014,8 +2939,8 @@
    "time": 1793938540975,
    "status": "open",
    "passed": false,
-   "high": 3123.1,
-   "low": 3110,
+   "high": 3123.9,
+   "low": 3106.7,
    "nifty": 0.22,
    "source": "Auto 2H",
    "timeframes": [
@@ -3050,8 +2975,8 @@
    "time": 1793938540975,
    "status": "open",
    "passed": false,
-   "high": 3123.1,
-   "low": 3110,
+   "high": 3123.9,
+   "low": 3106.7,
    "nifty": 0.22,
    "source": "Auto 2H",
    "timeframes": [
@@ -3086,7 +3011,7 @@
    "time": 1793938845493,
    "status": "open",
    "passed": false,
-   "high": 1455.8,
+   "high": 1456.1,
    "low": 1451.0,
    "nifty": 0.47,
    "source": "Auto 2H",
@@ -3213,10 +3138,236 @@
     "time": 1793939137632,
     "price": 318.2
    }
+  },
+  {
+   "id": "1793939747157-756",
+   "symbol": "AMBER",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 100,
+   "entry": 6412.0,
+   "sl": 6605.5,
+   "tp": 6219.65,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 6605.5,
+   "time": 1793939747157,
+   "status": "open",
+   "passed": false,
+   "high": 6412.0,
+   "low": 6412.0,
+   "nifty": 0.3,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 55.68,
+   "first_seen": {
+    "time": 1793939747157,
+    "price": 6412.0
+   }
+  },
+  {
+   "id": "1793939747157-757",
+   "symbol": "AMBER",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 100,
+   "entry": 6412.0,
+   "sl": 6605.5,
+   "tp": 6219.65,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 96.2,
+    "step": 32.05
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 6605.5,
+   "time": 1793939747157,
+   "status": "open",
+   "passed": false,
+   "high": 6412.0,
+   "low": 6412.0,
+   "nifty": 0.3,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 55.68,
+   "first_seen": {
+    "time": 1793939747157,
+    "price": 6412.0
+   }
+  },
+  {
+   "id": "1793939747157-758",
+   "symbol": "AMBER",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 100,
+   "entry": 6412.0,
+   "sl": 6605.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 6605.5,
+   "time": 1793939747157,
+   "status": "open",
+   "passed": false,
+   "high": 6412.0,
+   "low": 6412.0,
+   "nifty": 0.3,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 55.68,
+   "first_seen": {
+    "time": 1793939747157,
+    "price": 6412.0
+   }
+  },
+  {
+   "id": "1793939747157-759",
+   "symbol": "TIINDIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2153.8,
+   "sl": 2307.6,
+   "tp": 2089.2,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 2307.6,
+   "time": 1793939747157,
+   "status": "open",
+   "passed": false,
+   "high": 2153.8,
+   "low": 2153.8,
+   "nifty": 0.3,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 58.78,
+   "first_seen": {
+    "time": 1793939747157,
+    "price": 2153.8
+   }
+  },
+  {
+   "id": "1793939747157-760",
+   "symbol": "TIINDIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2153.8,
+   "sl": 2307.6,
+   "tp": 2089.2,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 32.3,
+    "step": 10.75
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 2307.6,
+   "time": 1793939747157,
+   "status": "open",
+   "passed": false,
+   "high": 2153.8,
+   "low": 2153.8,
+   "nifty": 0.3,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 58.78,
+   "first_seen": {
+    "time": 1793939747157,
+    "price": 2153.8
+   }
+  },
+  {
+   "id": "1793939747157-761",
+   "symbol": "TIINDIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2153.8,
+   "sl": 2307.6,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 2307.6,
+   "time": 1793939747157,
+   "status": "open",
+   "passed": false,
+   "high": 2153.8,
+   "low": 2153.8,
+   "nifty": 0.3,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 58.78,
+   "first_seen": {
+    "time": 1793939747157,
+    "price": 2153.8
+   }
   }
  ],
- "seq": 755,
+ "seq": 761,
  "log": [
+  "06 Nov 10:05  TIINDIA: HA SELL 200 at 2153.8, SL 2307.6 (2 HOUR; eod, trail, ha)",
+  "06 Nov 10:05  AMBER: HA SELL 100 at 6412.0, SL 6605.5 (2 HOUR; eod, trail, ha)",
+  "06 Nov 10:05  OIL: HA exit (2H) at 440.35 (Hold \u00b7 HA exit)",
+  "06 Nov 10:05  MOTHERSON: Stop loss at 157.85 (Hold \u00b7 trail)",
   "06 Nov 10:01  ASTRAL: TSL after target at 1237.0 (Hold \u00b7 trail)",
   "06 Nov 09:55  NATIONALUM: HA SELL 1875 at 318.2, SL 330.35 (2 HOUR; eod, trail, ha)",
   "06 Nov 09:50  HCLTECH: RSI BUY 400 at 1451.0, SL 1429.25 (2 HOUR; eod)",
@@ -3512,14 +3663,10 @@
   "03 Nov 21:44  Chartink test OK: 14 widgets; signals Weekly 11, Daily 10, 4H 2, 2H 8; exit lists RSI below 60 24, RSI above 40 52; 5-minute bars for 220 stocks; HA signals 20; HA candles 2H 220, 4H 220, Daily 220",
   "03 Nov 15:20  PFC: Stop loss at 315.65 (Hold \u00b7 trail)",
   "03 Nov 15:20  FORCEMOT: RSI exit (2H 59.9) at 17765.0 (Hold \u00b7 RSI exit)",
-  "03 Nov 15:15  IDFCFIRSTB: EOD 3:15 PM at 72.92 (EOD 3:15 PM)",
-  "03 Nov 15:15  TCS: EOD 3:15 PM at 2492.8 (EOD 3:15 PM)",
-  "03 Nov 15:15  INDIANB: EOD 3:15 PM at 847.95 (EOD 3:15 PM)",
-  "03 Nov 15:15  CONCOR: EOD 3:15 PM at 420.25 (EOD 3:15 PM)",
-  "03 Nov 15:15  AUROPHARMA: EOD 3:15 PM at 1684.9 (EOD 3:15 PM)"
+  "03 Nov 15:15  IDFCFIRSTB: EOD 3:15 PM at 72.92 (EOD 3:15 PM)"
  ],
- "page_run": 1793939462721,
- "updated": 1793939462721,
+ "page_run": 1793939747157,
+ "updated": 1793939747157,
  "unattended": true,
  "peak_margin": 19750802.0
 }

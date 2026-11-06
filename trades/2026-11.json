@@ -10136,5 +10136,79 @@
   "gross": 64982.5,
   "charges": 377.18,
   "net": 64605.32
+ },
+ {
+  "id": "1793851841659-643",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 164.6,
+  "exit": 157.85,
+  "entry_time": 1793851841659,
+  "exit_time": 1793939100000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 157.85,
+  "tp": 169.55,
+  "high": 169.49,
+  "low": 157.85,
+  "nifty": 1.71,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793851841659,
+   "price": 164.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -41512.5,
+  "charges": 595.66,
+  "net": -42108.16
+ },
+ {
+  "id": "1793852138547-656",
+  "symbol": "OIL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1400,
+  "entry": 435.3,
+  "exit": 440.35,
+  "entry_time": 1793852138547,
+  "exit_time": 1793939747157,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 458.55,
+  "tp": null,
+  "high": 440.7,
+  "low": 427.7,
+  "nifty": 1.82,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793852138547,
+   "price": 435.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 51.77,
+  "gross": -7070.0,
+  "charges": 390.71,
+  "net": -7460.71
  }
 ]
