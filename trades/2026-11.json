@@ -10913,5 +10913,42 @@
   "gross": 7193.75,
   "charges": 321.02,
   "net": 6872.73
+ },
+ {
+  "id": "1793939747157-759",
+  "symbol": "TIINDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 2153.8,
+  "exit": 2089.2,
+  "entry_time": 1793939747157,
+  "exit_time": 1793942400000,
+  "reason": "Target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 2307.6,
+  "tp": 2089.2,
+  "high": 2153.8,
+  "low": 2089.2,
+  "nifty": 0.3,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793939747157,
+   "price": 2153.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 58.78,
+  "gross": 12920.0,
+  "charges": 289.26,
+  "net": 12630.74
  }
 ]
