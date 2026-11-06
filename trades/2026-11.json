@@ -11061,5 +11061,116 @@
   "gross": 19277.5,
   "charges": 444.9,
   "net": 18832.6
+ },
+ {
+  "id": "1793853050893-695",
+  "symbol": "PERSISTENT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 6203.0,
+  "exit": 6107.0,
+  "entry_time": 1793853050893,
+  "exit_time": 1793946944223,
+  "reason": "RSI exit (2H 60.0)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 5980.0,
+  "tp": null,
+  "high": 6240,
+  "low": 6101,
+  "nifty": 1.85,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793853050893,
+   "price": 6203.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12000.0,
+  "charges": 477.62,
+  "net": -12477.62
+ },
+ {
+  "id": "1793939747157-760",
+  "symbol": "TIINDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 2153.8,
+  "exit": 2089.25,
+  "entry_time": 1793939747157,
+  "exit_time": 1793946300000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 2307.6,
+  "tp": 2089.2,
+  "high": 2153.8,
+  "low": 2056.8,
+  "nifty": 0.3,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793939747157,
+   "price": 2153.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 58.78,
+  "gross": 12910.0,
+  "charges": 289.26,
+  "net": 12620.74
+ },
+ {
+  "id": "1793941265984-772",
+  "symbol": "POWERINDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 25,
+  "entry": 26910.0,
+  "exit": 27015.0,
+  "entry_time": 1793941265984,
+  "exit_time": 1793946944223,
+  "reason": "RSI exit (2H 40.5)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 28195.0,
+  "tp": null,
+  "high": 27035,
+  "low": 26765,
+  "nifty": 0.61,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793940053931,
+   "price": 26775.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -2625.0,
+  "charges": 426.19,
+  "net": -3051.19
  }
 ]
