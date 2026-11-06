@@ -9655,5 +9655,153 @@
   "gross": -5752.5,
   "charges": 510.35,
   "net": -6262.85
+ },
+ {
+  "id": "1793683919570-489",
+  "symbol": "PAYTM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 725,
+  "entry": 1697.0,
+  "exit": 1765.3,
+  "entry_time": 1793683919570,
+  "exit_time": 1793937338009,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1640.9,
+  "tp": null,
+  "high": 1809,
+  "low": 1693.6,
+  "nifty": 0.96,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793683919570,
+   "price": 1697.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 49.59,
+  "gross": 49517.5,
+  "charges": 765.93,
+  "net": 48751.57
+ },
+ {
+  "id": "1793683919570-490",
+  "symbol": "PAYTM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 725,
+  "entry": 1697.0,
+  "exit": 1765.3,
+  "entry_time": 1793683919570,
+  "exit_time": 1793937338009,
+  "reason": "HA green exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha_green",
+  "passed": false,
+  "carried": false,
+  "sl": 1640.9,
+  "tp": null,
+  "high": 1809,
+  "low": 1693.6,
+  "nifty": 0.96,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793683919570,
+   "price": 1697.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 49.59,
+  "gross": 49517.5,
+  "charges": 765.93,
+  "net": 48751.57
+ },
+ {
+  "id": "1793767847804-575",
+  "symbol": "SAGILITY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 12000,
+  "entry": 43.75,
+  "exit": 43.05,
+  "entry_time": 1793767847804,
+  "exit_time": 1793937338009,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 42.0,
+  "tp": null,
+  "high": 44.29,
+  "low": 42.98,
+  "nifty": 0.19,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793767847804,
+   "price": 43.74
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 40.62,
+  "gross": -8400.0,
+  "charges": 338.49,
+  "net": -8738.49
+ },
+ {
+  "id": "1793768461201-586",
+  "symbol": "POWERINDIA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 28395.0,
+  "exit": 27100.0,
+  "entry_time": 1793768461201,
+  "exit_time": 1793936700000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 27100.0,
+  "tp": 29246.85,
+  "high": 29020,
+  "low": 27100.0,
+  "nifty": 0.04,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793768461201,
+   "price": 28395.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 46.65,
+  "gross": -32375.0,
+  "charges": 430.11,
+  "net": -32805.11
  }
 ]
