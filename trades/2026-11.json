@@ -12319,5 +12319,79 @@
   "gross": -8890.0,
   "charges": 319.01,
   "net": -9209.01
+ },
+ {
+  "id": "1793937663847-745",
+  "symbol": "HINDALCO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 700,
+  "entry": 894.4,
+  "exit": 946.6,
+  "entry_time": 1793937663847,
+  "exit_time": 1793957400000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 946.6,
+  "tp": 867.55,
+  "high": 946.6,
+  "low": 894.4,
+  "nifty": -0.05,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793937663847,
+   "price": 894.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 61.11,
+  "gross": -36540.0,
+  "charges": 401.32,
+  "net": -36941.32
+ },
+ {
+  "id": "1793937663847-746",
+  "symbol": "HINDALCO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 700,
+  "entry": 894.4,
+  "exit": 946.6,
+  "entry_time": 1793937663847,
+  "exit_time": 1793957400000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 946.6,
+  "tp": 867.55,
+  "high": 946.6,
+  "low": 894.4,
+  "nifty": -0.05,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793937663847,
+   "price": 894.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 61.11,
+  "gross": -36540.0,
+  "charges": 401.32,
+  "net": -36941.32
  }
 ]
