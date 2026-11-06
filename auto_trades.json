@@ -23,7 +23,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": true,
-   "high": 779.1,
+   "high": 779.25,
    "low": 700.0,
    "nifty": 0.62,
    "source": "Auto HA 2H",
@@ -59,7 +59,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 779.1,
+   "high": 779.25,
    "low": 700.0,
    "nifty": 0.62,
    "source": "Auto HA 2H",
@@ -95,7 +95,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 779.1,
+   "high": 779.25,
    "low": 700.0,
    "nifty": 0.62,
    "source": "Auto HA 2H",
@@ -134,7 +134,7 @@
    "time": 1793678456917,
    "status": "open",
    "passed": true,
-   "high": 1295.8,
+   "high": 1299.3,
    "low": 1220.3,
    "nifty": 0.74,
    "source": "Auto HA 2H",
@@ -248,7 +248,7 @@
    "time": 1793682054415,
    "status": "open",
    "passed": true,
-   "high": 1537.6,
+   "high": 1539.6,
    "low": 1407.2,
    "nifty": 0.93,
    "source": "Auto 2H",
@@ -482,45 +482,6 @@
    "first_seen": {
     "time": 1793767847804,
     "price": 43.74
-   }
-  },
-  {
-   "id": "1793769938701-597",
-   "symbol": "PFC",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 1300,
-   "entry": 321.55,
-   "sl": 315.5,
-   "tp": 331.2,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 4.8,
-    "step": 1.6
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 326.4,
-   "time": 1793769938701,
-   "status": "open",
-   "passed": true,
-   "high": 331.8,
-   "low": 316.05,
-   "nifty": 0.17,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 44.99,
-   "first_seen": {
-    "time": 1793769938701,
-    "price": 321.55
    }
   },
   {
@@ -1299,7 +1260,7 @@
    "status": "open",
    "passed": false,
    "high": 6240,
-   "low": 6101,
+   "low": 6092,
    "nifty": 1.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -1313,42 +1274,6 @@
    "first_seen": {
     "time": 1793853050893,
     "price": 6203.0
-   }
-  },
-  {
-   "id": "1793853050893-698",
-   "symbol": "TATAELXSI",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 125,
-   "entry": 3836.3,
-   "sl": 3707.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "rsi",
-   "system": "RSI",
-   "stop": 3707.0,
-   "time": 1793853050893,
-   "status": "open",
-   "passed": false,
-   "high": 3967.9,
-   "low": 3805.8,
-   "nifty": 1.85,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793853050893,
-    "price": 3836.3
    }
   },
   {
@@ -3691,6 +3616,8 @@
  ],
  "seq": 808,
  "log": [
+  "06 Nov 12:50  TATAELXSI: RSI exit (2H 59.8) at 3865.4 (Hold \u00b7 RSI exit)",
+  "06 Nov 12:50  PFC: TSL after target at 326.4 (Hold \u00b7 trail)",
   "06 Nov 12:31  SRF: Stop loss at 1.7e+308 (Hold \u00b7 HA exit)",
   "06 Nov 12:31  SRF: Stop loss at 1.7e+308 (Hold \u00b7 trail)",
   "06 Nov 12:31  SRF: Stop loss at 1.7e+308 (EOD 3:15 PM)",
@@ -3988,12 +3915,10 @@
   "04 Nov 11:00  BRITANNIA: TSL after target at 4910.05 (Hold \u00b7 trail)",
   "04 Nov 10:55  PFC: HA BUY 1300 at 321.55, SL 315.5 (2 HOUR; eod, trail, ha)",
   "04 Nov 10:50  HDFCLIFE: HA BUY 1100 at 529.0, SL 519.6 (2 HOUR; eod, ha)",
-  "04 Nov 10:50  TCS: Stop loss at 2454.6 (Hold \u00b7 trail)",
-  "04 Nov 10:45  WIPRO: HA SELL 3000 at 195.4, SL 197.75 (2 HOUR; eod, trail, ha)",
-  "04 Nov 10:35  TCS: Stop loss at 2461.6 (EOD 3:15 PM)"
+  "04 Nov 10:50  TCS: Stop loss at 2454.6 (Hold \u00b7 trail)"
  ],
- "page_run": 1793949338657,
- "updated": 1793949338657,
+ "page_run": 1793949642976,
+ "updated": 1793949642976,
  "unattended": true,
  "peak_margin": 19750802.0
 }
