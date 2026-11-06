@@ -10062,5 +10062,42 @@
   "gross": -18562.5,
   "charges": 630.48,
   "net": -19192.98
+ },
+ {
+  "id": "1793867144953-734",
+  "symbol": "BHARATFORG",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1755.6,
+  "exit": 1711.7,
+  "entry_time": 1793867144953,
+  "exit_time": 1793938200000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1884.7,
+  "tp": 1702.95,
+  "high": 1778.3,
+  "low": 1682.8,
+  "nifty": 3.06,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793867144953,
+   "price": 1755.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 52.9,
+  "gross": 21950.0,
+  "charges": 540.65,
+  "net": 21409.35
  }
 ]
