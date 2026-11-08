@@ -45,6 +45,7 @@ from datetime import datetime, time, timedelta
 from pathlib import Path
 
 import futures_simulator as fs
+from chartink_dashboard import NO_VALUE
 
 TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY")
 # The timeframes whose signals are traded; the others are only recorded, as "Timeframe not traded".
@@ -310,7 +311,9 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
         due = ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS else None
         if due and (result["status"] != "closed" or due["exit_time"] < result["exit_time"]):
             result = {**result, **due, "status": "closed"}
-        if result["status"] == "closed":
+        if result["status"] == "closed" and not 0 < result["exit"] < NO_VALUE:
+            note(f"{position['symbol']}: ignored a {result['reason']} exit at {result['exit']} (bad price)")
+        elif result["status"] == "closed":
             close(files, account, position, result["exit"], result["exit_time"], result["reason"],
                   result.get("high"), result.get("low"))
             note(f"{position['symbol']}: {result['reason']} at {result['exit']} ({fs.BOT_STYLES[position['style']]})")

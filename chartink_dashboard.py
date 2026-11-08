@@ -278,7 +278,8 @@ def fetch_price_bars(link: str, size: int = PRICE_WIDGET_BARS) -> dict[str, list
                         for part in ("open", "high", "low", "close")]
                 if any(series is None or len(series) != len(starts) for series in ohlc):
                     continue
-                bars[group.get("name")] = [row for row in zip(starts, *ohlc) if None not in row]
+                bars[group.get("name")] = [row for row in zip(starts, *ohlc)
+                                           if all(v is not None and v < NO_VALUE for v in row)]
     return bars
 
 
