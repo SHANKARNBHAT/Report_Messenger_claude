@@ -1,0 +1,37 @@
+[
+ {
+  "id": "1793764932205-1",
+  "symbol": "CGPOWER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 850,
+  "entry": 798,
+  "exit": 809.95,
+  "entry_time": 1793764932205,
+  "exit_time": 1793766000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "gross": -10157.500000000038,
+  "charges": 429.6329114550001,
+  "net": -10587.132911455039,
+  "style": "trail",
+  "sl": 809.95,
+  "tp": 774.05,
+  "carried": true,
+  "high": 809.95,
+  "low": 798,
+  "nifty": 0.45,
+  "passed": false,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "first_seen": {
+   "time": 1793764856834,
+   "price": 798.65
+  },
+  "agrees": "Not on list"
+ }
+]
