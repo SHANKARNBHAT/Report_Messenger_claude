@@ -788,6 +788,81 @@
    }
   },
   {
+   "id": "1793851841659-649",
+   "symbol": "CUMMINSIND",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 4035.2,
+   "sl": 4755.0,
+   "tp": 3914.15,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 60.55,
+    "step": 20.2
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 3974.7,
+   "time": 1793851841659,
+   "status": "open",
+   "passed": true,
+   "high": 4277.8,
+   "low": 3902.1,
+   "nifty": 1.71,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 51.0,
+   "first_seen": {
+    "time": 1793851841659,
+    "price": 4035.2
+   }
+  },
+  {
+   "id": "1793851841659-650",
+   "symbol": "CUMMINSIND",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 4035.2,
+   "sl": 4755.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 4755.0,
+   "time": 1793851841659,
+   "status": "open",
+   "passed": false,
+   "high": 4277.8,
+   "low": 3902.1,
+   "nifty": 1.71,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 51.0,
+   "first_seen": {
+    "time": 1793851841659,
+    "price": 4035.2
+   }
+  },
+  {
    "id": "1793852138547-658",
    "symbol": "ONGC",
    "side": "SELL",
@@ -824,6 +899,120 @@
    "first_seen": {
     "time": 1793852138547,
     "price": 229.53
+   }
+  },
+  {
+   "id": "1793852138547-652",
+   "symbol": "CGPOWER",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 850,
+   "entry": 818.35,
+   "sl": 840.85,
+   "tp": 793.8,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 12.3,
+    "step": 4.1
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 752.5,
+   "time": 1793852138547,
+   "status": "open",
+   "passed": true,
+   "high": 821.6,
+   "low": 736.1,
+   "nifty": 1.82,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793852138547,
+    "price": 818.35
+   }
+  },
+  {
+   "id": "1793852138547-653",
+   "symbol": "CGPOWER",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 850,
+   "entry": 818.35,
+   "sl": 840.85,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 840.85,
+   "time": 1793852138547,
+   "status": "open",
+   "passed": false,
+   "high": 821.6,
+   "low": 736.1,
+   "nifty": 1.82,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793852138547,
+    "price": 818.35
+   }
+  },
+  {
+   "id": "1793852138547-655",
+   "symbol": "OIL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1400,
+   "entry": 435.3,
+   "sl": 458.55,
+   "tp": 422.25,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 6.55,
+    "step": 2.2
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 458.55,
+   "time": 1793852138547,
+   "status": "open",
+   "passed": false,
+   "high": 441.25,
+   "low": 427.7,
+   "nifty": 1.82,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 51.77,
+   "first_seen": {
+    "time": 1793852138547,
+    "price": 435.3
    }
   },
   {
@@ -974,6 +1163,156 @@
    "first_seen": {
     "time": 1793852439677,
     "price": 59.5
+   }
+  },
+  {
+   "id": "1793852742831-673",
+   "symbol": "POWERINDIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 25,
+   "entry": 28195.0,
+   "sl": 29020.0,
+   "tp": 27349.15,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 422.9,
+    "step": 141.0
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 27139.9,
+   "time": 1793852742831,
+   "status": "open",
+   "passed": true,
+   "high": 28355,
+   "low": 26715,
+   "nifty": 1.95,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793852742831,
+    "price": 28195.0
+   }
+  },
+  {
+   "id": "1793852742831-674",
+   "symbol": "POWERINDIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 25,
+   "entry": 28195.0,
+   "sl": 29020.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 29020.0,
+   "time": 1793852742831,
+   "status": "open",
+   "passed": false,
+   "high": 28355,
+   "low": 26715,
+   "nifty": 1.95,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793852742831,
+    "price": 28195.0
+   }
+  },
+  {
+   "id": "1793852742831-676",
+   "symbol": "GVT&D",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4148.4,
+   "sl": 4263.4,
+   "tp": 4023.95,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 62.25,
+    "step": 20.75
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 3949.3,
+   "time": 1793852742831,
+   "status": "open",
+   "passed": true,
+   "high": 4176.5,
+   "low": 3882.8,
+   "nifty": 1.95,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 57.47,
+   "first_seen": {
+    "time": 1793852742831,
+    "price": 4148.4
+   }
+  },
+  {
+   "id": "1793852742831-677",
+   "symbol": "GVT&D",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4148.4,
+   "sl": 4263.4,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 4263.4,
+   "time": 1793852742831,
+   "status": "open",
+   "passed": false,
+   "high": 4176.5,
+   "low": 3882.8,
+   "nifty": 1.95,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 57.47,
+   "first_seen": {
+    "time": 1793852742831,
+    "price": 4148.4
    }
   },
   {
@@ -1280,6 +1619,45 @@
    }
   },
   {
+   "id": "1793853339876-703",
+   "symbol": "COALINDIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1350,
+   "entry": 396.5,
+   "sl": 402.45,
+   "tp": 384.6,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 5.95,
+    "step": 2.0
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 402.45,
+   "time": 1793853339876,
+   "status": "open",
+   "passed": false,
+   "high": 397.6,
+   "low": 392,
+   "nifty": 1.79,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793853339876,
+    "price": 396.5
+   }
+  },
+  {
    "id": "1793853645768-706",
    "symbol": "HCLTECH",
    "side": "BUY",
@@ -1427,6 +1805,81 @@
    "first_seen": {
     "time": 1793853939497,
     "price": 540.6
+   }
+  },
+  {
+   "id": "1793853939497-712",
+   "symbol": "ABB",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 6603.0,
+   "sl": 6805.0,
+   "tp": 6404.9,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 99.05,
+    "step": 33.0
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 6805.0,
+   "time": 1793853939497,
+   "status": "open",
+   "passed": false,
+   "high": 6676,
+   "low": 6428,
+   "nifty": 1.79,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.43,
+   "first_seen": {
+    "time": 1793853939497,
+    "price": 6603.0
+   }
+  },
+  {
+   "id": "1793853939497-713",
+   "symbol": "ABB",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 6603.0,
+   "sl": 6805.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 6805.0,
+   "time": 1793853939497,
+   "status": "open",
+   "passed": false,
+   "high": 6676,
+   "low": 6428,
+   "nifty": 1.79,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.43,
+   "first_seen": {
+    "time": 1793853939497,
+    "price": 6603.0
    }
   },
   {
@@ -1769,6 +2222,300 @@
    }
   },
   {
+   "id": "1793936737933-736",
+   "symbol": "INDUSTOWER",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1700,
+   "entry": 383.2,
+   "sl": 377.45,
+   "tp": 394.7,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 377.45,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 383.65,
+   "low": 380.35,
+   "nifty": -0.37,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 383.2
+   }
+  },
+  {
+   "id": "1793936737933-741",
+   "symbol": "KAYNES",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 150,
+   "entry": 3292.5,
+   "sl": 3327.5,
+   "tp": 3193.7,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 3327.5,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 3292.5,
+   "low": 3218,
+   "nifty": -0.37,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.15,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 3292.5
+   }
+  },
+  {
+   "id": "1793936737933-742",
+   "symbol": "KAYNES",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 150,
+   "entry": 3292.5,
+   "sl": 3327.5,
+   "tp": 3193.7,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 49.4,
+    "step": 16.45
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 3327.5,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 3292.5,
+   "low": 3218,
+   "nifty": -0.37,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.15,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 3292.5
+   }
+  },
+  {
+   "id": "1793936737933-743",
+   "symbol": "KAYNES",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 150,
+   "entry": 3292.5,
+   "sl": 3327.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 3327.5,
+   "time": 1793936737933,
+   "status": "open",
+   "passed": false,
+   "high": 3292.5,
+   "low": 3218,
+   "nifty": -0.37,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 52.15,
+   "first_seen": {
+    "time": 1793936737933,
+    "price": 3292.5
+   }
+  },
+  {
+   "id": "1793937941144-748",
+   "symbol": "CGPOWER",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 850,
+   "entry": 754.05,
+   "sl": 812.1,
+   "tp": 731.45,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 812.1,
+   "time": 1793937941144,
+   "status": "open",
+   "passed": false,
+   "high": 754.05,
+   "low": 736.1,
+   "nifty": 0.12,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793937941144,
+    "price": 754.05
+   }
+  },
+  {
+   "id": "1793938540975-749",
+   "symbol": "SUPREMEIND",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 175,
+   "entry": 3117.0,
+   "sl": 3326.3,
+   "tp": 3023.5,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 3326.3,
+   "time": 1793938540975,
+   "status": "open",
+   "passed": false,
+   "high": 3134.8,
+   "low": 3106.7,
+   "nifty": 0.22,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793938540975,
+    "price": 3117.0
+   }
+  },
+  {
+   "id": "1793938540975-750",
+   "symbol": "SUPREMEIND",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 175,
+   "entry": 3117.0,
+   "sl": 3326.3,
+   "tp": 3023.5,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 46.75,
+    "step": 15.6
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 3326.3,
+   "time": 1793938540975,
+   "status": "open",
+   "passed": false,
+   "high": 3134.8,
+   "low": 3106.7,
+   "nifty": 0.22,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793938540975,
+    "price": 3117.0
+   }
+  },
+  {
+   "id": "1793938540975-751",
+   "symbol": "SUPREMEIND",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 175,
+   "entry": 3117.0,
+   "sl": 3326.3,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 3326.3,
+   "time": 1793938540975,
+   "status": "open",
+   "passed": false,
+   "high": 3134.8,
+   "low": 3106.7,
+   "nifty": 0.22,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793938540975,
+    "price": 3117.0
+   }
+  },
+  {
    "id": "1793939137632-754",
    "symbol": "NATIONALUM",
    "side": "SELL",
@@ -1916,6 +2663,42 @@
    "first_seen": {
     "time": 1793939747157,
     "price": 2153.8
+   }
+  },
+  {
+   "id": "1793940053931-762",
+   "symbol": "POWERINDIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 25,
+   "entry": 26775.0,
+   "sl": 28195.0,
+   "tp": 25971.75,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 28195.0,
+   "time": 1793940053931,
+   "status": "open",
+   "passed": false,
+   "high": 26890,
+   "low": 26775.0,
+   "nifty": 0.46,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793940053931,
+    "price": 26775.0
    }
   },
   {
@@ -2183,6 +2966,156 @@
    }
   },
   {
+   "id": "1793941265984-771",
+   "symbol": "POWERINDIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 25,
+   "entry": 26910.0,
+   "sl": 28195.0,
+   "tp": 26102.7,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 403.65,
+    "step": 134.55
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 28195.0,
+   "time": 1793941265984,
+   "status": "open",
+   "passed": false,
+   "high": 27120,
+   "low": 26765,
+   "nifty": 0.61,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793940053931,
+    "price": 26775.0
+   }
+  },
+  {
+   "id": "1793941844394-777",
+   "symbol": "BRITANNIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4836.1,
+   "sl": 5010.0,
+   "tp": 4691.0,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 5010.0,
+   "time": 1793941844394,
+   "status": "open",
+   "passed": false,
+   "high": 4857.6,
+   "low": 4731.2,
+   "nifty": 0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 62.71,
+   "first_seen": {
+    "time": 1793941844394,
+    "price": 4836.1
+   }
+  },
+  {
+   "id": "1793941844394-778",
+   "symbol": "BRITANNIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4836.1,
+   "sl": 5010.0,
+   "tp": 4691.0,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 72.55,
+    "step": 24.2
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 5010.0,
+   "time": 1793941844394,
+   "status": "open",
+   "passed": false,
+   "high": 4857.6,
+   "low": 4731.2,
+   "nifty": 0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 62.71,
+   "first_seen": {
+    "time": 1793941844394,
+    "price": 4836.1
+   }
+  },
+  {
+   "id": "1793941844394-779",
+   "symbol": "BRITANNIA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4836.1,
+   "sl": 5010.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 5010.0,
+   "time": 1793941844394,
+   "status": "open",
+   "passed": false,
+   "high": 4857.6,
+   "low": 4731.2,
+   "nifty": 0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 62.71,
+   "first_seen": {
+    "time": 1793941844394,
+    "price": 4836.1
+   }
+  },
+  {
    "id": "1793942142020-781",
    "symbol": "MCX",
    "side": "BUY",
@@ -2202,6 +3135,42 @@
    "status": "open",
    "passed": false,
    "high": 3550,
+   "low": 3400.9,
+   "nifty": 0.35,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1793942142020,
+    "price": 3434.0
+   }
+  },
+  {
+   "id": "1793942142020-780",
+   "symbol": "MCX",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 225,
+   "entry": 3434.0,
+   "sl": 3370.0,
+   "tp": 3537.0,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 3370.0,
+   "time": 1793942142020,
+   "status": "open",
+   "passed": false,
+   "high": 3482,
    "low": 3400.9,
    "nifty": 0.35,
    "source": "Auto 2H",
@@ -2411,6 +3380,117 @@
    "first_seen": {
     "time": 1793943052348,
     "price": 190.34
+   }
+  },
+  {
+   "id": "1793944241113-806",
+   "symbol": "SRF",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2456.6,
+   "sl": 2479.0,
+   "tp": 2382.9,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 2479.0,
+   "time": 1793944241113,
+   "status": "open",
+   "passed": false,
+   "high": 2460,
+   "low": 2454.2,
+   "nifty": 0.28,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 60.05,
+   "first_seen": {
+    "time": 1793944241113,
+    "price": 2456.6
+   }
+  },
+  {
+   "id": "1793944241113-807",
+   "symbol": "SRF",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2456.6,
+   "sl": 2479.0,
+   "tp": 2382.9,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 36.85,
+    "step": 12.3
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 2479.0,
+   "time": 1793944241113,
+   "status": "open",
+   "passed": false,
+   "high": 2460,
+   "low": 2454.2,
+   "nifty": 0.28,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 60.05,
+   "first_seen": {
+    "time": 1793944241113,
+    "price": 2456.6
+   }
+  },
+  {
+   "id": "1793944241113-808",
+   "symbol": "SRF",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2456.6,
+   "sl": 2479.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 2479.0,
+   "time": 1793944241113,
+   "status": "open",
+   "passed": false,
+   "high": 2460,
+   "low": 2454.2,
+   "nifty": 0.28,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 60.05,
+   "first_seen": {
+    "time": 1793944241113,
+    "price": 2456.6
    }
   },
   {
