@@ -3,8 +3,8 @@ Auto trader: paper-trades every Chartink signal on the 2H timeframe (TRADED_TIME
 4H, Daily and Weekly signals are recorded but not traded) without the simulator page open, for three strategies apart (fs.SYSTEMS):
 RSI (chartink_dashboard.DEFAULT_DASHBOARD), Heikin Ashi (HA_DASHBOARD) and HA MTF (the
 HA signals of 2H, 4H and Daily: a timeframe counts unless its previous HA candle is a
-doji, and the position is held until the HA exit of the highest one that counted, with
-the SL at that timeframe's previous HA low / high). A stock on several gets a trade in
+doji, and the position is held until the HA exit of the highest one that counted, which
+trails it, with a fixed SL MTF_SL_PCT from the entry until then). A stock on several gets a trade in
 each, so that each strategy's results stay its own.
 
 .github/workflows/auto_trader.yml runs it every 15 minutes in market hours. Each run:
@@ -53,6 +53,7 @@ from chartink_dashboard import NO_VALUE
 TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY")
 # The timeframes whose signals are traded; the others are only recorded, as "Timeframe not traded".
 TRADED_TIMEFRAMES = {"RSI": ("2 HOUR",), "HA": ("2 HOUR",), "HA MTF": ("2 HOUR", "4 HOUR", "DAILY")}
+MTF_SL_PCT = 3.0  # HA MTF: the initial SL; the HA exit of the exit timeframe trails from there
 DOJI_BODY = 0.10  # HA MTF: a previous HA candle with a body this share of its range or less is a doji
 SHORT = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily"}
 LOTS = 1
@@ -467,7 +468,8 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
         long = side == "BUY"
         tp = tick(entry * (1 + fs.AUTO_TP_PCT / 100 * (1 if long else -1)))
         timeframes = sorted({s["timeframe"] for s in found}, key=TIMEFRAMES.index)
-        sl = entry_sl(entry, long, system, exit_tf or timeframes[0], symbol, sources, now)
+        sl = (tick(entry * (1 - MTF_SL_PCT / 100 * (1 if long else -1))) if system == "HA MTF"
+              else entry_sl(entry, long, system, timeframes[0], symbol, sources, now))
         first = min((seen[signal_key(s)] for s in found if signal_key(s) in seen), key=lambda f: f["time"], default=None)
         # The SMA RSI of the shortest timeframe, as for the exit.
         sma_rsi = next((s["sma_rsi"] for s in sorted(found, key=lambda s: TIMEFRAMES.index(s["timeframe"]))

@@ -671,7 +671,7 @@ def main() -> None:
         f"Held trades close on expiry day at 3:15 PM. "
         f"**HA multi-timeframe** takes the Heikin Ashi signals of 2H, 4H and Daily (a timeframe whose previous HA candle "
         f"is a doji, body 10% of its range or less, does not count), held until the HA exit of the highest timeframe "
-        f"that matched, with the SL at that timeframe's previous HA low / high. "
+        f"that matched, which trails it, with an initial SL 3% from the entry. "
         f"A stock is traded once per side, style and strategy per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")
 
