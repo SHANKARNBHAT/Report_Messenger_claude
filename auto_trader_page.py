@@ -26,6 +26,7 @@ import requests
 import streamlit as st
 
 import futures_simulator as fs
+import trade_report
 
 # Streamlit Cloud keeps imported modules in memory when it pulls new code, so a
 # futures_simulator.py changed since the server started is reloaded here.
@@ -533,6 +534,17 @@ def show_decisions(bot: pd.DataFrame, you: pd.DataFrame, skips: pd.DataFrame) ->
         st.caption(f"{unmatched} of your trades had no Auto trader trade in {style} on the same stock, side and day.")
 
 
+def closed_report(history: pd.DataFrame) -> bytes:
+    """The closed trades report (trade_report.workbook), made again only when the trades change."""
+    key = f"{len(history)}-{history['exit_time'].max()}-{history['net'].sum():.2f}"
+    return _closed_report(key, history)
+
+
+@st.cache_data(show_spinner=False, max_entries=2)
+def _closed_report(key: str, _history: pd.DataFrame) -> bytes:
+    return trade_report.workbook(_history, fs.BOT_STYLES)
+
+
 def csv(frame: pd.DataFrame) -> bytes:
     return frame.drop(columns=["Exited at"], errors="ignore").to_csv(index=False).encode()
 
@@ -661,7 +673,7 @@ def main() -> None:
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")
 
     account, error = load_account()
-    top = st.columns([1, 1, 1, 3])
+    top = st.columns([1, 1, 1, 1.2, 1.2, 2.2])
     if top[0].button("↻ Reload", width="stretch"):
         load_account.clear()
         listing.clear()
@@ -673,7 +685,7 @@ def main() -> None:
                      "dashboard: the result shows in the Run log in about a minute"):
         if dispatch("test-chartink"):
             st.toast("Started a Chartink test: Reload in about a minute and open the Run log.")
-    top[3].caption(f"[Runs on GitHub]({RUNS_URL}) · requests from here apply in about a minute.")
+    top[5].caption(f"[Runs on GitHub]({RUNS_URL}) · requests from here apply in about a minute.")
     live((account or {}).get("updated"))
     if account is None:
         st.info(error)
@@ -714,20 +726,39 @@ def main() -> None:
                          "positions included: the money to take them all. Each style alone needs less: see Results.")
     stats[5].metric("Last run", when(account.get("updated")))
 
+    # The Excel reports, in the top row.
+    now = datetime.now(fs.IST)
+    open_rows = [{
+        "Symbol": p["symbol"],
+        "Side": "LONG" if p["side"] == "BUY" else "SHORT", "Strategy": p.get("system", "RSI"),
+        "Style": series_of(p),
+        "Signal": p["source"], "Qty": p["qty"],
+        "Entry": p["entry"], "LTP": (quotes.get(p["symbol"]) or {}).get("price"),
+        "SL / TSL": p.get("stop"), "Target": p["tp"],
+        "At target": "—" if p.get("style") == "rsi" or p.get("style") in fs.HA_EXITS else "Passed · trailing" if p.get("passed")
+        else "Trail" if p.get("run") else "Exit",
+        "Entered": datetime.fromtimestamp(p["time"] / 1000, fs.IST).replace(tzinfo=None), "Agrees": p.get("agrees"),
+    } for p in positions]
+    if len(history):
+        top[3].download_button(
+            "📊 Closed trades report", closed_report(history), width="stretch",
+            file_name=f"Auto trader closed trades {now:%d %b %Y}.xlsx", on_click="ignore",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            help="Excel: HA vs RSI by side, exit style and stock, and every closed trade")
+    if positions:
+        top[4].download_button(
+            "📂 Open positions report", trade_report.open_workbook(open_rows, f"{now:%d %b %Y %H:%M} IST"),
+            file_name=f"Auto trader open positions {now:%d %b %Y %H%M}.xlsx", width="stretch", on_click="ignore",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            help="Excel: every open position with its unrealized P&L at the LTP, and totals by strategy and side")
+
     # Open positions, with requests on the one selected.
     st.subheader(f"Open positions ({len(positions)})")
     if positions:
-        table = pd.DataFrame([{
-            "Symbol": chart_link(p["symbol"]),
-            "Side": "LONG" if p["side"] == "BUY" else "SHORT", "Strategy": p.get("system", "RSI"),
-            "Style": series_of(p),
-            "Signal": p["source"], "Qty": p["qty"],
-            "Entry": p["entry"], "LTP": (quotes.get(p["symbol"]) or {}).get("price"),
-            "SL / TSL": p["stop"], "Target": p["tp"],
-            "At target": "—" if p.get("style") == "rsi" or p.get("style") in fs.HA_EXITS else "Passed · trailing" if p.get("passed")
-            else "Trail" if p.get("run") else "Exit",
-            "Unrealized ₹": unrealized(p), "Entered": when(p["time"]), "Agrees": p.get("agrees"),
-        } for p in positions])
+        table = pd.DataFrame(open_rows).assign(
+            Symbol=[chart_link(p["symbol"]) for p in positions],
+            Entered=[when(p["time"]) for p in positions])
+        table.insert(table.columns.get_loc("Entered"), "Unrealized ₹", [unrealized(p) for p in positions])
         picked = st.dataframe(
             table, hide_index=True, width="stretch", on_select="rerun", selection_mode="single-row",
             column_config={"Symbol": SYMBOL_LINK, "Unrealized ₹": st.column_config.NumberColumn(format="%.2f")},
