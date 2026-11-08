@@ -1,8 +1,11 @@
 """
 Auto trader: paper-trades every Chartink signal on the 2H timeframe (TRADED_TIMEFRAMES;
-4H, Daily and Weekly signals are recorded but not traded) without the simulator page open, for two strategies apart (fs.SYSTEMS):
-RSI (chartink_dashboard.DEFAULT_DASHBOARD) and Heikin Ashi (HA_DASHBOARD). A stock
-on both gets a trade in each, so that each strategy's results stay its own.
+4H, Daily and Weekly signals are recorded but not traded) without the simulator page open, for three strategies apart (fs.SYSTEMS):
+RSI (chartink_dashboard.DEFAULT_DASHBOARD), Heikin Ashi (HA_DASHBOARD) and HA MTF (the
+HA signals of 2H, 4H and Daily: a timeframe counts unless its previous HA candle is a
+doji, and the position is held until the HA exit of the highest one that counted, with
+the SL at that timeframe's previous HA low / high). A stock on several gets a trade in
+each, so that each strategy's results stay its own.
 
 .github/workflows/auto_trader.yml runs it every 15 minutes in market hours. Each run:
   * replays the open positions on the 5-minute bars since entry, closing those that
@@ -49,7 +52,8 @@ from chartink_dashboard import NO_VALUE
 
 TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY")
 # The timeframes whose signals are traded; the others are only recorded, as "Timeframe not traded".
-TRADED_TIMEFRAMES = ("2 HOUR",)
+TRADED_TIMEFRAMES = {"RSI": ("2 HOUR",), "HA": ("2 HOUR",), "HA MTF": ("2 HOUR", "4 HOUR", "DAILY")}
+DOJI_BODY = 0.10  # HA MTF: a previous HA candle with a body this share of its range or less is a doji
 SHORT = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily"}
 LOTS = 1
 # The column of the HA widgets with the SMA of the RSI of the signal's own timeframe.
@@ -258,7 +262,7 @@ def entry_sl(entry: float, long: bool, system: str, timeframe: str, symbol: str,
     the candle is not known, or is on the wrong side of the entry."""
     percent = tick(entry * (1 - fs.AUTO_SL_PCT / 100 * (1 if long else -1)))
     level = None
-    if system == "HA":
+    if system.startswith("HA"):
         rows = (sources.get(timeframe) or {}).get(symbol) or []
         done = [row for row in rows if candle_end(timeframe, row[0]) <= now.timestamp()]
         level = done[-1][2 if long else 3] if done else None
@@ -268,9 +272,21 @@ def entry_sl(entry: float, long: bool, system: str, timeframe: str, symbol: str,
     if level is None or (level >= entry if long else level <= entry):
         return percent
     level = tick(level)
-    if system == "HA":
+    if system.startswith("HA"):
         return level
     return min(level, percent) if long else max(level, percent)
+
+
+def previous_doji(candles: dict, timeframe: str, symbol: str, now: datetime) -> bool:
+    """HA MTF: whether the last finished HA candle of `timeframe` (the one before the running
+    candle) is a doji: its body (HA close - HA open) DOJI_BODY of its range (HA high - HA low)
+    or less. False when the candles are not known."""
+    rows = (candles.get(timeframe) or {}).get(symbol) or []
+    done = [row for row in rows if candle_end(timeframe, row[0]) <= now.timestamp()]
+    if not done:
+        return False
+    _, _, low, high, open_, close = done[-1]
+    return abs(close - open_) <= DOJI_BODY * (high - low)
 
 
 def ha_exit(position: dict, candles: dict, now: datetime) -> dict | None:
@@ -278,7 +294,7 @@ def ha_exit(position: dict, candles: dict, now: datetime) -> dict | None:
     several) since the entry whose close, live while it runs, went past its level (ha_level).
     A finished candle, in case the runs missed it, exits at its end. Exit price, time (ms)
     and reason, else None."""
-    timeframe = position["timeframes"][0]
+    timeframe = position.get("exit_tf") or position["timeframes"][0]
     rows = (candles.get(timeframe) or {}).get(position["symbol"]) or []
     long = position["side"] == "BUY"
     style = position.get("style")
@@ -387,10 +403,11 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
     """Trade one strategy's signals, and note in `seen` what was done with each."""
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
     mark(seen, [s for s in signals if not s["fno"]], "Not F&O")
-    mark(seen, [s for s in signals if s["fno"] and s["timeframe"] not in TRADED_TIMEFRAMES], "Timeframe not traded")
+    traded = TRADED_TIMEFRAMES[system]
+    mark(seen, [s for s in signals if s["fno"] and s["timeframe"] not in traded], "Timeframe not traded")
     by_symbol: dict[str, list[dict]] = {}
     for signal in signals:
-        if signal["timeframe"] in TRADED_TIMEFRAMES and signal["fno"]:
+        if signal["timeframe"] in traded and signal["fno"]:
             by_symbol.setdefault(signal["symbol"], []).append(signal)
     if not trading:
         mark(seen, [s for found in by_symbol.values() for s in found], "Not traded: switch off, page closed")
@@ -428,11 +445,19 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
     nifty = fs.nifty_change()
     # For the SL (entry_sl): the HA candles, or the 5-minute bars to make the RSI ones from.
     try:
-        sources = fs.fetch_ha_candles() if system == "HA" else fs.fetch_price_bars(fs.DEFAULT_DASHBOARD)
+        sources = fs.fetch_ha_candles() if system.startswith("HA") else fs.fetch_price_bars(fs.DEFAULT_DASHBOARD)
     except fs.ChartinkError as exc:
         sources = {}
         note(f"No candles for the {system} SL, using {fs.AUTO_SL_PCT}%: {exc}")
     for symbol, (side, found, styles) in sorted(wanted.items()):
+        exit_tf = None
+        if system == "HA MTF":
+            doji = [s for s in found if previous_doji(sources, s["timeframe"], symbol, now)]
+            mark(seen, doji, "Doji: previous HA candle")
+            found = [s for s in found if s not in doji]
+            if not found:
+                continue
+            exit_tf = max((s["timeframe"] for s in found), key=TIMEFRAMES.index)
         quote = quotes.get(symbol)
         if not quote:
             mark(seen, found, "No price")
@@ -442,7 +467,7 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
         long = side == "BUY"
         tp = tick(entry * (1 + fs.AUTO_TP_PCT / 100 * (1 if long else -1)))
         timeframes = sorted({s["timeframe"] for s in found}, key=TIMEFRAMES.index)
-        sl = entry_sl(entry, long, system, timeframes[0], symbol, sources, now)
+        sl = entry_sl(entry, long, system, exit_tf or timeframes[0], symbol, sources, now)
         first = min((seen[signal_key(s)] for s in found if signal_key(s) in seen), key=lambda f: f["time"], default=None)
         # The SMA RSI of the shortest timeframe, as for the exit.
         sma_rsi = next((s["sma_rsi"] for s in sorted(found, key=lambda s: TIMEFRAMES.index(s["timeframe"]))
@@ -456,12 +481,13 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
                 "stop": sl, "time": int(now.timestamp() * 1000), "status": "open", "passed": False,
                 "high": entry, "low": entry, "nifty": nifty,
                 "source": ("Auto " if system == "RSI" else f"Auto {system} ") + "+".join(SHORT[tf] for tf in timeframes),
-                "timeframes": timeframes,
+                "timeframes": timeframes, **({"exit_tf": exit_tf} if exit_tf else {}),
                 "strategies": sorted({s["strategy"] for s in found}), "agrees": found[0]["agrees"], "sma_rsi": sma_rsi,
                 "first_seen": first and {"time": first["time"], "price": first["price"]},
             })
         mark(seen, found, "Traded")
-        note(f"{symbol}: {system} {side} {qty} at {entry}, SL {sl} ({', '.join(timeframes)}; {', '.join(styles)})")
+        exits = f"; exit on {SHORT[exit_tf]}" if exit_tf else ""
+        note(f"{symbol}: {system} {side} {qty} at {entry}, SL {sl} ({', '.join(timeframes)}{exits}; {', '.join(styles)})")
 
 
 def main() -> None:
@@ -502,8 +528,10 @@ def main() -> None:
             ha_dashboard, ha_error = fs.load_dashboard(fs.HA_DASHBOARD)
             if ha_dashboard:
                 sma_rsi = ha_sma_rsi(ha_dashboard)
-                signals += [{**s, "system": "HA", "sma_rsi": sma_rsi.get((s["strategy"], s["symbol"]))}
-                            for s in fs.signal_rows(ha_dashboard, instruments)[0]]
+                ha_signals = fs.signal_rows(ha_dashboard, instruments)[0]
+                # The same HA signals, once for each HA strategy.
+                signals += [{**s, "system": system, "sma_rsi": sma_rsi.get((s["strategy"], s["symbol"]))}
+                            for system in ("HA", "HA MTF") for s in ha_signals]
             else:
                 note(f"No HA signals: {ha_error}")
             day_file = f"signals/{now.date().isoformat()}.json"

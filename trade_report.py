@@ -1,6 +1,6 @@
 """
 The Auto trader's closed trades as an Excel workbook (the Trade report download of
-the Auto trader page): a summary by strategy, side and exit style, HA vs RSI per
+the Auto trader page): a summary by strategy, side and exit style, the strategies per
 stock, and every closed trade. The totals are formulas over the Closed trades sheet,
 so they follow edits to it; Excel computes them when the file opens.
 """
@@ -66,7 +66,7 @@ def workbook(history: pd.DataFrame, styles: dict[str, str]) -> bytes:
     # Summary ------------------------------------------------------------------
     sm = wb.active
     sm.title = "Summary"
-    sm["A1"], sm["A1"].font = f"Auto trader: HA vs RSI ({span})", TITLE
+    sm["A1"], sm["A1"].font = f"Auto trader: strategies compared ({span})", TITLE
     sm["A2"] = ("Closed trades only. Each signal is traded once per exit style, so one signal can count as 2–3 trades.")
     sm["A2"].font = NOTE
 
@@ -101,51 +101,65 @@ def workbook(history: pd.DataFrame, styles: dict[str, str]) -> bytes:
 
     # Per stock ----------------------------------------------------------------
     ps = wb.create_sheet("Per stock")
-    ps["A1"], ps["A1"].font = f"HA vs RSI per stock ({span})", TITLE
-    ps["A2"] = ("Totals from the Closed trades sheet, best stock first. 'Better' compares only the stocks "
-                "both strategies traded.")
+    names = " vs ".join(systems)
+    ps["A1"], ps["A1"].font = f"{names} per stock ({span})", TITLE
+    ps["A2"] = ("Totals from the Closed trades sheet, best stock first. Best: the strategy with the highest net "
+                "among those that traded the stock.")
     ps["A2"].font = NOTE
-    header(ps, 4, ["Symbol", "HA trades", "HA wins", "HA win %", "HA net ₹", "RSI trades", "RSI wins", "RSI win %",
-                   "RSI net ₹", "Total net ₹", "Better", "HA − RSI ₹"],
-           [14, 9, 8, 9, 13, 9, 8, 9, 13, 13, 11, 13])
+    heads, widths = ["Symbol"], [14]
+    for system in systems:
+        heads += [f"{system} trades", f"{system} wins", f"{system} win %", f"{system} net ₹"]
+        widths += [9, 8, 9, 13]
+    tot_c, best_c, by_c = 2 + 4 * len(systems), 3 + 4 * len(systems), 4 + 4 * len(systems)
+    heads += ["Total net ₹", "Best", "Strategies"]
+    widths += [13, 11, 11]
+    header(ps, 4, heads, widths)
     ps.freeze_panes = "B5"
+    firsts = {system: 2 + 4 * i for i, system in enumerate(systems)}
     order = t.groupby("symbol")["net"].sum().sort_values(ascending=False).index
     for r, symbol in enumerate(order, 5):
         ps.cell(r, 1, symbol)
-        for system, first in (("HA", 2), ("RSI", 6)):
+        for system, first in firsts.items():
             match = f'{rows(SYMBOL)},$A{r},{rows(STRATEGY)},"{system}"'
             ps.cell(r, first, f"=COUNTIFS({match})")
             ps.cell(r, first + 1, f'=COUNTIFS({match},{rows(NET)},">0")')
             ps.cell(r, first + 2, f'=IF({col(first)}{r}=0,"",{col(first + 1)}{r}/{col(first)}{r})')
             ps.cell(r, first + 3, f"=SUMIFS({rows(NET)},{match})")
-        ps.cell(r, 10, f"=E{r}+I{r}")
-        ps.cell(r, 11, f'=IF(AND(B{r}>0,F{r}>0),IF(E{r}>I{r},"HA","RSI"),IF(B{r}>0,"Only HA","Only RSI"))')
-        ps.cell(r, 12, f'=IF(AND(B{r}>0,F{r}>0),E{r}-I{r},"")')
+        ps.cell(r, tot_c, "=" + "+".join(f"{col(f + 3)}{r}" for f in firsts.values()))
+        best = '""'
+        for system, first in reversed(list(firsts.items())):
+            beats = [f"OR({col(o)}{r}=0,{col(first + 3)}{r}>={col(o + 3)}{r})" for s2, o in firsts.items() if s2 != system]
+            test = f"AND({col(first)}{r}>0{''.join(',' + b for b in beats)})"
+            best = f'IF({test},"{system}",{best})'
+        ps.cell(r, best_c, "=" + best)
+        ps.cell(r, by_c, "=" + "+".join(f"({col(f)}{r}>0)" for f in firsts.values()))
     end = 4 + len(order)
     total = end + 1
     ps.cell(total, 1, "Total")
-    for c in (2, 3, 5, 6, 7, 9, 10):
-        ps.cell(total, c, f"=SUM({col(c)}5:{col(c)}{max(end, 5)})")
-    ps.cell(total, 4, f'=IF(B{total}=0,"",C{total}/B{total})')
-    ps.cell(total, 8, f'=IF(F{total}=0,"",G{total}/F{total})')
+    for first in firsts.values():
+        for c in (first, first + 1, first + 3):
+            ps.cell(total, c, f"=SUM({col(c)}5:{col(c)}{max(end, 5)})")
+        ps.cell(total, first + 2, f'=IF({col(first)}{total}=0,"",{col(first + 1)}{total}/{col(first)}{total})')
+    ps.cell(total, tot_c, f"=SUM({col(tot_c)}5:{col(tot_c)}{max(end, 5)})")
+    money = {f + 3 for f in firsts.values()} | {tot_c}
     for r in range(5, total + 1):
-        for c in range(1, 13):
+        for c in range(1, by_c + 1):
             cell = ps.cell(r, c)
             cell.font = BOLD if r == total else BODY
-            if c in (5, 9, 10, 12):
+            if c in money:
                 cell.number_format = RUPEES
-            elif c in (4, 8):
+            elif c in {f + 2 for f in firsts.values()}:
                 cell.number_format = "0%"
-            elif c == 11:
+            elif c in (best_c, by_c):
                 cell.alignment = Alignment(horizontal="center")
-    for letter in "EIJ":
-        gain_loss(ps, f"{letter}5:{letter}{total}")
+    for c in money:
+        gain_loss(ps, f"{col(c)}5:{col(c)}{total}")
     if len(order):
-        ps.auto_filter.ref = f"A4:L{end}"
-    ps.cell(total + 2, 1, "Stocks both traded where HA did better").font = BODY
-    ps.cell(total + 2, 10, f'=COUNTIF(K5:K{max(end, 5)},"HA")')
-    ps.cell(total + 3, 1, "Stocks both traded where RSI did better").font = BODY
-    ps.cell(total + 3, 10, f'=COUNTIF(K5:K{max(end, 5)},"RSI")')
+        ps.auto_filter.ref = f"A4:{col(by_c)}{end}"
+    for i, system in enumerate(systems):
+        ps.cell(total + 2 + i, 1, f"Stocks traded by 2+ strategies where {system} did best").font = BODY
+        ps.cell(total + 2 + i, tot_c, f'=COUNTIFS({col(best_c)}5:{col(best_c)}{max(end, 5)},"{system}",'
+                                      f'{col(by_c)}5:{col(by_c)}{max(end, 5)},">1")')
 
     # Closed trades --------------------------------------------------------------
     ct = wb.create_sheet("Closed trades")

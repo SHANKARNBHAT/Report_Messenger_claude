@@ -46,7 +46,7 @@ LIVE_HOURS = (clock(9, 15), clock(15, 35))  # IST, weekdays: through the 3:15 PM
 # skill): the three bot styles, then the simulator's trades.
 SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]
 YOU = "You (simulator)"
-SYSTEM_NAMES = {"RSI": "RSI", "HA": "Heikin Ashi"}
+SYSTEM_NAMES = {"RSI": "RSI", "HA": "Heikin Ashi", "HA MTF": "HA multi-timeframe"}
 SMA_FILTERS = ["Against: long below 50, short above 50", "With: long above 50, short below 50", "Not recorded"]
 SHORT_TF = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 HOLDS = [(60, "< 1 h"), (180, "1–3 h"), (375, "3 h – same day"), (2 * 1440, "1–2 days"), (float("inf"), "3+ days")]
@@ -661,14 +661,17 @@ def main() -> None:
     st.set_page_config(page_title="Auto Trader", page_icon="🤖", layout="wide")
     st.title("🤖 Auto trader")
     st.caption(
-        f"Paper-trades every 2H Chartink signal (4H, Daily and Weekly ones are recorded, not traded) of two strategies, RSI and Heikin Ashi (a stock on "
-        f"both gets a trade in each), 1 lot, SL at the previous 2H candle (Heikin Ashi: the previous HA "
+        f"Paper-trades every 2H Chartink signal (4H, Daily and Weekly ones are recorded, not traded) of three strategies, RSI, Heikin Ashi and HA multi-timeframe (a stock on "
+        f"several gets a trade in each), 1 lot, SL at the previous 2H candle (Heikin Ashi: the previous HA "
         f"candle's low / high; RSI: the candle's low / high or {fs.AUTO_SL_PCT}%, whichever is further), in its exit styles "
         f"side by side: **EOD** (target {fs.AUTO_TP_PCT}%, squared off at 3:15 PM), **Hold · trail** (held "
         f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · RSI exit** (held until "
         f"the RSI of its timeframe crosses back below 60 / above 40; for Heikin Ashi, **Hold · HA exit**: held "
         f"until the live candle of its timeframe goes below the previous HA low / above the previous HA high). "
         f"Held trades close on expiry day at 3:15 PM. "
+        f"**HA multi-timeframe** takes the Heikin Ashi signals of 2H, 4H and Daily (a timeframe whose previous HA candle "
+        f"is a doji, body 10% of its range or less, does not count), held until the HA exit of the highest timeframe "
+        f"that matched, with the SL at that timeframe's previous HA low / high. "
         f"A stock is traded once per side, style and strategy per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")
 
@@ -732,7 +735,7 @@ def main() -> None:
         "Symbol": p["symbol"],
         "Side": "LONG" if p["side"] == "BUY" else "SHORT", "Strategy": p.get("system", "RSI"),
         "Style": series_of(p),
-        "Signal": p["source"], "Qty": p["qty"],
+        "Signal": p["source"] + (f" · exit {SHORT_TF[p['exit_tf']]}" if p.get("exit_tf") else ""), "Qty": p["qty"],
         "Entry": p["entry"], "LTP": (quotes.get(p["symbol"]) or {}).get("price"),
         "SL / TSL": p.get("stop"), "Target": p["tp"],
         "At target": "—" if p.get("style") == "rsi" or p.get("style") in fs.HA_EXITS else "Passed · trailing" if p.get("passed")
@@ -792,7 +795,7 @@ def main() -> None:
         logged = signals[signals["system"] == system] if len(signals) else signals
         if len(trades) or len(mine):
             show_compare(series(trades, mine), held, styles)
-            if system == "HA":
+            if system.startswith("HA"):
                 st.markdown("**SMA RSI filter**")
                 show_sma_filter(trades)
             # Each signal is traded in every style, so the other results are for one style at a time.
