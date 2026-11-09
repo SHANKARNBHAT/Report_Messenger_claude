@@ -13503,5 +13503,42 @@
   "gross": 56550.0,
   "charges": 332.95,
   "net": 56217.05
+ },
+ {
+  "id": "1793782855874-621",
+  "symbol": "MANKIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2518.1,
+  "exit": 2662.55,
+  "entry_time": 1793782855874,
+  "exit_time": 1794201000000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 2476.0,
+  "tp": 2593.65,
+  "high": 2705.0,
+  "low": 2490.0,
+  "nifty": 1.96,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793782855874,
+   "price": 2518.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 36112.5,
+  "charges": 420.58,
+  "net": 35691.92
  }
 ]
