@@ -14243,5 +14243,79 @@
   "gross": -4970.0,
   "charges": 484.18,
   "net": -5454.18
+ },
+ {
+  "id": "1794202541001-861",
+  "symbol": "NYKAA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3125,
+  "entry": 349.8,
+  "exit": 354.5,
+  "entry_time": 1794202541001,
+  "exit_time": 1794213000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 354.5,
+  "tp": 339.3,
+  "high": 354.5,
+  "low": 348.4,
+  "nifty": -0.44,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794202541001,
+   "price": 349.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 58.83,
+  "gross": -14687.5,
+  "charges": 663.45,
+  "net": -15350.95
+ },
+ {
+  "id": "1794202541001-862",
+  "symbol": "NYKAA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3125,
+  "entry": 349.8,
+  "exit": 354.5,
+  "entry_time": 1794202541001,
+  "exit_time": 1794213000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 354.5,
+  "tp": 339.3,
+  "high": 354.5,
+  "low": 348.4,
+  "nifty": -0.44,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794202541001,
+   "price": 349.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 58.83,
+  "gross": -14687.5,
+  "charges": 663.45,
+  "net": -15350.95
  }
 ]

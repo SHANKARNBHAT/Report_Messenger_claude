@@ -919,11 +919,11 @@
    },
    "style": "trail",
    "system": "RSI",
-   "stop": 184.25,
+   "stop": 189.85,
    "time": 1793863238615,
    "status": "open",
-   "passed": false,
-   "high": 192.1,
+   "passed": true,
+   "high": 193,
    "low": 184.45,
    "nifty": 2.02,
    "source": "Auto 2H",
@@ -1750,7 +1750,7 @@
    "time": 1794197744517,
    "status": "open",
    "passed": false,
-   "high": 192.1,
+   "high": 193,
    "low": 189,
    "nifty": -0.08,
    "source": "Auto 2H",
@@ -1786,7 +1786,7 @@
    "time": 1794197744517,
    "status": "open",
    "passed": false,
-   "high": 192.1,
+   "high": 193,
    "low": 189,
    "nifty": -0.08,
    "source": "Auto 2H",
@@ -2156,7 +2156,7 @@
    "time": 1794200137105,
    "status": "open",
    "passed": false,
-   "high": 4469,
+   "high": 4470,
    "low": 4413,
    "nifty": -0.23,
    "source": "Auto HA 2H",
@@ -2195,7 +2195,7 @@
    "time": 1794200137105,
    "status": "open",
    "passed": false,
-   "high": 4469,
+   "high": 4470,
    "low": 4413,
    "nifty": -0.23,
    "source": "Auto HA 2H",
@@ -2934,7 +2934,7 @@
    "time": 1794202253465,
    "status": "open",
    "passed": false,
-   "high": 562.8,
+   "high": 564,
    "low": 548,
    "nifty": -0.39,
    "source": "Auto 2H",
@@ -2973,7 +2973,7 @@
    "time": 1794202253465,
    "status": "open",
    "passed": false,
-   "high": 562.8,
+   "high": 564,
    "low": 548,
    "nifty": -0.39,
    "source": "Auto 2H",
@@ -3136,81 +3136,6 @@
    "first_seen": {
     "time": 1794202253465,
     "price": 3166.6
-   }
-  },
-  {
-   "id": "1794202541001-861",
-   "symbol": "NYKAA",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 3125,
-   "entry": 349.8,
-   "sl": 354.5,
-   "tp": 339.3,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "eod",
-   "system": "HA",
-   "stop": 354.5,
-   "time": 1794202541001,
-   "status": "open",
-   "passed": false,
-   "high": 354,
-   "low": 348.4,
-   "nifty": -0.44,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 58.83,
-   "first_seen": {
-    "time": 1794202541001,
-    "price": 349.8
-   }
-  },
-  {
-   "id": "1794202541001-862",
-   "symbol": "NYKAA",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 3125,
-   "entry": 349.8,
-   "sl": 354.5,
-   "tp": 339.3,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 5.25,
-    "step": 1.75
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 354.5,
-   "time": 1794202541001,
-   "status": "open",
-   "passed": false,
-   "high": 354,
-   "low": 348.4,
-   "nifty": -0.44,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 58.83,
-   "first_seen": {
-    "time": 1794202541001,
-    "price": 349.8
    }
   },
   {
@@ -3568,7 +3493,7 @@
    "time": 1794206748295,
    "status": "open",
    "passed": false,
-   "high": 36610,
+   "high": 36615,
    "low": 36160,
    "nifty": -0.28,
    "source": "Auto 2H",
@@ -3607,7 +3532,7 @@
    "time": 1794206748295,
    "status": "open",
    "passed": false,
-   "high": 36610,
+   "high": 36615,
    "low": 36160,
    "nifty": -0.28,
    "source": "Auto 2H",
@@ -3643,7 +3568,7 @@
    "time": 1794206748295,
    "status": "open",
    "passed": false,
-   "high": 36610,
+   "high": 36615,
    "low": 36160,
    "nifty": -0.28,
    "source": "Auto 2H",
@@ -3679,7 +3604,7 @@
    "time": 1794208242559,
    "status": "open",
    "passed": false,
-   "high": 541.55,
+   "high": 541.5,
    "low": 537.85,
    "nifty": -0.33,
    "source": "Auto HA MTF 4H",
@@ -4009,7 +3934,7 @@
    "time": 1794210637305,
    "status": "open",
    "passed": false,
-   "high": 354,
+   "high": 355.35,
    "low": 352.35,
    "nifty": -0.42,
    "source": "Auto 2H",
@@ -4048,7 +3973,7 @@
    "time": 1794210637305,
    "status": "open",
    "passed": false,
-   "high": 354,
+   "high": 355.35,
    "low": 352.35,
    "nifty": -0.42,
    "source": "Auto 2H",
@@ -4253,6 +4178,8 @@
  ],
  "seq": 894,
  "log": [
+  "09 Nov 14:10  NYKAA: Stop loss at 354.5 (Hold \u00b7 trail)",
+  "09 Nov 14:10  NYKAA: Stop loss at 354.5 (EOD 3:15 PM)",
   "09 Nov 13:55  TVSMOTOR: HA exit (2H) at 4460.0 (Hold \u00b7 HA exit)",
   "09 Nov 13:55  TVSMOTOR: HA exit (2H) at 4460.0 (Hold \u00b7 HA exit)",
   "09 Nov 13:40  NYKAA: RSI exit (2H 57.9) at 352.5 (Hold \u00b7 RSI exit)",
@@ -4550,12 +4477,10 @@
   "05 Nov 12:50  UNIONBANK: RSI BUY 4425 at 187.05, SL 184.25 (2 HOUR; eod, trail, rsi)",
   "05 Nov 12:45  OFSS: TSL after target at 10169.25 (Hold \u00b7 trail)",
   "05 Nov 12:35  FORCEMOT: TSL after target at 18539.95 (Hold \u00b7 trail)",
-  "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (Hold \u00b7 RSI exit)",
-  "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (Hold \u00b7 trail)",
-  "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (EOD 3:15 PM)"
+  "05 Nov 12:30  BLUESTARCO: Stop loss at 1563.1 (Hold \u00b7 RSI exit)"
  ],
- "page_run": 1794213337886,
- "updated": 1794213337886,
+ "page_run": 1794213645962,
+ "updated": 1794213645962,
  "unattended": true,
  "peak_margin": 19750802.0
 }
