@@ -13762,5 +13762,116 @@
   "gross": -36627.5,
   "charges": 355.93,
   "net": -36983.43
+ },
+ {
+  "id": "1793939747157-761",
+  "symbol": "TIINDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 2153.8,
+  "exit": 2191.9,
+  "entry_time": 1793939747157,
+  "exit_time": 1794204942080,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 2307.6,
+  "tp": null,
+  "high": 2217.6,
+  "low": 2056.8,
+  "nifty": 0.3,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793939747157,
+   "price": 2153.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 58.78,
+  "gross": -7620.0,
+  "charges": 290.12,
+  "net": -7910.12
+ },
+ {
+  "id": "1793940938122-768",
+  "symbol": "LICI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1400,
+  "entry": 394.85,
+  "exit": 398.4,
+  "entry_time": 1793940938122,
+  "exit_time": 1794204942080,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 409.85,
+  "tp": null,
+  "high": 398.5,
+  "low": 390.5,
+  "nifty": 0.46,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793940938122,
+   "price": 394.85
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 59.04,
+  "gross": -4970.0,
+  "charges": 358.73,
+  "net": -5328.73
+ },
+ {
+  "id": "1793943052348-789",
+  "symbol": "PGEL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 950,
+  "entry": 529.35,
+  "exit": 555.4,
+  "entry_time": 1793943052348,
+  "exit_time": 1794204300000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 555.4,
+  "tp": 513.45,
+  "high": 555.4,
+  "low": 529.35,
+  "nifty": 0.18,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793943052348,
+   "price": 529.35
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 60.3,
+  "gross": -24747.5,
+  "charges": 331.45,
+  "net": -25078.95
  }
 ]
