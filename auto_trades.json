@@ -545,8 +545,8 @@
    "time": 1793852439677,
    "status": "open",
    "passed": false,
-   "high": 1858.1,
-   "low": 1794.5,
+   "high": 1860,
+   "low": 1793.7,
    "nifty": 1.91,
    "source": "Auto 2H",
    "timeframes": [
@@ -620,8 +620,8 @@
    "time": 1793852742831,
    "status": "open",
    "passed": false,
-   "high": 28725.0,
-   "low": 26720.0,
+   "high": 28745,
+   "low": 26715,
    "nifty": 1.95,
    "source": "Auto 2H",
    "timeframes": [
@@ -788,45 +788,6 @@
    "first_seen": {
     "time": 1793853050893,
     "price": 198.42
-   }
-  },
-  {
-   "id": "1793853645768-706",
-   "symbol": "HCLTECH",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 400,
-   "entry": 1449.9,
-   "sl": 1399.5,
-   "tp": 1493.4,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 21.75,
-    "step": 7.25
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 1399.5,
-   "time": 1793853645768,
-   "status": "open",
-   "passed": false,
-   "high": 1469,
-   "low": 1399.6,
-   "nifty": 1.72,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793853645768,
-    "price": 1449.9
    }
   },
   {
@@ -1001,7 +962,7 @@
    "time": 1793854856642,
    "status": "open",
    "passed": false,
-   "high": 2564.6,
+   "high": 2565,
    "low": 2450.5,
    "nifty": 1.82,
    "source": "Auto 2H",
@@ -2422,7 +2383,7 @@
    "status": "open",
    "passed": false,
    "high": 920.4,
-   "low": 915.6,
+   "low": 910.5,
    "nifty": -0.25,
    "source": "Auto 2H",
    "timeframes": [
@@ -2461,7 +2422,7 @@
    "status": "open",
    "passed": false,
    "high": 920.4,
-   "low": 915.6,
+   "low": 910.5,
    "nifty": -0.25,
    "source": "Auto 2H",
    "timeframes": [
@@ -2497,7 +2458,7 @@
    "status": "open",
    "passed": false,
    "high": 920.4,
-   "low": 915.6,
+   "low": 910.5,
    "nifty": -0.25,
    "source": "Auto 2H",
    "timeframes": [
@@ -2644,7 +2605,7 @@
    "status": "open",
    "passed": false,
    "high": 1815.1,
-   "low": 1798.5,
+   "low": 1798.4,
    "nifty": -0.49,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2683,7 +2644,7 @@
    "status": "open",
    "passed": false,
    "high": 1815.1,
-   "low": 1798.5,
+   "low": 1798.4,
    "nifty": -0.49,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2719,7 +2680,7 @@
    "status": "open",
    "passed": false,
    "high": 1815.1,
-   "low": 1798.5,
+   "low": 1798.4,
    "nifty": -0.49,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2792,7 +2753,7 @@
    "status": "open",
    "passed": false,
    "high": 1815.1,
-   "low": 1798.5,
+   "low": 1798.4,
    "nifty": -0.49,
    "source": "Auto HA MTF 2H",
    "timeframes": [
@@ -3758,7 +3719,7 @@
    "status": "open",
    "passed": false,
    "high": 1412.5,
-   "low": 1399.6,
+   "low": 1399.5,
    "nifty": 0.04,
    "source": "Auto HA MTF 4H",
    "timeframes": [
@@ -3832,7 +3793,7 @@
    "status": "open",
    "passed": false,
    "high": 36440,
-   "low": 36355,
+   "low": 36235,
    "nifty": -0.28,
    "source": "Auto 2H",
    "timeframes": [
@@ -3871,7 +3832,7 @@
    "status": "open",
    "passed": false,
    "high": 36440,
-   "low": 36355,
+   "low": 36235,
    "nifty": -0.28,
    "source": "Auto 2H",
    "timeframes": [
@@ -3907,7 +3868,7 @@
    "status": "open",
    "passed": false,
    "high": 36440,
-   "low": 36355,
+   "low": 36235,
    "nifty": -0.28,
    "source": "Auto 2H",
    "timeframes": [
@@ -3926,6 +3887,7 @@
  ],
  "seq": 877,
  "log": [
+  "09 Nov 12:35  HCLTECH: Stop loss at 1399.5 (Hold \u00b7 trail)",
   "09 Nov 12:15  PAGEIND: RSI BUY 20 at 36430.0, SL 35260.0 (2 HOUR; eod, trail, rsi)",
   "09 Nov 12:00  INFY: HA MTF SELL 400 at 1152.2, SL 1186.75 (4 HOUR; exit on 4H; ha)",
   "09 Nov 12:00  AMBER: TSL after target at 6219.7 (Hold \u00b7 trail)",
@@ -4224,11 +4186,10 @@
   "05 Nov 10:30  TCS: RSI BUY 225 at 2500.5, SL 2427.9 (2 HOUR; eod, trail, rsi)",
   "05 Nov 10:20  PNB: RSI BUY 8000 at 123.7, SL 121.25 (2 HOUR; eod, trail, rsi)",
   "05 Nov 10:15  KPITTECH: HA BUY 775 at 540.6, SL 517.0 (2 HOUR; eod, trail, ha)",
-  "05 Nov 10:15  ABB: HA SELL 125 at 6603.0, SL 6805.0 (2 HOUR; eod, trail, ha)",
-  "05 Nov 10:10  MAHABANK: RSI BUY 6500 at 81.65, SL 79.7 (2 HOUR; eod, trail, rsi)"
+  "05 Nov 10:15  ABB: HA SELL 125 at 6603.0, SL 6805.0 (2 HOUR; eod, trail, ha)"
  ],
- "page_run": 1794207655720,
- "updated": 1794207655720,
+ "page_run": 1794207942171,
+ "updated": 1794207942171,
  "unattended": true,
  "peak_margin": 19750802.0
 }

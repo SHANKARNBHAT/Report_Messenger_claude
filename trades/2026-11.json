@@ -13947,5 +13947,42 @@
   "gross": 19230.0,
   "charges": 407.52,
   "net": 18822.48
+ },
+ {
+  "id": "1793853645768-706",
+  "symbol": "HCLTECH",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1449.9,
+  "exit": 1399.5,
+  "entry_time": 1793853645768,
+  "exit_time": 1794207300000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1399.5,
+  "tp": 1493.4,
+  "high": 1469,
+  "low": 1399.5,
+  "nifty": 1.72,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793853645768,
+   "price": 1449.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -20160.0,
+  "charges": 363.31,
+  "net": -20523.31
  }
 ]
