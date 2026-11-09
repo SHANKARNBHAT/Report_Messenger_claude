@@ -14391,5 +14391,44 @@
   "gross": -2975.0,
   "charges": 410.81,
   "net": -3385.81
+ },
+ {
+  "id": "1794197744517-825",
+  "symbol": "INDUSTOWER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1700,
+  "entry": 379.65,
+  "exit": 382.45,
+  "entry_time": 1794197744517,
+  "exit_time": 1794216043271,
+  "reason": "HA exit (4H)",
+  "source": "Auto HA MTF 2H+4H",
+  "timeframes": [
+   "2 HOUR",
+   "4 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 391.05,
+  "tp": null,
+  "high": 382.6,
+  "low": 377.85,
+  "nifty": -0.08,
+  "strategies": [
+   "2H HA Bearish Strategy",
+   "4h HA BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794197744517,
+   "price": 379.65
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 52.99,
+  "gross": -4760.0,
+  "charges": 410.88,
+  "net": -5170.88
  }
 ]
