@@ -3495,7 +3495,7 @@
    "time": 1794204646649,
    "status": "open",
    "passed": false,
-   "high": 4919.9,
+   "high": 4925,
    "low": 4873.1,
    "nifty": 0.11,
    "source": "Auto HA 2H",
@@ -3534,7 +3534,7 @@
    "time": 1794204646649,
    "status": "open",
    "passed": false,
-   "high": 4919.9,
+   "high": 4925,
    "low": 4873.1,
    "nifty": 0.11,
    "source": "Auto HA 2H",
@@ -3570,7 +3570,7 @@
    "time": 1794204646649,
    "status": "open",
    "passed": false,
-   "high": 4919.9,
+   "high": 4925,
    "low": 4873.1,
    "nifty": 0.11,
    "source": "Auto HA 2H",
@@ -3606,7 +3606,7 @@
    "time": 1794204646649,
    "status": "open",
    "passed": false,
-   "high": 4919.9,
+   "high": 4925,
    "low": 4873.1,
    "nifty": 0.11,
    "source": "Auto HA MTF 2H+4H",
@@ -3830,7 +3830,7 @@
    "time": 1794208242559,
    "status": "open",
    "passed": false,
-   "high": 537.85,
+   "high": 539.5,
    "low": 537.85,
    "nifty": -0.33,
    "source": "Auto HA MTF 4H",
@@ -3847,10 +3847,48 @@
     "time": 1794208242559,
     "price": 537.85
    }
+  },
+  {
+   "id": "1794209138244-879",
+   "symbol": "WAAREEENER",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 175,
+   "entry": 2373.5,
+   "sl": 2444.7,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA MTF",
+   "stop": 2444.7,
+   "time": 1794209138244,
+   "status": "open",
+   "passed": false,
+   "high": 2373.5,
+   "low": 2373.5,
+   "nifty": -0.22,
+   "source": "Auto HA MTF 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "exit_tf": "4 HOUR",
+   "strategies": [
+    "4h HA BEARISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 51.62,
+   "first_seen": {
+    "time": 1794209138244,
+    "price": 2373.5
+   }
   }
  ],
- "seq": 878,
+ "seq": 879,
  "log": [
+  "09 Nov 12:55  WAAREEENER: HA MTF SELL 175 at 2373.5, SL 2444.7 (4 HOUR; exit on 4H; ha)",
   "09 Nov 12:50  NYKAA: HA exit (2H) at 352.8 (Hold \u00b7 HA exit)",
   "09 Nov 12:50  NYKAA: HA exit (2H) at 352.8 (Hold \u00b7 HA exit)",
   "09 Nov 12:40  KPITTECH: HA MTF SELL 775 at 537.85, SL 554.0 (4 HOUR; exit on 4H; ha)",
@@ -4149,11 +4187,10 @@
   "05 Nov 11:00  INDIANB: RSI BUY 1000 at 879.55, SL 848.05 (2 HOUR; eod)",
   "05 Nov 10:50  KFINTECH: TSL after target at 917.8 (Hold \u00b7 trail)",
   "05 Nov 10:40  PATANJALI: RSI exit (2H 59.9) at 378.9 (Hold \u00b7 RSI exit)",
-  "05 Nov 10:35  PATANJALI: TSL after target at 380.9 (Hold \u00b7 trail)",
-  "05 Nov 10:30  TCS: RSI BUY 225 at 2500.5, SL 2427.9 (2 HOUR; eod, trail, rsi)"
+  "05 Nov 10:35  PATANJALI: TSL after target at 380.9 (Hold \u00b7 trail)"
  ],
- "page_run": 1794208838745,
- "updated": 1794208838745,
+ "page_run": 1794209138244,
+ "updated": 1794209138244,
  "unattended": true,
  "peak_margin": 19750802.0
 }
