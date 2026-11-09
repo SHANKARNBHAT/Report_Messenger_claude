@@ -13614,5 +13614,42 @@
   "gross": 1150.0,
   "charges": 340.61,
   "net": 809.39
+ },
+ {
+  "id": "1794203141979-867",
+  "symbol": "ZYDUSLIFE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 900,
+  "entry": 1225.5,
+  "exit": 1220.1,
+  "entry_time": 1794203141979,
+  "exit_time": 1794203737948,
+  "reason": "RSI exit (2H 57.8)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 1195.9,
+  "tp": null,
+  "high": 1225.5,
+  "low": 1220.1,
+  "nifty": -0.26,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794203141979,
+   "price": 1225.5
+  },
+  "agrees": "Yes",
+  "sma_rsi": null,
+  "gross": -4860.0,
+  "charges": 665.83,
+  "net": -5525.83
  }
 ]
