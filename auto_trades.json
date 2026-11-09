@@ -2605,7 +2605,7 @@
    "status": "open",
    "passed": false,
    "high": 1815.1,
-   "low": 1798.4,
+   "low": 1796.5,
    "nifty": -0.49,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2644,7 +2644,7 @@
    "status": "open",
    "passed": false,
    "high": 1815.1,
-   "low": 1798.4,
+   "low": 1796.5,
    "nifty": -0.49,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2680,7 +2680,7 @@
    "status": "open",
    "passed": false,
    "high": 1815.1,
-   "low": 1798.4,
+   "low": 1796.5,
    "nifty": -0.49,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2753,7 +2753,7 @@
    "status": "open",
    "passed": false,
    "high": 1815.1,
-   "low": 1798.4,
+   "low": 1796.5,
    "nifty": -0.49,
    "source": "Auto HA MTF 2H",
    "timeframes": [
@@ -3457,7 +3457,7 @@
    "status": "open",
    "passed": false,
    "high": 1225.5,
-   "low": 1205.9,
+   "low": 1204.1,
    "nifty": -0.26,
    "source": "Auto 2H",
    "timeframes": [
@@ -3496,7 +3496,7 @@
    "status": "open",
    "passed": false,
    "high": 1225.5,
-   "low": 1205.9,
+   "low": 1204.1,
    "nifty": -0.26,
    "source": "Auto 2H",
    "timeframes": [
@@ -3719,7 +3719,7 @@
    "status": "open",
    "passed": false,
    "high": 1412.5,
-   "low": 1399.5,
+   "low": 1398.4,
    "nifty": 0.04,
    "source": "Auto HA MTF 4H",
    "timeframes": [
@@ -3883,10 +3883,48 @@
     "time": 1794206748295,
     "price": 36430.0
    }
+  },
+  {
+   "id": "1794208242559-878",
+   "symbol": "KPITTECH",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 775,
+   "entry": 537.85,
+   "sl": 554.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA MTF",
+   "stop": 554.0,
+   "time": 1794208242559,
+   "status": "open",
+   "passed": false,
+   "high": 537.85,
+   "low": 537.85,
+   "nifty": -0.33,
+   "source": "Auto HA MTF 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "exit_tf": "4 HOUR",
+   "strategies": [
+    "4h HA BEARISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 50.76,
+   "first_seen": {
+    "time": 1794208242559,
+    "price": 537.85
+   }
   }
  ],
- "seq": 877,
+ "seq": 878,
  "log": [
+  "09 Nov 12:40  KPITTECH: HA MTF SELL 775 at 537.85, SL 554.0 (4 HOUR; exit on 4H; ha)",
   "09 Nov 12:35  HCLTECH: Stop loss at 1399.5 (Hold \u00b7 trail)",
   "09 Nov 12:15  PAGEIND: RSI BUY 20 at 36430.0, SL 35260.0 (2 HOUR; eod, trail, rsi)",
   "09 Nov 12:00  INFY: HA MTF SELL 400 at 1152.2, SL 1186.75 (4 HOUR; exit on 4H; ha)",
@@ -4185,11 +4223,10 @@
   "05 Nov 10:35  PATANJALI: TSL after target at 380.9 (Hold \u00b7 trail)",
   "05 Nov 10:30  TCS: RSI BUY 225 at 2500.5, SL 2427.9 (2 HOUR; eod, trail, rsi)",
   "05 Nov 10:20  PNB: RSI BUY 8000 at 123.7, SL 121.25 (2 HOUR; eod, trail, rsi)",
-  "05 Nov 10:15  KPITTECH: HA BUY 775 at 540.6, SL 517.0 (2 HOUR; eod, trail, ha)",
-  "05 Nov 10:15  ABB: HA SELL 125 at 6603.0, SL 6805.0 (2 HOUR; eod, trail, ha)"
+  "05 Nov 10:15  KPITTECH: HA BUY 775 at 540.6, SL 517.0 (2 HOUR; eod, trail, ha)"
  ],
- "page_run": 1794207942171,
- "updated": 1794207942171,
+ "page_run": 1794208242559,
+ "updated": 1794208242559,
  "unattended": true,
  "peak_margin": 19750802.0
 }
