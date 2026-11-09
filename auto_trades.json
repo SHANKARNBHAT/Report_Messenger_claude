@@ -392,7 +392,7 @@
    "time": 1793767847804,
    "status": "open",
    "passed": false,
-   "high": 44.36,
+   "high": 44.43,
    "low": 42.98,
    "nifty": 0.19,
    "source": "Auto HA 2H",
@@ -635,45 +635,6 @@
    "first_seen": {
     "time": 1793850936963,
     "price": 1968.3
-   }
-  },
-  {
-   "id": "1793851841659-646",
-   "symbol": "APOLLOHOSP",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 125,
-   "entry": 8274.5,
-   "sl": 8569.0,
-   "tp": 8026.25,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 124.1,
-    "step": 41.35
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 8569.0,
-   "time": 1793851841659,
-   "status": "open",
-   "passed": false,
-   "high": 8560.0,
-   "low": 8274.5,
-   "nifty": 1.71,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 72.11,
-   "first_seen": {
-    "time": 1793851841659,
-    "price": 8274.5
    }
   },
   {
@@ -963,7 +924,7 @@
    "status": "open",
    "passed": false,
    "high": 1198.8,
-   "low": 1146.7,
+   "low": 1146,
    "nifty": 1.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -1343,7 +1304,7 @@
    "time": 1793936737933,
    "status": "open",
    "passed": false,
-   "high": 3299,
+   "high": 3302,
    "low": 3210,
    "nifty": -0.37,
    "source": "Auto HA 2H",
@@ -1382,7 +1343,7 @@
    "time": 1793938540975,
    "status": "open",
    "passed": false,
-   "high": 3265,
+   "high": 3267,
    "low": 3078.5,
    "nifty": 0.22,
    "source": "Auto 2H",
@@ -2136,7 +2097,7 @@
    "status": "open",
    "passed": false,
    "high": 435,
-   "low": 428.6,
+   "low": 428.4,
    "nifty": -0.41,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2175,7 +2136,7 @@
    "status": "open",
    "passed": false,
    "high": 435,
-   "low": 428.6,
+   "low": 428.4,
    "nifty": -0.41,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2211,7 +2172,7 @@
    "status": "open",
    "passed": false,
    "high": 435,
-   "low": 428.6,
+   "low": 428.4,
    "nifty": -0.41,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2284,7 +2245,7 @@
    "status": "open",
    "passed": false,
    "high": 435,
-   "low": 428.6,
+   "low": 428.4,
    "nifty": -0.41,
    "source": "Auto HA MTF 2H",
    "timeframes": [
@@ -2578,7 +2539,7 @@
    "time": 1794198651441,
    "status": "open",
    "passed": false,
-   "high": 91.25,
+   "high": 91.3,
    "low": 90.72,
    "nifty": -0.19,
    "source": "Auto HA 2H",
@@ -2617,7 +2578,7 @@
    "time": 1794198651441,
    "status": "open",
    "passed": false,
-   "high": 91.25,
+   "high": 91.3,
    "low": 90.72,
    "nifty": -0.19,
    "source": "Auto HA 2H",
@@ -2653,7 +2614,7 @@
    "time": 1794198651441,
    "status": "open",
    "passed": false,
-   "high": 91.25,
+   "high": 91.3,
    "low": 90.72,
    "nifty": -0.19,
    "source": "Auto HA 2H",
@@ -2689,7 +2650,7 @@
    "time": 1794198651441,
    "status": "open",
    "passed": false,
-   "high": 91.25,
+   "high": 91.3,
    "low": 90.72,
    "nifty": -0.19,
    "source": "Auto HA MTF 2H",
@@ -2854,10 +2815,123 @@
     "time": 1794200137105,
     "price": 4431.6
    }
+  },
+  {
+   "id": "1794200736190-835",
+   "symbol": "SONACOMS",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1225,
+   "entry": 918.45,
+   "sl": 904.65,
+   "tp": 946.0,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 904.65,
+   "time": 1794200736190,
+   "status": "open",
+   "passed": false,
+   "high": 918.45,
+   "low": 918.45,
+   "nifty": -0.25,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794200736190,
+    "price": 918.45
+   }
+  },
+  {
+   "id": "1794200736190-836",
+   "symbol": "SONACOMS",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1225,
+   "entry": 918.45,
+   "sl": 904.65,
+   "tp": 946.0,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 13.8,
+    "step": 4.6
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 904.65,
+   "time": 1794200736190,
+   "status": "open",
+   "passed": false,
+   "high": 918.45,
+   "low": 918.45,
+   "nifty": -0.25,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794200736190,
+    "price": 918.45
+   }
+  },
+  {
+   "id": "1794200736190-837",
+   "symbol": "SONACOMS",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1225,
+   "entry": 918.45,
+   "sl": 904.65,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 904.65,
+   "time": 1794200736190,
+   "status": "open",
+   "passed": false,
+   "high": 918.45,
+   "low": 918.45,
+   "nifty": -0.25,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794200736190,
+    "price": 918.45
+   }
   }
  ],
- "seq": 834,
+ "seq": 837,
  "log": [
+  "09 Nov 10:35  SONACOMS: RSI BUY 1225 at 918.45, SL 904.65 (2 HOUR; eod, trail, rsi)",
+  "09 Nov 10:35  APOLLOHOSP: Stop loss at 8569.0 (Hold \u00b7 trail)",
   "09 Nov 10:25  TVSMOTOR: HA MTF SELL 175 at 4431.6, SL 4564.55 (2 HOUR; exit on 2H; ha)",
   "09 Nov 10:25  TVSMOTOR: HA SELL 175 at 4431.6, SL 4516.2 (2 HOUR; eod, trail, ha)",
   "09 Nov 10:00  VMM: HA MTF SELL 4850 at 91.25, SL 94.0 (2 HOUR; exit on 2H; ha)",
@@ -3155,12 +3229,10 @@
   "05 Nov 09:30  BIOCON: Stop loss at 350.95 (Hold \u00b7 trail)",
   "05 Nov 09:30  BIOCON: Stop loss at 350.95 (EOD 3:15 PM)",
   "05 Nov 09:30  NYKAA: Stop loss at 349.45 (EOD 3:15 PM)",
-  "05 Nov 09:30  NYKAA: TSL after target at 349.8 (Hold \u00b7 trail)",
-  "05 Nov 09:30  POWERINDIA: HA exit (2H) at 28045.0 (Hold \u00b7 HA exit)",
-  "05 Nov 09:30  AUROPHARMA: TSL after target at 1717.2 (Hold \u00b7 trail)"
+  "05 Nov 09:30  NYKAA: TSL after target at 349.8 (Hold \u00b7 trail)"
  ],
- "page_run": 1794200457121,
- "updated": 1794200457121,
+ "page_run": 1794200736190,
+ "updated": 1794200736190,
  "unattended": true,
  "peak_margin": 19750802.0
 }

@@ -13429,5 +13429,42 @@
   "gross": 53125.0,
   "charges": 504.45,
   "net": 52620.55
+ },
+ {
+  "id": "1793851841659-646",
+  "symbol": "APOLLOHOSP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 8274.5,
+  "exit": 8569.0,
+  "entry_time": 1793851841659,
+  "exit_time": 1794200400000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 8569.0,
+  "tp": 8026.25,
+  "high": 8569.0,
+  "low": 8274.5,
+  "nifty": 1.71,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793851841659,
+   "price": 8274.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 72.11,
+  "gross": -36812.5,
+  "charges": 631.24,
+  "net": -37443.74
  }
 ]
