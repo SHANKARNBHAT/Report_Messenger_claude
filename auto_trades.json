@@ -110,45 +110,6 @@
    }
   },
   {
-   "id": "1793681490455-469",
-   "symbol": "HDFCLIFE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 1100,
-   "entry": 523.25,
-   "sl": 515.4,
-   "tp": 538.95,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 7.85,
-    "step": 2.6
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 562.3,
-   "time": 1793681490455,
-   "status": "open",
-   "passed": true,
-   "high": 571.6,
-   "low": 519.6,
-   "nifty": 0.85,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 41.73,
-   "first_seen": {
-    "time": 1793681490455,
-    "price": 523.25
-   }
-  },
-  {
    "id": "1793682054415-473",
    "symbol": "ICICIBANK",
    "side": "BUY",
@@ -883,11 +844,11 @@
    },
    "style": "trail",
    "system": "RSI",
-   "stop": 126.75,
+   "stop": 127.35,
    "time": 1793854248467,
    "status": "open",
    "passed": true,
-   "high": 129.13,
+   "high": 129.38,
    "low": 123.57,
    "nifty": 1.78,
    "source": "Auto 2H",
@@ -923,7 +884,7 @@
    "time": 1793854248467,
    "status": "open",
    "passed": false,
-   "high": 129.13,
+   "high": 129.38,
    "low": 123.57,
    "nifty": 1.78,
    "source": "Auto 2H",
@@ -2234,7 +2195,7 @@
    "time": 1794200137105,
    "status": "open",
    "passed": false,
-   "high": 4451,
+   "high": 4455.2,
    "low": 4413,
    "nifty": -0.23,
    "source": "Auto HA 2H",
@@ -2273,7 +2234,7 @@
    "time": 1794200137105,
    "status": "open",
    "passed": false,
-   "high": 4451,
+   "high": 4455.2,
    "low": 4413,
    "nifty": -0.23,
    "source": "Auto HA 2H",
@@ -2309,7 +2270,7 @@
    "time": 1794200137105,
    "status": "open",
    "passed": false,
-   "high": 4451,
+   "high": 4455.2,
    "low": 4413,
    "nifty": -0.23,
    "source": "Auto HA 2H",
@@ -2345,7 +2306,7 @@
    "time": 1794200137105,
    "status": "open",
    "passed": false,
-   "high": 4451,
+   "high": 4455.2,
    "low": 4413,
    "nifty": -0.23,
    "source": "Auto HA MTF 2H",
@@ -3308,7 +3269,7 @@
    "time": 1794202541001,
    "status": "open",
    "passed": false,
-   "high": 353.05,
+   "high": 353.45,
    "low": 348.4,
    "nifty": -0.44,
    "source": "Auto HA 2H",
@@ -3347,7 +3308,7 @@
    "time": 1794202541001,
    "status": "open",
    "passed": false,
-   "high": 353.05,
+   "high": 353.45,
    "low": 348.4,
    "nifty": -0.44,
    "source": "Auto HA 2H",
@@ -3495,7 +3456,7 @@
    "time": 1794204646649,
    "status": "open",
    "passed": false,
-   "high": 4927.9,
+   "high": 4928,
    "low": 4873.1,
    "nifty": 0.11,
    "source": "Auto HA 2H",
@@ -3534,7 +3495,7 @@
    "time": 1794204646649,
    "status": "open",
    "passed": false,
-   "high": 4927.9,
+   "high": 4928,
    "low": 4873.1,
    "nifty": 0.11,
    "source": "Auto HA 2H",
@@ -3570,7 +3531,7 @@
    "time": 1794204646649,
    "status": "open",
    "passed": false,
-   "high": 4927.9,
+   "high": 4928,
    "low": 4873.1,
    "nifty": 0.11,
    "source": "Auto HA 2H",
@@ -3606,7 +3567,7 @@
    "time": 1794204646649,
    "status": "open",
    "passed": false,
-   "high": 4927.9,
+   "high": 4928,
    "low": 4873.1,
    "nifty": 0.11,
    "source": "Auto HA MTF 2H+4H",
@@ -3904,8 +3865,8 @@
    "time": 1794209739471,
    "status": "open",
    "passed": false,
-   "high": 951.9,
-   "low": 951.9,
+   "high": 953,
+   "low": 950.2,
    "nifty": -0.1,
    "source": "Auto 2H",
    "timeframes": [
@@ -3943,8 +3904,8 @@
    "time": 1794209739471,
    "status": "open",
    "passed": false,
-   "high": 951.9,
-   "low": 951.9,
+   "high": 953,
+   "low": 950.2,
    "nifty": -0.1,
    "source": "Auto 2H",
    "timeframes": [
@@ -3979,8 +3940,8 @@
    "time": 1794209739471,
    "status": "open",
    "passed": false,
-   "high": 951.9,
-   "low": 951.9,
+   "high": 953,
+   "low": 950.2,
    "nifty": -0.1,
    "source": "Auto 2H",
    "timeframes": [
@@ -4140,10 +4101,311 @@
     "time": 1794207655720,
     "price": 3297.0
    }
+  },
+  {
+   "id": "1794210637305-887",
+   "symbol": "NYKAA",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 3125,
+   "entry": 353.2,
+   "sl": 347.9,
+   "tp": 363.8,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 347.9,
+   "time": 1794210637305,
+   "status": "open",
+   "passed": false,
+   "high": 353.2,
+   "low": 353.2,
+   "nifty": -0.42,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794210637305,
+    "price": 353.2
+   }
+  },
+  {
+   "id": "1794210637305-888",
+   "symbol": "NYKAA",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 3125,
+   "entry": 353.2,
+   "sl": 347.9,
+   "tp": 363.8,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 5.3,
+    "step": 1.75
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 347.9,
+   "time": 1794210637305,
+   "status": "open",
+   "passed": false,
+   "high": 353.2,
+   "low": 353.2,
+   "nifty": -0.42,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794210637305,
+    "price": 353.2
+   }
+  },
+  {
+   "id": "1794210637305-889",
+   "symbol": "NYKAA",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 3125,
+   "entry": 353.2,
+   "sl": 347.9,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 347.9,
+   "time": 1794210637305,
+   "status": "open",
+   "passed": false,
+   "high": 353.2,
+   "low": 353.2,
+   "nifty": -0.42,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794210637305,
+    "price": 353.2
+   }
+  },
+  {
+   "id": "1794210637305-890",
+   "symbol": "INDHOTEL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1000,
+   "entry": 879.75,
+   "sl": 892.75,
+   "tp": 853.35,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 892.75,
+   "time": 1794210637305,
+   "status": "open",
+   "passed": false,
+   "high": 879.75,
+   "low": 879.75,
+   "nifty": -0.42,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 76.5,
+   "first_seen": {
+    "time": 1794210637305,
+    "price": 879.75
+   }
+  },
+  {
+   "id": "1794210637305-891",
+   "symbol": "INDHOTEL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1000,
+   "entry": 879.75,
+   "sl": 892.75,
+   "tp": 853.35,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 13.2,
+    "step": 4.4
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 892.75,
+   "time": 1794210637305,
+   "status": "open",
+   "passed": false,
+   "high": 879.75,
+   "low": 879.75,
+   "nifty": -0.42,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 76.5,
+   "first_seen": {
+    "time": 1794210637305,
+    "price": 879.75
+   }
+  },
+  {
+   "id": "1794210637305-892",
+   "symbol": "INDHOTEL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1000,
+   "entry": 879.75,
+   "sl": 892.75,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 892.75,
+   "time": 1794210637305,
+   "status": "open",
+   "passed": false,
+   "high": 879.75,
+   "low": 879.75,
+   "nifty": -0.42,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 76.5,
+   "first_seen": {
+    "time": 1794210637305,
+    "price": 879.75
+   }
+  },
+  {
+   "id": "1794210637305-893",
+   "symbol": "INDHOTEL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1000,
+   "entry": 879.75,
+   "sl": 906.15,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA MTF",
+   "stop": 906.15,
+   "time": 1794210637305,
+   "status": "open",
+   "passed": false,
+   "high": 879.75,
+   "low": 879.75,
+   "nifty": -0.42,
+   "source": "Auto HA MTF 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "exit_tf": "2 HOUR",
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 76.5,
+   "first_seen": {
+    "time": 1794210637305,
+    "price": 879.75
+   }
+  },
+  {
+   "id": "1794210637305-894",
+   "symbol": "JINDALSTEL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 625,
+   "entry": 1138.1,
+   "sl": 1172.25,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA MTF",
+   "stop": 1172.25,
+   "time": 1794210637305,
+   "status": "open",
+   "passed": false,
+   "high": 1138.1,
+   "low": 1138.1,
+   "nifty": -0.42,
+   "source": "Auto HA MTF 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "exit_tf": "4 HOUR",
+   "strategies": [
+    "4h HA BEARISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 70.14,
+   "first_seen": {
+    "time": 1794210637305,
+    "price": 1138.1
+   }
   }
  ],
- "seq": 886,
+ "seq": 894,
  "log": [
+  "09 Nov 13:20  JINDALSTEL: HA MTF SELL 625 at 1138.1, SL 1172.25 (4 HOUR; exit on 4H; ha)",
+  "09 Nov 13:20  INDHOTEL: HA MTF SELL 1000 at 879.75, SL 906.15 (2 HOUR; exit on 2H; ha)",
+  "09 Nov 13:20  INDHOTEL: HA SELL 1000 at 879.75, SL 892.75 (2 HOUR; eod, trail, ha)",
+  "09 Nov 13:20  NYKAA: RSI BUY 3125 at 353.2, SL 347.9 (2 HOUR; eod, trail, rsi)",
+  "09 Nov 13:20  HDFCLIFE: TSL after target at 562.3 (Hold \u00b7 trail)",
   "09 Nov 13:15  SUPREMEIND: HA MTF BUY 175 at 3275.3, SL 3177.05 (4 HOUR; exit on 4H; ha)",
   "09 Nov 13:10  WIPRO: RSI BUY 3000 at 196.75, SL 193.8 (2 HOUR; eod, rsi)",
   "09 Nov 13:10  BLUESTARCO: RSI BUY 325 at 1578.6, SL 1546.4 (2 HOUR; eod)",
@@ -4438,15 +4700,10 @@
   "05 Nov 12:25  MAHABANK: Target at 84.1 (EOD 3:15 PM)",
   "05 Nov 11:50  MCX: RSI exit (2H 60.0) at 3375.0 (Hold \u00b7 RSI exit)",
   "05 Nov 11:20  BLUESTARCO: RSI BUY 325 at 1586.9, SL 1563.1 (2 HOUR; eod, trail, rsi)",
-  "05 Nov 11:20  MANKIND: RSI exit (2H 59.3) at 2507.6 (Hold \u00b7 RSI exit)",
-  "05 Nov 11:20  CONCOR: Stop loss at 437.95 (Hold \u00b7 trail)",
-  "05 Nov 11:15  MCX: RSI BUY 225 at 3374.6, SL 3285.8 (2 HOUR; eod, trail, rsi)",
-  "05 Nov 11:10  FEDERALBNK: Stop loss at 337.15 (Hold \u00b7 RSI exit)",
-  "05 Nov 11:10  FEDERALBNK: Stop loss at 337.15 (Hold \u00b7 trail)",
-  "05 Nov 11:10  FEDERALBNK: Stop loss at 337.15 (EOD 3:15 PM)"
+  "05 Nov 11:20  MANKIND: RSI exit (2H 59.3) at 2507.6 (Hold \u00b7 RSI exit)"
  ],
- "page_run": 1794210338520,
- "updated": 1794210338520,
+ "page_run": 1794210637305,
+ "updated": 1794210637305,
  "unattended": true,
  "peak_margin": 19750802.0
 }
