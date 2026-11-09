@@ -14169,5 +14169,79 @@
   "gross": -2187.5,
   "charges": 667.68,
   "net": -2855.18
+ },
+ {
+  "id": "1794200137105-833",
+  "symbol": "TVSMOTOR",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4431.6,
+  "exit": 4460.0,
+  "entry_time": 1794200137105,
+  "exit_time": 1794212738618,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 4516.2,
+  "tp": null,
+  "high": 4463.1,
+  "low": 4413,
+  "nifty": -0.23,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794200137105,
+   "price": 4431.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.09,
+  "gross": -4970.0,
+  "charges": 484.18,
+  "net": -5454.18
+ },
+ {
+  "id": "1794200137105-834",
+  "symbol": "TVSMOTOR",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4431.6,
+  "exit": 4460.0,
+  "entry_time": 1794200137105,
+  "exit_time": 1794212738618,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 4564.55,
+  "tp": null,
+  "high": 4463.1,
+  "low": 4413,
+  "nifty": -0.23,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794200137105,
+   "price": 4431.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.09,
+  "gross": -4970.0,
+  "charges": 484.18,
+  "net": -5454.18
  }
 ]
