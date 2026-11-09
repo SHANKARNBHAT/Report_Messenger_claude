@@ -2,45 +2,6 @@
  "capital": 1000000,
  "positions": [
   {
-   "id": "1793677837339-414",
-   "symbol": "HDFCBANK",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 650,
-   "entry": 700.0,
-   "sl": 689.5,
-   "tp": 721.0,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 10.5,
-    "step": 3.5
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 787.5,
-   "time": 1793677837339,
-   "status": "open",
-   "passed": true,
-   "high": 798.25,
-   "low": 700.0,
-   "nifty": 0.62,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 39.9,
-   "first_seen": {
-    "time": 1793677837339,
-    "price": 700.0
-   }
-  },
-  {
    "id": "1793677837339-415",
    "symbol": "HDFCBANK",
    "side": "BUY",
@@ -317,7 +278,7 @@
    "time": 1793690136600,
    "status": "open",
    "passed": false,
-   "high": 1847.0,
+   "high": 1848.7,
    "low": 1676.0,
    "nifty": 0.96,
    "source": "Auto 2H",
@@ -2097,7 +2058,7 @@
    "status": "open",
    "passed": false,
    "high": 435,
-   "low": 428.4,
+   "low": 428.05,
    "nifty": -0.41,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2136,7 +2097,7 @@
    "status": "open",
    "passed": false,
    "high": 435,
-   "low": 428.4,
+   "low": 428.05,
    "nifty": -0.41,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2172,7 +2133,7 @@
    "status": "open",
    "passed": false,
    "high": 435,
-   "low": 428.4,
+   "low": 428.05,
    "nifty": -0.41,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2245,7 +2206,7 @@
    "status": "open",
    "passed": false,
    "high": 435,
-   "low": 428.4,
+   "low": 428.05,
    "nifty": -0.41,
    "source": "Auto HA MTF 2H",
    "timeframes": [
@@ -2688,7 +2649,7 @@
    "status": "open",
    "passed": false,
    "high": 4431.6,
-   "low": 4431.6,
+   "low": 4422.8,
    "nifty": -0.23,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2727,7 +2688,7 @@
    "status": "open",
    "passed": false,
    "high": 4431.6,
-   "low": 4431.6,
+   "low": 4422.8,
    "nifty": -0.23,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2763,7 +2724,7 @@
    "status": "open",
    "passed": false,
    "high": 4431.6,
-   "low": 4431.6,
+   "low": 4422.8,
    "nifty": -0.23,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2799,7 +2760,7 @@
    "status": "open",
    "passed": false,
    "high": 4431.6,
-   "low": 4431.6,
+   "low": 4422.8,
    "nifty": -0.23,
    "source": "Auto HA MTF 2H",
    "timeframes": [
@@ -2930,6 +2891,7 @@
  ],
  "seq": 837,
  "log": [
+  "09 Nov 10:40  HDFCBANK: TSL after target at 787.0 (Hold \u00b7 trail)",
   "09 Nov 10:35  SONACOMS: RSI BUY 1225 at 918.45, SL 904.65 (2 HOUR; eod, trail, rsi)",
   "09 Nov 10:35  APOLLOHOSP: Stop loss at 8569.0 (Hold \u00b7 trail)",
   "09 Nov 10:25  TVSMOTOR: HA MTF SELL 175 at 4431.6, SL 4564.55 (2 HOUR; exit on 2H; ha)",
@@ -3228,11 +3190,10 @@
   "05 Nov 09:30  BLUESTARCO: Stop loss at 1587.3 (EOD 3:15 PM)",
   "05 Nov 09:30  BIOCON: Stop loss at 350.95 (Hold \u00b7 trail)",
   "05 Nov 09:30  BIOCON: Stop loss at 350.95 (EOD 3:15 PM)",
-  "05 Nov 09:30  NYKAA: Stop loss at 349.45 (EOD 3:15 PM)",
-  "05 Nov 09:30  NYKAA: TSL after target at 349.8 (Hold \u00b7 trail)"
+  "05 Nov 09:30  NYKAA: Stop loss at 349.45 (EOD 3:15 PM)"
  ],
- "page_run": 1794200736190,
- "updated": 1794200736190,
+ "page_run": 1794201041760,
+ "updated": 1794201041760,
  "unattended": true,
  "peak_margin": 19750802.0
 }
