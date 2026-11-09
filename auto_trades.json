@@ -19,11 +19,11 @@
    },
    "style": "trail",
    "system": "HA",
-   "stop": 777.0,
+   "stop": 784.0,
    "time": 1793677837339,
    "status": "open",
    "passed": true,
-   "high": 788.25,
+   "high": 797.1,
    "low": 700.0,
    "nifty": 0.62,
    "source": "Auto HA 2H",
@@ -59,7 +59,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 788.25,
+   "high": 797.1,
    "low": 700.0,
    "nifty": 0.62,
    "source": "Auto HA 2H",
@@ -95,7 +95,7 @@
    "time": 1793677837339,
    "status": "open",
    "passed": false,
-   "high": 788.25,
+   "high": 797.1,
    "low": 700.0,
    "nifty": 0.62,
    "source": "Auto HA 2H",
@@ -356,7 +356,7 @@
    "time": 1793690136600,
    "status": "open",
    "passed": false,
-   "high": 1804.0,
+   "high": 1808.6,
    "low": 1676.0,
    "nifty": 0.96,
    "source": "Auto 2H",
@@ -620,7 +620,7 @@
    "time": 1793782855874,
    "status": "open",
    "passed": false,
-   "high": 2582.9,
+   "high": 2587.8,
    "low": 2490.0,
    "nifty": 1.96,
    "source": "Auto 2H",
@@ -770,7 +770,7 @@
    "time": 1793851841659,
    "status": "open",
    "passed": false,
-   "high": 8480.5,
+   "high": 8518.5,
    "low": 8274.5,
    "nifty": 1.71,
    "source": "Auto HA 2H",
@@ -885,7 +885,7 @@
    "status": "open",
    "passed": false,
    "high": 1858.1,
-   "low": 1816.7,
+   "low": 1796.1,
    "nifty": 1.91,
    "source": "Auto 2H",
    "timeframes": [
@@ -921,7 +921,7 @@
    "status": "open",
    "passed": false,
    "high": 1858.1,
-   "low": 1816.7,
+   "low": 1796.1,
    "nifty": 1.91,
    "source": "Auto 2H",
    "timeframes": [
@@ -1010,45 +1010,6 @@
    "first_seen": {
     "time": 1793852742831,
     "price": 28195.0
-   }
-  },
-  {
-   "id": "1793853050893-679",
-   "symbol": "COFORGE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 475,
-   "entry": 2115.7,
-   "sl": 2034.4,
-   "tp": 2179.15,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 31.75,
-    "step": 10.6
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 2034.4,
-   "time": 1793853050893,
-   "status": "open",
-   "passed": false,
-   "high": 2126.4,
-   "low": 2056.0,
-   "nifty": 1.85,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793853050893,
-    "price": 2115.7
    }
   },
   {
@@ -1199,45 +1160,6 @@
    "first_seen": {
     "time": 1793853050893,
     "price": 1170.4
-   }
-  },
-  {
-   "id": "1793853050893-694",
-   "symbol": "PERSISTENT",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 125,
-   "entry": 6203.0,
-   "sl": 5980.0,
-   "tp": 6389.1,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 93.05,
-    "step": 31.0
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 5980.0,
-   "time": 1793853050893,
-   "status": "open",
-   "passed": false,
-   "high": 6233.5,
-   "low": 6022.0,
-   "nifty": 1.85,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793853050893,
-    "price": 6203.0
    }
   },
   {
@@ -2530,6 +2452,8 @@
  ],
  "seq": 811,
  "log": [
+  "09 Nov 09:15  PERSISTENT: Stop loss at 5941.5 (Hold \u00b7 trail)",
+  "09 Nov 09:15  COFORGE: Stop loss at 2018.8 (Hold \u00b7 trail)",
   "09 Nov 09:00  SRF: Stop loss at 2479.0 (Hold \u00b7 HA exit)",
   "09 Nov 09:00  SRF: Stop loss at 2479.0 (Hold \u00b7 trail)",
   "09 Nov 09:00  SRF: Stop loss at 2479.0 (EOD 3:15 PM)",
@@ -2827,12 +2751,10 @@
   "05 Nov 09:15  APLAPOLLO: RSI BUY 350 at 2199.8, SL 2166.8 (2 HOUR; eod, trail, rsi)",
   "04 Nov 15:15  BLUESTARCO: EOD 3:15 PM at 1557.7 (EOD 3:15 PM)",
   "04 Nov 15:15  INDIANB: EOD 3:15 PM at 855.1 (EOD 3:15 PM)",
-  "04 Nov 15:15  MANKIND: EOD 3:15 PM at 2523.6 (EOD 3:15 PM)",
-  "04 Nov 15:15  NYKAA: EOD 3:15 PM at 352.35 (EOD 3:15 PM)",
-  "04 Nov 15:15  KOTAKBANK: EOD 3:15 PM at 457.45 (EOD 3:15 PM)"
+  "04 Nov 15:15  MANKIND: EOD 3:15 PM at 2523.6 (EOD 3:15 PM)"
  ],
- "page_run": 1794195640860,
- "updated": 1794195640860,
+ "page_run": 1794195944750,
+ "updated": 1794195944750,
  "unattended": true,
  "peak_margin": 19750802.0
 }

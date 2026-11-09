@@ -12911,5 +12911,79 @@
   "gross": -4480.0,
   "charges": 324.09,
   "net": -4804.09
+ },
+ {
+  "id": "1793853050893-679",
+  "symbol": "COFORGE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 2115.7,
+  "exit": 2018.8,
+  "entry_time": 1793853050893,
+  "exit_time": 1794195954000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2034.4,
+  "tp": 2179.15,
+  "high": 2126.4,
+  "low": 2018.8,
+  "nifty": 1.85,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793853050893,
+   "price": 2115.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -46027.5,
+  "charges": 589.17,
+  "net": -46616.67
+ },
+ {
+  "id": "1793853050893-694",
+  "symbol": "PERSISTENT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 6203.0,
+  "exit": 5941.5,
+  "entry_time": 1793853050893,
+  "exit_time": 1794195953000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 5980.0,
+  "tp": 6389.1,
+  "high": 6233.5,
+  "low": 5941.5,
+  "nifty": 1.85,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793853050893,
+   "price": 6203.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -32687.5,
+  "charges": 466.83,
+  "net": -33154.33
  }
 ]
