@@ -13725,5 +13725,42 @@
   "gross": -617.5,
   "charges": 340.85,
   "net": -958.35
+ },
+ {
+  "id": "1793938540975-750",
+  "symbol": "SUPREMEIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 3117.0,
+  "exit": 3326.3,
+  "entry_time": 1793938540975,
+  "exit_time": 1794204000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 3326.3,
+  "tp": 3023.5,
+  "high": 3326.3,
+  "low": 3078.5,
+  "nifty": 0.22,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793938540975,
+   "price": 3117.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -36627.5,
+  "charges": 355.93,
+  "net": -36983.43
  }
 ]
