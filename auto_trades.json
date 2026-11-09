@@ -113,45 +113,6 @@
    }
   },
   {
-   "id": "1793678456917-426",
-   "symbol": "AXISBANK",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 625,
-   "entry": 1220.3,
-   "sl": 1202.0,
-   "tp": 1256.9,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 18.3,
-    "step": 6.1
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 1305.7,
-   "time": 1793678456917,
-   "status": "open",
-   "passed": true,
-   "high": 1324.0,
-   "low": 1220.3,
-   "nifty": 0.74,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 44.34,
-   "first_seen": {
-    "time": 1793678456917,
-    "price": 1220.3
-   }
-  },
-  {
    "id": "1793680250528-446",
    "symbol": "BSE",
    "side": "BUY",
@@ -284,7 +245,7 @@
    "time": 1793683538243,
    "status": "open",
    "passed": false,
-   "high": 4559.6,
+   "high": 4566.7,
    "low": 4232.6,
    "nifty": 0.92,
    "source": "Auto HA 2H",
@@ -320,7 +281,7 @@
    "time": 1793683538243,
    "status": "open",
    "passed": false,
-   "high": 4559.6,
+   "high": 4566.7,
    "low": 4232.6,
    "nifty": 0.92,
    "source": "Auto HA 2H",
@@ -470,7 +431,7 @@
    "time": 1793775649574,
    "status": "open",
    "passed": false,
-   "high": 1219.9,
+   "high": 1223,
    "low": 1172,
    "nifty": -0.01,
    "source": "Auto HA 2H",
@@ -548,7 +509,7 @@
    "time": 1793782855874,
    "status": "open",
    "passed": true,
-   "high": 2679.0,
+   "high": 2680.0,
    "low": 2490.0,
    "nifty": 1.96,
    "source": "Auto 2H",
@@ -584,7 +545,7 @@
    "time": 1793783442609,
    "status": "open",
    "passed": false,
-   "high": 906.4,
+   "high": 910.45,
    "low": 854.2,
    "nifty": 1.97,
    "source": "Auto 2H",
@@ -698,7 +659,7 @@
    "time": 1793851841659,
    "status": "open",
    "passed": false,
-   "high": 8542.5,
+   "high": 8544.0,
    "low": 8274.5,
    "nifty": 1.71,
    "source": "Auto HA 2H",
@@ -1189,11 +1150,11 @@
    },
    "style": "trail",
    "system": "RSI",
-   "stop": 125.55,
+   "stop": 126.15,
    "time": 1793854248467,
    "status": "open",
    "passed": true,
-   "high": 127.67,
+   "high": 128.47,
    "low": 123.57,
    "nifty": 1.78,
    "source": "Auto 2H",
@@ -1229,7 +1190,7 @@
    "time": 1793854248467,
    "status": "open",
    "passed": false,
-   "high": 127.67,
+   "high": 128.47,
    "low": 123.57,
    "nifty": 1.78,
    "source": "Auto 2H",
@@ -1307,7 +1268,7 @@
    "time": 1793863238615,
    "status": "open",
    "passed": false,
-   "high": 189.9,
+   "high": 191,
    "low": 184.45,
    "nifty": 2.02,
    "source": "Auto 2H",
@@ -1500,7 +1461,7 @@
    "status": "open",
    "passed": true,
    "high": 6550,
-   "low": 6184,
+   "low": 6171,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1536,7 +1497,7 @@
    "status": "open",
    "passed": false,
    "high": 6550,
-   "low": 6184,
+   "low": 6171,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2043,10 +2004,311 @@
     "time": 1793956545539,
     "price": 1568.0
    }
+  },
+  {
+   "id": "1794197446718-812",
+   "symbol": "GODREJCP",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 500,
+   "entry": 839.25,
+   "sl": 854.75,
+   "tp": 814.05,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 854.75,
+   "time": 1794197446718,
+   "status": "open",
+   "passed": false,
+   "high": 839.25,
+   "low": 839.25,
+   "nifty": -0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 56.3,
+   "first_seen": {
+    "time": 1794197446718,
+    "price": 839.25
+   }
+  },
+  {
+   "id": "1794197446718-813",
+   "symbol": "GODREJCP",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 500,
+   "entry": 839.25,
+   "sl": 854.75,
+   "tp": 814.05,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 12.6,
+    "step": 4.2
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 854.75,
+   "time": 1794197446718,
+   "status": "open",
+   "passed": false,
+   "high": 839.25,
+   "low": 839.25,
+   "nifty": -0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 56.3,
+   "first_seen": {
+    "time": 1794197446718,
+    "price": 839.25
+   }
+  },
+  {
+   "id": "1794197446718-814",
+   "symbol": "GODREJCP",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 500,
+   "entry": 839.25,
+   "sl": 854.75,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 854.75,
+   "time": 1794197446718,
+   "status": "open",
+   "passed": false,
+   "high": 839.25,
+   "low": 839.25,
+   "nifty": -0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 56.3,
+   "first_seen": {
+    "time": 1794197446718,
+    "price": 839.25
+   }
+  },
+  {
+   "id": "1794197446718-815",
+   "symbol": "JUBLFOOD",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1250,
+   "entry": 434.7,
+   "sl": 465.0,
+   "tp": 421.65,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 465.0,
+   "time": 1794197446718,
+   "status": "open",
+   "passed": false,
+   "high": 434.7,
+   "low": 434.7,
+   "nifty": -0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 61.6,
+   "first_seen": {
+    "time": 1794197446718,
+    "price": 434.7
+   }
+  },
+  {
+   "id": "1794197446718-816",
+   "symbol": "JUBLFOOD",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1250,
+   "entry": 434.7,
+   "sl": 465.0,
+   "tp": 421.65,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 6.5,
+    "step": 2.15
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 465.0,
+   "time": 1794197446718,
+   "status": "open",
+   "passed": false,
+   "high": 434.7,
+   "low": 434.7,
+   "nifty": -0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 61.6,
+   "first_seen": {
+    "time": 1794197446718,
+    "price": 434.7
+   }
+  },
+  {
+   "id": "1794197446718-817",
+   "symbol": "JUBLFOOD",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1250,
+   "entry": 434.7,
+   "sl": 465.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 465.0,
+   "time": 1794197446718,
+   "status": "open",
+   "passed": false,
+   "high": 434.7,
+   "low": 434.7,
+   "nifty": -0.41,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 61.6,
+   "first_seen": {
+    "time": 1794197446718,
+    "price": 434.7
+   }
+  },
+  {
+   "id": "1794197446718-818",
+   "symbol": "GODREJCP",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 500,
+   "entry": 839.25,
+   "sl": 864.45,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA MTF",
+   "stop": 864.45,
+   "time": 1794197446718,
+   "status": "open",
+   "passed": false,
+   "high": 839.25,
+   "low": 839.25,
+   "nifty": -0.41,
+   "source": "Auto HA MTF 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "exit_tf": "2 HOUR",
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 56.3,
+   "first_seen": {
+    "time": 1794197446718,
+    "price": 839.25
+   }
+  },
+  {
+   "id": "1794197446718-819",
+   "symbol": "JUBLFOOD",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1250,
+   "entry": 434.7,
+   "sl": 447.75,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA MTF",
+   "stop": 447.75,
+   "time": 1794197446718,
+   "status": "open",
+   "passed": false,
+   "high": 434.7,
+   "low": 434.7,
+   "nifty": -0.41,
+   "source": "Auto HA MTF 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "exit_tf": "2 HOUR",
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": 61.6,
+   "first_seen": {
+    "time": 1794197446718,
+    "price": 434.7
+   }
   }
  ],
- "seq": 811,
+ "seq": 819,
  "log": [
+  "09 Nov 09:40  JUBLFOOD: HA MTF SELL 1250 at 434.7, SL 447.75 (2 HOUR; exit on 2H; ha)",
+  "09 Nov 09:40  GODREJCP: HA MTF SELL 500 at 839.25, SL 864.45 (2 HOUR; exit on 2H; ha)",
+  "09 Nov 09:40  JUBLFOOD: HA SELL 1250 at 434.7, SL 465.0 (2 HOUR; eod, trail, ha)",
+  "09 Nov 09:40  GODREJCP: HA SELL 500 at 839.25, SL 854.75 (2 HOUR; eod, trail, ha)",
+  "09 Nov 09:40  AXISBANK: TSL after target at 1305.3 (Hold \u00b7 trail)",
   "09 Nov 09:30  INDUSTOWER: Stop loss at 377.45 (Hold \u00b7 RSI exit)",
   "09 Nov 09:30  INDUSTOWER: Stop loss at 377.45 (Hold \u00b7 trail)",
   "09 Nov 09:30  ZYDUSLIFE: HA exit (2H) at 1211.7 (Hold \u00b7 HA exit)",
@@ -2341,15 +2603,10 @@
   "05 Nov 09:25  BLUESTARCO: HA exit (2H) at 1588.2 (Hold \u00b7 HA exit)",
   "05 Nov 09:25  NHPC: Stop loss at 82.78 (Hold \u00b7 HA exit)",
   "05 Nov 09:25  NHPC: Stop loss at 82.78 (Hold \u00b7 trail)",
-  "05 Nov 09:25  WIPRO: Stop loss at 197.75 (Hold \u00b7 HA exit)",
-  "05 Nov 09:25  WIPRO: Stop loss at 197.75 (Hold \u00b7 trail)",
-  "05 Nov 09:25  MOTHERSON: Stop loss at 161.25 (Hold \u00b7 HA exit)",
-  "05 Nov 09:25  MOTHERSON: Stop loss at 161.25 (Hold \u00b7 trail)",
-  "05 Nov 09:25  ETERNAL: HA exit (2H) at 346.7 (Hold \u00b7 HA exit)",
-  "05 Nov 09:25  BANKBARODA: Stop loss at 248.3 (Hold \u00b7 trail)"
+  "05 Nov 09:25  WIPRO: Stop loss at 197.75 (Hold \u00b7 HA exit)"
  ],
- "page_run": 1794197139226,
- "updated": 1794197139226,
+ "page_run": 1794197446718,
+ "updated": 1794197446718,
  "unattended": true,
  "peak_margin": 19750802.0
 }
