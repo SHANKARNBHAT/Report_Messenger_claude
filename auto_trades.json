@@ -885,7 +885,7 @@
    "status": "open",
    "passed": false,
    "high": 1469,
-   "low": 1406.5,
+   "low": 1408,
    "nifty": 1.72,
    "source": "Auto 2H",
    "timeframes": [
@@ -1187,7 +1187,7 @@
    "time": 1793936737933,
    "status": "open",
    "passed": false,
-   "high": 3302.7,
+   "high": 3316.2,
    "low": 3210,
    "nifty": -0.37,
    "source": "Auto HA 2H",
@@ -1226,7 +1226,7 @@
    "time": 1793938540975,
    "status": "open",
    "passed": false,
-   "high": 3271.2,
+   "high": 3272,
    "low": 3078.5,
    "nifty": 0.22,
    "source": "Auto 2H",
@@ -2237,7 +2237,7 @@
    "status": "open",
    "passed": false,
    "high": 381.15,
-   "low": 379.1,
+   "low": 378.5,
    "nifty": -0.08,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2276,7 +2276,7 @@
    "status": "open",
    "passed": false,
    "high": 381.15,
-   "low": 379.1,
+   "low": 378.5,
    "nifty": -0.08,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2312,7 +2312,7 @@
    "status": "open",
    "passed": false,
    "high": 381.15,
-   "low": 379.1,
+   "low": 378.5,
    "nifty": -0.08,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2348,7 +2348,7 @@
    "status": "open",
    "passed": false,
    "high": 381.15,
-   "low": 379.1,
+   "low": 378.5,
    "nifty": -0.08,
    "source": "Auto HA MTF 2H+4H",
    "timeframes": [
@@ -3253,10 +3253,160 @@
     "time": 1794201643055,
     "price": 2433.1
    }
+  },
+  {
+   "id": "1794201937658-850",
+   "symbol": "JSWSTEEL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 675,
+   "entry": 1338.6,
+   "sl": 1368.8,
+   "tp": 1298.45,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "HA",
+   "stop": 1368.8,
+   "time": 1794201937658,
+   "status": "open",
+   "passed": false,
+   "high": 1338.6,
+   "low": 1338.6,
+   "nifty": -0.34,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "No",
+   "sma_rsi": 73.85,
+   "first_seen": {
+    "time": 1794201937658,
+    "price": 1338.6
+   }
+  },
+  {
+   "id": "1794201937658-851",
+   "symbol": "JSWSTEEL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 675,
+   "entry": 1338.6,
+   "sl": 1368.8,
+   "tp": 1298.45,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 20.1,
+    "step": 6.7
+   },
+   "style": "trail",
+   "system": "HA",
+   "stop": 1368.8,
+   "time": 1794201937658,
+   "status": "open",
+   "passed": false,
+   "high": 1338.6,
+   "low": 1338.6,
+   "nifty": -0.34,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "No",
+   "sma_rsi": 73.85,
+   "first_seen": {
+    "time": 1794201937658,
+    "price": 1338.6
+   }
+  },
+  {
+   "id": "1794201937658-852",
+   "symbol": "JSWSTEEL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 675,
+   "entry": 1338.6,
+   "sl": 1368.8,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA",
+   "stop": 1368.8,
+   "time": 1794201937658,
+   "status": "open",
+   "passed": false,
+   "high": 1338.6,
+   "low": 1338.6,
+   "nifty": -0.34,
+   "source": "Auto HA 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "No",
+   "sma_rsi": 73.85,
+   "first_seen": {
+    "time": 1794201937658,
+    "price": 1338.6
+   }
+  },
+  {
+   "id": "1794201937658-853",
+   "symbol": "JSWSTEEL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 675,
+   "entry": 1338.6,
+   "sl": 1378.75,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "ha",
+   "system": "HA MTF",
+   "stop": 1378.75,
+   "time": 1794201937658,
+   "status": "open",
+   "passed": false,
+   "high": 1338.6,
+   "low": 1338.6,
+   "nifty": -0.34,
+   "source": "Auto HA MTF 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "exit_tf": "2 HOUR",
+   "strategies": [
+    "2H HA Bearish Strategy"
+   ],
+   "agrees": "No",
+   "sma_rsi": 73.85,
+   "first_seen": {
+    "time": 1794201937658,
+    "price": 1338.6
+   }
   }
  ],
- "seq": 849,
+ "seq": 853,
  "log": [
+  "09 Nov 10:55  JSWSTEEL: HA MTF SELL 675 at 1338.6, SL 1378.75 (2 HOUR; exit on 2H; ha)",
+  "09 Nov 10:55  JSWSTEEL: HA SELL 675 at 1338.6, SL 1368.8 (2 HOUR; eod, trail, ha)",
   "09 Nov 10:50  SRF: HA MTF SELL 200 at 2433.1, SL 2506.1 (2 HOUR; exit on 2H; ha)",
   "09 Nov 10:50  SRF: HA SELL 200 at 2433.1, SL 2487.0 (2 HOUR; eod, trail, ha)",
   "09 Nov 10:50  KOTAKBANK: TSL after target at 475.85 (Hold \u00b7 trail)",
@@ -3554,12 +3704,10 @@
   "05 Nov 09:45  ONGC: HA SELL 2250 at 229.55, SL 234.65 (2 HOUR; eod, trail, ha)",
   "05 Nov 09:45  OIL: HA SELL 1400 at 435.3, SL 458.55 (2 HOUR; eod, trail, ha)",
   "05 Nov 09:45  CGPOWER: RSI SELL 850 at 818.35, SL 840.85 (2 HOUR; eod, trail, rsi)",
-  "05 Nov 09:45  PIIND: TSL after target at 1899.35 (Hold \u00b7 trail)",
-  "05 Nov 09:40  CUMMINSIND: HA SELL 200 at 4035.2, SL 4755.0 (2 HOUR; eod, trail, ha)",
-  "05 Nov 09:40  APOLLOHOSP: HA SELL 125 at 8274.5, SL 8569.0 (2 HOUR; eod, trail, ha)"
+  "05 Nov 09:45  PIIND: TSL after target at 1899.35 (Hold \u00b7 trail)"
  ],
- "page_run": 1794201643055,
- "updated": 1794201643055,
+ "page_run": 1794201937658,
+ "updated": 1794201937658,
  "unattended": true,
  "peak_margin": 19750802.0
 }
