@@ -1,7 +1,10 @@
-Generated on: 2026-11-06 17:56:14
+Generated on: 2026-11-09 21:25:23
 • Market Baseline: Nifty 50 is currently Undetermined (Close vs 200 SMA & SMA 20 vs SMA 50).
 
     symbol signal_date strategy_type    bias    close  lot_size
+     AMBER  2026-11-09 SMA_Crossover BEARISH  6230.00       100
+     DABUR  2026-11-09 SMA_Crossover BEARISH   375.25      1250
+  JUBLFOOD  2026-11-09 SMA_Crossover BEARISH   428.50      1250
     AUBANK  2026-11-06 SMA_Crossover BEARISH   931.80      1000
  BRITANNIA  2026-11-06 SMA_Crossover BEARISH  4785.00       125
   GODREJCP  2026-11-06 SMA_Crossover BEARISH   851.00       500
@@ -50,9 +53,3 @@ BANKBARODA  2026-10-28 SMA_Crossover BEARISH   231.82      2925
  AMBUJACEM  2026-10-27 SMA_Crossover BEARISH   348.80       900
       SBIN  2026-10-27 SMA_Crossover BEARISH   945.10       750
        LTM  2026-10-26 SMA_Crossover BEARISH  4074.90         1
- AMBUJACEM  2026-10-23 SMA_Crossover BEARISH   358.90       900
-BANKBARODA  2026-10-23 SMA_Crossover BEARISH   230.90      2925
-      BHEL  2026-10-23  RSI_Strategy BEARISH   387.50      5250
-     CANBK  2026-10-23 SMA_Crossover BEARISH   116.16      2700
-      SBIN  2026-10-23 SMA_Crossover BEARISH   958.60       750
- TATAPOWER  2026-10-23 SMA_Crossover BEARISH   348.10      1500

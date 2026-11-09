@@ -1,21 +1,15 @@
-Generated on: 2026-11-06 17:56:14
+Generated on: 2026-11-09 21:25:23
 • Market Baseline: Nifty 50 is currently Undetermined (Close vs 200 SMA & SMA 20 vs SMA 50).
 
 ## bullish_overlaps
     symbol  lot_size last_close active
-  DIVISLAB       100    9505.50      -
-LAURUSLABS      1700    2058.90      -
+  DIVISLAB       100    9505.50 ACTIVE
+LAURUSLABS      1700    2058.90 ACTIVE
 
 ## bearish_overlaps
 
 ## signal_log
     symbol signal_date strategy_type    bias  lot_size
- AMBUJACEM  2026-10-23 SMA_Crossover BEARISH       900
-BANKBARODA  2026-10-23 SMA_Crossover BEARISH      2925
-      BHEL  2026-10-23  RSI_Strategy BEARISH      5250
-     CANBK  2026-10-23 SMA_Crossover BEARISH      2700
-      SBIN  2026-10-23 SMA_Crossover BEARISH       750
- TATAPOWER  2026-10-23 SMA_Crossover BEARISH      1500
    COFORGE  2026-10-26  RSI_Strategy BULLISH       150
    DRREDDY  2026-10-26  RSI_Strategy BULLISH       125
 LAURUSLABS  2026-10-26 SMA_Crossover BULLISH      1700
@@ -108,3 +102,15 @@ MOTILALOFS  2026-11-06  RSI_Strategy BULLISH       775
       NBCC  2026-11-06 SMA_Crossover BEARISH      6500
        SRF  2026-11-06 SMA_Crossover BEARISH       200
  TATAPOWER  2026-11-06 SMA_Crossover BEARISH      1450
+     AMBER  2026-11-09 SMA_Crossover BEARISH       100
+ BANKINDIA  2026-11-09  RSI_Strategy BULLISH      5200
+     DABUR  2026-11-09 SMA_Crossover BEARISH      1250
+      IRFC  2026-11-09  RSI_Strategy BULLISH      5425
+  JUBLFOOD  2026-11-09 SMA_Crossover BEARISH      1250
+KALYANKJIL  2026-11-09  RSI_Strategy BULLISH      1350
+  MAHABANK  2026-11-09  RSI_Strategy BULLISH      6500
+   MANKIND  2026-11-09  RSI_Strategy BULLISH       250
+       MCX  2026-11-09  RSI_Strategy BULLISH       225
+     NYKAA  2026-11-09  RSI_Strategy BULLISH      3125
+      SBIN  2026-11-09  RSI_Strategy BULLISH       750
+ UNIONBANK  2026-11-09  RSI_Strategy BULLISH      4425
