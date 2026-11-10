@@ -1,20 +1,14 @@
-Generated on: 2026-11-09 21:25:23
+Generated on: 2026-11-10 18:39:44
 • Market Baseline: Nifty 50 is currently Undetermined (Close vs 200 SMA & SMA 20 vs SMA 50).
 
 ## bullish_overlaps
-    symbol  lot_size last_close active
-  DIVISLAB       100    9505.50 ACTIVE
-LAURUSLABS      1700    2058.90 ACTIVE
+  symbol  lot_size last_close active
+DIVISLAB       100    9505.50 ACTIVE
 
 ## bearish_overlaps
 
 ## signal_log
     symbol signal_date strategy_type    bias  lot_size
-   COFORGE  2026-10-26  RSI_Strategy BULLISH       150
-   DRREDDY  2026-10-26  RSI_Strategy BULLISH       125
-LAURUSLABS  2026-10-26 SMA_Crossover BULLISH      1700
-       LTM  2026-10-26 SMA_Crossover BEARISH         1
-   MPHASIS  2026-10-26  RSI_Strategy BULLISH       175
  AMBUJACEM  2026-10-27 SMA_Crossover BEARISH       900
 BHARTIARTL  2026-10-27  RSI_Strategy BULLISH       475
   DIVISLAB  2026-10-27 SMA_Crossover BULLISH       100
