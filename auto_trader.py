@@ -1,7 +1,7 @@
 """
 Auto trader: paper-trades every Chartink signal on the 2H timeframe (TRADED_TIMEFRAMES;
 4H, Daily and Weekly signals are recorded but not traded) without the simulator page open, for three strategies apart (fs.SYSTEMS):
-RSI (chartink_dashboard.DEFAULT_DASHBOARD), Heikin Ashi (HA_DASHBOARD) and HA MTF (the
+RSI (chartink_dashboard.DEFAULT_DASHBOARD), Heikin Ashi (its own scans, chartink_dashboard.ha_scan) and HA MTF (the
 HA signals of 2H, 4H and Daily: a timeframe counts unless its previous HA candle is a
 doji, and the position is held until the HA exit of the highest one that counted, which
 trails it, with a fixed SL MTF_SL_PCT from the entry until then). A stock on several gets a trade in
@@ -341,6 +341,15 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
                             high=result.get("high"), low=result.get("low"))
 
 
+def load_ha_signals() -> tuple[dict | None, str | None]:
+    """The HA entry scans the bot runs itself (chartink_dashboard.ha_scan: with the doji filter,
+    without an SMA RSI condition), as a dashboard; else None and the error."""
+    try:
+        return fs.fetch_ha_signals(), None
+    except fs.ChartinkError as exc:
+        return None, f"Chartink (HA scans): {exc}"
+
+
 def test_chartink(note) -> None:
     """Fetch the dashboard and the 5-minute bars from here (GitHub), and note what came back."""
     dashboard, error = fs.load_dashboard()
@@ -355,7 +364,7 @@ def test_chartink(note) -> None:
                          and re.search(pattern, w["name"], re.IGNORECASE)), None)
              for name, pattern in (("RSI below 60", r"rsi crossed below"), ("RSI above 40", r"rsi crossed above"))}
     failed = [w["name"] for w in dashboard["widgets"] if w["error"]]
-    ha_dashboard, ha_error = fs.load_dashboard(fs.HA_DASHBOARD)
+    ha_dashboard, ha_error = load_ha_signals()
     if ha_dashboard:
         failed += [w["name"] for w in ha_dashboard["widgets"] if w["error"]]
         ha_signals = sum(len(w["table"]) for w in ha_dashboard["widgets"]
@@ -527,7 +536,7 @@ def main() -> None:
         if dashboard:
             instruments = {i["symbol"]: i for i in fs.load_instruments()}
             signals = [{**s, "system": "RSI"} for s in fs.signal_rows(dashboard, instruments)[0]]
-            ha_dashboard, ha_error = fs.load_dashboard(fs.HA_DASHBOARD)
+            ha_dashboard, ha_error = load_ha_signals()
             if ha_dashboard:
                 sma_rsi = ha_sma_rsi(ha_dashboard)
                 ha_signals = fs.signal_rows(ha_dashboard, instruments)[0]

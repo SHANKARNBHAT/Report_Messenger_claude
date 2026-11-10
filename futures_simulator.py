@@ -56,7 +56,8 @@ if Path(chartink_dashboard.__file__).stat().st_mtime > getattr(chartink_dashboar
 
 from chartink_dashboard import (CHART_SITES, CHARTINK_HEADERS, DEFAULT_DASHBOARD, DEFAULT_SNAPSHOT, FUNDAMENTALS_DASHBOARD,
                                 FUNDAMENTALS_ROWS, HA_DASHBOARD, IST, MY_LAYOUT, TIMEFRAMES, ChartinkError,
-                                fetch_dashboard, fetch_ha_candles, fetch_price_bars, fetch_watchlists)
+                                fetch_dashboard, fetch_ha_candles, fetch_ha_signals, fetch_price_bars,
+                                fetch_watchlists)
 
 # ---------------------------------------------------------------------------
 # Settings

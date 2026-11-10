@@ -76,6 +76,37 @@ HA_COLUMNS = {"2 HOUR": "[0] 2 hour", "4 HOUR": "[0] 4 hour", "DAILY": "Daily"}
 HA_CANDLES = 20
 HA_QUERY = ("select {0} Close as 'Close', {0} ha-low as 'HA low', {0} ha-high as 'HA high', "
             "{0} ha-open as 'HA open', {0} ha-close as 'HA close' WHERE( {{33489}} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
+# The Heikin Ashi entry scans the Auto trader runs itself (fetch_ha_signals), instead of the
+# HA dashboard's widgets: per timeframe, the running candle, the one before and the one before
+# that, and the column of the SMA of the RSI (recorded with the trade, not a condition).
+HA_SCAN_TIMEFRAMES = {
+    "2 HOUR": ("2H", "[0] 2 hour", "[-1] 2 hour", "[-2] 2 hour", "Sma 2hr rsi"),
+    "4 HOUR": ("4H", "[0] 4 hour", "[-1] 4 hour", "[-2] 4 hour", "Sma 4hr rsi"),
+    "DAILY": ("Daily", "daily", "1 day ago", "2 day ago", "Dly SMA RSI"),
+}
+HA_DOJI_BODY = 0.1  # the previous HA candle's body must be more than this share of its range
+HA_SCAN_ROWS = 200
+
+
+def ha_scan(timeframe: str, bearish: bool) -> str:
+    """The HA entry scan of a timeframe, for F&O stocks. Bullish: the running candle is green on
+    above-average volume (5 candles) and its HA close breaks above the previous HA high, after a
+    previous HA candle that was red, not a doji, and had not closed above the HA high before it.
+    Bearish: the mirror image."""
+    _, now, prev, prev2, sma = HA_SCAN_TIMEFRAMES[timeframe]
+    if bearish:
+        trigger = (f"{now} close < {now} open and {now} ha-close < {prev} ha-low and "
+                   f"{prev} ha-close >= {prev2} ha-low and {prev} ha-close > {prev} ha-open and "
+                   f"( {prev} ha-close - {prev} ha-open ) > ( {prev} ha-high - {prev} ha-low ) * {HA_DOJI_BODY}")
+    else:
+        trigger = (f"{now} close > {now} open and {now} ha-close > {prev} ha-high and "
+                   f"{prev} ha-close <= {prev2} ha-high and {prev} ha-close < {prev} ha-open and "
+                   f"( {prev} ha-open - {prev} ha-close ) > ( {prev} ha-high - {prev} ha-low ) * {HA_DOJI_BODY}")
+    return (f"select Daily Close as 'Price', {now} Rsi( 14 ) as 'RSI', {now} Sma( {now} Rsi( 14 ) , 14 ) as '{sma}' "
+            f"WHERE( {{33489}} ( {now} volume > {now} sma( {now} volume , 5 ) and {trigger} ) ) "
+            f"GROUP BY symbol ORDER BY 1 desc")
+
+
 NO_VALUE = 1e300  # Chartink fills the candles a stock has no data for with 1.7e308
 IST = ZoneInfo("Asia/Kolkata")
 
@@ -308,6 +339,30 @@ def fetch_ha_candles(link: str = HA_DASHBOARD) -> dict[str, dict[str, list[tuple
                 candles[timeframe][group.get("name")] = [
                     row for row in rows if all(v is not None and v < NO_VALUE for v in row)]
     return candles
+
+
+@st.cache_data(ttl=50, show_spinner=False)
+def fetch_ha_signals(link: str = HA_DASHBOARD) -> dict:
+    """The HA entry scans (ha_scan) of each timeframe, as fetch_dashboard returns a dashboard's
+    widgets. The dashboard only lends a widget to ask with."""
+    with requests.Session() as session:
+        session.headers.update(CHARTINK_HEADERS)
+        url, token, _, raw_widgets = open_dashboard(session, link)
+        widgets = []
+        for timeframe, (label, *_) in HA_SCAN_TIMEFRAMES.items():
+            for bearish in (False, True):
+                query = ha_scan(timeframe, bearish)
+                result = {"name": f"{label} HA {'Bearish' if bearish else 'Bullish'} scan", "query": query,
+                          "table": None, "as_of": None, "error": None, "prices": False,
+                          "timeframe": timeframe, "bearish": bearish}
+                try:
+                    payload = widget_payload(session, url, token, {"query": query, "id": raw_widgets[0].get("id")},
+                                             HA_SCAN_ROWS, 1)
+                    result["table"], result["as_of"] = widget_table(query, payload)
+                except (requests.RequestException, ValueError, ChartinkError) as exc:
+                    result["error"] = str(exc) or type(exc).__name__
+                widgets.append(result)
+    return {"name": "HA entry scans", "link": url, "widgets": widgets, "fetched_at": datetime.now(IST)}
 
 
 # ---------------------------------------------------------------------------
