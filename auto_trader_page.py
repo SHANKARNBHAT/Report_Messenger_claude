@@ -703,7 +703,7 @@ def show_scoreboard(history: pd.DataFrame, positions: list[dict], index_history:
       .scoreboard table {{ border-collapse: collapse; width: 100%; font-size: 0.95rem; }}
       .scoreboard th, .scoreboard td {{ padding: 0.45rem 0.7rem; text-align: right; white-space: nowrap;
         border-bottom: 1px solid rgba(128, 128, 128, 0.25); }}
-      .scoreboard thead th {{ font-weight: 700; font-size: 1.1rem; border-bottom: 2px solid rgba(128, 128, 128, 0.5); }}
+      .scoreboard thead th {{ font-weight: 700; font-size: 1rem; border-bottom: 2px solid rgba(128, 128, 128, 0.5); }}
       .scoreboard tbody th {{ text-align: left; font-weight: 700; font-size: 1.05rem; }}
       .scoreboard thead th:first-child {{ text-align: left; }}
       .scoreboard tr.all td, .scoreboard tr.all th {{ font-weight: 700; border-top: 2px solid rgba(128, 128, 128, 0.5); }}
