@@ -3,11 +3,13 @@ HA 15m index: the Auto trader's Heikin Ashi strategy on the 15-minute candles of
 BANKNIFTY (auto_trader.py, enter_index_signals and settle), made from Yahoo Finance's
 5-minute bars of the index (Chartink's index list has no BANKNIFTY data).
 
-  * Entry, on the running 15-minute candle: long when its HA candle has no lower wick, the
-    close is above the previous HA high and SMA 8 of the closes is above SMA 20; short when it
-    has no upper wick, the close is below the previous HA low and SMA 8 is below SMA 20. No entry when the previous HA candle is a doji: its body
-    less than DOJI_BODY of its range.
-  * SL ATR_MULT x ATR(ATR_PERIOD) of the 15-minute candles from the entry. After each
+  * Entry, on the running 15-minute candle: long when its HA candle is a well-formed green one
+    (not a doji: body at least DOJI_BODY of its range) with no lower wick, its HA close above the
+    previous HA high, and the previous HA candle a doji or red. Short: the mirror (red, no upper
+    wick, HA close below the previous HA low, previous HA candle a doji or green).
+  * Exit when a 15-minute HA candle closes against the position (red for a long, green for a
+    short), at that close.
+  * Also an SL ATR_MULT x ATR(ATR_PERIOD) of the 15-minute candles from the entry. After each
     15-minute candle closes, it moves to that close -/+ ATR_MULT x ATR when that is closer,
     never back. Hit when a 5-minute bar touches it (at the bar's open if it gapped past).
   * Squared off at 3:15 PM: intraday only.
@@ -22,8 +24,7 @@ TIMEFRAME = "15 MIN"
 MINUTES = 15
 ATR_PERIOD = 14
 ATR_MULT = 1.1
-DOJI_BODY = 0.10  # a previous HA candle whose body is less than this share of its range is a doji
-FAST, SLOW = 8, 20  # SMAs of the 15-minute closes: a long needs SMA 8 above SMA 20, a short below
+DOJI_BODY = 0.10  # an HA candle whose body is less than this share of its range is a doji
 SESSION_OPEN, SESSION_END, SQUARE_OFF = time(9, 15), time(15, 30), time(15, 15)
 BAR = 300  # seconds in a 5-minute bar
 
@@ -85,23 +86,22 @@ def doji(candle: tuple) -> bool:
 
 
 def signal(rows: list[list]) -> str | None:
-    """"BUY", "SELL" or None for the last (running) candle of `rows`. Long: that HA candle has
-    no lower wick, the close is above the previous HA high and SMA(FAST) of the closes is above
-    SMA(SLOW). Short: no upper wick, the close below the previous HA low, SMA(FAST) below
-    SMA(SLOW). None when the previous HA candle is a doji (doji)."""
-    if len(rows) < SLOW:
+    """"BUY", "SELL" or None for the last (running) candle of `rows`. Long: that HA candle is a
+    well-formed green one (HA close above HA open, not a doji) with no lower wick, its HA close
+    above the previous HA high, and the previous HA candle a doji or red. Short: a well-formed
+    red one with no upper wick, its HA close below the previous HA low, the previous HA candle
+    a doji or green."""
+    if len(rows) < 2:
         return None
     ha = heikin_ashi(rows)
-    if doji(ha[-2]):
+    if doji(ha[-1]):
         return None
-    closes = [r[4] for r in rows]
-    fast, slow = sum(closes[-FAST:]) / FAST, sum(closes[-SLOW:]) / SLOW
-    close = closes[-1]
     h_open, h_high, h_low, h_close = ha[-1]
-    _, p_high, p_low, _ = ha[-2]
-    if close > p_high and h_low >= min(h_open, h_close) and fast > slow:
+    p_open, p_high, p_low, p_close = ha[-2]
+    turned = doji(ha[-2])
+    if h_close > h_open and h_low >= h_open and h_close > p_high and (turned or p_close < p_open):
         return "BUY"
-    if close < p_low and h_high <= max(h_open, h_close) and fast < slow:
+    if h_close < h_open and h_high <= h_open and h_close < p_low and (turned or p_close > p_open):
         return "SELL"
     return None
 
@@ -117,7 +117,7 @@ def initial_stop(rows: list[list], entry: float, long: bool, now_ts: int) -> flo
 
 def replay(position: dict, bars: list[tuple], now: datetime, tz) -> dict:
     """Where a position stands after the 5-minute bars since its entry: closed at its SL (hit
-    by a bar) or at 3:15 PM, else open with its current SL ("stop"), as futures_simulator.replay."""
+    by a bar), at the close of an HA candle against it, or at 3:15 PM, else open with its current SL ("stop"), as futures_simulator.replay."""
     long = position["side"] == "BUY"
     entry = float(position["entry"])
     stop = float(position["sl"])
@@ -125,6 +125,7 @@ def replay(position: dict, bars: list[tuple], now: datetime, tz) -> dict:
     cutoff = datetime.combine(entered.date(), SQUARE_OFF, tz).timestamp()
     rows = candles([b for b in bars if b[0] < cutoff], tz)
     values = dict(zip((r[0] for r in rows), atr(rows)))
+    colours = {r[0]: (c[3] > c[0]) - (c[3] < c[0]) for r, c in zip(rows, heikin_ashi(rows))}  # 1 green, -1 red
     first = -(-int(entered.timestamp()) // BAR) * BAR
     high = low = entry
     moved = False
@@ -141,8 +142,13 @@ def replay(position: dict, bars: list[tuple], now: datetime, tz) -> dict:
             return result("closed", exit=round(price, 2), exit_time=start * 1000,
                           reason="ATR trailing SL" if moved else "Stop loss")
         high, low = max(high, bar_high), min(low, bar_low)
-        # The bar that ends a 15-minute candle: move the SL from that candle's close.
+        # The bar that ends a 15-minute candle: exit if its HA candle closed against the position,
+        # else move the SL from that candle's close.
         candle = candle_start(start, tz)
+        if start + BAR == candle + MINUTES * 60 and colours.get(candle) == (-1 if long else 1):
+            high, low = max(high, close), min(low, close)
+            return result("closed", exit=round(close, 2), exit_time=(start + BAR) * 1000,
+                          reason="HA red candle" if long else "HA green candle")
         if start + BAR == candle + MINUTES * 60 and values.get(candle) is not None:
             level = close - ATR_MULT * values[candle] if long else close + ATR_MULT * values[candle]
             if level > stop if long else level < stop:
