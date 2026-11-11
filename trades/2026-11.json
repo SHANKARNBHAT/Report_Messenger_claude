@@ -17207,5 +17207,42 @@
   "gross": -5430.0,
   "charges": 408.15,
   "net": -5838.15
+ },
+ {
+  "id": "1794368751056-902",
+  "symbol": "NYKAA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3125,
+  "entry": 359.7,
+  "exit": 354.45,
+  "entry_time": 1794368751056,
+  "exit_time": 1794373849672,
+  "reason": "RSI exit (2H 59.0)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 352.35,
+  "tp": null,
+  "high": 360.85,
+  "low": 354.45,
+  "nifty": 1.14,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794368751056,
+   "price": 359.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -16406.25,
+  "charges": 671.7,
+  "net": -17077.95
  }
 ]
