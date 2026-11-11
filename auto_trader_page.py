@@ -659,6 +659,36 @@ def show_results(history: pd.DataFrame, signals: pd.DataFrame | None) -> None:
                      column_config={"Symbol": SYMBOL_LINK})
 
 
+def show_scoreboard(history: pd.DataFrame, positions: list[dict], index_history: pd.DataFrame,
+                    index_positions: list[dict], unrealized) -> None:
+    """Each strategy's results in a row: the stock strategies, the index one and all together."""
+    today = datetime.now(fs.IST).date()
+    groups = [(name, history[history["System"] == system], [p for p in positions if p.get("system", "RSI") == system])
+              for system, name in SYSTEM_NAMES.items()]
+    groups.append(("HA 15m index (NIFTY, BANKNIFTY)", index_history, index_positions))
+    groups.append(("All", pd.concat([history, index_history]), positions + index_positions))
+    rows = []
+    for name, closed, held in groups:
+        net = float(closed["net"].sum()) if len(closed) else 0.0
+        open_pnl = sum(v for v in map(unrealized, held) if v is not None)
+        rows.append({
+            "Strategy": name,
+            "Net P&L closed ₹": net,
+            "Open P&L ₹": open_pnl,
+            "Total ₹": net + open_pnl,
+            "Today closed ₹": float(closed.loc[closed["Date"] == today, "net"].sum()) if len(closed) else 0.0,
+            "Trades closed": len(closed),
+            "Win rate %": round(100 * (closed["net"] > 0).mean(), 1) if len(closed) else None,
+            "Avg per trade ₹": round(net / len(closed), 2) if len(closed) else None,
+            "Open positions": len(held),
+            "Margin needed ₹": margin_needed(closed, held),
+        })
+    money = st.column_config.NumberColumn(format="localized")
+    st.dataframe(pd.DataFrame(rows).set_index("Strategy"), width="stretch",
+                 column_config={c: money for c in ("Net P&L closed ₹", "Open P&L ₹", "Total ₹", "Today closed ₹",
+                                                   "Avg per trade ₹", "Margin needed ₹")})
+
+
 def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
     """HA IDX, NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles (ha_index.py): its own
     totals, open positions and closed trades, apart from the stock strategies."""
@@ -788,18 +818,10 @@ def main() -> None:
         q = quotes.get(p["symbol"])
         return None if not q else round((q["price"] - p["entry"]) * p["qty"] * (1 if p["side"] == "BUY" else -1), 2)
 
-    net = history["net"].sum() if len(history) else 0
-    open_pnl = sum(v for v in map(unrealized, positions) if v is not None)
-    stats = st.columns(6)
-    stats[0].metric("Net P&L (closed)", f"₹{net:,.0f}")
-    stats[1].metric("Open P&L", f"₹{open_pnl:,.0f}")
-    stats[2].metric("Trades closed", len(history))
-    stats[3].metric("Win rate", f"{100 * (history['net'] > 0).mean():.1f}%" if len(history) else "—")
-    stats[4].metric("Margin needed", f"₹{margin_needed(history, positions):,.0f}",
-                    help=f"No capital limit: every signal is taken, in every style of both strategies. This is the most margin "
-                         f"({fs.MARGIN_RATE:.0%} of the futures' value) the trades held at the same time, open "
-                         "positions included: the money to take them all. Each style alone needs less: see Results.")
-    stats[5].metric("Last run", when(account.get("updated")))
+    show_scoreboard(history, positions, index_history, index_positions, unrealized)
+    st.caption(f"Last run {when(account.get('updated'))}. Margin needed: no capital limit, every signal is taken in "
+               f"every style, so this is the most margin ({fs.MARGIN_RATE:.0%} of the futures' value) the strategy's "
+               "trades held at the same time, open positions included. Each style alone needs less: see Results.")
 
     # The Excel reports, in the top row.
     now = datetime.now(fs.IST)
