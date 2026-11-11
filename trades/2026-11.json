@@ -17540,5 +17540,79 @@
   "gross": -22781.25,
   "charges": 384.16,
   "net": -23165.41
+ },
+ {
+  "id": "1794197446718-817",
+  "symbol": "JUBLFOOD",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1250,
+  "entry": 434.7,
+  "exit": 438.35,
+  "entry_time": 1794197446718,
+  "exit_time": 1794378335597,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 465.0,
+  "tp": null,
+  "high": 440.05,
+  "low": 427.2,
+  "nifty": -0.41,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794197446718,
+   "price": 434.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 61.6,
+  "gross": -4562.5,
+  "charges": 353.41,
+  "net": -4915.91
+ },
+ {
+  "id": "1794197446718-819",
+  "symbol": "JUBLFOOD",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1250,
+  "entry": 434.7,
+  "exit": 438.35,
+  "entry_time": 1794197446718,
+  "exit_time": 1794378335597,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 447.75,
+  "tp": null,
+  "high": 440.05,
+  "low": 427.2,
+  "nifty": -0.41,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794197446718,
+   "price": 434.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 61.6,
+  "gross": -4562.5,
+  "charges": 353.41,
+  "net": -4915.91
  }
 ]
