@@ -23,10 +23,12 @@ from html import escape
 from urllib.parse import quote
 
 import pandas as pd
+import plotly.graph_objects as go
 import requests
 import streamlit as st
 
 import futures_simulator as fs
+import ha_index
 import trade_report
 
 # Streamlit Cloud keeps imported modules in memory when it pulls new code, so a
@@ -34,6 +36,9 @@ import trade_report
 if Path(fs.__file__).stat().st_mtime > getattr(fs, "_loaded_at", 0):
     fs = importlib.reload(fs)
     fs._loaded_at = Path(fs.__file__).stat().st_mtime
+if Path(ha_index.__file__).stat().st_mtime > getattr(ha_index, "_loaded_at", 0):
+    ha_index = importlib.reload(ha_index)
+    ha_index._loaded_at = Path(ha_index.__file__).stat().st_mtime
 
 from chartink_dashboard import MY_LAYOUT
 
@@ -710,6 +715,121 @@ def show_scoreboard(history: pd.DataFrame, positions: list[dict], index_history:
     </style><div class="scoreboard"><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>""")
 
 
+INDEX_CHART_RANGE = "1mo"  # Yahoo's 5-minute bars of about 20 sessions, for the chart's day picker
+CANDLE_UP, CANDLE_DOWN = "#1a9e6f", "#d64545"
+ENTRY_COLOR, STOP_COLOR, SIGNAL_COLOR = "#2a78d6", "#eb6834", "#eda100"
+
+
+def stop_path(trade: dict, rows: list[list], atrs: list, until: float) -> tuple[list, list]:
+    """Times and levels of a trade's SL: from the entry, moved at each 15-minute close after it
+    (close -/+ ATR_MULT x ATR, never back), as ha_index.replay, until `until` (seconds)."""
+    long = trade["side"] == "BUY"
+    start = trade["entry_time"] / 1000
+    stop = float(trade["sl"])
+    times, levels = [start], [stop]
+    for row, value in zip(rows, atrs):
+        end = row[0] + ha_index.MINUTES * 60
+        if end <= start or end > until or value is None:
+            continue
+        level = row[4] - ha_index.ATR_MULT * value if long else row[4] + ha_index.ATR_MULT * value
+        if level > stop if long else level < stop:
+            stop = level
+        times.append(end)
+        levels.append(stop)
+    times.append(until)
+    levels.append(stop)
+    return times, levels
+
+
+def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
+    """The 15-minute Heikin Ashi candles the HA IDX strategy trades on (ha_index, from Yahoo's
+    5-minute bars), with the candles whose close met the entry rule, the trades and their SL."""
+    st.markdown("**15-minute Heikin Ashi chart**")
+    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    left, right = st.columns([1, 1])
+    symbol = left.segmented_control("Index", list(ha_index.SYMBOLS), default=ha_index.SYMBOLS[1],
+                                    key="index-chart-symbol") or ha_index.SYMBOLS[1]
+    request = (instruments[symbol]["yahoo"], INDEX_CHART_RANGE)
+    bars = fs.fetch_bars((request,)).get(request)
+    if not isinstance(bars, list) or not bars:
+        st.caption(f"No 5-minute bars for {symbol} from Yahoo right now ({bars}).")
+        return
+    rows = ha_index.candles(bars, fs.IST)
+    ha, atrs = ha_index.heikin_ashi(rows), ha_index.atr(rows)
+    days = sorted({datetime.fromtimestamp(r[0], fs.IST).date() for r in rows}, reverse=True)
+    day = right.selectbox("Day", days, format_func=lambda d: f"{d:%a %d %b %Y}", key="index-chart-day")
+    shown = [i for i, r in enumerate(rows) if datetime.fromtimestamp(r[0], fs.IST).date() == day]
+    if not shown:
+        st.caption("No candles that day.")
+        return
+
+    def at(seconds):
+        return datetime.fromtimestamp(seconds, fs.IST).replace(tzinfo=None)
+
+    times = [at(rows[i][0]) for i in shown]
+    figure = go.Figure(go.Candlestick(
+        x=times, open=[ha[i][0] for i in shown], high=[ha[i][1] for i in shown], low=[ha[i][2] for i in shown],
+        close=[ha[i][3] for i in shown], name="HA candle",
+        increasing=dict(line=dict(color=CANDLE_UP, width=1), fillcolor=CANDLE_UP),
+        decreasing=dict(line=dict(color=CANDLE_DOWN, width=1), fillcolor=CANDLE_DOWN)))
+
+    # The candles whose close met the entry rule (a live run can enter on one before it closes).
+    marks = {"BUY": [], "SELL": []}
+    for i in shown:
+        side = ha_index.signal(rows[: i + 1])
+        if side:
+            marks[side].append(i)
+    gap = 0.04 * (max(ha[i][1] for i in shown) - min(ha[i][2] for i in shown))  # off the candle's wick
+    for side, found in marks.items():
+        if found:
+            long = side == "BUY"
+            figure.add_trace(go.Scatter(
+                x=[at(rows[i][0]) for i in found],
+                y=[ha[i][2] - gap if long else ha[i][1] + gap for i in found],
+                mode="markers", name=f"{'Buy' if long else 'Short'} rule met at close",
+                marker=dict(symbol="star-triangle-up" if long else "star-triangle-down", size=12,
+                            color=SIGNAL_COLOR, line=dict(width=1, color="white")),
+                hovertemplate=f"{'Buy' if long else 'Short'} rule met at the close<br>%{{x|%H:%M}}<extra></extra>"))
+
+    # The trades of the day, closed and open, with their SL path.
+    now = datetime.now(fs.IST).timestamp()
+    mine = [t for t in trades[trades["symbol"] == symbol].to_dict("records")
+            if datetime.fromtimestamp(t["entry_time"] / 1000, fs.IST).date() == day]
+    mine += [{**p, "entry_time": p["time"], "exit_time": None} for p in positions
+             if p["symbol"] == symbol and datetime.fromtimestamp(p["time"] / 1000, fs.IST).date() == day]
+    for n, t in enumerate(mine):
+        long = t["side"] == "BUY"
+        until = t["exit_time"] / 1000 if t.get("exit_time") else min(now, rows[shown[-1]][0] + ha_index.MINUTES * 60)
+        path_t, path_y = stop_path(t, rows, atrs, until)
+        figure.add_trace(go.Scatter(
+            x=[at(s) for s in path_t], y=path_y, mode="lines", line=dict(color=STOP_COLOR, width=2, dash="dot",
+                                                                         shape="hv"),
+            name="ATR stop", legendgroup="stop", showlegend=n == 0,
+            hovertemplate="Stop %{y:,.2f}<br>%{x|%H:%M}<extra></extra>"))
+        figure.add_trace(go.Scatter(
+            x=[at(t["entry_time"] / 1000)], y=[t["entry"]], mode="markers", name="Entry", legendgroup="entry",
+            showlegend=n == 0, marker=dict(symbol="triangle-up" if long else "triangle-down", size=13,
+                                          color=ENTRY_COLOR, line=dict(width=1, color="white")),
+            hovertemplate=f"{'Buy' if long else 'Short'} at %{{y:,.2f}}<br>%{{x|%H:%M}}<extra></extra>"))
+        if t.get("exit_time"):
+            figure.add_trace(go.Scatter(
+                x=[at(t["exit_time"] / 1000)], y=[t["exit"]], mode="markers", name="Exit", legendgroup="exit",
+                showlegend=not any(m.get("exit_time") for m in mine[:n]),
+                marker=dict(symbol="x", size=11, color=ENTRY_COLOR, line=dict(width=1, color="white")),
+                hovertemplate=f"Exit at %{{y:,.2f}} ({t['reason']}, net ₹{t['net']:,.0f})<br>%{{x|%H:%M}}<extra></extra>"))
+
+    figure.update_layout(height=440, margin=dict(l=8, r=8, t=8, b=8), xaxis_rangeslider_visible=False,
+                         legend=dict(orientation="h", yanchor="bottom", y=1.01, x=0), hovermode="closest",
+                         yaxis=dict(tickformat=",.0f", gridcolor="rgba(128,128,128,0.15)"),
+                         xaxis=dict(tickformat="%H:%M", gridcolor="rgba(128,128,128,0.10)"))
+    st.plotly_chart(figure, width="stretch", key="index-chart")
+    st.caption(f"{symbol} spot, 15-minute Heikin Ashi candles from Yahoo's 5-minute bars: what the strategy "
+               "trades on. Amber marker (below: buy, above: short): the close crossed the previous HA high (buy) or low (short) and the candle before "
+               "had not. A run checks the running candle every few minutes, so it can enter on a star's candle "
+               "before it closes, or miss one that only crossed in its last minutes. Dotted line: the ATR stop, "
+               "moved at each 15-minute close.")
+
+
 def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
     """HA IDX, NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles (ha_index.py): its own
     totals, open positions and closed trades, apart from the stock strategies."""
@@ -747,6 +867,8 @@ def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
             st.caption("Select a row to exit it now.")
     else:
         st.caption("None open.")
+
+    show_index_chart(trades, positions)
 
     if trades.empty:
         st.caption("No closed index trades yet.")
