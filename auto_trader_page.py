@@ -822,18 +822,17 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
                          xaxis=dict(tickformat="%H:%M", gridcolor="rgba(128,128,128,0.10)"))
     st.plotly_chart(figure, width="stretch", key="index-chart")
     st.caption(f"{symbol} spot, 15-minute Heikin Ashi candles from Yahoo's 5-minute bars: what the strategy "
-               "trades on. Amber marker (below: buy, above: short): a well-formed green HA candle with no lower wick closing above the previous HA high "
-               "after a doji or red HA candle (buy), or the mirror (short); not a doji means a body at least 10% of its range. A run checks the running candle every few minutes, so it can enter on a star's candle "
+               "trades on. Amber marker (below: buy, above: short): the close crossed the previous HA high (buy) or low (short), the candle before "
+               "had not, and the previous HA candle was not a doji (body under 10% of its range). A run checks the running candle every few minutes, so it can enter on a star's candle "
                "before it closes, or miss one that only crossed in its last minutes. Dotted line: the ATR stop, "
-               "moved at each 15-minute close. Exit: an HA candle closing against the trade, the stop, or 3:15 PM.")
+               "moved at each 15-minute close.")
 
 
 def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
     """HA IDX, NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles (ha_index.py): its own
     totals, open positions and closed trades, apart from the stock strategies."""
-    st.caption("Long: a well-formed green 15-minute HA candle (body at least 10% of its range) with no lower wick, its HA "
-               "close above the previous HA high, after a doji or red HA candle; exit when an HA candle closes red. "
-               "Short: the mirror. Also an "
+    st.caption("The 15-minute close crossing above the previous HA high (long) or below the previous HA low (short), "
+               "unless the previous HA candle is a doji (body under 10% of its range), "
                "SL 1.1 x ATR(14) trailed from each 15-minute close, squared off at 3:15 PM, 1 lot. Kept apart from "
                "the stock strategies of the Auto trader tab, which leaves it out.")
     today = datetime.now(fs.IST).date()
