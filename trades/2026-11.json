@@ -19464,5 +19464,153 @@
   "gross": -5405.0,
   "charges": 352.29,
   "net": -5757.29
+ },
+ {
+  "id": "1794371449421-1021",
+  "symbol": "FORTIS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 775,
+  "entry": 776.0,
+  "exit": 767.25,
+  "entry_time": 1794371449421,
+  "exit_time": 1794384900000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 767.25,
+  "tp": 799.3,
+  "high": 777.5,
+  "low": 767.25,
+  "nifty": 1.3,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794371449421,
+   "price": 776.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 60.42,
+  "gross": -6781.25,
+  "charges": 382.36,
+  "net": -7163.61
+ },
+ {
+  "id": "1794371449421-1022",
+  "symbol": "FORTIS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 775,
+  "entry": 776.0,
+  "exit": 767.25,
+  "entry_time": 1794371449421,
+  "exit_time": 1794384900000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 767.25,
+  "tp": 799.3,
+  "high": 777.5,
+  "low": 767.25,
+  "nifty": 1.3,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794371449421,
+   "price": 776.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 60.42,
+  "gross": -6781.25,
+  "charges": 382.36,
+  "net": -7163.61
+ },
+ {
+  "id": "1794373904645-1104",
+  "symbol": "KPITTECH",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 775,
+  "entry": 555.7,
+  "exit": 549.9,
+  "entry_time": 1794373904645,
+  "exit_time": 1794385543673,
+  "reason": "RSI exit (2H 59.9)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 538.2,
+  "tp": null,
+  "high": 558,
+  "low": 549.55,
+  "nifty": 1.25,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794373904645,
+   "price": 555.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -4495.0,
+  "charges": 287.4,
+  "net": -4782.4
+ },
+ {
+  "id": "1794375048640-1136",
+  "symbol": "CAMS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 825,
+  "entry": 734.45,
+  "exit": 726.25,
+  "entry_time": 1794375048640,
+  "exit_time": 1794385543673,
+  "reason": "RSI exit (2H 59.7)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 710.7,
+  "tp": null,
+  "high": 746.15,
+  "low": 726.1,
+  "nifty": 1.34,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794375048640,
+   "price": 734.45
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": -6765.0,
+  "charges": 384.92,
+  "net": -7149.92
  }
 ]
