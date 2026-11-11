@@ -96,5 +96,6 @@ pages = [
     st.Page("fundamentals_page.py", title="Fundamentals", icon="🏛️", url_path="fundamentals"),
     st.Page("futures_simulator.py", title="Futures simulator", icon="🧪", url_path="simulator"),
     st.Page("auto_trader_page.py", title="Auto trader", icon="🤖", url_path="auto"),
+    st.Page("index_trader_page.py", title="Autotrader NIFTY\\BNF", icon="📈", url_path="auto-index"),
 ]
 st.navigation(pages, position="top").run()

@@ -665,14 +665,12 @@ def show_results(history: pd.DataFrame, signals: pd.DataFrame | None) -> None:
                      column_config={"Symbol": SYMBOL_LINK})
 
 
-def show_scoreboard(history: pd.DataFrame, positions: list[dict], index_history: pd.DataFrame,
-                    index_positions: list[dict], unrealized) -> None:
-    """Each strategy's results in a row: the stock strategies, the index one and all together."""
+def show_scoreboard(history: pd.DataFrame, positions: list[dict], unrealized) -> None:
+    """Each stock strategy's results in a row, and all together."""
     today = datetime.now(fs.IST).date()
     groups = [(name, history[history["System"] == system], [p for p in positions if p.get("system", "RSI") == system])
               for system, name in SYSTEM_NAMES.items()]
-    groups.append(("HA 15m index (NIFTY, BANKNIFTY)", index_history, index_positions))
-    groups.append(("All", pd.concat([history, index_history]), positions + index_positions))
+    groups.append(("All", history, positions))
     rows = []
     for name, closed, held in groups:
         net = float(closed["net"].sum()) if len(closed) else 0.0
@@ -833,10 +831,9 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
 def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
     """HA IDX, NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles (ha_index.py): its own
     totals, open positions and closed trades, apart from the stock strategies."""
-    st.subheader("📈 NIFTY & BANKNIFTY · HA 15m")
     st.caption("The 15-minute close crossing above the previous HA high (long) or below the previous HA low (short), "
                "SL 1.1 x ATR(14) trailed from each 15-minute close, squared off at 3:15 PM, 1 lot. Kept apart from "
-               "the stock strategies: the totals above and the Results below leave it out.")
+               "the stock strategies of the Auto trader tab, which leaves it out.")
     today = datetime.now(fs.IST).date()
     open_pnl = sum(v for v in map(unrealized, positions) if v is not None)
     stats = st.columns(5)
@@ -948,20 +945,17 @@ def main() -> None:
     you = load_trades("manual")
     skips = load_skips()
     signals = load_signals()
-    # The index strategy has its own section (show_index): the rest of the page is the stock strategies.
-    index_history = history[history["System"] == INDEX_SYSTEM]
+    # The index strategy has its own tab (index_trader_page.py): this page is the stock strategies.
     history = history[history["System"] != INDEX_SYSTEM]
-    index_positions = [p for p in account["positions"] if p.get("system") == INDEX_SYSTEM]
     positions = [p for p in account["positions"] if p.get("system") != INDEX_SYSTEM]
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
-    quotes = (fs.latest_prices({p["symbol"] for p in account["positions"]}, instruments, None)
-              if account["positions"] else {})
+    quotes = fs.latest_prices({p["symbol"] for p in positions}, instruments, None) if positions else {}
 
     def unrealized(p):
         q = quotes.get(p["symbol"])
         return None if not q else round((q["price"] - p["entry"]) * p["qty"] * (1 if p["side"] == "BUY" else -1), 2)
 
-    show_scoreboard(history, positions, index_history, index_positions, unrealized)
+    show_scoreboard(history, positions, unrealized)
     st.caption(f"Last run {when(account.get('updated'))}. Margin needed: no capital limit, every signal is taken in "
                f"every style, so this is the most margin ({fs.MARGIN_RATE:.0%} of the futures' value) the strategy's "
                "trades held at the same time, open positions included. Each style alone needs less: see Results.")
@@ -1019,8 +1013,6 @@ def main() -> None:
     else:
         st.caption("None open.")
 
-    show_index(index_history, index_positions, unrealized)
-
     st.subheader("Results")
     if len(history) or len(you):
         st.markdown("**RSI against Heikin Ashi**")
@@ -1067,4 +1059,5 @@ def main() -> None:
         st.code("\n".join(account.get("log", [])) or "Nothing yet.", language=None)
 
 
-main()
+if __name__ == "__main__":  # Streamlit runs a page as __main__; index_trader_page imports it
+    main()
