@@ -19760,5 +19760,42 @@
   "gross": -6820.0,
   "charges": 383.16,
   "net": -7203.16
+ },
+ {
+  "id": "1794372042772-1044",
+  "symbol": "TATAPOWER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1450,
+  "entry": 364.7,
+  "exit": 363.0,
+  "entry_time": 1794372042772,
+  "exit_time": 1794386133386,
+  "reason": "RSI exit (2H 59.1)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 356.4,
+  "tp": null,
+  "high": 370.2,
+  "low": 362.8,
+  "nifty": 1.19,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794372042772,
+   "price": 364.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -2465.0,
+  "charges": 343.74,
+  "net": -2808.74
  }
 ]
