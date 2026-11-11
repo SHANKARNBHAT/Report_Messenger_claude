@@ -16948,5 +16948,79 @@
   "gross": 39865.0,
   "charges": 239.53,
   "net": 39625.47
+ },
+ {
+  "id": "1794204942080-873",
+  "symbol": "HCLTECH",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1411.9,
+  "exit": 1428.4,
+  "entry_time": 1794204942080,
+  "exit_time": 1794370245977,
+  "reason": "HA exit (4H)",
+  "source": "Auto HA MTF 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1454.25,
+  "tp": null,
+  "high": 1428.4,
+  "low": 1394.1,
+  "nifty": 0.04,
+  "strategies": [
+   "4h HA BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794204942080,
+   "price": 1411.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 64.05,
+  "gross": -6600.0,
+  "charges": 365.54,
+  "net": -6965.54
+ },
+ {
+  "id": "1794205850237-874",
+  "symbol": "INFY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1152.2,
+  "exit": 1169.4,
+  "entry_time": 1794205850237,
+  "exit_time": 1794370245977,
+  "reason": "HA exit (4H)",
+  "source": "Auto HA MTF 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1186.75,
+  "tp": null,
+  "high": 1170.6,
+  "low": 1139,
+  "nifty": -0.21,
+  "strategies": [
+   "4h HA BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794205850237,
+   "price": 1152.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 56.77,
+  "gross": -6880.0,
+  "charges": 307.05,
+  "net": -7187.05
  }
 ]
