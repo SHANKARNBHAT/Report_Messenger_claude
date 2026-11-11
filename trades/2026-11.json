@@ -17762,5 +17762,42 @@
   "gross": -8280.0,
   "charges": 652.24,
   "net": -8932.24
+ },
+ {
+  "id": "1794376243503-1154",
+  "symbol": "BANKNIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 61226.05,
+  "exit": 61142.9,
+  "entry_time": 1794376243503,
+  "exit_time": 1794379200000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 61017.8,
+  "tp": null,
+  "high": 61394.05,
+  "low": 61142.88,
+  "nifty": 1.35,
+  "strategies": [
+   "15m HA Bullish (index)"
+  ],
+  "first_seen": {
+   "time": 1794376243503,
+   "price": 61226.05
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2494.5,
+  "charges": 1080.35,
+  "net": -3574.85
  }
 ]
