@@ -17244,5 +17244,42 @@
   "gross": -16406.25,
   "charges": 671.7,
   "net": -17077.95
+ },
+ {
+  "id": "1794371740162-1032",
+  "symbol": "FORCEMOT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 19235.0,
+  "exit": 19812.05,
+  "entry_time": 1794371740162,
+  "exit_time": 1794373800000,
+  "reason": "Target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 18750.0,
+  "tp": 19812.05,
+  "high": 19812.05,
+  "low": 19235.0,
+  "nifty": 1.26,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794371740162,
+   "price": 19235.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 67.44,
+  "gross": 14426.25,
+  "charges": 325.55,
+  "net": 14100.7
  }
 ]
