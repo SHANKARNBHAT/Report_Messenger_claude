@@ -822,8 +822,8 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
                          xaxis=dict(tickformat="%H:%M", gridcolor="rgba(128,128,128,0.10)"))
     st.plotly_chart(figure, width="stretch", key="index-chart")
     st.caption(f"{symbol} spot, 15-minute Heikin Ashi candles from Yahoo's 5-minute bars: what the strategy "
-               "trades on. Amber marker (below: buy, above: short): the close crossed the previous HA high (buy) or low (short) and the candle before "
-               "had not. A run checks the running candle every few minutes, so it can enter on a star's candle "
+               "trades on. Amber marker (below: buy, above: short): the close crossed the previous HA high (buy) or low (short), the candle before "
+               "had not, and the previous HA candle was not a doji (body under 10% of its range). A run checks the running candle every few minutes, so it can enter on a star's candle "
                "before it closes, or miss one that only crossed in its last minutes. Dotted line: the ATR stop, "
                "moved at each 15-minute close.")
 
@@ -832,6 +832,7 @@ def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
     """HA IDX, NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles (ha_index.py): its own
     totals, open positions and closed trades, apart from the stock strategies."""
     st.caption("The 15-minute close crossing above the previous HA high (long) or below the previous HA low (short), "
+               "unless the previous HA candle is a doji (body under 10% of its range), "
                "SL 1.1 x ATR(14) trailed from each 15-minute close, squared off at 3:15 PM, 1 lot. Kept apart from "
                "the stock strategies of the Auto trader tab, which leaves it out.")
     today = datetime.now(fs.IST).date()
@@ -907,7 +908,7 @@ def main() -> None:
         f"is a doji, body 10% of its range or less, does not count), held until the HA exit of the highest timeframe "
         f"that matched, which trails it, with an initial SL 3% from the entry. "
         f"**HA 15m index** trades NIFTY and BANKNIFTY futures on 15-minute Heikin Ashi candles (from Yahoo 5-minute "
-        f"bars: the close crossing above the previous HA high, or below the previous HA low), SL 1.1 x ATR(14) trailed from each 15-minute close, "
+        f"bars: the close crossing above the previous HA high, or below the previous HA low, not after a doji), SL 1.1 x ATR(14) trailed from each 15-minute close, "
         f"squared off at 3:15 PM; a new trade once the last one closed, not twice on one candle. "
         f"A stock is traded once per side, style and strategy per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")

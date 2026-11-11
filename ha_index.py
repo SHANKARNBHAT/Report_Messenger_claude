@@ -6,7 +6,8 @@ BANKNIFTY (auto_trader.py, enter_index_signals and settle), made from Yahoo Fina
   * Entry, on the running 15-minute candle, as the Chartink widget "NIFTY \\BNF stocks CLOSE
     CROSSED ABOVE PREVIOUS CNDL HA HIGH": long when the close crosses above the previous HA high
     (the previous close was not above the HA high before it); short when it crosses below the
-    previous HA low the same way.
+    previous HA low the same way. No entry when the previous HA candle is a doji: its body
+    less than DOJI_BODY of its range.
   * SL ATR_MULT x ATR(ATR_PERIOD) of the 15-minute candles from the entry. After each
     15-minute candle closes, it moves to that close -/+ ATR_MULT x ATR when that is closer,
     never back. Hit when a 5-minute bar touches it (at the bar's open if it gapped past).
@@ -22,6 +23,7 @@ TIMEFRAME = "15 MIN"
 MINUTES = 15
 ATR_PERIOD = 14
 ATR_MULT = 1.1
+DOJI_BODY = 0.10  # a previous HA candle whose body is less than this share of its range is a doji
 SESSION_OPEN, SESSION_END, SQUARE_OFF = time(9, 15), time(15, 30), time(15, 15)
 BAR = 300  # seconds in a 5-minute bar
 
@@ -74,14 +76,25 @@ def atr(rows: list[list]) -> list[float | None]:
     return out
 
 
+def doji(candle: tuple) -> bool:
+    """Whether an HA candle (open, high, low, close) is a doji: its body (close - open) less than
+    DOJI_BODY of its range (high - low)."""
+    open_, high, low, close = candle
+    span = high - low
+    return span <= 0 or abs(close - open_) < DOJI_BODY * span
+
+
 def signal(rows: list[list]) -> str | None:
     """"BUY", "SELL" or None for the last (running) candle of `rows`, as the Chartink widget
     "NIFTY \\BNF stocks CLOSE CROSSED ABOVE PREVIOUS CNDL HA HIGH" (dashboard 502621): the close
     crosses above the previous HA high, the previous close not above the HA high before it.
-    Short: the close crosses below the previous HA low the same way."""
+    Short: the close crosses below the previous HA low the same way. None when the previous HA
+    candle is a doji (doji)."""
     if len(rows) < 3:
         return None
     ha = heikin_ashi(rows)
+    if doji(ha[-2]):
+        return None
     close, p_close = rows[-1][4], rows[-2][4]
     (_, p_high, p_low, _), (_, p2_high, p2_low, _) = ha[-2], ha[-3]
     if close > p_high and p_close <= p2_high:
