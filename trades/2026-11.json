@@ -19908,5 +19908,42 @@
   "gross": -6950.0,
   "charges": 394.02,
   "net": -7344.02
+ },
+ {
+  "id": "1794368751056-913",
+  "symbol": "VOLTAS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1090.1,
+  "exit": 1111.9,
+  "entry_time": 1794368751056,
+  "exit_time": 1794387000000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1052.8,
+  "tp": 1122.8,
+  "high": 1130.9,
+  "low": 1090.1,
+  "nifty": 1.14,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794368751056,
+   "price": 1090.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 65.64,
+  "gross": 8175.0,
+  "charges": 281.69,
+  "net": 7893.31
  }
 ]
