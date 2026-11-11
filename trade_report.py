@@ -22,7 +22,7 @@ HEADER_FILL = PatternFill("solid", fgColor="1F3864")
 BODY, BOLD = Font(name=FONT), Font(name=FONT, bold=True)
 TITLE, NOTE = Font(name=FONT, bold=True, size=13), Font(name=FONT, italic=True, color="555555")
 GAIN, LOSS = PatternFill("solid", fgColor="E2EFDA"), PatternFill("solid", fgColor="FCE4E4")
-SHORT_TF = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
+SHORT_TF = {"15 MIN": "15m", "2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 # Closed trades sheet: the columns the formulas read.
 SYMBOL, STRATEGY, STYLE, SIDE, NET = "A", "B", "C", "D", "N"
 

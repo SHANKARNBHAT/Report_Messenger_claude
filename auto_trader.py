@@ -5,7 +5,8 @@ RSI (chartink_dashboard.DEFAULT_DASHBOARD), Heikin Ashi (its own scans, chartink
 HA signals of 2H, 4H and Daily: a timeframe counts unless its previous HA candle is a
 doji, and the position is held until the HA exit of the highest one that counted, which
 trails it, with a fixed SL MTF_SL_PCT from the entry until then). A stock on several gets a trade in
-each, so that each strategy's results stay its own.
+each, so that each strategy's results stay its own. A fourth, HA IDX (ha_index.py), trades
+NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles with an ATR trailing SL, intraday.
 
 .github/workflows/auto_trader.yml runs it every 15 minutes in market hours. Each run:
   * replays the open positions on the 5-minute bars since entry, closing those that
@@ -48,6 +49,7 @@ from datetime import datetime, time, timedelta
 from pathlib import Path
 
 import futures_simulator as fs
+import ha_index
 from chartink_dashboard import NO_VALUE
 
 TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY")
@@ -322,7 +324,9 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
             candles = fs.fetch_ha_candles()
         except fs.ChartinkError as exc:
             note(f"No candles for the HA exits: {exc}")
-    for result in fs.check_positions(account["positions"], now, settle=False):
+    settle_index(files, account, now, note)
+    for result in fs.check_positions([p for p in account["positions"] if p.get("system") != INDEX_SYSTEM],
+                                     now, settle=False):
         position = next(p for p in account["positions"] if p["id"] == result["id"])
         # A candle that went past since the last run may have come before what the bars show.
         due = ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS else None
@@ -348,6 +352,94 @@ def load_ha_signals() -> tuple[dict | None, str | None]:
         return fs.fetch_ha_signals(), None
     except fs.ChartinkError as exc:
         return None, f"Chartink (HA scans): {exc}"
+
+
+INDEX_SYSTEM = "HA IDX"
+
+
+def index_bars(note) -> dict[str, list]:
+    """symbol -> the 5-minute bars of the last few sessions of each HA IDX index (Yahoo)."""
+    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    wanted = {s: (instruments[s]["yahoo"], "5d") for s in ha_index.SYMBOLS if s in instruments}
+    found = fs.fetch_bars(tuple(sorted(set(wanted.values()))))
+    bars = {}
+    for symbol, request in wanted.items():
+        if isinstance(found.get(request), list) and found[request]:
+            bars[symbol] = found[request]
+        else:
+            note(f"{symbol}: no 5-minute bars ({found.get(request)})")
+    return bars
+
+
+def settle_index(files: Files, account: dict, now: datetime, note) -> None:
+    """Close the HA IDX positions that hit their ATR SL or the 3:15 PM square-off; move the others' SL."""
+    positions = [p for p in account["positions"] if p.get("system") == INDEX_SYSTEM]
+    if not positions:
+        return
+    bars = index_bars(note)
+    for position in positions:
+        if position["symbol"] not in bars:
+            continue
+        result = ha_index.replay(position, bars[position["symbol"]], now, fs.IST)
+        if result["status"] == "closed":
+            close(files, account, position, tick(result["exit"]), result["exit_time"], result["reason"],
+                  result["high"], result["low"])
+            note(f"{position['symbol']}: {result['reason']} at {tick(result['exit'])} ({fs.BOT_STYLES['atr']})")
+        else:
+            position.update(stop=tick(result["stop"]), high=result["high"], low=result["low"])
+
+
+def enter_index_signals(files: Files, account: dict, seen: dict, now: datetime, trading: bool, note) -> None:
+    """Trade the HA IDX signals: an index whose running 15-minute candle meets ha_index.signal,
+    unless it has a position open in the strategy or was entered on this candle already."""
+    if now.time() >= LAST_ENTRY:
+        return
+    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    current = ha_index.candle_start(int(now.timestamp()), fs.IST)
+    for symbol, bars in index_bars(note).items():
+        rows = ha_index.candles([b for b in bars if b[0] <= now.timestamp()], fs.IST)
+        if not rows or rows[-1][0] != current:  # no bar of the running candle yet
+            continue
+        side = ha_index.signal(rows)
+        if not side:
+            continue
+        bias = "Bullish" if side == "BUY" else "Bearish"
+        signal = {"symbol": symbol, "timeframe": ha_index.TIMEFRAME, "bias": bias, "system": INDEX_SYSTEM,
+                  "strategy": f"15m HA {bias} (index)", "fno": True, "agrees": "—"}
+        record_seen(seen, [signal], None, now)
+        if not trading:
+            mark(seen, [signal], "Not traded: switch off, page closed")
+            continue
+        if any(p.get("system") == INDEX_SYSTEM and p["symbol"] == symbol for p in account["positions"]):
+            mark(seen, [signal], "Already open")
+            continue
+        if any(t.get("system") == INDEX_SYSTEM and t["symbol"] == symbol
+               and ha_index.candle_start(t["entry_time"] // 1000, fs.IST) == current
+               for t in trades_of(files, now.strftime("%Y-%m"))):
+            mark(seen, [signal], "Already traded this candle")
+            continue
+        quote = fs.latest_prices({symbol}, instruments, None).get(symbol)
+        entry = tick(quote["price"] if quote else rows[-1][4])
+        long = side == "BUY"
+        sl = ha_index.initial_stop(rows, entry, long, int(now.timestamp()))
+        if sl is None:
+            mark(seen, [signal], "No ATR")
+            continue
+        sl = tick(sl)
+        first = seen.get(signal_key(signal))
+        qty = LOTS * instruments[symbol]["lot"]
+        account["seq"] += 1
+        account["positions"].append({
+            "id": f"{int(now.timestamp() * 1000)}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
+            "qty": qty, "entry": entry, "sl": sl, "tp": None, "tsl": {"on": False},
+            "run": None, "style": "atr", "system": INDEX_SYSTEM, "stop": sl, "time": int(now.timestamp() * 1000),
+            "status": "open", "passed": False, "high": entry, "low": entry, "nifty": fs.nifty_change(),
+            "source": "Auto HA 15m", "timeframes": [ha_index.TIMEFRAME], "strategies": [signal["strategy"]],
+            "agrees": "—", "sma_rsi": None,
+            "first_seen": first and {"time": first["time"], "price": first["price"]},
+        })
+        mark(seen, [signal], "Traded")
+        note(f"{symbol}: {INDEX_SYSTEM} {side} {qty} at {entry}, SL {sl} ({ha_index.ATR_MULT} ATR, 15m)")
 
 
 def test_chartink(note) -> None:
@@ -533,6 +625,11 @@ def main() -> None:
     settle(files, account, now, note)
     if args.action == "run" and market_open(now):
         dashboard, error = fs.load_dashboard()
+        day_file = f"signals/{now.date().isoformat()}.json"
+        seen = files.get(day_file, {})
+        trading = not args.scheduled or account.get("unattended", True)
+        enter_index_signals(files, account, seen, now, trading, note)
+        files.changed.add(day_file)
         if dashboard:
             instruments = {i["symbol"]: i for i in fs.load_instruments()}
             signals = [{**s, "system": "RSI"} for s in fs.signal_rows(dashboard, instruments)[0]]
@@ -545,14 +642,10 @@ def main() -> None:
                             for system in ("HA", "HA MTF") for s in ha_signals]
             else:
                 note(f"No HA signals: {ha_error}")
-            day_file = f"signals/{now.date().isoformat()}.json"
-            seen = files.get(day_file, {})
             record_seen(seen, signals, dashboard, now)
-            trading = not args.scheduled or account.get("unattended", True)
-            for system in fs.SYSTEMS:
+            for system in TRADED_TIMEFRAMES:
                 enter_signals(files, account, [s for s in signals if s["system"] == system], dashboard, seen, now,
                               trading, note, system)
-            files.changed.add(day_file)
         else:
             note(f"No signals: {error}")
 

@@ -46,9 +46,9 @@ LIVE_HOURS = (clock(9, 15), clock(15, 35))  # IST, weekdays: through the 3:15 PM
 # skill): the three bot styles, then the simulator's trades.
 SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]
 YOU = "You (simulator)"
-SYSTEM_NAMES = {"RSI": "RSI", "HA": "Heikin Ashi", "HA MTF": "HA multi-timeframe"}
+SYSTEM_NAMES = {"RSI": "RSI", "HA": "Heikin Ashi", "HA MTF": "HA multi-timeframe", "HA IDX": "HA 15m index"}
 SMA_FILTERS = ["Against: long below 50, short above 50", "With: long above 50, short below 50", "Not recorded"]
-SHORT_TF = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
+SHORT_TF = {"15 MIN": "15m", "2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 HOLDS = [(60, "< 1 h"), (180, "1–3 h"), (375, "3 h – same day"), (2 * 1440, "1–2 days"), (float("inf"), "3+ days")]
 MIN_TRADES = 3  # trades on a timeframe before it can be a stock's best one
 MOODS = [(-0.5, "NIFTY down > 0.5%"), (0.5, "NIFTY flat (±0.5%)"), (float("inf"), "NIFTY up > 0.5%")]
@@ -675,6 +675,9 @@ def main() -> None:
         f"**HA multi-timeframe** takes the Heikin Ashi signals of 2H, 4H and Daily (a timeframe whose previous HA candle "
         f"is a doji, body 10% of its range or less, does not count), held until the HA exit of the highest timeframe "
         f"that matched, which trails it, with an initial SL 3% from the entry. "
+        f"**HA 15m index** trades NIFTY and BANKNIFTY futures on 15-minute Heikin Ashi candles (from Yahoo 5-minute "
+        f"bars: the close crossing above the previous HA high, or below the previous HA low), SL 1.1 x ATR(14) trailed from each 15-minute close, "
+        f"squared off at 3:15 PM; a new trade once the last one closed, not twice on one candle. "
         f"A stock is traded once per side, style and strategy per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")
 
@@ -741,7 +744,7 @@ def main() -> None:
         "Signal": p["source"] + (f" · exit {SHORT_TF[p['exit_tf']]}" if p.get("exit_tf") else ""), "Qty": p["qty"],
         "Entry": p["entry"], "LTP": (quotes.get(p["symbol"]) or {}).get("price"),
         "SL / TSL": p.get("stop"), "Target": p["tp"],
-        "At target": "—" if p.get("style") == "rsi" or p.get("style") in fs.HA_EXITS else "Passed · trailing" if p.get("passed")
+        "At target": "—" if p.get("tp") is None or p.get("style") in fs.HA_EXITS else "Passed · trailing" if p.get("passed")
         else "Trail" if p.get("run") else "Exit",
         "Entered": datetime.fromtimestamp(p["time"] / 1000, fs.IST).replace(tzinfo=None), "Agrees": p.get("agrees"),
     } for p in positions]
