@@ -822,8 +822,9 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
                          xaxis=dict(tickformat="%H:%M", gridcolor="rgba(128,128,128,0.10)"))
     st.plotly_chart(figure, width="stretch", key="index-chart")
     st.caption(f"{symbol} spot, 15-minute Heikin Ashi candles from Yahoo's 5-minute bars: what the strategy "
-               "trades on. Amber marker (below: buy, above: short): the close went above the previous HA high with that HA candle red (buy), or "
-               "below the previous HA low with that HA candle green (short), and that HA candle was not a doji (body under 10% of its range). A run checks the running candle every few minutes, so it can enter on a star's candle "
+               "trades on. Amber marker (below: buy, above: short): the HA candle had no lower wick, the close went above the previous HA high and "
+               "SMA 8 was above SMA 20 (buy), or no upper wick, below the previous HA low and SMA 8 below SMA 20 (short), "
+               "and the previous HA candle was not a doji (body under 10% of its range). A run checks the running candle every few minutes, so it can enter on a star's candle "
                "before it closes, or miss one that only crossed in its last minutes. Dotted line: the ATR stop, "
                "moved at each 15-minute close.")
 
@@ -831,8 +832,8 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
 def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
     """HA IDX, NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles (ha_index.py): its own
     totals, open positions and closed trades, apart from the stock strategies."""
-    st.caption("The 15-minute close above the previous HA high after a red HA candle (long), or below the previous HA "
-               "low after a green HA candle (short), "
+    st.caption("Long: the 15-minute HA candle has no lower wick, the close is above the previous HA high and SMA 8 > "
+               "SMA 20. Short: no upper wick, the close below the previous HA low and SMA 8 < SMA 20. "
                "unless the previous HA candle is a doji (body under 10% of its range), "
                "SL 1.1 x ATR(14) trailed from each 15-minute close, squared off at 3:15 PM, 1 lot. Kept apart from "
                "the stock strategies of the Auto trader tab, which leaves it out.")
