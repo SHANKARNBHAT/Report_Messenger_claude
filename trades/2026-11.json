@@ -17614,5 +17614,79 @@
   "gross": -4562.5,
   "charges": 353.41,
   "net": -4915.91
+ },
+ {
+  "id": "1794206748295-877",
+  "symbol": "PAGEIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 20,
+  "entry": 36430.0,
+  "exit": 36035.0,
+  "entry_time": 1794206748295,
+  "exit_time": 1794378649612,
+  "reason": "RSI exit (2H 59.7)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 35260.0,
+  "tp": null,
+  "high": 36870,
+  "low": 36035,
+  "nifty": -0.28,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794206748295,
+   "price": 36430.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -7900.0,
+  "charges": 453.42,
+  "net": -8353.42
+ },
+ {
+  "id": "1794369938916-939",
+  "symbol": "OIL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1400,
+  "entry": 434.95,
+  "exit": 436.55,
+  "entry_time": 1794369938916,
+  "exit_time": 1794378649612,
+  "reason": "RSI exit (2H 40.1)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 442.9,
+  "tp": null,
+  "high": 437.5,
+  "low": 434.95,
+  "nifty": 1.31,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794369938916,
+   "price": 434.95
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -2240.0,
+  "charges": 390.24,
+  "net": -2630.24
  }
 ]
