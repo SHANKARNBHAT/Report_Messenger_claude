@@ -19,6 +19,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 from datetime import time as clock
+from html import escape
 from urllib.parse import quote
 
 import pandas as pd
@@ -683,10 +684,30 @@ def show_scoreboard(history: pd.DataFrame, positions: list[dict], index_history:
             "Open positions": len(held),
             "Margin needed ₹": margin_needed(closed, held),
         })
-    money = st.column_config.NumberColumn(format="localized")
-    st.dataframe(pd.DataFrame(rows).set_index("Strategy"), width="stretch",
-                 column_config={c: money for c in ("Net P&L closed ₹", "Open P&L ₹", "Total ₹", "Today closed ₹",
-                                                   "Avg per trade ₹", "Margin needed ₹")})
+    # An HTML table, for headings in bold and a size up (st.dataframe cannot style them).
+    def cell(column, value):
+        if value is None or (isinstance(value, float) and pd.isna(value)):
+            return "—"
+        if column.endswith("₹"):
+            return f"₹{value:,.0f}"
+        return f"{value:.1f}%" if column.endswith("%") else f"{value:,}"
+
+    columns = list(rows[0])
+    head = "".join(f"<th>{escape(c)}</th>" for c in columns)
+    body = "".join(
+        f"<tr{' class=all' if row['Strategy'] == 'All' else ''}><th>{escape(row['Strategy'])}</th>"
+        + "".join(f"<td>{cell(c, row[c])}</td>" for c in columns[1:]) + "</tr>"
+        for row in rows)
+    st.html(f"""<style>
+      .scoreboard {{ overflow-x: auto; margin-bottom: 0.5rem; }}
+      .scoreboard table {{ border-collapse: collapse; width: 100%; font-size: 0.95rem; }}
+      .scoreboard th, .scoreboard td {{ padding: 0.45rem 0.7rem; text-align: right; white-space: nowrap;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.25); }}
+      .scoreboard thead th {{ font-weight: 700; font-size: 1.1rem; border-bottom: 2px solid rgba(128, 128, 128, 0.5); }}
+      .scoreboard tbody th {{ text-align: left; font-weight: 700; font-size: 1.05rem; }}
+      .scoreboard thead th:first-child {{ text-align: left; }}
+      .scoreboard tr.all td, .scoreboard tr.all th {{ font-weight: 700; border-top: 2px solid rgba(128, 128, 128, 0.5); }}
+    </style><div class="scoreboard"><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>""")
 
 
 def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
