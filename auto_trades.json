@@ -92,7 +92,7 @@
    "time": 1793680250528,
    "status": "open",
    "passed": false,
-   "high": 3906.7,
+   "high": 3907.0,
    "low": 3550.2,
    "nifty": 0.82,
    "source": "Auto 2H",
@@ -1348,7 +1348,7 @@
    "status": "open",
    "passed": false,
    "high": 1596,
-   "low": 1570.5,
+   "low": 1570.2,
    "nifty": 1.14,
    "source": "Auto 2H",
    "timeframes": [
@@ -1494,7 +1494,7 @@
    "time": 1794368751056,
    "status": "open",
    "passed": false,
-   "high": 4626.1,
+   "high": 4630,
    "low": 4501,
    "nifty": 1.14,
    "source": "Auto HA 2H",
@@ -1530,7 +1530,7 @@
    "time": 1794368751056,
    "status": "open",
    "passed": false,
-   "high": 4626.1,
+   "high": 4630,
    "low": 4501,
    "nifty": 1.14,
    "source": "Auto HA 2H",
@@ -1641,7 +1641,7 @@
    "time": 1794368751056,
    "status": "open",
    "passed": false,
-   "high": 4626.1,
+   "high": 4630,
    "low": 4501,
    "nifty": 1.14,
    "source": "Auto HA MTF 2H",
@@ -5791,7 +5791,7 @@
    "time": 1794371740162,
    "status": "open",
    "passed": false,
-   "high": 7825,
+   "high": 7826,
    "low": 7715,
    "nifty": 1.26,
    "source": "Auto HA MTF 4H",
@@ -6383,7 +6383,7 @@
    "time": 1794372348387,
    "status": "open",
    "passed": false,
-   "high": 3599.2,
+   "high": 3602,
    "low": 3570.2,
    "nifty": 1.21,
    "source": "Auto HA 2H",
@@ -6422,7 +6422,7 @@
    "time": 1794372348387,
    "status": "open",
    "passed": false,
-   "high": 3599.2,
+   "high": 3602,
    "low": 3570.2,
    "nifty": 1.21,
    "source": "Auto HA 2H",
@@ -6458,7 +6458,7 @@
    "time": 1794372348387,
    "status": "open",
    "passed": false,
-   "high": 3599.2,
+   "high": 3602,
    "low": 3570.2,
    "nifty": 1.21,
    "source": "Auto HA 2H",
@@ -6494,7 +6494,7 @@
    "time": 1794372348387,
    "status": "open",
    "passed": false,
-   "high": 3599.2,
+   "high": 3602,
    "low": 3570.2,
    "nifty": 1.21,
    "source": "Auto HA MTF 2H",
@@ -10086,7 +10086,7 @@
    "status": "open",
    "passed": false,
    "high": 747.05,
-   "low": 743.25,
+   "low": 742,
    "nifty": 0.93,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -10125,7 +10125,7 @@
    "status": "open",
    "passed": false,
    "high": 747.05,
-   "low": 743.25,
+   "low": 742,
    "nifty": 0.93,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -10161,7 +10161,7 @@
    "status": "open",
    "passed": false,
    "high": 747.05,
-   "low": 743.25,
+   "low": 742,
    "nifty": 0.93,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -10197,7 +10197,7 @@
    "status": "open",
    "passed": false,
    "high": 747.05,
-   "low": 743.25,
+   "low": 742,
    "nifty": 0.93,
    "source": "Auto HA MTF 2H",
    "timeframes": [
@@ -10472,10 +10472,122 @@
     "time": 1794381933791,
     "price": 1818.9
    }
+  },
+  {
+   "id": "1794382245293-1173",
+   "symbol": "ALKEM",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 125,
+   "entry": 5365.5,
+   "sl": 5281.0,
+   "tp": 5526.45,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "eod",
+   "system": "RSI",
+   "stop": 5281.0,
+   "time": 1794382245293,
+   "status": "open",
+   "passed": false,
+   "high": 5365.5,
+   "low": 5365.5,
+   "nifty": 1.04,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794382245293,
+    "price": 5365.5
+   }
+  },
+  {
+   "id": "1794382245293-1174",
+   "symbol": "ALKEM",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 125,
+   "entry": 5365.5,
+   "sl": 5281.0,
+   "tp": 5526.45,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 80.5,
+    "step": 26.85
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 5281.0,
+   "time": 1794382245293,
+   "status": "open",
+   "passed": false,
+   "high": 5365.5,
+   "low": 5365.5,
+   "nifty": 1.04,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794382245293,
+    "price": 5365.5
+   }
+  },
+  {
+   "id": "1794382245293-1175",
+   "symbol": "ALKEM",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 125,
+   "entry": 5365.5,
+   "sl": 5281.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "rsi",
+   "system": "RSI",
+   "stop": 5281.0,
+   "time": 1794382245293,
+   "status": "open",
+   "passed": false,
+   "high": 5365.5,
+   "low": 5365.5,
+   "nifty": 1.04,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794382245293,
+    "price": 5365.5
+   }
   }
  ],
- "seq": 1172,
+ "seq": 1175,
  "log": [
+  "11 Nov 13:00  ALKEM: RSI BUY 125 at 5365.5, SL 5281.0 (2 HOUR; eod, trail, rsi)",
   "11 Nov 12:55  AUROPHARMA: HA MTF SELL 550 at 1818.9, SL 1873.45 (2 HOUR; exit on 2H; ha)",
   "11 Nov 12:55  AUROPHARMA: HA SELL 550 at 1818.9, SL 1859.9 (2 HOUR; eod, trail, ha)",
   "11 Nov 12:55  UNIONBANK: TSL after target at 198.4 (Hold \u00b7 trail)",
@@ -10774,11 +10886,10 @@
   "09 Nov 10:50  SRF: HA SELL 200 at 2433.1, SL 2487.0 (2 HOUR; eod, trail, ha)",
   "09 Nov 10:50  KOTAKBANK: TSL after target at 475.85 (Hold \u00b7 trail)",
   "09 Nov 10:45  TECHM: HA MTF SELL 600 at 1815.1, SL 1869.55 (2 HOUR; exit on 2H; ha)",
-  "09 Nov 10:45  IDEA: HA MTF SELL 71475 at 12.55, SL 12.95 (2 HOUR; exit on 2H; ha)",
-  "09 Nov 10:45  TECHM: HA SELL 600 at 1815.1, SL 1840.0 (2 HOUR; eod, trail, ha)"
+  "09 Nov 10:45  IDEA: HA MTF SELL 71475 at 12.55, SL 12.95 (2 HOUR; exit on 2H; ha)"
  ],
- "page_run": 1794381933791,
- "updated": 1794381933791,
+ "page_run": 1794382245293,
+ "updated": 1794382245293,
  "unattended": true,
  "peak_margin": 39541718.76
 }
