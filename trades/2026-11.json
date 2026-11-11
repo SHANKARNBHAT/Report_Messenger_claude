@@ -15318,5 +15318,42 @@
   "gross": -3180.0,
   "charges": 654.9,
   "net": -3834.9
+ },
+ {
+  "id": "1793936737933-742",
+  "symbol": "KAYNES",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 3292.5,
+  "exit": 3334.0,
+  "entry_time": 1793936737933,
+  "exit_time": 1794368718000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 3327.5,
+  "tp": 3193.7,
+  "high": 3334.0,
+  "low": 3211.0,
+  "nifty": -0.37,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793936737933,
+   "price": 3292.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 52.15,
+  "gross": -6225.0,
+  "charges": 325.6,
+  "net": -6550.6
  }
 ]
