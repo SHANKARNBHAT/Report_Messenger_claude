@@ -17429,5 +17429,42 @@
   "gross": 14808.75,
   "charges": 332.93,
   "net": 14475.82
+ },
+ {
+  "id": "1794372651604-1060",
+  "symbol": "POWERGRID",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1900,
+  "entry": 262.35,
+  "exit": 265.2,
+  "entry_time": 1794372651604,
+  "exit_time": 1794376861629,
+  "reason": "RSI exit (2H 59.6)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 257.45,
+  "tp": null,
+  "high": 266.5,
+  "low": 262.35,
+  "nifty": 1.21,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794372651604,
+   "price": 262.35
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": 5415.0,
+  "charges": 330.75,
+  "net": 5084.25
  }
 ]
