@@ -17799,5 +17799,42 @@
   "gross": -2494.5,
   "charges": 1080.35,
   "net": -3574.85
+ },
+ {
+  "id": "1793852439677-667",
+  "symbol": "UJJIVANSFB",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 8000,
+  "entry": 59.5,
+  "exit": 61.3,
+  "entry_time": 1793852439677,
+  "exit_time": 1794379200000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 56.65,
+  "tp": 61.3,
+  "high": 62.2,
+  "low": 56.91,
+  "nifty": 1.91,
+  "strategies": [
+   "2H HA Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793852439677,
+   "price": 59.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 44.65,
+  "gross": 14400.0,
+  "charges": 322.79,
+  "net": 14077.21
  }
 ]
