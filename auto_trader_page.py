@@ -46,7 +46,9 @@ LIVE_HOURS = (clock(9, 15), clock(15, 35))  # IST, weekdays: through the 3:15 PM
 # skill): the three bot styles, then the simulator's trades.
 SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]
 YOU = "You (simulator)"
-SYSTEM_NAMES = {"RSI": "RSI", "HA": "Heikin Ashi", "HA MTF": "HA multi-timeframe", "HA IDX": "HA 15m index"}
+# The stock strategies; HA IDX (NIFTY and BANKNIFTY) has a section of its own (show_index).
+SYSTEM_NAMES = {"RSI": "RSI", "HA": "Heikin Ashi", "HA MTF": "HA multi-timeframe"}
+INDEX_SYSTEM = "HA IDX"
 SMA_FILTERS = ["Against: long below 50, short above 50", "With: long above 50, short below 50", "Not recorded"]
 SHORT_TF = {"15 MIN": "15m", "2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 HOLDS = [(60, "< 1 h"), (180, "1–3 h"), (375, "3 h – same day"), (2 * 1440, "1–2 days"), (float("inf"), "3+ days")]
@@ -657,6 +659,65 @@ def show_results(history: pd.DataFrame, signals: pd.DataFrame | None) -> None:
                      column_config={"Symbol": SYMBOL_LINK})
 
 
+def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
+    """HA IDX, NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles (ha_index.py): its own
+    totals, open positions and closed trades, apart from the stock strategies."""
+    st.subheader("📈 NIFTY & BANKNIFTY · HA 15m")
+    st.caption("The 15-minute close crossing above the previous HA high (long) or below the previous HA low (short), "
+               "SL 1.1 x ATR(14) trailed from each 15-minute close, squared off at 3:15 PM, 1 lot. Kept apart from "
+               "the stock strategies: the totals above and the Results below leave it out.")
+    today = datetime.now(fs.IST).date()
+    open_pnl = sum(v for v in map(unrealized, positions) if v is not None)
+    stats = st.columns(5)
+    stats[0].metric("Net P&L (closed)", f"₹{trades['net'].sum():,.0f}")
+    stats[1].metric("Today (closed)", f"₹{trades.loc[trades['Date'] == today, 'net'].sum():,.0f}")
+    stats[2].metric("Open P&L", f"₹{open_pnl:,.0f}")
+    stats[3].metric("Trades closed", len(trades))
+    stats[4].metric("Win rate", f"{100 * (trades['net'] > 0).mean():.1f}%" if len(trades) else "—")
+
+    st.markdown(f"**Open ({len(positions)})**")
+    if positions:
+        table = pd.DataFrame([{
+            "Symbol": chart_link(p["symbol"]), "Side": "LONG" if p["side"] == "BUY" else "SHORT", "Qty": p["qty"],
+            "Entry": p["entry"], "Initial SL": p["sl"], "Trailing SL": p.get("stop"),
+            "Unrealized ₹": unrealized(p), "Entered": when(p["time"]),
+        } for p in positions])
+        picked = st.dataframe(table, hide_index=True, width="stretch", on_select="rerun",
+                              selection_mode="single-row", key="index-open",
+                              column_config={"Symbol": SYMBOL_LINK,
+                                             "Unrealized ₹": st.column_config.NumberColumn(format="%.2f")})
+        if picked.selection.rows:
+            position = positions[picked.selection.rows[0]]
+            label = REQUESTS["exit"]
+            if st.button(f"{label}: {position['symbol']}", key=f"index-exit-{position['id']}"):
+                if dispatch("exit", position["id"]):
+                    st.toast(f"Sent: {label} for {position['symbol']}. Applies in about a minute; Reload then.")
+        else:
+            st.caption("Select a row to exit it now.")
+    else:
+        st.caption("None open.")
+
+    if trades.empty:
+        st.caption("No closed index trades yet.")
+        return
+    tabs = st.tabs(["Trades", "By day", "By index"])
+    with tabs[0]:
+        shown = trades.assign(Exited=trades["exit_time"].map(when), Entered=trades["entry_time"].map(when),
+                              Symbol=trades["symbol"].map(chart_link),
+                              Side=trades["side"].map({"BUY": "LONG", "SELL": "SHORT"}))
+        st.dataframe(shown[["Exited", "Symbol", "Side", "qty", "entry", "exit", "sl", "reason", "Held", "gross",
+                            "charges", "net", "Entered"]], hide_index=True, width="stretch",
+                     column_config={"Symbol": SYMBOL_LINK})
+        st.download_button("⬇ Index trades (CSV)", csv(trades), file_name="ha_index_trades.csv", mime="text/csv",
+                           on_click="ignore")
+    with tabs[1]:
+        st.dataframe(report(trades, "Date"), width="stretch")
+    with tabs[2]:
+        sides = trades.assign(Index=trades["symbol"], Side=trades["side"].map({"BUY": "Longs", "SELL": "Shorts"}))
+        st.dataframe(summary(sides, ["Index", "Side"]), width="stretch")
+        st.dataframe(summary(sides, "reason").rename_axis("Exit"), width="stretch")
+
+
 def main() -> None:
     st.set_page_config(page_title="Auto Trader", page_icon="🤖", layout="wide")
     st.title("🤖 Auto trader")
@@ -714,9 +775,14 @@ def main() -> None:
     you = load_trades("manual")
     skips = load_skips()
     signals = load_signals()
-    positions = account["positions"]
+    # The index strategy has its own section (show_index): the rest of the page is the stock strategies.
+    index_history = history[history["System"] == INDEX_SYSTEM]
+    history = history[history["System"] != INDEX_SYSTEM]
+    index_positions = [p for p in account["positions"] if p.get("system") == INDEX_SYSTEM]
+    positions = [p for p in account["positions"] if p.get("system") != INDEX_SYSTEM]
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
-    quotes = fs.latest_prices({p["symbol"] for p in positions}, instruments, None) if positions else {}
+    quotes = (fs.latest_prices({p["symbol"] for p in account["positions"]}, instruments, None)
+              if account["positions"] else {})
 
     def unrealized(p):
         q = quotes.get(p["symbol"])
@@ -787,6 +853,8 @@ def main() -> None:
                        "or set it back to exit there.")
     else:
         st.caption("None open.")
+
+    show_index(index_history, index_positions, unrealized)
 
     st.subheader("Results")
     if len(history) or len(you):
