@@ -22720,5 +22720,116 @@
   "gross": -116.25,
   "charges": 382.44,
   "net": -498.69
+ },
+ {
+  "id": "1794373536520-1095",
+  "symbol": "AMBER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 100,
+  "entry": 6347.0,
+  "exit": 6170.0,
+  "entry_time": 1794373536520,
+  "exit_time": 1794390000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 6170.0,
+  "tp": 6537.4,
+  "high": 6347.0,
+  "low": 6170.0,
+  "nifty": 1.24,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794373536520,
+   "price": 6347.0
+  },
+  "agrees": "No",
+  "sma_rsi": 55.38,
+  "gross": -17700.0,
+  "charges": 395.42,
+  "net": -18095.42
+ },
+ {
+  "id": "1794374733560-1127",
+  "symbol": "INDUSINDBK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 700,
+  "entry": 909.3,
+  "exit": 900.0,
+  "entry_time": 1794374733560,
+  "exit_time": 1794390640209,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 886.7,
+  "tp": null,
+  "high": 916.95,
+  "low": 899.95,
+  "nifty": 1.31,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794374733560,
+   "price": 909.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 62.58,
+  "gross": -6510.0,
+  "charges": 402.28,
+  "net": -6912.28
+ },
+ {
+  "id": "1794375644556-1150",
+  "symbol": "BPCL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1975,
+  "entry": 321.3,
+  "exit": 315.7,
+  "entry_time": 1794375644556,
+  "exit_time": 1794390640209,
+  "reason": "HA exit (4H)",
+  "source": "Auto HA MTF 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 311.65,
+  "tp": null,
+  "high": 322.65,
+  "low": 315.55,
+  "nifty": 1.34,
+  "strategies": [
+   "4H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794375644556,
+   "price": 321.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 66.92,
+  "gross": -11060.0,
+  "charges": 398.81,
+  "net": -11458.81
  }
 ]
