@@ -58,14 +58,20 @@ st.html(
     """
     <style>
     [data-testid="stToolbar"] .rc-overflow { flex: 1 1 auto; }
-    [data-testid="stToolbar"] .rc-overflow-item:has([data-testid="stTopNavLink"]) { flex: 1 1 0; }
+    /* Equal widths whatever the label: a tab may be narrower than its text (min-width: 0),
+       which then wraps onto a second line rather than widening it. */
+    [data-testid="stToolbar"] .rc-overflow-item:has([data-testid="stTopNavLink"]) { flex: 1 1 0; min-width: 0; }
     [data-testid="stToolbar"] .rc-overflow-item:has([data-testid="stTopNavLink"]) > div,
-    [data-testid="stTopNavLinkContainer"] { width: 100%; }
+    [data-testid="stTopNavLinkContainer"] { width: 100%; min-width: 0; }
     [data-testid="stTopNavLink"] {
-      width: calc(100% - .5rem); margin: 0 .25rem; min-height: 3rem; justify-content: center; gap: .5rem;
-      border: 1px solid #dce6f3; border-radius: 12px;
+      width: calc(100% - .5rem); min-width: 0; margin: 0 .25rem; min-height: 3rem; justify-content: center;
+      gap: .5rem; border: 1px solid #dce6f3; border-radius: 12px; overflow: hidden;
     }
-    [data-testid="stTopNavLink"] * { font-size: 1.15rem !important; font-weight: 600; }
+    [data-testid="stTopNavLink"] * { font-size: 1.05rem !important; font-weight: 600; }
+    [data-testid="stTopNavLink"] > :last-child,
+    [data-testid="stTopNavLink"] > :last-child * {
+      min-width: 0; white-space: normal !important; text-align: center; line-height: 1.2; overflow-wrap: anywhere;
+    }
 
     /* Phones: the page menu moves into the sidebar, so make its button easy to see, and
        wrap tabs onto more lines on every page so none hide off the right edge. */
