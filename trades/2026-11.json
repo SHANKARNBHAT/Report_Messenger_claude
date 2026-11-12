@@ -28529,5 +28529,190 @@
   "gross": -20625.0,
   "charges": 423.62,
   "net": -21048.62
+ },
+ {
+  "id": "1794370850384-997",
+  "symbol": "SAIL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4700,
+  "entry": 173.95,
+  "exit": 178.25,
+  "entry_time": 1794370850384,
+  "exit_time": 1794475500000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 168.45,
+  "tp": 179.15,
+  "high": 181.2,
+  "low": 173.01,
+  "nifty": 1.43,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794370850384,
+   "price": 173.96
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 56.04,
+  "gross": 20210.0,
+  "charges": 518.18,
+  "net": 19691.82
+ },
+ {
+  "id": "1794378335597-1156",
+  "symbol": "JSWSTEEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 675,
+  "entry": 1356.8,
+  "exit": 1349.6,
+  "entry_time": 1794378335597,
+  "exit_time": 1794476137607,
+  "reason": "HA exit (4H)",
+  "source": "Auto HA MTF 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1316.1,
+  "tp": null,
+  "high": 1366.7,
+  "low": 1343.5,
+  "nifty": 1.34,
+  "strategies": [
+   "4H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794378335597,
+   "price": 1356.8
+  },
+  "agrees": "Yes",
+  "sma_rsi": 73.44,
+  "gross": -4860.0,
+  "charges": 560.46,
+  "net": -5420.46
+ },
+ {
+  "id": "1794459661414-1330",
+  "symbol": "JSWSTEEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 675,
+  "entry": 1357.9,
+  "exit": 1349.6,
+  "entry_time": 1794459661414,
+  "exit_time": 1794476137607,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1343.5,
+  "tp": null,
+  "high": 1359.6,
+  "low": 1349.3,
+  "nifty": 0.33,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794459661414,
+   "price": 1357.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 70.81,
+  "gross": -5602.5,
+  "charges": 560.49,
+  "net": -6162.99
+ },
+ {
+  "id": "1794461730631-1367",
+  "symbol": "BLUESTARCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1599.7,
+  "exit": 1575.4,
+  "entry_time": 1794461730631,
+  "exit_time": 1794476137607,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1559.0,
+  "tp": null,
+  "high": 1599.7,
+  "low": 1575,
+  "nifty": 0.24,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794461730631,
+   "price": 1599.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 49.77,
+  "gross": -7897.5,
+  "charges": 335.88,
+  "net": -8233.38
+ },
+ {
+  "id": "1794461730631-1373",
+  "symbol": "BLUESTARCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1599.7,
+  "exit": 1575.4,
+  "entry_time": 1794461730631,
+  "exit_time": 1794476137607,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1551.7,
+  "tp": null,
+  "high": 1599.7,
+  "low": 1575,
+  "nifty": 0.24,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794461730631,
+   "price": 1599.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 49.77,
+  "gross": -7897.5,
+  "charges": 335.88,
+  "net": -8233.38
  }
 ]
