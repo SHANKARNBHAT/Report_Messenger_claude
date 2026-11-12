@@ -96,7 +96,8 @@ HELD = ("trail", "rsi", "ha", "ha_green")
 # ha_green is the same with the last green HA candle's low (long) or last red one's high (short): no
 # longer traded (it nearly always exited with "ha"), kept so the positions open in it still close.
 BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/red exit",
-              "atr": "Intraday · 1.1 ATR trail", "vp": "Intraday · ATR trail, VP target, EMA 8"}
+              "atr": "Intraday · 1.1 ATR trail", "vp": "Intraday · ATR trail, VP target, EMA 8",
+              "vp_trail": "Intraday · ATR trail, 1.5% trail past VP target, EMA 8"}
 # HA MTF: the HA signals of 2H, 4H and Daily, held until the HA exit of the highest
 # timeframe that matched (auto_trader.py, enter_signals).
 # HA IDX: Heikin Ashi on NIFTY and BANKNIFTY 15-minute candles with an ATR trailing SL (ha_index.py).
@@ -104,7 +105,7 @@ BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/r
 # (ha_vp.py). HA and HA MTF take no new trades: kept so their trades still show and their
 # open positions still close.
 SYSTEMS = {"RSI": ("eod", "trail", "rsi"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",),
-           "HA VP": ("vp",)}
+           "HA VP": ("vp",), "HA VP TRAIL": ("vp_trail",)}
 HA_EXITS = ("ha", "ha_green")
 # The "RSI crossed" widgets list a stock when its RSI on any timeframe crossed the level;
 # their column of each timeframe's RSI tells if the trade's own one is past it.

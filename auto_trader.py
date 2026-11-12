@@ -7,7 +7,7 @@ doji, and the position is held until the HA exit of the highest one that counted
 trails it, with a fixed SL MTF_SL_PCT from the entry until then). A stock on several gets a trade in
 each, so that each strategy's results stay its own. A fourth, HA IDX (ha_index.py), trades
 NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles with an ATR trailing SL, intraday.
-A fifth, HA VP (ha_vp.py), trades the F&O stocks on their running 2H Heikin Ashi candle, with an
+A fifth, HA VP (ha_vp.py), and its twin HA VP TRAIL (trails past the target instead of taking it), trade the F&O stocks on their running 2H Heikin Ashi candle, with an
 ATR trailing SL, a volume profile target and an EMA 8 exit, intraday. HA and HA MTF take no new
 trades any more: their open positions still close by their rules.
 
@@ -332,7 +332,7 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
     settle_index(files, account, now, note)
     settle_vp(files, account, now, note)
     for result in fs.check_positions([p for p in account["positions"]
-                                      if p.get("system") not in (INDEX_SYSTEM, ha_vp.SYSTEM)], now, settle=False):
+                                      if p.get("system") not in (INDEX_SYSTEM, *ha_vp.SYSTEMS)], now, settle=False):
         position = next(p for p in account["positions"] if p["id"] == result["id"])
         # A candle that went past since the last run may have come before what the bars show.
         due = ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS else None
@@ -468,7 +468,7 @@ def vp_bars(positions: list[dict], now: datetime) -> dict[str, list]:
 def settle_vp(files: Files, account: dict, now: datetime, note) -> None:
     """Close the HA VP positions that hit their SL, a wick against them, VP target, an EMA 8 cross or the 3:15 PM
     square-off (ha_vp.replay); move the others' SL."""
-    positions = [p for p in account["positions"] if p.get("system") == ha_vp.SYSTEM]
+    positions = [p for p in account["positions"] if p.get("system") in ha_vp.SYSTEMS]
     if not positions:
         return
     try:
@@ -487,14 +487,15 @@ def settle_vp(files: Files, account: dict, now: datetime, note) -> None:
         if result["status"] == "closed":
             close(files, account, position, tick(result["exit"]), result["exit_time"], result["reason"],
                   result["high"], result["low"])
-            note(f"{position['symbol']}: {result['reason']} at {tick(result['exit'])} ({fs.BOT_STYLES[ha_vp.STYLE]})")
+            note(f"{position['symbol']}: {result['reason']} at {tick(result['exit'])} ({position['system']})")
         else:
             position.update(stop=tick(result["stop"]), high=result["high"], low=result["low"])
 
 
 def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, trading: bool, note) -> None:
-    """Trade the HA VP signals: a stock whose running 2H HA candle meets ha_vp.signal. One position
-    per stock: an opposite signal closes it and enters the other way; no second entry on a candle."""
+    """Trade the HA VP signals, a stock whose running 2H HA candle meets ha_vp.signal, in each of
+    ha_vp.SYSTEMS. One position per stock in each: an opposite signal closes it and enters the
+    other way; no second entry on a candle."""
     if now.time() >= LAST_ENTRY:
         return
     try:
@@ -510,6 +511,7 @@ def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, tra
         note(f"No volume profile levels for the HA VP targets: {exc}")
     current = candle_key(ha_vp.TIMEFRAME, int(now.timestamp()))
     month = trades_of(files, now.strftime("%Y-%m"))
+    nifty = None
     for symbol, rows in sorted(candles.items()):
         if symbol not in instruments or symbol in ha_index.SYMBOLS or not rows:
             continue
@@ -519,48 +521,50 @@ def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, tra
         if not side:
             continue
         bias = "Bullish" if side == "BUY" else "Bearish"
-        signal = {"symbol": symbol, "timeframe": ha_vp.TIMEFRAME, "bias": bias, "system": ha_vp.SYSTEM,
-                  "strategy": f"2H HA VP {bias}", "fno": True, "agrees": "—"}
-        record_seen(seen, [signal], None, now)
-        if not trading:
-            mark(seen, [signal], "Not traded: switch off, page closed")
-            continue
-        held = next((p for p in account["positions"]
-                     if p.get("system") == ha_vp.SYSTEM and p["symbol"] == symbol), None)
-        if held and held["side"] == side:
-            mark(seen, [signal], "Already open")
-            continue
-        if any(t.get("system") == ha_vp.SYSTEM and t["symbol"] == symbol
-               and candle_key(ha_vp.TIMEFRAME, t["entry_time"] // 1000) == current for t in month) or (
-                held and candle_key(ha_vp.TIMEFRAME, held["time"] // 1000) == current):
-            mark(seen, [signal], "Already traded this candle")
-            continue
         values = ha_vp.atr(rows[:-1])
-        if not values or values[-1] is None:
-            mark(seen, [signal], "No ATR")
-            continue
         entry = tick(rows[-1][ha_vp.CLOSE])
-        if held:
-            close(files, account, held, entry, int(now.timestamp() * 1000), "Reverse signal")
-            note(f"{symbol}: HA VP {held['side']} closed at {entry} (reverse signal)")
         long = side == "BUY"
-        sl = tick(entry - ha_vp.ATR_MULT * values[-1] if long else entry + ha_vp.ATR_MULT * values[-1])
-        goal = ha_vp.target(levels.get(symbol), entry, long)
-        goal = tick(goal) if goal is not None else None
-        first = seen.get(signal_key(signal))
-        qty = LOTS * instruments[symbol]["lot"]
-        account["seq"] += 1
-        account["positions"].append({
-            "id": f"{int(now.timestamp() * 1000)}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
-            "qty": qty, "entry": entry, "sl": sl, "tp": goal, "tsl": {"on": False}, "run": None,
-            "style": ha_vp.STYLE, "system": ha_vp.SYSTEM, "stop": sl, "atr": round(values[-1], 2),
-            "time": int(now.timestamp() * 1000), "status": "open", "passed": False, "high": entry, "low": entry,
-            "nifty": fs.nifty_change(), "source": "Auto HA VP 2H", "timeframes": [ha_vp.TIMEFRAME],
-            "strategies": [signal["strategy"]], "agrees": "—", "sma_rsi": None,
-            "first_seen": first and {"time": first["time"], "price": first["price"]},
-        })
-        mark(seen, [signal], "Traded")
-        note(f"{symbol}: HA VP {side} {qty} at {entry}, SL {sl} (1 ATR {values[-1]:.2f}), target {goal}")
+        for system, style in ha_vp.SYSTEMS.items():
+            signal = {"symbol": symbol, "timeframe": ha_vp.TIMEFRAME, "bias": bias, "system": system,
+                      "strategy": f"2H {system} {bias}", "fno": True, "agrees": "—"}
+            record_seen(seen, [signal], None, now)
+            if not trading:
+                mark(seen, [signal], "Not traded: switch off, page closed")
+                continue
+            held = next((p for p in account["positions"] if p.get("system") == system and p["symbol"] == symbol), None)
+            if held and held["side"] == side:
+                mark(seen, [signal], "Already open")
+                continue
+            if any(t.get("system") == system and t["symbol"] == symbol
+                   and candle_key(ha_vp.TIMEFRAME, t["entry_time"] // 1000) == current for t in month) or (
+                    held and candle_key(ha_vp.TIMEFRAME, held["time"] // 1000) == current):
+                mark(seen, [signal], "Already traded this candle")
+                continue
+            if not values or values[-1] is None:
+                mark(seen, [signal], "No ATR")
+                continue
+            if held:
+                close(files, account, held, entry, int(now.timestamp() * 1000), "Reverse signal")
+                note(f"{symbol}: {system} {held['side']} closed at {entry} (reverse signal)")
+            sl = tick(entry - ha_vp.ATR_MULT * values[-1] if long else entry + ha_vp.ATR_MULT * values[-1])
+            goal = ha_vp.target(levels.get(symbol), entry, long)
+            goal = tick(goal) if goal is not None else None
+            first = seen.get(signal_key(signal))
+            qty = LOTS * instruments[symbol]["lot"]
+            if nifty is None:
+                nifty = fs.nifty_change()
+            account["seq"] += 1
+            account["positions"].append({
+                "id": f"{int(now.timestamp() * 1000)}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
+                "qty": qty, "entry": entry, "sl": sl, "tp": goal, "tsl": {"on": False}, "run": None,
+                "style": style, "system": system, "stop": sl, "atr": round(values[-1], 2),
+                "time": int(now.timestamp() * 1000), "status": "open", "passed": False, "high": entry, "low": entry,
+                "nifty": nifty, "source": f"Auto {system} 2H", "timeframes": [ha_vp.TIMEFRAME],
+                "strategies": [signal["strategy"]], "agrees": "—", "sma_rsi": None,
+                "first_seen": first and {"time": first["time"], "price": first["price"]},
+            })
+            mark(seen, [signal], "Traded")
+            note(f"{symbol}: {system} {side} {qty} at {entry}, SL {sl} (1 ATR {values[-1]:.2f}), target {goal}")
 
 
 def test_chartink(note) -> None:

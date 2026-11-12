@@ -9,10 +9,11 @@ but entering live, on the running candle, instead of at its close.
     the HA high before it). Short: no upper wick (HA open = HA high), the HA close crossing below
     the previous HA low. An opposite signal closes the position and enters the other way.
   * Target: the nearest POC, VAH or VAL of the volume profile (TARGET_PERIODS, volume_profile.py)
-    above the entry (below for a short). Taken as profit when reached (TAKE_PROFIT).
+    above the entry (below for a short). HA VP takes it as profit when reached; HA VP TRAIL
+    (SYSTEMS) does not, and trails TRAIL_PCT from there instead: the same signals, to compare.
   * SL: ATR_MULT x ATR(ATR_PERIOD) of the 2H candles below the highest high since entry (above
     the lowest low for a short), moved on every 5-minute bar, never back; the ATR is that of the
-    last finished 2H candle. Once the target is reached (with TAKE_PROFIT off), TRAIL_PCT behind
+    last finished 2H candle. Once the target is reached (HA VP TRAIL), TRAIL_PCT behind
     the highest high (lowest low) instead. Hit when a 5-minute bar touches it.
   * Wick exit: in any 2H candle after the entry candle, as soon as its HA candle grows a wick
     against the trade: a lower wick for a long (price below that candle's HA open), an upper
@@ -31,12 +32,15 @@ from datetime import datetime, time
 
 SYSTEM = "HA VP"
 STYLE = "vp"
+# The strategies trading these signals, and their exit style: "vp" takes profit at the target,
+# "vp_trail" trails TRAIL_PCT once past it.
+SYSTEMS = {"HA VP": "vp", "HA VP TRAIL": "vp_trail"}
+TAKE_PROFIT_STYLES = ("vp",)
 TIMEFRAME = "2 HOUR"
 ATR_PERIOD = 14
 ATR_MULT = 1.0
 TRAIL_PCT = 1.5
 EMA_LEN = 8
-TAKE_PROFIT = True
 TARGET_PERIODS = ("Weekly", "Monthly", "3M", "1Y")  # as the Pine script's defaults (6M off)
 SQUARE_OFF = time(15, 15)
 BAR = 300  # seconds in a 5-minute bar
@@ -96,6 +100,7 @@ def replay(position: dict, bars: list[tuple], rows: list[tuple], candle_end, now
     long = position["side"] == "BUY"
     stop = float(position["sl"])
     goal = position.get("tp")
+    take_profit = position.get("style", STYLE) in TAKE_PROFIT_STYLES
     value = position.get("atr")
     entered = datetime.fromtimestamp(position["time"] / 1000, tz)
     cutoff = datetime.combine(entered.date(), SQUARE_OFF, tz).timestamp()
@@ -126,7 +131,7 @@ def replay(position: dict, bars: list[tuple], rows: list[tuple], candle_end, now
             price = open_ if gap else level
             high, low = max(high, price), min(low, price)
             return result("closed", exit=round(price, 2), exit_time=start * 1000, reason=reason)
-        if TAKE_PROFIT and goal is not None and (bar_high >= goal if long else bar_low <= goal):
+        if take_profit and goal is not None and (bar_high >= goal if long else bar_low <= goal):
             price = max(open_, goal) if long else min(open_, goal)
             high, low = max(high, price), min(low, price)
             return result("closed", exit=round(price, 2), exit_time=start * 1000, reason="VP target")
