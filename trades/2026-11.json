@@ -27900,5 +27900,79 @@
   "gross": -4760.0,
   "charges": 365.39,
   "net": -5125.39
+ },
+ {
+  "id": "1794464490571-1399",
+  "symbol": "BIOCON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 366.1,
+  "exit": 367.95,
+  "entry_time": 1794464490571,
+  "exit_time": 1794472200000,
+  "reason": "HA upper wick",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 371.8,
+  "tp": 360.55,
+  "high": 367.95,
+  "low": 365.1,
+  "nifty": 0.13,
+  "strategies": [
+   "2H HA VP Bearish"
+  ],
+  "first_seen": {
+   "time": 1794464490571,
+   "price": 367.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4625.0,
+  "charges": 562.85,
+  "net": -5187.85
+ },
+ {
+  "id": "1794466246613-1426",
+  "symbol": "BIOCON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 365.9,
+  "exit": 367.95,
+  "entry_time": 1794466246613,
+  "exit_time": 1794472200000,
+  "reason": "HA upper wick",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 371.6,
+  "tp": 360.55,
+  "high": 367.95,
+  "low": 365.1,
+  "nifty": -0.07,
+  "strategies": [
+   "2H HA VP TRAIL Bearish"
+  ],
+  "first_seen": {
+   "time": 1794466246613,
+   "price": 366.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5125.0,
+  "charges": 562.59,
+  "net": -5687.59
  }
 ]
