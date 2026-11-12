@@ -53,10 +53,12 @@ LIVE_HOURS = (clock(9, 15), clock(15, 35))  # IST, weekdays: through the 3:15 PM
 SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#9b59d0", "#7f8c8d"]
 YOU = "You (simulator)"
 # The stock strategies; HA IDX (NIFTY and BANKNIFTY) has a section of its own (show_index).
-# HA and HA MTF take no new trades (HA VP replaced them): kept for their past trades.
+# HA and HA MTF take no new trades (HA VP replaced them), nor RSI's EOD and RSI exit styles
+# (futures_simulator.RETIRED_STYLES): hidden from the results for now, their trades kept.
+SHOW_RETIRED = False
+RETIRED_SYSTEMS = {"HA": "Heikin Ashi (retired)", "HA MTF": "HA multi-timeframe (retired)"}
 SYSTEM_NAMES = {"RSI": "RSI", "HA VP": "HA + volume profile", "HA VP TRAIL": "HA VP · trail past target",
-                "HA": "Heikin Ashi (retired)",
-                "HA MTF": "HA multi-timeframe (retired)"}
+                **(RETIRED_SYSTEMS if SHOW_RETIRED else {})}
 INDEX_SYSTEM = "HA IDX"
 SMA_FILTERS = ["Against: long below 50, short above 50", "With: long above 50, short below 50", "Not recorded"]
 SHORT_TF = {"15 MIN": "15m", "2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
@@ -284,7 +286,8 @@ def series_of(position: dict) -> str:
 
 
 def style_names(system: str) -> list[str]:
-    return [fs.BOT_STYLES[style] for style in (*fs.SYSTEMS[system], *fs.RETIRED_STYLES.get(system, ()))]
+    return [fs.BOT_STYLES[style] for style in
+            (*fs.SYSTEMS[system], *(fs.RETIRED_STYLES.get(system, ()) if SHOW_RETIRED else ()))]
 
 
 def show_versus(history: pd.DataFrame, positions: list[dict]) -> None:
@@ -673,7 +676,8 @@ def show_scoreboard(history: pd.DataFrame, positions: list[dict], unrealized) ->
     today = datetime.now(fs.IST).date()
     groups = [(name, history[history["System"] == system], [p for p in positions if p.get("system", "RSI") == system])
               for system, name in SYSTEM_NAMES.items()]
-    groups.append(("All", history, positions))
+    shown = [s for s in SYSTEM_NAMES]
+    groups.append(("All", history[history["System"].isin(shown)], [p for p in positions if p.get("system", "RSI") in shown]))
     rows = []
     for name, closed, held in groups:
         net = float(closed["net"].sum()) if len(closed) else 0.0
@@ -1021,12 +1025,12 @@ def main() -> None:
 
     st.subheader("Results")
     if len(history) or len(you):
-        st.markdown("**RSI against Heikin Ashi**")
+        st.markdown("**The strategies side by side**")
         show_versus(history, positions)
         system = st.segmented_control("Strategy", list(SYSTEM_NAMES), format_func=SYSTEM_NAMES.get, default="RSI") or "RSI"
-        trades = history[history["System"] == system]
-        held = [p for p in positions if p.get("system", "RSI") == system]
         styles = style_names(system)
+        trades = history[(history["System"] == system) & history["Style"].isin(styles)]
+        held = [p for p in positions if p.get("system", "RSI") == system and series_of(p) in styles]
         # The simulator trades the RSI signals only, so it shows beside that strategy.
         mine = you if system == "RSI" else you.iloc[0:0]
         logged = signals[signals["system"] == system] if len(signals) else signals
