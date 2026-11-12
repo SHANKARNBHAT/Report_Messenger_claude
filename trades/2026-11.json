@@ -24977,5 +24977,42 @@
   "gross": -14350.0,
   "charges": 539.46,
   "net": -14889.46
+ },
+ {
+  "id": "1793784332973-627",
+  "symbol": "BLUESTARCO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1555.3,
+  "exit": 1598.6,
+  "entry_time": 1793784332973,
+  "exit_time": 1794459900000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1598.6,
+  "tp": 1508.65,
+  "high": 1598.6,
+  "low": 1530.0,
+  "nifty": 2.04,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793784332973,
+   "price": 1555.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 54.92,
+  "gross": -14072.5,
+  "charges": 332.46,
+  "net": -14404.96
  }
 ]
