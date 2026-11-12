@@ -25088,5 +25088,42 @@
   "gross": -5000.0,
   "charges": 386.16,
   "net": -5386.16
+ },
+ {
+  "id": "1794381644393-1168",
+  "symbol": "SRF",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 200,
+  "entry": 2514.3,
+  "exit": 2488.6,
+  "entry_time": 1794381644393,
+  "exit_time": 1794461496372,
+  "reason": "RSI exit (2H 59.7)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 2465.2,
+  "tp": null,
+  "high": 2535,
+  "low": 2488,
+  "nifty": 1.08,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794381644393,
+   "price": 2514.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -5140.0,
+  "charges": 327.72,
+  "net": -5467.72
  }
 ]
