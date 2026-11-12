@@ -24496,5 +24496,190 @@
   "gross": -3847.5,
   "charges": 447.05,
   "net": -4294.55
+ },
+ {
+  "id": "1794369660340-930",
+  "symbol": "OFSS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 100,
+  "entry": 10195.0,
+  "exit": 10037.5,
+  "entry_time": 1794369660340,
+  "exit_time": 1794457245564,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 9927.0,
+  "tp": null,
+  "high": 10195.0,
+  "low": 10030,
+  "nifty": 1.16,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794369660340,
+   "price": 10195.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 53.52,
+  "gross": -15750.0,
+  "charges": 613.16,
+  "net": -16363.16
+ },
+ {
+  "id": "1794369660340-935",
+  "symbol": "OFSS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 100,
+  "entry": 10195.0,
+  "exit": 10037.5,
+  "entry_time": 1794369660340,
+  "exit_time": 1794457245564,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 9889.15,
+  "tp": null,
+  "high": 10195.0,
+  "low": 10030,
+  "nifty": 1.16,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794369660340,
+   "price": 10195.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 53.52,
+  "gross": -15750.0,
+  "charges": 613.16,
+  "net": -16363.16
+ },
+ {
+  "id": "1794372651604-1066",
+  "symbol": "GODFRYPHLP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1795.0,
+  "exit": 1813.5,
+  "entry_time": 1794372651604,
+  "exit_time": 1794457245564,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1771.3,
+  "tp": null,
+  "high": 1890.4,
+  "low": 1795.0,
+  "nifty": 1.21,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794372651604,
+   "price": 1795.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 57.39,
+  "gross": 5087.5,
+  "charges": 327.86,
+  "net": 4759.64
+ },
+ {
+  "id": "1794372651604-1071",
+  "symbol": "GODFRYPHLP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1795.0,
+  "exit": 1813.5,
+  "entry_time": 1794372651604,
+  "exit_time": 1794457245564,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1741.15,
+  "tp": null,
+  "high": 1890.4,
+  "low": 1795.0,
+  "nifty": 1.21,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794372651604,
+   "price": 1795.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 57.39,
+  "gross": 5087.5,
+  "charges": 327.86,
+  "net": 4759.64
+ },
+ {
+  "id": "1794455145928-1254",
+  "symbol": "PREMIERENE",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 650,
+  "entry": 884.0,
+  "exit": 896.0,
+  "entry_time": 1794455145928,
+  "exit_time": 1794457245564,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 910.5,
+  "tp": null,
+  "high": 897.5,
+  "low": 884.0,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 884.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 53.95,
+  "gross": -7800.0,
+  "charges": 371.13,
+  "net": -8171.13
  }
 ]
