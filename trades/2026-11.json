@@ -25125,5 +25125,153 @@
   "gross": -5140.0,
   "charges": 327.72,
   "net": -5467.72
+ },
+ {
+  "id": "1794383442585-1181",
+  "symbol": "CIPLA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 425,
+  "entry": 1414.9,
+  "exit": 1408.5,
+  "entry_time": 1794383442585,
+  "exit_time": 1794462042646,
+  "reason": "HA exit (4H)",
+  "source": "Auto HA MTF 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1372.45,
+  "tp": null,
+  "high": 1420,
+  "low": 1406.9,
+  "nifty": 0.98,
+  "strategies": [
+   "4H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794383442585,
+   "price": 1414.9
+  },
+  "agrees": "Yes",
+  "sma_rsi": 66.86,
+  "gross": -2720.0,
+  "charges": 384.44,
+  "net": -3104.44
+ },
+ {
+  "id": "1794455145928-1224",
+  "symbol": "OIL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1400,
+  "entry": 445.8,
+  "exit": 438.0,
+  "entry_time": 1794455145928,
+  "exit_time": 1794461400000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 438.0,
+  "tp": 459.15,
+  "high": 445.8,
+  "low": 438.0,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 445.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 43.35,
+  "gross": -10920.0,
+  "charges": 393.0,
+  "net": -11313.0
+ },
+ {
+  "id": "1794455145928-1225",
+  "symbol": "OIL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1400,
+  "entry": 445.8,
+  "exit": 438.0,
+  "entry_time": 1794455145928,
+  "exit_time": 1794461400000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 438.0,
+  "tp": null,
+  "high": 445.8,
+  "low": 438.0,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 445.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 43.35,
+  "gross": -10920.0,
+  "charges": 393.0,
+  "net": -11313.0
+ },
+ {
+  "id": "1794455145928-1253",
+  "symbol": "OIL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1400,
+  "entry": 445.8,
+  "exit": 437.5,
+  "entry_time": 1794455145928,
+  "exit_time": 1794462042646,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 432.45,
+  "tp": null,
+  "high": 445.8,
+  "low": 437.1,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 445.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 43.35,
+  "gross": -11620.0,
+  "charges": 392.64,
+  "net": -12012.64
  }
 ]
