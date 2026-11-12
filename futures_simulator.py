@@ -88,7 +88,10 @@ CANDLE_MINUTES = {"2 HOUR": 120, "4 HOUR": 240}
 #          a long, above 40 for a short: the "RSI crossed" widgets), or at its SL
 # Held positions close at 3:15 PM on the futures expiry day.
 STYLES = {"eod": "EOD 3:15 PM", "trail": "Hold · trail", "rsi": "Hold · RSI exit"}
-HELD = ("trail", "rsi", "ha", "ha_green")
+HELD = ("trail", "rsi", "ha", "ha_green", "sma8", "sma20")
+# The Auto trader's SMA exits: held until a finished 2H candle closes past the SMA of this many
+# 2H closes (below for a long, above for a short), at that close (auto_trader.sma_exit).
+SMA_EXITS = {"sma8": 8, "sma20": 20}
 # The Auto trader's strategies and their exit styles. Only it trades Heikin Ashi, with one
 # more style: held until the running candle of its timeframe goes past the previous HA
 # candle's low (long) or high (short), or at its SL (auto_trader.ha_exit). Not in STYLES,
@@ -97,16 +100,20 @@ HELD = ("trail", "rsi", "ha", "ha_green")
 # longer traded (it nearly always exited with "ha"), kept so the positions open in it still close.
 BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/red exit",
               "atr": "Intraday · 1.1 ATR trail", "vp": "Intraday · ATR trail, VP target, EMA 8",
-              "vp_trail": "Intraday · ATR trail, 1.5% trail past VP target, EMA 8"}
+              "vp_trail": "Intraday · ATR trail, 1.5% trail past VP target, EMA 8",
+              "sma8": "Hold · 2H SMA 8 exit", "sma20": "Hold · 2H SMA 20 exit"}
 # HA MTF: the HA signals of 2H, 4H and Daily, held until the HA exit of the highest
 # timeframe that matched (auto_trader.py, enter_signals).
 # HA IDX: Heikin Ashi on NIFTY and BANKNIFTY 15-minute candles with an ATR trailing SL (ha_index.py).
 # HA VP: Heikin Ashi on the stocks' 2H candles, ATR trailing SL, volume profile target, EMA 8 exit
 # (ha_vp.py). HA and HA MTF take no new trades: kept so their trades still show and their
 # open positions still close.
-SYSTEMS = {"RSI": ("eod", "trail", "rsi"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",),
+SYSTEMS = {"RSI": ("trail", "sma8", "sma20"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",),
            "HA VP": ("vp",), "HA VP TRAIL": ("vp_trail",)}
 HA_EXITS = ("ha", "ha_green")
+# Styles a strategy no longer trades: their open positions still close by their rules and
+# their past trades still show. RSI's EOD and RSI exit gave way to the SMA exits.
+RETIRED_STYLES = {"RSI": ("eod", "rsi")}
 # The "RSI crossed" widgets list a stock when its RSI on any timeframe crossed the level;
 # their column of each timeframe's RSI tells if the trade's own one is past it.
 RSI_EXITS = {"BUY": (r"rsi crossed below", 60), "SELL": (r"rsi crossed above", 40)}

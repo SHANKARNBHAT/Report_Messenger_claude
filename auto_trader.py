@@ -19,7 +19,9 @@ trades any more: their open positions still close by their rules.
     previous candle's low (a long) or high (a short), see entry_sl, and target AUTO_TP_PCT away, once in each exit style (futures_simulator.STYLES) to
     compare them on the same signals: squared off at 3:15 PM, held with a trailing SL
     after the target, held until the RSI exit (for Heikin Ashi: the HA exit, see
-    ha_exit). A stock is traded once per side and style per session, in each strategy.
+    ha_exit). RSI now trades Hold · trail and two SMA exits instead (sma_exit): held until
+    a finished 2H candle closes below (a long) / above (a short) the SMA 8, or the SMA 20,
+    of the 2H closes; its EOD and RSI exit styles are retired (futures_simulator.RETIRED_STYLES). A stock is traded once per side and style per session, in each strategy.
     Every signal is taken, with no capital limit, to test the strategy: the Auto trader page works out the margin that needed from the trades
   * applies a request from the Auto trader page (auto_trader_page.py): keep a
     position going past its target with a trailing SL, exit at the target, or exit now
@@ -318,6 +320,24 @@ def ha_exit(position: dict, candles: dict, now: datetime) -> dict | None:
     return None
 
 
+def sma_exit(position: dict, candles: dict, now: datetime) -> dict | None:
+    """The SMA exit of a position of an SMA style (fs.SMA_EXITS), if due: the first finished 2H
+    candle ending after the entry that closed below (a long) or above (a short) the SMA of the
+    last N 2H closes, at that close. Exit price, time (ms) and reason, else None."""
+    length = fs.SMA_EXITS[position["style"]]
+    rows = candles.get(position["symbol"]) or []
+    long = position["side"] == "BUY"
+    for index in range(length - 1, len(rows)):
+        end = candle_end("2 HOUR", rows[index][0])
+        if end * 1000 <= position["time"] or end > now.timestamp():
+            continue
+        close = rows[index][1]
+        sma = sum(row[1] for row in rows[index - length + 1:index + 1]) / length
+        if close < sma if long else close > sma:
+            return {"exit": tick(close), "exit_time": int(end * 1000), "reason": f"2H close past SMA {length}"}
+    return None
+
+
 def settle(files: Files, account: dict, now: datetime, note) -> None:
     """Close the positions that hit their SL, trailing SL or target, the 3:15 PM square-off,
     expiry or their RSI or HA exit; note the highest and lowest price of the others."""
@@ -329,13 +349,20 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
             candles = fs.fetch_ha_candles()
         except fs.ChartinkError as exc:
             note(f"No candles for the HA exits: {exc}")
+    two_hour = {}
+    if any(p.get("style") in fs.SMA_EXITS for p in account["positions"]):
+        try:
+            two_hour = fs.fetch_vp_candles()
+        except fs.ChartinkError as exc:
+            note(f"No 2H candles for the SMA exits: {exc}")
     settle_index(files, account, now, note)
     settle_vp(files, account, now, note)
     for result in fs.check_positions([p for p in account["positions"]
                                       if p.get("system") not in (INDEX_SYSTEM, *ha_vp.SYSTEMS)], now, settle=False):
         position = next(p for p in account["positions"] if p["id"] == result["id"])
         # A candle that went past since the last run may have come before what the bars show.
-        due = ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS else None
+        due = (ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS
+               else sma_exit(position, two_hour, now) if position.get("style") in fs.SMA_EXITS else None)
         if due and (result["status"] != "closed" or due["exit_time"] < result["exit_time"]):
             result = {**result, **due, "status": "closed"}
         if result["status"] == "closed" and not 0 < result["exit"] < NO_VALUE:
@@ -705,7 +732,7 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
             account["seq"] += 1
             account["positions"].append({
                 "id": f"{int(now.timestamp() * 1000)}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
-                "qty": qty, "entry": entry, "sl": sl, "tp": None if style == "rsi" or style in fs.HA_EXITS else tp, "tsl": {"on": False},
+                "qty": qty, "entry": entry, "sl": sl, "tp": None if style == "rsi" or style in fs.HA_EXITS or style in fs.SMA_EXITS else tp, "tsl": {"on": False},
                 "run": auto_run(entry) if style == "trail" else None, "style": style, "system": system,
                 "stop": sl, "time": int(now.timestamp() * 1000), "status": "open", "passed": False,
                 "high": entry, "low": entry, "nifty": nifty,

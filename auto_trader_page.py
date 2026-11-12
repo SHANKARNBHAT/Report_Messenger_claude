@@ -50,7 +50,7 @@ LIVE_EVERY = 5  # minutes between the runs the page starts while open
 LIVE_HOURS = (clock(9, 15), clock(15, 35))  # IST, weekdays: through the 3:15 PM square-off
 # Series colours, in this fixed order (the default categorical palette of the dataviz
 # skill): the three bot styles, then the simulator's trades.
-SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]
+SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#9b59d0", "#7f8c8d"]
 YOU = "You (simulator)"
 # The stock strategies; HA IDX (NIFTY and BANKNIFTY) has a section of its own (show_index).
 # HA and HA MTF take no new trades (HA VP replaced them): kept for their past trades.
@@ -284,7 +284,7 @@ def series_of(position: dict) -> str:
 
 
 def style_names(system: str) -> list[str]:
-    return [fs.BOT_STYLES[style] for style in fs.SYSTEMS[system]]
+    return [fs.BOT_STYLES[style] for style in (*fs.SYSTEMS[system], *fs.RETIRED_STYLES.get(system, ()))]
 
 
 def show_versus(history: pd.DataFrame, positions: list[dict]) -> None:
@@ -899,9 +899,10 @@ def main() -> None:
         f"Paper-trades every 2H Chartink signal (4H, Daily and Weekly ones are recorded, not traded) of three strategies, RSI, Heikin Ashi and HA multi-timeframe (a stock on "
         f"several gets a trade in each), 1 lot, SL at the previous 2H candle (Heikin Ashi: the previous HA "
         f"candle's low / high; RSI: the candle's low / high or {fs.AUTO_SL_PCT}%, whichever is further), in its exit styles "
-        f"side by side: **EOD** (target {fs.AUTO_TP_PCT}%, squared off at 3:15 PM), **Hold · trail** (held "
-        f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · RSI exit** (held until "
-        f"the RSI of its timeframe crosses back below 60 / above 40; for Heikin Ashi, **Hold · HA exit**: held "
+        f"side by side: **Hold · trail** (held "
+        f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · 2H SMA 8 exit** and "
+        f"**Hold · 2H SMA 20 exit** (held until a finished 2H candle closes below / above the SMA 8 or 20 of the 2H "
+        f"closes; these replaced EOD and Hold · RSI exit, whose past trades still show; for Heikin Ashi, **Hold · HA exit**: held "
         f"until the live candle of its timeframe goes below the previous HA low / above the previous HA high). "
         f"Held trades close on expiry day at 3:15 PM. "
         f"The Heikin Ashi signals come from the bot's own scans: a green (red) candle on above-average volume whose HA "
