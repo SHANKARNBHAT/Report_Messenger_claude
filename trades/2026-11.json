@@ -26346,5 +26346,79 @@
   "gross": 630.0,
   "charges": 410.52,
   "net": 219.48
+ },
+ {
+  "id": "1794459938650-1332",
+  "symbol": "GVT&D",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4266.9,
+  "exit": 4170.1,
+  "entry_time": 1794459938650,
+  "exit_time": 1794466800000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 4170.1,
+  "tp": 4394.9,
+  "high": 4281.8,
+  "low": 4170.1,
+  "nifty": 0.34,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794459938650,
+   "price": 4266.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12100.0,
+  "charges": 341.27,
+  "net": -12441.27
+ },
+ {
+  "id": "1794459938650-1333",
+  "symbol": "GVT&D",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4266.9,
+  "exit": 4170.1,
+  "entry_time": 1794459938650,
+  "exit_time": 1794466800000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 4170.1,
+  "tp": null,
+  "high": 4281.8,
+  "low": 4170.1,
+  "nifty": 0.34,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794459938650,
+   "price": 4266.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12100.0,
+  "charges": 341.27,
+  "net": -12441.27
  }
 ]
