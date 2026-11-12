@@ -26605,5 +26605,79 @@
   "gross": 39802.5,
   "charges": 815.29,
   "net": 38987.21
+ },
+ {
+  "id": "1794371138474-1003",
+  "symbol": "ASIANPAINT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2556.3,
+  "exit": 2534.1,
+  "entry_time": 1794371138474,
+  "exit_time": 1794469241800,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 2494.1,
+  "tp": null,
+  "high": 2567.3,
+  "low": 2532.4,
+  "nifty": 1.24,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794371138474,
+   "price": 2556.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 69.09,
+  "gross": -5550.0,
+  "charges": 404.22,
+  "net": -5954.22
+ },
+ {
+  "id": "1794371138474-1013",
+  "symbol": "ASIANPAINT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2556.3,
+  "exit": 2534.1,
+  "entry_time": 1794371138474,
+  "exit_time": 1794469241800,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 2479.6,
+  "tp": null,
+  "high": 2567.3,
+  "low": 2532.4,
+  "nifty": 1.24,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794371138474,
+   "price": 2556.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 69.09,
+  "gross": -5550.0,
+  "charges": 404.22,
+  "net": -5954.22
  }
 ]
