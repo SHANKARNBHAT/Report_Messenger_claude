@@ -3145,7 +3145,7 @@
    "status": "open",
    "passed": false,
    "high": 370.2,
-   "low": 357.65,
+   "low": 357.3,
    "nifty": 1.19,
    "source": "Auto 2H",
    "timeframes": [
@@ -4355,7 +4355,7 @@
    "time": 1794374733560,
    "status": "open",
    "passed": false,
-   "high": 921.9,
+   "high": 922,
    "low": 898.55,
    "nifty": 1.31,
    "source": "Auto HA 2H",
@@ -4503,7 +4503,7 @@
    "time": 1794374733560,
    "status": "open",
    "passed": false,
-   "high": 921.9,
+   "high": 922,
    "low": 898.55,
    "nifty": 1.31,
    "source": "Auto HA MTF 2H+4H",
@@ -5073,7 +5073,7 @@
    "status": "open",
    "passed": false,
    "high": 2535,
-   "low": 2481.7,
+   "low": 2481,
    "nifty": 1.08,
    "source": "Auto 2H",
    "timeframes": [
@@ -8100,7 +8100,7 @@
    "time": 1794458737955,
    "status": "open",
    "passed": false,
-   "high": 1227.7,
+   "high": 1227.8,
    "low": 1200.2,
    "nifty": 0.36,
    "source": "Auto HA 2H",
@@ -8139,7 +8139,7 @@
    "time": 1794458737955,
    "status": "open",
    "passed": false,
-   "high": 1227.7,
+   "high": 1227.8,
    "low": 1200.2,
    "nifty": 0.36,
    "source": "Auto HA 2H",
@@ -8175,7 +8175,7 @@
    "time": 1794458737955,
    "status": "open",
    "passed": false,
-   "high": 1227.7,
+   "high": 1227.8,
    "low": 1200.2,
    "nifty": 0.36,
    "source": "Auto HA 2H",
@@ -8322,7 +8322,7 @@
    "time": 1794458737955,
    "status": "open",
    "passed": false,
-   "high": 1227.7,
+   "high": 1227.8,
    "low": 1200.2,
    "nifty": 0.36,
    "source": "Auto HA MTF 2H",
@@ -9353,7 +9353,7 @@
    "status": "open",
    "passed": false,
    "high": 755.3,
-   "low": 748.15,
+   "low": 748,
    "nifty": 0.33,
    "source": "Auto 2H",
    "timeframes": [
@@ -9389,7 +9389,7 @@
    "status": "open",
    "passed": false,
    "high": 755.3,
-   "low": 748.15,
+   "low": 748,
    "nifty": 0.33,
    "source": "Auto 2H",
    "timeframes": [
@@ -9517,81 +9517,6 @@
    }
   },
   {
-   "id": "1794460843840-1345",
-   "symbol": "ADANIPOWER",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 3550,
-   "entry": 208.1,
-   "sl": 205.8,
-   "tp": 214.35,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "eod",
-   "system": "HA",
-   "stop": 205.8,
-   "time": 1794460843840,
-   "status": "open",
-   "passed": false,
-   "high": 208.1,
-   "low": 206.36,
-   "nifty": 0.33,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish scan"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 67.04,
-   "first_seen": {
-    "time": 1794460843840,
-    "price": 208.1
-   }
-  },
-  {
-   "id": "1794460843840-1346",
-   "symbol": "ADANIPOWER",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 3550,
-   "entry": 208.1,
-   "sl": 205.8,
-   "tp": 214.35,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 3.1,
-    "step": 1.05
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 205.8,
-   "time": 1794460843840,
-   "status": "open",
-   "passed": false,
-   "high": 208.1,
-   "low": 206.36,
-   "nifty": 0.33,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish scan"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 67.04,
-   "first_seen": {
-    "time": 1794460843840,
-    "price": 208.1
-   }
-  },
-  {
    "id": "1794460843840-1348",
    "symbol": "CAMS",
    "side": "BUY",
@@ -9611,7 +9536,7 @@
    "status": "open",
    "passed": false,
    "high": 755.3,
-   "low": 748.15,
+   "low": 748,
    "nifty": 0.33,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -10052,7 +9977,7 @@
    "status": "open",
    "passed": false,
    "high": 577.25,
-   "low": 573,
+   "low": 572.95,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -10091,7 +10016,7 @@
    "status": "open",
    "passed": false,
    "high": 577.25,
-   "low": 573,
+   "low": 572.95,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -10127,7 +10052,7 @@
    "status": "open",
    "passed": false,
    "high": 577.25,
-   "low": 573,
+   "low": 572.95,
    "nifty": 0.3,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -10163,7 +10088,7 @@
    "status": "open",
    "passed": false,
    "high": 577.25,
-   "low": 573,
+   "low": 572.95,
    "nifty": 0.3,
    "source": "Auto HA MTF 2H",
    "timeframes": [
@@ -11049,7 +10974,7 @@
    "status": "open",
    "passed": false,
    "high": 225.8,
-   "low": 225.8,
+   "low": 225.42,
    "nifty": 0.18,
    "source": "Auto HA MTF 4H",
    "timeframes": [
@@ -11102,10 +11027,316 @@
     "time": 1794464142677,
     "price": 5277.5
    }
+  },
+  {
+   "id": "1794464442296-1390",
+   "symbol": "ADANIPOWER",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 3550,
+   "entry": 205.9,
+   "sl": 208.8,
+   "tp": 205.05,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 208.8,
+   "atr": 2.91,
+   "time": 1794464442296,
+   "status": "open",
+   "passed": false,
+   "high": 205.9,
+   "low": 205.9,
+   "nifty": 0.08,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794464442296,
+    "price": 205.79
+   }
+  },
+  {
+   "id": "1794464442296-1391",
+   "symbol": "BHEL",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 2625,
+   "entry": 428.8,
+   "sl": 436.2,
+   "tp": 426.15,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 436.2,
+   "atr": 7.4,
+   "time": 1794464442296,
+   "status": "open",
+   "passed": false,
+   "high": 428.8,
+   "low": 428.8,
+   "nifty": 0.08,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794464442296,
+    "price": 427.6
+   }
+  },
+  {
+   "id": "1794464442296-1392",
+   "symbol": "CIPLA",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 425,
+   "entry": 1403.5,
+   "sl": 1417.5,
+   "tp": 1395.15,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 1417.5,
+   "atr": 13.99,
+   "time": 1794464442296,
+   "status": "open",
+   "passed": false,
+   "high": 1403.5,
+   "low": 1403.5,
+   "nifty": 0.08,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794464442296,
+    "price": 1403.5
+   }
+  },
+  {
+   "id": "1794464442296-1393",
+   "symbol": "HINDPETRO",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 2025,
+   "entry": 391.7,
+   "sl": 398.15,
+   "tp": 384.25,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 398.15,
+   "atr": 6.44,
+   "time": 1794464442296,
+   "status": "open",
+   "passed": false,
+   "high": 391.7,
+   "low": 391.7,
+   "nifty": 0.08,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794464442296,
+    "price": 391.5
+   }
+  },
+  {
+   "id": "1794464442296-1394",
+   "symbol": "INDUSINDBK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 700,
+   "entry": 920.75,
+   "sl": 905.45,
+   "tp": 921.65,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 905.45,
+   "atr": 15.3,
+   "time": 1794464442296,
+   "status": "open",
+   "passed": false,
+   "high": 920.75,
+   "low": 920.75,
+   "nifty": 0.08,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bullish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794464442296,
+    "price": 919.55
+   }
+  },
+  {
+   "id": "1794464442296-1395",
+   "symbol": "PFC",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1300,
+   "entry": 339.15,
+   "sl": 343.85,
+   "tp": 336.35,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 343.85,
+   "atr": 4.72,
+   "time": 1794464442296,
+   "status": "open",
+   "passed": false,
+   "high": 339.15,
+   "low": 339.15,
+   "nifty": 0.08,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794464442296,
+    "price": 338.9
+   }
+  },
+  {
+   "id": "1794464442296-1396",
+   "symbol": "POWERGRID",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1900,
+   "entry": 260.5,
+   "sl": 264.1,
+   "tp": 256.65,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 264.1,
+   "atr": 3.58,
+   "time": 1794464442296,
+   "status": "open",
+   "passed": false,
+   "high": 260.5,
+   "low": 260.5,
+   "nifty": 0.08,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794464442296,
+    "price": 260.35
+   }
+  },
+  {
+   "id": "1794464442296-1397",
+   "symbol": "RECLTD",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1575,
+   "entry": 305.9,
+   "sl": 310.65,
+   "tp": 299.5,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 310.65,
+   "atr": 4.76,
+   "time": 1794464442296,
+   "status": "open",
+   "passed": false,
+   "high": 305.9,
+   "low": 305.9,
+   "nifty": 0.08,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794464442296,
+    "price": 305.05
+   }
   }
  ],
- "seq": 1389,
+ "seq": 1397,
  "log": [
+  "12 Nov 11:50  RECLTD: HA VP SELL 1575 at 305.9, SL 310.65 (1 ATR 4.76), target 299.5",
+  "12 Nov 11:50  POWERGRID: HA VP SELL 1900 at 260.5, SL 264.1 (1 ATR 3.58), target 256.65",
+  "12 Nov 11:50  PFC: HA VP SELL 1300 at 339.15, SL 343.85 (1 ATR 4.72), target 336.35",
+  "12 Nov 11:50  INDUSINDBK: HA VP BUY 700 at 920.75, SL 905.45 (1 ATR 15.30), target 921.65",
+  "12 Nov 11:50  HINDPETRO: HA VP SELL 2025 at 391.7, SL 398.15 (1 ATR 6.44), target 384.25",
+  "12 Nov 11:50  CIPLA: HA VP SELL 425 at 1403.5, SL 1417.5 (1 ATR 13.99), target 1395.15",
+  "12 Nov 11:50  BHEL: HA VP SELL 2625 at 428.8, SL 436.2 (1 ATR 7.40), target 426.15",
+  "12 Nov 11:50  ADANIPOWER: HA VP SELL 3550 at 205.9, SL 208.8 (1 ATR 2.91), target 205.05",
+  "12 Nov 11:50  ADANIPOWER: Stop loss at 205.8 (Hold \u00b7 trail)",
+  "12 Nov 11:50  ADANIPOWER: Stop loss at 205.8 (EOD 3:15 PM)",
   "12 Nov 11:45  ALKEM: HA MTF SELL 125 at 5277.5, SL 5435.8 (4 HOUR; exit on 4H; ha)",
   "12 Nov 11:40  ADANIPOWER: HA exit (2H) at 206.7 (Hold \u00b7 HA exit)",
   "12 Nov 11:40  ADANIPOWER: HA exit (2H) at 206.7 (Hold \u00b7 HA exit)",
@@ -11395,20 +11626,10 @@
   "11 Nov 13:45  PREMIERENE: HA exit (2H) at 889.0 (Hold \u00b7 HA exit)",
   "11 Nov 13:40  LTF: HA exit (4H) at 271.75 (Hold \u00b7 HA exit)",
   "11 Nov 13:40  AMBUJACEM: HA exit (2H) at 388.65 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  AMBUJACEM: HA exit (2H) at 388.65 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  GVT&D: RSI exit (2H 59.9) at 4207.4 (Hold \u00b7 RSI exit)",
-  "11 Nov 13:40  BIOCON: HA exit (2H) at 368.85 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  BIOCON: HA exit (2H) at 368.85 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  HAL: HA exit (2H) at 4977.6 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  HAL: HA exit (2H) at 4977.6 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  ADANIENT: HA exit (2H) at 2722.9 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  ADANIENT: HA exit (2H) at 2722.9 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  FORTIS: HA exit (2H) at 769.2 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  FORTIS: HA exit (2H) at 769.2 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  ETERNAL: HA exit (2H) at 363.25 (Hold \u00b7 HA exit)"
+  "11 Nov 13:40  AMBUJACEM: HA exit (2H) at 388.65 (Hold \u00b7 HA exit)"
  ],
- "page_run": 1794464142677,
- "updated": 1794464142677,
+ "page_run": 1794464442296,
+ "updated": 1794464442296,
  "unattended": true,
  "peak_margin": 42679623.84
 }

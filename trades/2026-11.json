@@ -25754,5 +25754,79 @@
   "gross": -4970.0,
   "charges": 460.67,
   "net": -5430.67
+ },
+ {
+  "id": "1794460843840-1345",
+  "symbol": "ADANIPOWER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3550,
+  "entry": 208.1,
+  "exit": 205.8,
+  "entry_time": 1794460843840,
+  "exit_time": 1794463800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 205.8,
+  "tp": 214.35,
+  "high": 208.1,
+  "low": 205.8,
+  "nifty": 0.33,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794460843840,
+   "price": 208.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 67.04,
+  "gross": -8165.0,
+  "charges": 459.0,
+  "net": -8624.0
+ },
+ {
+  "id": "1794460843840-1346",
+  "symbol": "ADANIPOWER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3550,
+  "entry": 208.1,
+  "exit": 205.8,
+  "entry_time": 1794460843840,
+  "exit_time": 1794463800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 205.8,
+  "tp": 214.35,
+  "high": 208.1,
+  "low": 205.8,
+  "nifty": 0.33,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794460843840,
+   "price": 208.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 67.04,
+  "gross": -8165.0,
+  "charges": 459.0,
+  "net": -8624.0
  }
 ]
