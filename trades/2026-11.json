@@ -26309,5 +26309,42 @@
   "gross": -3060.0,
   "charges": 483.43,
   "net": -3543.43
+ },
+ {
+  "id": "1794464442296-1394",
+  "symbol": "INDUSINDBK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 700,
+  "entry": 920.75,
+  "exit": 921.65,
+  "entry_time": 1794464442296,
+  "exit_time": 1794466200000,
+  "reason": "VP target",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 905.45,
+  "tp": 921.65,
+  "high": 921.65,
+  "low": 918.65,
+  "nifty": 0.08,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794464442296,
+   "price": 919.55
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 630.0,
+  "charges": 410.52,
+  "net": 219.48
  }
 ]
