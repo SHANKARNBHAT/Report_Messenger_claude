@@ -24681,5 +24681,227 @@
   "gross": -7800.0,
   "charges": 371.13,
   "net": -8171.13
+ },
+ {
+  "id": "1794381042564-1163",
+  "symbol": "DLF",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 950,
+  "entry": 747.05,
+  "exit": 759.4,
+  "entry_time": 1794381042564,
+  "exit_time": 1794457800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 759.4,
+  "tp": 724.65,
+  "high": 759.4,
+  "low": 734.15,
+  "nifty": 0.93,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794381042564,
+   "price": 747.05
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 75.7,
+  "gross": -11732.5,
+  "charges": 447.38,
+  "net": -12179.88
+ },
+ {
+  "id": "1794455145928-1204",
+  "symbol": "BEL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1425,
+  "entry": 399.0,
+  "exit": 405.0,
+  "entry_time": 1794455145928,
+  "exit_time": 1794457800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 405.0,
+  "tp": 387.05,
+  "high": 405.0,
+  "low": 399.0,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 399.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 65.92,
+  "gross": -8550.0,
+  "charges": 367.77,
+  "net": -8917.77
+ },
+ {
+  "id": "1794455145928-1205",
+  "symbol": "BEL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1425,
+  "entry": 399.0,
+  "exit": 405.0,
+  "entry_time": 1794455145928,
+  "exit_time": 1794457800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 405.0,
+  "tp": 387.05,
+  "high": 405.0,
+  "low": 399.0,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 399.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 65.92,
+  "gross": -8550.0,
+  "charges": 367.77,
+  "net": -8917.77
+ },
+ {
+  "id": "1794455145928-1217",
+  "symbol": "HAL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 4949.0,
+  "exit": 5008.9,
+  "entry_time": 1794455145928,
+  "exit_time": 1794457800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 5008.9,
+  "tp": 4800.55,
+  "high": 5008.9,
+  "low": 4949.0,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 4949.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 56.75,
+  "gross": -8985.0,
+  "charges": 465.66,
+  "net": -9450.66
+ },
+ {
+  "id": "1794455145928-1218",
+  "symbol": "HAL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 4949.0,
+  "exit": 5008.9,
+  "entry_time": 1794455145928,
+  "exit_time": 1794457800000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 5008.9,
+  "tp": null,
+  "high": 5008.9,
+  "low": 4949.0,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 4949.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 56.75,
+  "gross": -8985.0,
+  "charges": 465.66,
+  "net": -9450.66
+ },
+ {
+  "id": "1794455145928-1248",
+  "symbol": "HAL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 4949.0,
+  "exit": 5009.3,
+  "entry_time": 1794455145928,
+  "exit_time": 1794458449550,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 5097.45,
+  "tp": null,
+  "high": 5010,
+  "low": 4949.0,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 4949.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 56.75,
+  "gross": -9045.0,
+  "charges": 465.66,
+  "net": -9510.66
  }
 ]
