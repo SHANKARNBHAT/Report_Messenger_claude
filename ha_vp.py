@@ -9,7 +9,7 @@ but entering live, on the running candle, instead of at its close.
     the HA high before it). Short: no upper wick (HA open = HA high), the HA close crossing below
     the previous HA low. An opposite signal closes the position and enters the other way.
   * Target: the nearest POC, VAH or VAL of the volume profile (TARGET_PERIODS, volume_profile.py)
-    above the entry (below for a short). HA VP takes it as profit when reached; HA VP TRAIL
+    at least MIN_TARGET_ATR x ATR above the entry (below for a short). HA VP takes it as profit when reached; HA VP TRAIL
     (SYSTEMS) does not, and trails TRAIL_PCT from there instead: the same signals, to compare.
   * SL: ATR_MULT x ATR(ATR_PERIOD) of the 2H candles below the highest high since entry (above
     the lowest low for a short), moved on every 5-minute bar, never back; the ATR is that of the
@@ -42,6 +42,7 @@ ATR_MULT = 1.0
 TRAIL_PCT = 1.5
 EMA_LEN = 8
 TARGET_PERIODS = ("Weekly", "Monthly", "3M", "1Y")  # as the Pine script's defaults (6M off)
+MIN_TARGET_ATR = 1.0  # a level nearer the entry than this many ATRs is not a target: the next one is
 SQUARE_OFF = time(15, 15)
 BAR = 300  # seconds in a 5-minute bar
 CLOSE, HIGH, LOW, HA_OPEN, HA_HIGH, HA_LOW, HA_CLOSE = range(1, 8)
@@ -81,12 +82,12 @@ def signal(rows: list[tuple]) -> str | None:
     return None
 
 
-def target(levels: dict | None, entry: float, long: bool) -> float | None:
-    """The nearest POC, VAH or VAL of TARGET_PERIODS beyond the entry, from a stock's row of
-    volume_profile_levels.json; None if there is none."""
+def target(levels: dict | None, entry: float, long: bool, gap: float = 0.0) -> float | None:
+    """The nearest POC, VAH or VAL of TARGET_PERIODS at least `gap` beyond the entry (MIN_TARGET_ATR
+    x ATR), from a stock's row of volume_profile_levels.json; None if there is none."""
     found = [v for period in TARGET_PERIODS for kind in ("POC", "VAH", "VAL")
              if isinstance(v := (levels or {}).get(f"{period} {kind}"), (int, float))
-             and (v > entry if long else v < entry)]
+             and (v >= entry + gap if long else v <= entry - gap)]
     if not found:
         return None
     return min(found) if long else max(found)

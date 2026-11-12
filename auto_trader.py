@@ -547,7 +547,7 @@ def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, tra
                 close(files, account, held, entry, int(now.timestamp() * 1000), "Reverse signal")
                 note(f"{symbol}: {system} {held['side']} closed at {entry} (reverse signal)")
             sl = tick(entry - ha_vp.ATR_MULT * values[-1] if long else entry + ha_vp.ATR_MULT * values[-1])
-            goal = ha_vp.target(levels.get(symbol), entry, long)
+            goal = ha_vp.target(levels.get(symbol), entry, long, ha_vp.MIN_TARGET_ATR * values[-1])
             goal = tick(goal) if goal is not None else None
             first = seen.get(signal_key(signal))
             qty = LOTS * instruments[symbol]["lot"]
