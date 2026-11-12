@@ -24385,5 +24385,42 @@
   "gross": -10912.5,
   "charges": 540.82,
   "net": -11453.32
+ },
+ {
+  "id": "1794382245293-1175",
+  "symbol": "ALKEM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 5365.5,
+  "exit": 5338.0,
+  "entry_time": 1794382245293,
+  "exit_time": 1794456636961,
+  "reason": "RSI exit (2H 58.7)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 5281.0,
+  "tp": null,
+  "high": 5435.5,
+  "low": 5332,
+  "nifty": 1.04,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794382245293,
+   "price": 5365.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -3437.5,
+  "charges": 423.13,
+  "net": -3860.63
  }
 ]
