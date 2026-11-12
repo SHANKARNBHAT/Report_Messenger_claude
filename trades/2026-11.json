@@ -25273,5 +25273,42 @@
   "gross": -11620.0,
   "charges": 392.64,
   "net": -12012.64
+ },
+ {
+  "id": "1794371449421-1019",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 164.0,
+  "exit": 166.74,
+  "entry_time": 1794371449421,
+  "exit_time": 1794461700000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 159.25,
+  "tp": 168.9,
+  "high": 169.37,
+  "low": 163.6,
+  "nifty": 1.3,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794371449421,
+   "price": 164.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 16851.0,
+  "charges": 624.02,
+  "net": 16226.98
  }
 ]
