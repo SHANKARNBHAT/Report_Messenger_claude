@@ -25902,5 +25902,79 @@
   "gross": 13075.0,
   "charges": 544.3,
   "net": 12530.7
+ },
+ {
+  "id": "1794464490571-1398",
+  "symbol": "ALKEM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 5256.5,
+  "exit": 5184.45,
+  "entry_time": 1794464490571,
+  "exit_time": 1794464700000,
+  "reason": "VP target",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 5335.75,
+  "tp": 5184.45,
+  "high": 5256.5,
+  "low": 5184.45,
+  "nifty": 0.13,
+  "strategies": [
+   "2H HA VP Bearish"
+  ],
+  "first_seen": {
+   "time": 1794464490571,
+   "price": 5233.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 9006.25,
+  "charges": 416.88,
+  "net": 8589.37
+ },
+ {
+  "id": "1794374733560-1118",
+  "symbol": "INDUSTOWER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1700,
+  "entry": 387.95,
+  "exit": 391.6,
+  "entry_time": 1794374733560,
+  "exit_time": 1794465335984,
+  "reason": "RSI exit (2H 59.4)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 378.15,
+  "tp": null,
+  "high": 398.2,
+  "low": 387.1,
+  "nifty": 1.31,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794374733560,
+   "price": 387.95
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 6205.0,
+  "charges": 421.87,
+  "net": 5783.13
  }
 ]
