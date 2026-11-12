@@ -26494,5 +26494,42 @@
   "gross": -3280.0,
   "charges": 325.66,
   "net": -3605.66
+ },
+ {
+  "id": "1794465049771-1403",
+  "symbol": "ALKEM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 5213.0,
+  "exit": 5250.6,
+  "entry_time": 1794465049771,
+  "exit_time": 1794468000000,
+  "reason": "Trail 1.5%",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 5292.25,
+  "tp": 5184.45,
+  "high": 5250.6,
+  "low": 5173,
+  "nifty": 0.06,
+  "strategies": [
+   "2H HA VP TRAIL Bearish"
+  ],
+  "first_seen": {
+   "time": 1794465049771,
+   "price": 5244.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4700.0,
+  "charges": 414.38,
+  "net": -5114.38
  }
 ]
