@@ -3,11 +3,9 @@ HA 15m index: the Auto trader's Heikin Ashi strategy on the 15-minute candles of
 BANKNIFTY (auto_trader.py, enter_index_signals and settle), made from Yahoo Finance's
 5-minute bars of the index (Chartink's index list has no BANKNIFTY data).
 
-  * Entry, on the running 15-minute candle, as the Chartink widget "NIFTY \\BNF stocks CLOSE
-    CROSSED ABOVE PREVIOUS CNDL HA HIGH": long when the close crosses above the previous HA high
-    (the previous close was not above the HA high before it); short when it crosses below the
-    previous HA low the same way. No entry when the previous HA candle is a doji: its body
-    less than DOJI_BODY of its range.
+  * Entry, on the running 15-minute candle, as HA VP (ha_vp.py): long when its HA candle has no
+    lower wick (HA open = HA low) and its HA close is above the previous HA close; short when it
+    has no upper wick (HA open = HA high) and its HA close is below the previous HA close.
   * SL ATR_MULT x ATR(ATR_PERIOD) of the 15-minute candles from the entry. After each
     15-minute candle closes, it moves to that close -/+ ATR_MULT x ATR when that is closer,
     never back. Hit when a 5-minute bar touches it (at the bar's open if it gapped past).
@@ -85,21 +83,16 @@ def doji(candle: tuple) -> bool:
 
 
 def signal(rows: list[list]) -> str | None:
-    """"BUY", "SELL" or None for the last (running) candle of `rows`, as the Chartink widget
-    "NIFTY \\BNF stocks CLOSE CROSSED ABOVE PREVIOUS CNDL HA HIGH" (dashboard 502621): the close
-    crosses above the previous HA high, the previous close not above the HA high before it.
-    Short: the close crosses below the previous HA low the same way. None when the previous HA
-    candle is a doji (doji)."""
-    if len(rows) < 3:
+    """"BUY", "SELL" or None for the last (running) candle of `rows`: its HA candle has no lower
+    wick and its HA close is above the previous HA close (BUY), or no upper wick and its HA close
+    below the previous HA close (SELL)."""
+    if len(rows) < 2:
         return None
     ha = heikin_ashi(rows)
-    if doji(ha[-2]):
-        return None
-    close, p_close = rows[-1][4], rows[-2][4]
-    (_, p_high, p_low, _), (_, p2_high, p2_low, _) = ha[-2], ha[-3]
-    if close > p_high and p_close <= p2_high:
+    (open_, high, low, close), (_, _, _, p_close) = ha[-1], ha[-2]
+    if low >= open_ and close > p_close:
         return "BUY"
-    if close < p_low and p_close >= p2_low:
+    if high <= open_ and close < p_close:
         return "SELL"
     return None
 

@@ -88,7 +88,8 @@ HA_SCAN_TIMEFRAMES = {
 # F&O stock, about two weeks of them, to work out the signal, ATR(14) and EMA 8 from.
 VP_QUERY = ("select [0] 2 hour Close as 'Close', [0] 2 hour High as 'High', [0] 2 hour Low as 'Low', "
             "[0] 2 hour ha-open as 'HA open', [0] 2 hour ha-high as 'HA high', [0] 2 hour ha-low as 'HA low', "
-            "[0] 2 hour ha-close as 'HA close' WHERE( {33489} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
+            "[0] 2 hour ha-close as 'HA close', [0] 2 hour Volume as 'Volume' "
+            "WHERE( {33489} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
 VP_CANDLES = 60
 HA_DOJI_BODY = 0.1  # the previous HA candle's body must be more than this share of its range
 HA_SCAN_ROWS = 200
@@ -350,7 +351,7 @@ def fetch_ha_candles(link: str = HA_DASHBOARD) -> dict[str, dict[str, list[tuple
 @st.cache_data(ttl=50, show_spinner=False)
 def fetch_vp_candles(link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
     """symbol -> its last 2H candles (start in seconds, close, high, low, HA open, HA high, HA low,
-    HA close), oldest first, the running one last, for the F&O stocks, NIFTY and BANKNIFTY (ha_vp.py)."""
+    HA close, volume: 0 when not known, as for an index), oldest first, the running one last, for the F&O stocks, NIFTY and BANKNIFTY (ha_vp.py)."""
     with requests.Session() as session:
         session.headers.update(CHARTINK_HEADERS)
         url, token, _, raw_widgets = open_dashboard(session, link)
@@ -370,9 +371,12 @@ def fetch_vp_candles(link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
     candles = {}
     for group in payload["groupData"]:
         columns = {alias: values for result in group.get("results") or [] for alias, values in result.items()}
+        volume = columns.get("volume") or []
         rows = zip(starts, *(columns.get(c) or [] for c in
                              ("close", "high", "low", "ha open", "ha high", "ha low", "ha close")))
-        candles[group.get("name")] = [row for row in rows if all(v is not None and v < NO_VALUE for v in row)]
+        candles[group.get("name")] = [
+            (*row, volume[i] if i < len(volume) and volume[i] is not None and volume[i] < NO_VALUE else 0)
+            for i, row in enumerate(rows) if all(v is not None and v < NO_VALUE for v in row)]
     return candles
 
 

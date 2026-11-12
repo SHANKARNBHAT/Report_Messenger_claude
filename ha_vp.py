@@ -6,7 +6,9 @@ but entering live, on the running candle, instead of at its close.
 
   * Entry: long when the running 2H HA candle has no lower wick (HA open = HA low) and its HA
     close is above the previous HA close. Short: no upper wick (HA open = HA high), the HA close
-    below the previous HA close. An opposite signal closes the position and enters the other way.
+    below the previous HA close. Both only on volume: the running candle's volume above the
+    average of the VOLUME_AVG candles before it (no volume condition where there is no volume,
+    as for NIFTY and BANKNIFTY). An opposite signal closes the position and enters the other way.
   * Target: the nearest POC, VAH or VAL of the volume profile (TARGET_PERIODS, volume_profile.py)
     at least MIN_TARGET_ATR x ATR above the entry (below for a short). HA VP takes it as profit when reached; HA VP TRAIL
     (SYSTEMS) does not, and trails TRAIL_PCT from there instead: the same signals, to compare.
@@ -24,7 +26,7 @@ but entering live, on the running candle, instead of at its close.
 Also NIFTY and BANKNIFTY, in the same Chartink candles; their levels are the
 "indices" of the file (volume_profile.py: their member stocks' turnover as the volume).
 
-Candles are rows (start in seconds, close, high, low, HA open, HA high, HA low, HA close), oldest
+Candles are rows (start in seconds, close, high, low, HA open, HA high, HA low, HA close, volume), oldest
 first (chartink_dashboard.fetch_vp_candles); 5-minute bars (start, open, high, low, close).
 """
 
@@ -47,7 +49,8 @@ TARGET_PERIODS = ("Weekly", "Monthly", "3M", "1Y")  # as the Pine script's defau
 MIN_TARGET_ATR = 1.0  # a level nearer the entry than this many ATRs is not a target: the next one is
 SQUARE_OFF = time(15, 15)
 BAR = 300  # seconds in a 5-minute bar
-CLOSE, HIGH, LOW, HA_OPEN, HA_HIGH, HA_LOW, HA_CLOSE = range(1, 8)
+CLOSE, HIGH, LOW, HA_OPEN, HA_HIGH, HA_LOW, HA_CLOSE, VOLUME = range(1, 9)
+VOLUME_AVG = 5  # the running candle's volume must beat the average of this many candles before it
 
 
 def atr(rows: list[tuple]) -> list[float | None]:
@@ -77,6 +80,10 @@ def signal(rows: list[tuple]) -> str | None:
     if len(rows) < 2:
         return None
     now, prev = rows[-1], rows[-2]
+    before = [row[VOLUME] for row in rows[-1 - VOLUME_AVG:-1]]
+    average = sum(before) / len(before)
+    if average > 0 and now[VOLUME] <= average:
+        return None
     if now[HA_LOW] >= now[HA_OPEN] and now[HA_CLOSE] > prev[HA_CLOSE]:
         return "BUY"
     if now[HA_HIGH] <= now[HA_OPEN] and now[HA_CLOSE] < prev[HA_CLOSE]:
