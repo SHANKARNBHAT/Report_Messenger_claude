@@ -26420,5 +26420,42 @@
   "gross": -12100.0,
   "charges": 341.27,
   "net": -12441.27
+ },
+ {
+  "id": "1794464442296-1391",
+  "symbol": "BHEL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2625,
+  "entry": 428.8,
+  "exit": 426.15,
+  "entry_time": 1794464442296,
+  "exit_time": 1794467100000,
+  "reason": "VP target",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 436.2,
+  "tp": 426.15,
+  "high": 429.4,
+  "low": 426.15,
+  "nifty": 0.08,
+  "strategies": [
+   "2H HA VP Bearish"
+  ],
+  "first_seen": {
+   "time": 1794464442296,
+   "price": 427.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 6956.25,
+  "charges": 680.84,
+  "net": 6275.41
  }
 ]
