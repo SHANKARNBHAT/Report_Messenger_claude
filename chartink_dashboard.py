@@ -90,7 +90,7 @@ VP_QUERY = ("select [0] 2 hour Close as 'Close', [0] 2 hour High as 'High', [0] 
             "[0] 2 hour ha-open as 'HA open', [0] 2 hour ha-high as 'HA high', [0] 2 hour ha-low as 'HA low', "
             "[0] 2 hour ha-close as 'HA close', [0] 2 hour Volume as 'Volume' "
             "WHERE( {33489} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
-VP_CANDLES = 60
+VP_CANDLES = 300  # slots: about 230 candles (older days have an empty 3:15 PM slot), for SMA 200 of the 2H closes
 HA_DOJI_BODY = 0.1  # the previous HA candle's body must be more than this share of its range
 HA_SCAN_ROWS = 200
 
@@ -357,7 +357,7 @@ def fetch_vp_candles(link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
         url, token, _, raw_widgets = open_dashboard(session, link)
         payload = None
         # Chartink sometimes answers a long series with an empty list: then ask for fewer candles.
-        for wanted in (VP_CANDLES, 40):
+        for wanted in (VP_CANDLES, 270):
             try:
                 payload = widget_payload(session, url, token, {"query": VP_QUERY, "id": raw_widgets[0].get("id")},
                                          PRICE_WIDGET_ROWS, wanted)

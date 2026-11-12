@@ -4,11 +4,12 @@ F&O stocks (auto_trader.py, enter_vp_signals and settle_vp), as the Pine script
 "Volume Profile HA Strategy" (Desktop/Claude Pinescripts/Volume_Profile_HA_Strategy.pine),
 but entering live, on the running candle, instead of at its close.
 
-  * Entry: long when the running 2H HA candle has no lower wick (HA open = HA low) and its HA
-    high is above the previous HA high. Short: no upper wick (HA open = HA high), its HA low
-    below the previous HA low. Both only on volume: the running candle's volume above the
-    average of the VOLUME_AVG candles before it (no volume condition where there is no volume,
-    as for NIFTY and BANKNIFTY). An opposite signal closes the position and enters the other way.
+  * Trend: longs only when SMA 8 > SMA 20 > SMA 50 of the 2H closes and the close is above
+    SMA 200; shorts only when SMA 8 < SMA 20 < SMA 50 and the close is below SMA 200.
+  * Entry: long on a green running 2H HA candle with no lower wick (HA open = HA low) whose HA
+    close is above the previous HA high; short on a red one with no upper wick (HA open = HA
+    high) whose HA close is below the previous HA low. An opposite signal closes the position
+    and enters the other way.
   * Target: the nearest POC, VAH or VAL of the volume profile (TARGET_PERIODS, volume_profile.py)
     at least MIN_TARGET_ATR x ATR above the entry (below for a short). HA VP takes it as profit when reached; HA VP TRAIL
     (SYSTEMS) does not, and trails TRAIL_PCT from there instead: the same signals, to compare.
@@ -50,7 +51,7 @@ MIN_TARGET_ATR = 1.0  # a level nearer the entry than this many ATRs is not a ta
 SQUARE_OFF = time(15, 15)
 BAR = 300  # seconds in a 5-minute bar
 CLOSE, HIGH, LOW, HA_OPEN, HA_HIGH, HA_LOW, HA_CLOSE, VOLUME = range(1, 9)
-VOLUME_AVG = 5  # the running candle's volume must beat the average of this many candles before it
+SMAS = (8, 20, 50, 200)  # the trend filter: stacked SMAs of the 2H closes
 
 
 def atr(rows: list[tuple]) -> list[float | None]:
@@ -75,21 +76,38 @@ def ema(rows: list[tuple]) -> list[float]:
     return out
 
 
+def sma(rows: list, length: int, column: int = CLOSE) -> float | None:
+    """The SMA of the last `length` values of a column of `rows`, None if there are fewer."""
+    if len(rows) < length:
+        return None
+    return sum(row[column] for row in rows[-length:]) / length
+
+
+def trend(rows: list, column: int = CLOSE) -> str | None:
+    """"BUY" when SMA 8 > SMA 20 > SMA 50 and the last close is above SMA 200 (SMAS), "SELL" the
+    other way round, else None."""
+    fast, mid, slow, long_ = (sma(rows, n, column) for n in SMAS)
+    if long_ is None:
+        return None
+    close = rows[-1][column]
+    if fast > mid > slow and close > long_:
+        return "BUY"
+    if fast < mid < slow and close < long_:
+        return "SELL"
+    return None
+
+
 def signal(rows: list[tuple]) -> str | None:
     """"BUY", "SELL" or None for the last (running) candle of `rows`."""
     if len(rows) < 2:
         return None
     now, prev = rows[-1], rows[-2]
-    before = [row[VOLUME] for row in rows[-1 - VOLUME_AVG:-1]]
-    average = sum(before) / len(before)
-    if average > 0 and now[VOLUME] <= average:
-        return None
-    if now[HA_LOW] >= now[HA_OPEN] and now[HA_HIGH] > prev[HA_HIGH]:
+    side = trend(rows)
+    if side == "BUY" and now[HA_CLOSE] > now[HA_OPEN] and now[HA_LOW] >= now[HA_OPEN] and now[HA_CLOSE] > prev[HA_HIGH]:
         return "BUY"
-    if now[HA_HIGH] <= now[HA_OPEN] and now[HA_LOW] < prev[HA_LOW]:
+    if side == "SELL" and now[HA_CLOSE] < now[HA_OPEN] and now[HA_HIGH] <= now[HA_OPEN] and now[HA_CLOSE] < prev[HA_LOW]:
         return "SELL"
     return None
-
 
 def target(levels: dict | None, entry: float, long: bool, gap: float = 0.0) -> float | None:
     """The nearest POC, VAH or VAL of TARGET_PERIODS at least `gap` beyond the entry (MIN_TARGET_ATR

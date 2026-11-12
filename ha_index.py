@@ -3,9 +3,10 @@ HA 15m index: the Auto trader's Heikin Ashi strategy on the 15-minute candles of
 BANKNIFTY (auto_trader.py, enter_index_signals and settle), made from Yahoo Finance's
 5-minute bars of the index (Chartink's index list has no BANKNIFTY data).
 
-  * Entry, on the running 15-minute candle, as HA VP (ha_vp.py): long when its HA candle has no
-    lower wick (HA open = HA low) and its HA high is above the previous HA high; short when it
-    has no upper wick (HA open = HA high) and its HA low is below the previous HA low.
+  * Entry, on the running 15-minute candle, as HA VP (ha_vp.py): long on a green HA candle with
+    no lower wick (HA open = HA low) whose HA close is above the previous HA high, when SMA 8 >
+    SMA 20 > SMA 50 of the 15-minute closes and the close is above SMA 200; short on a red one
+    with no upper wick whose HA close is below the previous HA low, the SMAs the other way.
   * SL ATR_MULT x ATR(ATR_PERIOD) of the 15-minute candles from the entry. After each
     15-minute candle closes, it moves to that close -/+ ATR_MULT x ATR when that is closer,
     never back. Hit when a 5-minute bar touches it (at the bar's open if it gapped past).
@@ -15,6 +16,8 @@ BANKNIFTY (auto_trader.py, enter_index_signals and settle), made from Yahoo Fina
 from __future__ import annotations
 
 from datetime import datetime, time, timedelta
+
+import ha_vp
 
 SYMBOLS = ("NIFTY", "BANKNIFTY")
 TIMEFRAME = "15 MIN"
@@ -83,16 +86,17 @@ def doji(candle: tuple) -> bool:
 
 
 def signal(rows: list[list]) -> str | None:
-    """"BUY", "SELL" or None for the last (running) candle of `rows`: its HA candle has no lower
-    wick and its HA high is above the previous HA high (BUY), or no upper wick and its HA low
-    below the previous HA low (SELL)."""
+    """"BUY", "SELL" or None for the last (running) candle of `rows`, by ha_vp's rule: the SMA
+    trend (ha_vp.trend) and a green HA candle with no lower wick closing above the previous HA
+    high (BUY), or a red one with no upper wick closing below the previous HA low (SELL)."""
     if len(rows) < 2:
         return None
+    side = ha_vp.trend(rows, 4)
     ha = heikin_ashi(rows)
-    (open_, high, low, _), (_, p_high, p_low, _) = ha[-1], ha[-2]
-    if low >= open_ and high > p_high:
+    (open_, high, low, close), (_, p_high, p_low, _) = ha[-1], ha[-2]
+    if side == "BUY" and close > open_ and low >= open_ and close > p_high:
         return "BUY"
-    if high <= open_ and low < p_low:
+    if side == "SELL" and close < open_ and high <= open_ and close < p_low:
         return "SELL"
     return None
 

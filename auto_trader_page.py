@@ -716,7 +716,7 @@ def show_scoreboard(history: pd.DataFrame, positions: list[dict], unrealized) ->
     </style><div class="scoreboard"><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>""")
 
 
-INDEX_CHART_RANGE = "1mo"  # Yahoo's 5-minute bars of about 20 sessions, for the chart's day picker
+INDEX_CHART_RANGE = "1mo"  # days to pick from; SMA 200 of the 15-minute closes needs about 8 sessions
 CANDLE_UP, CANDLE_DOWN = "#1a9e6f", "#d64545"
 ENTRY_COLOR, STOP_COLOR, SIGNAL_COLOR = "#2a78d6", "#eb6834", "#eda100"
 
@@ -825,8 +825,9 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
                          xaxis=dict(tickformat="%H:%M", gridcolor="rgba(128,128,128,0.10)"))
     st.plotly_chart(figure, width="stretch", key="index-chart")
     st.caption(f"{symbol} spot, 15-minute Heikin Ashi candles from Yahoo's 5-minute bars: what the strategy "
-               "trades on. Amber marker (below: buy, above: short): an HA candle with no lower wick whose HA high is above the "
-               "previous HA high (buy), or no upper wick and its HA low below the previous HA low (short). A run checks the running candle every few minutes, so it can enter on a star's candle "
+               "trades on. Amber marker (below: buy, above: short): a green HA candle with no lower wick closing above the previous "
+               "HA high, with SMA 8 > 20 > 50 and the close above SMA 200 (buy); a red one with no upper wick closing below the "
+               "previous HA low, the SMAs the other way (short). A run checks the running candle every few minutes, so it can enter on a star's candle "
                "before it closes, or miss one that only crossed in its last minutes. Dotted line: the ATR stop, "
                "moved at each 15-minute close.")
 
@@ -834,8 +835,8 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
 def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
     """HA IDX, NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles (ha_index.py): its own
     totals, open positions and closed trades, apart from the stock strategies."""
-    st.caption("A 15-minute HA candle with no lower wick and its HA high above the previous HA high (long), or no "
-               "upper wick and its HA low below the previous HA low (short), "
+    st.caption("A green 15-minute HA candle with no lower wick closing above the previous HA high, with SMA 8 > 20 > 50 and the "
+               "close above SMA 200 (long); a red one with no upper wick closing below the previous HA low, SMAs the other way (short), "
                "SL 1.1 x ATR(14) trailed from each 15-minute close, squared off at 3:15 PM, 1 lot. Kept apart from "
                "the stock strategies of the Auto trader tab, which leaves it out.")
     today = datetime.now(fs.IST).date()
@@ -912,7 +913,7 @@ def main() -> None:
         f"is a doji, body 10% of its range or less, does not count), held until the HA exit of the highest timeframe "
         f"that matched, which trails it, with an initial SL 3% from the entry. "
         f"**HA 15m index** trades NIFTY and BANKNIFTY futures on 15-minute Heikin Ashi candles (from Yahoo 5-minute "
-        f"bars: an HA candle with no lower wick and its HA high above the previous HA high, or no upper wick and its HA low below the previous HA low), SL 1.1 x ATR(14) trailed from each 15-minute close, "
+        f"bars: a green HA candle with no lower wick closing above the previous HA high in an SMA 8/20/50/200 uptrend, or the mirror for shorts), SL 1.1 x ATR(14) trailed from each 15-minute close, "
         f"squared off at 3:15 PM; a new trade once the last one closed, not twice on one candle. "
         f"A stock is traded once per side, style and strategy per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")

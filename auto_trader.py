@@ -393,7 +393,8 @@ INDEX_SYSTEM = "HA IDX"
 def index_bars(note) -> dict[str, list]:
     """symbol -> the 5-minute bars of the last few sessions of each HA IDX index (Yahoo)."""
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
-    wanted = {s: (instruments[s]["yahoo"], "5d") for s in ha_index.SYMBOLS if s in instruments}
+    # A month: SMA 200 of the 15-minute closes (ha_index.signal) needs 200 candles, about 8 sessions.
+    wanted = {s: (instruments[s]["yahoo"], "1mo") for s in ha_index.SYMBOLS if s in instruments}
     found = fs.fetch_bars(tuple(sorted(set(wanted.values()))))
     bars = {}
     for symbol, request in wanted.items():
