@@ -26050,5 +26050,42 @@
   "gross": 21643.75,
   "charges": 329.31,
   "net": 21314.44
+ },
+ {
+  "id": "1794465094567-1418",
+  "symbol": "TVSMOTOR",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4500.1,
+  "exit": 4491.7,
+  "entry_time": 1794465094567,
+  "exit_time": 1794465300000,
+  "reason": "VP target",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 4566.35,
+  "tp": 4491.7,
+  "high": 4500.1,
+  "low": 4491.7,
+  "nifty": 0.07,
+  "strategies": [
+   "2H HA VP Bearish"
+  ],
+  "first_seen": {
+   "time": 1794465094567,
+   "price": 4500.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1470.0,
+  "charges": 490.66,
+  "net": 979.34
  }
 ]
