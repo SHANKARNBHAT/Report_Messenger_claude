@@ -28492,5 +28492,42 @@
   "gross": 2280.0,
   "charges": 524.01,
   "net": 1755.99
+ },
+ {
+  "id": "1794378649612-1158",
+  "symbol": "RADICO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 4445.7,
+  "exit": 4583.2,
+  "entry_time": 1794378649612,
+  "exit_time": 1794475200000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 4583.2,
+  "tp": 4312.35,
+  "high": 4583.2,
+  "low": 4407.9,
+  "nifty": 1.39,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794378649612,
+   "price": 4445.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 65.24,
+  "gross": -20625.0,
+  "charges": 423.62,
+  "net": -21048.62
  }
 ]
