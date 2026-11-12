@@ -26679,5 +26679,79 @@
   "gross": -5550.0,
   "charges": 404.22,
   "net": -5954.22
+ },
+ {
+  "id": "1794466535225-1431",
+  "symbol": "APOLLOHOSP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 8470.5,
+  "exit": 8499.0,
+  "entry_time": 1794466535225,
+  "exit_time": 1794469500000,
+  "reason": "EMA 8 cross",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 8562.65,
+  "tp": 8467.1,
+  "high": 8501,
+  "low": 8470.5,
+  "nifty": -0.1,
+  "strategies": [
+   "2H HA VP Bearish"
+  ],
+  "first_seen": {
+   "time": 1794466535225,
+   "price": 8466.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3562.5,
+  "charges": 643.66,
+  "net": -4206.16
+ },
+ {
+  "id": "1794466535225-1432",
+  "symbol": "APOLLOHOSP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 8470.5,
+  "exit": 8499.0,
+  "entry_time": 1794466535225,
+  "exit_time": 1794469500000,
+  "reason": "EMA 8 cross",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 8562.65,
+  "tp": 8467.1,
+  "high": 8501,
+  "low": 8470.5,
+  "nifty": -0.1,
+  "strategies": [
+   "2H HA VP TRAIL Bearish"
+  ],
+  "first_seen": {
+   "time": 1794466535225,
+   "price": 8466.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3562.5,
+  "charges": 643.66,
+  "net": -4206.16
  }
 ]
