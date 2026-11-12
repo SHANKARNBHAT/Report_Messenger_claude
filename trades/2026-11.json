@@ -28122,5 +28122,42 @@
   "gross": -5520.0,
   "charges": 313.14,
   "net": -5833.14
+ },
+ {
+  "id": "1794466892375-1437",
+  "symbol": "MAXHEALTH",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 525,
+  "entry": 938.65,
+  "exit": 943.35,
+  "entry_time": 1794466892375,
+  "exit_time": 1794473100000,
+  "reason": "VP target",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 925.55,
+  "tp": 943.35,
+  "high": 943.35,
+  "low": 937.35,
+  "nifty": -0.09,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794466892375,
+   "price": 937.85
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2467.5,
+  "charges": 326.02,
+  "net": 2141.48
  }
 ]

@@ -1874,7 +1874,7 @@
    "time": 1794370541809,
    "status": "open",
    "passed": false,
-   "high": 1017.6,
+   "high": 1021.2,
    "low": 966.8,
    "nifty": 1.49,
    "source": "Auto HA 2H",
@@ -2023,7 +2023,7 @@
    "time": 1794370541809,
    "status": "open",
    "passed": false,
-   "high": 1017.6,
+   "high": 1021.2,
    "low": 966.8,
    "nifty": 1.49,
    "source": "Auto HA MTF 2H",
@@ -4445,7 +4445,7 @@
    "time": 1794455145928,
    "status": "open",
    "passed": true,
-   "high": 1692,
+   "high": 1692.4,
    "low": 1620.3,
    "nifty": -0.11,
    "source": "Auto 2H",
@@ -4481,7 +4481,7 @@
    "time": 1794455145928,
    "status": "open",
    "passed": false,
-   "high": 1692,
+   "high": 1692.4,
    "low": 1620.3,
    "nifty": -0.11,
    "source": "Auto 2H",
@@ -7660,7 +7660,7 @@
    "time": 1794459661414,
    "status": "open",
    "passed": false,
-   "high": 1692,
+   "high": 1692.4,
    "low": 1674.7,
    "nifty": 0.33,
    "source": "Auto HA MTF 4H",
@@ -10559,43 +10559,6 @@
    }
   },
   {
-   "id": "1794466892375-1437",
-   "symbol": "MAXHEALTH",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 525,
-   "entry": 938.65,
-   "sl": 925.55,
-   "tp": 943.35,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "vp",
-   "system": "HA VP",
-   "stop": 930.4,
-   "atr": 13.09,
-   "time": 1794466892375,
-   "status": "open",
-   "passed": false,
-   "high": 943.2,
-   "low": 937.35,
-   "nifty": -0.09,
-   "source": "Auto HA VP 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA VP Bullish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794466892375,
-    "price": 937.85
-   }
-  },
-  {
    "id": "1794466892375-1438",
    "symbol": "MAXHEALTH",
    "side": "BUY",
@@ -10615,7 +10578,7 @@
    "time": 1794466892375,
    "status": "open",
    "passed": false,
-   "high": 943.2,
+   "high": 943.55,
    "low": 937.35,
    "nifty": -0.09,
    "source": "Auto HA VP TRAIL 2H",
@@ -12300,6 +12263,7 @@
  ],
  "seq": 1485,
  "log": [
+  "12 Nov 14:21  MAXHEALTH: VP target at 943.35 (HA VP)",
   "12 Nov 14:20  SAGILITY: HA VP TRAIL SELL 12000 at 43.85, SL 44.6 (1 ATR 0.75), target 42.5",
   "12 Nov 14:20  SAGILITY: HA VP SELL 12000 at 43.85, SL 44.6 (1 ATR 0.75), target 42.5",
   "12 Nov 14:15  BANKBARODA: HA VP TRAIL BUY 2925 at 276.1, SL 272.2 (1 ATR 3.88), target 309.4",
@@ -12598,11 +12562,10 @@
   "12 Nov 09:25  LODHA: Stop loss at 1180.6 (Hold \u00b7 HA exit)",
   "12 Nov 09:25  LODHA: Stop loss at 1180.6 (Hold \u00b7 trail)",
   "12 Nov 09:25  KPITTECH: Stop loss at 538.2 (Hold \u00b7 trail)",
-  "12 Nov 09:25  HINDUNILVR: HA exit (2H) at 1993.9 (Hold \u00b7 HA exit)",
   "12 Nov 09:25  HINDUNILVR: HA exit (2H) at 1993.9 (Hold \u00b7 HA exit)"
  ],
- "page_run": 1794473445484,
- "updated": 1794473445484,
+ "page_run": 1794473490130,
+ "updated": 1794473490130,
  "unattended": true,
  "peak_margin": 45320774.84
 }
