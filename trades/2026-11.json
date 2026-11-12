@@ -25976,5 +25976,79 @@
   "gross": 6205.0,
   "charges": 421.87,
   "net": 5783.13
+ },
+ {
+  "id": "1794457850276-1283",
+  "symbol": "BANKNIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 61373.6,
+  "exit": 61154.3,
+  "entry_time": 1794457850276,
+  "exit_time": 1794465300000,
+  "reason": "Stop loss",
+  "source": "Auto HA 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 61154.3,
+  "tp": null,
+  "high": 61392.8,
+  "low": 61154.3,
+  "nifty": 0.48,
+  "strategies": [
+   "15m HA Bullish (index)"
+  ],
+  "first_seen": {
+   "time": 1794457850276,
+   "price": 61373.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6579.0,
+  "charges": 1080.71,
+  "net": -7659.71
+ },
+ {
+  "id": "1794371740162-1033",
+  "symbol": "FORCEMOT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 19235.0,
+  "exit": 20100.75,
+  "entry_time": 1794371740162,
+  "exit_time": 1794465000000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 18750.0,
+  "tp": 19812.05,
+  "high": 20478,
+  "low": 19235.0,
+  "nifty": 1.26,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794371740162,
+   "price": 19235.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 67.44,
+  "gross": 21643.75,
+  "charges": 329.31,
+  "net": 21314.44
  }
 ]
