@@ -27715,5 +27715,79 @@
   "gross": -6080.0,
   "charges": 284.98,
   "net": -6364.98
+ },
+ {
+  "id": "1794461139287-1355",
+  "symbol": "ASTRAL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 425,
+  "entry": 1296.1,
+  "exit": 1273.0,
+  "entry_time": 1794461139287,
+  "exit_time": 1794471638697,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1267.6,
+  "tp": null,
+  "high": 1296.1,
+  "low": 1272.8,
+  "nifty": 0.34,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794461139287,
+   "price": 1296.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 39.11,
+  "gross": -9817.5,
+  "charges": 352.31,
+  "net": -10169.81
+ },
+ {
+  "id": "1794461139287-1359",
+  "symbol": "ASTRAL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 425,
+  "entry": 1296.1,
+  "exit": 1273.0,
+  "entry_time": 1794461139287,
+  "exit_time": 1794471638697,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1257.2,
+  "tp": null,
+  "high": 1296.1,
+  "low": 1272.8,
+  "nifty": 0.34,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794461139287,
+   "price": 1296.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 39.11,
+  "gross": -9817.5,
+  "charges": 352.31,
+  "net": -10169.81
  }
 ]
