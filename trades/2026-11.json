@@ -25014,5 +25014,79 @@
   "gross": -14072.5,
   "charges": 332.46,
   "net": -14404.96
+ },
+ {
+  "id": "1794373265063-1080",
+  "symbol": "BRITANNIA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4851.9,
+  "exit": 4811.9,
+  "entry_time": 1794373265063,
+  "exit_time": 1794460544058,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 4780.0,
+  "tp": null,
+  "high": 4874,
+  "low": 4807.5,
+  "nifty": 1.23,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794373265063,
+   "price": 4851.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 60.63,
+  "gross": -5000.0,
+  "charges": 386.16,
+  "net": -5386.16
+ },
+ {
+  "id": "1794373265063-1090",
+  "symbol": "BRITANNIA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4851.9,
+  "exit": 4811.9,
+  "entry_time": 1794373265063,
+  "exit_time": 1794460544058,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 4706.35,
+  "tp": null,
+  "high": 4874,
+  "low": 4807.5,
+  "nifty": 1.23,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794373265063,
+   "price": 4851.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 60.63,
+  "gross": -5000.0,
+  "charges": 386.16,
+  "net": -5386.16
  }
 ]
