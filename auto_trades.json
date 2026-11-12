@@ -3145,7 +3145,7 @@
    "status": "open",
    "passed": false,
    "high": 370.2,
-   "low": 357.3,
+   "low": 357,
    "nifty": 1.19,
    "source": "Auto 2H",
    "timeframes": [
@@ -9353,7 +9353,7 @@
    "status": "open",
    "passed": false,
    "high": 755.3,
-   "low": 748,
+   "low": 747.7,
    "nifty": 0.33,
    "source": "Auto 2H",
    "timeframes": [
@@ -9389,7 +9389,7 @@
    "status": "open",
    "passed": false,
    "high": 755.3,
-   "low": 748,
+   "low": 747.7,
    "nifty": 0.33,
    "source": "Auto 2H",
    "timeframes": [
@@ -9536,7 +9536,7 @@
    "status": "open",
    "passed": false,
    "high": 755.3,
-   "low": 748,
+   "low": 747.7,
    "nifty": 0.33,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -11323,10 +11323,124 @@
     "time": 1794464442296,
     "price": 305.05
    }
+  },
+  {
+   "id": "1794464490571-1398",
+   "symbol": "ALKEM",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 125,
+   "entry": 5256.5,
+   "sl": 5335.75,
+   "tp": 5184.45,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 5335.75,
+   "atr": 79.27,
+   "time": 1794464490571,
+   "status": "open",
+   "passed": false,
+   "high": 5256.5,
+   "low": 5256.5,
+   "nifty": 0.13,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794464490571,
+    "price": 5233.5
+   }
+  },
+  {
+   "id": "1794464490571-1399",
+   "symbol": "BIOCON",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 2500,
+   "entry": 366.1,
+   "sl": 371.8,
+   "tp": 360.55,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 371.8,
+   "atr": 5.71,
+   "time": 1794464490571,
+   "status": "open",
+   "passed": false,
+   "high": 366.1,
+   "low": 366.1,
+   "nifty": 0.13,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794464490571,
+    "price": 367.1
+   }
+  },
+  {
+   "id": "1794464490571-1400",
+   "symbol": "TATAPOWER",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 1450,
+   "entry": 357.25,
+   "sl": 363.0,
+   "tp": 354.7,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 363.0,
+   "atr": 5.77,
+   "time": 1794464490571,
+   "status": "open",
+   "passed": false,
+   "high": 357.25,
+   "low": 357.25,
+   "nifty": 0.13,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794464490571,
+    "price": 356.9
+   }
   }
  ],
- "seq": 1397,
+ "seq": 1400,
  "log": [
+  "12 Nov 11:51  TATAPOWER: HA VP SELL 1450 at 357.25, SL 363.0 (1 ATR 5.77), target 354.7",
+  "12 Nov 11:51  BIOCON: HA VP SELL 2500 at 366.1, SL 371.8 (1 ATR 5.71), target 360.55",
+  "12 Nov 11:51  ALKEM: HA VP SELL 125 at 5256.5, SL 5335.75 (1 ATR 79.27), target 5184.45",
   "12 Nov 11:50  RECLTD: HA VP SELL 1575 at 305.9, SL 310.65 (1 ATR 4.76), target 299.5",
   "12 Nov 11:50  POWERGRID: HA VP SELL 1900 at 260.5, SL 264.1 (1 ATR 3.58), target 256.65",
   "12 Nov 11:50  PFC: HA VP SELL 1300 at 339.15, SL 343.85 (1 ATR 4.72), target 336.35",
@@ -11623,13 +11737,10 @@
   "11 Nov 13:45  JIOFIN: HA exit (2H) at 230.35 (Hold \u00b7 HA exit)",
   "11 Nov 13:45  JIOFIN: HA exit (2H) at 230.35 (Hold \u00b7 HA exit)",
   "11 Nov 13:45  PREMIERENE: HA exit (2H) at 889.0 (Hold \u00b7 HA exit)",
-  "11 Nov 13:45  PREMIERENE: HA exit (2H) at 889.0 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  LTF: HA exit (4H) at 271.75 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  AMBUJACEM: HA exit (2H) at 388.65 (Hold \u00b7 HA exit)",
-  "11 Nov 13:40  AMBUJACEM: HA exit (2H) at 388.65 (Hold \u00b7 HA exit)"
+  "11 Nov 13:45  PREMIERENE: HA exit (2H) at 889.0 (Hold \u00b7 HA exit)"
  ],
- "page_run": 1794464442296,
- "updated": 1794464442296,
+ "page_run": 1794464490571,
+ "updated": 1794464490571,
  "unattended": true,
  "peak_margin": 42679623.84
 }
