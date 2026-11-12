@@ -5,9 +5,8 @@ F&O stocks (auto_trader.py, enter_vp_signals and settle_vp), as the Pine script
 but entering live, on the running candle, instead of at its close.
 
   * Entry: long when the running 2H HA candle has no lower wick (HA open = HA low) and its HA
-    close crosses above the previous HA high (above it now, the previous HA close was not above
-    the HA high before it). Short: no upper wick (HA open = HA high), the HA close crossing below
-    the previous HA low. An opposite signal closes the position and enters the other way.
+    close is above the previous HA close. Short: no upper wick (HA open = HA high), the HA close
+    below the previous HA close. An opposite signal closes the position and enters the other way.
   * Target: the nearest POC, VAH or VAL of the volume profile (TARGET_PERIODS, volume_profile.py)
     at least MIN_TARGET_ATR x ATR above the entry (below for a short). HA VP takes it as profit when reached; HA VP TRAIL
     (SYSTEMS) does not, and trails TRAIL_PCT from there instead: the same signals, to compare.
@@ -75,12 +74,12 @@ def ema(rows: list[tuple]) -> list[float]:
 
 def signal(rows: list[tuple]) -> str | None:
     """"BUY", "SELL" or None for the last (running) candle of `rows`."""
-    if len(rows) < 3:
+    if len(rows) < 2:
         return None
-    now, prev, prev2 = rows[-1], rows[-2], rows[-3]
-    if now[HA_LOW] >= now[HA_OPEN] and now[HA_CLOSE] > prev[HA_HIGH] and prev[HA_CLOSE] <= prev2[HA_HIGH]:
+    now, prev = rows[-1], rows[-2]
+    if now[HA_LOW] >= now[HA_OPEN] and now[HA_CLOSE] > prev[HA_CLOSE]:
         return "BUY"
-    if now[HA_HIGH] <= now[HA_OPEN] and now[HA_CLOSE] < prev[HA_LOW] and prev[HA_CLOSE] >= prev2[HA_LOW]:
+    if now[HA_HIGH] <= now[HA_OPEN] and now[HA_CLOSE] < prev[HA_CLOSE]:
         return "SELL"
     return None
 
