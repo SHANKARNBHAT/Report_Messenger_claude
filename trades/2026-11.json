@@ -28159,5 +28159,153 @@
   "gross": 2467.5,
   "charges": 326.02,
   "net": 2141.48
+ },
+ {
+  "id": "1794466246613-1427",
+  "symbol": "DMART",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 3451.8,
+  "exit": 3459.5,
+  "entry_time": 1794466246613,
+  "exit_time": 1794473400000,
+  "reason": "HA upper wick",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 3483.6,
+  "tp": 3433.55,
+  "high": 3459.5,
+  "low": 3445,
+  "nifty": -0.07,
+  "strategies": [
+   "2H HA VP Bearish"
+  ],
+  "first_seen": {
+   "time": 1794466246613,
+   "price": 3450.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1155.0,
+  "charges": 338.85,
+  "net": -1493.85
+ },
+ {
+  "id": "1794466246613-1428",
+  "symbol": "DMART",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 3451.8,
+  "exit": 3459.5,
+  "entry_time": 1794466246613,
+  "exit_time": 1794473400000,
+  "reason": "HA upper wick",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 3483.6,
+  "tp": 3433.55,
+  "high": 3459.5,
+  "low": 3445,
+  "nifty": -0.07,
+  "strategies": [
+   "2H HA VP TRAIL Bearish"
+  ],
+  "first_seen": {
+   "time": 1794466246613,
+   "price": 3450.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1155.0,
+  "charges": 338.85,
+  "net": -1493.85
+ },
+ {
+  "id": "1794466535225-1435",
+  "symbol": "SIEMENS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 3626.3,
+  "exit": 3656.0,
+  "entry_time": 1794466535225,
+  "exit_time": 1794473400000,
+  "reason": "HA upper wick",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 3701.85,
+  "tp": 3533.3,
+  "high": 3656.02,
+  "low": 3613.9,
+  "nifty": -0.1,
+  "strategies": [
+   "2H HA VP Bearish"
+  ],
+  "first_seen": {
+   "time": 1794466535225,
+   "price": 3627.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5197.5,
+  "charges": 404.82,
+  "net": -5602.32
+ },
+ {
+  "id": "1794466535225-1436",
+  "symbol": "SIEMENS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 3626.3,
+  "exit": 3656.0,
+  "entry_time": 1794466535225,
+  "exit_time": 1794473400000,
+  "reason": "HA upper wick",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 3701.85,
+  "tp": 3533.3,
+  "high": 3656.02,
+  "low": 3613.9,
+  "nifty": -0.1,
+  "strategies": [
+   "2H HA VP TRAIL Bearish"
+  ],
+  "first_seen": {
+   "time": 1794466535225,
+   "price": 3627.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5197.5,
+  "charges": 404.82,
+  "net": -5602.32
  }
 ]
