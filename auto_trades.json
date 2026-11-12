@@ -4995,7 +4995,7 @@
    "status": "open",
    "passed": false,
    "high": 2535,
-   "low": 2481,
+   "low": 2480,
    "nifty": 1.08,
    "source": "Auto 2H",
    "timeframes": [
@@ -10896,7 +10896,7 @@
    "status": "open",
    "passed": false,
    "high": 225.8,
-   "low": 225.42,
+   "low": 225.4,
    "nifty": 0.18,
    "source": "Auto HA MTF 4H",
    "timeframes": [
@@ -10933,7 +10933,7 @@
    "status": "open",
    "passed": false,
    "high": 5277.5,
-   "low": 5212,
+   "low": 5194.5,
    "nifty": 0.08,
    "source": "Auto HA MTF 4H",
    "timeframes": [
@@ -10970,7 +10970,7 @@
    "time": 1794464442296,
    "status": "open",
    "passed": false,
-   "high": 205.9,
+   "high": 206.35,
    "low": 205.9,
    "nifty": 0.08,
    "source": "Auto HA VP 2H",
@@ -11002,13 +11002,13 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 436.2,
+   "stop": 434.95,
    "atr": 7.4,
    "time": 1794464442296,
    "status": "open",
    "passed": false,
    "high": 428.8,
-   "low": 428.8,
+   "low": 427.55,
    "nifty": 0.08,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -11039,13 +11039,13 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 1417.5,
+   "stop": 1414.3,
    "atr": 13.99,
    "time": 1794464442296,
    "status": "open",
    "passed": false,
    "high": 1403.5,
-   "low": 1403.5,
+   "low": 1400.3,
    "nifty": 0.08,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -11081,7 +11081,7 @@
    "time": 1794464442296,
    "status": "open",
    "passed": false,
-   "high": 391.7,
+   "high": 392.3,
    "low": 391.7,
    "nifty": 0.08,
    "source": "Auto HA VP 2H",
@@ -11119,7 +11119,7 @@
    "status": "open",
    "passed": false,
    "high": 920.75,
-   "low": 920.75,
+   "low": 919.65,
    "nifty": 0.08,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -11150,13 +11150,13 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 343.85,
+   "stop": 343.2,
    "atr": 4.72,
    "time": 1794464442296,
    "status": "open",
    "passed": false,
    "high": 339.15,
-   "low": 339.15,
+   "low": 338.5,
    "nifty": 0.08,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -11187,13 +11187,13 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 264.1,
+   "stop": 263.95,
    "atr": 3.58,
    "time": 1794464442296,
    "status": "open",
    "passed": false,
    "high": 260.5,
-   "low": 260.5,
+   "low": 260.35,
    "nifty": 0.08,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -11224,13 +11224,13 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 310.65,
+   "stop": 309.65,
    "atr": 4.76,
    "time": 1794464442296,
    "status": "open",
    "passed": false,
    "high": 305.9,
-   "low": 305.9,
+   "low": 304.9,
    "nifty": 0.08,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -11261,13 +11261,13 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 5335.75,
+   "stop": 5273.75,
    "atr": 79.27,
    "time": 1794464490571,
    "status": "open",
    "passed": false,
    "high": 5256.5,
-   "low": 5256.5,
+   "low": 5194.5,
    "nifty": 0.13,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -11303,7 +11303,7 @@
    "time": 1794464490571,
    "status": "open",
    "passed": false,
-   "high": 366.1,
+   "high": 366.95,
    "low": 366.1,
    "nifty": 0.13,
    "source": "Auto HA VP 2H",
@@ -11335,13 +11335,13 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 363.0,
+   "stop": 362.6,
    "atr": 5.77,
    "time": 1794464490571,
    "status": "open",
    "passed": false,
-   "high": 357.25,
-   "low": 357.25,
+   "high": 357.35,
+   "low": 356.85,
    "nifty": 0.13,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -11837,10 +11837,238 @@
     "time": 1794465049771,
     "price": 358.2
    }
+  },
+  {
+   "id": "1794465094567-1414",
+   "symbol": "IOC",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 4875,
+   "entry": 145.55,
+   "sl": 147.55,
+   "tp": 144.8,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 147.55,
+   "atr": 1.98,
+   "time": 1794465094567,
+   "status": "open",
+   "passed": false,
+   "high": 145.55,
+   "low": 145.55,
+   "nifty": 0.07,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794465094567,
+    "price": 145.59
+   }
+  },
+  {
+   "id": "1794465094567-1415",
+   "symbol": "IOC",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 4875,
+   "entry": 145.55,
+   "sl": 147.55,
+   "tp": 144.8,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp_trail",
+   "system": "HA VP TRAIL",
+   "stop": 147.55,
+   "atr": 1.98,
+   "time": 1794465094567,
+   "status": "open",
+   "passed": false,
+   "high": 145.55,
+   "low": 145.55,
+   "nifty": 0.07,
+   "source": "Auto HA VP TRAIL 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP TRAIL Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794465094567,
+    "price": 145.59
+   }
+  },
+  {
+   "id": "1794465094567-1416",
+   "symbol": "SRF",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2480.3,
+   "sl": 2514.0,
+   "tp": 2452.3,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 2514.0,
+   "atr": 33.71,
+   "time": 1794465094567,
+   "status": "open",
+   "passed": false,
+   "high": 2480.3,
+   "low": 2480.3,
+   "nifty": 0.07,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794465094567,
+    "price": 2479.3
+   }
+  },
+  {
+   "id": "1794465094567-1417",
+   "symbol": "SRF",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 2480.3,
+   "sl": 2514.0,
+   "tp": 2452.3,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp_trail",
+   "system": "HA VP TRAIL",
+   "stop": 2514.0,
+   "atr": 33.71,
+   "time": 1794465094567,
+   "status": "open",
+   "passed": false,
+   "high": 2480.3,
+   "low": 2480.3,
+   "nifty": 0.07,
+   "source": "Auto HA VP TRAIL 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP TRAIL Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794465094567,
+    "price": 2479.3
+   }
+  },
+  {
+   "id": "1794465094567-1418",
+   "symbol": "TVSMOTOR",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 175,
+   "entry": 4500.1,
+   "sl": 4566.35,
+   "tp": 4491.7,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 4566.35,
+   "atr": 66.24,
+   "time": 1794465094567,
+   "status": "open",
+   "passed": false,
+   "high": 4500.1,
+   "low": 4500.1,
+   "nifty": 0.07,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794465094567,
+    "price": 4500.0
+   }
+  },
+  {
+   "id": "1794465094567-1419",
+   "symbol": "TVSMOTOR",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 175,
+   "entry": 4500.1,
+   "sl": 4566.35,
+   "tp": 4491.7,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp_trail",
+   "system": "HA VP TRAIL",
+   "stop": 4566.35,
+   "atr": 66.24,
+   "time": 1794465094567,
+   "status": "open",
+   "passed": false,
+   "high": 4500.1,
+   "low": 4500.1,
+   "nifty": 0.07,
+   "source": "Auto HA VP TRAIL 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP TRAIL Bearish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794465094567,
+    "price": 4500.0
+   }
   }
  ],
- "seq": 1413,
+ "seq": 1419,
  "log": [
+  "12 Nov 12:01  TVSMOTOR: HA VP TRAIL SELL 175 at 4500.1, SL 4566.35 (1 ATR 66.24), target 4491.7",
+  "12 Nov 12:01  TVSMOTOR: HA VP SELL 175 at 4500.1, SL 4566.35 (1 ATR 66.24), target 4491.7",
+  "12 Nov 12:01  SRF: HA VP TRAIL SELL 200 at 2480.3, SL 2514.0 (1 ATR 33.71), target 2452.3",
+  "12 Nov 12:01  SRF: HA VP SELL 200 at 2480.3, SL 2514.0 (1 ATR 33.71), target 2452.3",
+  "12 Nov 12:01  IOC: HA VP TRAIL SELL 4875 at 145.55, SL 147.55 (1 ATR 1.98), target 144.8",
+  "12 Nov 12:01  IOC: HA VP SELL 4875 at 145.55, SL 147.55 (1 ATR 1.98), target 144.8",
   "12 Nov 12:00  TATAPOWER: HA VP TRAIL SELL 1450 at 357.25, SL 363.0 (1 ATR 5.77), target 354.7",
   "12 Nov 12:00  RECLTD: HA VP TRAIL SELL 1575 at 305.15, SL 309.9 (1 ATR 4.76), target 299.5",
   "12 Nov 12:00  POWERGRID: HA VP TRAIL SELL 1900 at 260.45, SL 264.05 (1 ATR 3.58), target 256.65",
@@ -12134,16 +12362,10 @@
   "11 Nov 14:50  ULTRACEMCO: HA MTF SELL 50 at 12271.0, SL 12639.15 (2 HOUR; exit on 2H; ha)",
   "11 Nov 14:50  FORTIS: HA MTF SELL 775 at 768.05, SL 791.1 (2 HOUR; exit on 2H; ha)",
   "11 Nov 14:50  ULTRACEMCO: HA SELL 50 at 12271.0, SL 12452.0 (2 HOUR; ha)",
-  "11 Nov 14:50  FORTIS: HA SELL 775 at 768.05, SL 777.5 (2 HOUR; eod, trail, ha)",
-  "11 Nov 14:45  KPITTECH: TSL after target at 548.3 (Hold \u00b7 trail)",
-  "11 Nov 14:35  SBICARD: HA MTF SELL 800 at 586.8, SL 604.4 (2 HOUR; exit on 2H; ha)",
-  "11 Nov 14:35  SBICARD: HA SELL 800 at 586.8, SL 595.35 (2 HOUR; eod, trail, ha)",
-  "11 Nov 14:30  VOLTAS: TSL after target at 1111.9 (Hold \u00b7 trail)",
-  "11 Nov 14:25  ULTRACEMCO: HA exit (2H) at 12306.0 (Hold \u00b7 HA exit)",
-  "11 Nov 14:25  ULTRACEMCO: HA exit (2H) at 12306.0 (Hold \u00b7 HA exit)"
+  "11 Nov 14:50  FORTIS: HA SELL 775 at 768.05, SL 777.5 (2 HOUR; eod, trail, ha)"
  ],
- "page_run": 1794465049771,
- "updated": 1794465049771,
+ "page_run": 1794465094567,
+ "updated": 1794465094567,
  "unattended": true,
- "peak_margin": 43335114.09
+ "peak_margin": 44132367.59
 }
