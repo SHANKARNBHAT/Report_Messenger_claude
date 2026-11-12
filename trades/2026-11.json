@@ -27419,5 +27419,153 @@
   "gross": -12665.0,
   "charges": 310.19,
   "net": -12975.19
+ },
+ {
+  "id": "1794374733560-1130",
+  "symbol": "ITC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1725,
+  "entry": 282.55,
+  "exit": 284.6,
+  "entry_time": 1794374733560,
+  "exit_time": 1794470737628,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 277.9,
+  "tp": null,
+  "high": 290.25,
+  "low": 282.55,
+  "nifty": 1.31,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794374733560,
+   "price": 282.55
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 70.65,
+  "gross": 3536.25,
+  "charges": 323.54,
+  "net": 3212.71
+ },
+ {
+  "id": "1794374733560-1133",
+  "symbol": "ITC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1725,
+  "entry": 282.55,
+  "exit": 284.6,
+  "entry_time": 1794374733560,
+  "exit_time": 1794470737628,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 274.05,
+  "tp": null,
+  "high": 290.25,
+  "low": 282.55,
+  "nifty": 1.31,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794374733560,
+   "price": 282.55
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 70.65,
+  "gross": 3536.25,
+  "charges": 323.54,
+  "net": 3212.71
+ },
+ {
+  "id": "1794462090945-1386",
+  "symbol": "AMBER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 100,
+  "entry": 6291.0,
+  "exit": 6205.0,
+  "entry_time": 1794462090945,
+  "exit_time": 1794470737628,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 6169.0,
+  "tp": null,
+  "high": 6291.0,
+  "low": 6205,
+  "nifty": 0.23,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794462090945,
+   "price": 6291.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 52.42,
+  "gross": -8600.0,
+  "charges": 397.02,
+  "net": -8997.02
+ },
+ {
+  "id": "1794462090945-1387",
+  "symbol": "AMBER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 100,
+  "entry": 6291.0,
+  "exit": 6205.0,
+  "entry_time": 1794462090945,
+  "exit_time": 1794470737628,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 6102.25,
+  "tp": null,
+  "high": 6291.0,
+  "low": 6205,
+  "nifty": 0.23,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794462090945,
+   "price": 6291.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 52.42,
+  "gross": -8600.0,
+  "charges": 397.02,
+  "net": -8997.02
  }
 ]
