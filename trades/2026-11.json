@@ -25606,5 +25606,42 @@
   "gross": -10585.0,
   "charges": 339.91,
   "net": -10924.91
+ },
+ {
+  "id": "1794371138474-1008",
+  "symbol": "HINDUNILVR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 300,
+  "entry": 2015.8,
+  "exit": 1980.0,
+  "entry_time": 1794371138474,
+  "exit_time": 1794462900000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1980.0,
+  "tp": 2076.25,
+  "high": 2027,
+  "low": 1980.0,
+  "nifty": 1.24,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794371138474,
+   "price": 2015.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 69.99,
+  "gross": -10740.0,
+  "charges": 382.18,
+  "net": -11122.18
  }
 ]
