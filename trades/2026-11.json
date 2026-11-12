@@ -25310,5 +25310,153 @@
   "gross": 16851.0,
   "charges": 624.02,
   "net": 16226.98
+ },
+ {
+  "id": "1794368751056-911",
+  "symbol": "TVSMOTOR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4505.9,
+  "exit": 4524.0,
+  "entry_time": 1794368751056,
+  "exit_time": 1794462300000,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 4435.1,
+  "tp": null,
+  "high": 4636.1,
+  "low": 4501,
+  "nifty": 1.14,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794368751056,
+   "price": 4505.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 70.98,
+  "gross": 3167.5,
+  "charges": 492.94,
+  "net": 2674.56
+ },
+ {
+  "id": "1794368751056-916",
+  "symbol": "TVSMOTOR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4505.9,
+  "exit": 4524.0,
+  "entry_time": 1794368751056,
+  "exit_time": 1794462300000,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 4370.7,
+  "tp": null,
+  "high": 4636.1,
+  "low": 4501,
+  "nifty": 1.14,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794368751056,
+   "price": 4505.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 70.98,
+  "gross": 3167.5,
+  "charges": 492.94,
+  "net": 2674.56
+ },
+ {
+  "id": "1794371449421-1020",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 164.0,
+  "exit": 166.1,
+  "entry_time": 1794371449421,
+  "exit_time": 1794462643350,
+  "reason": "RSI exit (2H 59.0)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 159.25,
+  "tp": null,
+  "high": 169.37,
+  "low": 163.6,
+  "nifty": 1.3,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794371449421,
+   "price": 164.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 12915.0,
+  "charges": 621.97,
+  "net": 12293.03
+ },
+ {
+  "id": "1794382245293-1174",
+  "symbol": "ALKEM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 5365.5,
+  "exit": 5281.0,
+  "entry_time": 1794382245293,
+  "exit_time": 1794462000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 5281.0,
+  "tp": 5526.45,
+  "high": 5435.5,
+  "low": 5281.0,
+  "nifty": 1.04,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794382245293,
+   "price": 5365.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -10562.5,
+  "charges": 419.41,
+  "net": -10981.91
  }
 ]
