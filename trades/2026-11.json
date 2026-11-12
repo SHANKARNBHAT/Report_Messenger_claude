@@ -27789,5 +27789,42 @@
   "gross": -9817.5,
   "charges": 352.31,
   "net": -10169.81
+ },
+ {
+  "id": "1794465335984-1420",
+  "symbol": "NIFTY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25253.2,
+  "exit": 25282.35,
+  "entry_time": 1794465335984,
+  "exit_time": 1794471600000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 25313.15,
+  "tp": null,
+  "high": 25282.36,
+  "low": 25210.0,
+  "nifty": 0.0,
+  "strategies": [
+   "15m HA Bearish (index)"
+  ],
+  "first_seen": {
+   "time": 1794465335984,
+   "price": 25253.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1894.75,
+  "charges": 971.73,
+  "net": -2866.48
  }
 ]
