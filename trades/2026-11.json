@@ -25532,5 +25532,79 @@
   "gross": 9840.0,
   "charges": 620.36,
   "net": 9219.64
+ },
+ {
+  "id": "1794455732396-1258",
+  "symbol": "TATAPOWER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1450,
+  "entry": 365.2,
+  "exit": 357.9,
+  "entry_time": 1794455732396,
+  "exit_time": 1794462600000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "eod",
+  "passed": false,
+  "carried": false,
+  "sl": 357.9,
+  "tp": 376.15,
+  "high": 366.7,
+  "low": 357.9,
+  "nifty": 0.21,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794455732396,
+   "price": 365.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -10585.0,
+  "charges": 339.91,
+  "net": -10924.91
+ },
+ {
+  "id": "1794455732396-1259",
+  "symbol": "TATAPOWER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1450,
+  "entry": 365.2,
+  "exit": 357.9,
+  "entry_time": 1794455732396,
+  "exit_time": 1794462600000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 357.9,
+  "tp": null,
+  "high": 366.7,
+  "low": 357.9,
+  "nifty": 0.21,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794455732396,
+   "price": 365.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -10585.0,
+  "charges": 339.91,
+  "net": -10924.91
  }
 ]
