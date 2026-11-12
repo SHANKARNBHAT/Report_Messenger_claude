@@ -26753,5 +26753,79 @@
   "gross": -3562.5,
   "charges": 643.66,
   "net": -4206.16
+ },
+ {
+  "id": "1794464442296-1390",
+  "symbol": "ADANIPOWER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3550,
+  "entry": 205.9,
+  "exit": 207.05,
+  "entry_time": 1794464442296,
+  "exit_time": 1794469500000,
+  "reason": "HA upper wick",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 208.8,
+  "tp": 205.05,
+  "high": 207.62,
+  "low": 205.6,
+  "nifty": 0.08,
+  "strategies": [
+   "2H HA VP Bearish"
+  ],
+  "first_seen": {
+   "time": 1794464442296,
+   "price": 205.79
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4082.5,
+  "charges": 459.03,
+  "net": -4541.53
+ },
+ {
+  "id": "1794465049771-1402",
+  "symbol": "ADANIPOWER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3550,
+  "entry": 206.35,
+  "exit": 207.05,
+  "entry_time": 1794465049771,
+  "exit_time": 1794469500000,
+  "reason": "HA upper wick",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 209.25,
+  "tp": 206.35,
+  "high": 207.62,
+  "low": 205.6,
+  "nifty": 0.06,
+  "strategies": [
+   "2H HA VP TRAIL Bearish"
+  ],
+  "first_seen": {
+   "time": 1794465049771,
+   "price": 205.95
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2485.0,
+  "charges": 459.86,
+  "net": -2944.86
  }
 ]
