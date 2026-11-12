@@ -26087,5 +26087,153 @@
   "gross": 1470.0,
   "charges": 490.66,
   "net": 979.34
+ },
+ {
+  "id": "1794369938916-942",
+  "symbol": "AXISBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1334.3,
+  "exit": 1334.7,
+  "entry_time": 1794369938916,
+  "exit_time": 1794466246613,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1296.1,
+  "tp": null,
+  "high": 1360.4,
+  "low": 1328.7,
+  "nifty": 1.31,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794369938916,
+   "price": 1334.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 69.08,
+  "gross": 250.0,
+  "charges": 516.99,
+  "net": -266.99
+ },
+ {
+  "id": "1794369938916-946",
+  "symbol": "AXISBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1334.3,
+  "exit": 1334.7,
+  "entry_time": 1794369938916,
+  "exit_time": 1794466246613,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1294.25,
+  "tp": null,
+  "high": 1360.4,
+  "low": 1328.7,
+  "nifty": 1.31,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794369938916,
+   "price": 1334.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 69.08,
+  "gross": 250.0,
+  "charges": 516.99,
+  "net": -266.99
+ },
+ {
+  "id": "1794370541809-984",
+  "symbol": "POLICYBZR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 971.7,
+  "exit": 986.25,
+  "entry_time": 1794370541809,
+  "exit_time": 1794465600000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 941.3,
+  "tp": 1000.85,
+  "high": 1005.6,
+  "low": 966.8,
+  "nifty": 1.49,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794370541809,
+   "price": 971.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 44.43,
+  "gross": 5092.5,
+  "charges": 241.39,
+  "net": 4851.11
+ },
+ {
+  "id": "1794375048640-1142",
+  "symbol": "SUZLON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 12700,
+  "entry": 39.5,
+  "exit": 38.55,
+  "entry_time": 1794375048640,
+  "exit_time": 1794466246613,
+  "reason": "HA exit (4H)",
+  "source": "Auto HA MTF 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 38.3,
+  "tp": null,
+  "high": 39.5,
+  "low": 38.54,
+  "nifty": 1.34,
+  "strategies": [
+   "4H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794375048640,
+   "price": 39.49
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 51.2,
+  "gross": -12065.0,
+  "charges": 323.43,
+  "net": -12388.43
  }
 ]
