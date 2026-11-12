@@ -57,7 +57,7 @@ if Path(chartink_dashboard.__file__).stat().st_mtime > getattr(chartink_dashboar
 from chartink_dashboard import (CHART_SITES, CHARTINK_HEADERS, DEFAULT_DASHBOARD, DEFAULT_SNAPSHOT, FUNDAMENTALS_DASHBOARD,
                                 FUNDAMENTALS_ROWS, HA_DASHBOARD, IST, MY_LAYOUT, TIMEFRAMES, ChartinkError,
                                 fetch_dashboard, fetch_ha_candles, fetch_ha_signals, fetch_price_bars,
-                                fetch_watchlists)
+                                fetch_volume_profile, fetch_vp_candles, fetch_watchlists)
 
 # ---------------------------------------------------------------------------
 # Settings
@@ -96,11 +96,15 @@ HELD = ("trail", "rsi", "ha", "ha_green")
 # ha_green is the same with the last green HA candle's low (long) or last red one's high (short): no
 # longer traded (it nearly always exited with "ha"), kept so the positions open in it still close.
 BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/red exit",
-              "atr": "Intraday · 1.1 ATR trail"}
+              "atr": "Intraday · 1.1 ATR trail", "vp": "Intraday · ATR trail, VP target, EMA 8"}
 # HA MTF: the HA signals of 2H, 4H and Daily, held until the HA exit of the highest
 # timeframe that matched (auto_trader.py, enter_signals).
 # HA IDX: Heikin Ashi on NIFTY and BANKNIFTY 15-minute candles with an ATR trailing SL (ha_index.py).
-SYSTEMS = {"RSI": ("eod", "trail", "rsi"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",)}
+# HA VP: Heikin Ashi on the stocks' 2H candles, ATR trailing SL, volume profile target, EMA 8 exit
+# (ha_vp.py). HA and HA MTF take no new trades: kept so their trades still show and their
+# open positions still close.
+SYSTEMS = {"RSI": ("eod", "trail", "rsi"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",),
+           "HA VP": ("vp",)}
 HA_EXITS = ("ha", "ha_green")
 # The "RSI crossed" widgets list a stock when its RSI on any timeframe crossed the level;
 # their column of each timeframe's RSI tells if the trade's own one is past it.

@@ -7,6 +7,9 @@ doji, and the position is held until the HA exit of the highest one that counted
 trails it, with a fixed SL MTF_SL_PCT from the entry until then). A stock on several gets a trade in
 each, so that each strategy's results stay its own. A fourth, HA IDX (ha_index.py), trades
 NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles with an ATR trailing SL, intraday.
+A fifth, HA VP (ha_vp.py), trades the F&O stocks on their running 2H Heikin Ashi candle, with an
+ATR trailing SL, a volume profile target and an EMA 8 exit, intraday. HA and HA MTF take no new
+trades any more: their open positions still close by their rules.
 
 .github/workflows/auto_trader.yml runs it every 15 minutes in market hours. Each run:
   * replays the open positions on the 5-minute bars since entry, closing those that
@@ -50,11 +53,13 @@ from pathlib import Path
 
 import futures_simulator as fs
 import ha_index
+import ha_vp
 from chartink_dashboard import NO_VALUE
 
 TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY")
 # The timeframes whose signals are traded; the others are only recorded, as "Timeframe not traded".
-TRADED_TIMEFRAMES = {"RSI": ("2 HOUR",), "HA": ("2 HOUR",), "HA MTF": ("2 HOUR", "4 HOUR", "DAILY")}
+# HA and HA MTF ("HA": ("2 HOUR",), "HA MTF": ("2 HOUR", "4 HOUR", "DAILY")) take no new trades: HA VP replaced them.
+TRADED_TIMEFRAMES = {"RSI": ("2 HOUR",)}
 MTF_SL_PCT = 3.0  # HA MTF: the initial SL; the HA exit of the exit timeframe trails from there
 DOJI_BODY = 0.10  # HA MTF: a previous HA candle with a body this share of its range or less is a doji
 SHORT = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily"}
@@ -325,8 +330,9 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
         except fs.ChartinkError as exc:
             note(f"No candles for the HA exits: {exc}")
     settle_index(files, account, now, note)
-    for result in fs.check_positions([p for p in account["positions"] if p.get("system") != INDEX_SYSTEM],
-                                     now, settle=False):
+    settle_vp(files, account, now, note)
+    for result in fs.check_positions([p for p in account["positions"]
+                                      if p.get("system") not in (INDEX_SYSTEM, ha_vp.SYSTEM)], now, settle=False):
         position = next(p for p in account["positions"] if p["id"] == result["id"])
         # A candle that went past since the last run may have come before what the bars show.
         due = ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS else None
@@ -440,6 +446,121 @@ def enter_index_signals(files: Files, account: dict, seen: dict, now: datetime, 
         })
         mark(seen, [signal], "Traded")
         note(f"{symbol}: {INDEX_SYSTEM} {side} {qty} at {entry}, SL {sl} ({ha_index.ATR_MULT} ATR, 15m)")
+
+
+def vp_bars(positions: list[dict], now: datetime) -> dict[str, list]:
+    """position id -> its 5-minute bars since the entry: Chartink's when they reach back to it,
+    else Yahoo Finance's (as futures_simulator.check_positions)."""
+    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    try:
+        chartink = fs.fetch_price_bars(fs.DEFAULT_DASHBOARD)
+    except fs.ChartinkError:
+        chartink = {}
+    bars = {p["id"]: chartink[p["symbol"]] for p in positions
+            if chartink.get(p["symbol"]) and chartink[p["symbol"]][0][0] <= p["time"] / 1000}
+    wanted = {p["id"]: (instruments[p["symbol"]]["yahoo"], "5d")
+              for p in positions if p["id"] not in bars and p["symbol"] in instruments}
+    yahoo = fs.fetch_bars(tuple(sorted(set(wanted.values())))) if wanted else {}
+    bars.update({id_: yahoo.get(request) for id_, request in wanted.items()})
+    return bars
+
+
+def settle_vp(files: Files, account: dict, now: datetime, note) -> None:
+    """Close the HA VP positions that hit their SL, a wick against them, VP target, an EMA 8 cross or the 3:15 PM
+    square-off (ha_vp.replay); move the others' SL."""
+    positions = [p for p in account["positions"] if p.get("system") == ha_vp.SYSTEM]
+    if not positions:
+        return
+    try:
+        candles = fs.fetch_vp_candles()
+    except fs.ChartinkError as exc:
+        note(f"No 2H candles for the HA VP exits: {exc}")
+        return
+    bars = vp_bars(positions, now)
+    for position in positions:
+        found = bars.get(position["id"])
+        if not isinstance(found, list) or not found:
+            note(f"{position['symbol']}: no 5-minute bars for HA VP ({found})")
+            continue
+        rows = candles.get(position["symbol"], [])
+        result = ha_vp.replay(position, found, rows, lambda start: candle_end(ha_vp.TIMEFRAME, start), now, fs.IST)
+        if result["status"] == "closed":
+            close(files, account, position, tick(result["exit"]), result["exit_time"], result["reason"],
+                  result["high"], result["low"])
+            note(f"{position['symbol']}: {result['reason']} at {tick(result['exit'])} ({fs.BOT_STYLES[ha_vp.STYLE]})")
+        else:
+            position.update(stop=tick(result["stop"]), high=result["high"], low=result["low"])
+
+
+def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, trading: bool, note) -> None:
+    """Trade the HA VP signals: a stock whose running 2H HA candle meets ha_vp.signal. One position
+    per stock: an opposite signal closes it and enters the other way; no second entry on a candle."""
+    if now.time() >= LAST_ENTRY:
+        return
+    try:
+        candles = fs.fetch_vp_candles()
+    except fs.ChartinkError as exc:
+        note(f"No 2H candles for the HA VP entries: {exc}")
+        return
+    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    try:
+        levels = {row["Symbol"]: row for row in fs.fetch_volume_profile().get("stocks", [])}
+    except (OSError, ValueError) as exc:
+        levels = {}
+        note(f"No volume profile levels for the HA VP targets: {exc}")
+    current = candle_key(ha_vp.TIMEFRAME, int(now.timestamp()))
+    month = trades_of(files, now.strftime("%Y-%m"))
+    for symbol, rows in sorted(candles.items()):
+        if symbol not in instruments or symbol in ha_index.SYMBOLS or not rows:
+            continue
+        if candle_key(ha_vp.TIMEFRAME, rows[-1][0]) != current:  # no running candle yet
+            continue
+        side = ha_vp.signal(rows)
+        if not side:
+            continue
+        bias = "Bullish" if side == "BUY" else "Bearish"
+        signal = {"symbol": symbol, "timeframe": ha_vp.TIMEFRAME, "bias": bias, "system": ha_vp.SYSTEM,
+                  "strategy": f"2H HA VP {bias}", "fno": True, "agrees": "—"}
+        record_seen(seen, [signal], None, now)
+        if not trading:
+            mark(seen, [signal], "Not traded: switch off, page closed")
+            continue
+        held = next((p for p in account["positions"]
+                     if p.get("system") == ha_vp.SYSTEM and p["symbol"] == symbol), None)
+        if held and held["side"] == side:
+            mark(seen, [signal], "Already open")
+            continue
+        if any(t.get("system") == ha_vp.SYSTEM and t["symbol"] == symbol
+               and candle_key(ha_vp.TIMEFRAME, t["entry_time"] // 1000) == current for t in month) or (
+                held and candle_key(ha_vp.TIMEFRAME, held["time"] // 1000) == current):
+            mark(seen, [signal], "Already traded this candle")
+            continue
+        values = ha_vp.atr(rows[:-1])
+        if not values or values[-1] is None:
+            mark(seen, [signal], "No ATR")
+            continue
+        entry = tick(rows[-1][ha_vp.CLOSE])
+        if held:
+            close(files, account, held, entry, int(now.timestamp() * 1000), "Reverse signal")
+            note(f"{symbol}: HA VP {held['side']} closed at {entry} (reverse signal)")
+        long = side == "BUY"
+        sl = tick(entry - ha_vp.ATR_MULT * values[-1] if long else entry + ha_vp.ATR_MULT * values[-1])
+        goal = ha_vp.target(levels.get(symbol), entry, long)
+        goal = tick(goal) if goal is not None else None
+        first = seen.get(signal_key(signal))
+        qty = LOTS * instruments[symbol]["lot"]
+        account["seq"] += 1
+        account["positions"].append({
+            "id": f"{int(now.timestamp() * 1000)}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
+            "qty": qty, "entry": entry, "sl": sl, "tp": goal, "tsl": {"on": False}, "run": None,
+            "style": ha_vp.STYLE, "system": ha_vp.SYSTEM, "stop": sl, "atr": round(values[-1], 2),
+            "time": int(now.timestamp() * 1000), "status": "open", "passed": False, "high": entry, "low": entry,
+            "nifty": fs.nifty_change(), "source": "Auto HA VP 2H", "timeframes": [ha_vp.TIMEFRAME],
+            "strategies": [signal["strategy"]], "agrees": "—", "sma_rsi": None,
+            "first_seen": first and {"time": first["time"], "price": first["price"]},
+        })
+        mark(seen, [signal], "Traded")
+        note(f"{symbol}: HA VP {side} {qty} at {entry}, SL {sl} (1 ATR {values[-1]:.2f}), target {goal}")
 
 
 def test_chartink(note) -> None:
@@ -629,19 +750,12 @@ def main() -> None:
         seen = files.get(day_file, {})
         trading = not args.scheduled or account.get("unattended", True)
         enter_index_signals(files, account, seen, now, trading, note)
+        enter_vp_signals(files, account, seen, now, trading, note)
         files.changed.add(day_file)
         if dashboard:
             instruments = {i["symbol"]: i for i in fs.load_instruments()}
+            # HA and HA MTF no longer trade, so their scans (load_ha_signals) are not read.
             signals = [{**s, "system": "RSI"} for s in fs.signal_rows(dashboard, instruments)[0]]
-            ha_dashboard, ha_error = load_ha_signals()
-            if ha_dashboard:
-                sma_rsi = ha_sma_rsi(ha_dashboard)
-                ha_signals = fs.signal_rows(ha_dashboard, instruments)[0]
-                # The same HA signals, once for each HA strategy.
-                signals += [{**s, "system": system, "sma_rsi": sma_rsi.get((s["strategy"], s["symbol"]))}
-                            for system in ("HA", "HA MTF") for s in ha_signals]
-            else:
-                note(f"No HA signals: {ha_error}")
             record_seen(seen, signals, dashboard, now)
             for system in TRADED_TIMEFRAMES:
                 enter_signals(files, account, [s for s in signals if s["system"] == system], dashboard, seen, now,

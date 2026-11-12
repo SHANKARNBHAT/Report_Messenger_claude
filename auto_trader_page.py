@@ -53,7 +53,9 @@ LIVE_HOURS = (clock(9, 15), clock(15, 35))  # IST, weekdays: through the 3:15 PM
 SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]
 YOU = "You (simulator)"
 # The stock strategies; HA IDX (NIFTY and BANKNIFTY) has a section of its own (show_index).
-SYSTEM_NAMES = {"RSI": "RSI", "HA": "Heikin Ashi", "HA MTF": "HA multi-timeframe"}
+# HA and HA MTF take no new trades (HA VP replaced them): kept for their past trades.
+SYSTEM_NAMES = {"RSI": "RSI", "HA VP": "HA + volume profile", "HA": "Heikin Ashi (retired)",
+                "HA MTF": "HA multi-timeframe (retired)"}
 INDEX_SYSTEM = "HA IDX"
 SMA_FILTERS = ["Against: long below 50, short above 50", "With: long above 50, short below 50", "Not recorded"]
 SHORT_TF = {"15 MIN": "15m", "2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
@@ -1027,7 +1029,7 @@ def main() -> None:
         logged = signals[signals["system"] == system] if len(signals) else signals
         if len(trades) or len(mine):
             show_compare(series(trades, mine), held, styles)
-            if system.startswith("HA"):
+            if system in ("HA", "HA MTF"):
                 st.markdown("**SMA RSI filter**")
                 show_sma_filter(trades)
             # Each signal is traded in every style, so the other results are for one style at a time.
