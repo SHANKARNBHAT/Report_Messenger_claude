@@ -7,7 +7,7 @@ doji, and the position is held until the HA exit of the highest one that counted
 trails it, with a fixed SL MTF_SL_PCT from the entry until then). A stock on several gets a trade in
 each, so that each strategy's results stay its own. A fourth, HA IDX (ha_index.py), trades
 NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles with an ATR trailing SL, intraday.
-A fifth, HA VP (ha_vp.py), and its twin HA VP TRAIL (trails past the target instead of taking it), trade the F&O stocks on their running 2H Heikin Ashi candle, with an
+A fifth, HA VP (ha_vp.py), and its twin HA VP TRAIL (trails past the target instead of taking it), trade the F&O stocks, NIFTY and BANKNIFTY on their running 2H Heikin Ashi candle, with an
 ATR trailing SL, a volume profile target and an EMA 8 exit, intraday. HA and HA MTF take no new
 trades any more: their open positions still close by their rules.
 
@@ -493,7 +493,7 @@ def settle_vp(files: Files, account: dict, now: datetime, note) -> None:
 
 
 def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, trading: bool, note) -> None:
-    """Trade the HA VP signals, a stock whose running 2H HA candle meets ha_vp.signal, in each of
+    """Trade the HA VP signals, a stock or index whose running 2H HA candle meets ha_vp.signal, in each of
     ha_vp.SYSTEMS. One position per stock in each: an opposite signal closes it and enters the
     other way; no second entry on a candle."""
     if now.time() >= LAST_ENTRY:
@@ -505,7 +505,8 @@ def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, tra
         return
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
     try:
-        levels = {row["Symbol"]: row for row in fs.fetch_volume_profile().get("stocks", [])}
+        found = fs.fetch_volume_profile()
+        levels = {row["Symbol"]: row for row in found.get("stocks", []) + found.get("indices", [])}
     except (OSError, ValueError) as exc:
         levels = {}
         note(f"No volume profile levels for the HA VP targets: {exc}")
@@ -513,7 +514,7 @@ def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, tra
     month = trades_of(files, now.strftime("%Y-%m"))
     nifty = None
     for symbol, rows in sorted(candles.items()):
-        if symbol not in instruments or symbol in ha_index.SYMBOLS or not rows:
+        if symbol not in instruments or not rows:
             continue
         if candle_key(ha_vp.TIMEFRAME, rows[-1][0]) != current:  # no running candle yet
             continue

@@ -350,7 +350,7 @@ def fetch_ha_candles(link: str = HA_DASHBOARD) -> dict[str, dict[str, list[tuple
 @st.cache_data(ttl=50, show_spinner=False)
 def fetch_vp_candles(link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
     """symbol -> its last 2H candles (start in seconds, close, high, low, HA open, HA high, HA low,
-    HA close), oldest first, the running one last, for the F&O stocks (ha_vp.py)."""
+    HA close), oldest first, the running one last, for the F&O stocks, NIFTY and BANKNIFTY (ha_vp.py)."""
     with requests.Session() as session:
         session.headers.update(CHARTINK_HEADERS)
         url, token, _, raw_widgets = open_dashboard(session, link)

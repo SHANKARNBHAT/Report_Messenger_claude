@@ -22,6 +22,9 @@ but entering live, on the running candle, instead of at its close.
     trade (below for a long, above for a short), at that close.
   * Squared off at 3:15 PM: intraday only.
 
+Also NIFTY and BANKNIFTY, in the same Chartink candles; their levels are the
+"indices" of the file (volume_profile.py: their member stocks' turnover as the volume).
+
 Candles are rows (start in seconds, close, high, low, HA open, HA high, HA low, HA close), oldest
 first (chartink_dashboard.fetch_vp_candles); 5-minute bars (start, open, high, low, close).
 """

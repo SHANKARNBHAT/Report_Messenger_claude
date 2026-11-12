@@ -25,6 +25,10 @@ Method
   VAH, VAL  From the POC, the fuller of the next bin above and below is added
             until the bins hold 70% of the volume; these are the outer edges.
 
+Indices   NIFTY and BANKNIFTY ("indices" in the file) have no intraday volume on Yahoo, so a
+            bar of the index gets the turnover (close x volume) of its member stocks
+            (INDEX_MEMBERS) in that bar.
+
 Run: python volume_profile.py
 """
 
@@ -74,14 +78,26 @@ GAP = 0.25              # overnight move taken as a demerger
 WORKERS = 5
 RETRIES = 4
 MIN_STOCKS = 0.9        # share of the stocks needed to replace the last file
+MIN_MEMBERS = 0.8       # share of an index's member stocks needed for its levels
+# The indices (Yahoo symbol) and their member stocks, whose turnover is the index's volume.
+INDEX_MEMBERS = {
+    "NIFTY": ("^NSEI", (
+        "ADANIENT ADANIPORTS APOLLOHOSP ASIANPAINT AXISBANK BAJAJ-AUTO BAJFINANCE BAJAJFINSV BEL BHARTIARTL "
+        "CIPLA COALINDIA DRREDDY EICHERMOT ETERNAL GRASIM HCLTECH HDFCBANK HDFCLIFE HINDALCO HINDUNILVR ICICIBANK "
+        "INDIGO INFY ITC JIOFIN JSWSTEEL KOTAKBANK LT M&M MARUTI MAXHEALTH NESTLEIND NTPC ONGC POWERGRID RELIANCE "
+        "SBILIFE SHRIRAMFIN SBIN SUNPHARMA TCS TATACONSUM TMPV TATASTEEL TECHM TITAN TRENT ULTRACEMCO WIPRO").split()),
+    "BANKNIFTY": ("^NSEBANK", (
+        "AUBANK AXISBANK BANKBARODA CANBK FEDERALBNK HDFCBANK ICICIBANK IDFCFIRSTB INDUSINDBK KOTAKBANK PNB SBIN "
+        "UNIONBANK YESBANK").split()),
+}
 
 
 # ---------------------------------------------------------------------------
 # Yahoo
 # ---------------------------------------------------------------------------
 def yahoo_bars(symbol: str, interval: str, **query) -> pd.DataFrame:
-    """A stock's bars, with times in IST."""
-    url = YAHOO_CHART_URL.format(quote(f"{symbol}.NS", safe=""))
+    """A stock's bars (an index's, for a Yahoo symbol starting with ^), with times in IST."""
+    url = YAHOO_CHART_URL.format(quote(symbol if symbol.startswith("^") else f"{symbol}.NS", safe=""))
     for attempt in range(RETRIES):
         try:
             response = requests.get(url, params={"interval": interval, **query}, headers=HEADERS, timeout=30)
@@ -143,6 +159,17 @@ def stock_bars(symbol: str, now: datetime) -> pd.DataFrame:
     fine = yahoo_bars(symbol, "15m", range="60d")
     hourly = fill_open_volume(yahoo_bars(symbol, "60m", **span), yahoo_bars(symbol, "1d", **span), fine)
     return after_last_gap(pd.concat([hourly[hourly.index < fine.index[0].normalize()], fine]))
+
+
+def index_bars(yahoo: str, members: dict[str, pd.DataFrame], now: datetime) -> pd.DataFrame:
+    """An index's bars as stock_bars, with its member stocks' turnover in each bar as the volume."""
+    span = {"period1": int(now.timestamp()) - HISTORY_DAYS * 86400, "period2": int(now.timestamp())}
+    fine = yahoo_bars(yahoo, "15m", range="60d")
+    hourly = yahoo_bars(yahoo, "60m", **span)
+    bars = pd.concat([hourly[hourly.index < fine.index[0].normalize()], fine])
+    turnover = sum((b["close"] * b["volume"]).groupby(level=0).sum().reindex(bars.index).fillna(0.0)
+                   for b in members.values())
+    return bars.assign(volume=turnover)
 
 
 # ---------------------------------------------------------------------------
@@ -239,9 +266,15 @@ def main() -> None:
     end = last_settled_day(now)
     names = symbols()
 
+    members = {m for _, stocks in INDEX_MEMBERS.values() for m in stocks}
+    kept: dict[str, pd.DataFrame] = {}  # the bars of the index member stocks
+
     def one(symbol: str) -> dict | None:
         try:
-            return stock_levels(symbol, stock_bars(symbol, now), end)
+            bars = stock_bars(symbol, now)
+            if symbol in members:
+                kept[symbol] = bars
+            return stock_levels(symbol, bars, end)
         except (requests.RequestException, ValueError, KeyError, TypeError, IndexError) as exc:
             print(f"{symbol}: {type(exc).__name__}: {exc}")
             return None
@@ -251,11 +284,23 @@ def main() -> None:
     print(f"Levels for {len(rows)} of {len(names)} stocks")
     if len(rows) < len(names) * MIN_STOCKS:
         sys.exit("Too few stocks: the last file stays")
+    indices = []
+    for index, (yahoo, stocks) in INDEX_MEMBERS.items():
+        found = {s: kept[s] for s in stocks if s in kept}
+        if len(found) < len(stocks) * MIN_MEMBERS:
+            print(f"{index}: bars of only {len(found)} of {len(stocks)} member stocks, no levels")
+            continue
+        try:
+            indices.append(stock_levels(index, index_bars(yahoo, found, now), end))
+        except (requests.RequestException, ValueError, KeyError, TypeError, IndexError) as exc:
+            print(f"{index}: {type(exc).__name__}: {exc}")
+    print(f"Levels for {len(indices)} of {len(INDEX_MEMBERS)} indices")
     OUTPUT.write_text(json.dumps({
         "generated": now.strftime("%Y-%m-%d %H:%M"),
         "periods": {period: [f"{first:%Y-%m-%d}", f"{last:%Y-%m-%d}"]
                     for period, (first, last) in period_spans(end).items()},
         "stocks": rows,
+        "indices": indices,
     }, separators=(",", ":")), encoding="utf-8")
 
 
