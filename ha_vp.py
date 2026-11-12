@@ -5,8 +5,8 @@ F&O stocks (auto_trader.py, enter_vp_signals and settle_vp), as the Pine script
 but entering live, on the running candle, instead of at its close.
 
   * Entry: long when the running 2H HA candle has no lower wick (HA open = HA low) and its HA
-    close is above the previous HA close. Short: no upper wick (HA open = HA high), the HA close
-    below the previous HA close. Both only on volume: the running candle's volume above the
+    high is above the previous HA high. Short: no upper wick (HA open = HA high), its HA low
+    below the previous HA low. Both only on volume: the running candle's volume above the
     average of the VOLUME_AVG candles before it (no volume condition where there is no volume,
     as for NIFTY and BANKNIFTY). An opposite signal closes the position and enters the other way.
   * Target: the nearest POC, VAH or VAL of the volume profile (TARGET_PERIODS, volume_profile.py)
@@ -84,9 +84,9 @@ def signal(rows: list[tuple]) -> str | None:
     average = sum(before) / len(before)
     if average > 0 and now[VOLUME] <= average:
         return None
-    if now[HA_LOW] >= now[HA_OPEN] and now[HA_CLOSE] > prev[HA_CLOSE]:
+    if now[HA_LOW] >= now[HA_OPEN] and now[HA_HIGH] > prev[HA_HIGH]:
         return "BUY"
-    if now[HA_HIGH] <= now[HA_OPEN] and now[HA_CLOSE] < prev[HA_CLOSE]:
+    if now[HA_HIGH] <= now[HA_OPEN] and now[HA_LOW] < prev[HA_LOW]:
         return "SELL"
     return None
 

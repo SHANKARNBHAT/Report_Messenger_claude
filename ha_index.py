@@ -4,8 +4,8 @@ BANKNIFTY (auto_trader.py, enter_index_signals and settle), made from Yahoo Fina
 5-minute bars of the index (Chartink's index list has no BANKNIFTY data).
 
   * Entry, on the running 15-minute candle, as HA VP (ha_vp.py): long when its HA candle has no
-    lower wick (HA open = HA low) and its HA close is above the previous HA close; short when it
-    has no upper wick (HA open = HA high) and its HA close is below the previous HA close.
+    lower wick (HA open = HA low) and its HA high is above the previous HA high; short when it
+    has no upper wick (HA open = HA high) and its HA low is below the previous HA low.
   * SL ATR_MULT x ATR(ATR_PERIOD) of the 15-minute candles from the entry. After each
     15-minute candle closes, it moves to that close -/+ ATR_MULT x ATR when that is closer,
     never back. Hit when a 5-minute bar touches it (at the bar's open if it gapped past).
@@ -84,15 +84,15 @@ def doji(candle: tuple) -> bool:
 
 def signal(rows: list[list]) -> str | None:
     """"BUY", "SELL" or None for the last (running) candle of `rows`: its HA candle has no lower
-    wick and its HA close is above the previous HA close (BUY), or no upper wick and its HA close
-    below the previous HA close (SELL)."""
+    wick and its HA high is above the previous HA high (BUY), or no upper wick and its HA low
+    below the previous HA low (SELL)."""
     if len(rows) < 2:
         return None
     ha = heikin_ashi(rows)
-    (open_, high, low, close), (_, _, _, p_close) = ha[-1], ha[-2]
-    if low >= open_ and close > p_close:
+    (open_, high, low, _), (_, p_high, p_low, _) = ha[-1], ha[-2]
+    if low >= open_ and high > p_high:
         return "BUY"
-    if high <= open_ and close < p_close:
+    if high <= open_ and low < p_low:
         return "SELL"
     return None
 
