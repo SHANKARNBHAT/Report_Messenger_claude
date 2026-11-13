@@ -34710,5 +34710,79 @@
   "gross": -12112.5,
   "charges": 351.11,
   "net": -12463.61
+ },
+ {
+  "id": "1794462042646-1381",
+  "symbol": "NATIONALUM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1875,
+  "entry": 328.8,
+  "exit": 329.3,
+  "entry_time": 1794462042646,
+  "exit_time": 1794543044012,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 322.75,
+  "tp": null,
+  "high": 334.75,
+  "low": 327.45,
+  "nifty": 0.23,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794462042646,
+   "price": 328.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 55.63,
+  "gross": 937.5,
+  "charges": 394.89,
+  "net": 542.61
+ },
+ {
+  "id": "1794462042646-1383",
+  "symbol": "NATIONALUM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1875,
+  "entry": 328.8,
+  "exit": 329.3,
+  "entry_time": 1794462042646,
+  "exit_time": 1794543044012,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 318.95,
+  "tp": null,
+  "high": 334.75,
+  "low": 327.45,
+  "nifty": 0.23,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794462042646,
+   "price": 328.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 55.63,
+  "gross": 937.5,
+  "charges": 394.89,
+  "net": 542.61
  }
 ]
