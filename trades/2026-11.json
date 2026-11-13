@@ -34895,5 +34895,153 @@
   "gross": -11812.5,
   "charges": 484.55,
   "net": -12297.05
+ },
+ {
+  "id": "1794455145928-1238",
+  "symbol": "TATAELXSI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 3865.0,
+  "exit": 3881.0,
+  "entry_time": 1794455145928,
+  "exit_time": 1794543642008,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 3906.15,
+  "tp": null,
+  "high": 3901.1,
+  "low": 3820,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 3865.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 60.66,
+  "gross": -2000.0,
+  "charges": 319.37,
+  "net": -2319.37
+ },
+ {
+  "id": "1794455145928-1256",
+  "symbol": "TATAELXSI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 3865.0,
+  "exit": 3881.0,
+  "entry_time": 1794455145928,
+  "exit_time": 1794543642008,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 3980.95,
+  "tp": null,
+  "high": 3901.1,
+  "low": 3820,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 3865.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 60.66,
+  "gross": -2000.0,
+  "charges": 319.37,
+  "net": -2319.37
+ },
+ {
+  "id": "1794456636961-1267",
+  "symbol": "ABCAPITAL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3100,
+  "entry": 408.4,
+  "exit": 409.6,
+  "entry_time": 1794456636961,
+  "exit_time": 1794543642008,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 394.5,
+  "tp": null,
+  "high": 420,
+  "low": 408.4,
+  "nifty": 0.37,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794456636961,
+   "price": 408.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.81,
+  "gross": 3720.0,
+  "charges": 762.16,
+  "net": 2957.84
+ },
+ {
+  "id": "1794456636961-1273",
+  "symbol": "ABCAPITAL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3100,
+  "entry": 408.4,
+  "exit": 409.6,
+  "entry_time": 1794456636961,
+  "exit_time": 1794543642008,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 396.15,
+  "tp": null,
+  "high": 420,
+  "low": 408.4,
+  "nifty": 0.37,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794456636961,
+   "price": 408.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.81,
+  "gross": 3720.0,
+  "charges": 762.16,
+  "net": 2957.84
  }
 ]
