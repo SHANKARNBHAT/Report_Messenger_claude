@@ -35524,5 +35524,42 @@
   "gross": -1560.0,
   "charges": 382.8,
   "net": -1942.8
+ },
+ {
+  "id": "1794372348387-1055",
+  "symbol": "MCX",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 225,
+  "entry": 3574.9,
+  "exit": 3699.95,
+  "entry_time": 1794372348387,
+  "exit_time": 1794547200000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 3481.3,
+  "tp": 3682.15,
+  "high": 3767.0,
+  "low": 3570.2,
+  "nifty": 1.21,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794372348387,
+   "price": 3574.9
+  },
+  "agrees": "Yes",
+  "sma_rsi": 63.16,
+  "gross": 28136.25,
+  "charges": 514.88,
+  "net": 27621.37
  }
 ]
