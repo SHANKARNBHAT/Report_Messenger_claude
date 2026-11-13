@@ -91,6 +91,7 @@ VP_QUERY = ("select [0] 2 hour Close as 'Close', [0] 2 hour High as 'High', [0] 
             "[0] 2 hour ha-close as 'HA close', [0] 2 hour Volume as 'Volume' "
             "WHERE( {33489} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
 VP_CANDLES = 300  # slots: about 230 candles (older days have an empty 3:15 PM slot), for SMA 200 of the 2H closes
+VP_LIVE = 5  # the latest candles, the running one with them: a long series leaves it out
 HA_DOJI_BODY = 0.1  # the previous HA candle's body must be more than this share of its range
 HA_SCAN_ROWS = 200
 
@@ -348,25 +349,8 @@ def fetch_ha_candles(link: str = HA_DASHBOARD) -> dict[str, dict[str, list[tuple
     return candles
 
 
-@st.cache_data(ttl=50, show_spinner=False)
-def fetch_vp_candles(link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
-    """symbol -> its last 2H candles (start in seconds, close, high, low, HA open, HA high, HA low,
-    HA close, volume: 0 when not known, as for an index), oldest first, the running one last, for the F&O stocks, NIFTY and BANKNIFTY (ha_vp.py)."""
-    with requests.Session() as session:
-        session.headers.update(CHARTINK_HEADERS)
-        url, token, _, raw_widgets = open_dashboard(session, link)
-        payload = None
-        # Chartink sometimes answers a long series with an empty list: then ask for fewer candles.
-        for wanted in (VP_CANDLES, 270):
-            try:
-                payload = widget_payload(session, url, token, {"query": VP_QUERY, "id": raw_widgets[0].get("id")},
-                                         PRICE_WIDGET_ROWS, wanted)
-            except (requests.RequestException, ValueError) as exc:
-                raise ChartinkError(f"Could not read the 2H candles: {exc}") from exc
-            if isinstance(payload, dict) and payload.get("groupData"):
-                break
-        if not isinstance(payload, dict) or not payload.get("groupData"):
-            raise ChartinkError(str((payload or {}).get("error") if isinstance(payload, dict) else "") or "No 2H candles")
+def vp_rows(payload: dict) -> dict[str, list[tuple]]:
+    """symbol -> its 2H candle rows (fetch_vp_candles) in a VP_QUERY answer."""
     starts = [t // 1000 for t in (payload.get("metaData") or [{}])[0].get("tradeTimes") or []]
     candles = {}
     for group in payload["groupData"]:
@@ -377,6 +361,41 @@ def fetch_vp_candles(link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
         candles[group.get("name")] = [
             (*row, volume[i] if i < len(volume) and volume[i] is not None and volume[i] < NO_VALUE else 0)
             for i, row in enumerate(rows) if all(v is not None and v < NO_VALUE for v in row)]
+    return candles
+
+
+@st.cache_data(ttl=50, show_spinner=False)
+def fetch_vp_candles(link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
+    """symbol -> its last 2H candles (start in seconds, close, high, low, HA open, HA high, HA low,
+    HA close, volume: 0 when not known, as for an index), oldest first, the running one last, for
+    the F&O stocks, NIFTY and BANKNIFTY (ha_vp.py).
+
+    Two requests: Chartink answers a long series (VP_CANDLES, for SMA 200) without the running
+    candle, and sometimes with an empty list, so the last VP_LIVE candles come from a short one."""
+    with requests.Session() as session:
+        session.headers.update(CHARTINK_HEADERS)
+        url, token, _, raw_widgets = open_dashboard(session, link)
+        widget = {"query": VP_QUERY, "id": raw_widgets[0].get("id")}
+
+        def ask(sizes):
+            for wanted in sizes:
+                try:
+                    payload = widget_payload(session, url, token, widget, PRICE_WIDGET_ROWS, wanted)
+                except (requests.RequestException, ValueError):
+                    continue
+                if isinstance(payload, dict) and payload.get("groupData"):
+                    return vp_rows(payload)
+            return None
+
+        live = ask((VP_LIVE, VP_LIVE, VP_LIVE + 1))
+        history = ask((VP_CANDLES, VP_CANDLES - 10, VP_CANDLES - 20, VP_CANDLES - 40, VP_CANDLES - 5))
+    if live is None and history is None:
+        raise ChartinkError("No 2H candles")
+    candles = {}
+    for symbol in set(live or {}) | set(history or {}):
+        rows = {row[0]: row for row in (history or {}).get(symbol, [])}
+        rows.update({row[0]: row for row in (live or {}).get(symbol, [])})  # the live answer wins
+        candles[symbol] = [rows[start] for start in sorted(rows)]
     return candles
 
 
