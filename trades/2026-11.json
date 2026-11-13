@@ -35933,5 +35933,79 @@
   "gross": 9116.25,
   "charges": 393.2,
   "net": 8723.05
+ },
+ {
+  "id": "1794543642008-1509",
+  "symbol": "PHOENIXLTD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2264.0,
+  "exit": 2252.3,
+  "entry_time": 1794543642008,
+  "exit_time": 1794549600000,
+  "reason": "HA lower wick",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 2223.35,
+  "tp": null,
+  "high": 2272.2,
+  "low": 2250.2,
+  "nifty": -0.42,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794543642008,
+   "price": 2269.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4095.0,
+  "charges": 491.33,
+  "net": -4586.33
+ },
+ {
+  "id": "1794543642008-1510",
+  "symbol": "PHOENIXLTD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2264.0,
+  "exit": 2252.3,
+  "entry_time": 1794543642008,
+  "exit_time": 1794549600000,
+  "reason": "HA lower wick",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 2223.35,
+  "tp": null,
+  "high": 2272.2,
+  "low": 2250.2,
+  "nifty": -0.42,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794543642008,
+   "price": 2269.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4095.0,
+  "charges": 491.33,
+  "net": -4586.33
  }
 ]
