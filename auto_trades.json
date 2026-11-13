@@ -491,42 +491,6 @@
    }
   },
   {
-   "id": "1793956545539-811",
-   "symbol": "BLUESTARCO",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 325,
-   "entry": 1568.0,
-   "sl": 1544.5,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "rsi",
-   "system": "RSI",
-   "stop": 1544.5,
-   "time": 1793956545539,
-   "status": "open",
-   "passed": false,
-   "high": 1633,
-   "low": 1546.4,
-   "nifty": 3.73,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1793956545539,
-    "price": 1568.0
-   }
-  },
-  {
    "id": "1794197446718-816",
    "symbol": "JUBLFOOD",
    "side": "SELL",
@@ -2488,42 +2452,6 @@
     "step": 2.0
    },
    "style": "trail",
-   "system": "RSI",
-   "stop": 396.2,
-   "time": 1794374733560,
-   "status": "open",
-   "passed": false,
-   "high": 409,
-   "low": 399,
-   "nifty": 1.31,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794374733560,
-    "price": 404.85
-   }
-  },
-  {
-   "id": "1794374733560-1124",
-   "symbol": "LICI",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 1400,
-   "entry": 404.85,
-   "sl": 396.2,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "rsi",
    "system": "RSI",
    "stop": 396.2,
    "time": 1794374733560,
@@ -5055,7 +4983,7 @@
    "status": "open",
    "passed": false,
    "high": 334.75,
-   "low": 326.55,
+   "low": 325.7,
    "nifty": 0.23,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -5243,7 +5171,7 @@
    "status": "open",
    "passed": false,
    "high": 521.8,
-   "low": 514.15,
+   "low": 513.65,
    "nifty": 0.07,
    "source": "Auto 2H",
    "timeframes": [
@@ -5407,80 +5335,6 @@
    "first_seen": {
     "time": 1794543343115,
     "price": 28545.0
-   }
-  },
-  {
-   "id": "1794543642008-1499",
-   "symbol": "ASTRAL",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 425,
-   "entry": 1272.8,
-   "sl": 1296.0,
-   "tp": 1236.35,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "vp",
-   "system": "HA VP",
-   "stop": 1295.55,
-   "atr": 23.22,
-   "time": 1794543642008,
-   "status": "open",
-   "passed": false,
-   "high": 1280,
-   "low": 1272.8,
-   "nifty": -0.42,
-   "source": "Auto HA VP 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA VP Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794543642008,
-    "price": 1275.0
-   }
-  },
-  {
-   "id": "1794543642008-1500",
-   "symbol": "ASTRAL",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 425,
-   "entry": 1272.8,
-   "sl": 1296.0,
-   "tp": 1236.35,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "vp_trail",
-   "system": "HA VP TRAIL",
-   "stop": 1295.55,
-   "atr": 23.22,
-   "time": 1794543642008,
-   "status": "open",
-   "passed": false,
-   "high": 1280,
-   "low": 1272.8,
-   "nifty": -0.42,
-   "source": "Auto HA VP TRAIL 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA VP TRAIL Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794543642008,
-    "price": 1275.0
    }
   },
   {
@@ -5874,7 +5728,7 @@
    "status": "open",
    "passed": false,
    "high": 1915,
-   "low": 1897.2,
+   "low": 1897,
    "nifty": -0.42,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -5911,7 +5765,7 @@
    "status": "open",
    "passed": false,
    "high": 1915,
-   "low": 1897.2,
+   "low": 1897,
    "nifty": -0.42,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -6133,7 +5987,7 @@
    "status": "open",
    "passed": false,
    "high": 437.6,
-   "low": 434.25,
+   "low": 434,
    "nifty": -0.36,
    "source": "Auto 2H",
    "timeframes": [
@@ -6169,7 +6023,7 @@
    "status": "open",
    "passed": false,
    "high": 437.6,
-   "low": 434.25,
+   "low": 434,
    "nifty": -0.36,
    "source": "Auto 2H",
    "timeframes": [
@@ -6205,7 +6059,7 @@
    "status": "open",
    "passed": false,
    "high": 437.6,
-   "low": 434.25,
+   "low": 434,
    "nifty": -0.36,
    "source": "Auto 2H",
    "timeframes": [
@@ -6315,7 +6169,7 @@
    "status": "open",
    "passed": false,
    "high": 398.9,
-   "low": 395.1,
+   "low": 394.65,
    "nifty": -0.46,
    "source": "Auto 2H",
    "timeframes": [
@@ -6351,7 +6205,7 @@
    "status": "open",
    "passed": false,
    "high": 398.9,
-   "low": 395.1,
+   "low": 394.65,
    "nifty": -0.46,
    "source": "Auto 2H",
    "timeframes": [
@@ -6388,7 +6242,7 @@
    "status": "open",
    "passed": false,
    "high": 4663.0,
-   "low": 4625.1,
+   "low": 4625,
    "nifty": -0.37,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -6425,7 +6279,7 @@
    "status": "open",
    "passed": false,
    "high": 4663.0,
-   "low": 4625.1,
+   "low": 4625,
    "nifty": -0.37,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -6689,7 +6543,7 @@
    "status": "open",
    "passed": false,
    "high": 2073.8,
-   "low": 2064.2,
+   "low": 2063.5,
    "nifty": -0.33,
    "source": "Auto 2H",
    "timeframes": [
@@ -6725,7 +6579,7 @@
    "status": "open",
    "passed": false,
    "high": 2073.8,
-   "low": 2064.2,
+   "low": 2063.5,
    "nifty": -0.33,
    "source": "Auto 2H",
    "timeframes": [
@@ -6761,7 +6615,7 @@
    "status": "open",
    "passed": false,
    "high": 2073.8,
-   "low": 2064.2,
+   "low": 2063.5,
    "nifty": -0.33,
    "source": "Auto 2H",
    "timeframes": [
@@ -6963,6 +6817,10 @@
  ],
  "seq": 1545,
  "log": [
+  "13 Nov 11:25  LICI: RSI exit (2H 60.0) at 406.1 (Hold \u00b7 RSI exit)",
+  "13 Nov 11:25  BLUESTARCO: RSI exit (2H 59.8) at 1620.1 (Hold \u00b7 RSI exit)",
+  "13 Nov 11:25  ASTRAL: HA upper wick at 1278.2 (HA VP TRAIL)",
+  "13 Nov 11:25  ASTRAL: HA upper wick at 1278.2 (HA VP)",
   "13 Nov 11:15  ADANIGREEN: 2H close past SMA 8 at 1419.0 (Hold \u00b7 2H SMA 8 exit)",
   "13 Nov 11:10  KOTAKBANK: HA exit (4H) at 484.8 (Hold \u00b7 HA exit)",
   "13 Nov 11:05  PERSISTENT: RSI BUY 125 at 6081.0, SL 5989.8 (2 HOUR; trail, sma8, sma20)",
@@ -7258,14 +7116,10 @@
   "12 Nov 13:30  TATAELXSI: HA VP TRAIL SELL 125 at 3848.2, SL 3905.85 (1 ATR 57.66), target 3715.25",
   "12 Nov 13:30  TATAELXSI: HA VP SELL 125 at 3848.2, SL 3905.85 (1 ATR 57.66), target 3715.25",
   "12 Nov 13:30  COLPAL: HA VP TRAIL SELL 275 at 1722.0, SL 1744.2 (1 ATR 22.22), target 1653.8",
-  "12 Nov 13:30  COLPAL: HA VP SELL 275 at 1722.0, SL 1744.2 (1 ATR 22.22), target 1653.8",
-  "12 Nov 13:30  COFORGE: HA VP TRAIL SELL 475 at 2009.7, SL 2042.85 (1 ATR 33.16), target 1962.0",
-  "12 Nov 13:30  COFORGE: HA VP SELL 475 at 2009.7, SL 2042.85 (1 ATR 33.16), target 1962.0",
-  "12 Nov 13:30  BHARTIARTL: HA VP TRAIL SELL 475 at 2080.7, SL 2106.1 (1 ATR 25.42), target 2044.0",
-  "12 Nov 13:30  BHARTIARTL: HA VP SELL 475 at 2080.7, SL 2106.1 (1 ATR 25.42), target 2044.0"
+  "12 Nov 13:30  COLPAL: HA VP SELL 275 at 1722.0, SL 1744.2 (1 ATR 22.22), target 1653.8"
  ],
- "page_run": 1794549040240,
- "updated": 1794549040240,
+ "page_run": 1794549339396,
+ "updated": 1794549339396,
  "unattended": true,
  "peak_margin": 45320774.84
 }

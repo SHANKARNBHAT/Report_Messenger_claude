@@ -35711,5 +35711,153 @@
   "gross": -3360.0,
   "charges": 526.84,
   "net": -3886.84
+ },
+ {
+  "id": "1794543642008-1499",
+  "symbol": "ASTRAL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 425,
+  "entry": 1272.8,
+  "exit": 1278.2,
+  "entry_time": 1794543642008,
+  "exit_time": 1794548700000,
+  "reason": "HA upper wick",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 1296.0,
+  "tp": 1236.35,
+  "high": 1280,
+  "low": 1272.8,
+  "nifty": -0.42,
+  "strategies": [
+   "2H HA VP Bearish"
+  ],
+  "first_seen": {
+   "time": 1794543642008,
+   "price": 1275.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2295.0,
+  "charges": 351.95,
+  "net": -2646.95
+ },
+ {
+  "id": "1794543642008-1500",
+  "symbol": "ASTRAL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 425,
+  "entry": 1272.8,
+  "exit": 1278.2,
+  "entry_time": 1794543642008,
+  "exit_time": 1794548700000,
+  "reason": "HA upper wick",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 1296.0,
+  "tp": 1236.35,
+  "high": 1280,
+  "low": 1272.8,
+  "nifty": -0.42,
+  "strategies": [
+   "2H HA VP TRAIL Bearish"
+  ],
+  "first_seen": {
+   "time": 1794543642008,
+   "price": 1275.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2295.0,
+  "charges": 351.95,
+  "net": -2646.95
+ },
+ {
+  "id": "1793956545539-811",
+  "symbol": "BLUESTARCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1568.0,
+  "exit": 1620.1,
+  "entry_time": 1793956545539,
+  "exit_time": 1794549339396,
+  "reason": "RSI exit (2H 59.8)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 1544.5,
+  "tp": null,
+  "high": 1633,
+  "low": 1546.4,
+  "nifty": 3.73,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793956545539,
+   "price": 1568.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 16932.5,
+  "charges": 343.03,
+  "net": 16589.47
+ },
+ {
+  "id": "1794374733560-1124",
+  "symbol": "LICI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1400,
+  "entry": 404.85,
+  "exit": 406.1,
+  "entry_time": 1794374733560,
+  "exit_time": 1794549339396,
+  "reason": "RSI exit (2H 60.0)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 396.2,
+  "tp": null,
+  "high": 409,
+  "low": 399,
+  "nifty": 1.31,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794374733560,
+   "price": 404.85
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 1750.0,
+  "charges": 367.32,
+  "net": 1382.68
  }
 ]
