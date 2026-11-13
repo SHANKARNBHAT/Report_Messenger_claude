@@ -57,7 +57,7 @@ if Path(chartink_dashboard.__file__).stat().st_mtime > getattr(chartink_dashboar
 from chartink_dashboard import (CHART_SITES, CHARTINK_HEADERS, DEFAULT_DASHBOARD, DEFAULT_SNAPSHOT, FUNDAMENTALS_DASHBOARD,
                                 FUNDAMENTALS_ROWS, HA_DASHBOARD, IST, MY_LAYOUT, TIMEFRAMES, ChartinkError,
                                 fetch_dashboard, fetch_ha_candles, fetch_ha_signals, fetch_price_bars,
-                                fetch_tf_candles, fetch_volume_profile, fetch_vp_candles, fetch_watchlists)
+                                fetch_volume_profile, fetch_vp_candles, fetch_watchlists)
 
 # ---------------------------------------------------------------------------
 # Settings
@@ -89,9 +89,9 @@ CANDLE_MINUTES = {"2 HOUR": 120, "4 HOUR": 240}
 # Held positions close at 3:15 PM on the futures expiry day.
 STYLES = {"eod": "EOD 3:15 PM", "trail": "Hold · trail", "rsi": "Hold · RSI exit"}
 HELD = ("trail", "rsi", "ha", "ha_green", "sma8", "sma20")
-# The Auto trader's SMA exits: held until a finished candle of the trade's timeframe (2H for RSI,
-# 4H, Daily or Weekly for RSI 4H, RSI Daily, RSI Weekly) closes past the SMA of this many of its
-# closes (below for a long, above for a short), at that close (auto_trader.sma_exit).
+# The Auto trader's SMA exits: held until a finished 2H candle closes past the SMA of this many
+# 2H closes (below for a long, above for a short), at that close (auto_trader.sma_exit), for RSI 4H,
+# RSI Daily and RSI Weekly too.
 SMA_EXITS = {"sma8": 8, "sma20": 20}
 # The Auto trader's strategies and their exit styles. Only it trades Heikin Ashi, with one
 # more style: held until the running candle of its timeframe goes past the previous HA
@@ -102,14 +102,14 @@ SMA_EXITS = {"sma8": 8, "sma20": 20}
 BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/red exit",
               "atr": "Intraday · 1.1 ATR trail", "vp": "Intraday · ATR trail, VP target, EMA 8",
               "vp_trail": "Intraday · ATR trail, 1.5% trail past VP target, EMA 8",
-              "sma8": "Hold · SMA 8 exit", "sma20": "Hold · SMA 20 exit"}
+              "sma8": "Hold · 2H SMA 8 exit", "sma20": "Hold · 2H SMA 20 exit"}
 # HA MTF: the HA signals of 2H, 4H and Daily, held until the HA exit of the highest
 # timeframe that matched (auto_trader.py, enter_signals).
 # HA IDX: Heikin Ashi on NIFTY and BANKNIFTY 15-minute candles with an ATR trailing SL (ha_index.py).
 # HA VP: Heikin Ashi on the stocks' 2H candles, ATR trailing SL, volume profile target, EMA 8 exit
 # (ha_vp.py). HA and HA MTF take no new trades: kept so their trades still show and their
 # open positions still close.
-# RSI 4H, RSI Daily and RSI Weekly: the RSI signals of those timeframes, traded as RSI trades the 2H ones.
+# RSI 4H, RSI Daily and RSI Weekly: entered on the RSI signals of those timeframes, then traded as RSI (2H SL and exits).
 SYSTEMS = {"RSI": ("trail", "sma8", "sma20"), "RSI 4H": ("trail", "sma8", "sma20"),
            "RSI Daily": ("trail", "sma8", "sma20"), "RSI Weekly": ("trail", "sma8", "sma20"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",),
            "HA VP": ("vp",), "HA VP TRAIL": ("vp_trail",)}

@@ -1,7 +1,8 @@
 """
 Auto trader: paper-trades every Chartink signal without the simulator page open, for several strategies apart (fs.SYSTEMS):
 RSI (chartink_dashboard.DEFAULT_DASHBOARD: its 2H signals; its 4H, Daily and Weekly ones are
-RSI 4H, RSI Daily and RSI Weekly, each traded the same way on its own timeframe, see RSI_SYSTEMS), Heikin Ashi (its own scans, chartink_dashboard.ha_scan) and HA MTF (the
+RSI 4H, RSI Daily and RSI Weekly, see RSI_SYSTEMS: entered on their own timeframe's signal, then
+traded exactly as RSI: SL from the previous 2H candle, the same styles and 2H SMA exits), Heikin Ashi (its own scans, chartink_dashboard.ha_scan) and HA MTF (the
 HA signals of 2H, 4H and Daily: a timeframe counts unless its previous HA candle is a
 doji, and the position is held until the HA exit of the highest one that counted, which
 trails it, with a fixed SL MTF_SL_PCT from the entry until then). A stock on several gets a trade in
@@ -20,8 +21,8 @@ trades any more: their open positions still close by their rules.
     compare them on the same signals: squared off at 3:15 PM, held with a trailing SL
     after the target, held until the RSI exit (for Heikin Ashi: the HA exit, see
     ha_exit). RSI now trades Hold · trail and two SMA exits instead (sma_exit): held until
-    a finished candle of its timeframe (2H for RSI, 4H / Daily / Weekly for the others) closes
-    below (a long) / above (a short) the SMA 8, or the SMA 20, of that timeframe's closes; its EOD and RSI exit styles are retired (futures_simulator.RETIRED_STYLES). A stock is traded once per side and style per session, in each strategy.
+    a finished 2H candle closes below (a long) / above (a short) the SMA 8, or the SMA 20,
+    of the 2H closes (RSI 4H, Daily and Weekly too); its EOD and RSI exit styles are retired (futures_simulator.RETIRED_STYLES). A stock is traded once per side and style per session, in each strategy.
     Every signal is taken, with no capital limit, to test the strategy: the Auto trader page works out the margin that needed from the trades
   * applies a request from the Auto trader page (auto_trader_page.py): keep a
     position going past its target with a trailing SL, exit at the target, or exit now
@@ -64,8 +65,7 @@ TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY", "WEEKLY")
 TRADED_TIMEFRAMES = {"RSI": ("2 HOUR",), "RSI 4H": ("4 HOUR",), "RSI Daily": ("DAILY",), "RSI Weekly": ("WEEKLY",)}
 # The RSI dashboard's signals go to the strategy of their timeframe.
 RSI_SYSTEMS = {tf: system for system, (tf,) in TRADED_TIMEFRAMES.items()}
-MTF_SL_PCT = 3.0
-TF_SL_PCT = 3.0  # RSI 4H, Daily, Weekly: the SL is never further than this from the entry  # HA MTF: the initial SL; the HA exit of the exit timeframe trails from there
+MTF_SL_PCT = 3.0  # HA MTF: the initial SL; the HA exit of the exit timeframe trails from there
 DOJI_BODY = 0.10  # HA MTF: a previous HA candle with a body this share of its range or less is a doji
 SHORT = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 LOTS = 1
@@ -274,7 +274,6 @@ def entry_sl(entry: float, long: bool, system: str, timeframe: str, symbol: str,
              now: datetime) -> float:
     """The SL of a new position. RSI: the low (a long) or high (a short) of the previous candle
     of its timeframe, or AUTO_SL_PCT away, whichever is lower (a long) or higher (a short).
-    RSI 4H, Daily and Weekly: that candle's low (high), but never more than TF_SL_PCT away.
     HA: the low (a long) or high (a short) of the previous HA candle. AUTO_SL_PCT away when
     the candle is not known, or is on the wrong side of the entry."""
     percent = tick(entry * (1 - fs.AUTO_SL_PCT / 100 * (1 if long else -1)))
@@ -283,18 +282,9 @@ def entry_sl(entry: float, long: bool, system: str, timeframe: str, symbol: str,
         rows = (sources.get(timeframe) or {}).get(symbol) or []
         done = [row for row in rows if candle_end(timeframe, row[0]) <= now.timestamp()]
         level = done[-1][2 if long else 3] if done else None
-    elif system != "RSI":  # RSI 4H, Daily, Weekly: their candles (fs.fetch_tf_candles: start, close, high, low)
-        rows = sources.get(symbol) or []
-        done = [row for row in rows if candle_end(timeframe, row[0]) <= now.timestamp()]
-        level = done[-1][3 if long else 2] if done else None
     else:
         found = previous_candle(sources.get(symbol) or [], timeframe, now)
         level = found and found[0 if long else 1]
-    if system.startswith("RSI") and system != "RSI":
-        cap = tick(entry * (1 - TF_SL_PCT / 100 * (1 if long else -1)))
-        if level is None or (level >= entry if long else level <= entry):
-            return cap
-        return max(tick(level), cap) if long else min(tick(level), cap)
     if level is None or (level >= entry if long else level <= entry):
         return percent
     level = tick(level)
@@ -337,13 +327,13 @@ def ha_exit(position: dict, candles: dict, now: datetime) -> dict | None:
 
 
 def sma_exit(position: dict, candles: dict, now: datetime) -> dict | None:
-    """The SMA exit of a position of an SMA style (fs.SMA_EXITS), if due: the first finished candle
-    of its timeframe ending after the entry that closed below (a long) or above (a short) the SMA
-    of the last N closes, at that close. `candles`: timeframe -> symbol -> rows (start, close, ...).
-    Exit price, time (ms) and reason, else None."""
+    """The SMA exit of a position of an SMA style (fs.SMA_EXITS), if due: the first finished 2H
+    candle ending after the entry that closed below (a long) or above (a short) the SMA of the
+    last N 2H closes, at that close (whatever the signal's timeframe: RSI 4H, Daily and Weekly
+    exit as RSI). Exit price, time (ms) and reason, else None."""
     length = fs.SMA_EXITS[position["style"]]
-    timeframe = position["timeframes"][0]
-    rows = (candles.get(timeframe) or {}).get(position["symbol"]) or []
+    timeframe = "2 HOUR"
+    rows = candles.get(position["symbol"]) or []
     long = position["side"] == "BUY"
     for index in range(length - 1, len(rows)):
         end = candle_end(timeframe, rows[index][0])
@@ -368,12 +358,12 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
             candles = fs.fetch_ha_candles()
         except fs.ChartinkError as exc:
             note(f"No candles for the HA exits: {exc}")
-    by_timeframe = {}
-    for timeframe in sorted({p["timeframes"][0] for p in account["positions"] if p.get("style") in fs.SMA_EXITS}):
+    two_hour = {}
+    if any(p.get("style") in fs.SMA_EXITS for p in account["positions"]):
         try:
-            by_timeframe[timeframe] = fs.fetch_vp_candles() if timeframe == "2 HOUR" else fs.fetch_tf_candles(timeframe)
+            two_hour = fs.fetch_vp_candles()
         except fs.ChartinkError as exc:
-            note(f"No {SHORT[timeframe]} candles for the SMA exits: {exc}")
+            note(f"No 2H candles for the SMA exits: {exc}")
     settle_index(files, account, now, note)
     settle_vp(files, account, now, note)
     for result in fs.check_positions([p for p in account["positions"]
@@ -381,7 +371,7 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
         position = next(p for p in account["positions"] if p["id"] == result["id"])
         # A candle that went past since the last run may have come before what the bars show.
         due = (ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS
-               else sma_exit(position, by_timeframe, now) if position.get("style") in fs.SMA_EXITS else None)
+               else sma_exit(position, two_hour, now) if position.get("style") in fs.SMA_EXITS else None)
         if due and (result["status"] != "closed" or due["exit_time"] < result["exit_time"]):
             result = {**result, **due, "status": "closed"}
         if result["status"] == "closed" and not 0 < result["exit"] < NO_VALUE:
@@ -722,8 +712,7 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
     nifty = fs.nifty_change()
     # For the SL (entry_sl): the HA candles, or the 5-minute bars to make the RSI ones from.
     try:
-        sources = (fs.fetch_ha_candles() if system.startswith("HA") else fs.fetch_price_bars(fs.DEFAULT_DASHBOARD)
-                   if system == "RSI" else fs.fetch_tf_candles(traded[0]))
+        sources = fs.fetch_ha_candles() if system.startswith("HA") else fs.fetch_price_bars(fs.DEFAULT_DASHBOARD)
     except fs.ChartinkError as exc:
         sources = {}
         note(f"No candles for the {system} SL, using {fs.AUTO_SL_PCT}%: {exc}")
@@ -746,7 +735,8 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
         tp = tick(entry * (1 + fs.AUTO_TP_PCT / 100 * (1 if long else -1)))
         timeframes = sorted({s["timeframe"] for s in found}, key=TIMEFRAMES.index)
         sl = (tick(entry * (1 - MTF_SL_PCT / 100 * (1 if long else -1))) if system == "HA MTF"
-              else entry_sl(entry, long, system, timeframes[0], symbol, sources, now))
+              else entry_sl(entry, long, system, "2 HOUR" if system.startswith("RSI") else timeframes[0], symbol,
+                            sources, now))
         first = min((seen[signal_key(s)] for s in found if signal_key(s) in seen), key=lambda f: f["time"], default=None)
         # The SMA RSI of the shortest timeframe, as for the exit.
         sma_rsi = next((s["sma_rsi"] for s in sorted(found, key=lambda s: TIMEFRAMES.index(s["timeframe"]))

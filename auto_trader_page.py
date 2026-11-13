@@ -902,13 +902,13 @@ def main() -> None:
     st.title("🤖 Auto trader")
     st.caption(
         f"Paper-trades every Chartink RSI signal, each timeframe its own strategy: **RSI 2H**, **RSI 4H**, **RSI Daily** "
-        f"and **RSI Weekly** (a stock on several gets a trade in each), 1 lot, SL at the previous candle of the "
-        f"signal's timeframe (RSI 4H, Daily, Weekly: at most 3% away; Heikin Ashi: the previous HA "
+        f"and **RSI Weekly** (a stock on several gets a trade in each; only the entry signal's timeframe differs, "
+        f"the SL and exits are all 2H), 1 lot, SL at the previous 2H candle (Heikin Ashi: the previous HA "
         f"candle's low / high; RSI: the candle's low / high or {fs.AUTO_SL_PCT}%, whichever is further), in its exit styles "
         f"side by side: **Hold · trail** (held "
-        f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · SMA 8 exit** and "
-        f"**Hold · SMA 20 exit** (held until a finished candle of the signal's timeframe closes below / above the SMA 8 "
-        f"or 20 of that timeframe's closes; these replaced EOD and Hold · RSI exit, whose past trades still show; for Heikin Ashi, **Hold · HA exit**: held "
+        f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · 2H SMA 8 exit** and "
+        f"**Hold · 2H SMA 20 exit** (held until a finished 2H candle closes below / above the SMA 8 or 20 of the 2H "
+        f"closes; these replaced EOD and Hold · RSI exit, whose past trades still show; for Heikin Ashi, **Hold · HA exit**: held "
         f"until the live candle of its timeframe goes below the previous HA low / above the previous HA high). "
         f"Held trades close on expiry day at 3:15 PM. "
         f"The Heikin Ashi signals come from the bot's own scans: a green (red) candle on above-average volume whose HA "
