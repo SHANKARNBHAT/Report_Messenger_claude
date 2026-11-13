@@ -36192,5 +36192,42 @@
   "gross": -4400.0,
   "charges": 408.81,
   "net": -4808.81
+ },
+ {
+  "id": "1794458737955-1307",
+  "symbol": "LODHA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1204.5,
+  "exit": 1222.6,
+  "entry_time": 1794458737955,
+  "exit_time": 1794551100000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1161.6,
+  "tp": 1240.65,
+  "high": 1242.6,
+  "low": 1200.2,
+  "nifty": 0.36,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794458737955,
+   "price": 1204.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 73.12,
+  "gross": 11312.5,
+  "charges": 477.08,
+  "net": 10835.42
  }
 ]
