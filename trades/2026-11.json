@@ -35635,5 +35635,44 @@
   "gross": -5500.0,
   "charges": 536.94,
   "net": -6036.94
+ },
+ {
+  "id": "1794374144475-1108",
+  "symbol": "KOTAKBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2000,
+  "entry": 484.55,
+  "exit": 484.8,
+  "entry_time": 1794374144475,
+  "exit_time": 1794548440664,
+  "reason": "HA exit (4H)",
+  "source": "Auto HA MTF 2H+4H",
+  "timeframes": [
+   "2 HOUR",
+   "4 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 470.0,
+  "tp": null,
+  "high": 494.05,
+  "low": 482.8,
+  "nifty": 1.28,
+  "strategies": [
+   "2H HA Bullish scan",
+   "4H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794374144475,
+   "price": 484.55
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 68.63,
+  "gross": 500.0,
+  "charges": 593.25,
+  "net": -93.25
  }
 ]
