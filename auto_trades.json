@@ -816,7 +816,7 @@
    "time": 1794210637305,
    "status": "open",
    "passed": true,
-   "high": 366.2,
+   "high": 366.7,
    "low": 351.6,
    "nifty": -0.42,
    "source": "Auto 2H",
@@ -1841,7 +1841,7 @@
    "status": "open",
    "passed": false,
    "high": 2567.3,
-   "low": 2508.4,
+   "low": 2507.4,
    "nifty": 1.24,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2110,7 +2110,7 @@
    "status": "open",
    "passed": false,
    "high": 266.5,
-   "low": 258.4,
+   "low": 258.1,
    "nifty": 1.21,
    "source": "Auto 2H",
    "timeframes": [
@@ -2149,7 +2149,7 @@
    "status": "open",
    "passed": false,
    "high": 266.5,
-   "low": 258.4,
+   "low": 258.1,
    "nifty": 1.21,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -6391,7 +6391,7 @@
    "status": "open",
    "passed": false,
    "high": 2073.8,
-   "low": 2061.5,
+   "low": 2059.1,
    "nifty": -0.33,
    "source": "Auto 2H",
    "timeframes": [
@@ -6427,7 +6427,7 @@
    "status": "open",
    "passed": false,
    "high": 2073.8,
-   "low": 2061.5,
+   "low": 2059.1,
    "nifty": -0.33,
    "source": "Auto 2H",
    "timeframes": [
@@ -6463,7 +6463,7 @@
    "status": "open",
    "passed": false,
    "high": 2073.8,
-   "low": 2061.5,
+   "low": 2059.1,
    "nifty": -0.33,
    "source": "Auto 2H",
    "timeframes": [
@@ -6574,7 +6574,7 @@
    "status": "open",
    "passed": false,
    "high": 6103,
-   "low": 6076,
+   "low": 6061.5,
    "nifty": -0.46,
    "source": "Auto 2H",
    "timeframes": [
@@ -6610,7 +6610,7 @@
    "status": "open",
    "passed": false,
    "high": 6103,
-   "low": 6076,
+   "low": 6061.5,
    "nifty": -0.46,
    "source": "Auto 2H",
    "timeframes": [
@@ -6646,7 +6646,7 @@
    "status": "open",
    "passed": false,
    "high": 6103,
-   "low": 6076,
+   "low": 6061.5,
    "nifty": -0.46,
    "source": "Auto 2H",
    "timeframes": [
@@ -6661,10 +6661,122 @@
     "time": 1794548139965,
     "price": 6081.0
    }
+  },
+  {
+   "id": "1794550845120-1546",
+   "symbol": "AMBER",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 100,
+   "entry": 6899.5,
+   "sl": 6000.0,
+   "tp": 7106.5,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 103.5,
+    "step": 34.5
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 6000.0,
+   "time": 1794550845120,
+   "status": "open",
+   "passed": false,
+   "high": 6899.5,
+   "low": 6899.5,
+   "nifty": -0.57,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794550845120,
+    "price": 6899.5
+   }
+  },
+  {
+   "id": "1794550845120-1547",
+   "symbol": "AMBER",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 100,
+   "entry": 6899.5,
+   "sl": 6000.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma8",
+   "system": "RSI",
+   "stop": 6000.0,
+   "time": 1794550845120,
+   "status": "open",
+   "passed": false,
+   "high": 6899.5,
+   "low": 6899.5,
+   "nifty": -0.57,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794550845120,
+    "price": 6899.5
+   }
+  },
+  {
+   "id": "1794550845120-1548",
+   "symbol": "AMBER",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 100,
+   "entry": 6899.5,
+   "sl": 6000.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma20",
+   "system": "RSI",
+   "stop": 6000.0,
+   "time": 1794550845120,
+   "status": "open",
+   "passed": false,
+   "high": 6899.5,
+   "low": 6899.5,
+   "nifty": -0.57,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794550845120,
+    "price": 6899.5
+   }
   }
  ],
- "seq": 1545,
+ "seq": 1548,
  "log": [
+  "13 Nov 11:50  AMBER: RSI BUY 100 at 6899.5, SL 6000.0 (2 HOUR; trail, sma8, sma20)",
   "13 Nov 11:40  PHOENIXLTD: HA lower wick at 2252.3 (HA VP TRAIL)",
   "13 Nov 11:40  PHOENIXLTD: HA lower wick at 2252.3 (HA VP)",
   "13 Nov 11:30  CAMS: TSL after target at 745.5 (Hold \u00b7 trail)",
@@ -6963,11 +7075,10 @@
   "12 Nov 13:31  UPL: HA VP TRAIL SELL 1355 at 552.1, SL 562.45 (1 ATR 10.37), target 534.9",
   "12 Nov 13:31  UPL: HA VP SELL 1355 at 552.1, SL 562.45 (1 ATR 10.37), target 534.9",
   "12 Nov 13:31  BANKNIFTY: HA IDX BUY 30 at 61373.8, SL 61207.4 (1.1 ATR, 15m)",
-  "12 Nov 13:31  BDL: Stop loss at 1096.55 (Hold \u00b7 trail)",
-  "12 Nov 13:31  BDL: Stop loss at 1096.55 (EOD 3:15 PM)"
+  "12 Nov 13:31  BDL: Stop loss at 1096.55 (Hold \u00b7 trail)"
  ],
- "page_run": 1794550542320,
- "updated": 1794550542320,
+ "page_run": 1794550845120,
+ "updated": 1794550845120,
  "unattended": true,
  "peak_margin": 45320774.84
 }
