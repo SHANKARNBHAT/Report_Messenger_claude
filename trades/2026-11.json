@@ -35043,5 +35043,153 @@
   "gross": 3720.0,
   "charges": 762.16,
   "net": 2957.84
+ },
+ {
+  "id": "1793941265984-774",
+  "symbol": "MOTHERSON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 153.8,
+  "exit": 169.69,
+  "entry_time": 1793941265984,
+  "exit_time": 1794390900000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 169.5,
+  "tp": 149.2,
+  "high": 169.69,
+  "low": 152.84,
+  "nifty": 0.61,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793941265984,
+   "price": 153.78
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 56.24,
+  "gross": -97723.5,
+  "charges": 583.97,
+  "net": -98307.47
+ },
+ {
+  "id": "1794388843039-1190",
+  "symbol": "FORTIS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 775,
+  "entry": 768.05,
+  "exit": 767.05,
+  "entry_time": 1794388843039,
+  "exit_time": 1794543939172,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 777.5,
+  "tp": null,
+  "high": 773.75,
+  "low": 747.8,
+  "nifty": 0.59,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794388843039,
+   "price": 768.05
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 57.41,
+  "gross": 775.0,
+  "charges": 382.4,
+  "net": 392.6
+ },
+ {
+  "id": "1794388843039-1192",
+  "symbol": "FORTIS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 775,
+  "entry": 768.05,
+  "exit": 767.05,
+  "entry_time": 1794388843039,
+  "exit_time": 1794543939172,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 791.1,
+  "tp": null,
+  "high": 773.75,
+  "low": 747.8,
+  "nifty": 0.59,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794388843039,
+   "price": 768.05
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 57.41,
+  "gross": 775.0,
+  "charges": 382.4,
+  "net": 392.6
+ },
+ {
+  "id": "1794455145928-1220",
+  "symbol": "INOXWIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6400,
+  "entry": 65.9,
+  "exit": 64.55,
+  "entry_time": 1794455145928,
+  "exit_time": 1794542700000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 67.4,
+  "tp": 63.9,
+  "high": 67.09,
+  "low": 63.21,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 65.88
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 64.1,
+  "gross": 8640.0,
+  "charges": 284.37,
+  "net": 8355.63
  }
 ]
