@@ -473,7 +473,7 @@
    "time": 1793956545539,
    "status": "open",
    "passed": false,
-   "high": 1608.9,
+   "high": 1614.4,
    "low": 1546.4,
    "nifty": 3.73,
    "source": "Auto 2H",
@@ -509,7 +509,7 @@
    "time": 1793956545539,
    "status": "open",
    "passed": false,
-   "high": 1608.9,
+   "high": 1614.4,
    "low": 1546.4,
    "nifty": 3.73,
    "source": "Auto 2H",
@@ -548,7 +548,7 @@
    "time": 1794197446718,
    "status": "open",
    "passed": false,
-   "high": 444.75,
+   "high": 445.75,
    "low": 427.2,
    "nifty": -0.41,
    "source": "Auto HA 2H",
@@ -2106,8 +2106,8 @@
    "time": 1794372042772,
    "status": "open",
    "passed": false,
-   "high": 2776.5,
-   "low": 2696.2,
+   "high": 2774.9,
+   "low": 2698.0,
    "nifty": 1.19,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2358,42 +2358,6 @@
    }
   },
   {
-   "id": "1794374144475-1107",
-   "symbol": "KOTAKBANK",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 2000,
-   "entry": 484.55,
-   "sl": 475.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA",
-   "stop": 475.0,
-   "time": 1794374144475,
-   "status": "open",
-   "passed": false,
-   "high": 494.05,
-   "low": 482.8,
-   "nifty": 1.28,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish scan"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 68.63,
-   "first_seen": {
-    "time": 1794374144475,
-    "price": 484.55
-   }
-  },
-  {
    "id": "1794374144475-1108",
    "symbol": "KOTAKBANK",
    "side": "BUY",
@@ -2430,45 +2394,6 @@
    "first_seen": {
     "time": 1794374144475,
     "price": 484.55
-   }
-  },
-  {
-   "id": "1794374442469-1110",
-   "symbol": "GVT&D",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 125,
-   "entry": 4223.0,
-   "sl": 4041.1,
-   "tp": 4349.7,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 63.35,
-    "step": 21.1
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 4391.85,
-   "time": 1794374442469,
-   "status": "open",
-   "passed": true,
-   "high": 4464.8,
-   "low": 4121.6,
-   "nifty": 1.3,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794374442469,
-    "price": 4223.0
    }
   },
   {
@@ -3484,7 +3409,7 @@
    "status": "open",
    "passed": false,
    "high": 420,
-   "low": 407.55,
+   "low": 407.05,
    "nifty": 0.37,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -4830,7 +4755,7 @@
    "time": 1794460843840,
    "status": "open",
    "passed": false,
-   "high": 4663,
+   "high": 4664,
    "low": 4507,
    "nifty": 0.33,
    "source": "Auto 2H",
@@ -4866,7 +4791,7 @@
    "time": 1794460843840,
    "status": "open",
    "passed": false,
-   "high": 4663,
+   "high": 4664,
    "low": 4507,
    "nifty": 0.33,
    "source": "Auto 2H",
@@ -4902,7 +4827,7 @@
    "time": 1794460843840,
    "status": "open",
    "passed": false,
-   "high": 4663,
+   "high": 4664,
    "low": 4507,
    "nifty": 0.33,
    "source": "Auto HA 2H",
@@ -4938,7 +4863,7 @@
    "time": 1794460843840,
    "status": "open",
    "passed": false,
-   "high": 4663,
+   "high": 4664,
    "low": 4507,
    "nifty": 0.33,
    "source": "Auto HA MTF 2H",
@@ -5129,7 +5054,7 @@
    "time": 1794461730631,
    "status": "open",
    "passed": false,
-   "high": 1608.9,
+   "high": 1614.4,
    "low": 1567.3,
    "nifty": 0.24,
    "source": "Auto HA 2H",
@@ -5165,7 +5090,7 @@
    "time": 1794461730631,
    "status": "open",
    "passed": false,
-   "high": 1986.4,
+   "high": 1987.9,
    "low": 1961,
    "nifty": 0.24,
    "source": "Auto HA 2H",
@@ -5240,7 +5165,7 @@
    "time": 1794461730631,
    "status": "open",
    "passed": false,
-   "high": 1986.4,
+   "high": 1987.9,
    "low": 1961,
    "nifty": 0.24,
    "source": "Auto HA MTF 2H",
@@ -5932,43 +5857,6 @@
    }
   },
   {
-   "id": "1794543642008-1508",
-   "symbol": "GVT&D",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 125,
-   "entry": 4283.0,
-   "sl": 4197.0,
-   "tp": 4399.5,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "vp_trail",
-   "system": "HA VP TRAIL",
-   "stop": 4397.85,
-   "atr": 85.98,
-   "time": 1794543642008,
-   "status": "open",
-   "passed": false,
-   "high": 4464.8,
-   "low": 4283.0,
-   "nifty": -0.42,
-   "source": "Auto HA VP TRAIL 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA VP TRAIL Bullish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794543642008,
-    "price": 4316.5
-   }
-  },
-  {
    "id": "1794543642008-1509",
    "symbol": "PHOENIXLTD",
    "side": "BUY",
@@ -5989,7 +5877,7 @@
    "status": "open",
    "passed": false,
    "high": 2272.2,
-   "low": 2251.2,
+   "low": 2250.2,
    "nifty": -0.42,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -6026,7 +5914,7 @@
    "status": "open",
    "passed": false,
    "high": 2272.2,
-   "low": 2251.2,
+   "low": 2250.2,
    "nifty": -0.42,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -6470,7 +6358,7 @@
    "status": "open",
    "passed": false,
    "high": 437.6,
-   "low": 435.1,
+   "low": 434.95,
    "nifty": -0.36,
    "source": "Auto 2H",
    "timeframes": [
@@ -6506,7 +6394,7 @@
    "status": "open",
    "passed": false,
    "high": 437.6,
-   "low": 435.1,
+   "low": 434.95,
    "nifty": -0.36,
    "source": "Auto 2H",
    "timeframes": [
@@ -6542,7 +6430,7 @@
    "status": "open",
    "passed": false,
    "high": 437.6,
-   "low": 435.1,
+   "low": 434.95,
    "nifty": -0.36,
    "source": "Auto 2H",
    "timeframes": [
@@ -6573,12 +6461,12 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 3101.2,
+   "stop": 3124.6,
    "atr": 54.79,
    "time": 1794544844601,
    "status": "open",
    "passed": false,
-   "high": 3156,
+   "high": 3179.4,
    "low": 3138.8,
    "nifty": -0.41,
    "source": "Auto HA VP 2H",
@@ -6610,12 +6498,12 @@
    "run": null,
    "style": "vp_trail",
    "system": "HA VP TRAIL",
-   "stop": 3101.2,
+   "stop": 3124.6,
    "atr": 54.79,
    "time": 1794544844601,
    "status": "open",
    "passed": false,
-   "high": 3156,
+   "high": 3179.4,
    "low": 3138.8,
    "nifty": -0.41,
    "source": "Auto HA VP TRAIL 2H",
@@ -6652,7 +6540,7 @@
    "status": "open",
    "passed": false,
    "high": 398.4,
-   "low": 398.4,
+   "low": 396.8,
    "nifty": -0.46,
    "source": "Auto 2H",
    "timeframes": [
@@ -6688,7 +6576,7 @@
    "status": "open",
    "passed": false,
    "high": 398.4,
-   "low": 398.4,
+   "low": 396.8,
    "nifty": -0.46,
    "source": "Auto 2H",
    "timeframes": [
@@ -6999,10 +6887,53 @@
     "time": 1794546054898,
     "price": 1424.6
    }
+  },
+  {
+   "id": "1794546338519-1537",
+   "symbol": "GVT&D",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 125,
+   "entry": 4395.5,
+   "sl": 4129.0,
+   "tp": 4527.35,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 65.95,
+    "step": 22.0
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 4129.0,
+   "time": 1794546338519,
+   "status": "open",
+   "passed": false,
+   "high": 4395.5,
+   "low": 4395.5,
+   "nifty": -0.32,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794544248125,
+    "price": 4340.5
+   }
   }
  ],
- "seq": 1536,
+ "seq": 1537,
  "log": [
+  "13 Nov 10:35  GVT&D: RSI BUY 125 at 4395.5, SL 4129.0 (2 HOUR; trail)",
+  "13 Nov 10:35  GVT&D: TSL after target at 4391.85 (Hold \u00b7 trail)",
+  "13 Nov 10:35  KOTAKBANK: HA exit (2H) at 486.35 (Hold \u00b7 HA exit)",
+  "13 Nov 10:35  GVT&D: Trail 1.5% at 4397.85 (HA VP TRAIL)",
   "13 Nov 10:30  ADANIGREEN: RSI BUY 600 at 1424.6, SL 1403.25 (2 HOUR; trail, sma8, sma20)",
   "13 Nov 10:30  ADANIENSOL: RSI BUY 675 at 1448.0, SL 1426.3 (2 HOUR; trail, sma8, sma20)",
   "13 Nov 10:30  RADICO: HA VP TRAIL BUY 150 at 4663.0, SL 4589.55 (1 ATR 73.45), target None",
@@ -7298,14 +7229,10 @@
   "12 Nov 13:30  HAL: Stop loss at 4902.6 (Hold \u00b7 trail)",
   "12 Nov 13:30  BHARTIARTL: RSI exit (2H 59.6) at 2080.7 (Hold \u00b7 RSI exit)",
   "12 Nov 13:25  TRENT: HA VP TRAIL SELL 225 at 3188.5, SL 3233.15 (1 ATR 44.66), target 3063.6",
-  "12 Nov 13:25  TRENT: HA VP SELL 225 at 3188.5, SL 3233.15 (1 ATR 44.66), target 3063.6",
-  "12 Nov 13:25  PIIND: HA VP TRAIL SELL 175 at 1753.2, SL 1797.35 (1 ATR 44.14), target 1699.35",
-  "12 Nov 13:25  PIIND: HA VP SELL 175 at 1753.2, SL 1797.35 (1 ATR 44.14), target 1699.35",
-  "12 Nov 13:25  PIIND: HA exit (2H) at 1753.2 (Hold \u00b7 HA exit)",
-  "12 Nov 13:25  PIIND: HA exit (2H) at 1753.2 (Hold \u00b7 HA exit)"
+  "12 Nov 13:25  TRENT: HA VP SELL 225 at 3188.5, SL 3233.15 (1 ATR 44.66), target 3063.6"
  ],
- "page_run": 1794546054898,
- "updated": 1794546054898,
+ "page_run": 1794546338519,
+ "updated": 1794546338519,
  "unattended": true,
  "peak_margin": 45320774.84
 }
