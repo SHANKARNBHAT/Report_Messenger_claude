@@ -473,7 +473,7 @@
    "time": 1793942142020,
    "status": "open",
    "passed": false,
-   "high": 3701.0,
+   "high": 3721.0,
    "low": 3400.9,
    "nifty": 0.35,
    "source": "Auto 2H",
@@ -5236,7 +5236,7 @@
    "time": 1794460843840,
    "status": "open",
    "passed": false,
-   "high": 4637,
+   "high": 4639,
    "low": 4507,
    "nifty": 0.33,
    "source": "Auto 2H",
@@ -5272,7 +5272,7 @@
    "time": 1794460843840,
    "status": "open",
    "passed": false,
-   "high": 4637,
+   "high": 4639,
    "low": 4507,
    "nifty": 0.33,
    "source": "Auto 2H",
@@ -5308,7 +5308,7 @@
    "time": 1794460843840,
    "status": "open",
    "passed": false,
-   "high": 4637,
+   "high": 4639,
    "low": 4507,
    "nifty": 0.33,
    "source": "Auto HA 2H",
@@ -5344,7 +5344,7 @@
    "time": 1794460843840,
    "status": "open",
    "passed": false,
-   "high": 4637,
+   "high": 4639,
    "low": 4507,
    "nifty": 0.33,
    "source": "Auto HA MTF 2H",
@@ -5799,7 +5799,7 @@
    "time": 1794468647968,
    "status": "open",
    "passed": false,
-   "high": 8615,
+   "high": 8631,
    "low": 8490,
    "nifty": 0.01,
    "source": "Auto 2H",
@@ -5835,7 +5835,7 @@
    "time": 1794468647968,
    "status": "open",
    "passed": false,
-   "high": 8615,
+   "high": 8631,
    "low": 8490,
    "nifty": 0.01,
    "source": "Auto 2H",
@@ -5929,10 +5929,123 @@
     "time": 1794469845028,
     "price": 553.45
    }
+  },
+  {
+   "id": "1794543343115-1496",
+   "symbol": "POWERINDIA",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 25,
+   "entry": 28545.0,
+   "sl": 28116.8,
+   "tp": 29401.35,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 428.2,
+    "step": 142.7
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 28116.8,
+   "time": 1794543343115,
+   "status": "open",
+   "passed": false,
+   "high": 28545.0,
+   "low": 28545.0,
+   "nifty": -0.42,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794543343115,
+    "price": 28545.0
+   }
+  },
+  {
+   "id": "1794543343115-1497",
+   "symbol": "POWERINDIA",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 25,
+   "entry": 28545.0,
+   "sl": 28116.8,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma8",
+   "system": "RSI",
+   "stop": 28116.8,
+   "time": 1794543343115,
+   "status": "open",
+   "passed": false,
+   "high": 28545.0,
+   "low": 28545.0,
+   "nifty": -0.42,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794543343115,
+    "price": 28545.0
+   }
+  },
+  {
+   "id": "1794543343115-1498",
+   "symbol": "POWERINDIA",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 25,
+   "entry": 28545.0,
+   "sl": 28116.8,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma20",
+   "system": "RSI",
+   "stop": 28116.8,
+   "time": 1794543343115,
+   "status": "open",
+   "passed": false,
+   "high": 28545.0,
+   "low": 28545.0,
+   "nifty": -0.42,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794543343115,
+    "price": 28545.0
+   }
   }
  ],
- "seq": 1495,
+ "seq": 1498,
  "log": [
+  "13 Nov 09:45  POWERINDIA: RSI BUY 25 at 28545.0, SL 28116.8 (2 HOUR; trail, sma8, sma20)",
+  "13 Nov 09:45  No 2H candles for the HA VP entries: No 2H candles",
   "13 Nov 09:41  TVSMOTOR: Stop loss at 4432.5 (Hold \u00b7 2H SMA 20 exit)",
   "13 Nov 09:41  TVSMOTOR: Stop loss at 4432.5 (Hold \u00b7 2H SMA 8 exit)",
   "13 Nov 09:41  TVSMOTOR: Stop loss at 4432.5 (Hold \u00b7 trail)",
@@ -6230,12 +6343,10 @@
   "12 Nov 12:20  RVNL: HA VP SELL 1925 at 205.35, SL 210.45 (1 ATR 5.08), target 201.7",
   "12 Nov 12:20  DMART: HA VP TRAIL SELL 150 at 3451.8, SL 3483.6 (1 ATR 31.81), target 3433.55",
   "12 Nov 12:20  DMART: HA VP SELL 150 at 3451.8, SL 3483.6 (1 ATR 31.81), target 3433.55",
-  "12 Nov 12:20  BIOCON: HA VP TRAIL SELL 2500 at 365.9, SL 371.6 (1 ATR 5.71), target 360.55",
-  "12 Nov 12:20  SUZLON: HA exit (4H) at 38.55 (Hold \u00b7 HA exit)",
-  "12 Nov 12:20  POLICYBZR: TSL after target at 986.25 (Hold \u00b7 trail)"
+  "12 Nov 12:20  BIOCON: HA VP TRAIL SELL 2500 at 365.9, SL 371.6 (1 ATR 5.71), target 360.55"
  ],
- "page_run": 1794543094881,
- "updated": 1794543094881,
+ "page_run": 1794543343115,
+ "updated": 1794543343115,
  "unattended": true,
  "peak_margin": 45320774.84
 }
