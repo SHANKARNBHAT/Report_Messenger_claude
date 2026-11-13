@@ -37487,5 +37487,153 @@
   "gross": -6150.0,
   "charges": 453.56,
   "net": -6603.56
+ },
+ {
+  "id": "1794458737955-1311",
+  "symbol": "OBEROIRLTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 1796.6,
+  "exit": 1792.6,
+  "entry_time": 1794458737955,
+  "exit_time": 1794557443876,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1733.1,
+  "tp": null,
+  "high": 1834,
+  "low": 1791.7,
+  "nifty": 0.36,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794458737955,
+   "price": 1796.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 66.81,
+  "gross": -1400.0,
+  "charges": 400.61,
+  "net": -1800.61
+ },
+ {
+  "id": "1794458737955-1313",
+  "symbol": "OBEROIRLTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 1796.6,
+  "exit": 1792.6,
+  "entry_time": 1794458737955,
+  "exit_time": 1794557443876,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1742.7,
+  "tp": null,
+  "high": 1834,
+  "low": 1791.7,
+  "nifty": 0.36,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794458737955,
+   "price": 1796.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 66.81,
+  "gross": -1400.0,
+  "charges": 400.61,
+  "net": -1800.61
+ },
+ {
+  "id": "1794459337992-1323",
+  "symbol": "DLF",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 950,
+  "entry": 765.1,
+  "exit": 758.2,
+  "entry_time": 1794459337992,
+  "exit_time": 1794557443876,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 734.15,
+  "tp": null,
+  "high": 770.45,
+  "low": 755.45,
+  "nifty": 0.31,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794459337992,
+   "price": 765.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 73.82,
+  "gross": -6555.0,
+  "charges": 453.13,
+  "net": -7008.13
+ },
+ {
+  "id": "1794459337992-1327",
+  "symbol": "DLF",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 950,
+  "entry": 765.1,
+  "exit": 758.2,
+  "entry_time": 1794459337992,
+  "exit_time": 1794557443876,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 742.15,
+  "tp": null,
+  "high": 770.45,
+  "low": 755.45,
+  "nifty": 0.31,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794459337992,
+   "price": 765.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 73.82,
+  "gross": -6555.0,
+  "charges": 453.13,
+  "net": -7008.13
  }
 ]
