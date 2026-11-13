@@ -64,7 +64,8 @@ TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY", "WEEKLY")
 TRADED_TIMEFRAMES = {"RSI": ("2 HOUR",), "RSI 4H": ("4 HOUR",), "RSI Daily": ("DAILY",), "RSI Weekly": ("WEEKLY",)}
 # The RSI dashboard's signals go to the strategy of their timeframe.
 RSI_SYSTEMS = {tf: system for system, (tf,) in TRADED_TIMEFRAMES.items()}
-MTF_SL_PCT = 3.0  # HA MTF: the initial SL; the HA exit of the exit timeframe trails from there
+MTF_SL_PCT = 3.0
+TF_SL_PCT = 3.0  # RSI 4H, Daily, Weekly: the SL is never further than this from the entry  # HA MTF: the initial SL; the HA exit of the exit timeframe trails from there
 DOJI_BODY = 0.10  # HA MTF: a previous HA candle with a body this share of its range or less is a doji
 SHORT = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 LOTS = 1
@@ -273,6 +274,7 @@ def entry_sl(entry: float, long: bool, system: str, timeframe: str, symbol: str,
              now: datetime) -> float:
     """The SL of a new position. RSI: the low (a long) or high (a short) of the previous candle
     of its timeframe, or AUTO_SL_PCT away, whichever is lower (a long) or higher (a short).
+    RSI 4H, Daily and Weekly: that candle's low (high), but never more than TF_SL_PCT away.
     HA: the low (a long) or high (a short) of the previous HA candle. AUTO_SL_PCT away when
     the candle is not known, or is on the wrong side of the entry."""
     percent = tick(entry * (1 - fs.AUTO_SL_PCT / 100 * (1 if long else -1)))
@@ -288,6 +290,11 @@ def entry_sl(entry: float, long: bool, system: str, timeframe: str, symbol: str,
     else:
         found = previous_candle(sources.get(symbol) or [], timeframe, now)
         level = found and found[0 if long else 1]
+    if system.startswith("RSI") and system != "RSI":
+        cap = tick(entry * (1 - TF_SL_PCT / 100 * (1 if long else -1)))
+        if level is None or (level >= entry if long else level <= entry):
+            return cap
+        return max(tick(level), cap) if long else min(tick(level), cap)
     if level is None or (level >= entry if long else level <= entry):
         return percent
     level = tick(level)

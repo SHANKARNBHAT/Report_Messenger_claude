@@ -903,7 +903,7 @@ def main() -> None:
     st.caption(
         f"Paper-trades every Chartink RSI signal, each timeframe its own strategy: **RSI 2H**, **RSI 4H**, **RSI Daily** "
         f"and **RSI Weekly** (a stock on several gets a trade in each), 1 lot, SL at the previous candle of the "
-        f"signal's timeframe (Heikin Ashi: the previous HA "
+        f"signal's timeframe (RSI 4H, Daily, Weekly: at most 3% away; Heikin Ashi: the previous HA "
         f"candle's low / high; RSI: the candle's low / high or {fs.AUTO_SL_PCT}%, whichever is further), in its exit styles "
         f"side by side: **Hold · trail** (held "
         f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · SMA 8 exit** and "
