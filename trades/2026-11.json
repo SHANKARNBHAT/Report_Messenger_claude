@@ -35859,5 +35859,79 @@
   "gross": 1750.0,
   "charges": 367.32,
   "net": 1382.68
+ },
+ {
+  "id": "1794375048640-1135",
+  "symbol": "CAMS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 825,
+  "entry": 734.45,
+  "exit": 745.5,
+  "entry_time": 1794375048640,
+  "exit_time": 1794549000000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 710.7,
+  "tp": 756.5,
+  "high": 756.5,
+  "low": 723,
+  "nifty": 1.34,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794375048640,
+   "price": 734.45
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": 9116.25,
+  "charges": 393.2,
+  "net": 8723.05
+ },
+ {
+  "id": "1794375048640-1138",
+  "symbol": "CAMS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 825,
+  "entry": 734.45,
+  "exit": 745.5,
+  "entry_time": 1794375048640,
+  "exit_time": 1794549000000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 710.7,
+  "tp": 756.5,
+  "high": 756.5,
+  "low": 723,
+  "nifty": 1.34,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794375048640,
+   "price": 734.45
+  },
+  "agrees": "No",
+  "sma_rsi": 61.06,
+  "gross": 9116.25,
+  "charges": 393.2,
+  "net": 8723.05
  }
 ]
