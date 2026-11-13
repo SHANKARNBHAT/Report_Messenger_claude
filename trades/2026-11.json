@@ -35265,5 +35265,42 @@
   "gross": -1300.0,
   "charges": 474.83,
   "net": -1774.83
+ },
+ {
+  "id": "1794368751056-906",
+  "symbol": "SHREECEM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 24920.0,
+  "exit": 25000.0,
+  "entry_time": 1794368751056,
+  "exit_time": 1794544844601,
+  "reason": "RSI exit (2H 59.5)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 24470.0,
+  "tp": null,
+  "high": 25450,
+  "low": 24870,
+  "nifty": 1.14,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794368751056,
+   "price": 24920.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 2000.0,
+  "charges": 399.11,
+  "net": 1600.89
  }
 ]

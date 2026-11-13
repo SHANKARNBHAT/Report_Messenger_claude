@@ -398,8 +398,8 @@
    "time": 1793941844394,
    "status": "open",
    "passed": false,
-   "high": 4874,
-   "low": 4712.5,
+   "high": 4874.0,
+   "low": 4715.3,
    "nifty": 0.41,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -434,7 +434,7 @@
    "time": 1793942142020,
    "status": "open",
    "passed": false,
-   "high": 3645,
+   "high": 3767.0,
    "low": 3400.9,
    "nifty": 0.35,
    "source": "Auto 2H",
@@ -776,8 +776,8 @@
    "time": 1794202253465,
    "status": "open",
    "passed": false,
-   "high": 3239,
-   "low": 3105.6,
+   "high": 3239.0,
+   "low": 3088.6,
    "nifty": -0.39,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -812,8 +812,8 @@
    "time": 1794210338520,
    "status": "open",
    "passed": false,
-   "high": 3418.8,
-   "low": 3260,
+   "high": 3418.3,
+   "low": 3260.0,
    "nifty": -0.38,
    "source": "Auto HA MTF 4H",
    "timeframes": [
@@ -886,42 +886,6 @@
     "step": 124.6
    },
    "style": "trail",
-   "system": "RSI",
-   "stop": 24470.0,
-   "time": 1794368751056,
-   "status": "open",
-   "passed": false,
-   "high": 25450,
-   "low": 24870,
-   "nifty": 1.14,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794368751056,
-    "price": 24920.0
-   }
-  },
-  {
-   "id": "1794368751056-906",
-   "symbol": "SHREECEM",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 25,
-   "entry": 24920.0,
-   "sl": 24470.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "rsi",
    "system": "RSI",
    "stop": 24470.0,
    "time": 1794368751056,
@@ -6429,7 +6393,7 @@
    "system": "RSI",
    "stop": 3804.05,
    "time": 1794544542189,
-   "status": "open",
+   "status": "waiting",
    "passed": false,
    "high": 3862.0,
    "low": 3862.0,
@@ -6465,7 +6429,7 @@
    "system": "RSI",
    "stop": 3804.05,
    "time": 1794544542189,
-   "status": "open",
+   "status": "waiting",
    "passed": false,
    "high": 3862.0,
    "low": 3862.0,
@@ -6501,7 +6465,7 @@
    "system": "RSI",
    "stop": 3804.05,
    "time": 1794544542189,
-   "status": "open",
+   "status": "waiting",
    "passed": false,
    "high": 3862.0,
    "low": 3862.0,
@@ -6630,10 +6594,87 @@
     "time": 1794544542189,
     "price": 437.6
    }
+  },
+  {
+   "id": "1794544844601-1525",
+   "symbol": "ENRIN",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 175,
+   "entry": 3138.8,
+   "sl": 3084.0,
+   "tp": 3330.1,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp",
+   "system": "HA VP",
+   "stop": 3084.0,
+   "atr": 54.79,
+   "time": 1794544844601,
+   "status": "open",
+   "passed": false,
+   "high": 3138.8,
+   "low": 3138.8,
+   "nifty": -0.41,
+   "source": "Auto HA VP 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP Bullish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794544844601,
+    "price": 3147.7
+   }
+  },
+  {
+   "id": "1794544844601-1526",
+   "symbol": "ENRIN",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 175,
+   "entry": 3138.8,
+   "sl": 3084.0,
+   "tp": 3330.1,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "vp_trail",
+   "system": "HA VP TRAIL",
+   "stop": 3084.0,
+   "atr": 54.79,
+   "time": 1794544844601,
+   "status": "open",
+   "passed": false,
+   "high": 3138.8,
+   "low": 3138.8,
+   "nifty": -0.41,
+   "source": "Auto HA VP TRAIL 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H HA VP TRAIL Bullish"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794544844601,
+    "price": 3147.7
+   }
   }
  ],
- "seq": 1524,
+ "seq": 1526,
  "log": [
+  "13 Nov 10:10  ENRIN: HA VP TRAIL BUY 175 at 3138.8, SL 3084.0 (1 ATR 54.79), target 3330.1",
+  "13 Nov 10:10  ENRIN: HA VP BUY 175 at 3138.8, SL 3084.0 (1 ATR 54.79), target 3330.1",
+  "13 Nov 10:10  SHREECEM: RSI exit (2H 59.5) at 25000.0 (Hold \u00b7 RSI exit)",
   "13 Nov 10:05  VBL: RSI BUY 1275 at 437.6, SL 431.05 (2 HOUR; trail, sma8, sma20)",
   "13 Nov 10:05  TATAELXSI: RSI BUY 125 at 3862.0, SL 3804.05 (2 HOUR; trail, sma8, sma20)",
   "13 Nov 10:05  EICHERMOT: HA exit (2H) at 7605.0 (Hold \u00b7 HA exit)",
@@ -6930,13 +6971,10 @@
   "12 Nov 13:25  VOLTAS: HA exit (2H) at 1117.2 (Hold \u00b7 HA exit)",
   "12 Nov 13:25  VOLTAS: HA exit (2H) at 1117.2 (Hold \u00b7 HA exit)",
   "12 Nov 13:21  INOXWIND: HA VP TRAIL BUY 6400 at 66.75, SL 65.25 (1 ATR 1.50), target 72.65",
-  "12 Nov 13:21  INOXWIND: HA VP BUY 6400 at 66.75, SL 65.25 (1 ATR 1.50), target 72.65",
-  "12 Nov 13:21  ADANIPOWER: HA upper wick at 207.05 (HA VP TRAIL)",
-  "12 Nov 13:21  ADANIPOWER: HA upper wick at 207.05 (HA VP)",
-  "12 Nov 13:20  KPITTECH: RSI BUY 775 at 553.45, SL 545.15 (2 HOUR; eod, trail, rsi)"
+  "12 Nov 13:21  INOXWIND: HA VP BUY 6400 at 66.75, SL 65.25 (1 ATR 1.50), target 72.65"
  ],
- "page_run": 1794544542189,
- "updated": 1794544542189,
+ "page_run": 1794544844601,
+ "updated": 1794544844601,
  "unattended": true,
  "peak_margin": 45320774.84
 }
