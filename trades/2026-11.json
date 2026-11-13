@@ -35302,5 +35302,42 @@
   "gross": 2000.0,
   "charges": 399.11,
   "net": 1600.89
+ },
+ {
+  "id": "1794543642008-1507",
+  "symbol": "GVT&D",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4283.0,
+  "exit": 4399.5,
+  "entry_time": 1794543642008,
+  "exit_time": 1794544200000,
+  "reason": "VP target",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 4197.0,
+  "tp": 4399.5,
+  "high": 4399.5,
+  "low": 4283.0,
+  "nifty": -0.42,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794543642008,
+   "price": 4316.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 14562.5,
+  "charges": 356.31,
+  "net": 14206.19
  }
 ]
