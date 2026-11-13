@@ -437,8 +437,8 @@
    "time": 1793941844394,
    "status": "open",
    "passed": false,
-   "high": 4874.0,
-   "low": 4715.3,
+   "high": 4874,
+   "low": 4712.5,
    "nifty": 0.41,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -473,7 +473,7 @@
    "time": 1793942142020,
    "status": "open",
    "passed": false,
-   "high": 3645.0,
+   "high": 3645,
    "low": 3400.9,
    "nifty": 0.35,
    "source": "Auto 2H",
@@ -815,8 +815,8 @@
    "time": 1794202253465,
    "status": "open",
    "passed": false,
-   "high": 3239.0,
-   "low": 3106.1,
+   "high": 3239,
+   "low": 3105.6,
    "nifty": -0.39,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -851,8 +851,8 @@
    "time": 1794210338520,
    "status": "open",
    "passed": false,
-   "high": 3418.3,
-   "low": 3260.0,
+   "high": 3418.8,
+   "low": 3260,
    "nifty": -0.38,
    "source": "Auto HA MTF 4H",
    "timeframes": [
@@ -7526,10 +7526,235 @@
     "time": 1794469845028,
     "price": 553.45
    }
+  },
+  {
+   "id": "1794541536569-1490",
+   "symbol": "ALKEM",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 125,
+   "entry": 5302.0,
+   "sl": 5183.5,
+   "tp": 5461.05,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 79.55,
+    "step": 26.5
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 5183.5,
+   "time": 1794541536569,
+   "status": "open",
+   "passed": false,
+   "high": 5302.0,
+   "low": 5302.0,
+   "nifty": -0.61,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794541536569,
+    "price": 5302.0
+   }
+  },
+  {
+   "id": "1794541536569-1491",
+   "symbol": "ALKEM",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 125,
+   "entry": 5302.0,
+   "sl": 5183.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma8",
+   "system": "RSI",
+   "stop": 5183.5,
+   "time": 1794541536569,
+   "status": "open",
+   "passed": false,
+   "high": 5302.0,
+   "low": 5302.0,
+   "nifty": -0.61,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794541536569,
+    "price": 5302.0
+   }
+  },
+  {
+   "id": "1794541536569-1492",
+   "symbol": "ALKEM",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 125,
+   "entry": 5302.0,
+   "sl": 5183.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma20",
+   "system": "RSI",
+   "stop": 5183.5,
+   "time": 1794541536569,
+   "status": "open",
+   "passed": false,
+   "high": 5302.0,
+   "low": 5302.0,
+   "nifty": -0.61,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794541536569,
+    "price": 5302.0
+   }
+  },
+  {
+   "id": "1794541536569-1493",
+   "symbol": "TVSMOTOR",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 175,
+   "entry": 4500.0,
+   "sl": 4432.5,
+   "tp": 4635.0,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 67.5,
+    "step": 22.5
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 4432.5,
+   "time": 1794541536569,
+   "status": "open",
+   "passed": false,
+   "high": 4500.0,
+   "low": 4500.0,
+   "nifty": -0.61,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794541536569,
+    "price": 4500.0
+   }
+  },
+  {
+   "id": "1794541536569-1494",
+   "symbol": "TVSMOTOR",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 175,
+   "entry": 4500.0,
+   "sl": 4432.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma8",
+   "system": "RSI",
+   "stop": 4432.5,
+   "time": 1794541536569,
+   "status": "open",
+   "passed": false,
+   "high": 4500.0,
+   "low": 4500.0,
+   "nifty": -0.61,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794541536569,
+    "price": 4500.0
+   }
+  },
+  {
+   "id": "1794541536569-1495",
+   "symbol": "TVSMOTOR",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 175,
+   "entry": 4500.0,
+   "sl": 4432.5,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma20",
+   "system": "RSI",
+   "stop": 4432.5,
+   "time": 1794541536569,
+   "status": "open",
+   "passed": false,
+   "high": 4500.0,
+   "low": 4500.0,
+   "nifty": -0.61,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794541536569,
+    "price": 4500.0
+   }
   }
  ],
- "seq": 1489,
+ "seq": 1495,
  "log": [
+  "13 Nov 09:15  TVSMOTOR: RSI BUY 175 at 4500.0, SL 4432.5 (2 HOUR; trail, sma8, sma20)",
+  "13 Nov 09:15  ALKEM: RSI BUY 125 at 5302.0, SL 5183.5 (2 HOUR; trail, sma8, sma20)",
+  "13 Nov 09:15  No 2H candles for the HA VP entries: No 2H candles",
   "12 Nov 15:20  SRF: Stop loss at 2465.2 (Hold \u00b7 trail)",
   "12 Nov 15:15  KPITTECH: EOD 3:15 PM at 555.85 (EOD 3:15 PM)",
   "12 Nov 15:15  JSWENERGY: EOD 3:15 PM at 518.05 (EOD 3:15 PM)",
@@ -7826,13 +8051,10 @@
   "12 Nov 11:40  ADANIPOWER: HA exit (2H) at 206.7 (Hold \u00b7 HA exit)",
   "12 Nov 11:40  ADANIPOWER: HA exit (2H) at 206.7 (Hold \u00b7 HA exit)",
   "12 Nov 11:40  BIOCON: Stop loss at 366.8 (Hold \u00b7 trail)",
-  "12 Nov 11:35  ONGC: HA MTF SELL 2250 at 225.8, SL 232.55 (4 HOUR; exit on 4H; ha)",
-  "12 Nov 11:35  HINDUNILVR: Stop loss at 1980.0 (Hold \u00b7 trail)",
-  "12 Nov 11:30  TATAPOWER: Stop loss at 357.9 (Hold \u00b7 RSI exit)",
-  "12 Nov 11:30  TATAPOWER: Stop loss at 357.9 (EOD 3:15 PM)"
+  "12 Nov 11:35  ONGC: HA MTF SELL 2250 at 225.8, SL 232.55 (4 HOUR; exit on 4H; ha)"
  ],
- "page_run": 1794541238509,
- "updated": 1794541238509,
+ "page_run": 1794541536569,
+ "updated": 1794541536569,
  "unattended": true,
  "peak_margin": 45320774.84
 }
