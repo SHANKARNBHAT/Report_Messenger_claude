@@ -36562,5 +36562,338 @@
   "gross": 53070.0,
   "charges": 822.21,
   "net": 52247.79
+ },
+ {
+  "id": "1793956545539-810",
+  "symbol": "BLUESTARCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1568.0,
+  "exit": 1607.25,
+  "entry_time": 1793956545539,
+  "exit_time": 1794552300000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1544.5,
+  "tp": 1615.05,
+  "high": 1633,
+  "low": 1546.4,
+  "nifty": 3.73,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793956545539,
+   "price": 1568.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 12756.25,
+  "charges": 340.85,
+  "net": 12415.4
+ },
+ {
+  "id": "1794200736190-837",
+  "symbol": "SONACOMS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1225,
+  "entry": 918.45,
+  "exit": 919.0,
+  "entry_time": 1794200736190,
+  "exit_time": 1794552943577,
+  "reason": "RSI exit (2H 59.1)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 904.65,
+  "tp": null,
+  "high": 934.9,
+  "low": 910.5,
+  "nifty": -0.25,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794200736190,
+   "price": 918.45
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 673.75,
+  "charges": 681.19,
+  "net": -7.44
+ },
+ {
+  "id": "1794210338520-886",
+  "symbol": "SUPREMEIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 3275.3,
+  "exit": 3306.0,
+  "entry_time": 1794210338520,
+  "exit_time": 1794552943577,
+  "reason": "HA exit (4H)",
+  "source": "Auto HA MTF 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 3177.05,
+  "tp": null,
+  "high": 3418.8,
+  "low": 3260,
+  "nifty": -0.38,
+  "strategies": [
+   "4h HA  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794207655720,
+   "price": 3297.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 40.67,
+  "gross": 5372.5,
+  "charges": 372.81,
+  "net": 4999.69
+ },
+ {
+  "id": "1794369660340-923",
+  "symbol": "WAAREEENER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 2545.0,
+  "exit": 2583.15,
+  "entry_time": 1794369660340,
+  "exit_time": 1794552300000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 2399.4,
+  "tp": 2621.35,
+  "high": 2629.9,
+  "low": 2485.7,
+  "nifty": 1.16,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794369660340,
+   "price": 2545.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 6676.25,
+  "charges": 301.51,
+  "net": 6374.74
+ },
+ {
+  "id": "1794369660340-932",
+  "symbol": "WAAREEENER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 2545.0,
+  "exit": 2583.15,
+  "entry_time": 1794369660340,
+  "exit_time": 1794552300000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 2399.4,
+  "tp": 2621.35,
+  "high": 2629.9,
+  "low": 2485.7,
+  "nifty": 1.16,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794369660340,
+   "price": 2545.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 60.66,
+  "gross": 6676.25,
+  "charges": 301.51,
+  "net": 6374.74
+ },
+ {
+  "id": "1794370850384-994",
+  "symbol": "MFSL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1285.4,
+  "exit": 1369.15,
+  "entry_time": 1794370850384,
+  "exit_time": 1794552300000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1260.0,
+  "tp": 1323.95,
+  "high": 1393.9,
+  "low": 1283.7,
+  "nifty": 1.43,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794370850384,
+   "price": 1285.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 59.97,
+  "gross": 33500.0,
+  "charges": 354.24,
+  "net": 33145.76
+ },
+ {
+  "id": "1794544542189-1522",
+  "symbol": "VBL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1275,
+  "entry": 437.6,
+  "exit": 431.05,
+  "entry_time": 1794544542189,
+  "exit_time": 1794552300000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 431.05,
+  "tp": 450.75,
+  "high": 437.6,
+  "low": 431.05,
+  "nifty": -0.36,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794544542189,
+   "price": 437.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8351.25,
+  "charges": 357.07,
+  "net": -8708.32
+ },
+ {
+  "id": "1794544542189-1523",
+  "symbol": "VBL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1275,
+  "entry": 437.6,
+  "exit": 431.05,
+  "entry_time": 1794544542189,
+  "exit_time": 1794552300000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 431.05,
+  "tp": null,
+  "high": 437.6,
+  "low": 431.05,
+  "nifty": -0.36,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794544542189,
+   "price": 437.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8351.25,
+  "charges": 357.07,
+  "net": -8708.32
+ },
+ {
+  "id": "1794544542189-1524",
+  "symbol": "VBL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1275,
+  "entry": 437.6,
+  "exit": 431.05,
+  "entry_time": 1794544542189,
+  "exit_time": 1794552300000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 431.05,
+  "tp": null,
+  "high": 437.6,
+  "low": 431.05,
+  "nifty": -0.36,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794544542189,
+   "price": 437.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8351.25,
+  "charges": 357.07,
+  "net": -8708.32
  }
 ]
