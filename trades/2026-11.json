@@ -34784,5 +34784,116 @@
   "gross": 937.5,
   "charges": 394.89,
   "net": 542.61
+ },
+ {
+  "id": "1794541536569-1493",
+  "symbol": "TVSMOTOR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4500.0,
+  "exit": 4432.5,
+  "entry_time": 1794541536569,
+  "exit_time": 1794542400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 4432.5,
+  "tp": 4635.0,
+  "high": 4500.0,
+  "low": 4432.5,
+  "nifty": -0.61,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794541536569,
+   "price": 4500.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11812.5,
+  "charges": 484.55,
+  "net": -12297.05
+ },
+ {
+  "id": "1794541536569-1494",
+  "symbol": "TVSMOTOR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4500.0,
+  "exit": 4432.5,
+  "entry_time": 1794541536569,
+  "exit_time": 1794542400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 4432.5,
+  "tp": null,
+  "high": 4500.0,
+  "low": 4432.5,
+  "nifty": -0.61,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794541536569,
+   "price": 4500.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11812.5,
+  "charges": 484.55,
+  "net": -12297.05
+ },
+ {
+  "id": "1794541536569-1495",
+  "symbol": "TVSMOTOR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4500.0,
+  "exit": 4432.5,
+  "entry_time": 1794541536569,
+  "exit_time": 1794542400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 4432.5,
+  "tp": null,
+  "high": 4500.0,
+  "low": 4432.5,
+  "nifty": -0.61,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794541536569,
+   "price": 4500.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11812.5,
+  "charges": 484.55,
+  "net": -12297.05
  }
 ]
