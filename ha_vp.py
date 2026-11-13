@@ -4,8 +4,8 @@ F&O stocks (auto_trader.py, enter_vp_signals and settle_vp), as the Pine script
 "Volume Profile HA Strategy" (Desktop/Claude Pinescripts/Volume_Profile_HA_Strategy.pine),
 but entering live, on the running candle, instead of at its close.
 
-  * Trend: longs only when SMA 8 > SMA 20 > SMA 50 of the 2H closes and the close is above
-    SMA 200; shorts only when SMA 8 < SMA 20 < SMA 50 and the close is below SMA 200.
+  * Trend: longs only when SMA 20 > SMA 50 of the 2H closes and the close is above SMA 200;
+    shorts only when SMA 20 < SMA 50 and the close is below SMA 200.
   * Entry: long on a green running 2H HA candle with no lower wick (HA open = HA low) whose HA
     close is above the previous HA high; short on a red one with no upper wick (HA open = HA
     high) whose HA close is below the previous HA low. An opposite signal closes the position
@@ -51,7 +51,7 @@ MIN_TARGET_ATR = 1.0  # a level nearer the entry than this many ATRs is not a ta
 SQUARE_OFF = time(15, 15)
 BAR = 300  # seconds in a 5-minute bar
 CLOSE, HIGH, LOW, HA_OPEN, HA_HIGH, HA_LOW, HA_CLOSE, VOLUME = range(1, 9)
-SMAS = (8, 20, 50, 200)  # the trend filter: stacked SMAs of the 2H closes
+SMAS = (20, 50, 200)  # the trend filter: SMAs of the 2H closes
 
 
 def atr(rows: list[tuple]) -> list[float | None]:
@@ -84,15 +84,15 @@ def sma(rows: list, length: int, column: int = CLOSE) -> float | None:
 
 
 def trend(rows: list, column: int = CLOSE) -> str | None:
-    """"BUY" when SMA 8 > SMA 20 > SMA 50 and the last close is above SMA 200 (SMAS), "SELL" the
+    """"BUY" when SMA 20 > SMA 50 and the last close is above SMA 200 (SMAS), "SELL" the
     other way round, else None."""
-    fast, mid, slow, long_ = (sma(rows, n, column) for n in SMAS)
+    mid, slow, long_ = (sma(rows, n, column) for n in SMAS)
     if long_ is None:
         return None
     close = rows[-1][column]
-    if fast > mid > slow and close > long_:
+    if mid > slow and close > long_:
         return "BUY"
-    if fast < mid < slow and close < long_:
+    if mid < slow and close < long_:
         return "SELL"
     return None
 

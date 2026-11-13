@@ -4,8 +4,8 @@ BANKNIFTY (auto_trader.py, enter_index_signals and settle), made from Yahoo Fina
 5-minute bars of the index (Chartink's index list has no BANKNIFTY data).
 
   * Entry, on the running 15-minute candle, as HA VP (ha_vp.py): long on a green HA candle with
-    no lower wick (HA open = HA low) whose HA close is above the previous HA high, when SMA 8 >
-    SMA 20 > SMA 50 of the 15-minute closes and the close is above SMA 200; short on a red one
+    no lower wick (HA open = HA low) whose HA close is above the previous HA high, when SMA 20 >
+    SMA 50 of the 15-minute closes and the close is above SMA 200; short on a red one
     with no upper wick whose HA close is below the previous HA low, the SMAs the other way.
   * SL ATR_MULT x ATR(ATR_PERIOD) of the 15-minute candles from the entry. After each
     15-minute candle closes, it moves to that close -/+ ATR_MULT x ATR when that is closer,
