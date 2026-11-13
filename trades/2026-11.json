@@ -38116,5 +38116,153 @@
   "gross": -12810.0,
   "charges": 521.91,
   "net": -13331.91
+ },
+ {
+  "id": "1794371740162-1040",
+  "symbol": "KFINTECH",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 575,
+  "entry": 940.0,
+  "exit": 948.75,
+  "entry_time": 1794371740162,
+  "exit_time": 1794559542454,
+  "reason": "HA exit (4H)",
+  "source": "Auto HA MTF 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 911.8,
+  "tp": null,
+  "high": 971,
+  "low": 932,
+  "nifty": 1.26,
+  "strategies": [
+   "4H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794371740162,
+   "price": 940.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 59.74,
+  "gross": 5031.25,
+  "charges": 354.23,
+  "net": 4677.02
+ },
+ {
+  "id": "1794456636961-1272",
+  "symbol": "MOTILALOFS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 775,
+  "entry": 1209.4,
+  "exit": 1208.55,
+  "entry_time": 1794456636961,
+  "exit_time": 1794559542454,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1145.0,
+  "tp": null,
+  "high": 1238,
+  "low": 1184.55,
+  "nifty": 0.37,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794456636961,
+   "price": 1209.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.86,
+  "gross": -658.75,
+  "charges": 574.72,
+  "net": -1233.47
+ },
+ {
+  "id": "1794456636961-1275",
+  "symbol": "MOTILALOFS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 775,
+  "entry": 1209.4,
+  "exit": 1208.55,
+  "entry_time": 1794456636961,
+  "exit_time": 1794559542454,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1173.1,
+  "tp": null,
+  "high": 1238,
+  "low": 1184.55,
+  "nifty": 0.37,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794456636961,
+   "price": 1209.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.86,
+  "gross": -658.75,
+  "charges": 574.72,
+  "net": -1233.47
+ },
+ {
+  "id": "1794469845028-1448",
+  "symbol": "KPITTECH",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 775,
+  "entry": 553.45,
+  "exit": 545.15,
+  "entry_time": 1794469845028,
+  "exit_time": 1794558900000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 545.15,
+  "tp": 570.05,
+  "high": 557.75,
+  "low": 545.15,
+  "nifty": -0.09,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794469845028,
+   "price": 553.45
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6432.5,
+  "charges": 285.41,
+  "net": -6717.91
  }
 ]
