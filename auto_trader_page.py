@@ -57,7 +57,7 @@ YOU = "You (simulator)"
 # (futures_simulator.RETIRED_STYLES): hidden from the results for now, their trades kept.
 SHOW_RETIRED = False
 RETIRED_SYSTEMS = {"HA": "Heikin Ashi (retired)", "HA MTF": "HA multi-timeframe (retired)"}
-SYSTEM_NAMES = {"RSI": "RSI", "HA VP": "HA + volume profile", "HA VP TRAIL": "HA VP · trail past target",
+SYSTEM_NAMES = {"RSI": "RSI 2H", "RSI 4H": "RSI 4H", "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly", "HA VP": "HA + volume profile", "HA VP TRAIL": "HA VP · trail past target",
                 **(RETIRED_SYSTEMS if SHOW_RETIRED else {})}
 INDEX_SYSTEM = "HA IDX"
 SMA_FILTERS = ["Against: long below 50, short above 50", "With: long above 50, short below 50", "Not recorded"]
@@ -901,13 +901,14 @@ def main() -> None:
     st.set_page_config(page_title="Auto Trader", page_icon="🤖", layout="wide")
     st.title("🤖 Auto trader")
     st.caption(
-        f"Paper-trades every 2H Chartink signal (4H, Daily and Weekly ones are recorded, not traded) of three strategies, RSI, Heikin Ashi and HA multi-timeframe (a stock on "
-        f"several gets a trade in each), 1 lot, SL at the previous 2H candle (Heikin Ashi: the previous HA "
+        f"Paper-trades every Chartink RSI signal, each timeframe its own strategy: **RSI 2H**, **RSI 4H**, **RSI Daily** "
+        f"and **RSI Weekly** (a stock on several gets a trade in each), 1 lot, SL at the previous candle of the "
+        f"signal's timeframe (Heikin Ashi: the previous HA "
         f"candle's low / high; RSI: the candle's low / high or {fs.AUTO_SL_PCT}%, whichever is further), in its exit styles "
         f"side by side: **Hold · trail** (held "
-        f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · 2H SMA 8 exit** and "
-        f"**Hold · 2H SMA 20 exit** (held until a finished 2H candle closes below / above the SMA 8 or 20 of the 2H "
-        f"closes; these replaced EOD and Hold · RSI exit, whose past trades still show; for Heikin Ashi, **Hold · HA exit**: held "
+        f"overnight, trailing {fs.AUTO_TRAIL_PCT}% once the target is reached), **Hold · SMA 8 exit** and "
+        f"**Hold · SMA 20 exit** (held until a finished candle of the signal's timeframe closes below / above the SMA 8 "
+        f"or 20 of that timeframe's closes; these replaced EOD and Hold · RSI exit, whose past trades still show; for Heikin Ashi, **Hold · HA exit**: held "
         f"until the live candle of its timeframe goes below the previous HA low / above the previous HA high). "
         f"Held trades close on expiry day at 3:15 PM. "
         f"The Heikin Ashi signals come from the bot's own scans: a green (red) candle on above-average volume whose HA "
@@ -919,7 +920,7 @@ def main() -> None:
         f"**HA 15m index** trades NIFTY and BANKNIFTY futures on 15-minute Heikin Ashi candles (from Yahoo 5-minute "
         f"bars: a green HA candle with no lower wick closing above the previous HA high in an SMA 20/50/200 uptrend, or the mirror for shorts), SL 1.1 x ATR(14) trailed from each 15-minute close, "
         f"squared off at 3:15 PM; a new trade once the last one closed, not twice on one candle. "
-        f"A stock is traded once per side, style and strategy per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
+        f"A stock is traded once per side, style and strategy per day (RSI Weekly: per week). Runs on GitHub: every {LIVE_EVERY} minutes while "
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")
 
     account, error = load_account()

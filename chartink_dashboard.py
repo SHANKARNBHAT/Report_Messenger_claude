@@ -92,6 +92,13 @@ VP_QUERY = ("select [0] 2 hour Close as 'Close', [0] 2 hour High as 'High', [0] 
             "WHERE( {33489} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
 VP_CANDLES = 300  # slots: about 230 candles (older days have an empty 3:15 PM slot), for SMA 200 of the 2H closes
 VP_LIVE = 5  # the latest candles, the running one with them: a long series leaves it out
+# The candles of the RSI 4H, Daily and Weekly strategies (auto_trader.py): close, high and low, for
+# the SL (the previous candle) and the SMA 8 / SMA 20 exits. Chartink's daily candles start at
+# midnight, its weekly ones on Monday at midnight.
+TF_COLUMNS = {"4 HOUR": "[0] 4 hour", "DAILY": "daily", "WEEKLY": "weekly"}
+TF_QUERY = ("select {0} Close as 'Close', {0} High as 'High', {0} Low as 'Low' "
+            "WHERE( {{33489}} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
+TF_CANDLES = 40
 HA_DOJI_BODY = 0.1  # the previous HA candle's body must be more than this share of its range
 HA_SCAN_ROWS = 200
 
@@ -396,6 +403,33 @@ def fetch_vp_candles(link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
         rows = {row[0]: row for row in (history or {}).get(symbol, [])}
         rows.update({row[0]: row for row in (live or {}).get(symbol, [])})  # the live answer wins
         candles[symbol] = [rows[start] for start in sorted(rows)]
+    return candles
+
+
+@st.cache_data(ttl=50, show_spinner=False)
+def fetch_tf_candles(timeframe: str, link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
+    """symbol -> its last TF_CANDLES candles of `timeframe` (TF_COLUMNS) (start in seconds, close,
+    high, low), oldest first, the running one last, for the F&O stocks."""
+    with requests.Session() as session:
+        session.headers.update(CHARTINK_HEADERS)
+        url, token, _, raw_widgets = open_dashboard(session, link)
+        widget = {"query": TF_QUERY.format(TF_COLUMNS[timeframe]), "id": raw_widgets[0].get("id")}
+        payload = None
+        for wanted in (TF_CANDLES, TF_CANDLES - 5, TF_CANDLES - 10):
+            try:
+                payload = widget_payload(session, url, token, widget, PRICE_WIDGET_ROWS, wanted)
+            except (requests.RequestException, ValueError):
+                continue
+            if isinstance(payload, dict) and payload.get("groupData"):
+                break
+    if not isinstance(payload, dict) or not payload.get("groupData"):
+        raise ChartinkError(f"No {timeframe} candles")
+    starts = [t // 1000 for t in (payload.get("metaData") or [{}])[0].get("tradeTimes") or []]
+    candles = {}
+    for group in payload["groupData"]:
+        columns = {alias: values for result in group.get("results") or [] for alias, values in result.items()}
+        rows = zip(starts, *(columns.get(c) or [] for c in ("close", "high", "low")))
+        candles[group.get("name")] = [row for row in rows if all(v is not None and v < NO_VALUE for v in row)]
     return candles
 
 
