@@ -37413,5 +37413,79 @@
   "gross": -6500.0,
   "charges": 471.9,
   "net": -6971.9
+ },
+ {
+  "id": "1794543642008-1501",
+  "symbol": "ATHERENERG",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1939.3,
+  "exit": 1922.9,
+  "entry_time": 1794543642008,
+  "exit_time": 1794555600000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 1904.2,
+  "tp": null,
+  "high": 1958,
+  "low": 1922.89,
+  "nifty": -0.42,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794543642008,
+   "price": 1941.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6150.0,
+  "charges": 453.56,
+  "net": -6603.56
+ },
+ {
+  "id": "1794543642008-1502",
+  "symbol": "ATHERENERG",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1939.3,
+  "exit": 1922.9,
+  "entry_time": 1794543642008,
+  "exit_time": 1794555600000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 1904.2,
+  "tp": null,
+  "high": 1958,
+  "low": 1922.89,
+  "nifty": -0.42,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794543642008,
+   "price": 1941.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6150.0,
+  "charges": 453.56,
+  "net": -6603.56
  }
 ]
