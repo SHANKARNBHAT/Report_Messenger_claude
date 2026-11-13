@@ -35450,5 +35450,79 @@
   "gross": 21106.25,
   "charges": 355.5,
   "net": 20750.75
+ },
+ {
+  "id": "1794461730631-1369",
+  "symbol": "HINDUNILVR",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 300,
+  "entry": 1985.9,
+  "exit": 1991.1,
+  "entry_time": 1794461730631,
+  "exit_time": 1794547237378,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 2022.0,
+  "tp": null,
+  "high": 1991.5,
+  "low": 1961,
+  "nifty": 0.24,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794461730631,
+   "price": 1985.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 69.25,
+  "gross": -1560.0,
+  "charges": 382.8,
+  "net": -1942.8
+ },
+ {
+  "id": "1794461730631-1374",
+  "symbol": "HINDUNILVR",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 300,
+  "entry": 1985.9,
+  "exit": 1991.1,
+  "entry_time": 1794461730631,
+  "exit_time": 1794547237378,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 2045.5,
+  "tp": null,
+  "high": 1991.5,
+  "low": 1961,
+  "nifty": 0.24,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794461730631,
+   "price": 1985.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 69.25,
+  "gross": -1560.0,
+  "charges": 382.8,
+  "net": -1942.8
  }
 ]

@@ -320,7 +320,7 @@
    "time": 1793854248467,
    "status": "open",
    "passed": false,
-   "high": 144.35,
+   "high": 144.72,
    "low": 123.57,
    "nifty": 1.78,
    "source": "Auto 2H",
@@ -473,7 +473,7 @@
    "time": 1793956545539,
    "status": "open",
    "passed": true,
-   "high": 1618.9,
+   "high": 1620,
    "low": 1546.4,
    "nifty": 3.73,
    "source": "Auto 2H",
@@ -509,7 +509,7 @@
    "time": 1793956545539,
    "status": "open",
    "passed": false,
-   "high": 1618.9,
+   "high": 1620,
    "low": 1546.4,
    "nifty": 3.73,
    "source": "Auto 2H",
@@ -852,7 +852,7 @@
    "time": 1794210637305,
    "status": "open",
    "passed": true,
-   "high": 364.35,
+   "high": 365.5,
    "low": 351.6,
    "nifty": -0.42,
    "source": "Auto 2H",
@@ -5054,7 +5054,7 @@
    "time": 1794461730631,
    "status": "open",
    "passed": false,
-   "high": 1618.9,
+   "high": 1620,
    "low": 1567.3,
    "nifty": 0.24,
    "source": "Auto HA 2H",
@@ -5069,42 +5069,6 @@
    "first_seen": {
     "time": 1794461730631,
     "price": 1599.7
-   }
-  },
-  {
-   "id": "1794461730631-1369",
-   "symbol": "HINDUNILVR",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 300,
-   "entry": 1985.9,
-   "sl": 2022.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA",
-   "stop": 2022.0,
-   "time": 1794461730631,
-   "status": "open",
-   "passed": false,
-   "high": 1989.5,
-   "low": 1961,
-   "nifty": 0.24,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bearish scan"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 69.25,
-   "first_seen": {
-    "time": 1794461730631,
-    "price": 1985.9
    }
   },
   {
@@ -5144,43 +5108,6 @@
    "first_seen": {
     "time": 1794461730631,
     "price": 1000.8
-   }
-  },
-  {
-   "id": "1794461730631-1374",
-   "symbol": "HINDUNILVR",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 300,
-   "entry": 1985.9,
-   "sl": 2045.5,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA MTF",
-   "stop": 2045.5,
-   "time": 1794461730631,
-   "status": "open",
-   "passed": false,
-   "high": 1989.5,
-   "low": 1961,
-   "nifty": 0.24,
-   "source": "Auto HA MTF 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "exit_tf": "2 HOUR",
-   "strategies": [
-    "2H HA Bearish scan"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 69.25,
-   "first_seen": {
-    "time": 1794461730631,
-    "price": 1985.9
    }
   },
   {
@@ -5729,7 +5656,7 @@
    "status": "open",
    "passed": false,
    "high": 11645.5,
-   "low": 11570.5,
+   "low": 11568,
    "nifty": -0.42,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -5766,7 +5693,7 @@
    "status": "open",
    "passed": false,
    "high": 11645.5,
-   "low": 11570.5,
+   "low": 11568,
    "nifty": -0.42,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -5803,7 +5730,7 @@
    "status": "open",
    "passed": false,
    "high": 1404,
-   "low": 1395.6,
+   "low": 1391,
    "nifty": -0.42,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -5840,7 +5767,7 @@
    "status": "open",
    "passed": false,
    "high": 1404,
-   "low": 1395.6,
+   "low": 1391,
    "nifty": -0.42,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -5950,7 +5877,7 @@
    "time": 1794543642008,
    "status": "open",
    "passed": false,
-   "high": 1723.8,
+   "high": 1730,
    "low": 1718,
    "nifty": -0.42,
    "source": "Auto HA VP 2H",
@@ -5987,7 +5914,7 @@
    "time": 1794543642008,
    "status": "open",
    "passed": false,
-   "high": 1723.8,
+   "high": 1730,
    "low": 1718,
    "nifty": -0.42,
    "source": "Auto HA VP TRAIL 2H",
@@ -6093,12 +6020,12 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 1888.85,
+   "stop": 1890.85,
    "atr": 24.16,
    "time": 1794543642008,
    "status": "open",
    "passed": false,
-   "high": 1913,
+   "high": 1915,
    "low": 1899.8,
    "nifty": -0.42,
    "source": "Auto HA VP 2H",
@@ -6130,12 +6057,12 @@
    "run": null,
    "style": "vp_trail",
    "system": "HA VP TRAIL",
-   "stop": 1888.85,
+   "stop": 1890.85,
    "atr": 24.16,
    "time": 1794543642008,
    "status": "open",
    "passed": false,
-   "high": 1913,
+   "high": 1915,
    "low": 1899.8,
    "nifty": -0.42,
    "source": "Auto HA VP TRAIL 2H",
@@ -6358,7 +6285,7 @@
    "status": "open",
    "passed": false,
    "high": 437.6,
-   "low": 434.95,
+   "low": 434.7,
    "nifty": -0.36,
    "source": "Auto 2H",
    "timeframes": [
@@ -6394,7 +6321,7 @@
    "status": "open",
    "passed": false,
    "high": 437.6,
-   "low": 434.95,
+   "low": 434.7,
    "nifty": -0.36,
    "source": "Auto 2H",
    "timeframes": [
@@ -6430,7 +6357,7 @@
    "status": "open",
    "passed": false,
    "high": 437.6,
-   "low": 434.95,
+   "low": 434.7,
    "nifty": -0.36,
    "source": "Auto 2H",
    "timeframes": [
@@ -6461,12 +6388,12 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 3134.2,
+   "stop": 3144.2,
    "atr": 54.79,
    "time": 1794544844601,
    "status": "open",
    "passed": false,
-   "high": 3189,
+   "high": 3199,
    "low": 3138.8,
    "nifty": -0.41,
    "source": "Auto HA VP 2H",
@@ -6498,12 +6425,12 @@
    "run": null,
    "style": "vp_trail",
    "system": "HA VP TRAIL",
-   "stop": 3134.2,
+   "stop": 3144.2,
    "atr": 54.79,
    "time": 1794544844601,
    "status": "open",
    "passed": false,
-   "high": 3189,
+   "high": 3199,
    "low": 3138.8,
    "nifty": -0.41,
    "source": "Auto HA VP TRAIL 2H",
@@ -6910,7 +6837,7 @@
    "time": 1794546338519,
    "status": "open",
    "passed": false,
-   "high": 4395.5,
+   "high": 4437.6,
    "low": 4395.5,
    "nifty": -0.32,
    "source": "Auto 2H",
@@ -7041,6 +6968,8 @@
  ],
  "seq": 1540,
  "log": [
+  "13 Nov 10:50  HINDUNILVR: HA exit (2H) at 1991.1 (Hold \u00b7 HA exit)",
+  "13 Nov 10:50  HINDUNILVR: HA exit (2H) at 1991.1 (Hold \u00b7 HA exit)",
   "13 Nov 10:40  COFORGE: RSI BUY 475 at 2069.9, SL 2008.1 (2 HOUR; trail, sma8, sma20)",
   "13 Nov 10:35  GVT&D: RSI BUY 125 at 4395.5, SL 4129.0 (2 HOUR; trail)",
   "13 Nov 10:35  GVT&D: TSL after target at 4391.85 (Hold \u00b7 trail)",
@@ -7338,12 +7267,10 @@
   "12 Nov 13:30  HAL: Stop loss at 4919.1 (EOD 3:15 PM)",
   "12 Nov 13:30  HAL: Stop loss at 4902.6 (Hold \u00b7 trail)",
   "12 Nov 13:30  HAL: Stop loss at 4902.6 (Hold \u00b7 RSI exit)",
-  "12 Nov 13:30  HAL: Stop loss at 4902.6 (Hold \u00b7 trail)",
-  "12 Nov 13:30  BHARTIARTL: RSI exit (2H 59.6) at 2080.7 (Hold \u00b7 RSI exit)",
-  "12 Nov 13:25  TRENT: HA VP TRAIL SELL 225 at 3188.5, SL 3233.15 (1 ATR 44.66), target 3063.6"
+  "12 Nov 13:30  HAL: Stop loss at 4902.6 (Hold \u00b7 trail)"
  ],
- "page_run": 1794546944102,
- "updated": 1794546944102,
+ "page_run": 1794547237378,
+ "updated": 1794547237378,
  "unattended": true,
  "peak_margin": 45320774.84
 }
