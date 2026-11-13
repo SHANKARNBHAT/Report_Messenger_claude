@@ -1573,7 +1573,7 @@
    "status": "open",
    "passed": false,
    "high": 2567.3,
-   "low": 2498,
+   "low": 2495.2,
    "nifty": 1.24,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -4101,7 +4101,7 @@
    "status": "open",
    "passed": false,
    "high": 406,
-   "low": 400.6,
+   "low": 400.25,
    "nifty": 0.34,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -4387,42 +4387,6 @@
    }
   },
   {
-   "id": "1794468647968-1443",
-   "symbol": "APOLLOHOSP",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 125,
-   "entry": 8497.5,
-   "sl": 8370.05,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "rsi",
-   "system": "RSI",
-   "stop": 8370.05,
-   "time": 1794468647968,
-   "status": "open",
-   "passed": false,
-   "high": 8640,
-   "low": 8490,
-   "nifty": 0.01,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794468647968,
-    "price": 8497.5
-   }
-  },
-  {
    "id": "1794469241800-1445",
    "symbol": "JSWENERGY",
    "side": "BUY",
@@ -4498,45 +4462,6 @@
    "first_seen": {
     "time": 1794469845028,
     "price": 553.45
-   }
-  },
-  {
-   "id": "1794543343115-1496",
-   "symbol": "POWERINDIA",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 25,
-   "entry": 28545.0,
-   "sl": 28116.8,
-   "tp": 29401.35,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 428.2,
-    "step": 142.7
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 31787.6,
-   "time": 1794543343115,
-   "status": "open",
-   "passed": true,
-   "high": 32250,
-   "low": 28545.0,
-   "nifty": -0.42,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794543343115,
-    "price": 28545.0
    }
   },
   {
@@ -4760,43 +4685,6 @@
    }
   },
   {
-   "id": "1794543642008-1514",
-   "symbol": "POWERINDIA",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 25,
-   "entry": 31320.0,
-   "sl": 30725.75,
-   "tp": 32148.8,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "vp_trail",
-   "system": "HA VP TRAIL",
-   "stop": 31766.25,
-   "atr": 594.26,
-   "time": 1794543642008,
-   "status": "open",
-   "passed": false,
-   "high": 32250,
-   "low": 31320.0,
-   "nifty": -0.42,
-   "source": "Auto HA VP TRAIL 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA VP TRAIL Bullish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794543642008,
-    "price": 31675.0
-   }
-  },
-  {
    "id": "1794544248125-1517",
    "symbol": "GVT&D",
    "side": "BUY",
@@ -4977,80 +4865,6 @@
    "first_seen": {
     "time": 1794544542189,
     "price": 3862.0
-   }
-  },
-  {
-   "id": "1794544844601-1525",
-   "symbol": "ENRIN",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 175,
-   "entry": 3138.8,
-   "sl": 3084.0,
-   "tp": 3330.1,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "vp",
-   "system": "HA VP",
-   "stop": 3167.5,
-   "atr": 54.79,
-   "time": 1794544844601,
-   "status": "open",
-   "passed": false,
-   "high": 3222.3,
-   "low": 3138.8,
-   "nifty": -0.41,
-   "source": "Auto HA VP 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA VP Bullish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794544844601,
-    "price": 3147.7
-   }
-  },
-  {
-   "id": "1794544844601-1526",
-   "symbol": "ENRIN",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 175,
-   "entry": 3138.8,
-   "sl": 3084.0,
-   "tp": 3330.1,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "vp_trail",
-   "system": "HA VP TRAIL",
-   "stop": 3167.5,
-   "atr": 54.79,
-   "time": 1794544844601,
-   "status": "open",
-   "passed": false,
-   "high": 3222.3,
-   "low": 3138.8,
-   "nifty": -0.41,
-   "source": "Auto HA VP TRAIL 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA VP TRAIL Bullish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794544844601,
-    "price": 3147.7
    }
   },
   {
@@ -5334,7 +5148,7 @@
    "status": "open",
    "passed": false,
    "high": 4448.3,
-   "low": 4369.2,
+   "low": 4366.6,
    "nifty": -0.32,
    "source": "Auto 2H",
    "timeframes": [
@@ -5481,7 +5295,7 @@
    "status": "open",
    "passed": false,
    "high": 1628.6,
-   "low": 1602,
+   "low": 1592,
    "nifty": -0.31,
    "source": "Auto 2H",
    "timeframes": [
@@ -5517,7 +5331,7 @@
    "status": "open",
    "passed": false,
    "high": 1628.6,
-   "low": 1602,
+   "low": 1592,
    "nifty": -0.31,
    "source": "Auto 2H",
    "timeframes": [
@@ -5758,6 +5572,11 @@
  ],
  "seq": 1548,
  "log": [
+  "13 Nov 13:05  POWERINDIA: TSL after target at 31787.6 (Hold \u00b7 trail)",
+  "13 Nov 13:05  APOLLOHOSP: RSI exit (2H 59.8) at 8524.0 (Hold \u00b7 RSI exit)",
+  "13 Nov 13:05  ENRIN: ATR trailing SL at 3167.5 (HA VP TRAIL)",
+  "13 Nov 13:05  ENRIN: ATR trailing SL at 3167.5 (HA VP)",
+  "13 Nov 13:05  POWERINDIA: Trail 1.5% at 31766.25 (HA VP TRAIL)",
   "13 Nov 12:50  BEL: HA exit (2H) at 401.15 (Hold \u00b7 HA exit)",
   "13 Nov 12:50  BEL: HA exit (2H) at 401.15 (Hold \u00b7 HA exit)",
   "13 Nov 12:35  SWIGGY: Stop loss at 187.5 (Hold \u00b7 trail)",
@@ -6052,15 +5871,10 @@
   "12 Nov 14:15  FORCEMOT: HA exit (2H) at 19857.0 (Hold \u00b7 HA exit)",
   "12 Nov 14:15  FORCEMOT: HA exit (2H) at 19857.0 (Hold \u00b7 HA exit)",
   "12 Nov 14:10  BIOCON: HA upper wick at 367.95 (HA VP TRAIL)",
-  "12 Nov 14:10  BIOCON: HA upper wick at 367.95 (HA VP)",
-  "12 Nov 14:00  UJJIVANSFB: HA VP TRAIL BUY 8000 at 61.8, SL 60.65 (1 ATR 1.16), target 63.1",
-  "12 Nov 14:00  UJJIVANSFB: HA VP BUY 8000 at 61.8, SL 60.65 (1 ATR 1.16), target 63.1",
-  "12 Nov 14:00  MFSL: HA VP TRAIL BUY 400 at 1364.5, SL 1340.3 (1 ATR 24.20), target 1395.85",
-  "12 Nov 14:00  MFSL: HA VP BUY 400 at 1364.5, SL 1340.3 (1 ATR 24.20), target 1395.85",
-  "12 Nov 14:00  LICI: HA exit (2H) at 403.3 (Hold \u00b7 HA exit)"
+  "12 Nov 14:10  BIOCON: HA upper wick at 367.95 (HA VP)"
  ],
- "page_run": 1794555045769,
- "updated": 1794555045769,
+ "page_run": 1794555338685,
+ "updated": 1794555338685,
  "unattended": true,
  "peak_margin": 45320774.84
 }

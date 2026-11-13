@@ -37006,5 +37006,190 @@
   "gross": -5130.0,
   "charges": 369.35,
   "net": -5499.35
+ },
+ {
+  "id": "1794543642008-1514",
+  "symbol": "POWERINDIA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 31320.0,
+  "exit": 31766.25,
+  "entry_time": 1794543642008,
+  "exit_time": 1794554700000,
+  "reason": "Trail 1.5%",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 30725.75,
+  "tp": 32148.8,
+  "high": 32250,
+  "low": 31320.0,
+  "nifty": -0.42,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794543642008,
+   "price": 31675.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 11156.25,
+  "charges": 494.0,
+  "net": 10662.25
+ },
+ {
+  "id": "1794544844601-1525",
+  "symbol": "ENRIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 3138.8,
+  "exit": 3167.5,
+  "entry_time": 1794544844601,
+  "exit_time": 1794554700000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 3084.0,
+  "tp": 3330.1,
+  "high": 3222.3,
+  "low": 3138.8,
+  "nifty": -0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794544844601,
+   "price": 3147.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 5022.5,
+  "charges": 359.17,
+  "net": 4663.33
+ },
+ {
+  "id": "1794544844601-1526",
+  "symbol": "ENRIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 3138.8,
+  "exit": 3167.5,
+  "entry_time": 1794544844601,
+  "exit_time": 1794554700000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 3084.0,
+  "tp": 3330.1,
+  "high": 3222.3,
+  "low": 3138.8,
+  "nifty": -0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794544844601,
+   "price": 3147.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 5022.5,
+  "charges": 359.17,
+  "net": 4663.33
+ },
+ {
+  "id": "1794468647968-1443",
+  "symbol": "APOLLOHOSP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 8497.5,
+  "exit": 8524.0,
+  "entry_time": 1794468647968,
+  "exit_time": 1794555338685,
+  "reason": "RSI exit (2H 59.8)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 8370.05,
+  "tp": null,
+  "high": 8640,
+  "low": 8490,
+  "nifty": 0.01,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794468647968,
+   "price": 8497.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 3312.5,
+  "charges": 647.14,
+  "net": 2665.36
+ },
+ {
+  "id": "1794543343115-1496",
+  "symbol": "POWERINDIA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 28545.0,
+  "exit": 31787.6,
+  "entry_time": 1794543343115,
+  "exit_time": 1794554700000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 28116.8,
+  "tp": 29401.35,
+  "high": 32250,
+  "low": 28545.0,
+  "nifty": -0.42,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794543343115,
+   "price": 28545.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 81065.0,
+  "charges": 491.39,
+  "net": 80573.61
  }
 ]
