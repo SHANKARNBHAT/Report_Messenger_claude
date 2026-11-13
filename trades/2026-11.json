@@ -36229,5 +36229,79 @@
   "gross": 11312.5,
   "charges": 477.08,
   "net": 10835.42
+ },
+ {
+  "id": "1794543642008-1503",
+  "symbol": "DIVISLAB",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 100,
+  "entry": 11590.0,
+  "exit": 11451.55,
+  "entry_time": 1794543642008,
+  "exit_time": 1794551400000,
+  "reason": "HA lower wick",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 11384.75,
+  "tp": null,
+  "high": 11645.5,
+  "low": 11451.53,
+  "nifty": -0.42,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794543642008,
+   "price": 11620.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -13845.0,
+  "charges": 692.71,
+  "net": -14537.71
+ },
+ {
+  "id": "1794543642008-1504",
+  "symbol": "DIVISLAB",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 100,
+  "entry": 11590.0,
+  "exit": 11451.55,
+  "entry_time": 1794543642008,
+  "exit_time": 1794551400000,
+  "reason": "HA lower wick",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 11384.75,
+  "tp": null,
+  "high": 11645.5,
+  "low": 11451.53,
+  "nifty": -0.42,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794543642008,
+   "price": 11620.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -13845.0,
+  "charges": 692.71,
+  "net": -14537.71
  }
 ]
