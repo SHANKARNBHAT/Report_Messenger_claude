@@ -40003,5 +40003,79 @@
   "gross": 11475.0,
   "charges": 484.02,
   "net": 10990.98
+ },
+ {
+  "id": "1794801336045-1727",
+  "symbol": "EICHERMOT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 100,
+  "entry": 7865.0,
+  "exit": 7755.1,
+  "entry_time": 1794801336045,
+  "exit_time": 1794801600000,
+  "reason": "Stop loss",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 7755.1,
+  "tp": null,
+  "high": 7865.0,
+  "low": 7755.1,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 7875.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -10990.0,
+  "charges": 484.42,
+  "net": -11474.42
+ },
+ {
+  "id": "1794801336045-1728",
+  "symbol": "EICHERMOT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 100,
+  "entry": 7865.0,
+  "exit": 7755.1,
+  "entry_time": 1794801336045,
+  "exit_time": 1794801600000,
+  "reason": "Stop loss",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 7755.1,
+  "tp": null,
+  "high": 7865.0,
+  "low": 7755.1,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 7875.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -10990.0,
+  "charges": 484.42,
+  "net": -11474.42
  }
 ]
