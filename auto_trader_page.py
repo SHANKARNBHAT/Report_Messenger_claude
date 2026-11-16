@@ -63,7 +63,8 @@ YOU = "You (simulator)"
 # (futures_simulator.RETIRED_STYLES): hidden from the results for now, their trades kept.
 SHOW_RETIRED = False
 RETIRED_SYSTEMS = {"HA": "Heikin Ashi (retired)", "HA MTF": "HA multi-timeframe (retired)"}
-SYSTEM_NAMES = {"RSI": "RSI 2H", "RSI 4H": "RSI 4H", "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly", "HA VP": "HA + volume profile", "HA VP TRAIL": "HA VP · trail past target",
+SYSTEM_NAMES = {"RSI": "RSI 2H", "RSI 4H": "RSI 4H", "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
+                "HA PURE 2H": "HA pure 2H", "HA PURE 4H": "HA pure 4H", "HA PURE Daily": "HA pure Daily", "HA VP": "HA + volume profile", "HA VP TRAIL": "HA VP · trail past target",
                 **(RETIRED_SYSTEMS if SHOW_RETIRED else {})}
 INDEX_SYSTEM = "HA IDX"
 # The 15-minute index strategies (auto_trader.INDEX_SYSTEMS): name, and whether it uses the SMA trend filter.

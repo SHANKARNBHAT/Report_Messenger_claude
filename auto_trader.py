@@ -8,7 +8,9 @@ doji, and the position is held until the HA exit of the highest one that counted
 trails it, with a fixed SL MTF_SL_PCT from the entry until then). A stock on several gets a trade in
 each, so that each strategy's results stay its own. A fourth, HA IDX (ha_index.py), trades
 NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles with an ATR trailing SL, intraday; HA IDX PURE
-the same without the SMA trend filter (INDEX_SYSTEMS).
+the same without the SMA trend filter (INDEX_SYSTEMS). HA PURE 2H, 4H and Daily (ha_pure.py) trade
+that rule on the F&O stocks, NIFTY and BANKNIFTY on those timeframes, held overnight, SL trailed
+on 30-minute candles.
 A fifth, HA VP (ha_vp.py), and its twin HA VP TRAIL (trails past the target instead of taking it), trade the F&O stocks, NIFTY and BANKNIFTY on their running 2H Heikin Ashi candle, with an
 ATR trailing SL, a volume profile target, HA doji and EMA 8 exits, intraday. HA and HA MTF take no new
 trades any more: their open positions still close by their rules.
@@ -57,6 +59,7 @@ from pathlib import Path
 
 import futures_simulator as fs
 import ha_index
+import ha_pure
 import ha_vp
 from chartink_dashboard import NO_VALUE
 
@@ -367,8 +370,9 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
             note(f"No 2H candles for the SMA exits: {exc}")
     settle_index(files, account, now, note)
     settle_vp(files, account, now, note)
+    settle_pure(files, account, now, note)
     for result in fs.check_positions([p for p in account["positions"]
-                                      if p.get("system") not in (*INDEX_SYSTEMS, *ha_vp.SYSTEMS)], now, settle=False):
+                                      if p.get("system") not in (*INDEX_SYSTEMS, *ha_vp.SYSTEMS, *ha_pure.SYSTEMS)], now, settle=False):
         position = next(p for p in account["positions"] if p["id"] == result["id"])
         # A candle that went past since the last run may have come before what the bars show.
         due = (ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS
@@ -610,6 +614,147 @@ def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, tra
             note(f"{symbol}: {system} {side} {qty} at {entry}, SL {sl} (1 ATR {values[-1]:.2f}), target {goal}")
 
 
+def pure_candles(timeframe: str) -> dict[str, list[tuple]]:
+    """symbol -> the HA candles of an HA PURE timeframe (the 2H ones are HA VP's)."""
+    return fs.fetch_vp_candles() if timeframe == "2 HOUR" else fs.fetch_ha_tf_candles(timeframe)
+
+
+def held_bars(positions: list[dict], now: datetime) -> dict[str, list]:
+    """position id -> its 5-minute bars since the entry: Chartink's when they reach back to it,
+    else Yahoo Finance's, as many days as needed (as futures_simulator.check_positions)."""
+    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    try:
+        chartink = fs.fetch_price_bars(fs.DEFAULT_DASHBOARD)
+    except fs.ChartinkError:
+        chartink = {}
+    bars = {p["id"]: chartink[p["symbol"]] for p in positions
+            if chartink.get(p["symbol"]) and chartink[p["symbol"]][0][0] <= p["time"] / 1000}
+    wanted = {p["id"]: (instruments[p["symbol"]]["yahoo"],
+                        fs.bars_range(datetime.fromtimestamp(p["time"] / 1000, fs.IST), now))
+              for p in positions if p["id"] not in bars and p["symbol"] in instruments}
+    yahoo = fs.fetch_bars(tuple(sorted(set(wanted.values())))) if wanted else {}
+    bars.update({id_: yahoo.get(request) for id_, request in wanted.items()})
+    return bars
+
+
+def settle_pure(files: Files, account: dict, now: datetime, note) -> None:
+    """Close the HA PURE positions that hit their 30-minute trailing SL, a doji close or the expiry
+    square-off (ha_pure.replay); move the others' SL."""
+    positions = [p for p in account["positions"] if p.get("system") in ha_pure.SYSTEMS]
+    if not positions:
+        return
+    candles = {}
+    for timeframe in sorted({ha_pure.SYSTEMS[p["system"]] for p in positions}):
+        try:
+            candles[timeframe] = pure_candles(timeframe)
+        except fs.ChartinkError as exc:
+            note(f"No {SHORT[timeframe]} candles for the HA PURE exits: {exc}")
+    bars = held_bars(positions, now)
+    for position in positions:
+        timeframe = ha_pure.SYSTEMS[position["system"]]
+        found = bars.get(position["id"])
+        if timeframe not in candles:
+            continue
+        if not isinstance(found, list) or not found:
+            note(f"{position['symbol']}: no 5-minute bars for {position['system']} ({found})")
+            continue
+        entered = datetime.fromtimestamp(position["time"] / 1000, fs.IST)
+        cutoff = datetime.combine(fs.expiry_after(entered.date()), ha_pure.SQUARE_OFF, fs.IST).timestamp()
+        result = ha_pure.replay(position, found, candles[timeframe].get(position["symbol"], []),
+                                lambda start: candle_end(timeframe, start), cutoff, now, fs.IST)
+        if result["status"] == "closed":
+            close(files, account, position, tick(result["exit"]), result["exit_time"], result["reason"],
+                  result["high"], result["low"])
+            note(f"{position['symbol']}: {result['reason']} at {tick(result['exit'])} ({position['system']})")
+        else:
+            position.update(stop=tick(result["stop"]), high=result["high"], low=result["low"])
+
+
+def entry_bars(symbols: set[str], now: datetime) -> dict[str, list]:
+    """symbol -> its 5-minute bars of the last sessions, for the 30-minute SL of a new HA PURE
+    position: Chartink's, else Yahoo Finance's."""
+    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    try:
+        bars = {s: b for s, b in fs.fetch_price_bars(fs.DEFAULT_DASHBOARD).items() if s in symbols and b}
+    except fs.ChartinkError:
+        bars = {}
+    wanted = {s: (instruments[s]["yahoo"], "5d") for s in symbols if s not in bars and s in instruments}
+    yahoo = fs.fetch_bars(tuple(sorted(set(wanted.values())))) if wanted else {}
+    bars.update({s: yahoo[r] for s, r in wanted.items() if isinstance(yahoo.get(r), list)})
+    return {s: [b for b in found if b[0] + 300 <= now.timestamp()] for s, found in bars.items()}
+
+
+def enter_pure_signals(files: Files, account: dict, seen: dict, now: datetime, trading: bool, note) -> None:
+    """Trade the HA PURE signals of each timeframe (ha_pure.SYSTEMS): a stock or index whose running
+    HA candle meets ha_pure.signal. One position per stock in each: an opposite signal closes it and
+    enters the other way; no second entry on a candle."""
+    if now.time() >= LAST_ENTRY:
+        return
+    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    month = trades_of(files, now.strftime("%Y-%m"))
+    found = []
+    for system, timeframe in ha_pure.SYSTEMS.items():
+        try:
+            candles = pure_candles(timeframe)
+        except fs.ChartinkError as exc:
+            note(f"No {SHORT[timeframe]} candles for the {system} entries: {exc}")
+            continue
+        current = candle_key(timeframe, int(now.timestamp()))
+        for symbol, rows in sorted(candles.items()):
+            if symbol not in instruments or len(rows) < 2:
+                continue
+            if candle_key(timeframe, rows[-1][0]) != current:  # no running candle yet
+                continue
+            side = ha_pure.signal(rows)
+            if side:
+                found.append((system, timeframe, symbol, rows, side, current))
+    bars = entry_bars({f[2] for f in found}, now) if found and trading else {}
+    nifty = None
+    for system, timeframe, symbol, rows, side, current in found:
+        bias = "Bullish" if side == "BUY" else "Bearish"
+        signal = {"symbol": symbol, "timeframe": timeframe, "bias": bias, "system": system,
+                  "strategy": f"{SHORT[timeframe]} HA PURE {bias}", "fno": True, "agrees": "—"}
+        record_seen(seen, [signal], None, now)
+        if not trading:
+            mark(seen, [signal], "Not traded: switch off, page closed")
+            continue
+        held = next((p for p in account["positions"] if p.get("system") == system and p["symbol"] == symbol), None)
+        if held and held["side"] == side:
+            mark(seen, [signal], "Already open")
+            continue
+        if any(t.get("system") == system and t["symbol"] == symbol
+               and candle_key(timeframe, t["entry_time"] // 1000) == current for t in month) or (
+                held and candle_key(timeframe, held["time"] // 1000) == current):
+            mark(seen, [signal], "Already traded this candle")
+            continue
+        entry = tick(rows[-1][ha_vp.CLOSE])
+        long = side == "BUY"
+        sl = ha_pure.initial_stop(bars.get(symbol) or [], rows, entry, long, now, fs.IST)
+        if sl is None:
+            mark(seen, [signal], "No SL")
+            continue
+        sl = tick(sl)
+        if held:
+            close(files, account, held, entry, int(now.timestamp() * 1000), "Reverse signal")
+            note(f"{symbol}: {system} {held['side']} closed at {entry} (reverse signal)")
+        first = seen.get(signal_key(signal))
+        qty = LOTS * instruments[symbol]["lot"]
+        if nifty is None:
+            nifty = fs.nifty_change()
+        account["seq"] += 1
+        account["positions"].append({
+            "id": f"{int(now.timestamp() * 1000)}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
+            "qty": qty, "entry": entry, "sl": sl, "tp": None, "tsl": {"on": False}, "run": None,
+            "style": ha_pure.STYLE, "system": system, "stop": sl,
+            "time": int(now.timestamp() * 1000), "status": "open", "passed": False, "high": entry, "low": entry,
+            "nifty": nifty, "source": f"Auto {system}", "timeframes": [timeframe],
+            "strategies": [signal["strategy"]], "agrees": "—", "sma_rsi": None,
+            "first_seen": first and {"time": first["time"], "price": first["price"]},
+        })
+        mark(seen, [signal], "Traded")
+        note(f"{symbol}: {system} {side} {qty} at {entry}, SL {sl} (30m candle)")
+
+
 def test_chartink(note) -> None:
     """Fetch the dashboard and the 5-minute bars from here (GitHub), and note what came back."""
     dashboard, error = fs.load_dashboard()
@@ -801,6 +946,7 @@ def main() -> None:
         trading = not args.scheduled or account.get("unattended", True)
         enter_index_signals(files, account, seen, now, trading, note)
         enter_vp_signals(files, account, seen, now, trading, note)
+        enter_pure_signals(files, account, seen, now, trading, note)
         files.changed.add(day_file)
         if dashboard:
             instruments = {i["symbol"]: i for i in fs.load_instruments()}

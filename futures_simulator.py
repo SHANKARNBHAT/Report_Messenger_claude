@@ -56,7 +56,7 @@ if Path(chartink_dashboard.__file__).stat().st_mtime > getattr(chartink_dashboar
 
 from chartink_dashboard import (CHART_SITES, CHARTINK_HEADERS, DEFAULT_DASHBOARD, DEFAULT_SNAPSHOT, FUNDAMENTALS_DASHBOARD,
                                 FUNDAMENTALS_ROWS, HA_DASHBOARD, IST, MY_LAYOUT, TIMEFRAMES, ChartinkError,
-                                fetch_dashboard, fetch_ha_candles, fetch_ha_signals, fetch_price_bars,
+                                fetch_dashboard, fetch_ha_candles, fetch_ha_signals, fetch_ha_tf_candles, fetch_price_bars,
                                 fetch_volume_profile, fetch_vp_candles, fetch_watchlists)
 
 # ---------------------------------------------------------------------------
@@ -102,7 +102,7 @@ SMA_EXITS = {"sma8": 8, "sma20": 20}
 BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/red exit",
               "atr": "Intraday · 1.1 ATR trail, doji", "vp": "Intraday · ATR trail, VP target, doji, EMA 8",
               "vp_trail": "Intraday · ATR trail, 1.5% trail past VP target, doji, EMA 8",
-              "sma8": "Hold · 2H SMA 8 exit", "sma20": "Hold · 2H SMA 20 exit"}
+              "ha_pure": "Hold · 30m candle trail, doji exit", "sma8": "Hold · 2H SMA 8 exit", "sma20": "Hold · 2H SMA 20 exit"}
 # HA MTF: the HA signals of 2H, 4H and Daily, held until the HA exit of the highest
 # timeframe that matched (auto_trader.py, enter_signals).
 # HA IDX: Heikin Ashi on NIFTY and BANKNIFTY 15-minute candles with an ATR trailing SL (ha_index.py);
@@ -113,6 +113,7 @@ BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/r
 # RSI 4H, RSI Daily and RSI Weekly: entered on the RSI signals of those timeframes, then traded as RSI (2H SL and exits).
 SYSTEMS = {"RSI": ("trail", "sma8", "sma20"), "RSI 4H": ("trail", "sma8", "sma20"),
            "RSI Daily": ("trail", "sma8", "sma20"), "RSI Weekly": ("trail", "sma8", "sma20"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",), "HA IDX PURE": ("atr",),
+           "HA PURE 2H": ("ha_pure",), "HA PURE 4H": ("ha_pure",), "HA PURE Daily": ("ha_pure",),
            "HA VP": ("vp",), "HA VP TRAIL": ("vp_trail",)}
 HA_EXITS = ("ha", "ha_green")
 # Styles a strategy no longer trades: their open positions still close by their rules and

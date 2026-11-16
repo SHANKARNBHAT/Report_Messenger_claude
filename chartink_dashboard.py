@@ -92,6 +92,12 @@ VP_QUERY = ("select [0] 2 hour Close as 'Close', [0] 2 hour High as 'High', [0] 
             "WHERE( {33489} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
 VP_CANDLES = 300  # slots: about 230 candles (older days have an empty 3:15 PM slot), for SMA 200 of the 2H closes
 VP_LIVE = 5  # the latest candles, the running one with them: a long series leaves it out
+# The 4H and Daily candles of the HA PURE strategies (ha_pure.py), as VP_QUERY's rows (volume 0).
+HA_TF_COLUMNS = {"4 HOUR": "[0] 4 hour", "DAILY": "daily"}
+HA_TF_QUERY = ("select {0} Close as 'Close', {0} High as 'High', {0} Low as 'Low', {0} ha-open as 'HA open', "
+               "{0} ha-high as 'HA high', {0} ha-low as 'HA low', {0} ha-close as 'HA close' "
+               "WHERE( {{33489}} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
+HA_TF_CANDLES = 60
 HA_DOJI_BODY = 0.1  # the previous HA candle's body must be more than this share of its range
 HA_SCAN_ROWS = 200
 
@@ -397,6 +403,24 @@ def fetch_vp_candles(link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
         rows.update({row[0]: row for row in (live or {}).get(symbol, [])})  # the live answer wins
         candles[symbol] = [rows[start] for start in sorted(rows)]
     return candles
+
+
+@st.cache_data(ttl=50, show_spinner=False)
+def fetch_ha_tf_candles(timeframe: str, link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
+    """symbol -> its last HA_TF_CANDLES candles of `timeframe` (HA_TF_COLUMNS), oldest first, the
+    running one last, as fetch_vp_candles' rows (volume 0), for the F&O stocks, NIFTY and BANKNIFTY."""
+    with requests.Session() as session:
+        session.headers.update(CHARTINK_HEADERS)
+        url, token, _, raw_widgets = open_dashboard(session, link)
+        widget = {"query": HA_TF_QUERY.format(HA_TF_COLUMNS[timeframe]), "id": raw_widgets[0].get("id")}
+        for wanted in (HA_TF_CANDLES, HA_TF_CANDLES - 5, HA_TF_CANDLES - 15, 40):
+            try:
+                payload = widget_payload(session, url, token, widget, PRICE_WIDGET_ROWS, wanted)
+            except (requests.RequestException, ValueError):
+                continue
+            if isinstance(payload, dict) and payload.get("groupData"):
+                return vp_rows(payload)
+    raise ChartinkError(f"No {timeframe} HA candles")
 
 
 @st.cache_data(ttl=50, show_spinner=False)
