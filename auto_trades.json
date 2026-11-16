@@ -249,7 +249,7 @@
    "status": "open",
    "passed": false,
    "high": 201.68,
-   "low": 194.08,
+   "low": 193.89,
    "nifty": 1.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -627,7 +627,7 @@
    "status": "open",
    "passed": false,
    "high": 1366.7,
-   "low": 1333,
+   "low": 1332.4,
    "nifty": -0.34,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -744,7 +744,7 @@
    "status": "open",
    "passed": true,
    "high": 1219.8,
-   "low": 1154,
+   "low": 1153,
    "nifty": 1.1,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -780,7 +780,7 @@
    "status": "open",
    "passed": false,
    "high": 1219.8,
-   "low": 1154,
+   "low": 1153,
    "nifty": 1.1,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -816,7 +816,7 @@
    "status": "open",
    "passed": false,
    "high": 1219.8,
-   "low": 1154,
+   "low": 1153,
    "nifty": 1.1,
    "source": "Auto HA MTF 2H+4H+Daily",
    "timeframes": [
@@ -1016,7 +1016,7 @@
    "status": "open",
    "passed": false,
    "high": 2766.5,
-   "low": 2631.6,
+   "low": 2629.2,
    "nifty": 1.43,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2004,7 +2004,7 @@
    "status": "open",
    "passed": false,
    "high": 3901.1,
-   "low": 3788.9,
+   "low": 3783,
    "nifty": -0.11,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2080,7 +2080,7 @@
    "status": "open",
    "passed": false,
    "high": 1906,
-   "low": 1848.5,
+   "low": 1846.2,
    "nifty": 0.31,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2289,42 +2289,6 @@
    }
   },
   {
-   "id": "1794457850276-1286",
-   "symbol": "BAJFINANCE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 750,
-   "entry": 1103.5,
-   "sl": 1065.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA",
-   "stop": 1065.0,
-   "time": 1794457850276,
-   "status": "open",
-   "passed": false,
-   "high": 1122,
-   "low": 1087.85,
-   "nifty": 0.48,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish scan"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 77.56,
-   "first_seen": {
-    "time": 1794457850276,
-    "price": 1103.5
-   }
-  },
-  {
    "id": "1794457850276-1288",
    "symbol": "LTF",
    "side": "BUY",
@@ -2361,43 +2325,6 @@
    "first_seen": {
     "time": 1794457850276,
     "price": 278.76
-   }
-  },
-  {
-   "id": "1794457850276-1293",
-   "symbol": "BAJFINANCE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 750,
-   "entry": 1103.5,
-   "sl": 1070.4,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha",
-   "system": "HA MTF",
-   "stop": 1070.4,
-   "time": 1794457850276,
-   "status": "open",
-   "passed": false,
-   "high": 1122,
-   "low": 1087.85,
-   "nifty": 0.48,
-   "source": "Auto HA MTF 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "exit_tf": "2 HOUR",
-   "strategies": [
-    "2H HA Bullish scan"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 77.56,
-   "first_seen": {
-    "time": 1794457850276,
-    "price": 1103.5
    }
   },
   {
@@ -2459,7 +2386,7 @@
    "status": "open",
    "passed": false,
    "high": 1834,
-   "low": 1764,
+   "low": 1761.8,
    "nifty": 0.36,
    "source": "Auto 2H",
    "timeframes": [
@@ -2498,7 +2425,7 @@
    "status": "open",
    "passed": false,
    "high": 1834,
-   "low": 1764,
+   "low": 1761.8,
    "nifty": 0.36,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2531,42 +2458,6 @@
     "step": 3.85
    },
    "style": "trail",
-   "system": "RSI",
-   "stop": 734.15,
-   "time": 1794459337992,
-   "status": "open",
-   "passed": false,
-   "high": 770.45,
-   "low": 751.5,
-   "nifty": 0.31,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794459337992,
-    "price": 765.1
-   }
-  },
-  {
-   "id": "1794459337992-1320",
-   "symbol": "DLF",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 950,
-   "entry": 765.1,
-   "sl": 734.15,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "rsi",
    "system": "RSI",
    "stop": 734.15,
    "time": 1794459337992,
@@ -2651,7 +2542,7 @@
    "status": "open",
    "passed": false,
    "high": 1883,
-   "low": 1834.5,
+   "low": 1833.3,
    "nifty": 0.4,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -3172,7 +3063,7 @@
    "status": "open",
    "passed": false,
    "high": 4448.3,
-   "low": 4354,
+   "low": 4346.4,
    "nifty": -0.32,
    "source": "Auto 2H",
    "timeframes": [
@@ -3616,7 +3507,7 @@
    "status": "open",
    "passed": false,
    "high": 7903.5,
-   "low": 7611.5,
+   "low": 7611,
    "nifty": 0.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -3652,7 +3543,7 @@
    "status": "open",
    "passed": false,
    "high": 7903.5,
-   "low": 7611.5,
+   "low": 7611,
    "nifty": 0.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -3913,7 +3804,7 @@
    "status": "open",
    "passed": false,
    "high": 4524,
-   "low": 4461.4,
+   "low": 4460,
    "nifty": 0.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -3949,7 +3840,7 @@
    "status": "open",
    "passed": false,
    "high": 4524,
-   "low": 4461.4,
+   "low": 4460,
    "nifty": 0.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -3985,7 +3876,7 @@
    "status": "open",
    "passed": false,
    "high": 4524,
-   "low": 4461.4,
+   "low": 4460,
    "nifty": 0.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -4135,7 +4026,7 @@
    "status": "open",
    "passed": false,
    "high": 559.4,
-   "low": 551.65,
+   "low": 551.45,
    "nifty": 0.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -4171,7 +4062,7 @@
    "status": "open",
    "passed": false,
    "high": 559.4,
-   "low": 551.65,
+   "low": 551.45,
    "nifty": 0.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -4207,7 +4098,7 @@
    "status": "open",
    "passed": false,
    "high": 559.4,
-   "low": 551.65,
+   "low": 551.45,
    "nifty": 0.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -4246,7 +4137,7 @@
    "status": "open",
    "passed": false,
    "high": 1758.6,
-   "low": 1730,
+   "low": 1728.4,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -4282,7 +4173,7 @@
    "status": "open",
    "passed": false,
    "high": 1758.6,
-   "low": 1730,
+   "low": 1728.4,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -4318,7 +4209,7 @@
    "status": "open",
    "passed": false,
    "high": 1758.6,
-   "low": 1730,
+   "low": 1728.4,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -4465,7 +4356,7 @@
    "status": "open",
    "passed": false,
    "high": 7903.5,
-   "low": 7611.5,
+   "low": 7611,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -4501,7 +4392,7 @@
    "status": "open",
    "passed": false,
    "high": 7903.5,
-   "low": 7611.5,
+   "low": 7611,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -5389,7 +5280,7 @@
    "status": "open",
    "passed": false,
    "high": 348.35,
-   "low": 344.15,
+   "low": 344,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -5425,7 +5316,7 @@
    "status": "open",
    "passed": false,
    "high": 348.35,
-   "low": 344.15,
+   "low": 344,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -5461,7 +5352,7 @@
    "status": "open",
    "passed": false,
    "high": 348.35,
-   "low": 344.15,
+   "low": 344,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -5772,117 +5663,6 @@
    }
   },
   {
-   "id": "1794800741223-1642",
-   "symbol": "BAJFINANCE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 750,
-   "entry": 1117.0,
-   "sl": 1100.25,
-   "tp": 1150.5,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 16.75,
-    "step": 5.6
-   },
-   "style": "trail",
-   "system": "RSI Weekly",
-   "stop": 1100.25,
-   "time": 1794800741223,
-   "status": "open",
-   "passed": false,
-   "high": 1117.0,
-   "low": 1101.1,
-   "nifty": 0.58,
-   "source": "Auto Weekly",
-   "timeframes": [
-    "WEEKLY"
-   ],
-   "strategies": [
-    "WEEKLY RSI BULLISH"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794800741223,
-    "price": 1117.0
-   }
-  },
-  {
-   "id": "1794800741223-1643",
-   "symbol": "BAJFINANCE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 750,
-   "entry": 1117.0,
-   "sl": 1100.25,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "sma8",
-   "system": "RSI Weekly",
-   "stop": 1100.25,
-   "time": 1794800741223,
-   "status": "open",
-   "passed": false,
-   "high": 1117.0,
-   "low": 1101.1,
-   "nifty": 0.58,
-   "source": "Auto Weekly",
-   "timeframes": [
-    "WEEKLY"
-   ],
-   "strategies": [
-    "WEEKLY RSI BULLISH"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794800741223,
-    "price": 1117.0
-   }
-  },
-  {
-   "id": "1794800741223-1644",
-   "symbol": "BAJFINANCE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 750,
-   "entry": 1117.0,
-   "sl": 1100.25,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "sma20",
-   "system": "RSI Weekly",
-   "stop": 1100.25,
-   "time": 1794800741223,
-   "status": "open",
-   "passed": false,
-   "high": 1117.0,
-   "low": 1101.1,
-   "nifty": 0.58,
-   "source": "Auto Weekly",
-   "timeframes": [
-    "WEEKLY"
-   ],
-   "strategies": [
-    "WEEKLY RSI BULLISH"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794800741223,
-    "price": 1117.0
-   }
-  },
-  {
    "id": "1794800741223-1645",
    "symbol": "BDL",
    "side": "SELL",
@@ -6016,7 +5796,7 @@
    "status": "open",
    "passed": false,
    "high": 3958.5,
-   "low": 3923.3,
+   "low": 3921.1,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -6052,7 +5832,7 @@
    "status": "open",
    "passed": false,
    "high": 3958.5,
-   "low": 3923.3,
+   "low": 3921.1,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -6088,7 +5868,7 @@
    "status": "open",
    "passed": false,
    "high": 3958.5,
-   "low": 3923.3,
+   "low": 3921.1,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -6127,7 +5907,7 @@
    "status": "open",
    "passed": false,
    "high": 1178.0,
-   "low": 1154,
+   "low": 1153,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -6163,7 +5943,7 @@
    "status": "open",
    "passed": false,
    "high": 1178.0,
-   "low": 1154,
+   "low": 1153,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -6199,7 +5979,7 @@
    "status": "open",
    "passed": false,
    "high": 1178.0,
-   "low": 1154,
+   "low": 1153,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -6348,7 +6128,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 188.0,
+   "high": 188.2,
    "low": 185.52,
    "nifty": 0.58,
    "source": "Auto Weekly",
@@ -6384,7 +6164,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 188.0,
+   "high": 188.2,
    "low": 185.52,
    "nifty": 0.58,
    "source": "Auto Weekly",
@@ -6420,7 +6200,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 188.0,
+   "high": 188.2,
    "low": 185.52,
    "nifty": 0.58,
    "source": "Auto Weekly",
@@ -6793,7 +6573,7 @@
    "status": "open",
    "passed": false,
    "high": 1348.0,
-   "low": 1333,
+   "low": 1332.4,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -6829,7 +6609,7 @@
    "status": "open",
    "passed": false,
    "high": 1348.0,
-   "low": 1333,
+   "low": 1332.4,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -6865,7 +6645,7 @@
    "status": "open",
    "passed": false,
    "high": 1348.0,
-   "low": 1333,
+   "low": 1332.4,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -7570,7 +7350,7 @@
    "status": "open",
    "passed": false,
    "high": 4524,
-   "low": 4461.4,
+   "low": 4460,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -7606,7 +7386,7 @@
    "status": "open",
    "passed": false,
    "high": 4524,
-   "low": 4461.4,
+   "low": 4460,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -7642,7 +7422,7 @@
    "status": "open",
    "passed": false,
    "high": 4524,
-   "low": 4461.4,
+   "low": 4460,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -7792,7 +7572,7 @@
    "status": "open",
    "passed": false,
    "high": 1392.8,
-   "low": 1371.8,
+   "low": 1366.7,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -7828,7 +7608,7 @@
    "status": "open",
    "passed": false,
    "high": 1392.8,
-   "low": 1371.8,
+   "low": 1366.7,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -7864,7 +7644,7 @@
    "status": "open",
    "passed": false,
    "high": 1392.8,
-   "low": 1371.8,
+   "low": 1366.7,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -8123,7 +7903,7 @@
    "status": "open",
    "passed": false,
    "high": 2615.1,
-   "low": 2592.7,
+   "low": 2591.6,
    "nifty": 0.41,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -8160,7 +7940,7 @@
    "status": "open",
    "passed": false,
    "high": 2615.1,
-   "low": 2592.7,
+   "low": 2591.6,
    "nifty": 0.41,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -8174,80 +7954,6 @@
    "first_seen": {
     "time": 1794801336045,
     "price": 2600.0
-   }
-  },
-  {
-   "id": "1794801336045-1711",
-   "symbol": "AUROPHARMA",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 550,
-   "entry": 1830.2,
-   "sl": 1807.65,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "vp",
-   "system": "HA VP",
-   "stop": 1826.75,
-   "atr": 22.57,
-   "time": 1794801336045,
-   "status": "open",
-   "passed": false,
-   "high": 1849.3,
-   "low": 1819.6,
-   "nifty": 0.41,
-   "source": "Auto HA VP 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA VP Bullish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794801336045,
-    "price": 1830.7
-   }
-  },
-  {
-   "id": "1794801336045-1712",
-   "symbol": "AUROPHARMA",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 550,
-   "entry": 1830.2,
-   "sl": 1807.65,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "vp_trail",
-   "system": "HA VP TRAIL",
-   "stop": 1826.75,
-   "atr": 22.57,
-   "time": 1794801336045,
-   "status": "open",
-   "passed": false,
-   "high": 1849.3,
-   "low": 1819.6,
-   "nifty": 0.41,
-   "source": "Auto HA VP TRAIL 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA VP TRAIL Bullish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794801336045,
-    "price": 1830.7
    }
   },
   {
@@ -8641,7 +8347,7 @@
    "status": "open",
    "passed": false,
    "high": 4430,
-   "low": 4356,
+   "low": 4346.4,
    "nifty": 0.41,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -8678,7 +8384,7 @@
    "status": "open",
    "passed": false,
    "high": 4430,
-   "low": 4356,
+   "low": 4346.4,
    "nifty": 0.41,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -8937,7 +8643,7 @@
    "status": "open",
    "passed": false,
    "high": 896,
-   "low": 887.45,
+   "low": 886.75,
    "nifty": 0.41,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -8974,7 +8680,7 @@
    "status": "open",
    "passed": false,
    "high": 896,
-   "low": 887.45,
+   "low": 886.75,
    "nifty": 0.41,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -9085,7 +8791,7 @@
    "status": "open",
    "passed": false,
    "high": 1155.9,
-   "low": 1146.7,
+   "low": 1145.7,
    "nifty": 0.41,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -9122,7 +8828,7 @@
    "status": "open",
    "passed": false,
    "high": 1155.9,
-   "low": 1146.7,
+   "low": 1145.7,
    "nifty": 0.41,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -9233,7 +8939,7 @@
    "status": "open",
    "passed": false,
    "high": 25337.6,
-   "low": 25231.25,
+   "low": 25214.1,
    "nifty": 0.41,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -9270,7 +8976,7 @@
    "status": "open",
    "passed": false,
    "high": 25337.6,
-   "low": 25231.25,
+   "low": 25214.1,
    "nifty": 0.41,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -9455,7 +9161,7 @@
    "status": "open",
    "passed": false,
    "high": 1097.5,
-   "low": 1091.55,
+   "low": 1090.2,
    "nifty": 0.41,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -9492,7 +9198,7 @@
    "status": "open",
    "passed": false,
    "high": 1097.5,
-   "low": 1091.55,
+   "low": 1090.2,
    "nifty": 0.41,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -9603,7 +9309,7 @@
    "status": "open",
    "passed": false,
    "high": 4511.0,
-   "low": 4461.4,
+   "low": 4460,
    "nifty": 0.41,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -9640,7 +9346,7 @@
    "status": "open",
    "passed": false,
    "high": 4511.0,
-   "low": 4461.4,
+   "low": 4460,
    "nifty": 0.41,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -9677,7 +9383,7 @@
    "status": "open",
    "passed": false,
    "high": 558.85,
-   "low": 551.65,
+   "low": 551.45,
    "nifty": 0.41,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -9714,7 +9420,7 @@
    "status": "open",
    "passed": false,
    "high": 558.85,
-   "low": 551.65,
+   "low": 551.45,
    "nifty": 0.41,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -9745,13 +9451,13 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 1271.35,
+   "stop": 1270.55,
    "atr": 21.37,
    "time": 1794801656114,
    "status": "open",
    "passed": false,
    "high": 1259,
-   "low": 1250,
+   "low": 1249.2,
    "nifty": 0.42,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -9782,13 +9488,13 @@
    "run": null,
    "style": "vp_trail",
    "system": "HA VP TRAIL",
-   "stop": 1271.35,
+   "stop": 1270.55,
    "atr": 21.37,
    "time": 1794801656114,
    "status": "open",
    "passed": false,
    "high": 1259,
-   "low": 1250,
+   "low": 1249.2,
    "nifty": 0.42,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -9864,7 +9570,7 @@
    "status": "open",
    "passed": false,
    "high": 7878.0,
-   "low": 7611.5,
+   "low": 7611,
    "nifty": 0.42,
    "source": "Auto 4H",
    "timeframes": [
@@ -9900,7 +9606,7 @@
    "status": "open",
    "passed": false,
    "high": 7878.0,
-   "low": 7611.5,
+   "low": 7611,
    "nifty": 0.42,
    "source": "Auto 4H",
    "timeframes": [
@@ -9936,7 +9642,7 @@
    "status": "open",
    "passed": false,
    "high": 7878.0,
-   "low": 7611.5,
+   "low": 7611,
    "nifty": 0.42,
    "source": "Auto 4H",
    "timeframes": [
@@ -10269,7 +9975,7 @@
    "status": "open",
    "passed": false,
    "high": 547.45,
-   "low": 541.8,
+   "low": 540.65,
    "nifty": 0.42,
    "source": "Auto Weekly",
    "timeframes": [
@@ -10305,7 +10011,7 @@
    "status": "open",
    "passed": false,
    "high": 547.45,
-   "low": 541.8,
+   "low": 540.65,
    "nifty": 0.42,
    "source": "Auto Weekly",
    "timeframes": [
@@ -10341,7 +10047,7 @@
    "status": "open",
    "passed": false,
    "high": 547.45,
-   "low": 541.8,
+   "low": 540.65,
    "nifty": 0.42,
    "source": "Auto Weekly",
    "timeframes": [
@@ -10594,13 +10300,13 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 1725.65,
+   "stop": 1724.65,
    "atr": 37.67,
    "time": 1794801934761,
    "status": "open",
    "passed": false,
    "high": 1698.8,
-   "low": 1688,
+   "low": 1687,
    "nifty": 0.46,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -10631,13 +10337,13 @@
    "run": null,
    "style": "vp_trail",
    "system": "HA VP TRAIL",
-   "stop": 1725.65,
+   "stop": 1724.65,
    "atr": 37.67,
    "time": 1794801934761,
    "status": "open",
    "passed": false,
    "high": 1698.8,
-   "low": 1688,
+   "low": 1687,
    "nifty": 0.46,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -10674,7 +10380,7 @@
    "status": "open",
    "passed": false,
    "high": 1345,
-   "low": 1340.7,
+   "low": 1335.6,
    "nifty": 0.46,
    "source": "Auto HA VP 2H",
    "timeframes": [
@@ -10711,7 +10417,7 @@
    "status": "open",
    "passed": false,
    "high": 1345,
-   "low": 1340.7,
+   "low": 1335.6,
    "nifty": 0.46,
    "source": "Auto HA VP TRAIL 2H",
    "timeframes": [
@@ -10935,7 +10641,7 @@
    "status": "open",
    "passed": false,
    "high": 1101,
-   "low": 1097.8,
+   "low": 1097,
    "nifty": 0.54,
    "source": "Auto 2H",
    "timeframes": [
@@ -10971,7 +10677,7 @@
    "status": "open",
    "passed": false,
    "high": 1101,
-   "low": 1097.8,
+   "low": 1097,
    "nifty": 0.54,
    "source": "Auto 2H",
    "timeframes": [
@@ -11007,7 +10713,7 @@
    "status": "open",
    "passed": false,
    "high": 1101,
-   "low": 1097.8,
+   "low": 1097,
    "nifty": 0.54,
    "source": "Auto 2H",
    "timeframes": [
@@ -11046,7 +10752,7 @@
    "status": "open",
    "passed": false,
    "high": 345.6,
-   "low": 344.15,
+   "low": 344,
    "nifty": 0.6,
    "source": "Auto Weekly",
    "timeframes": [
@@ -11082,7 +10788,7 @@
    "status": "open",
    "passed": false,
    "high": 345.6,
-   "low": 344.15,
+   "low": 344,
    "nifty": 0.6,
    "source": "Auto Weekly",
    "timeframes": [
@@ -11118,7 +10824,7 @@
    "status": "open",
    "passed": false,
    "high": 345.6,
-   "low": 344.15,
+   "low": 344,
    "nifty": 0.6,
    "source": "Auto Weekly",
    "timeframes": [
@@ -11157,7 +10863,7 @@
    "status": "open",
    "passed": false,
    "high": 399.3,
-   "low": 399.3,
+   "low": 397.55,
    "nifty": 0.55,
    "source": "Auto 2H",
    "timeframes": [
@@ -11287,6 +10993,14 @@
  ],
  "seq": 1810,
  "log": [
+  "16 Nov 10:40  BAJFINANCE: Stop loss at 1100.25 (Hold \u00b7 2H SMA 20 exit)",
+  "16 Nov 10:40  BAJFINANCE: Stop loss at 1100.25 (Hold \u00b7 2H SMA 8 exit)",
+  "16 Nov 10:40  BAJFINANCE: Stop loss at 1100.25 (Hold \u00b7 trail)",
+  "16 Nov 10:40  DLF: RSI exit (2H 59.0) at 751.9 (Hold \u00b7 RSI exit)",
+  "16 Nov 10:40  BAJFINANCE: HA exit (2H) at 1101.1 (Hold \u00b7 HA exit)",
+  "16 Nov 10:40  BAJFINANCE: HA exit (2H) at 1101.1 (Hold \u00b7 HA exit)",
+  "16 Nov 10:40  AUROPHARMA: ATR trailing SL at 1826.75 (HA VP TRAIL)",
+  "16 Nov 10:40  AUROPHARMA: ATR trailing SL at 1826.75 (HA VP)",
   "16 Nov 10:35  NYKAA: TSL after target at 362.0 (Hold \u00b7 trail)",
   "16 Nov 10:35  NYKAA: Stop loss at 362.1 (HA VP TRAIL)",
   "16 Nov 10:35  NYKAA: Stop loss at 362.1 (HA VP)",
@@ -11578,18 +11292,10 @@
   "13 Nov 12:00  SUNPHARMA: HA lower wick at 1893.9 (HA VP TRAIL)",
   "13 Nov 12:00  SUNPHARMA: HA lower wick at 1893.9 (HA VP)",
   "13 Nov 11:55  CAMS: RSI exit (2H 59.4) at 739.15 (Hold \u00b7 RSI exit)",
-  "13 Nov 11:55  INDUSTOWER: TSL after target at 393.8 (Hold \u00b7 trail)",
-  "13 Nov 11:50  AMBER: RSI BUY 100 at 6899.5, SL 6000.0 (2 HOUR; trail, sma8, sma20)",
-  "13 Nov 11:40  PHOENIXLTD: HA lower wick at 2252.3 (HA VP TRAIL)",
-  "13 Nov 11:40  PHOENIXLTD: HA lower wick at 2252.3 (HA VP)",
-  "13 Nov 11:30  CAMS: TSL after target at 745.5 (Hold \u00b7 trail)",
-  "13 Nov 11:30  CAMS: TSL after target at 745.5 (Hold \u00b7 trail)",
-  "13 Nov 11:25  LICI: RSI exit (2H 60.0) at 406.1 (Hold \u00b7 RSI exit)",
-  "13 Nov 11:25  BLUESTARCO: RSI exit (2H 59.8) at 1620.1 (Hold \u00b7 RSI exit)",
-  "13 Nov 11:25  ASTRAL: HA upper wick at 1278.2 (HA VP TRAIL)"
+  "13 Nov 11:55  INDUSTOWER: TSL after target at 393.8 (Hold \u00b7 trail)"
  ],
- "page_run": 1794805544740,
- "updated": 1794805544740,
+ "page_run": 1794805842034,
+ "updated": 1794805842034,
  "unattended": true,
  "peak_margin": 47315012.0
 }

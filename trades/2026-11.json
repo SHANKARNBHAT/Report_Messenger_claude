@@ -41150,5 +41150,301 @@
   "gross": 27500.0,
   "charges": 683.16,
   "net": 26816.84
+ },
+ {
+  "id": "1794801336045-1711",
+  "symbol": "AUROPHARMA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1830.2,
+  "exit": 1826.75,
+  "entry_time": 1794801336045,
+  "exit_time": 1794805200000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 1807.65,
+  "tp": null,
+  "high": 1849.3,
+  "low": 1819.6,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 1830.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1897.5,
+  "charges": 613.12,
+  "net": -2510.62
+ },
+ {
+  "id": "1794801336045-1712",
+  "symbol": "AUROPHARMA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1830.2,
+  "exit": 1826.75,
+  "entry_time": 1794801336045,
+  "exit_time": 1794805200000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 1807.65,
+  "tp": null,
+  "high": 1849.3,
+  "low": 1819.6,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 1830.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1897.5,
+  "charges": 613.12,
+  "net": -2510.62
+ },
+ {
+  "id": "1794457850276-1286",
+  "symbol": "BAJFINANCE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 750,
+  "entry": 1103.5,
+  "exit": 1101.1,
+  "entry_time": 1794457850276,
+  "exit_time": 1794805842034,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1065.0,
+  "tp": null,
+  "high": 1122,
+  "low": 1087.85,
+  "nifty": 0.48,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794457850276,
+   "price": 1103.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 77.56,
+  "gross": -1800.0,
+  "charges": 512.37,
+  "net": -2312.37
+ },
+ {
+  "id": "1794457850276-1293",
+  "symbol": "BAJFINANCE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 750,
+  "entry": 1103.5,
+  "exit": 1101.1,
+  "entry_time": 1794457850276,
+  "exit_time": 1794805842034,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1070.4,
+  "tp": null,
+  "high": 1122,
+  "low": 1087.85,
+  "nifty": 0.48,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794457850276,
+   "price": 1103.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 77.56,
+  "gross": -1800.0,
+  "charges": 512.37,
+  "net": -2312.37
+ },
+ {
+  "id": "1794459337992-1320",
+  "symbol": "DLF",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 950,
+  "entry": 765.1,
+  "exit": 751.9,
+  "entry_time": 1794459337992,
+  "exit_time": 1794805842034,
+  "reason": "RSI exit (2H 59.0)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 734.15,
+  "tp": null,
+  "high": 770.45,
+  "low": 751.5,
+  "nifty": 0.31,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794459337992,
+   "price": 765.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12540.0,
+  "charges": 450.01,
+  "net": -12990.01
+ },
+ {
+  "id": "1794800741223-1642",
+  "symbol": "BAJFINANCE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 750,
+  "entry": 1117.0,
+  "exit": 1100.25,
+  "entry_time": 1794800741223,
+  "exit_time": 1794805200000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1100.25,
+  "tp": 1150.5,
+  "high": 1117.0,
+  "low": 1100.25,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 1117.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12562.5,
+  "charges": 512.46,
+  "net": -13074.96
+ },
+ {
+  "id": "1794800741223-1643",
+  "symbol": "BAJFINANCE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 750,
+  "entry": 1117.0,
+  "exit": 1100.25,
+  "entry_time": 1794800741223,
+  "exit_time": 1794805200000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 1100.25,
+  "tp": null,
+  "high": 1117.0,
+  "low": 1100.25,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 1117.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12562.5,
+  "charges": 512.46,
+  "net": -13074.96
+ },
+ {
+  "id": "1794800741223-1644",
+  "symbol": "BAJFINANCE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 750,
+  "entry": 1117.0,
+  "exit": 1100.25,
+  "entry_time": 1794800741223,
+  "exit_time": 1794805200000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 1100.25,
+  "tp": null,
+  "high": 1117.0,
+  "low": 1100.25,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 1117.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12562.5,
+  "charges": 512.46,
+  "net": -13074.96
  }
 ]
