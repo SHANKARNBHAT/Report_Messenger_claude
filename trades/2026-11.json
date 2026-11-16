@@ -40817,5 +40817,153 @@
   "gross": -6525.0,
   "charges": 330.43,
   "net": -6855.43
+ },
+ {
+  "id": "1794801656114-1769",
+  "symbol": "MAXHEALTH",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 525,
+  "entry": 958.45,
+  "exit": 992.1,
+  "entry_time": 1794801656114,
+  "exit_time": 1794804600000,
+  "reason": "VP target",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 946.55,
+  "tp": 992.1,
+  "high": 992.1,
+  "low": 958.45,
+  "nifty": 0.42,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801656114,
+   "price": 972.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 17666.25,
+  "charges": 339.8,
+  "net": 17326.45
+ },
+ {
+  "id": "1794370541809-978",
+  "symbol": "APLAPOLLO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2200.1,
+  "exit": 2277.1,
+  "entry_time": 1794370541809,
+  "exit_time": 1794804600000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 2168.1,
+  "tp": 2266.1,
+  "high": 2312.0,
+  "low": 2186.9,
+  "nifty": 1.49,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794370541809,
+   "price": 2200.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 55.14,
+  "gross": 26950.0,
+  "charges": 494.93,
+  "net": 26455.07
+ },
+ {
+  "id": "1794456945585-1277",
+  "symbol": "KEI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4151.7,
+  "exit": 4003.0,
+  "entry_time": 1794456945585,
+  "exit_time": 1794804600000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 4003.0,
+  "tp": 4276.25,
+  "high": 4213.0,
+  "low": 4003.0,
+  "nifty": 0.34,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794456945585,
+   "price": 4151.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 54.58,
+  "gross": -26022.5,
+  "charges": 442.81,
+  "net": -26465.31
+ },
+ {
+  "id": "1794461730631-1366",
+  "symbol": "BLUESTARCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1599.7,
+  "exit": 1559.0,
+  "entry_time": 1794461730631,
+  "exit_time": 1794804600000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1559.0,
+  "tp": 1647.7,
+  "high": 1633,
+  "low": 1559.0,
+  "nifty": 0.24,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794461730631,
+   "price": 1599.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 49.77,
+  "gross": -13227.5,
+  "charges": 333.1,
+  "net": -13560.6
  }
 ]
