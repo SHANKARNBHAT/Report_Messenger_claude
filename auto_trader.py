@@ -9,7 +9,7 @@ trails it, with a fixed SL MTF_SL_PCT from the entry until then). A stock on sev
 each, so that each strategy's results stay its own. A fourth, HA IDX (ha_index.py), trades
 NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles with an ATR trailing SL, intraday.
 A fifth, HA VP (ha_vp.py), and its twin HA VP TRAIL (trails past the target instead of taking it), trade the F&O stocks, NIFTY and BANKNIFTY on their running 2H Heikin Ashi candle, with an
-ATR trailing SL, a volume profile target and an EMA 8 exit, intraday. HA and HA MTF take no new
+ATR trailing SL, a volume profile target, HA doji and EMA 8 exits, intraday. HA and HA MTF take no new
 trades any more: their open positions still close by their rules.
 
 .github/workflows/auto_trader.yml runs it every 15 minutes in market hours. Each run:
@@ -503,7 +503,7 @@ def vp_bars(positions: list[dict], now: datetime) -> dict[str, list]:
 
 
 def settle_vp(files: Files, account: dict, now: datetime, note) -> None:
-    """Close the HA VP positions that hit their SL, a wick against them, VP target, an EMA 8 cross or the 3:15 PM
+    """Close the HA VP positions that hit their SL, VP target, an HA doji, an EMA 8 cross or the 3:15 PM
     square-off (ha_vp.replay); move the others' SL."""
     positions = [p for p in account["positions"] if p.get("system") in ha_vp.SYSTEMS]
     if not positions:

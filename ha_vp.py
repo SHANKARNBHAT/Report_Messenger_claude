@@ -6,10 +6,13 @@ but entering live, on the running candle, instead of at its close.
 
   * Trend: longs only when SMA 20 > SMA 50 of the 2H closes and the close is above SMA 200;
     shorts only when SMA 20 < SMA 50 and the close is below SMA 200.
-  * Entry: long on a green running 2H HA candle with no lower wick (HA open = HA low) whose HA
-    close is above the previous HA high; short on a red one with no upper wick (HA open = HA
-    high) whose HA close is below the previous HA low. An opposite signal closes the position
-    and enters the other way.
+  * Entry (ha_entry): long on a well-formed green running 2H HA candle, no lower wick (HA open =
+    HA low), after a doji or a red HA candle; short on a red one with no upper wick (HA open = HA
+    high) after a doji or a green one. A doji is an HA candle with wicks on both sides, whatever
+    its size or colour; after one, the new candle's body (|HA close - HA open|) must be at least
+    the doji's. After an opposite-colour one, its HA close must be past that candle's body: above
+    its top (long), below its bottom (short). An opposite signal closes the position and enters
+    the other way.
   * Target: the nearest POC, VAH or VAL of the volume profile (TARGET_PERIODS, volume_profile.py)
     at least MIN_TARGET_ATR x ATR above the entry (below for a short). HA VP takes it as profit when reached; HA VP TRAIL
     (SYSTEMS) does not, and trails TRAIL_PCT from there instead: the same signals, to compare.
@@ -17,9 +20,8 @@ but entering live, on the running candle, instead of at its close.
     the lowest low for a short), moved on every 5-minute bar, never back; the ATR is that of the
     last finished 2H candle. Once the target is reached (HA VP TRAIL), TRAIL_PCT behind
     the highest high (lowest low) instead. Hit when a 5-minute bar touches it.
-  * Wick exit: in any 2H candle after the entry candle, as soon as its HA candle grows a wick
-    against the trade: a lower wick for a long (price below that candle's HA open), an upper
-    wick for a short (above its HA open). Out at the HA open, or the bar's open if it gapped past.
+  * Doji exit: at the close of the first 2H HA candle, the entry candle included, with wicks on
+    both sides (doji), at that close.
   * EMA exit: a finished 2H candle that closes across EMA(EMA_LEN) of the 2H closes against the
     trade (below for a long, above for a short), at that close.
   * Squared off at 3:15 PM: intraday only.
@@ -97,17 +99,39 @@ def trend(rows: list, column: int = CLOSE) -> str | None:
     return None
 
 
+def doji(candle: tuple) -> bool:
+    """Whether an HA candle (open, high, low, close) has wicks on both sides, whatever its size."""
+    open_, high, low, close = candle
+    return high > max(open_, close) and low < min(open_, close)
+
+
+def ha_entry(now: tuple, prev: tuple, long: bool) -> bool:
+    """The HA entry pattern on HA candles (open, high, low, close): the current one well formed,
+    green with no lower wick (long) or red with no upper wick (short); the previous one a doji
+    (doji), with the current body at least the doji's, or else of the opposite colour with the
+    current HA close past its body (above its top for a long, below its bottom for a short)."""
+    open_, high, low, close = now
+    p_open, _, _, p_close = prev
+    formed = close > open_ and low >= open_ if long else close < open_ and high <= open_
+    if not formed:
+        return False
+    if doji(prev):
+        return abs(close - open_) >= abs(p_close - p_open)
+    if long:
+        return p_close < p_open and close > max(p_open, p_close)
+    return p_close > p_open and close < min(p_open, p_close)
+
+
 def signal(rows: list[tuple]) -> str | None:
-    """"BUY", "SELL" or None for the last (running) candle of `rows`."""
+    """"BUY", "SELL" or None for the last (running) candle of `rows`: the SMA trend (trend) and
+    the HA entry pattern (ha_entry) its way."""
     if len(rows) < 2:
         return None
-    now, prev = rows[-1], rows[-2]
     side = trend(rows)
-    if side == "BUY" and now[HA_CLOSE] > now[HA_OPEN] and now[HA_LOW] >= now[HA_OPEN] and now[HA_CLOSE] > prev[HA_HIGH]:
-        return "BUY"
-    if side == "SELL" and now[HA_CLOSE] < now[HA_OPEN] and now[HA_HIGH] <= now[HA_OPEN] and now[HA_CLOSE] < prev[HA_LOW]:
-        return "SELL"
-    return None
+    if side is None:
+        return None
+    now, prev = (tuple(row[i] for i in (HA_OPEN, HA_HIGH, HA_LOW, HA_CLOSE)) for row in rows[-2:][::-1])
+    return side if ha_entry(now, prev, side == "BUY") else None
 
 def target(levels: dict | None, entry: float, long: bool, gap: float = 0.0) -> float | None:
     """The nearest POC, VAH or VAL of TARGET_PERIODS at least `gap` beyond the entry (MIN_TARGET_ATR
@@ -122,7 +146,7 @@ def target(levels: dict | None, entry: float, long: bool, gap: float = 0.0) -> f
 
 def replay(position: dict, bars: list[tuple], rows: list[tuple], candle_end, now: datetime, tz) -> dict:
     """Where a position stands after the 5-minute bars since its entry: closed at its SL, target,
-    an EMA cross at a 2H close, or at 3:15 PM, else open with its current SL ("stop").
+    a doji or an EMA cross at a 2H close, or at 3:15 PM, else open with its current SL ("stop").
     `rows` are the 2H candles, the running one included; `candle_end(start)` is when the 2H
     candle that started at `start` ends (seconds)."""
     long = position["side"] == "BUY"
@@ -136,11 +160,10 @@ def replay(position: dict, bars: list[tuple], rows: list[tuple], candle_end, now
     reached = moved = False
     # The 2H candles by their end: ATR, EMA and close at that end, and the EMA and close before.
     atrs, emas = atr(rows), ema(rows)
-    spans = [(row[0], candle_end(row[0]), row[HA_OPEN]) for row in rows]
-    entered_ts = entered.timestamp()
-    entry_candle = next((s for s, e, _ in spans if s <= entered_ts < e), None)
     closes_at = {candle_end(row[0]): (atrs[i], emas[i], row[CLOSE], emas[i - 1] if i else None,
-                                      rows[i - 1][CLOSE] if i else None) for i, row in enumerate(rows)}
+                                      rows[i - 1][CLOSE] if i else None,
+                                      doji(tuple(row[c] for c in (HA_OPEN, HA_HIGH, HA_LOW, HA_CLOSE))))
+                 for i, row in enumerate(rows)}
     first = -(-int(entered.timestamp()) // BAR) * BAR
 
     def result(status, **extra):
@@ -149,14 +172,9 @@ def replay(position: dict, bars: list[tuple], rows: list[tuple], candle_end, now
 
     for start, open_, bar_high, bar_low, close in (b for b in bars if first <= b[0] < cutoff):
         reason = f"Trail {TRAIL_PCT}%" if reached else "ATR trailing SL" if moved else "Stop loss"
-        level = stop
-        # A later 2H candle's HA open: the HA candle grows a wick against the trade past it.
-        wick = next((o for s, e, o in spans if s <= start < e and s != entry_candle and s > (entry_candle or 0)), None)
-        if wick is not None and (wick > stop if long else wick < stop):
-            level, reason = wick, "HA lower wick" if long else "HA upper wick"
-        gap = open_ < level if long else open_ > level
-        if gap or (bar_low < level if long else bar_high > level) or (bar_low <= stop if long else bar_high >= stop):
-            price = open_ if gap else level
+        gap = open_ <= stop if long else open_ >= stop
+        if gap or (bar_low <= stop if long else bar_high >= stop):
+            price = open_ if gap else stop
             high, low = max(high, price), min(low, price)
             return result("closed", exit=round(price, 2), exit_time=start * 1000, reason=reason)
         if take_profit and goal is not None and (bar_high >= goal if long else bar_low <= goal):
@@ -169,7 +187,9 @@ def replay(position: dict, bars: list[tuple], rows: list[tuple], candle_end, now
             reached = True
         ended = closes_at.get(start + BAR)
         if ended:
-            value, line, candle_close, line_before, close_before = ended
+            value, line, candle_close, line_before, close_before, is_doji = ended
+            if is_doji:
+                return result("closed", exit=round(close, 2), exit_time=(start + BAR) * 1000, reason="HA doji")
             if line_before is not None and (
                     candle_close < line and close_before >= line_before if long
                     else candle_close > line and close_before <= line_before):
