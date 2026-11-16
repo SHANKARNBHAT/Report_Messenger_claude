@@ -40965,5 +40965,190 @@
   "gross": -13227.5,
   "charges": 333.1,
   "net": -13560.6
+ },
+ {
+  "id": "1794801336045-1709",
+  "symbol": "ATHERENERG",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1981.7,
+  "exit": 1985.7,
+  "entry_time": 1794801336045,
+  "exit_time": 1794804900000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 1945.9,
+  "tp": null,
+  "high": 2021.5,
+  "low": 1981.7,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 1996.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1500.0,
+  "charges": 466.51,
+  "net": 1033.49
+ },
+ {
+  "id": "1794801336045-1710",
+  "symbol": "ATHERENERG",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1981.7,
+  "exit": 1985.7,
+  "entry_time": 1794801336045,
+  "exit_time": 1794804900000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 1945.9,
+  "tp": null,
+  "high": 2021.5,
+  "low": 1981.7,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 1996.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1500.0,
+  "charges": 466.51,
+  "net": 1033.49
+ },
+ {
+  "id": "1794801336045-1753",
+  "symbol": "NYKAA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3125,
+  "entry": 367.45,
+  "exit": 362.1,
+  "entry_time": 1794801336045,
+  "exit_time": 1794804900000,
+  "reason": "Stop loss",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 362.1,
+  "tp": null,
+  "high": 367.45,
+  "low": 362.1,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 364.45
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -16718.75,
+  "charges": 685.18,
+  "net": -17403.93
+ },
+ {
+  "id": "1794801336045-1754",
+  "symbol": "NYKAA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3125,
+  "entry": 367.45,
+  "exit": 362.1,
+  "entry_time": 1794801336045,
+  "exit_time": 1794804900000,
+  "reason": "Stop loss",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 362.1,
+  "tp": null,
+  "high": 367.45,
+  "low": 362.1,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 364.45
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -16718.75,
+  "charges": 685.18,
+  "net": -17403.93
+ },
+ {
+  "id": "1794210637305-888",
+  "symbol": "NYKAA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3125,
+  "entry": 353.2,
+  "exit": 362.0,
+  "entry_time": 1794210637305,
+  "exit_time": 1794804900000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 347.9,
+  "tp": 363.8,
+  "high": 368.3,
+  "low": 351.6,
+  "nifty": -0.42,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794210637305,
+   "price": 353.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 27500.0,
+  "charges": 683.16,
+  "net": 26816.84
  }
 ]
