@@ -50143,5 +50143,153 @@
   "gross": -11370.0,
   "charges": 513.27,
   "net": -11883.27
+ },
+ {
+  "id": "1794808297527-1944",
+  "symbol": "MANKIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2643.0,
+  "exit": 2643.6,
+  "entry_time": 1794808297527,
+  "exit_time": 1794811200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2660.3,
+  "tp": null,
+  "high": 2643.6,
+  "low": 2629.3,
+  "nifty": 0.3,
+  "strategies": [
+   "2H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794808297527,
+   "price": 2639.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -150.0,
+  "charges": 419.33,
+  "net": -569.33
+ },
+ {
+  "id": "1794808297527-1948",
+  "symbol": "MOTHERSON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 162.8,
+  "exit": 162.95,
+  "entry_time": 1794808297527,
+  "exit_time": 1794811200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 164.85,
+  "tp": null,
+  "high": 162.95,
+  "low": 162.33,
+  "nifty": 0.3,
+  "strategies": [
+   "2H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794808297527,
+   "price": 162.65
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -922.5,
+  "charges": 611.11,
+  "net": -1533.61
+ },
+ {
+  "id": "1794808297527-1979",
+  "symbol": "TCS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 225,
+  "entry": 2400.8,
+  "exit": 2400.7,
+  "entry_time": 1794808297527,
+  "exit_time": 1794811200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2405.0,
+  "tp": null,
+  "high": 2400.8,
+  "low": 2394,
+  "nifty": 0.3,
+  "strategies": [
+   "2H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794808297527,
+   "price": 2399.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 22.5,
+  "charges": 351.42,
+  "net": -328.92
+ },
+ {
+  "id": "1794808297527-2009",
+  "symbol": "WAAREEENER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 2455.3,
+  "exit": 2449.5,
+  "entry_time": 1794808297527,
+  "exit_time": 1794811200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2468.0,
+  "tp": null,
+  "high": 2455.3,
+  "low": 2435,
+  "nifty": 0.3,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794808297527,
+   "price": 2446.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1015.0,
+  "charges": 289.15,
+  "net": 725.85
  }
 ]
