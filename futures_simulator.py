@@ -187,7 +187,8 @@ def yahoo_chart(yahoo: str, interval: str, period: str) -> dict:
 
 @st.cache_data(ttl=60, show_spinner=False)
 def fetch_quotes(symbols: tuple[tuple[str, str], ...]) -> dict[str, dict]:
-    """symbol -> latest price and its time (ms), for (symbol, Yahoo symbol) pairs."""
+    """symbol -> latest price, its time (ms) and the previous session's close ("prev"), for
+    (symbol, Yahoo symbol) pairs."""
     def one(pair):
         symbol, yahoo = pair
         try:
@@ -195,7 +196,8 @@ def fetch_quotes(symbols: tuple[tuple[str, str], ...]) -> dict[str, dict]:
         except (requests.RequestException, ValueError, KeyError):
             return symbol, None
         price, when = meta.get("regularMarketPrice"), meta.get("regularMarketTime")
-        return symbol, {"price": price, "time": when * 1000 if when else None} if price else None
+        prev = meta.get("chartPreviousClose") or meta.get("previousClose")
+        return symbol, {"price": price, "time": when * 1000 if when else None, "prev": prev} if price else None
 
     with ThreadPoolExecutor(8) as pool:
         return {symbol: q for symbol, q in pool.map(one, symbols) if q}

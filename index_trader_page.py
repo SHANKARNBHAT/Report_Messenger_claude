@@ -57,7 +57,7 @@ def main() -> None:
         q = quotes.get(p["symbol"])
         return None if not q else round((q["price"] - p["entry"]) * p["qty"] * (1 if p["side"] == "BUY" else -1), 2)
 
-    atp.show_index(trades, positions, unrealized, atp.INDEX_SYSTEMS[system][1])
+    atp.show_index(trades, positions, unrealized, atp.INDEX_SYSTEMS[system][1], quotes)
 
 
 if __name__ == "__main__":

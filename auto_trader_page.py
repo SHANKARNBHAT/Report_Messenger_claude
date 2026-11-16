@@ -895,7 +895,8 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict], use_trend: boo
                "moved at each 15-minute close.")
 
 
-def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, use_trend: bool = True) -> None:
+def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, use_trend: bool = True,
+               quotes: dict | None = None) -> None:
     """An HA IDX strategy (INDEX_SYSTEMS), NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles
     (ha_index.py): its own totals, open positions and closed trades, apart from the stock strategies."""
     st.caption("A green 15-minute HA candle with no lower wick after a doji (wicks both sides; the new body at least the "
@@ -918,7 +919,9 @@ def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, use_tren
     if positions:
         table = pd.DataFrame([{
             "Symbol": chart_link(p["symbol"]), "Side": "LONG" if p["side"] == "BUY" else "SHORT", "Qty": p["qty"],
-            "Entry": p["entry"], "Initial SL": p["sl"], "Trailing SL": p.get("stop"),
+            "Entry": p["entry"], "LTP": ((quotes or {}).get(p["symbol"]) or {}).get("price"),
+            "Prev close": ((quotes or {}).get(p["symbol"]) or {}).get("prev"),
+            "Initial SL": p["sl"], "Trailing SL": p.get("stop"),
             "Unrealized ₹": unrealized(p), "Entered": when(p["time"]),
         } for p in positions])
         picked = st.dataframe(table, hide_index=True, width="stretch", on_select="rerun",
@@ -1044,6 +1047,7 @@ def main() -> None:
         "Style": series_of(p),
         "Signal": p["source"] + (f" · exit {SHORT_TF[p['exit_tf']]}" if p.get("exit_tf") else ""), "Qty": p["qty"],
         "Entry": p["entry"], "LTP": (quotes.get(p["symbol"]) or {}).get("price"),
+        "Prev close": (quotes.get(p["symbol"]) or {}).get("prev"),
         "SL / TSL": p.get("stop"), "Target": p["tp"],
         "At target": "—" if p.get("tp") is None or p.get("style") in fs.HA_EXITS else "Passed · trailing" if p.get("passed")
         else "Trail" if p.get("run") else "Exit",
