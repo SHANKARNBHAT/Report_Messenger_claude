@@ -56063,5 +56063,153 @@
   "gross": -11220.0,
   "charges": 423.65,
   "net": -11643.65
+ },
+ {
+  "id": "1794815446175-2156",
+  "symbol": "M&M",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 3324.8,
+  "exit": 3325.0,
+  "entry_time": 1794815446175,
+  "exit_time": 1794818400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 3336.1,
+  "tp": null,
+  "high": 3325,
+  "low": 3313,
+  "nifty": 0.44,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794815446175,
+   "price": 3323.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -40.0,
+  "charges": 421.7,
+  "net": -461.7
+ },
+ {
+  "id": "1794815516434-2258",
+  "symbol": "VOLTAS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1134.3,
+  "exit": 1135.0,
+  "entry_time": 1794815516434,
+  "exit_time": 1794818400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1129.6,
+  "tp": null,
+  "high": 1145,
+  "low": 1134.3,
+  "nifty": 0.44,
+  "strategies": [
+   "2H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794815516434,
+   "price": 1135.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 262.5,
+  "charges": 286.9,
+  "net": -24.4
+ },
+ {
+  "id": "1794800741223-1648",
+  "symbol": "BSE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 200,
+  "entry": 3937.7,
+  "exit": 3878.65,
+  "entry_time": 1794800741223,
+  "exit_time": 1794818400000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 3878.65,
+  "tp": 4055.85,
+  "high": 3958.5,
+  "low": 3878.65,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 3937.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11810.0,
+  "charges": 484.57,
+  "net": -12294.57
+ },
+ {
+  "id": "1794800741223-1650",
+  "symbol": "BSE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 200,
+  "entry": 3937.7,
+  "exit": 3878.65,
+  "entry_time": 1794800741223,
+  "exit_time": 1794818400000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 3878.65,
+  "tp": null,
+  "high": 3958.5,
+  "low": 3878.65,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 3937.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11810.0,
+  "charges": 484.57,
+  "net": -12294.57
  }
 ]
