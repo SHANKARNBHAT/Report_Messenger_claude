@@ -62316,5 +62316,153 @@
   "gross": -2327.5,
   "charges": 552.74,
   "net": -2880.24
+ },
+ {
+  "id": "1794816337260-2276",
+  "symbol": "SUPREMEIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 3270.3,
+  "exit": 3255.0,
+  "entry_time": 1794816337260,
+  "exit_time": 1794822000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 3277.8,
+  "tp": null,
+  "high": 3271.2,
+  "low": 3219.9,
+  "nifty": 0.35,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794816337260,
+   "price": 3267.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2677.5,
+  "charges": 369.4,
+  "net": 2308.1
+ },
+ {
+  "id": "1794818437594-2291",
+  "symbol": "BANDHANBNK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3600,
+  "entry": 171.8,
+  "exit": 171.9,
+  "entry_time": 1794818437594,
+  "exit_time": 1794822000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 172.85,
+  "tp": null,
+  "high": 171.9,
+  "low": 171.16,
+  "nifty": 0.17,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794818437594,
+   "price": 171.71
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -360.0,
+  "charges": 395.54,
+  "net": -755.54
+ },
+ {
+  "id": "1794455145928-1209",
+  "symbol": "BPCL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1975,
+  "entry": 315.25,
+  "exit": 304.65,
+  "entry_time": 1794455145928,
+  "exit_time": 1794822638025,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 319.6,
+  "tp": null,
+  "high": 315.95,
+  "low": 301.15,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 315.25
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.82,
+  "gross": 20935.0,
+  "charges": 396.98,
+  "net": 20538.02
+ },
+ {
+  "id": "1794455145928-1245",
+  "symbol": "BPCL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1975,
+  "entry": 315.25,
+  "exit": 304.65,
+  "entry_time": 1794455145928,
+  "exit_time": 1794822638025,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 324.7,
+  "tp": null,
+  "high": 315.95,
+  "low": 301.15,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 315.25
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.82,
+  "gross": 20935.0,
+  "charges": 396.98,
+  "net": 20538.02
  }
 ]
