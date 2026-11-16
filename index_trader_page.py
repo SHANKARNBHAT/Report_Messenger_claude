@@ -10,9 +10,18 @@ so the 15-minute signals are checked on time.
 
 from __future__ import annotations
 
+import importlib
+from pathlib import Path
+
 import streamlit as st
 
 import auto_trader_page as atp
+
+# Streamlit Cloud keeps imported modules in memory when it pulls new code, so an
+# auto_trader_page.py changed since the server started is reloaded here.
+if Path(atp.__file__).stat().st_mtime > getattr(atp, "_loaded_at", 0):
+    atp = importlib.reload(atp)
+    atp._loaded_at = Path(atp.__file__).stat().st_mtime
 
 fs = atp.fs
 

@@ -29,6 +29,7 @@ import streamlit as st
 
 import futures_simulator as fs
 import ha_index
+import ha_vp
 import trade_report
 
 # Streamlit Cloud keeps imported modules in memory when it pulls new code, so a
@@ -36,6 +37,11 @@ import trade_report
 if Path(fs.__file__).stat().st_mtime > getattr(fs, "_loaded_at", 0):
     fs = importlib.reload(fs)
     fs._loaded_at = Path(fs.__file__).stat().st_mtime
+# ha_index uses ha_vp's rules: a changed ha_vp.py is reloaded first, and ha_index with it.
+if Path(ha_vp.__file__).stat().st_mtime > getattr(ha_vp, "_loaded_at", 0):
+    ha_vp = importlib.reload(ha_vp)
+    ha_vp._loaded_at = Path(ha_vp.__file__).stat().st_mtime
+    ha_index._loaded_at = 0
 if Path(ha_index.__file__).stat().st_mtime > getattr(ha_index, "_loaded_at", 0):
     ha_index = importlib.reload(ha_index)
     ha_index._loaded_at = Path(ha_index.__file__).stat().st_mtime
