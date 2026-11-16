@@ -924,6 +924,8 @@ def main() -> None:
         f"**Hold · 2H SMA 20 exit** (held until a finished 2H candle closes below / above the SMA 8 or 20 of the 2H "
         f"closes; these replaced EOD and Hold · RSI exit, whose past trades still show; for Heikin Ashi, **Hold · HA exit**: held "
         f"until the live candle of its timeframe goes below the previous HA low / above the previous HA high). "
+        f"Every RSI strategy and style also exits when a finished 30-minute candle's SMA 14 of RSI 14 is below 40 "
+        f"(long) / above 60 (short), at its close. "
         f"Held trades close on expiry day at 3:15 PM. "
         f"The Heikin Ashi signals come from the bot's own scans: a green (red) candle on above-average volume whose HA "
         f"close breaks above (below) the previous HA high (low), after a red (green) previous HA candle that is not a doji "

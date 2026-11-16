@@ -25,7 +25,8 @@ trades any more: their open positions still close by their rules.
     after the target, held until the RSI exit (for Heikin Ashi: the HA exit, see
     ha_exit). RSI now trades Hold · trail and two SMA exits instead (sma_exit): held until
     a finished 2H candle closes below (a long) / above (a short) the SMA 8, or the SMA 20,
-    of the 2H closes (RSI 4H, Daily and Weekly too); its EOD and RSI exit styles are retired (futures_simulator.RETIRED_STYLES). A stock is traded once per side and style per session, in each strategy.
+    of the 2H closes (RSI 4H, Daily and Weekly too); and in every RSI strategy and style, out when a
+    finished 30-minute candle's SMA 14 of RSI 14 is below 40 (a long) / above 60 (a short) (rsi30_exit); its EOD and RSI exit styles are retired (futures_simulator.RETIRED_STYLES). A stock is traded once per side and style per session, in each strategy.
     Every signal is taken, with no capital limit, to test the strategy: the Auto trader page works out the margin that needed from the trades
   * applies a request from the Auto trader page (auto_trader_page.py): keep a
     position going past its target with a trailing SL, exit at the target, or exit now
@@ -75,6 +76,9 @@ SHORT = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 LOTS = 1
 # The column of the HA widgets with the SMA of the RSI of the signal's own timeframe.
 HA_SMA_RSI = {"2 HOUR": "Sma 2hr rsi", "4 HOUR": "Sma 4hr rsi", "DAILY": "Dly SMA RSI"}
+# The RSI strategies' 30-minute exit: SMA 14 of the 30-minute RSI 14 below (long) / above (short) this.
+RSI30_EXIT = {"BUY": 40, "SELL": 60}
+RSI30_SINCE = datetime(2026, 11, 16, 11, 30, tzinfo=fs.IST).timestamp()  # rule added: candles ending earlier do not count
 LAST_ENTRY = time(15, 0)  # no new trades after this, ahead of the 3:15 PM square-off
 SESSION_CLOSE = time(15, 30)
 PAGE_QUIET = 12  # minutes: scheduled runs skip while the page started a run this recently
@@ -351,6 +355,23 @@ def sma_exit(position: dict, candles: dict, now: datetime) -> dict | None:
     return None
 
 
+def rsi30_exit(position: dict, series: dict, now: datetime) -> dict | None:
+    """The 30-minute RSI exit of an RSI position, if due: the first finished 30-minute candle ending
+    after the entry whose SMA 14 of RSI 14 is below RSI30_EXIT["BUY"] (a long) or above
+    RSI30_EXIT["SELL"] (a short), at its close. Exit price, time (ms) and reason, else None."""
+    long = position["side"] == "BUY"
+    level = RSI30_EXIT[position["side"]]
+    for start, close, value in series.get(position["symbol"]) or []:
+        opened = datetime.fromtimestamp(start, fs.IST)
+        end = min(start + 1800, datetime.combine(opened.date(), SESSION_CLOSE, fs.IST).timestamp())
+        if end * 1000 <= position["time"] or end <= RSI30_SINCE or end > now.timestamp():
+            continue
+        if value < level if long else value > level:
+            return {"exit": tick(close), "exit_time": int(end * 1000),
+                    "reason": f"30m RSI SMA {value:.1f} {'<' if long else '>'} {level}"}
+    return None
+
+
 def settle(files: Files, account: dict, now: datetime, note) -> None:
     """Close the positions that hit their SL, trailing SL or target, the 3:15 PM square-off,
     expiry or their RSI or HA exit; note the highest and lowest price of the others."""
@@ -368,6 +389,12 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
             two_hour = fs.fetch_vp_candles()
         except fs.ChartinkError as exc:
             note(f"No 2H candles for the SMA exits: {exc}")
+    rsi30 = {}
+    if any(p.get("system", "RSI").startswith("RSI") for p in account["positions"]):
+        try:
+            rsi30 = fs.fetch_rsi30()
+        except fs.ChartinkError as exc:
+            note(f"No 30-minute RSI for the RSI exits: {exc}")
     settle_index(files, account, now, note)
     settle_vp(files, account, now, note)
     settle_pure(files, account, now, note)
@@ -377,6 +404,9 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
         # A candle that went past since the last run may have come before what the bars show.
         due = (ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS
                else sma_exit(position, two_hour, now) if position.get("style") in fs.SMA_EXITS else None)
+        crossed = rsi30_exit(position, rsi30, now) if position.get("system", "RSI").startswith("RSI") else None
+        if crossed and (due is None or crossed["exit_time"] < due["exit_time"]):
+            due = crossed
         if due and (result["status"] != "closed" or due["exit_time"] < result["exit_time"]):
             result = {**result, **due, "status": "closed"}
         if result["status"] == "closed" and not 0 < result["exit"] < NO_VALUE:
