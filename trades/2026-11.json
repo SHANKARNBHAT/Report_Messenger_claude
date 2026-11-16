@@ -58801,5 +58801,79 @@
   "gross": -11475.0,
   "charges": 472.05,
   "net": -11947.05
+ },
+ {
+  "id": "1794815446175-2184",
+  "symbol": "TATAELXSI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 3748.5,
+  "exit": 3740.0,
+  "entry_time": 1794815446175,
+  "exit_time": 1794821400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 3756.5,
+  "tp": null,
+  "high": 3748.5,
+  "low": 3730.7,
+  "nifty": 0.44,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794815446175,
+   "price": 3745.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1062.5,
+  "charges": 311.04,
+  "net": 751.46
+ },
+ {
+  "id": "1794818437594-2292",
+  "symbol": "JSWENERGY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1075,
+  "entry": 508.3,
+  "exit": 510.9,
+  "entry_time": 1794818437594,
+  "exit_time": 1794821400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 513.25,
+  "tp": null,
+  "high": 510.9,
+  "low": 508.3,
+  "nifty": 0.17,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794818437594,
+   "price": 508.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2795.0,
+  "charges": 355.05,
+  "net": -3150.05
  }
 ]
