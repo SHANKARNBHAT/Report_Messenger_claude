@@ -122,6 +122,16 @@ def ha_entry(now: tuple, prev: tuple, long: bool) -> bool:
     return p_close > p_open and close < min(p_open, p_close)
 
 
+def break_entry(now: tuple, prev: tuple, long: bool) -> bool:
+    """The HA breakout entry (ha_break.py) on HA candles (open, high, low, close): green with no
+    lower wick and the HA close above the previous HA high (long); red with no upper wick and the
+    HA close below the previous HA low (short)."""
+    open_, high, low, close = now
+    if long:
+        return close > open_ and low >= open_ and close > prev[1]
+    return close < open_ and high <= open_ and close < prev[2]
+
+
 def signal(rows: list[tuple]) -> str | None:
     """"BUY", "SELL" or None for the last (running) candle of `rows`: the SMA trend (trend) and
     the HA entry pattern (ha_entry) its way."""

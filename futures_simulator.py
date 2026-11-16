@@ -102,11 +102,13 @@ SMA_EXITS = {"sma8": 8, "sma20": 20}
 BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/red exit",
               "atr": "Intraday · 1.1 ATR trail, doji", "vp": "Intraday · ATR trail, VP target, doji, EMA 8",
               "vp_trail": "Intraday · ATR trail, 1.5% trail past VP target, doji, EMA 8",
-              "ha_pure": "Hold · 30m candle trail, doji exit", "sma8": "Hold · 2H SMA 8 exit", "sma20": "Hold · 2H SMA 20 exit"}
+              "ha_pure": "Hold · 30m candle trail, doji exit", "ha_brk": "Hold · HA candle trail",
+              "ha_brk_idx": "Intraday · HA candle trail", "sma8": "Hold · 2H SMA 8 exit", "sma20": "Hold · 2H SMA 20 exit"}
 # HA MTF: the HA signals of 2H, 4H and Daily, held until the HA exit of the highest
 # timeframe that matched (auto_trader.py, enter_signals).
 # HA IDX: Heikin Ashi on NIFTY and BANKNIFTY 15-minute candles with an ATR trailing SL (ha_index.py);
-# HA IDX PURE the same without the SMA trend filter.
+# HA IDX PURE the same without the SMA trend filter. HA BRK 2H / 4H / Daily and HA IDX BRK: the HA
+# breakout, SL trailed to the previous HA candle's low / high (ha_break.py).
 # HA VP: Heikin Ashi on the stocks' 2H candles, ATR trailing SL, volume profile target, HA doji and EMA 8 exits
 # (ha_vp.py). HA and HA MTF take no new trades: kept so their trades still show and their
 # open positions still close.
@@ -114,6 +116,7 @@ BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/r
 SYSTEMS = {"RSI": ("trail", "sma8", "sma20"), "RSI 4H": ("trail", "sma8", "sma20"),
            "RSI Daily": ("trail", "sma8", "sma20"), "RSI Weekly": ("trail", "sma8", "sma20"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",), "HA IDX PURE": ("atr",),
            "HA PURE 2H": ("ha_pure",), "HA PURE 4H": ("ha_pure",), "HA PURE Daily": ("ha_pure",),
+           "HA BRK 2H": ("ha_brk",), "HA BRK 4H": ("ha_brk",), "HA BRK Daily": ("ha_brk",), "HA IDX BRK": ("ha_brk_idx",),
            "HA VP": ("vp",), "HA VP TRAIL": ("vp_trail",)}
 HA_EXITS = ("ha", "ha_green")
 # Styles a strategy no longer trades: their open positions still close by their rules and

@@ -30,6 +30,8 @@ from ha_vp import CLOSE, HA_CLOSE, HA_HIGH, HA_LOW, HA_OPEN
 
 SYSTEMS = {"HA PURE 2H": "2 HOUR", "HA PURE 4H": "4 HOUR", "HA PURE Daily": "DAILY"}
 STYLE = "ha_pure"
+LABEL = "HA PURE"
+SL_NOTE = "30m candle"
 ATR_MULT = 1.1  # the SL when no 30-minute candle is known
 TRAIL_MINUTES = 30
 SESSION_OPEN, SESSION_CLOSE, SQUARE_OFF = time(9, 15), time(15, 30), time(15, 15)

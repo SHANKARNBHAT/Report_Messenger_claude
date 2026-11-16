@@ -13,12 +13,17 @@ BANKNIFTY (auto_trader.py, enter_index_signals and settle), made from Yahoo Fina
   * Doji exit: at the close of the first 15-minute HA candle, the entry candle included, with
     wicks on both sides (ha_vp.doji), at that close.
   * Squared off at 3:15 PM: intraday only.
+
+HA IDX BRK (rule "break"): ha_break's breakout entry on these 15-minute HA candles, SL at the
+HA candle's low / high, trailed to each finished 15-minute HA candle's low / high (break_replay);
+no ATR, no doji exit; squared off at 3:15 PM.
 """
 
 from __future__ import annotations
 
 from datetime import datetime, time, timedelta
 
+import ha_break
 import ha_vp
 
 SYMBOLS = ("NIFTY", "BANKNIFTY")
@@ -93,6 +98,14 @@ def signal(rows: list[list], use_trend: bool = True) -> str | None:
     return side if ha_vp.ha_entry(ha[-1], ha[-2], side == "BUY") else None
 
 
+def rule_signal(rows: list[list], rule: str) -> str | None:
+    """signal() by an INDEX_SYSTEMS rule: "trend" (HA IDX), "pure" (HA IDX PURE) or "break"
+    (HA IDX BRK: ha_break's breakout entry on the 15-minute HA candles)."""
+    if rule == "break":
+        return ha_break.side_of(heikin_ashi(rows)) if len(rows) >= 2 else None
+    return signal(rows, rule == "trend")
+
+
 def initial_stop(rows: list[list], entry: float, long: bool, now_ts: int) -> float | None:
     """The SL of a new position: ATR_MULT x the ATR of the last finished candle away."""
     values = atr(rows)
@@ -143,3 +156,19 @@ def replay(position: dict, bars: list[tuple], now: datetime, tz) -> dict:
         return result("closed", exit=round(price, 2), exit_time=int(cutoff * 1000), reason="EOD 3:15 PM",
                       high=round(max(high, price), 2), low=round(min(low, price), 2))
     return result("open")
+
+
+def break_stop(rows: list[list], entry: float, long: bool) -> float | None:
+    """The SL of a new HA IDX BRK position: the running HA candle's low (high), else the previous one's."""
+    return ha_break.stop_from(heikin_ashi(rows), entry, long)
+
+
+def break_replay(position: dict, bars: list[tuple], now: datetime, tz) -> dict:
+    """Where an HA IDX BRK position stands: SL trailed to each finished 15-minute HA candle's low
+    (long) / high (short) after the entry (ha_break.trail), squared off at 3:15 PM that day."""
+    entered = datetime.fromtimestamp(position["time"] / 1000, tz)
+    cutoff = datetime.combine(entered.date(), SQUARE_OFF, tz).timestamp()
+    session = [b for b in bars if b[0] < cutoff]
+    rows = candles(session, tz)
+    levels = {r[0] + MINUTES * 60: (c[2], c[1]) for r, c in zip(rows, heikin_ashi(rows))}
+    return ha_break.trail(position, session, levels, cutoff, "EOD 3:15 PM", now)
