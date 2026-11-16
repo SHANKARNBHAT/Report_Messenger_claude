@@ -57765,5 +57765,42 @@
   "gross": -4165.0,
   "charges": 489.11,
   "net": -4654.11
+ },
+ {
+  "id": "1794815446175-2147",
+  "symbol": "KFINTECH",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 575,
+  "entry": 938.3,
+  "exit": 937.6,
+  "entry_time": 1794815446175,
+  "exit_time": 1794820200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 944.45,
+  "tp": null,
+  "high": 938.3,
+  "low": 929.5,
+  "nifty": 0.44,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794815446175,
+   "price": 937.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 402.5,
+  "charges": 351.04,
+  "net": 51.46
  }
 ]
