@@ -39855,5 +39855,42 @@
   "gross": -14647.5,
   "charges": 590.02,
   "net": -15237.52
+ },
+ {
+  "id": "1794544542189-1519",
+  "symbol": "TATAELXSI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 3862.0,
+  "exit": 3804.05,
+  "entry_time": 1794544542189,
+  "exit_time": 1794801300000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 3804.05,
+  "tp": 3977.85,
+  "high": 3895,
+  "low": 3804.05,
+  "nifty": -0.36,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794544542189,
+   "price": 3862.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -7243.75,
+  "charges": 315.3,
+  "net": -7559.05
  }
 ]
