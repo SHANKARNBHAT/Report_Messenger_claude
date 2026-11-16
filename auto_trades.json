@@ -1322,7 +1322,7 @@
    "time": 1794375340110,
    "status": "open",
    "passed": false,
-   "high": 17.88,
+   "high": 18.06,
    "low": 17.2,
    "nifty": 1.36,
    "source": "Auto HA MTF 4H",
@@ -2819,42 +2819,6 @@
    }
   },
   {
-   "id": "1794800741223-1580",
-   "symbol": "EICHERMOT",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 100,
-   "entry": 7650.0,
-   "sl": 7535.25,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "sma8",
-   "system": "RSI",
-   "stop": 7535.25,
-   "time": 1794800741223,
-   "status": "open",
-   "passed": false,
-   "high": 7903.5,
-   "low": 7575,
-   "nifty": 0.58,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794800741223,
-    "price": 7650.0
-   }
-  },
-  {
    "id": "1794800741223-1582",
    "symbol": "GMRAIRPORT",
    "side": "BUY",
@@ -2876,7 +2840,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 101.24,
+   "high": 101.25,
    "low": 98.74,
    "nifty": 0.58,
    "source": "Auto 2H",
@@ -3410,42 +3374,6 @@
    "first_seen": {
     "time": 1794800741223,
     "price": 4750.5
-   }
-  },
-  {
-   "id": "1794800741223-1604",
-   "symbol": "EICHERMOT",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 100,
-   "entry": 7650.0,
-   "sl": 7535.25,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "sma8",
-   "system": "RSI Daily",
-   "stop": 7535.25,
-   "time": 1794800741223,
-   "status": "open",
-   "passed": false,
-   "high": 7903.5,
-   "low": 7575,
-   "nifty": 0.58,
-   "source": "Auto Daily",
-   "timeframes": [
-    "DAILY"
-   ],
-   "strategies": [
-    "DAILY RSI  BULLISH STRATEGY"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794800741223,
-    "price": 7650.0
    }
   },
   {
@@ -7361,7 +7289,7 @@
    "time": 1794807339534,
    "status": "open",
    "passed": false,
-   "high": 908,
+   "high": 909.5,
    "low": 901.8,
    "nifty": 0.41,
    "source": "Auto 2H",
@@ -7397,7 +7325,7 @@
    "time": 1794807339534,
    "status": "open",
    "passed": false,
-   "high": 908,
+   "high": 909.5,
    "low": 901.8,
    "nifty": 0.41,
    "source": "Auto 2H",
@@ -7511,7 +7439,7 @@
    "time": 1794807941988,
    "status": "open",
    "passed": false,
-   "high": 890.75,
+   "high": 892,
    "low": 880.5,
    "nifty": 0.33,
    "source": "Auto 2H",
@@ -7547,7 +7475,7 @@
    "time": 1794807941988,
    "status": "open",
    "passed": false,
-   "high": 890.75,
+   "high": 892,
    "low": 880.5,
    "nifty": 0.33,
    "source": "Auto 2H",
@@ -7583,7 +7511,7 @@
    "time": 1794807941988,
    "status": "open",
    "passed": false,
-   "high": 890.75,
+   "high": 892,
    "low": 880.5,
    "nifty": 0.33,
    "source": "Auto 2H",
@@ -7911,12 +7839,12 @@
    "run": null,
    "style": "vp",
    "system": "HA VP",
-   "stop": 879.25,
+   "stop": 880.5,
    "atr": 11.86,
    "time": 1794808297527,
    "status": "open",
    "passed": false,
-   "high": 890.75,
+   "high": 892,
    "low": 880.5,
    "nifty": 0.3,
    "source": "Auto HA VP 2H",
@@ -7948,12 +7876,12 @@
    "run": null,
    "style": "vp_trail",
    "system": "HA VP TRAIL",
-   "stop": 879.25,
+   "stop": 880.5,
    "atr": 11.86,
    "time": 1794808297527,
    "status": "open",
    "passed": false,
-   "high": 890.75,
+   "high": 892,
    "low": 880.5,
    "nifty": 0.3,
    "source": "Auto HA VP TRAIL 2H",
@@ -8930,78 +8858,6 @@
    "first_seen": {
     "time": 1794808297527,
     "price": 12203.0
-   }
-  },
-  {
-   "id": "1794808297527-1897",
-   "symbol": "BOSCHLTD",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 25,
-   "entry": 49075.0,
-   "sl": 49315.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_pure",
-   "system": "HA PURE 2H",
-   "stop": 48650.0,
-   "time": 1794808297527,
-   "status": "open",
-   "passed": false,
-   "high": 49180,
-   "low": 48530,
-   "nifty": 0.3,
-   "source": "Auto HA PURE 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA PURE Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794808297527,
-    "price": 49100.0
-   }
-  },
-  {
-   "id": "1794808297527-2018",
-   "symbol": "BOSCHLTD",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 25,
-   "entry": 49075.0,
-   "sl": 49315.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_pure",
-   "system": "HA PURE Daily",
-   "stop": 48650.0,
-   "time": 1794808297527,
-   "status": "open",
-   "passed": false,
-   "high": 49180,
-   "low": 48530,
-   "nifty": 0.3,
-   "source": "Auto HA PURE Daily",
-   "timeframes": [
-    "DAILY"
-   ],
-   "strategies": [
-    "Daily HA PURE Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794808297527,
-    "price": 49100.0
    }
   },
   {
@@ -10004,42 +9860,6 @@
    }
   },
   {
-   "id": "1794815446175-2120",
-   "symbol": "BOSCHLTD",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 25,
-   "entry": 48840.0,
-   "sl": 48895.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_pure",
-   "system": "HA PURE 4H",
-   "stop": 48650.0,
-   "time": 1794815446175,
-   "status": "open",
-   "passed": false,
-   "high": 48840.0,
-   "low": 48530,
-   "nifty": 0.44,
-   "source": "Auto HA PURE 4H",
-   "timeframes": [
-    "4 HOUR"
-   ],
-   "strategies": [
-    "4H HA PURE Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794815446175,
-    "price": 48820.0
-   }
-  },
-  {
    "id": "1794815446175-2131",
    "symbol": "GLENMARK",
    "side": "SELL",
@@ -10094,7 +9914,7 @@
    "time": 1794815446175,
    "status": "open",
    "passed": false,
-   "high": 890.75,
+   "high": 892,
    "low": 885.1,
    "nifty": 0.44,
    "source": "Auto HA PURE 4H",
@@ -10109,42 +9929,6 @@
    "first_seen": {
     "time": 1794815446175,
     "price": 884.4
-   }
-  },
-  {
-   "id": "1794815446175-2139",
-   "symbol": "IDEA",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 71475,
-   "entry": 12.5,
-   "sl": 12.8,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_pure",
-   "system": "HA PURE 4H",
-   "stop": 12.5,
-   "time": 1794815446175,
-   "status": "open",
-   "passed": false,
-   "high": 12.5,
-   "low": 12.4,
-   "nifty": 0.44,
-   "source": "Auto HA PURE 4H",
-   "timeframes": [
-    "4 HOUR"
-   ],
-   "strategies": [
-    "4H HA PURE Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794815446175,
-    "price": 12.48
    }
   },
   {
@@ -10202,7 +9986,7 @@
    "time": 1794815446175,
    "status": "open",
    "passed": false,
-   "high": 1291.8,
+   "high": 1292.9,
    "low": 1281.8,
    "nifty": 0.44,
    "source": "Auto HA PURE 4H",
@@ -10531,7 +10315,7 @@
    "time": 1794815516434,
    "status": "open",
    "passed": false,
-   "high": 101.24,
+   "high": 101.25,
    "low": 99.75,
    "nifty": 0.44,
    "source": "Auto HA VP 2H",
@@ -10568,7 +10352,7 @@
    "time": 1794815516434,
    "status": "open",
    "passed": false,
-   "high": 101.24,
+   "high": 101.25,
    "low": 99.75,
    "nifty": 0.44,
    "source": "Auto HA VP TRAIL 2H",
@@ -11362,42 +11146,6 @@
    }
   },
   {
-   "id": "1794815516434-2227",
-   "symbol": "AXISBANK",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 625,
-   "entry": 1338.7,
-   "sl": 1341.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_pure",
-   "system": "HA PURE 2H",
-   "stop": 1336.9,
-   "time": 1794815516434,
-   "status": "open",
-   "passed": false,
-   "high": 1338.7,
-   "low": 1333.1,
-   "nifty": 0.44,
-   "source": "Auto HA PURE 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA PURE Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794815516434,
-    "price": 1336.9
-   }
-  },
-  {
    "id": "1794815516434-2233",
    "symbol": "DRREDDY",
    "side": "SELL",
@@ -11488,7 +11236,7 @@
    "time": 1794815516434,
    "status": "open",
    "passed": false,
-   "high": 101.24,
+   "high": 101.25,
    "low": 99.75,
    "nifty": 0.44,
    "source": "Auto HA PURE 2H",
@@ -11503,42 +11251,6 @@
    "first_seen": {
     "time": 1794815516434,
     "price": 100.24
-   }
-  },
-  {
-   "id": "1794815516434-2243",
-   "symbol": "INDUSTOWER",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 1700,
-   "entry": 394.6,
-   "sl": 395.15,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_pure",
-   "system": "HA PURE 2H",
-   "stop": 394.2,
-   "time": 1794815516434,
-   "status": "open",
-   "passed": false,
-   "high": 394.8,
-   "low": 392.1,
-   "nifty": 0.44,
-   "source": "Auto HA PURE 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA PURE Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794815516434,
-    "price": 394.75
    }
   },
   {
@@ -11560,7 +11272,7 @@
    "time": 1794815516434,
    "status": "open",
    "passed": false,
-   "high": 101.24,
+   "high": 101.25,
    "low": 99.95,
    "nifty": 0.44,
    "source": "Auto HA PURE 4H",
@@ -12149,7 +11861,7 @@
    "time": 1794819655987,
    "status": "open",
    "passed": false,
-   "high": 1112.8,
+   "high": 1113.4,
    "low": 1108.1,
    "nifty": 0.32,
    "source": "Auto Daily",
@@ -12185,7 +11897,7 @@
    "time": 1794819655987,
    "status": "open",
    "passed": false,
-   "high": 1112.8,
+   "high": 1113.4,
    "low": 1108.1,
    "nifty": 0.32,
    "source": "Auto Daily",
@@ -12221,7 +11933,7 @@
    "time": 1794819655987,
    "status": "open",
    "passed": false,
-   "high": 1112.8,
+   "high": 1113.4,
    "low": 1108.1,
    "nifty": 0.32,
    "source": "Auto Daily",
@@ -12331,7 +12043,7 @@
    "time": 1794820543193,
    "status": "open",
    "passed": false,
-   "high": 1891.8,
+   "high": 1891.9,
    "low": 1889.2,
    "nifty": 0.26,
    "source": "Auto HA PURE 4H",
@@ -12406,8 +12118,8 @@
    "time": 1794820845540,
    "status": "open",
    "passed": false,
-   "high": 1998.3,
-   "low": 1998.3,
+   "high": 1999,
+   "low": 1996.9,
    "nifty": 0.25,
    "source": "Auto 2H",
    "timeframes": [
@@ -12442,8 +12154,8 @@
    "time": 1794820845540,
    "status": "open",
    "passed": false,
-   "high": 1998.3,
-   "low": 1998.3,
+   "high": 1999,
+   "low": 1996.9,
    "nifty": 0.25,
    "source": "Auto 2H",
    "timeframes": [
@@ -12478,8 +12190,8 @@
    "time": 1794820845540,
    "status": "open",
    "passed": false,
-   "high": 1998.3,
-   "low": 1998.3,
+   "high": 1999,
+   "low": 1996.9,
    "nifty": 0.25,
    "source": "Auto 2H",
    "timeframes": [
@@ -12498,6 +12210,14 @@
  ],
  "seq": 2312,
  "log": [
+  "16 Nov 15:05  EICHERMOT: Stop loss at 7535.25 (Hold \u00b7 2H SMA 8 exit)",
+  "16 Nov 15:05  EICHERMOT: Stop loss at 7535.25 (Hold \u00b7 2H SMA 8 exit)",
+  "16 Nov 15:05  INDUSTOWER: 30m trailing SL at 394.2 (HA PURE 2H)",
+  "16 Nov 15:05  AXISBANK: 30m trailing SL at 1336.9 (HA PURE 2H)",
+  "16 Nov 15:05  IDEA: 30m trailing SL at 12.5 (HA PURE 4H)",
+  "16 Nov 15:05  BOSCHLTD: 30m trailing SL at 48650.0 (HA PURE 4H)",
+  "16 Nov 15:05  BOSCHLTD: 30m trailing SL at 48650.0 (HA PURE Daily)",
+  "16 Nov 15:05  BOSCHLTD: 30m trailing SL at 48650.0 (HA PURE 2H)",
   "16 Nov 15:00  ONGC: HA exit (4H) at 226.5 (Hold \u00b7 HA exit)",
   "16 Nov 15:00  PFC: 30m trailing SL at 332.4 (HA PURE 4H)",
   "16 Nov 15:00  MANKIND: 30m trailing SL at 2621.6 (HA PURE 2H)",
@@ -12789,18 +12509,10 @@
   "16 Nov 13:20  TATAELXSI: HA PURE 4H SELL 125 at 3748.5, SL 3756.5 (30m candle)",
   "16 Nov 13:20  TATACONSUM: HA PURE 4H BUY 550 at 1110.1, SL 1109.0 (30m candle)",
   "16 Nov 13:20  SWIGGY: HA PURE 4H BUY 1825 at 190.85, SL 190.7 (30m candle)",
-  "16 Nov 13:20  SUNPHARMA: HA PURE 4H SELL 350 at 1880.8, SL 1883.8 (30m candle)",
-  "16 Nov 13:20  SRF: HA PURE 4H SELL 200 at 2465.4, SL 2474.0 (30m candle)",
-  "16 Nov 13:20  SONACOMS: HA PURE 4H SELL 1225 at 896.15, SL 904.0 (30m candle)",
-  "16 Nov 13:20  SOLARINDS: HA PURE 4H SELL 50 at 18930.0, SL 18944.0 (30m candle)",
-  "16 Nov 13:20  SIEMENS: HA PURE 4H SELL 175 at 3564.1, SL 3576.0 (30m candle)",
-  "16 Nov 13:20  SHRIRAMFIN: HA PURE 4H BUY 825 at 978.15, SL 976.5 (30m candle)",
-  "16 Nov 13:20  SBILIFE: HA PURE 4H BUY 375 at 1823.6, SL 1815.0 (30m candle)",
-  "16 Nov 13:20  SAGILITY: HA PURE 4H SELL 12000 at 43.15, SL 43.15 (30m candle)",
-  "16 Nov 13:20  RBLBANK: HA PURE 4H SELL 3175 at 381.7, SL 382.4 (30m candle)"
+  "16 Nov 13:20  SUNPHARMA: HA PURE 4H SELL 350 at 1880.8, SL 1883.8 (30m candle)"
  ],
- "page_run": 1794821450705,
- "updated": 1794821450705,
+ "page_run": 1794821738923,
+ "updated": 1794821738923,
  "unattended": true,
  "peak_margin": 67842875.53
 }
