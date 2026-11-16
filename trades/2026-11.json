@@ -51438,5 +51438,301 @@
   "gross": 2205.0,
   "charges": 514.44,
   "net": 1690.56
+ },
+ {
+  "id": "1794202253465-858",
+  "symbol": "GRASIM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 250,
+  "entry": 3166.6,
+  "exit": 3071.55,
+  "entry_time": 1794202253465,
+  "exit_time": 1794814800000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 3245.7,
+  "tp": 3071.6,
+  "high": 3239.0,
+  "low": 3012.0,
+  "nifty": -0.39,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794202253465,
+   "price": 3166.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 81.19,
+  "gross": 23762.5,
+  "charges": 492.06,
+  "net": 23270.44
+ },
+ {
+  "id": "1794800741223-1649",
+  "symbol": "BSE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 200,
+  "entry": 3937.7,
+  "exit": 3901.8,
+  "entry_time": 1794800741223,
+  "exit_time": 1794815100000,
+  "reason": "2H close past SMA 8",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 3878.65,
+  "tp": null,
+  "high": 3958.5,
+  "low": 3891.8,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 3937.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -7180.0,
+  "charges": 486.99,
+  "net": -7666.99
+ },
+ {
+  "id": "1794800741223-1676",
+  "symbol": "MARICO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1200,
+  "entry": 900.0,
+  "exit": 903.15,
+  "entry_time": 1794800741223,
+  "exit_time": 1794815100000,
+  "reason": "2H close past SMA 8",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 886.5,
+  "tp": null,
+  "high": 909.8,
+  "low": 900.0,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 900.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 3780.0,
+  "charges": 657.41,
+  "net": 3122.59
+ },
+ {
+  "id": "1794801656114-1787",
+  "symbol": "ONGC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2250,
+  "entry": 224.15,
+  "exit": 225.45,
+  "entry_time": 1794801656114,
+  "exit_time": 1794815100000,
+  "reason": "2H close past SMA 8",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 227.5,
+  "tp": null,
+  "high": 225.6,
+  "low": 223,
+  "nifty": 0.42,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794801656114,
+   "price": 224.13
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -2925.0,
+  "charges": 331.36,
+  "net": -3256.36
+ },
+ {
+  "id": "1794806143362-1812",
+  "symbol": "ZYDUSLIFE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 900,
+  "entry": 1206.9,
+  "exit": 1194.1,
+  "entry_time": 1794806143362,
+  "exit_time": 1794815100000,
+  "reason": "2H close past SMA 8",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 1183.2,
+  "tp": null,
+  "high": 1206.9,
+  "low": 1193.5,
+  "nifty": 0.29,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794806143362,
+   "price": 1206.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11520.0,
+  "charges": 652.93,
+  "net": -12172.93
+ },
+ {
+  "id": "1794807339534-1821",
+  "symbol": "MARICO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1200,
+  "entry": 904.0,
+  "exit": 903.15,
+  "entry_time": 1794807339534,
+  "exit_time": 1794815100000,
+  "reason": "2H close past SMA 8",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 890.45,
+  "tp": null,
+  "high": 908,
+  "low": 902.5,
+  "nifty": 0.41,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794807339534,
+   "price": 904.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -1020.0,
+  "charges": 657.61,
+  "net": -1677.61
+ },
+ {
+  "id": "1794809748748-2067",
+  "symbol": "ZYDUSLIFE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 900,
+  "entry": 1201.5,
+  "exit": 1194.1,
+  "entry_time": 1794809748748,
+  "exit_time": 1794815100000,
+  "reason": "2H close past SMA 8",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 1181.1,
+  "tp": null,
+  "high": 1202.5,
+  "low": 1193.5,
+  "nifty": 0.29,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794809748748,
+   "price": 1201.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6660.0,
+  "charges": 652.73,
+  "net": -7312.73
+ },
+ {
+  "id": "1794809748748-2068",
+  "symbol": "ZYDUSLIFE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 900,
+  "entry": 1201.5,
+  "exit": 1194.1,
+  "entry_time": 1794809748748,
+  "exit_time": 1794815100000,
+  "reason": "2H close past SMA 20",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 1181.1,
+  "tp": null,
+  "high": 1202.5,
+  "low": 1193.5,
+  "nifty": 0.29,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794809748748,
+   "price": 1201.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6660.0,
+  "charges": 652.73,
+  "net": -7312.73
  }
 ]
