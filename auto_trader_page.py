@@ -46,6 +46,12 @@ if Path(ha_index.__file__).stat().st_mtime > getattr(ha_index, "_loaded_at", 0):
     ha_index = importlib.reload(ha_index)
     ha_index._loaded_at = Path(ha_index.__file__).stat().st_mtime
 
+import option_backtest
+
+if Path(option_backtest.__file__).stat().st_mtime > getattr(option_backtest, "_loaded_at", 0):
+    option_backtest = importlib.reload(option_backtest)
+    option_backtest._loaded_at = Path(option_backtest.__file__).stat().st_mtime
+
 from chartink_dashboard import MY_LAYOUT
 
 GITHUB_OWNER, GITHUB_REPO = "SHANKARNBHAT", "Report_Messenger_Claude"
@@ -895,6 +901,50 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict], use_trend: boo
                "moved at each 15-minute close.")
 
 
+def show_option_backtest(trades: pd.DataFrame) -> None:
+    """The closed index trades replayed as buying the ATM option (option_backtest.py), beside
+    the futures result of the same trades."""
+    request = (option_backtest.VIX_YAHOO, "60d")
+    vix = fs.fetch_bars((request,)).get(request)
+    vix = vix if isinstance(vix, list) else None
+    rows = []
+    for t in trades.to_dict("records"):
+        if t["symbol"] not in option_backtest.STRIKE_STEP or pd.isna(t.get("exit_time")):
+            continue
+        rows.append({"Exited": when(t["exit_time"]), "Date": t["Date"], "Symbol": t["symbol"],
+                     "Side": "LONG" if t["side"] == "BUY" else "SHORT", "Index in": t["entry"], "Index out": t["exit"],
+                     "reason": t["reason"], **option_backtest.replay(t, fs.IST, vix), "Futures net": t["net"]})
+    if not rows:
+        st.caption("No closed NIFTY / BANKNIFTY trades to replay.")
+        return
+    table = pd.DataFrame(rows)
+    stats = st.columns(4)
+    stats[0].metric("Options net", f"₹{table['Option net'].sum():,.0f}")
+    stats[1].metric("Futures net", f"₹{table['Futures net'].sum():,.0f}")
+    stats[2].metric("Option charges", f"₹{table['Option charges'].sum():,.0f}",
+                    help=f"Futures charges on the same trades: ₹{trades['charges'].sum():,.0f}")
+    stats[3].metric("Option win rate", f"{100 * (table['Option net'] > 0).mean():.1f}%")
+
+    by_day = table.groupby("Date").agg(**{"Trades": ("Option net", "size"), "Options net ₹": ("Option net", "sum"),
+                                          "Futures net ₹": ("Futures net", "sum"),
+                                          "Option wins": ("Option net", lambda n: int((n > 0).sum()))})
+    st.dataframe(by_day.round(2).sort_index(ascending=False), width="stretch")
+    st.dataframe(table.drop(columns=["Date"]), hide_index=True, width="stretch")
+    st.download_button("⬇ ATM option backtest (CSV)", table.to_csv(index=False).encode(),
+                       file_name="ha_index_atm_options.csv", mime="text/csv", on_click="ignore")
+    st.caption(
+        "Each closed trade above, replayed as buying 1 lot of the at-the-money option at the same entry and exit "
+        "times and index levels: a call for a long, a put for a short. Strike: the index at entry to the nearest "
+        f"{option_backtest.STRIKE_STEP['NIFTY']} (NIFTY) or {option_backtest.STRIKE_STEP['BANKNIFTY']} (BANKNIFTY). "
+        "Expiry: NIFTY's weekly (Tuesday), BANKNIFTY's monthly (last Tuesday). Premiums are Black-Scholes estimates "
+        f"with the India VIX at entry as the IV (x{option_backtest.BNF_IV_RATIO} for BANKNIFTY; "
+        f"{option_backtest.FALLBACK_IV['NIFTY']:.0f}% / {option_backtest.FALLBACK_IV['BANKNIFTY']:.0f}% when there is "
+        f"no VIX bar), bought {option_backtest.HALF_SPREAD['NIFTY']} / {option_backtest.HALF_SPREAD['BANKNIFTY']} "
+        "points above the model and sold that much below for the spread, with option charges (STT 0.15% of the sell "
+        "premium). Not traded prices: the IV moving during a trade and skew are left out."
+        + ("" if vix else " India VIX was not available from Yahoo now, so the fallback IVs were used."))
+
+
 def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, use_trend: bool = True,
                quotes: dict | None = None) -> None:
     """An HA IDX strategy (INDEX_SYSTEMS), NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles
@@ -944,7 +994,9 @@ def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, use_tren
     if trades.empty:
         st.caption("No closed index trades yet.")
         return
-    tabs = st.tabs(["Trades", "By day", "By index"])
+    tabs = st.tabs(["Trades", "By day", "By index", "ATM options"])
+    with tabs[3]:
+        show_option_backtest(trades)
     with tabs[0]:
         shown = trades.assign(Exited=trades["exit_time"].map(when), Entered=trades["entry_time"].map(when),
                               Symbol=trades["symbol"].map(chart_link),
