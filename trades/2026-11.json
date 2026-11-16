@@ -44001,5 +44001,79 @@
   "gross": -13635.0,
   "charges": 552.53,
   "net": -14187.53
+ },
+ {
+  "id": "1794800741223-1684",
+  "symbol": "PHOENIXLTD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2255.0,
+  "exit": 2220.0,
+  "entry_time": 1794800741223,
+  "exit_time": 1794807900000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2220.0,
+  "tp": 2322.65,
+  "high": 2255.0,
+  "low": 2220.0,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 2255.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12250.0,
+  "charges": 485.31,
+  "net": -12735.31
+ },
+ {
+  "id": "1794800741223-1686",
+  "symbol": "PHOENIXLTD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2255.0,
+  "exit": 2220.0,
+  "entry_time": 1794800741223,
+  "exit_time": 1794807900000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 2220.0,
+  "tp": null,
+  "high": 2255.0,
+  "low": 2220.0,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 2255.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12250.0,
+  "charges": 485.31,
+  "net": -12735.31
  }
 ]
