@@ -44075,5 +44075,42 @@
   "gross": -12250.0,
   "charges": 485.31,
   "net": -12735.31
+ },
+ {
+  "id": "1793853050893-700",
+  "symbol": "WIPRO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3000,
+  "entry": 198.4,
+  "exit": 192.75,
+  "entry_time": 1793853050893,
+  "exit_time": 1794808559000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 192.95,
+  "tp": 204.35,
+  "high": 201.68,
+  "low": 192.75,
+  "nifty": 1.85,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793853050893,
+   "price": 198.42
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -16950.0,
+  "charges": 373.57,
+  "net": -17323.57
  }
 ]
