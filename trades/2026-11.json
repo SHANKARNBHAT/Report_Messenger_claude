@@ -40077,5 +40077,190 @@
   "gross": -10990.0,
   "charges": 484.42,
   "net": -11474.42
+ },
+ {
+  "id": "1794801336045-1749",
+  "symbol": "LAURUSLABS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 850,
+  "entry": 2428.6,
+  "exit": 2392.65,
+  "entry_time": 1794801336045,
+  "exit_time": 1794801900000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 2392.65,
+  "tp": null,
+  "high": 2428.6,
+  "low": 2392.65,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 2428.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -30557.5,
+  "charges": 1193.86,
+  "net": -31751.36
+ },
+ {
+  "id": "1794801336045-1750",
+  "symbol": "LAURUSLABS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 850,
+  "entry": 2428.6,
+  "exit": 2392.65,
+  "entry_time": 1794801336045,
+  "exit_time": 1794801900000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 2392.65,
+  "tp": null,
+  "high": 2428.6,
+  "low": 2392.65,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 2428.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -30557.5,
+  "charges": 1193.86,
+  "net": -31751.36
+ },
+ {
+  "id": "1794388843039-1191",
+  "symbol": "ULTRACEMCO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 50,
+  "entry": 12271.0,
+  "exit": 12280.0,
+  "entry_time": 1794388843039,
+  "exit_time": 1794802539542,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 12452.0,
+  "tp": null,
+  "high": 12381.0,
+  "low": 12065.0,
+  "nifty": 0.59,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794388843039,
+   "price": 12271.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 77.18,
+  "gross": -450.0,
+  "charges": 392.76,
+  "net": -842.76
+ },
+ {
+  "id": "1794388843039-1193",
+  "symbol": "ULTRACEMCO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 50,
+  "entry": 12271.0,
+  "exit": 12280.0,
+  "entry_time": 1794388843039,
+  "exit_time": 1794802539542,
+  "reason": "HA exit (2H)",
+  "source": "Auto HA MTF 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 12639.15,
+  "tp": null,
+  "high": 12381.0,
+  "low": 12065.0,
+  "nifty": 0.59,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794388843039,
+   "price": 12271.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 77.18,
+  "gross": -450.0,
+  "charges": 392.76,
+  "net": -842.76
+ },
+ {
+  "id": "1794800741223-1633",
+  "symbol": "TMPV",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1600,
+  "entry": 287.4,
+  "exit": 268.75,
+  "entry_time": 1794800741223,
+  "exit_time": 1794801900000,
+  "reason": "TSL after target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 292.5,
+  "tp": 278.8,
+  "high": 287.4,
+  "low": 264.15,
+  "nifty": 0.58,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 287.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 29840.0,
+  "charges": 304.94,
+  "net": 29535.06
  }
 ]
