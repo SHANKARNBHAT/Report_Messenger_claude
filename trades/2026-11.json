@@ -40262,5 +40262,116 @@
   "gross": 29840.0,
   "charges": 304.94,
   "net": 29535.06
+ },
+ {
+  "id": "1794388843039-1189",
+  "symbol": "FORTIS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 775,
+  "entry": 768.05,
+  "exit": 777.5,
+  "entry_time": 1794388843039,
+  "exit_time": 1794802200000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 777.5,
+  "tp": 745.0,
+  "high": 777.5,
+  "low": 747.8,
+  "nifty": 0.59,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794388843039,
+   "price": 768.05
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 57.41,
+  "gross": -7323.75,
+  "charges": 382.74,
+  "net": -7706.49
+ },
+ {
+  "id": "1794800741223-1609",
+  "symbol": "KAYNES",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 3430.0,
+  "exit": 2833.6,
+  "entry_time": 1794800741223,
+  "exit_time": 1794802200000,
+  "reason": "TSL after target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 3481.45,
+  "tp": 3327.1,
+  "high": 3430.0,
+  "low": 2744,
+  "nifty": 0.58,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 3430.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 89460.0,
+  "charges": 333.24,
+  "net": 89126.76
+ },
+ {
+  "id": "1794801656114-1780",
+  "symbol": "KAYNES",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 2915.5,
+  "exit": 2833.6,
+  "entry_time": 1794801656114,
+  "exit_time": 1794802200000,
+  "reason": "TSL after target",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 3474.4,
+  "tp": 2828.05,
+  "high": 2915.5,
+  "low": 2744,
+  "nifty": 0.42,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794801656114,
+   "price": 2915.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 12285.0,
+  "charges": 292.99,
+  "net": 11992.01
  }
 ]
