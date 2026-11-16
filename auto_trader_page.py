@@ -60,6 +60,8 @@ RETIRED_SYSTEMS = {"HA": "Heikin Ashi (retired)", "HA MTF": "HA multi-timeframe 
 SYSTEM_NAMES = {"RSI": "RSI 2H", "RSI 4H": "RSI 4H", "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly", "HA VP": "HA + volume profile", "HA VP TRAIL": "HA VP · trail past target",
                 **(RETIRED_SYSTEMS if SHOW_RETIRED else {})}
 INDEX_SYSTEM = "HA IDX"
+# The 15-minute index strategies (auto_trader.INDEX_SYSTEMS): name, and whether it uses the SMA trend filter.
+INDEX_SYSTEMS = {INDEX_SYSTEM: ("HA IDX · SMA trend", True), "HA IDX PURE": ("HA IDX · no SMA", False)}
 SMA_FILTERS = ["Against: long below 50, short above 50", "With: long above 50, short below 50", "Not recorded"]
 SHORT_TF = {"15 MIN": "15m", "2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 HOLDS = [(60, "< 1 h"), (180, "1–3 h"), (375, "3 h – same day"), (2 * 1440, "1–2 days"), (float("inf"), "3+ days")]
@@ -746,7 +748,7 @@ def stop_path(trade: dict, rows: list[list], atrs: list, until: float) -> tuple[
     return times, levels
 
 
-def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
+def show_index_chart(trades: pd.DataFrame, positions: list[dict], use_trend: bool = True) -> None:
     """The 15-minute Heikin Ashi candles the HA IDX strategy trades on (ha_index, from Yahoo's
     5-minute bars), with the candles whose close met the entry rule, the trades and their SL."""
     st.markdown("**15-minute Heikin Ashi chart**")
@@ -781,7 +783,7 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
     # The candles whose close met the entry rule (a live run can enter on one before it closes).
     marks = {"BUY": [], "SELL": []}
     for i in shown:
-        side = ha_index.signal(rows[: i + 1])
+        side = ha_index.signal(rows[: i + 1], use_trend)
         if side:
             marks[side].append(i)
     gap = 0.04 * (max(ha[i][1] for i in shown) - min(ha[i][2] for i in shown))  # off the candle's wick
@@ -830,18 +832,22 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
     st.plotly_chart(figure, width="stretch", key="index-chart")
     st.caption(f"{symbol} spot, 15-minute Heikin Ashi candles from Yahoo's 5-minute bars: what the strategy "
                "trades on. Amber marker (below: buy, above: short): a green HA candle with no lower wick after a doji (wicks "
-               "both sides; the new body at least the doji's) or a red HA candle (closing above its body), with SMA 20 > 50 and the close above SMA 200 "
-               "(buy); a red one with no upper wick after a doji or a green one, the SMAs the other way (short). A run checks the running candle every few minutes, so it can enter on a star's candle "
+               "both sides; the new body at least the doji's) or a red HA candle (closing above its body)"
+               + (", with SMA 20 > 50 and the close above SMA 200" if use_trend else "") +
+               " (buy); a red one with no upper wick after a doji or a green one (closing below its body)"
+               + (", the SMAs the other way" if use_trend else "") + " (short). A run checks the running candle every few minutes, so it can enter on a star's candle "
                "before it closes, or miss one that only crossed in its last minutes. Dotted line: the ATR stop, "
                "moved at each 15-minute close.")
 
 
-def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
-    """HA IDX, NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles (ha_index.py): its own
-    totals, open positions and closed trades, apart from the stock strategies."""
+def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, use_trend: bool = True) -> None:
+    """An HA IDX strategy (INDEX_SYSTEMS), NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles
+    (ha_index.py): its own totals, open positions and closed trades, apart from the stock strategies."""
     st.caption("A green 15-minute HA candle with no lower wick after a doji (wicks both sides; the new body at least the "
-               "doji's) or a red HA candle (closing above its body), with SMA 20 > 50 and the close above SMA 200 (long); a red one with no upper wick "
-               "after a doji or a green one, SMAs the other way (short), "
+               "doji's) or a red HA candle (closing above its body)"
+               + (", with SMA 20 > 50 and the close above SMA 200" if use_trend else ", no SMA filter") +
+               " (long); a red one with no upper wick after a doji or a green one (closing below its body)"
+               + (", SMAs the other way" if use_trend else "") + " (short), "
                "SL 1.1 x ATR(14) trailed from each 15-minute close, out at the close of the first HA doji (wicks both sides), squared off at 3:15 PM, 1 lot. Kept apart from "
                "the stock strategies of the Auto trader tab, which leaves it out.")
     today = datetime.now(fs.IST).date()
@@ -875,7 +881,7 @@ def show_index(trades: pd.DataFrame, positions: list[dict], unrealized) -> None:
     else:
         st.caption("None open.")
 
-    show_index_chart(trades, positions)
+    show_index_chart(trades, positions, use_trend)
 
     if trades.empty:
         st.caption("No closed index trades yet.")
@@ -958,8 +964,8 @@ def main() -> None:
     skips = load_skips()
     signals = load_signals()
     # The index strategy has its own tab (index_trader_page.py): this page is the stock strategies.
-    history = history[history["System"] != INDEX_SYSTEM]
-    positions = [p for p in account["positions"] if p.get("system") != INDEX_SYSTEM]
+    history = history[~history["System"].isin(list(INDEX_SYSTEMS))]
+    positions = [p for p in account["positions"] if p.get("system") not in INDEX_SYSTEMS]
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
     quotes = fs.latest_prices({p["symbol"] for p in positions}, instruments, None) if positions else {}
 

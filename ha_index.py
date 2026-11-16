@@ -78,15 +78,18 @@ def atr(rows: list[list]) -> list[float | None]:
     return out
 
 
-def signal(rows: list[list]) -> str | None:
+def signal(rows: list[list], use_trend: bool = True) -> str | None:
     """"BUY", "SELL" or None for the last (running) candle of `rows`, by ha_vp's rule: the SMA
-    trend (ha_vp.trend) and the HA entry pattern (ha_vp.ha_entry)."""
+    trend (ha_vp.trend) and the HA entry pattern (ha_vp.ha_entry). Without `use_trend` (HA IDX PURE),
+    the HA entry pattern alone, either way."""
     if len(rows) < 2:
         return None
+    ha = heikin_ashi(rows)
+    if not use_trend:
+        return next((side for side in ("BUY", "SELL") if ha_vp.ha_entry(ha[-1], ha[-2], side == "BUY")), None)
     side = ha_vp.trend(rows, 4)
     if side is None:
         return None
-    ha = heikin_ashi(rows)
     return side if ha_vp.ha_entry(ha[-1], ha[-2], side == "BUY") else None
 
 

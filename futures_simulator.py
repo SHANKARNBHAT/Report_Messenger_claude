@@ -105,13 +105,14 @@ BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/r
               "sma8": "Hold · 2H SMA 8 exit", "sma20": "Hold · 2H SMA 20 exit"}
 # HA MTF: the HA signals of 2H, 4H and Daily, held until the HA exit of the highest
 # timeframe that matched (auto_trader.py, enter_signals).
-# HA IDX: Heikin Ashi on NIFTY and BANKNIFTY 15-minute candles with an ATR trailing SL (ha_index.py).
+# HA IDX: Heikin Ashi on NIFTY and BANKNIFTY 15-minute candles with an ATR trailing SL (ha_index.py);
+# HA IDX PURE the same without the SMA trend filter.
 # HA VP: Heikin Ashi on the stocks' 2H candles, ATR trailing SL, volume profile target, HA doji and EMA 8 exits
 # (ha_vp.py). HA and HA MTF take no new trades: kept so their trades still show and their
 # open positions still close.
 # RSI 4H, RSI Daily and RSI Weekly: entered on the RSI signals of those timeframes, then traded as RSI (2H SL and exits).
 SYSTEMS = {"RSI": ("trail", "sma8", "sma20"), "RSI 4H": ("trail", "sma8", "sma20"),
-           "RSI Daily": ("trail", "sma8", "sma20"), "RSI Weekly": ("trail", "sma8", "sma20"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",),
+           "RSI Daily": ("trail", "sma8", "sma20"), "RSI Weekly": ("trail", "sma8", "sma20"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",), "HA IDX PURE": ("atr",),
            "HA VP": ("vp",), "HA VP TRAIL": ("vp_trail",)}
 HA_EXITS = ("ha", "ha_green")
 # Styles a strategy no longer trades: their open positions still close by their rules and

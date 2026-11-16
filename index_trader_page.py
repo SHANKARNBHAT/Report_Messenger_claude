@@ -1,5 +1,6 @@
 """
-Autotrader NIFTY\\BNF page: the Auto trader's HA IDX strategy (ha_index.py), NIFTY and
+Autotrader NIFTY\\BNF page: the Auto trader's HA IDX strategies (ha_index.py; HA IDX PURE
+without the SMA trend filter), NIFTY and
 BANKNIFTY on 15-minute Heikin Ashi candles, apart from the stock strategies of the Auto
 trader page (auto_trader_page.py, whose account, runs and helpers it shares).
 
@@ -35,9 +36,11 @@ def main() -> None:
         st.info(error)
         return
 
+    system = st.segmented_control("Strategy", list(atp.INDEX_SYSTEMS), format_func=lambda s: atp.INDEX_SYSTEMS[s][0],
+                                  default=atp.INDEX_SYSTEM, key="index-system") or atp.INDEX_SYSTEM
     history = atp.load_trades("trades")
-    trades = history[history["System"] == atp.INDEX_SYSTEM]
-    positions = [p for p in account["positions"] if p.get("system") == atp.INDEX_SYSTEM]
+    trades = history[history["System"] == system]
+    positions = [p for p in account["positions"] if p.get("system") == system]
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
     quotes = fs.latest_prices({p["symbol"] for p in positions}, instruments, None) if positions else {}
 
@@ -45,7 +48,7 @@ def main() -> None:
         q = quotes.get(p["symbol"])
         return None if not q else round((q["price"] - p["entry"]) * p["qty"] * (1 if p["side"] == "BUY" else -1), 2)
 
-    atp.show_index(trades, positions, unrealized)
+    atp.show_index(trades, positions, unrealized, atp.INDEX_SYSTEMS[system][1])
 
 
 if __name__ == "__main__":
