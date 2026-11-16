@@ -41485,5 +41485,264 @@
   "gross": 1295.0,
   "charges": 406.35,
   "net": 888.65
+ },
+ {
+  "id": "1794801336045-1743",
+  "symbol": "INDUSTOWER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1700,
+  "entry": 396.0,
+  "exit": 396.95,
+  "entry_time": 1794801336045,
+  "exit_time": 1794805800000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 390.45,
+  "tp": 428.65,
+  "high": 402.5,
+  "low": 396.0,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 396.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1615.0,
+  "charges": 427.18,
+  "net": 1187.82
+ },
+ {
+  "id": "1794801336045-1744",
+  "symbol": "INDUSTOWER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1700,
+  "entry": 396.0,
+  "exit": 396.95,
+  "entry_time": 1794801336045,
+  "exit_time": 1794805800000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 390.45,
+  "tp": 428.65,
+  "high": 402.5,
+  "low": 396.0,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 396.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1615.0,
+  "charges": 427.18,
+  "net": 1187.82
+ },
+ {
+  "id": "1794801336045-1765",
+  "symbol": "UPL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1355,
+  "entry": 558.85,
+  "exit": 549.6,
+  "entry_time": 1794801336045,
+  "exit_time": 1794805800000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 549.6,
+  "tp": 587.35,
+  "high": 558.85,
+  "low": 549.6,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 555.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -12533.75,
+  "charges": 467.13,
+  "net": -13000.88
+ },
+ {
+  "id": "1794801336045-1766",
+  "symbol": "UPL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1355,
+  "entry": 558.85,
+  "exit": 549.6,
+  "entry_time": 1794801336045,
+  "exit_time": 1794805800000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 549.6,
+  "tp": 587.35,
+  "high": 558.85,
+  "low": 549.6,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 555.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -12533.75,
+  "charges": 467.13,
+  "net": -13000.88
+ },
+ {
+  "id": "1794800741223-1606",
+  "symbol": "GODREJCP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 500,
+  "entry": 870.75,
+  "exit": 883.8,
+  "entry_time": 1794800741223,
+  "exit_time": 1794805800000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 883.8,
+  "tp": 844.65,
+  "high": 883.8,
+  "low": 865.3,
+  "nifty": 0.58,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 870.75
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6525.0,
+  "charges": 292.67,
+  "net": -6817.67
+ },
+ {
+  "id": "1794800741223-1607",
+  "symbol": "GODREJCP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 500,
+  "entry": 870.75,
+  "exit": 883.8,
+  "entry_time": 1794800741223,
+  "exit_time": 1794805800000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 883.8,
+  "tp": null,
+  "high": 883.8,
+  "low": 865.3,
+  "nifty": 0.58,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 870.75
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6525.0,
+  "charges": 292.67,
+  "net": -6817.67
+ },
+ {
+  "id": "1794800741223-1608",
+  "symbol": "GODREJCP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 500,
+  "entry": 870.75,
+  "exit": 883.8,
+  "entry_time": 1794800741223,
+  "exit_time": 1794805800000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 883.8,
+  "tp": null,
+  "high": 883.8,
+  "low": 865.3,
+  "nifty": 0.58,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 870.75
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6525.0,
+  "charges": 292.67,
+  "net": -6817.67
  }
 ]
