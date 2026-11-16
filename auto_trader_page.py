@@ -46,7 +46,8 @@ if Path(ha_index.__file__).stat().st_mtime > getattr(ha_index, "_loaded_at", 0):
     ha_index = importlib.reload(ha_index)
     ha_index._loaded_at = Path(ha_index.__file__).stat().st_mtime
 
-from chartink_dashboard import MY_LAYOUT
+from chartink_dashboard import CHART_SITES, MY_LAYOUT
+from page_settings import remember
 
 GITHUB_OWNER, GITHUB_REPO = "SHANKARNBHAT", "Report_Messenger_Claude"
 DISPATCH_URL = (f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/actions/workflows/"
@@ -203,6 +204,13 @@ def chart_link(symbol: str) -> str:
     links = fs.chart_links()
     link = links.get(st.session_state.get("charts") or MY_LAYOUT) or next(iter(links.values()))
     return link.replace("SYMBOL", quote(symbol, safe=""))
+
+
+def chart_site_picker() -> None:
+    """Where the Symbol links open (My layout, Chartink or TradingView): the same choice as on the
+    Chartink dashboard page, kept across the pages."""
+    st.radio("Open charts on", list(CHART_SITES), key="charts", horizontal=True,
+             on_change=remember, args=("charts",))
 
 
 SYMBOL_LINK = st.column_config.LinkColumn("Symbol", display_text=r"symbol=(?:NSE%3A)?([^&]+)$",
@@ -965,6 +973,7 @@ def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, use_tren
 def main() -> None:
     st.set_page_config(page_title="Auto Trader", page_icon="🤖", layout="wide")
     st.title("🤖 Auto trader")
+    chart_site_picker()
     st.caption(
         f"Paper-trades every Chartink RSI signal, each timeframe its own strategy: **RSI 2H**, **RSI 4H**, **RSI Daily** "
         f"and **RSI Weekly** (a stock on several gets a trade in each; only the entry signal's timeframe differs, "

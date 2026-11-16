@@ -29,6 +29,7 @@ fs = atp.fs
 def main() -> None:
     st.set_page_config(page_title="Autotrader NIFTY\\BNF", page_icon="📈", layout="wide")
     st.title("📈 Autotrader NIFTY\\BNF")
+    atp.chart_site_picker()
     account, error = atp.load_account()
     top = st.columns([1, 1, 4])
     if top[0].button("↻ Reload", width="stretch", key="index-reload"):
