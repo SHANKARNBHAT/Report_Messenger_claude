@@ -55619,5 +55619,42 @@
   "gross": -29850.0,
   "charges": 475.31,
   "net": -30325.31
+ },
+ {
+  "id": "1794815446175-2122",
+  "symbol": "BSE",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 3898.7,
+  "exit": 3903.5,
+  "entry_time": 1794815446175,
+  "exit_time": 1794817500000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 3917.0,
+  "tp": null,
+  "high": 3903.5,
+  "low": 3890.2,
+  "nifty": 0.44,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794815446175,
+   "price": 3900.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -960.0,
+  "charges": 486.38,
+  "net": -1446.38
  }
 ]
