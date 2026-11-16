@@ -50624,5 +50624,79 @@
   "gross": 337.5,
   "charges": 551.46,
   "net": -213.96
+ },
+ {
+  "id": "1794808297527-1998",
+  "symbol": "ICICIBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 700,
+  "entry": 1589.0,
+  "exit": 1587.0,
+  "entry_time": 1794808297527,
+  "exit_time": 1794812100000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1584.2,
+  "tp": null,
+  "high": 1592.9,
+  "low": 1586,
+  "nifty": 0.3,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794808297527,
+   "price": 1588.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1400.0,
+  "charges": 672.9,
+  "net": -2072.9
+ },
+ {
+  "id": "1794808297527-2029",
+  "symbol": "ICICIBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 700,
+  "entry": 1589.0,
+  "exit": 1587.0,
+  "entry_time": 1794808297527,
+  "exit_time": 1794812100000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA PURE Daily",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1584.2,
+  "tp": null,
+  "high": 1592.9,
+  "low": 1586,
+  "nifty": 0.3,
+  "strategies": [
+   "Daily HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794808297527,
+   "price": 1588.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1400.0,
+  "charges": 672.9,
+  "net": -2072.9
  }
 ]
