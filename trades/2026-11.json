@@ -51364,5 +51364,42 @@
   "gross": 1050.0,
   "charges": 557.32,
   "net": 492.68
+ },
+ {
+  "id": "1794808297527-2013",
+  "symbol": "ANGELONE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 346.5,
+  "exit": 351.35,
+  "entry_time": 1794808297527,
+  "exit_time": 1794813900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA PURE Daily",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 345.2,
+  "tp": null,
+  "high": 354.75,
+  "low": 346.5,
+  "nifty": 0.3,
+  "strategies": [
+   "Daily HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794808297527,
+   "price": 347.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 12125.0,
+  "charges": 541.39,
+  "net": 11583.61
  }
 ]
