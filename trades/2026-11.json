@@ -53732,5 +53732,79 @@
   "gross": -390.0,
   "charges": 384.66,
   "net": -774.66
+ },
+ {
+  "id": "1794808297527-1970",
+  "symbol": "SBILIFE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1815.7,
+  "exit": 1815.0,
+  "entry_time": 1794808297527,
+  "exit_time": 1794816600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1806.9,
+  "tp": null,
+  "high": 1824.5,
+  "low": 1810.2,
+  "nifty": 0.3,
+  "strategies": [
+   "2H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794808297527,
+   "price": 1812.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -262.5,
+  "charges": 430.53,
+  "net": -693.03
+ },
+ {
+  "id": "1794815446175-2175",
+  "symbol": "SBILIFE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1823.6,
+  "exit": 1815.0,
+  "entry_time": 1794815446175,
+  "exit_time": 1794816600000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1815.0,
+  "tp": null,
+  "high": 1823.6,
+  "low": 1815.0,
+  "nifty": 0.44,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794815446175,
+   "price": 1821.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3225.0,
+  "charges": 430.65,
+  "net": -3655.65
  }
 ]
