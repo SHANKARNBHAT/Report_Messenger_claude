@@ -50698,5 +50698,79 @@
   "gross": -1400.0,
   "charges": 672.9,
   "net": -2072.9
+ },
+ {
+  "id": "1794808297527-1962",
+  "symbol": "PHOENIXLTD",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2219.2,
+  "exit": 2219.9,
+  "entry_time": 1794808297527,
+  "exit_time": 1794812400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2236.0,
+  "tp": null,
+  "high": 2226.4,
+  "low": 2211.5,
+  "nifty": 0.3,
+  "strategies": [
+   "2H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794808297527,
+   "price": 2222.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -245.0,
+  "charges": 484.65,
+  "net": -729.65
+ },
+ {
+  "id": "1794808297527-1995",
+  "symbol": "DRREDDY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1386.0,
+  "exit": 1384.4,
+  "entry_time": 1794808297527,
+  "exit_time": 1794812400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1368.75,
+  "tp": null,
+  "high": 1389,
+  "low": 1381.8,
+  "nifty": 0.3,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794808297527,
+   "price": 1384.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1000.0,
+  "charges": 534.54,
+  "net": -1534.54
  }
 ]
