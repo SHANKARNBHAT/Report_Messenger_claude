@@ -53658,5 +53658,79 @@
   "gross": -2212.5,
   "charges": 556.68,
   "net": -2769.18
+ },
+ {
+  "id": "1794815446175-2132",
+  "symbol": "GODFRYPHLP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1821.4,
+  "exit": 1812.7,
+  "entry_time": 1794815446175,
+  "exit_time": 1794816300000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1812.7,
+  "tp": null,
+  "high": 1821.4,
+  "low": 1812.7,
+  "nifty": 0.44,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794815446175,
+   "price": 1816.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2392.5,
+  "charges": 328.04,
+  "net": -2720.54
+ },
+ {
+  "id": "1794815446175-2134",
+  "symbol": "GODREJPROP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1843.6,
+  "exit": 1844.8,
+  "entry_time": 1794815446175,
+  "exit_time": 1794816300000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1844.8,
+  "tp": null,
+  "high": 1844.8,
+  "low": 1841.5,
+  "nifty": 0.44,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794815446175,
+   "price": 1844.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -390.0,
+  "charges": 384.66,
+  "net": -774.66
  }
 ]
