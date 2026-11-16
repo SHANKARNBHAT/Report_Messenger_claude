@@ -40743,5 +40743,79 @@
   "gross": 50532.5,
   "charges": 820.89,
   "net": 49711.61
+ },
+ {
+  "id": "1794801336045-1739",
+  "symbol": "IEX",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4350,
+  "entry": 117.0,
+  "exit": 115.5,
+  "entry_time": 1794801336045,
+  "exit_time": 1794804300000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 115.35,
+  "tp": 126.15,
+  "high": 117.12,
+  "low": 115.48,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 116.21
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6525.0,
+  "charges": 330.43,
+  "net": -6855.43
+ },
+ {
+  "id": "1794801336045-1740",
+  "symbol": "IEX",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4350,
+  "entry": 117.0,
+  "exit": 115.5,
+  "entry_time": 1794801336045,
+  "exit_time": 1794804300000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 115.35,
+  "tp": 126.15,
+  "high": 117.12,
+  "low": 115.48,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 116.21
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6525.0,
+  "charges": 330.43,
+  "net": -6855.43
  }
 ]
