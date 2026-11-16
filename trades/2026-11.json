@@ -62464,5 +62464,264 @@
   "gross": 20935.0,
   "charges": 396.98,
   "net": 20538.02
+ },
+ {
+  "id": "1794800741223-1586",
+  "symbol": "ICICIBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 700,
+  "entry": 1583.6,
+  "exit": 1578.9,
+  "entry_time": 1794800741223,
+  "exit_time": 1794823200000,
+  "reason": "2H close past SMA 8",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 1559.85,
+  "tp": null,
+  "high": 1594.3,
+  "low": 1577,
+  "nifty": 0.58,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 1583.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -3290.0,
+  "charges": 669.79,
+  "net": -3959.79
+ },
+ {
+  "id": "1794800741223-1659",
+  "symbol": "GAIL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3550,
+  "entry": 188.0,
+  "exit": 186.5,
+  "entry_time": 1794800741223,
+  "exit_time": 1794823200000,
+  "reason": "2H close past SMA 20",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 185.2,
+  "tp": null,
+  "high": 188.2,
+  "low": 185.52,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 188.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -5325.0,
+  "charges": 420.29,
+  "net": -5745.29
+ },
+ {
+  "id": "1794800741223-1662",
+  "symbol": "GLENMARK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 2640.0,
+  "exit": 2625.0,
+  "entry_time": 1794800741223,
+  "exit_time": 1794823200000,
+  "reason": "2H close past SMA 20",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 2600.4,
+  "tp": null,
+  "high": 2686.3,
+  "low": 2620,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 2640.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -5625.0,
+  "charges": 601.82,
+  "net": -6226.82
+ },
+ {
+  "id": "1794800741223-1664",
+  "symbol": "ICICIBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 700,
+  "entry": 1583.6,
+  "exit": 1578.9,
+  "entry_time": 1794800741223,
+  "exit_time": 1794823200000,
+  "reason": "2H close past SMA 8",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 1559.85,
+  "tp": null,
+  "high": 1594.3,
+  "low": 1577,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 1583.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -3290.0,
+  "charges": 669.79,
+  "net": -3959.79
+ },
+ {
+  "id": "1794801656114-1778",
+  "symbol": "DMART",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 3435.5,
+  "exit": 3452.0,
+  "entry_time": 1794801656114,
+  "exit_time": 1794823200000,
+  "reason": "2H close past SMA 8",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 3487.05,
+  "tp": null,
+  "high": 3459.7,
+  "low": 3427,
+  "nifty": 0.42,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794801656114,
+   "price": 3435.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -2475.0,
+  "charges": 337.53,
+  "net": -2812.53
+ },
+ {
+  "id": "1794810039591-2076",
+  "symbol": "ULTRACEMCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 50,
+  "entry": 12286.0,
+  "exit": 12270.0,
+  "entry_time": 1794810039591,
+  "exit_time": 1794823200000,
+  "reason": "2H close past SMA 20",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 12101.7,
+  "tp": null,
+  "high": 12296,
+  "low": 12227,
+  "nifty": 0.29,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794810039591,
+   "price": 12286.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -800.0,
+  "charges": 392.75,
+  "net": -1192.75
+ },
+ {
+  "id": "1794813643420-2103",
+  "symbol": "ULTRACEMCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 50,
+  "entry": 12279.0,
+  "exit": 12270.0,
+  "entry_time": 1794813643420,
+  "exit_time": 1794823200000,
+  "reason": "2H close past SMA 20",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 12094.8,
+  "tp": null,
+  "high": 12296,
+  "low": 12227,
+  "nifty": 0.46,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794813643420,
+   "price": 12279.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -450.0,
+  "charges": 392.73,
+  "net": -842.73
  }
 ]
