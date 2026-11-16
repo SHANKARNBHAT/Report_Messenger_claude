@@ -316,6 +316,54 @@ def show_versus(history: pd.DataFrame, positions: list[dict]) -> None:
         st.caption("No closed trades in either strategy yet.")
 
 
+# The strategies started (or changed: RSI's 30-minute RSI exit) on 16 Nov 2026, tracked apart from
+# that day on, by the trades entered since.
+NEW_SINCE = datetime(2026, 11, 16, tzinfo=fs.IST)
+NEW_STRATEGIES = {"HA PURE 2H": "HA pure 2H", "HA PURE 4H": "HA pure 4H", "HA PURE Daily": "HA pure Daily",
+                  "HA IDX PURE": "HA IDX · no SMA (15m index)", "RSI": "RSI 2H", "RSI 4H": "RSI 4H",
+                  "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly"}
+
+
+def show_new(history: pd.DataFrame, positions: list[dict]) -> None:
+    """The NEW_STRATEGIES, in each exit style, by the trades entered from NEW_SINCE: closed and open."""
+    since = NEW_SINCE.timestamp() * 1000
+    trades = history[pd.to_numeric(history["entry_time"], errors="coerce") >= since]
+    held = [p for p in positions if p.get("system", "RSI") in NEW_STRATEGIES and p["time"] >= since]
+    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    quotes = fs.latest_prices({p["symbol"] for p in held}, instruments, None) if held else {}
+
+    def open_pnl(p):
+        q = quotes.get(p["symbol"])
+        return (q["price"] - p["entry"]) * p["qty"] * (1 if p["side"] == "BUY" else -1) if q else 0.0
+
+    rows = []
+    for system, name in NEW_STRATEGIES.items():
+        for style in fs.SYSTEMS[system]:
+            label = fs.BOT_STYLES[style]
+            done = trades[(trades["System"] == system) & (trades["style"].fillna("eod") == style)]
+            live = [p for p in held if p.get("system", "RSI") == system and p.get("style", "eod") == style]
+            if done.empty and not live:
+                continue
+            net = float(done["net"].sum())
+            unrealized = sum(open_pnl(p) for p in live)
+            rows.append({"Strategy": name, "Style": label, "Closed": len(done),
+                         "Win rate %": round(100 * (done["net"] > 0).mean(), 1) if len(done) else None,
+                         "Net P&L closed ₹": round(net), "Open": len(live), "Open P&L ₹": round(unrealized),
+                         "Total ₹": round(net + unrealized)})
+    if not rows:
+        st.caption(f"No trades in the new strategies since {NEW_SINCE:%d %b} yet.")
+        return
+    table = pd.DataFrame(rows).set_index(["Strategy", "Style"])
+    st.dataframe(table, width="stretch",
+                 column_config={c: st.column_config.NumberColumn(format="%d") for c in
+                                ("Net P&L closed ₹", "Open P&L ₹", "Total ₹")})
+    st.caption(f"Trades entered from {NEW_SINCE:%d %b %Y} only, 1 lot each, after charges (closed) and at the LTP "
+               "(open). HA pure: the HA entry pattern without the SMA trend on 2H / 4H / Daily, SL trailed on "
+               "30-minute candles, out at the first HA doji, held overnight. HA IDX · no SMA: the same on 15-minute "
+               "NIFTY / BANKNIFTY, intraday (also on the Autotrader NIFTY\\BNF tab). RSI: with the 30-minute RSI "
+               "SMA exit (below 40 long, above 60 short) added this day.")
+
+
 def show_sma_filter(trades: pd.DataFrame) -> None:
     """Heikin Ashi results by how the trade stood against the SMA of its timeframe's RSI at entry."""
     gap = (pd.to_numeric(trades["sma_rsi"], errors="coerce") - 50) * direction(trades)
@@ -972,6 +1020,7 @@ def main() -> None:
     you = load_trades("manual")
     skips = load_skips()
     signals = load_signals()
+    every_trade, every_position = history, account["positions"]
     # The index strategy has its own tab (index_trader_page.py): this page is the stock strategies.
     history = history[~history["System"].isin(list(INDEX_SYSTEMS))]
     positions = [p for p in account["positions"] if p.get("system") not in INDEX_SYSTEMS]
@@ -1039,6 +1088,9 @@ def main() -> None:
                        "or set it back to exit there.")
     else:
         st.caption("None open.")
+
+    st.subheader(f"New strategies (from {NEW_SINCE:%d %b})")
+    show_new(every_trade, every_position)
 
     st.subheader("Results")
     if len(history) or len(you):
