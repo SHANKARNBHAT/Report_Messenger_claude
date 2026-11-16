@@ -50994,5 +50994,42 @@
   "gross": 6375.0,
   "charges": 660.88,
   "net": 5714.12
+ },
+ {
+  "id": "1794812139713-2093",
+  "symbol": "FEDERALBNK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 366.35,
+  "exit": 364.5,
+  "entry_time": 1794812139713,
+  "exit_time": 1794813000000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 364.5,
+  "tp": null,
+  "high": 366.35,
+  "low": 364.5,
+  "nifty": 0.46,
+  "strategies": [
+   "2H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794812139713,
+   "price": 365.55
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4625.0,
+  "charges": 560.6,
+  "net": -5185.6
  }
 ]
