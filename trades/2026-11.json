@@ -42003,5 +42003,338 @@
   "gross": -12320.0,
   "charges": 470.71,
   "net": -12790.71
+ },
+ {
+  "id": "1794801336045-1729",
+  "symbol": "GMRAIRPORT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6975,
+  "entry": 99.6,
+  "exit": 99.1,
+  "entry_time": 1794801336045,
+  "exit_time": 1794806700000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 98.1,
+  "tp": 101.25,
+  "high": 100.57,
+  "low": 99.09,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 99.47
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3487.5,
+  "charges": 436.63,
+  "net": -3924.13
+ },
+ {
+  "id": "1794801336045-1730",
+  "symbol": "GMRAIRPORT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6975,
+  "entry": 99.6,
+  "exit": 99.1,
+  "entry_time": 1794801336045,
+  "exit_time": 1794806700000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 98.1,
+  "tp": 101.25,
+  "high": 100.57,
+  "low": 99.09,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 99.47
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3487.5,
+  "charges": 436.63,
+  "net": -3924.13
+ },
+ {
+  "id": "1794801336045-1747",
+  "symbol": "KOTAKBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2000,
+  "entry": 493.8,
+  "exit": 492.2,
+  "entry_time": 1794801336045,
+  "exit_time": 1794806400000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 488.1,
+  "tp": null,
+  "high": 497.9,
+  "low": 492.2,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 493.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3200.0,
+  "charges": 601.74,
+  "net": -3801.74
+ },
+ {
+  "id": "1794801336045-1748",
+  "symbol": "KOTAKBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2000,
+  "entry": 493.8,
+  "exit": 492.2,
+  "entry_time": 1794801336045,
+  "exit_time": 1794806400000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 488.1,
+  "tp": null,
+  "high": 497.9,
+  "low": 492.2,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 493.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3200.0,
+  "charges": 601.74,
+  "net": -3801.74
+ },
+ {
+  "id": "1794801336045-1755",
+  "symbol": "PERSISTENT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 6060.0,
+  "exit": 5982.4,
+  "entry_time": 1794801336045,
+  "exit_time": 1794806700000,
+  "reason": "Stop loss",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 5982.4,
+  "tp": null,
+  "high": 6060.0,
+  "low": 5982.4,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 6025.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -9700.0,
+  "charges": 468.76,
+  "net": -10168.76
+ },
+ {
+  "id": "1794801336045-1756",
+  "symbol": "PERSISTENT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 6060.0,
+  "exit": 5982.4,
+  "entry_time": 1794801336045,
+  "exit_time": 1794806700000,
+  "reason": "Stop loss",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 5982.4,
+  "tp": null,
+  "high": 6060.0,
+  "low": 5982.4,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 6025.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -9700.0,
+  "charges": 468.76,
+  "net": -10168.76
+ },
+ {
+  "id": "1794800741223-1615",
+  "symbol": "MPHASIS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 2455.0,
+  "exit": 2411.1,
+  "entry_time": 1794800741223,
+  "exit_time": 1794806700000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2411.1,
+  "tp": 2528.65,
+  "high": 2455.0,
+  "low": 2411.1,
+  "nifty": 0.58,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 2455.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12072.5,
+  "charges": 421.13,
+  "net": -12493.63
+ },
+ {
+  "id": "1794800741223-1616",
+  "symbol": "MPHASIS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 2455.0,
+  "exit": 2411.1,
+  "entry_time": 1794800741223,
+  "exit_time": 1794806700000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 2411.1,
+  "tp": null,
+  "high": 2455.0,
+  "low": 2411.1,
+  "nifty": 0.58,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 2455.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12072.5,
+  "charges": 421.13,
+  "net": -12493.63
+ },
+ {
+  "id": "1794800741223-1617",
+  "symbol": "MPHASIS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 2455.0,
+  "exit": 2411.1,
+  "entry_time": 1794800741223,
+  "exit_time": 1794806700000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 2411.1,
+  "tp": null,
+  "high": 2455.0,
+  "low": 2411.1,
+  "nifty": 0.58,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 2455.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12072.5,
+  "charges": 421.13,
+  "net": -12493.63
  }
 ]
