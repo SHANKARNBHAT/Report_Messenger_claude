@@ -41446,5 +41446,44 @@
   "gross": -12562.5,
   "charges": 512.46,
   "net": -13074.96
+ },
+ {
+  "id": "1794374733560-1132",
+  "symbol": "INDUSINDBK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 700,
+  "entry": 909.3,
+  "exit": 911.15,
+  "entry_time": 1794374733560,
+  "exit_time": 1794806143362,
+  "reason": "HA exit (4H)",
+  "source": "Auto HA MTF 2H+4H",
+  "timeframes": [
+   "2 HOUR",
+   "4 HOUR"
+  ],
+  "system": "HA MTF",
+  "style": "ha",
+  "passed": false,
+  "carried": false,
+  "sl": 882.0,
+  "tp": null,
+  "high": 931.9,
+  "low": 898.55,
+  "nifty": 1.31,
+  "strategies": [
+   "2H HA Bullish scan",
+   "4H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794374733560,
+   "price": 909.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 62.58,
+  "gross": 1295.0,
+  "charges": 406.35,
+  "net": 888.65
  }
 ]
