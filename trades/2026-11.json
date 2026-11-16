@@ -53251,5 +53251,153 @@
   "gross": -638.75,
   "charges": 243.03,
   "net": -881.78
+ },
+ {
+  "id": "1794815446175-2121",
+  "symbol": "BRITANNIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4734.4,
+  "exit": 4746.9,
+  "entry_time": 1794815446175,
+  "exit_time": 1794815700000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 4746.9,
+  "tp": null,
+  "high": 4746.9,
+  "low": 4734.4,
+  "nifty": 0.44,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794815446175,
+   "price": 4742.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1562.5,
+  "charges": 380.56,
+  "net": -1943.06
+ },
+ {
+  "id": "1794815446175-2174",
+  "symbol": "SAGILITY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 12000,
+  "entry": 43.15,
+  "exit": 43.15,
+  "entry_time": 1794815446175,
+  "exit_time": 1794815700000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 43.15,
+  "tp": null,
+  "high": 43.15,
+  "low": 43.15,
+  "nifty": 0.44,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794815446175,
+   "price": 43.13
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 0.0,
+  "charges": 338.82,
+  "net": -338.82
+ },
+ {
+  "id": "1794815446175-2192",
+  "symbol": "VBL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1275,
+  "entry": 438.25,
+  "exit": 437.7,
+  "entry_time": 1794815446175,
+  "exit_time": 1794815700000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 437.7,
+  "tp": null,
+  "high": 438.25,
+  "low": 437.7,
+  "nifty": 0.44,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794815446175,
+   "price": 438.05
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -701.25,
+  "charges": 361.53,
+  "net": -1062.78
+ },
+ {
+  "id": "1794815516434-2247",
+  "symbol": "PETRONET",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1900,
+  "entry": 326.95,
+  "exit": 326.0,
+  "entry_time": 1794815516434,
+  "exit_time": 1794815700000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 326.8,
+  "tp": null,
+  "high": 326.95,
+  "low": 326,
+  "nifty": 0.44,
+  "strategies": [
+   "2H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794815516434,
+   "price": 326.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1805.0,
+  "charges": 396.11,
+  "net": -2201.11
  }
 ]
