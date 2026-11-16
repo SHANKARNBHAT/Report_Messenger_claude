@@ -43483,5 +43483,523 @@
   "gross": 3200.0,
   "charges": 523.35,
   "net": 2676.65
+ },
+ {
+  "id": "1794801336045-1733",
+  "symbol": "HEROMOTOCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 150,
+  "entry": 5421.0,
+  "exit": 5373.3,
+  "entry_time": 1794801336045,
+  "exit_time": 1794807600000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 5354.8,
+  "tp": 5681.2,
+  "high": 5439.5,
+  "low": 5373.3,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 5445.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -7155.0,
+  "charges": 501.42,
+  "net": -7656.42
+ },
+ {
+  "id": "1794801336045-1734",
+  "symbol": "HEROMOTOCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 150,
+  "entry": 5421.0,
+  "exit": 5373.3,
+  "entry_time": 1794801336045,
+  "exit_time": 1794807600000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 5354.8,
+  "tp": 5681.2,
+  "high": 5439.5,
+  "low": 5373.3,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 5445.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -7155.0,
+  "charges": 501.42,
+  "net": -7656.42
+ },
+ {
+  "id": "1794801336045-1735",
+  "symbol": "HINDUNILVR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 300,
+  "entry": 1986.5,
+  "exit": 1991.1,
+  "entry_time": 1794801336045,
+  "exit_time": 1794807900000,
+  "reason": "HA doji",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 1964.85,
+  "tp": 2047.7,
+  "high": 1996.9,
+  "low": 1982.3,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 1983.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1380.0,
+  "charges": 383.55,
+  "net": 996.45
+ },
+ {
+  "id": "1794801336045-1736",
+  "symbol": "HINDUNILVR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 300,
+  "entry": 1986.5,
+  "exit": 1991.1,
+  "entry_time": 1794801336045,
+  "exit_time": 1794807900000,
+  "reason": "HA doji",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 1964.85,
+  "tp": 2047.7,
+  "high": 1996.9,
+  "low": 1982.3,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 1983.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1380.0,
+  "charges": 383.55,
+  "net": 996.45
+ },
+ {
+  "id": "1794801336045-1741",
+  "symbol": "INDHOTEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 890.75,
+  "exit": 886.0,
+  "entry_time": 1794801336045,
+  "exit_time": 1794807900000,
+  "reason": "HA doji",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 878.55,
+  "tp": null,
+  "high": 896,
+  "low": 885,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 887.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4750.0,
+  "charges": 546.38,
+  "net": -5296.38
+ },
+ {
+  "id": "1794801336045-1742",
+  "symbol": "INDHOTEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 890.75,
+  "exit": 886.0,
+  "entry_time": 1794801336045,
+  "exit_time": 1794807900000,
+  "reason": "HA doji",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 878.55,
+  "tp": null,
+  "high": 896,
+  "low": 885,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 887.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4750.0,
+  "charges": 546.38,
+  "net": -5296.38
+ },
+ {
+  "id": "1794801336045-1757",
+  "symbol": "PHOENIXLTD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2250.3,
+  "exit": 2220.4,
+  "entry_time": 1794801336045,
+  "exit_time": 1794807900000,
+  "reason": "HA doji",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 2210.9,
+  "tp": null,
+  "high": 2250.3,
+  "low": 2220.3,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 2248.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -10465.0,
+  "charges": 485.31,
+  "net": -10950.31
+ },
+ {
+  "id": "1794801336045-1758",
+  "symbol": "PHOENIXLTD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2250.3,
+  "exit": 2220.4,
+  "entry_time": 1794801336045,
+  "exit_time": 1794807900000,
+  "reason": "HA doji",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 2210.9,
+  "tp": null,
+  "high": 2250.3,
+  "low": 2220.3,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 2248.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -10465.0,
+  "charges": 485.31,
+  "net": -10950.31
+ },
+ {
+  "id": "1794801336045-1761",
+  "symbol": "TECHM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 600,
+  "entry": 1782.4,
+  "exit": 1774.0,
+  "entry_time": 1794801336045,
+  "exit_time": 1794807900000,
+  "reason": "HA doji",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 1761.2,
+  "tp": 1803.7,
+  "high": 1790.1,
+  "low": 1771,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 1771.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5040.0,
+  "charges": 646.87,
+  "net": -5686.87
+ },
+ {
+  "id": "1794801336045-1762",
+  "symbol": "TECHM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 600,
+  "entry": 1782.4,
+  "exit": 1774.0,
+  "entry_time": 1794801336045,
+  "exit_time": 1794807900000,
+  "reason": "HA doji",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 1761.2,
+  "tp": 1803.7,
+  "high": 1790.1,
+  "low": 1771,
+  "nifty": 0.41,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801336045,
+   "price": 1771.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5040.0,
+  "charges": 646.87,
+  "net": -5686.87
+ },
+ {
+  "id": "1794801934761-1794",
+  "symbol": "RELIANCE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1343.6,
+  "exit": 1336.5,
+  "entry_time": 1794801934761,
+  "exit_time": 1794807900000,
+  "reason": "HA doji",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 1328.9,
+  "tp": 1440.2,
+  "high": 1345,
+  "low": 1333.8,
+  "nifty": 0.46,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801934761,
+   "price": 1342.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3550.0,
+  "charges": 423.7,
+  "net": -3973.7
+ },
+ {
+  "id": "1794801934761-1795",
+  "symbol": "RELIANCE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1343.6,
+  "exit": 1336.5,
+  "entry_time": 1794801934761,
+  "exit_time": 1794807900000,
+  "reason": "HA doji",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 1328.9,
+  "tp": 1440.2,
+  "high": 1345,
+  "low": 1333.8,
+  "nifty": 0.46,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794801934761,
+   "price": 1342.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3550.0,
+  "charges": 423.7,
+  "net": -3973.7
+ },
+ {
+  "id": "1794546637828-1538",
+  "symbol": "COFORGE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 2069.9,
+  "exit": 2008.1,
+  "entry_time": 1794546637828,
+  "exit_time": 1794807600000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2008.1,
+  "tp": 2132.0,
+  "high": 2073.8,
+  "low": 2008.1,
+  "nifty": -0.33,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794546637828,
+   "price": 2069.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -29355.0,
+  "charges": 585.62,
+  "net": -29940.62
+ },
+ {
+  "id": "1794800741223-1669",
+  "symbol": "JSWSTEEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 675,
+  "entry": 1348.0,
+  "exit": 1327.8,
+  "entry_time": 1794800741223,
+  "exit_time": 1794807600000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1327.8,
+  "tp": 1388.45,
+  "high": 1348.0,
+  "low": 1327.8,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 1348.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -13635.0,
+  "charges": 552.53,
+  "net": -14187.53
  }
 ]
