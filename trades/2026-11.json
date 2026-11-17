@@ -71048,5 +71048,42 @@
   "gross": -1065.0,
   "charges": 458.6,
   "net": -1523.6
+ },
+ {
+  "id": "1794887738404-2630",
+  "symbol": "NATIONALUM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1875,
+  "entry": 317.6,
+  "exit": 321.95,
+  "entry_time": 1794887738404,
+  "exit_time": 1794894300000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 321.95,
+  "tp": null,
+  "high": 321.95,
+  "low": 317.45,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 318.55
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -8156.25,
+  "charges": 382.92,
+  "net": -8539.17
  }
 ]
