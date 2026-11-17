@@ -86995,5 +86995,227 @@
   "gross": 1050.0,
   "charges": 478.52,
   "net": 571.48
+ },
+ {
+  "id": "1794894936100-2925",
+  "symbol": "CANBK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6750,
+  "entry": 135.9,
+  "exit": 134.25,
+  "entry_time": 1794894936100,
+  "exit_time": 1794906600000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 134.0,
+  "tp": 148.95,
+  "high": 136.15,
+  "low": 134.24,
+  "nifty": 0.61,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794894936100,
+   "price": 135.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -11137.5,
+  "charges": 558.02,
+  "net": -11695.52
+ },
+ {
+  "id": "1794894936100-2926",
+  "symbol": "CANBK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6750,
+  "entry": 135.9,
+  "exit": 134.25,
+  "entry_time": 1794894936100,
+  "exit_time": 1794906600000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 134.0,
+  "tp": 148.95,
+  "high": 136.15,
+  "low": 134.24,
+  "nifty": 0.61,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794894936100,
+   "price": 135.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -11137.5,
+  "charges": 558.02,
+  "net": -11695.52
+ },
+ {
+  "id": "1794902143717-3273",
+  "symbol": "PAGEIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 20,
+  "entry": 30915.0,
+  "exit": 30960.0,
+  "entry_time": 1794902143717,
+  "exit_time": 1794906600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 31215.0,
+  "tp": null,
+  "high": 30975,
+  "low": 30855,
+  "nifty": 0.34,
+  "strategies": [
+   "2H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 30900.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -900.0,
+  "charges": 395.46,
+  "net": -1295.46
+ },
+ {
+  "id": "1794902143717-3343",
+  "symbol": "KFINTECH",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 575,
+  "entry": 960.4,
+  "exit": 961.0,
+  "entry_time": 1794902143717,
+  "exit_time": 1794906600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 959.0,
+  "tp": null,
+  "high": 964.75,
+  "low": 960.4,
+  "nifty": 0.34,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 961.05
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 345.0,
+  "charges": 358.39,
+  "net": -13.39
+ },
+ {
+  "id": "1794902143717-3362",
+  "symbol": "PAGEIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 20,
+  "entry": 30915.0,
+  "exit": 30960.0,
+  "entry_time": 1794902143717,
+  "exit_time": 1794906600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 31215.0,
+  "tp": null,
+  "high": 30975,
+  "low": 30855,
+  "nifty": 0.34,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 30900.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -900.0,
+  "charges": 395.46,
+  "net": -1295.46
+ },
+ {
+  "id": "1794887738404-2711",
+  "symbol": "TRENT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 225,
+  "entry": 3216.4,
+  "exit": 3181.05,
+  "entry_time": 1794887738404,
+  "exit_time": 1794906600000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 3181.05,
+  "tp": null,
+  "high": 3262,
+  "low": 3181.05,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 3209.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -7953.75,
+  "charges": 450.62,
+  "net": -8404.37
  }
 ]
