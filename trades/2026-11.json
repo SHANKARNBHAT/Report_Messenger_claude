@@ -70234,5 +70234,79 @@
   "gross": 1860.0,
   "charges": 643.2,
   "net": 1216.8
+ },
+ {
+  "id": "1794887738404-2680",
+  "symbol": "HINDZINC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1225,
+  "entry": 545.0,
+  "exit": 550.45,
+  "entry_time": 1794887738404,
+  "exit_time": 1794893400000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 550.45,
+  "tp": null,
+  "high": 550.45,
+  "low": 542.35,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 544.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6676.25,
+  "charges": 423.48,
+  "net": -7099.73
+ },
+ {
+  "id": "1794887738404-2714",
+  "symbol": "VEDL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1150,
+  "entry": 252.8,
+  "exit": 255.2,
+  "entry_time": 1794887738404,
+  "exit_time": 1794893400000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 255.2,
+  "tp": null,
+  "high": 255.2,
+  "low": 252.8,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 253.62
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2760.0,
+  "charges": 211.04,
+  "net": -2971.04
  }
 ]
