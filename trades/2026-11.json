@@ -69864,5 +69864,116 @@
   "gross": 12150.0,
   "charges": 561.8,
   "net": 11588.2
+ },
+ {
+  "id": "1794887738404-2532",
+  "symbol": "MAHABANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6500,
+  "entry": 93.2,
+  "exit": 93.55,
+  "entry_time": 1794887738404,
+  "exit_time": 1794892500000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 91.4,
+  "tp": null,
+  "high": 94.3,
+  "low": 92.3,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 92.65
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2275.0,
+  "charges": 389.57,
+  "net": 1885.43
+ },
+ {
+  "id": "1794887738404-2570",
+  "symbol": "MAHABANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6500,
+  "entry": 93.2,
+  "exit": 93.55,
+  "entry_time": 1794887738404,
+  "exit_time": 1794892500000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 91.4,
+  "tp": null,
+  "high": 94.3,
+  "low": 92.3,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 92.65
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2275.0,
+  "charges": 389.57,
+  "net": 1885.43
+ },
+ {
+  "id": "1794887144216-2427",
+  "symbol": "KAYNES",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 2980.0,
+  "exit": 2920.4,
+  "entry_time": 1794887144216,
+  "exit_time": 1794892500000,
+  "reason": "TSL after target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 3029.5,
+  "tp": 2890.6,
+  "high": 2999.6,
+  "low": 2865,
+  "nifty": 0.14,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794887144216,
+   "price": 2980.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 8940.0,
+  "charges": 298.57,
+  "net": 8641.43
  }
 ]
