@@ -86773,5 +86773,227 @@
   "gross": 2800.0,
   "charges": 607.82,
   "net": 2192.18
+ },
+ {
+  "id": "1794903935966-3426",
+  "symbol": "NIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25457.4,
+  "exit": 25436.55,
+  "entry_time": 1794903935966,
+  "exit_time": 1794906952000,
+  "reason": "HA candle trail",
+  "source": "Auto HA IDX BRK 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX BRK",
+  "style": "ha_brk_idx",
+  "passed": false,
+  "carried": false,
+  "sl": 25406.9,
+  "tp": null,
+  "high": 25476.95,
+  "low": 25436.55,
+  "nifty": 1.25,
+  "strategies": [
+   "15m HA IDX BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887144216,
+   "price": 25325.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1355.25,
+  "charges": 978.42,
+  "net": -2333.67
+ },
+ {
+  "id": "1794903935966-3427",
+  "symbol": "BANKNIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 62377.7,
+  "exit": 62328.1,
+  "entry_time": 1794903935966,
+  "exit_time": 1794906600000,
+  "reason": "HA candle trail",
+  "source": "Auto HA IDX BRK 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX BRK",
+  "style": "ha_brk_idx",
+  "passed": false,
+  "carried": false,
+  "sl": 62239.95,
+  "tp": null,
+  "high": 62406.7,
+  "low": 62328.1,
+  "nifty": 1.25,
+  "strategies": [
+   "15m HA IDX BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887144216,
+   "price": 61739.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1488.0,
+  "charges": 1100.34,
+  "net": -2588.34
+ },
+ {
+  "id": "1794894936100-3026",
+  "symbol": "FORCEMOT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 19549.0,
+  "exit": 20020.0,
+  "entry_time": 1794894936100,
+  "exit_time": 1794906300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 19522.0,
+  "tp": null,
+  "high": 20239,
+  "low": 19549.0,
+  "nifty": 0.61,
+  "strategies": [
+   "2H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794894936100,
+   "price": 19588.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 11775.0,
+  "charges": 328.59,
+  "net": 11446.41
+ },
+ {
+  "id": "1794901551123-3209",
+  "symbol": "APLAPOLLO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2185.4,
+  "exit": 2188.4,
+  "entry_time": 1794901551123,
+  "exit_time": 1794906900000,
+  "reason": "30m RSI SMA 39.8 < 40",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2152.6,
+  "tp": 2250.95,
+  "high": 2205.8,
+  "low": 2181,
+  "nifty": 0.44,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794901551123,
+   "price": 2185.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 1050.0,
+  "charges": 478.52,
+  "net": 571.48
+ },
+ {
+  "id": "1794901551123-3210",
+  "symbol": "APLAPOLLO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2185.4,
+  "exit": 2188.4,
+  "entry_time": 1794901551123,
+  "exit_time": 1794906900000,
+  "reason": "30m RSI SMA 39.8 < 40",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 2152.6,
+  "tp": null,
+  "high": 2205.8,
+  "low": 2181,
+  "nifty": 0.44,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794901551123,
+   "price": 2185.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 1050.0,
+  "charges": 478.52,
+  "net": 571.48
+ },
+ {
+  "id": "1794901551123-3211",
+  "symbol": "APLAPOLLO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2185.4,
+  "exit": 2188.4,
+  "entry_time": 1794901551123,
+  "exit_time": 1794906900000,
+  "reason": "30m RSI SMA 39.8 < 40",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 2152.6,
+  "tp": null,
+  "high": 2205.8,
+  "low": 2181,
+  "nifty": 0.44,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794901551123,
+   "price": 2185.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 1050.0,
+  "charges": 478.52,
+  "net": 571.48
  }
 ]
