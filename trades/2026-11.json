@@ -93100,5 +93100,264 @@
   "gross": -6746.25,
   "charges": 529.18,
   "net": -7275.43
+ },
+ {
+  "id": "1794902143717-3283",
+  "symbol": "SBILIFE",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1808.3,
+  "exit": 1809.8,
+  "entry_time": 1794902143717,
+  "exit_time": 1794908400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1822.0,
+  "tp": null,
+  "high": 1810.9,
+  "low": 1801,
+  "nifty": 0.34,
+  "strategies": [
+   "2H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 1810.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -562.5,
+  "charges": 429.13,
+  "net": -991.63
+ },
+ {
+  "id": "1794902143717-3300",
+  "symbol": "AMBUJACEM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1200,
+  "entry": 386.15,
+  "exit": 388.65,
+  "entry_time": 1794902143717,
+  "exit_time": 1794908400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 385.45,
+  "tp": null,
+  "high": 390.9,
+  "low": 386.1,
+  "nifty": 0.34,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 386.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 3000.0,
+  "charges": 309.73,
+  "net": 2690.27
+ },
+ {
+  "id": "1794902143717-3332",
+  "symbol": "ICICIGI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1694.1,
+  "exit": 1692.2,
+  "entry_time": 1794902143717,
+  "exit_time": 1794908400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1699.1,
+  "tp": null,
+  "high": 1695,
+  "low": 1686.6,
+  "nifty": 0.34,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 1694.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 617.5,
+  "charges": 357.26,
+  "net": 260.24
+ },
+ {
+  "id": "1794903046526-3409",
+  "symbol": "ICICIGI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1691.4,
+  "exit": 1692.2,
+  "entry_time": 1794903046526,
+  "exit_time": 1794908400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1699.1,
+  "tp": null,
+  "high": 1694.7,
+  "low": 1686.6,
+  "nifty": 1.07,
+  "strategies": [
+   "2H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794894936100,
+   "price": 1694.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -260.0,
+  "charges": 356.8,
+  "net": -616.8
+ },
+ {
+  "id": "1794902143717-3389",
+  "symbol": "TECHM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 600,
+  "entry": 1752.7,
+  "exit": 1761.55,
+  "entry_time": 1794902143717,
+  "exit_time": 1794908400000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1761.55,
+  "tp": null,
+  "high": 1761.55,
+  "low": 1752.7,
+  "nifty": 0.34,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 1753.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5310.0,
+  "charges": 639.68,
+  "net": -5949.68
+ },
+ {
+  "id": "1794460312927-1336",
+  "symbol": "GODREJPROP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1856.1,
+  "exit": 1883.95,
+  "entry_time": 1794460312927,
+  "exit_time": 1794908100000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1785.5,
+  "tp": 1911.8,
+  "high": 1912.4,
+  "low": 1825.2,
+  "nifty": 0.4,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794460312927,
+   "price": 1856.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 73.18,
+  "gross": 9051.25,
+  "charges": 391.65,
+  "net": 8659.6
+ },
+ {
+  "id": "1794800741223-1660",
+  "symbol": "GLENMARK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 2640.0,
+  "exit": 2600.4,
+  "entry_time": 1794800741223,
+  "exit_time": 1794908400000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2600.4,
+  "tp": 2719.2,
+  "high": 2686.3,
+  "low": 2600.4,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 2640.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -14850.0,
+  "charges": 597.01,
+  "net": -15447.01
  }
 ]
