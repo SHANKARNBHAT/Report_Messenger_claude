@@ -87217,5 +87217,116 @@
   "gross": -7953.75,
   "charges": 450.62,
   "net": -8404.37
+ },
+ {
+  "id": "1794902143717-3298",
+  "symbol": "ABCAPITAL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3100,
+  "entry": 413.0,
+  "exit": 412.9,
+  "entry_time": 1794902143717,
+  "exit_time": 1794906900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 411.75,
+  "tp": null,
+  "high": 413.8,
+  "low": 412.5,
+  "nifty": 0.34,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 413.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -310.0,
+  "charges": 768.09,
+  "net": -1078.09
+ },
+ {
+  "id": "1794902143717-3321",
+  "symbol": "EICHERMOT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 100,
+  "entry": 7761.0,
+  "exit": 7806.0,
+  "entry_time": 1794902143717,
+  "exit_time": 1794906900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 7735.0,
+  "tp": null,
+  "high": 7848,
+  "low": 7761.0,
+  "nifty": 0.34,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 7710.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 4500.0,
+  "charges": 486.64,
+  "net": 4013.36
+ },
+ {
+  "id": "1794902143717-3375",
+  "symbol": "SHREECEM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 24900.0,
+  "exit": 24905.0,
+  "entry_time": 1794902143717,
+  "exit_time": 1794906900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 24845.0,
+  "tp": null,
+  "high": 24965,
+  "low": 24875,
+  "nifty": 0.34,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 24870.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 125.0,
+  "charges": 397.85,
+  "net": -272.85
  }
 ]
