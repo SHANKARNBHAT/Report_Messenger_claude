@@ -86514,5 +86514,79 @@
   "gross": -3377.5,
   "charges": 416.61,
   "net": -3794.11
+ },
+ {
+  "id": "1794899137269-3160",
+  "symbol": "LAURUSLABS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 850,
+  "entry": 2309.0,
+  "exit": 2332.8,
+  "entry_time": 1794899137269,
+  "exit_time": 1794906000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2273.2,
+  "tp": null,
+  "high": 2347.4,
+  "low": 2309.0,
+  "nifty": 0.72,
+  "strategies": [
+   "2H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794899137269,
+   "price": 2324.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 20230.0,
+  "charges": 1163.09,
+  "net": 19066.91
+ },
+ {
+  "id": "1794902143717-3344",
+  "symbol": "LAURUSLABS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 850,
+  "entry": 2329.4,
+  "exit": 2332.8,
+  "entry_time": 1794902143717,
+  "exit_time": 1794906000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2314.2,
+  "tp": null,
+  "high": 2347.4,
+  "low": 2328.2,
+  "nifty": 0.34,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 2336.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2890.0,
+  "charges": 1163.81,
+  "net": 1726.19
  }
 ]
