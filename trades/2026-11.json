@@ -88179,5 +88179,227 @@
   "gross": -10867.5,
   "charges": 449.56,
   "net": -11317.06
+ },
+ {
+  "id": "1794887738404-2467",
+  "symbol": "HYUNDAI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 2107.1,
+  "exit": 2120.3,
+  "entry_time": 1794887738404,
+  "exit_time": 1794907500000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 2077.75,
+  "tp": 2169.4,
+  "high": 2151.6,
+  "low": 2105.1,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 2108.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 3630.0,
+  "charges": 375.43,
+  "net": 3254.57
+ },
+ {
+  "id": "1794887738404-2468",
+  "symbol": "HYUNDAI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 2107.1,
+  "exit": 2120.3,
+  "entry_time": 1794887738404,
+  "exit_time": 1794907500000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 2077.75,
+  "tp": 2169.4,
+  "high": 2151.6,
+  "low": 2105.1,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 2108.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 3630.0,
+  "charges": 375.43,
+  "net": 3254.57
+ },
+ {
+  "id": "1794888346531-2741",
+  "symbol": "ALKEM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 5239.5,
+  "exit": 5163.4,
+  "entry_time": 1794888346531,
+  "exit_time": 1794907500000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 5158.9,
+  "tp": 5347.85,
+  "high": 5244,
+  "low": 5163.4,
+  "nifty": 0.06,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794888346531,
+   "price": 5247.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -9512.5,
+  "charges": 411.09,
+  "net": -9923.59
+ },
+ {
+  "id": "1794888346531-2742",
+  "symbol": "ALKEM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 5239.5,
+  "exit": 5163.4,
+  "entry_time": 1794888346531,
+  "exit_time": 1794907500000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 5158.9,
+  "tp": 5347.85,
+  "high": 5244,
+  "low": 5163.4,
+  "nifty": 0.06,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794888346531,
+   "price": 5247.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -9512.5,
+  "charges": 411.09,
+  "net": -9923.59
+ },
+ {
+  "id": "1794907242464-3467",
+  "symbol": "PRESTIGE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 450,
+  "entry": 1675.3,
+  "exit": 1670.0,
+  "entry_time": 1794907242464,
+  "exit_time": 1794907500000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1670.0,
+  "tp": null,
+  "high": 1675.3,
+  "low": 1670.0,
+  "nifty": 1.09,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794907242464,
+   "price": 1670.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2385.0,
+  "charges": 470.53,
+  "net": -2855.53
+ },
+ {
+  "id": "1794891945765-2842",
+  "symbol": "PERSISTENT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 6008.5,
+  "exit": 5918.35,
+  "entry_time": 1794891945765,
+  "exit_time": 1794907500000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 5918.35,
+  "tp": 6188.75,
+  "high": 6025,
+  "low": 5918.35,
+  "nifty": 0.34,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794891945765,
+   "price": 6008.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11268.75,
+  "charges": 464.31,
+  "net": -11733.06
  }
 ]
