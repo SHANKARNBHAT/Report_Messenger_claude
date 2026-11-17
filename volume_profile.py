@@ -24,6 +24,8 @@ Method
   POC       The middle of the bin with the most volume.
   VAH, VAL  From the POC, the fuller of the next bin above and below is added
             until the bins hold 70% of the volume; these are the outer edges.
+  LV top,   The low volume zones outside the value area: from the VAH up to the
+  LV bottom period's high (LV top), and from the VAL down to its low (LV bottom).
 
 Indices   NIFTY and BANKNIFTY ("indices" in the file) have no intraday volume on Yahoo, so a
             bar of the index gets the turnover (close x volume) of its member stocks
@@ -66,6 +68,7 @@ IST = ZoneInfo("Asia/Kolkata")
 PERIODS = ("Weekly", "Monthly", "3M", "6M", "1Y")
 ROLLING_MONTHS = {"3M": 3, "6M": 6, "1Y": 12}
 VALUE_AREA = 0.70
+LEVELS = ("POC", "VAH", "VAL", "LV top", "LV bottom")
 BIN_PCT = 0.25          # bin width, in % of the last close
 MIN_BIN = 0.01          # rupees: the smallest tick
 HISTORY_DAYS = 400      # of 60-minute and daily bars: over a year, past the weekend and holidays
@@ -227,7 +230,8 @@ def value_area(bins: np.ndarray) -> tuple[int, int, int]:
 
 
 def levels(bars: pd.DataFrame) -> dict[str, float] | None:
-    """POC, VAH and VAL of some bars; None when they hold no volume."""
+    """POC, VAH and VAL of some bars, and their high and low (LV top, LV bottom: the low volume
+    zones run from the VAH up to LV top and from the VAL down to LV bottom); None when they hold no volume."""
     bars = bars[bars["volume"] > 0]
     if bars.empty:
         return None
@@ -236,7 +240,8 @@ def levels(bars: pd.DataFrame) -> dict[str, float] | None:
                           bars["volume"].to_numpy(float), step)
     poc, bottom, top = value_area(bins)
     return {"POC": round((edges[poc] + edges[poc + 1]) / 2, 2),
-            "VAH": round(edges[top + 1], 2), "VAL": round(edges[bottom], 2)}
+            "VAH": round(edges[top + 1], 2), "VAL": round(edges[bottom], 2),
+            "LV top": round(float(bars["high"].max()), 2), "LV bottom": round(float(bars["low"].min()), 2)}
 
 
 def stock_levels(symbol: str, bars: pd.DataFrame, end: pd.Timestamp) -> dict:
@@ -248,7 +253,7 @@ def stock_levels(symbol: str, bars: pd.DataFrame, end: pd.Timestamp) -> dict:
         found = levels(bars[(days >= first) & (days <= last)])
         if days[0] > first + pd.Timedelta(days=LATE_START_DAYS):
             found = None  # listed or returned part-way through the period
-        row.update({f"{period} {level}": (found or {}).get(level) for level in ("POC", "VAH", "VAL")})
+        row.update({f"{period} {level}": (found or {}).get(level) for level in LEVELS})
     return row
 
 

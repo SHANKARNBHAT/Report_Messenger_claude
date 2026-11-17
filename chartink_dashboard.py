@@ -736,7 +736,7 @@ def show_common_triggers(title: str, widgets: list[dict]) -> None:
 
 
 def show_volume_profile(widgets: list[dict]) -> None:
-    """VOLUME PROFILE tab: POC, VAH and VAL of each futures stock, over each period."""
+    """VOLUME PROFILE tab: POC, VAH, VAL and the low volume zones of each futures stock, over each period."""
     try:
         levels = fetch_volume_profile()
     except (OSError, ValueError) as exc:
@@ -752,12 +752,17 @@ def show_volume_profile(widgets: list[dict]) -> None:
     dates = " · ".join(f"{period}: {pd.Timestamp(first):%d %b %Y} to {pd.Timestamp(last):%d %b %Y}"
                        for period, (first, last) in levels["periods"].items())
     st.caption(f"{len(table)} stock(s) · worked out {levels['generated']} IST · {dates}")
-    columns = ["Symbol", "Close", *(f"{period} {level}" for period in periods for level in ("POC", "VAH", "VAL"))]
+    # A file from before the low volume zones were added has no LV columns.
+    columns = ["Symbol", "Close", *(f"{period} {level}" for period in periods
+                                    for level in ("POC", "VAH", "VAL", "LV top", "LV bottom")
+                                    if level in ("POC", "VAH", "VAL") or f"{period} {level}" in table.columns)]
     if table.empty:
         st.info("None of the dashboard's stocks has levels.")
     else:
         show_table(table[columns])
     st.caption("POC: the price with the most volume. VAH and VAL: the top and bottom of the 70% of volume around it. "
+               "Low volume zones, outside the value area: from the VAH up to LV top (the period's high) and from the "
+               "VAL down to LV bottom (its low). "
                "Weekly and Monthly are the last finished week and month; 3M, 6M and 1Y are rolling, up to the last "
                "close. From Yahoo's 15-minute bars (60-minute before the last 60 days), in bins of 0.25% of the price, "
                "with each bar's volume spread evenly over its range. Cash stock on NSE, so a futures chart sits apart "

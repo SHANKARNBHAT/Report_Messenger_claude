@@ -72,6 +72,15 @@ def test_levels_by_hand():
 def test_zero_volume_bars_do_not_stretch_the_range():
     table = bars([(1010, 1000, 1000, 100), (2000, 1, 1000, 0)])
     assert vp.levels(table)["VAH"] <= 1010
+    assert vp.levels(table)["LV top"] == 1010 and vp.levels(table)["LV bottom"] == 1000
+
+
+def test_low_volume_zones_reach_the_high_and_low():
+    # A thin bar from 1010 to 1040 above the busy block: the zone above runs from the VAH to 1040.
+    table = bars([(1010, 1000, 1000, 900), (1040, 990, 1000, 100)])
+    found = vp.levels(table)
+    assert (found["LV top"], found["LV bottom"]) == (1040, 990)
+    assert found["LV bottom"] <= found["VAL"] < found["VAH"] <= found["LV top"]
 
 
 def hours(volumes, start="2026-08-03"):
