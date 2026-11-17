@@ -65276,5 +65276,375 @@
   "gross": -2550.0,
   "charges": 351.65,
   "net": -2901.65
+ },
+ {
+  "id": "1794561936011-1573",
+  "symbol": "ASIANPAINT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2550.2,
+  "exit": 2601.2,
+  "entry_time": 1794561936011,
+  "exit_time": 1794888300000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 2495.2,
+  "tp": 2626.7,
+  "high": 2641.5,
+  "low": 2535,
+  "nifty": -0.53,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794561936011,
+   "price": 2550.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 12750.0,
+  "charges": 412.91,
+  "net": 12337.09
+ },
+ {
+  "id": "1794888346531-2746",
+  "symbol": "IREDA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4525,
+  "entry": 121.25,
+  "exit": 121.3,
+  "entry_time": 1794888346531,
+  "exit_time": 1794888900000,
+  "reason": "30m RSI SMA 36.9 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 114.65,
+  "tp": 124.9,
+  "high": 121.3,
+  "low": 121.25,
+  "nifty": 0.06,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794888346531,
+   "price": 121.25
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 226.25,
+  "charges": 356.31,
+  "net": -130.06
+ },
+ {
+  "id": "1794888346531-2747",
+  "symbol": "IREDA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4525,
+  "entry": 121.25,
+  "exit": 121.3,
+  "entry_time": 1794888346531,
+  "exit_time": 1794888900000,
+  "reason": "30m RSI SMA 36.9 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 114.65,
+  "tp": null,
+  "high": 121.3,
+  "low": 121.25,
+  "nifty": 0.06,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794888346531,
+   "price": 121.25
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 226.25,
+  "charges": 356.31,
+  "net": -130.06
+ },
+ {
+  "id": "1794888346531-2748",
+  "symbol": "IREDA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4525,
+  "entry": 121.25,
+  "exit": 121.3,
+  "entry_time": 1794888346531,
+  "exit_time": 1794888900000,
+  "reason": "30m RSI SMA 36.9 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 114.65,
+  "tp": null,
+  "high": 121.3,
+  "low": 121.25,
+  "nifty": 0.06,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794888346531,
+   "price": 121.25
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 226.25,
+  "charges": 356.31,
+  "net": -130.06
+ },
+ {
+  "id": "1794888346531-2752",
+  "symbol": "IREDA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4525,
+  "entry": 121.25,
+  "exit": 121.3,
+  "entry_time": 1794888346531,
+  "exit_time": 1794888900000,
+  "reason": "30m RSI SMA 36.9 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 114.65,
+  "tp": 124.9,
+  "high": 121.3,
+  "low": 121.25,
+  "nifty": 0.06,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794888346531,
+   "price": 121.25
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 226.25,
+  "charges": 356.31,
+  "net": -130.06
+ },
+ {
+  "id": "1794888346531-2753",
+  "symbol": "IREDA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4525,
+  "entry": 121.25,
+  "exit": 121.3,
+  "entry_time": 1794888346531,
+  "exit_time": 1794888900000,
+  "reason": "30m RSI SMA 36.9 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 114.65,
+  "tp": null,
+  "high": 121.3,
+  "low": 121.25,
+  "nifty": 0.06,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794888346531,
+   "price": 121.25
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 226.25,
+  "charges": 356.31,
+  "net": -130.06
+ },
+ {
+  "id": "1794888346531-2754",
+  "symbol": "IREDA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4525,
+  "entry": 121.25,
+  "exit": 121.3,
+  "entry_time": 1794888346531,
+  "exit_time": 1794888900000,
+  "reason": "30m RSI SMA 36.9 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 114.65,
+  "tp": null,
+  "high": 121.3,
+  "low": 121.25,
+  "nifty": 0.06,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794888346531,
+   "price": 121.25
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 226.25,
+  "charges": 356.31,
+  "net": -130.06
+ },
+ {
+  "id": "1794888638113-2767",
+  "symbol": "ASHOKLEY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 5000,
+  "entry": 170.6,
+  "exit": 170.5,
+  "entry_time": 1794888638113,
+  "exit_time": 1794888900000,
+  "reason": "30m RSI SMA 38.3 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 167.3,
+  "tp": 175.7,
+  "high": 170.6,
+  "low": 170.5,
+  "nifty": 0.2,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794888638113,
+   "price": 170.59
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -500.0,
+  "charges": 527.34,
+  "net": -1027.34
+ },
+ {
+  "id": "1794888638113-2768",
+  "symbol": "ASHOKLEY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 5000,
+  "entry": 170.6,
+  "exit": 170.5,
+  "entry_time": 1794888638113,
+  "exit_time": 1794888900000,
+  "reason": "30m RSI SMA 38.3 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 167.3,
+  "tp": null,
+  "high": 170.6,
+  "low": 170.5,
+  "nifty": 0.2,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794888638113,
+   "price": 170.59
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -500.0,
+  "charges": 527.34,
+  "net": -1027.34
+ },
+ {
+  "id": "1794888638113-2769",
+  "symbol": "ASHOKLEY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 5000,
+  "entry": 170.6,
+  "exit": 170.5,
+  "entry_time": 1794888638113,
+  "exit_time": 1794888900000,
+  "reason": "30m RSI SMA 38.3 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 167.3,
+  "tp": null,
+  "high": 170.6,
+  "low": 170.5,
+  "nifty": 0.2,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794888638113,
+   "price": 170.59
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -500.0,
+  "charges": 527.34,
+  "net": -1027.34
  }
 ]
