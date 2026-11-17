@@ -77745,5 +77745,301 @@
   "gross": -630.0,
   "charges": 418.2,
   "net": -1048.2
+ },
+ {
+  "id": "1794887738404-2459",
+  "symbol": "HAVELLS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1184.0,
+  "exit": 1177.0,
+  "entry_time": 1794887738404,
+  "exit_time": 1794900600000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 1169.3,
+  "tp": 1397.6,
+  "high": 1192,
+  "low": 1177.0,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 1186.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3500.0,
+  "charges": 378.78,
+  "net": -3878.78
+ },
+ {
+  "id": "1794887738404-2460",
+  "symbol": "HAVELLS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1184.0,
+  "exit": 1177.0,
+  "entry_time": 1794887738404,
+  "exit_time": 1794900600000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 1169.3,
+  "tp": 1397.6,
+  "high": 1192,
+  "low": 1177.0,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 1186.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3500.0,
+  "charges": 378.78,
+  "net": -3878.78
+ },
+ {
+  "id": "1794894936100-2973",
+  "symbol": "MOTILALOFS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 775,
+  "entry": 1271.8,
+  "exit": 1245.15,
+  "entry_time": 1794894936100,
+  "exit_time": 1794900600000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP",
+  "style": "vp",
+  "passed": false,
+  "carried": false,
+  "sl": 1241.25,
+  "tp": null,
+  "high": 1275.7,
+  "low": 1245.15,
+  "nifty": 0.61,
+  "strategies": [
+   "2H HA VP Bullish"
+  ],
+  "first_seen": {
+   "time": 1794894936100,
+   "price": 1271.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -20653.75,
+  "charges": 591.53,
+  "net": -21245.28
+ },
+ {
+  "id": "1794894936100-2974",
+  "symbol": "MOTILALOFS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 775,
+  "entry": 1271.8,
+  "exit": 1245.15,
+  "entry_time": 1794894936100,
+  "exit_time": 1794900600000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 1241.25,
+  "tp": null,
+  "high": 1275.7,
+  "low": 1245.15,
+  "nifty": 0.61,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794894936100,
+   "price": 1271.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -20653.75,
+  "charges": 591.53,
+  "net": -21245.28
+ },
+ {
+  "id": "1794894936100-3091",
+  "symbol": "ULTRACEMCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 50,
+  "entry": 12340.0,
+  "exit": 12373.0,
+  "entry_time": 1794894936100,
+  "exit_time": 1794900600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA PURE 2H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 12318.0,
+  "tp": null,
+  "high": 12425,
+  "low": 12327,
+  "nifty": 0.61,
+  "strategies": [
+   "2H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794894936100,
+   "price": 12331.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1650.0,
+  "charges": 395.55,
+  "net": 1254.45
+ },
+ {
+  "id": "1794897051485-3129",
+  "symbol": "ANGELONE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 377.5,
+  "exit": 354.55,
+  "entry_time": 1794897051485,
+  "exit_time": 1794900600000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 354.55,
+  "tp": null,
+  "high": 378,
+  "low": 354.55,
+  "nifty": 0.8,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794897051485,
+   "price": 378.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -57375.0,
+  "charges": 548.78,
+  "net": -57923.78
+ },
+ {
+  "id": "1793680250528-446",
+  "symbol": "BSE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 200,
+  "entry": 3550.2,
+  "exit": 3877.5,
+  "entry_time": 1793680250528,
+  "exit_time": 1794901241689,
+  "reason": "RSI exit (2H 57.4)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 3496.95,
+  "tp": null,
+  "high": 4003.2,
+  "low": 3550.2,
+  "nifty": 0.82,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793680250528,
+   "price": 3550.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 65460.0,
+  "charges": 481.23,
+  "net": 64978.77
+ },
+ {
+  "id": "1794457535162-1281",
+  "symbol": "APLAPOLLO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2252.9,
+  "exit": 2190.0,
+  "entry_time": 1794457535162,
+  "exit_time": 1794900600000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2190.0,
+  "tp": 2320.5,
+  "high": 2312.3,
+  "low": 2190.0,
+  "nifty": 0.4,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794457535162,
+   "price": 2252.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -22015.0,
+  "charges": 479.8,
+  "net": -22494.8
  }
 ]
