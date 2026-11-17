@@ -88031,5 +88031,153 @@
   "gross": 9770.0,
   "charges": 327.41,
   "net": 9442.59
+ },
+ {
+  "id": "1794887738404-2434",
+  "symbol": "ASIANPAINT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2616.8,
+  "exit": 2625.5,
+  "entry_time": 1794887738404,
+  "exit_time": 1794907500000,
+  "reason": "Trail 1.5%",
+  "source": "Auto HA VP TRAIL 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA VP TRAIL",
+  "style": "vp_trail",
+  "passed": false,
+  "carried": false,
+  "sl": 2580.9,
+  "tp": 2659.75,
+  "high": 2665.5,
+  "low": 2598,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA VP TRAIL Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 2615.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2175.0,
+  "charges": 416.77,
+  "net": 1758.23
+ },
+ {
+  "id": "1794891658470-2834",
+  "symbol": "TRENT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 225,
+  "entry": 3220.0,
+  "exit": 3171.7,
+  "entry_time": 1794891658470,
+  "exit_time": 1794907500000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 3171.7,
+  "tp": 3316.6,
+  "high": 3262,
+  "low": 3171.7,
+  "nifty": 0.41,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794891658470,
+   "price": 3220.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -10867.5,
+  "charges": 449.56,
+  "net": -11317.06
+ },
+ {
+  "id": "1794891658470-2835",
+  "symbol": "TRENT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 225,
+  "entry": 3220.0,
+  "exit": 3171.7,
+  "entry_time": 1794891658470,
+  "exit_time": 1794907500000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 3171.7,
+  "tp": null,
+  "high": 3262,
+  "low": 3171.7,
+  "nifty": 0.41,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794891658470,
+   "price": 3220.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -10867.5,
+  "charges": 449.56,
+  "net": -11317.06
+ },
+ {
+  "id": "1794891658470-2836",
+  "symbol": "TRENT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 225,
+  "entry": 3220.0,
+  "exit": 3171.7,
+  "entry_time": 1794891658470,
+  "exit_time": 1794907500000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 3171.7,
+  "tp": null,
+  "high": 3262,
+  "low": 3171.7,
+  "nifty": 0.41,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794891658470,
+   "price": 3220.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -10867.5,
+  "charges": 449.56,
+  "net": -11317.06
  }
 ]
