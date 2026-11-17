@@ -70197,5 +70197,42 @@
   "gross": -6718.75,
   "charges": 529.71,
   "net": -7248.46
+ },
+ {
+  "id": "1794888059593-2731",
+  "symbol": "TECHM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 600,
+  "entry": 1764.0,
+  "exit": 1760.9,
+  "entry_time": 1794888059593,
+  "exit_time": 1794893100000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA PURE Daily",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1772.5,
+  "tp": null,
+  "high": 1767.4,
+  "low": 1755.6,
+  "nifty": 0.14,
+  "strategies": [
+   "Daily HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794888059593,
+   "price": 1768.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1860.0,
+  "charges": 643.2,
+  "net": 1216.8
  }
 ]
