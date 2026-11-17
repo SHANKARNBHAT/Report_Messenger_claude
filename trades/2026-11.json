@@ -93359,5 +93359,116 @@
   "gross": -14850.0,
   "charges": 597.01,
   "net": -15447.01
+ },
+ {
+  "id": "1794800741223-1637",
+  "symbol": "ANGELONE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 349.0,
+  "exit": 350.2,
+  "entry_time": 1794800741223,
+  "exit_time": 1794909600000,
+  "reason": "2H close past SMA 8",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 343.75,
+  "tp": null,
+  "high": 379.15,
+  "low": 344.45,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 349.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 3000.0,
+  "charges": 540.15,
+  "net": 2459.85
+ },
+ {
+  "id": "1794893455340-2870",
+  "symbol": "IOC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4875,
+  "entry": 145.35,
+  "exit": 145.3,
+  "entry_time": 1794893455340,
+  "exit_time": 1794909600000,
+  "reason": "2H close past SMA 20",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 142.25,
+  "tp": null,
+  "high": 146.62,
+  "low": 145.14,
+  "nifty": 0.44,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794893455340,
+   "price": 145.37
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -243.75,
+  "charges": 446.14,
+  "net": -689.89
+ },
+ {
+  "id": "1794901839062-3212",
+  "symbol": "ULTRACEMCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 50,
+  "entry": 12343.0,
+  "exit": 12290.0,
+  "entry_time": 1794901839062,
+  "exit_time": 1794909600000,
+  "reason": "2H close past SMA 20",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 12157.85,
+  "tp": null,
+  "high": 12343.0,
+  "low": 12269,
+  "nifty": 0.35,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794901839062,
+   "price": 12343.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -2650.0,
+  "charges": 393.39,
+  "net": -3043.39
  }
 ]
