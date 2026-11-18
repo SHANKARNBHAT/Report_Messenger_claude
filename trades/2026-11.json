@@ -105606,5 +105606,79 @@
   "gross": -1615.0,
   "charges": 322.59,
   "net": -1937.59
+ },
+ {
+  "id": "1794988534439-3659",
+  "symbol": "CIPLA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 425,
+  "entry": 1429.0,
+  "exit": 1426.9,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1425.0,
+  "tp": null,
+  "high": 1430,
+  "low": 1426.9,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1428.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -892.5,
+  "charges": 388.77,
+  "net": -1281.27
+ },
+ {
+  "id": "1794988534439-3685",
+  "symbol": "IOC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 4875,
+  "entry": 143.75,
+  "exit": 143.7,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 143.85,
+  "tp": null,
+  "high": 143.75,
+  "low": 143.09,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 143.67
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 243.75,
+  "charges": 441.86,
+  "net": -198.11
  }
 ]

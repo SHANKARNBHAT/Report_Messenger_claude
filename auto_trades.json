@@ -5579,7 +5579,7 @@
    "status": "open",
    "passed": false,
    "high": 323,
-   "low": 306.15,
+   "low": 306.1,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -7097,7 +7097,7 @@
    "status": "open",
    "passed": false,
    "high": 323,
-   "low": 306.15,
+   "low": 306.1,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -12263,7 +12263,7 @@
    "status": "open",
    "passed": false,
    "high": 93.8,
-   "low": 91.19,
+   "low": 91.09,
    "nifty": 0.3,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -13975,7 +13975,7 @@
    "time": 1794907242464,
    "status": "open",
    "passed": false,
-   "high": 1401.1,
+   "high": 1401.7,
    "low": 1376.4,
    "nifty": 1.09,
    "source": "Auto 2H",
@@ -14011,7 +14011,7 @@
    "time": 1794907242464,
    "status": "open",
    "passed": false,
-   "high": 1401.1,
+   "high": 1401.7,
    "low": 1376.4,
    "nifty": 1.09,
    "source": "Auto 2H",
@@ -14047,7 +14047,7 @@
    "time": 1794907242464,
    "status": "open",
    "passed": false,
-   "high": 1401.1,
+   "high": 1401.7,
    "low": 1376.4,
    "nifty": 1.09,
    "source": "Auto 2H",
@@ -15229,7 +15229,7 @@
    "time": 1794977440842,
    "status": "open",
    "passed": false,
-   "high": 117.4,
+   "high": 117.45,
    "low": 114.4,
    "nifty": -0.52,
    "source": "Auto 2H",
@@ -15265,7 +15265,7 @@
    "time": 1794977440842,
    "status": "open",
    "passed": false,
-   "high": 117.4,
+   "high": 117.45,
    "low": 114.4,
    "nifty": -0.52,
    "source": "Auto 2H",
@@ -15301,7 +15301,7 @@
    "time": 1794977440842,
    "status": "open",
    "passed": false,
-   "high": 117.4,
+   "high": 117.45,
    "low": 114.4,
    "nifty": -0.52,
    "source": "Auto 2H",
@@ -16633,7 +16633,7 @@
    "time": 1794984936282,
    "status": "open",
    "passed": false,
-   "high": 117.4,
+   "high": 117.45,
    "low": 116.11,
    "nifty": -0.57,
    "source": "Auto 4H",
@@ -16669,7 +16669,7 @@
    "time": 1794984936282,
    "status": "open",
    "passed": false,
-   "high": 117.4,
+   "high": 117.45,
    "low": 116.11,
    "nifty": -0.57,
    "source": "Auto 4H",
@@ -16705,7 +16705,7 @@
    "time": 1794984936282,
    "status": "open",
    "passed": false,
-   "high": 117.4,
+   "high": 117.45,
    "low": 116.11,
    "nifty": -0.57,
    "source": "Auto 4H",
@@ -17185,7 +17185,7 @@
    "time": 1794988534439,
    "status": "open",
    "passed": false,
-   "high": 5228,
+   "high": 5228.5,
    "low": 5201.5,
    "nifty": -0.8,
    "source": "Auto HA PURE 4H",
@@ -17239,42 +17239,6 @@
    }
   },
   {
-   "id": "1794988534439-3659",
-   "symbol": "CIPLA",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 425,
-   "entry": 1429.0,
-   "sl": 1425.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_pure",
-   "system": "HA PURE 4H",
-   "stop": 1426.9,
-   "time": 1794988534439,
-   "status": "open",
-   "passed": false,
-   "high": 1430,
-   "low": 1426.9,
-   "nifty": -0.8,
-   "source": "Auto HA PURE 4H",
-   "timeframes": [
-    "4 HOUR"
-   ],
-   "strategies": [
-    "4H HA PURE Bullish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794988534439,
-    "price": 1428.8
-   }
-  },
-  {
    "id": "1794988534439-3665",
    "symbol": "DLF",
    "side": "BUY",
@@ -17293,7 +17257,7 @@
    "time": 1794988534439,
    "status": "open",
    "passed": false,
-   "high": 768,
+   "high": 768.5,
    "low": 763.2,
    "nifty": -0.8,
    "source": "Auto HA PURE 4H",
@@ -17416,42 +17380,6 @@
    "first_seen": {
     "time": 1794988534439,
     "price": 387.0
-   }
-  },
-  {
-   "id": "1794988534439-3685",
-   "symbol": "IOC",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 4875,
-   "entry": 143.75,
-   "sl": 143.85,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_pure",
-   "system": "HA PURE 4H",
-   "stop": 143.7,
-   "time": 1794988534439,
-   "status": "open",
-   "passed": false,
-   "high": 143.75,
-   "low": 143.09,
-   "nifty": -0.8,
-   "source": "Auto HA PURE 4H",
-   "timeframes": [
-    "4 HOUR"
-   ],
-   "strategies": [
-    "4H HA PURE Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794988534439,
-    "price": 143.67
    }
   },
   {
@@ -17620,7 +17548,7 @@
    "time": 1794988853297,
    "status": "open",
    "passed": false,
-   "high": 360.95,
+   "high": 361.05,
    "low": 358.25,
    "nifty": -0.83,
    "source": "Auto Weekly",
@@ -17656,7 +17584,7 @@
    "time": 1794988853297,
    "status": "open",
    "passed": false,
-   "high": 360.95,
+   "high": 361.05,
    "low": 358.25,
    "nifty": -0.83,
    "source": "Auto Weekly",
@@ -17692,7 +17620,7 @@
    "time": 1794988853297,
    "status": "open",
    "passed": false,
-   "high": 360.95,
+   "high": 361.05,
    "low": 358.25,
    "nifty": -0.83,
    "source": "Auto Weekly",
@@ -17948,7 +17876,7 @@
    "status": "open",
    "passed": false,
    "high": 25229.35,
-   "low": 25229.35,
+   "low": 25223.25,
    "nifty": -0.24,
    "source": "Auto HA IDX PURE 15m",
    "timeframes": [
@@ -17983,7 +17911,7 @@
    "time": 1794990940045,
    "status": "open",
    "passed": false,
-   "high": 61940.15,
+   "high": 61981.4,
    "low": 61940.15,
    "nifty": -0.24,
    "source": "Auto HA IDX PURE 15m",
@@ -18114,6 +18042,8 @@
  ],
  "seq": 3741,
  "log": [
+  "18 Nov 14:10  IOC: 30m trailing SL at 143.7 (HA PURE 4H)",
+  "18 Nov 14:10  CIPLA: 30m trailing SL at 1426.9 (HA PURE 4H)",
   "18 Nov 14:05  SAIL: RSI Daily SELL 4700 at 164.8, SL 167.25 (DAILY; trail, sma8, sma20)",
   "18 Nov 14:05  BANKNIFTY: HA IDX PURE BUY 30 at 61940.15, SL 61780.35 (1.1 ATR, 15m)",
   "18 Nov 14:05  NIFTY: HA IDX PURE BUY 65 at 25229.35, SL 25177.05 (1.1 ATR, 15m)",
@@ -18411,12 +18341,10 @@
   "18 Nov 11:10  HDFCAMC: HA candle trail at 2673.4 (HA BRK 2H)",
   "18 Nov 11:05  ASIANPAINT: Stop loss at 2568.25 (HA BRK 4H)",
   "18 Nov 11:05  POLYCAB: 30m trailing SL at 7518.5 (HA PURE 4H)",
-  "18 Nov 11:00  PGEL: RSI BUY 950 at 543.3, SL 527.6 (2 HOUR; trail, sma8, sma20)",
-  "18 Nov 11:00  HINDPETRO: Stop loss at 386.15 (HA BRK Daily)",
-  "18 Nov 11:00  BANKNIFTY: HA doji at 62044.35 (HA IDX PURE)"
+  "18 Nov 11:00  PGEL: RSI BUY 950 at 543.3, SL 527.6 (2 HOUR; trail, sma8, sma20)"
  ],
- "page_run": 1794990940045,
- "updated": 1794990940045,
+ "page_run": 1794991242517,
+ "updated": 1794991242517,
  "unattended": true,
  "peak_margin": 123141526.22
 }
