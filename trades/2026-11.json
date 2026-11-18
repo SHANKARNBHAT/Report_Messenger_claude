@@ -104015,5 +104015,1448 @@
   "gross": -12431.25,
   "charges": 514.46,
   "net": -12945.71
+ },
+ {
+  "id": "1794985257625-3625",
+  "symbol": "BANKNIFTY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 30,
+  "entry": 62092.8,
+  "exit": 61996.4,
+  "entry_time": 1794985257625,
+  "exit_time": 1794990300000,
+  "reason": "ATR trailing SL",
+  "source": "Auto HA IDX PURE 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX PURE",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 62251.4,
+  "tp": null,
+  "high": 62130.4,
+  "low": 61781.85,
+  "nifty": -0.7,
+  "strategies": [
+   "15m HA IDX PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794974458842,
+   "price": 62176.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2892.0,
+  "charges": 1096.18,
+  "net": 1795.82
+ },
+ {
+  "id": "1794988534439-3640",
+  "symbol": "ABCAPITAL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3100,
+  "entry": 410.05,
+  "exit": 409.1,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 410.55,
+  "tp": null,
+  "high": 410.05,
+  "low": 407.5,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 409.55
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2945.0,
+  "charges": 762.98,
+  "net": 2182.02
+ },
+ {
+  "id": "1794988534439-3641",
+  "symbol": "ADANIENT",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 309,
+  "entry": 2686.4,
+  "exit": 2684.3,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2740.25,
+  "tp": null,
+  "high": 2686.4,
+  "low": 2673.8,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 2685.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 648.9,
+  "charges": 514.67,
+  "net": 134.23
+ },
+ {
+  "id": "1794988534439-3642",
+  "symbol": "ADANIGREEN",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 600,
+  "entry": 1403.8,
+  "exit": 1402.9,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1434.0,
+  "tp": null,
+  "high": 1403.8,
+  "low": 1394.2,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1403.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 540.0,
+  "charges": 521.54,
+  "net": 18.46
+ },
+ {
+  "id": "1794988534439-3643",
+  "symbol": "ADANIPOWER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3550,
+  "entry": 205.1,
+  "exit": 204.5,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 208.8,
+  "tp": null,
+  "high": 205.1,
+  "low": 204.01,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 204.63
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2130.0,
+  "charges": 457.17,
+  "net": 1672.83
+ },
+ {
+  "id": "1794988534439-3645",
+  "symbol": "AMBUJACEM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1200,
+  "entry": 384.25,
+  "exit": 383.45,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 391.9,
+  "tp": null,
+  "high": 384.25,
+  "low": 382.6,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 383.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 960.0,
+  "charges": 306.85,
+  "net": 653.15
+ },
+ {
+  "id": "1794988534439-3646",
+  "symbol": "ANGELONE",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 342.7,
+  "exit": 341.7,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 345.8,
+  "tp": null,
+  "high": 342.7,
+  "low": 339,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 342.25
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2500.0,
+  "charges": 529.61,
+  "net": 1970.39
+ },
+ {
+  "id": "1794988534439-3649",
+  "symbol": "AUBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 971.95,
+  "exit": 972.15,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 974.55,
+  "tp": null,
+  "high": 972.15,
+  "low": 969.1,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 973.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -200.0,
+  "charges": 594.6,
+  "net": -794.6
+ },
+ {
+  "id": "1794988534439-3653",
+  "symbol": "BHARTIARTL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 475,
+  "entry": 2124.3,
+  "exit": 2126.2,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2128.2,
+  "tp": null,
+  "high": 2126.2,
+  "low": 2123.5,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 2124.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -902.5,
+  "charges": 615.52,
+  "net": -1518.02
+ },
+ {
+  "id": "1794988534439-3656",
+  "symbol": "CAMS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 825,
+  "entry": 724.35,
+  "exit": 723.55,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 726.65,
+  "tp": null,
+  "high": 724.35,
+  "low": 720.7,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 723.85
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 660.0,
+  "charges": 383.73,
+  "net": 276.27
+ },
+ {
+  "id": "1794988534439-3657",
+  "symbol": "CANBK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6750,
+  "entry": 133.1,
+  "exit": 132.9,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 133.2,
+  "tp": null,
+  "high": 133.1,
+  "low": 132.54,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 133.09
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1350.0,
+  "charges": 553.13,
+  "net": 796.87
+ },
+ {
+  "id": "1794988534439-3658",
+  "symbol": "CDSL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 475,
+  "entry": 1421.8,
+  "exit": 1421.1,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1422.7,
+  "tp": null,
+  "high": 1421.8,
+  "low": 1417.1,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1419.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 332.5,
+  "charges": 427.54,
+  "net": -95.04
+ },
+ {
+  "id": "1794988534439-3660",
+  "symbol": "CONCOR",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1250,
+  "entry": 436.55,
+  "exit": 436.2,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 436.95,
+  "tp": null,
+  "high": 436.55,
+  "low": 435.15,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 436.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 437.5,
+  "charges": 354.51,
+  "net": 82.99
+ },
+ {
+  "id": "1794988534439-3663",
+  "symbol": "DIVISLAB",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 100,
+  "entry": 11144.0,
+  "exit": 11143.5,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 11146.0,
+  "tp": null,
+  "high": 11144.0,
+  "low": 11102.5,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 11139.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 50.0,
+  "charges": 674.81,
+  "net": -624.81
+ },
+ {
+  "id": "1794988534439-3664",
+  "symbol": "DIXON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 50,
+  "entry": 12668.0,
+  "exit": 12669.0,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 12951.05,
+  "tp": null,
+  "high": 12669,
+  "low": 12641,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 12665.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -50.0,
+  "charges": 403.93,
+  "net": -453.93
+ },
+ {
+  "id": "1794988534439-3670",
+  "symbol": "FEDERALBNK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 361.7,
+  "exit": 359.85,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 363.55,
+  "tp": null,
+  "high": 361.7,
+  "low": 358.25,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 359.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 4625.0,
+  "charges": 556.27,
+  "net": 4068.73
+ },
+ {
+  "id": "1794988534439-3672",
+  "symbol": "FORTIS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 775,
+  "entry": 795.45,
+  "exit": 794.8,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 796.45,
+  "tp": null,
+  "high": 795.45,
+  "low": 792.95,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 793.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 503.75,
+  "charges": 394.37,
+  "net": 109.38
+ },
+ {
+  "id": "1794988534439-3675",
+  "symbol": "GVT&D",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4247.4,
+  "exit": 4247.1,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 4372.65,
+  "tp": null,
+  "high": 4247.4,
+  "low": 4233.3,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 4247.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 37.5,
+  "charges": 346.21,
+  "net": -308.71
+ },
+ {
+  "id": "1794988534439-3676",
+  "symbol": "HAVELLS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1139.5,
+  "exit": 1138.0,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1142.3,
+  "tp": null,
+  "high": 1139.5,
+  "low": 1135.3,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1137.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 750.0,
+  "charges": 368.05,
+  "net": 381.95
+ },
+ {
+  "id": "1794988534439-3677",
+  "symbol": "HDFCAMC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 300,
+  "entry": 2646.7,
+  "exit": 2642.0,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2647.5,
+  "tp": null,
+  "high": 2646.7,
+  "low": 2632.2,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 2645.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1410.0,
+  "charges": 494.32,
+  "net": 915.68
+ },
+ {
+  "id": "1794988534439-3678",
+  "symbol": "HDFCBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 650,
+  "entry": 809.0,
+  "exit": 809.3,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 810.75,
+  "tp": null,
+  "high": 809.3,
+  "low": 807,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 808.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -195.0,
+  "charges": 343.36,
+  "net": -538.36
+ },
+ {
+  "id": "1794988534439-3680",
+  "symbol": "ICICIBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 700,
+  "entry": 1592.6,
+  "exit": 1593.3,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1595.8,
+  "tp": null,
+  "high": 1593.3,
+  "low": 1591.2,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1593.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -490.0,
+  "charges": 675.07,
+  "net": -1165.07
+ },
+ {
+  "id": "1794988534439-3687",
+  "symbol": "IRFC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 5425,
+  "entry": 81.25,
+  "exit": 81.2,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 83.1,
+  "tp": null,
+  "high": 81.25,
+  "low": 81,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 81.16
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 271.25,
+  "charges": 295.43,
+  "net": -24.18
+ },
+ {
+  "id": "1794988534439-3688",
+  "symbol": "JIOFIN",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2350,
+  "entry": 223.7,
+  "exit": 223.6,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 227.6,
+  "tp": null,
+  "high": 223.7,
+  "low": 222.61,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 223.52
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 235.0,
+  "charges": 343.26,
+  "net": -108.26
+ },
+ {
+  "id": "1794988534439-3692",
+  "symbol": "LT",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4133.1,
+  "exit": 4135.6,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 4145.0,
+  "tp": null,
+  "high": 4135.6,
+  "low": 4128.1,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 4133.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -437.5,
+  "charges": 454.57,
+  "net": -892.07
+ },
+ {
+  "id": "1794988534439-3698",
+  "symbol": "MCX",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 225,
+  "entry": 3671.3,
+  "exit": 3657.0,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 3761.3,
+  "tp": null,
+  "high": 3671.3,
+  "low": 3638.8,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 3666.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 3217.5,
+  "charges": 512.28,
+  "net": 2705.22
+ },
+ {
+  "id": "1794988534439-3700",
+  "symbol": "MOTILALOFS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 775,
+  "entry": 1229.7,
+  "exit": 1224.05,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1233.8,
+  "tp": null,
+  "high": 1229.7,
+  "low": 1217.6,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1227.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 4378.75,
+  "charges": 583.75,
+  "net": 3795.0
+ },
+ {
+  "id": "1794988534439-3702",
+  "symbol": "NAM-INDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1054.15,
+  "exit": 1051.6,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1085.05,
+  "tp": null,
+  "high": 1054.15,
+  "low": 1043.1,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1052.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1593.75,
+  "charges": 418.19,
+  "net": 1175.56
+ },
+ {
+  "id": "1794988534439-3703",
+  "symbol": "NESTLEIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1279.8,
+  "exit": 1283.0,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1284.7,
+  "tp": null,
+  "high": 1283,
+  "low": 1278.7,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794974741142,
+   "price": 1279.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1600.0,
+  "charges": 407.65,
+  "net": -2007.65
+ },
+ {
+  "id": "1794988534439-3704",
+  "symbol": "NIFTY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25186.25,
+  "exit": 25182.4,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 25202.1,
+  "tp": null,
+  "high": 25186.25,
+  "low": 25143.7,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 25186.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 250.25,
+  "charges": 969.19,
+  "net": -718.94
+ },
+ {
+  "id": "1794988534439-3710",
+  "symbol": "POWERINDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 25,
+  "entry": 30265.0,
+  "exit": 30480.0,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 31243.85,
+  "tp": null,
+  "high": 30480,
+  "low": 30260,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 30275.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5375.0,
+  "charges": 473.55,
+  "net": -5848.55
+ },
+ {
+  "id": "1794988534439-3712",
+  "symbol": "RBLBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3175,
+  "entry": 385.7,
+  "exit": 385.6,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 385.85,
+  "tp": null,
+  "high": 385.7,
+  "low": 385.1,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 385.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 317.5,
+  "charges": 736.87,
+  "net": -419.37
+ },
+ {
+  "id": "1794988534439-3713",
+  "symbol": "RVNL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1925,
+  "entry": 189.75,
+  "exit": 189.65,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 195.2,
+  "tp": null,
+  "high": 189.75,
+  "low": 189.2,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 189.48
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 192.5,
+  "charges": 252.91,
+  "net": -60.41
+ },
+ {
+  "id": "1794988534439-3714",
+  "symbol": "SHRIRAMFIN",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 825,
+  "entry": 972.4,
+  "exit": 971.2,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 973.75,
+  "tp": null,
+  "high": 972.4,
+  "low": 968,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 971.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 990.0,
+  "charges": 498.97,
+  "net": 491.03
+ },
+ {
+  "id": "1794988534439-3719",
+  "symbol": "TVSMOTOR",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4370.3,
+  "exit": 4375.0,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 4386.3,
+  "tp": null,
+  "high": 4375,
+  "low": 4363,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 4374.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -822.5,
+  "charges": 477.96,
+  "net": -1300.46
+ },
+ {
+  "id": "1794988534439-3722",
+  "symbol": "UNITDSPR",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1438.1,
+  "exit": 1436.7,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1459.4,
+  "tp": null,
+  "high": 1438.1,
+  "low": 1433,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1437.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 560.0,
+  "charges": 371.14,
+  "net": 188.86
+ },
+ {
+  "id": "1794988534439-3723",
+  "symbol": "UNOMINDA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1370.0,
+  "exit": 1369.5,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1372.4,
+  "tp": null,
+  "high": 1370.0,
+  "low": 1363.2,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1369.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 275.0,
+  "charges": 471.55,
+  "net": -196.55
+ },
+ {
+  "id": "1794988534439-3724",
+  "symbol": "VOLTAS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1128.1,
+  "exit": 1126.3,
+  "entry_time": 1794988534439,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1128.9,
+  "tp": null,
+  "high": 1128.1,
+  "low": 1124,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1125.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 675.0,
+  "charges": 285.42,
+  "net": 389.58
+ },
+ {
+  "id": "1794989137090-3729",
+  "symbol": "TECHM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 600,
+  "entry": 1737.0,
+  "exit": 1740.6,
+  "entry_time": 1794989137090,
+  "exit_time": 1794990000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1748.6,
+  "tp": null,
+  "high": 1740.6,
+  "low": 1737.0,
+  "nifty": -0.91,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794989137090,
+   "price": 1736.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2160.0,
+  "charges": 634.24,
+  "net": -2794.24
  }
 ]
