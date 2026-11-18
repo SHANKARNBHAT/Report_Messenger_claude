@@ -106605,5 +106605,42 @@
   "gross": -32670.0,
   "charges": 382.53,
   "net": -33052.53
+ },
+ {
+  "id": "1794988534439-3674",
+  "symbol": "GODREJPROP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1894.3,
+  "exit": 1888.8,
+  "entry_time": 1794988534439,
+  "exit_time": 1794994200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1873.1,
+  "tp": null,
+  "high": 1896.2,
+  "low": 1882.9,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1892.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1787.5,
+  "charges": 392.99,
+  "net": -2180.49
  }
 ]
