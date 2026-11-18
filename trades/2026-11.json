@@ -106642,5 +106642,153 @@
   "gross": -1787.5,
   "charges": 392.99,
   "net": -2180.49
+ },
+ {
+  "id": "1794894936100-3101",
+  "symbol": "ETERNAL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2425,
+  "entry": 374.8,
+  "exit": 365.8,
+  "entry_time": 1794894936100,
+  "exit_time": 1794994500000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 365.8,
+  "tp": null,
+  "high": 378,
+  "low": 365.8,
+  "nifty": 0.61,
+  "strategies": [
+   "Daily HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794894936100,
+   "price": 375.95
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -21825.0,
+  "charges": 547.69,
+  "net": -22372.69
+ },
+ {
+  "id": "1794893739893-2882",
+  "symbol": "HDFCAMC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 300,
+  "entry": 2735.1,
+  "exit": 2645.9,
+  "entry_time": 1794893739893,
+  "exit_time": 1794995100000,
+  "reason": "30m RSI SMA 39.5 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2631.3,
+  "tp": 2817.15,
+  "high": 2758.7,
+  "low": 2632.2,
+  "nifty": 0.49,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794893739893,
+   "price": 2735.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -26760.0,
+  "charges": 495.35,
+  "net": -27255.35
+ },
+ {
+  "id": "1794893739893-2883",
+  "symbol": "HDFCAMC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 300,
+  "entry": 2735.1,
+  "exit": 2645.9,
+  "entry_time": 1794893739893,
+  "exit_time": 1794995100000,
+  "reason": "30m RSI SMA 39.5 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 2631.3,
+  "tp": null,
+  "high": 2758.7,
+  "low": 2632.2,
+  "nifty": 0.49,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794893739893,
+   "price": 2735.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -26760.0,
+  "charges": 495.35,
+  "net": -27255.35
+ },
+ {
+  "id": "1794893739893-2884",
+  "symbol": "HDFCAMC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 300,
+  "entry": 2735.1,
+  "exit": 2645.9,
+  "entry_time": 1794893739893,
+  "exit_time": 1794995100000,
+  "reason": "30m RSI SMA 39.5 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 2631.3,
+  "tp": null,
+  "high": 2758.7,
+  "low": 2632.2,
+  "nifty": 0.49,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794893739893,
+   "price": 2735.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -26760.0,
+  "charges": 495.35,
+  "net": -27255.35
  }
 ]
