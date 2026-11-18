@@ -100537,5 +100537,79 @@
   "gross": 11723.75,
   "charges": 571.42,
   "net": 11152.33
+ },
+ {
+  "id": "1794887738404-2585",
+  "symbol": "ADANIENSOL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 675,
+  "entry": 1457.7,
+  "exit": 1468.2,
+  "entry_time": 1794887738404,
+  "exit_time": 1794983100000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1436.3,
+  "tp": null,
+  "high": 1515,
+  "low": 1454,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 1465.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 7087.5,
+  "charges": 605.04,
+  "net": 6482.46
+ },
+ {
+  "id": "1794800741223-1638",
+  "symbol": "ANGELONE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2500,
+  "entry": 349.0,
+  "exit": 343.75,
+  "entry_time": 1794800741223,
+  "exit_time": 1794983100000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 343.75,
+  "tp": null,
+  "high": 379.15,
+  "low": 343.75,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 349.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -13125.0,
+  "charges": 531.74,
+  "net": -13656.74
  }
 ]
