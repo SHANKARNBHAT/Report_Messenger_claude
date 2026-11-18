@@ -288,7 +288,7 @@
    "status": "open",
    "passed": false,
    "high": 448.95,
-   "low": 422.7,
+   "low": 422.55,
    "nifty": -0.41,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -438,7 +438,7 @@
    "status": "open",
    "passed": false,
    "high": 1219.8,
-   "low": 1132.4,
+   "low": 1130.3,
    "nifty": 1.1,
    "source": "Auto HA MTF 2H+4H+Daily",
    "timeframes": [
@@ -1020,12 +1020,12 @@
    },
    "style": "trail",
    "system": "HA",
-   "stop": 3749.15,
+   "stop": 3729.85,
    "time": 1794455145928,
    "status": "open",
    "passed": true,
    "high": 3899.3,
-   "low": 3672.1,
+   "low": 3661.7,
    "nifty": -0.11,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -1255,7 +1255,7 @@
    "time": 1794458737955,
    "status": "open",
    "passed": false,
-   "high": 1835.0,
+   "high": 1835,
    "low": 1755.7,
    "nifty": 0.36,
    "source": "Auto 2H",
@@ -1294,7 +1294,7 @@
    "time": 1794458737955,
    "status": "open",
    "passed": false,
-   "high": 1835.0,
+   "high": 1835,
    "low": 1755.7,
    "nifty": 0.36,
    "source": "Auto HA 2H",
@@ -1634,7 +1634,7 @@
    "status": "open",
    "passed": false,
    "high": 402.5,
-   "low": 388.05,
+   "low": 388,
    "nifty": -0.46,
    "source": "Auto 2H",
    "timeframes": [
@@ -1834,45 +1834,6 @@
    "first_seen": {
     "time": 1794800741223,
     "price": 436.3
-   }
-  },
-  {
-   "id": "1794800741223-1582",
-   "symbol": "GMRAIRPORT",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 6975,
-   "entry": 99.0,
-   "sl": 97.5,
-   "tp": 101.95,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 1.5,
-    "step": 0.5
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 103.45,
-   "time": 1794800741223,
-   "status": "open",
-   "passed": true,
-   "high": 105.26,
-   "low": 98.74,
-   "nifty": 0.58,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794800741223,
-    "price": 99.0
    }
   },
   {
@@ -2079,12 +2040,12 @@
    },
    "style": "trail",
    "system": "RSI Daily",
-   "stop": 1776.75,
+   "stop": 1715.5,
    "time": 1794800741223,
    "status": "open",
-   "passed": false,
+   "passed": true,
    "high": 1758.6,
-   "low": 1705.1,
+   "low": 1687.8,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2120,7 +2081,7 @@
    "status": "open",
    "passed": false,
    "high": 1758.6,
-   "low": 1705.1,
+   "low": 1687.8,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2156,7 +2117,7 @@
    "status": "open",
    "passed": false,
    "high": 1758.6,
-   "low": 1705.1,
+   "low": 1687.8,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2194,7 +2155,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 4792.3,
+   "high": 4792.1,
    "low": 4682.7,
    "nifty": 0.58,
    "source": "Auto Daily",
@@ -2230,7 +2191,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 4792.3,
+   "high": 4792.1,
    "low": 4682.7,
    "nifty": 0.58,
    "source": "Auto Daily",
@@ -2266,7 +2227,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 4792.3,
+   "high": 4792.1,
    "low": 4682.7,
    "nifty": 0.58,
    "source": "Auto Daily",
@@ -2303,7 +2264,7 @@
    "status": "open",
    "passed": false,
    "high": 3430.0,
-   "low": 2744,
+   "low": 2744.0,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2339,7 +2300,7 @@
    "status": "open",
    "passed": false,
    "high": 3430.0,
-   "low": 2744,
+   "low": 2744.0,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2373,12 +2334,12 @@
    },
    "style": "trail",
    "system": "RSI Daily",
-   "stop": 301.8,
+   "stop": 289.4,
    "time": 1794800741223,
    "status": "open",
    "passed": true,
    "high": 308.0,
-   "low": 296,
+   "low": 283.5,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2414,7 +2375,7 @@
    "status": "open",
    "passed": false,
    "high": 308.0,
-   "low": 296,
+   "low": 283.5,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2450,7 +2411,7 @@
    "status": "open",
    "passed": false,
    "high": 308.0,
-   "low": 296,
+   "low": 283.5,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2484,12 +2445,12 @@
    },
    "style": "trail",
    "system": "RSI Daily",
-   "stop": 339.25,
+   "stop": 329.2,
    "time": 1794800741223,
    "status": "open",
-   "passed": false,
+   "passed": true,
    "high": 334.5,
-   "low": 324.6,
+   "low": 323.65,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2525,7 +2486,7 @@
    "status": "open",
    "passed": false,
    "high": 334.5,
-   "low": 324.6,
+   "low": 323.65,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2561,7 +2522,7 @@
    "status": "open",
    "passed": false,
    "high": 334.5,
-   "low": 324.6,
+   "low": 323.65,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2600,7 +2561,7 @@
    "status": "open",
    "passed": false,
    "high": 301.85,
-   "low": 295.3,
+   "low": 293.55,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2636,7 +2597,7 @@
    "status": "open",
    "passed": false,
    "high": 301.85,
-   "low": 295.3,
+   "low": 293.55,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2672,7 +2633,7 @@
    "status": "open",
    "passed": false,
    "high": 301.85,
-   "low": 295.3,
+   "low": 293.55,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2819,7 +2780,7 @@
    "status": "open",
    "passed": false,
    "high": 287.4,
-   "low": 259,
+   "low": 256,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2855,7 +2816,7 @@
    "status": "open",
    "passed": false,
    "high": 287.4,
-   "low": 259,
+   "low": 256,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2930,7 +2891,7 @@
    "status": "open",
    "passed": false,
    "high": 1267.5,
-   "low": 1241.9,
+   "low": 1232.4,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -2966,7 +2927,7 @@
    "status": "open",
    "passed": false,
    "high": 1267.5,
-   "low": 1241.9,
+   "low": 1232.4,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -3002,7 +2963,7 @@
    "status": "open",
    "passed": false,
    "high": 1267.5,
-   "low": 1241.9,
+   "low": 1232.4,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -3036,12 +2997,12 @@
    },
    "style": "trail",
    "system": "RSI Weekly",
-   "stop": 1160.3,
+   "stop": 1154.4,
    "time": 1794800741223,
    "status": "open",
    "passed": true,
    "high": 1178.0,
-   "low": 1141.4,
+   "low": 1131.4,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -3077,7 +3038,7 @@
    "status": "open",
    "passed": false,
    "high": 1178.0,
-   "low": 1141.4,
+   "low": 1131.4,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -3113,7 +3074,7 @@
    "status": "open",
    "passed": false,
    "high": 1178.0,
-   "low": 1141.4,
+   "low": 1131.4,
    "nifty": 0.58,
    "source": "Auto Weekly",
    "timeframes": [
@@ -3226,7 +3187,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 188.4,
+   "high": 191.35,
    "low": 185.52,
    "nifty": 0.58,
    "source": "Auto Weekly",
@@ -3336,11 +3297,11 @@
    },
    "style": "trail",
    "system": "RSI Weekly",
-   "stop": 94.4,
+   "stop": 95.3,
    "time": 1794800741223,
    "status": "open",
    "passed": true,
-   "high": 96.1,
+   "high": 96.87,
    "low": 91.27,
    "nifty": 0.58,
    "source": "Auto Weekly",
@@ -3376,7 +3337,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 96.1,
+   "high": 96.87,
    "low": 91.27,
    "nifty": 0.58,
    "source": "Auto Weekly",
@@ -3412,7 +3373,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 96.1,
+   "high": 96.87,
    "low": 91.27,
    "nifty": 0.58,
    "source": "Auto Weekly",
@@ -3674,7 +3635,7 @@
    "status": "open",
    "passed": false,
    "high": 1731.8,
-   "low": 1693.7,
+   "low": 1684.7,
    "nifty": 0.43,
    "source": "Auto Weekly",
    "timeframes": [
@@ -3708,12 +3669,12 @@
    },
    "style": "trail",
    "system": "RSI Weekly",
-   "stop": 292.5,
+   "stop": 260.85,
    "time": 1794801047178,
    "status": "open",
-   "passed": false,
+   "passed": true,
    "high": 269.15,
-   "low": 259,
+   "low": 256,
    "nifty": 0.43,
    "source": "Auto Weekly",
    "timeframes": [
@@ -3749,7 +3710,7 @@
    "status": "open",
    "passed": false,
    "high": 269.15,
-   "low": 259,
+   "low": 256,
    "nifty": 0.43,
    "source": "Auto Weekly",
    "timeframes": [
@@ -3785,7 +3746,7 @@
    "status": "open",
    "passed": false,
    "high": 269.15,
-   "low": 259,
+   "low": 256,
    "nifty": 0.43,
    "source": "Auto Weekly",
    "timeframes": [
@@ -4232,7 +4193,7 @@
    "status": "open",
    "passed": false,
    "high": 300.5,
-   "low": 295.3,
+   "low": 293.55,
    "nifty": 0.46,
    "source": "Auto Weekly",
    "timeframes": [
@@ -4268,7 +4229,7 @@
    "status": "open",
    "passed": false,
    "high": 300.5,
-   "low": 295.3,
+   "low": 293.55,
    "nifty": 0.46,
    "source": "Auto Weekly",
    "timeframes": [
@@ -4304,7 +4265,7 @@
    "status": "open",
    "passed": false,
    "high": 300.5,
-   "low": 295.3,
+   "low": 293.55,
    "nifty": 0.46,
    "source": "Auto Weekly",
    "timeframes": [
@@ -4675,7 +4636,7 @@
    "time": 1794806143362,
    "status": "open",
    "passed": false,
-   "high": 1213,
+   "high": 1213.5,
    "low": 1187.2,
    "nifty": 0.29,
    "source": "Auto Weekly",
@@ -4715,7 +4676,7 @@
    "status": "open",
    "passed": true,
    "high": 4243.2,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.23,
    "source": "Auto 2H",
    "timeframes": [
@@ -4751,7 +4712,7 @@
    "status": "open",
    "passed": false,
    "high": 4243.2,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.23,
    "source": "Auto 2H",
    "timeframes": [
@@ -4790,7 +4751,7 @@
    "status": "open",
    "passed": false,
    "high": 296.95,
-   "low": 292.3,
+   "low": 290.6,
    "nifty": 0.39,
    "source": "Auto Daily",
    "timeframes": [
@@ -4826,7 +4787,7 @@
    "status": "open",
    "passed": false,
    "high": 296.95,
-   "low": 292.3,
+   "low": 290.6,
    "nifty": 0.39,
    "source": "Auto Daily",
    "timeframes": [
@@ -4862,7 +4823,7 @@
    "status": "open",
    "passed": false,
    "high": 296.95,
-   "low": 292.3,
+   "low": 290.6,
    "nifty": 0.39,
    "source": "Auto Daily",
    "timeframes": [
@@ -4973,7 +4934,7 @@
    "status": "open",
    "passed": false,
    "high": 4243.2,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.41,
    "source": "Auto 4H",
    "timeframes": [
@@ -5122,7 +5083,7 @@
    "time": 1794809748748,
    "status": "open",
    "passed": false,
-   "high": 1213,
+   "high": 1213.5,
    "low": 1187.2,
    "nifty": 0.29,
    "source": "Auto 2H",
@@ -5420,7 +5381,7 @@
    "status": "open",
    "passed": false,
    "high": 1149,
-   "low": 1128,
+   "low": 1125.5,
    "nifty": 0.47,
    "source": "Auto 2H",
    "timeframes": [
@@ -5456,7 +5417,7 @@
    "status": "open",
    "passed": false,
    "high": 1149,
-   "low": 1128,
+   "low": 1125.5,
    "nifty": 0.47,
    "source": "Auto 2H",
    "timeframes": [
@@ -5492,7 +5453,7 @@
    "status": "open",
    "passed": false,
    "high": 1149,
-   "low": 1128,
+   "low": 1125.5,
    "nifty": 0.47,
    "source": "Auto 2H",
    "timeframes": [
@@ -5828,7 +5789,7 @@
    "status": "open",
    "passed": false,
    "high": 1126.1,
-   "low": 1107.4,
+   "low": 1101,
    "nifty": 0.32,
    "source": "Auto Daily",
    "timeframes": [
@@ -5864,7 +5825,7 @@
    "status": "open",
    "passed": false,
    "high": 1126.1,
-   "low": 1107.4,
+   "low": 1101,
    "nifty": 0.32,
    "source": "Auto Daily",
    "timeframes": [
@@ -5900,7 +5861,7 @@
    "status": "open",
    "passed": false,
    "high": 1126.1,
-   "low": 1107.4,
+   "low": 1101,
    "nifty": 0.32,
    "source": "Auto Daily",
    "timeframes": [
@@ -6047,7 +6008,7 @@
    "status": "open",
    "passed": false,
    "high": 4193,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6083,7 +6044,7 @@
    "status": "open",
    "passed": false,
    "high": 812,
-   "low": 799.2,
+   "low": 799.1,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6119,7 +6080,7 @@
    "status": "open",
    "passed": false,
    "high": 907.15,
-   "low": 886.4,
+   "low": 882.65,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6155,7 +6116,7 @@
    "status": "open",
    "passed": false,
    "high": 934.85,
-   "low": 921.0,
+   "low": 903.65,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6227,7 +6188,7 @@
    "status": "open",
    "passed": false,
    "high": 1338.4,
-   "low": 1320.0,
+   "low": 1315.3,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6262,7 +6223,7 @@
    "time": 1794887144216,
    "status": "open",
    "passed": false,
-   "high": 1039,
+   "high": 1042.95,
    "low": 1013.45,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
@@ -6299,7 +6260,7 @@
    "status": "open",
    "passed": false,
    "high": 323,
-   "low": 316.15,
+   "low": 311.7,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6335,7 +6296,7 @@
    "status": "open",
    "passed": false,
    "high": 330.65,
-   "low": 324.6,
+   "low": 323.65,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6371,7 +6332,7 @@
    "status": "open",
    "passed": false,
    "high": 199.69,
-   "low": 193.4,
+   "low": 192.01,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6407,7 +6368,7 @@
    "status": "open",
    "passed": false,
    "high": 183.22,
-   "low": 181.0,
+   "low": 178.75,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6479,7 +6440,7 @@
    "status": "open",
    "passed": false,
    "high": 209.7,
-   "low": 206.45,
+   "low": 205.9,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6515,7 +6476,7 @@
    "status": "open",
    "passed": false,
    "high": 1176,
-   "low": 1141.7,
+   "low": 1130.6,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6549,11 +6510,11 @@
    },
    "style": "trail",
    "system": "RSI",
-   "stop": 1430.8,
+   "stop": 1489.4,
    "time": 1794887144216,
    "status": "open",
-   "passed": false,
-   "high": 1492,
+   "passed": true,
+   "high": 1515,
    "low": 1452.6,
    "nifty": 0.14,
    "source": "Auto 2H",
@@ -6589,7 +6550,7 @@
    "time": 1794887144216,
    "status": "open",
    "passed": false,
-   "high": 1492,
+   "high": 1515,
    "low": 1452.6,
    "nifty": 0.14,
    "source": "Auto 2H",
@@ -6625,7 +6586,7 @@
    "time": 1794887144216,
    "status": "open",
    "passed": false,
-   "high": 1492,
+   "high": 1515,
    "low": 1452.6,
    "nifty": 0.14,
    "source": "Auto 2H",
@@ -6661,7 +6622,7 @@
    "time": 1794887144216,
    "status": "open",
    "passed": false,
-   "high": 105.26,
+   "high": 107.25,
    "low": 101.8,
    "nifty": 0.14,
    "source": "Auto 2H",
@@ -6697,7 +6658,7 @@
    "time": 1794887144216,
    "status": "open",
    "passed": false,
-   "high": 105.26,
+   "high": 107.25,
    "low": 101.8,
    "nifty": 0.14,
    "source": "Auto 2H",
@@ -6919,7 +6880,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1492,
+   "high": 1515,
    "low": 1454,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
@@ -6955,7 +6916,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1433.8,
+   "high": 1438,
    "low": 1407.1,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
@@ -7136,7 +7097,7 @@
    "status": "open",
    "passed": false,
    "high": 4166.1,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -7279,7 +7240,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 105.26,
+   "high": 107.25,
    "low": 102.25,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
@@ -7388,7 +7349,7 @@
    "status": "open",
    "passed": false,
    "high": 2151.6,
-   "low": 2097.6,
+   "low": 2097.3,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -7423,7 +7384,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 83.71,
+   "high": 83.92,
    "low": 81.42,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
@@ -7460,7 +7421,7 @@
    "status": "open",
    "passed": false,
    "high": 146.62,
-   "low": 144.8,
+   "low": 144.15,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -7603,7 +7564,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 96.1,
+   "high": 96.87,
    "low": 92.3,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
@@ -7675,7 +7636,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1034.6,
+   "high": 1042.95,
    "low": 1013.45,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
@@ -7712,7 +7673,7 @@
    "status": "open",
    "passed": false,
    "high": 330.65,
-   "low": 324.6,
+   "low": 323.65,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -7747,7 +7708,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1114,
+   "high": 1118.95,
    "low": 1094.85,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
@@ -7784,7 +7745,7 @@
    "status": "open",
    "passed": false,
    "high": 183.22,
-   "low": 181.47,
+   "low": 178.75,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -7819,8 +7780,8 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1213,
-   "low": 1199,
+   "high": 1213.5,
+   "low": 1198.5,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -7855,7 +7816,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1492,
+   "high": 1515,
    "low": 1454,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
@@ -7891,7 +7852,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1433.8,
+   "high": 1438,
    "low": 1407.1,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
@@ -7928,7 +7889,7 @@
    "status": "open",
    "passed": false,
    "high": 5259,
-   "low": 5150.5,
+   "low": 5150,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -8108,7 +8069,7 @@
    "status": "open",
    "passed": false,
    "high": 136.8,
-   "low": 133.6,
+   "low": 132.9,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -8180,7 +8141,7 @@
    "status": "open",
    "passed": false,
    "high": 4166.1,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -8287,7 +8248,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 105.26,
+   "high": 107.25,
    "low": 102.25,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
@@ -8324,7 +8285,7 @@
    "status": "open",
    "passed": false,
    "high": 904.0,
-   "low": 886.4,
+   "low": 882.65,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -8360,7 +8321,7 @@
    "status": "open",
    "passed": false,
    "high": 934.85,
-   "low": 924.85,
+   "low": 903.65,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -8432,7 +8393,7 @@
    "status": "open",
    "passed": false,
    "high": 2151.6,
-   "low": 2097.6,
+   "low": 2097.3,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -8467,7 +8428,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 83.71,
+   "high": 83.92,
    "low": 81.42,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
@@ -8504,7 +8465,7 @@
    "status": "open",
    "passed": false,
    "high": 5665.4,
-   "low": 5561.9,
+   "low": 5558.1,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -8540,7 +8501,7 @@
    "status": "open",
    "passed": false,
    "high": 146.62,
-   "low": 144.8,
+   "low": 144.15,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -8576,7 +8537,7 @@
    "status": "open",
    "passed": false,
    "high": 1141.4,
-   "low": 1128.6,
+   "low": 1110.1,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -8719,7 +8680,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 96.1,
+   "high": 96.87,
    "low": 92.3,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
@@ -8791,7 +8752,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1034.6,
+   "high": 1042.95,
    "low": 1013.45,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
@@ -8828,7 +8789,7 @@
    "status": "open",
    "passed": false,
    "high": 323,
-   "low": 317.45,
+   "low": 311.7,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -8972,7 +8933,7 @@
    "status": "open",
    "passed": false,
    "high": 330.65,
-   "low": 324.6,
+   "low": 323.65,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -9080,7 +9041,7 @@
    "status": "open",
    "passed": false,
    "high": 171.3,
-   "low": 168.5,
+   "low": 166.31,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -9115,7 +9076,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1114,
+   "high": 1118.95,
    "low": 1094.85,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
@@ -9152,7 +9113,7 @@
    "status": "open",
    "passed": false,
    "high": 1124.1,
-   "low": 1107.4,
+   "low": 1101,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -9188,7 +9149,7 @@
    "status": "open",
    "passed": false,
    "high": 183.22,
-   "low": 181.47,
+   "low": 178.75,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -9224,7 +9185,7 @@
    "status": "open",
    "passed": false,
    "high": 209.7,
-   "low": 206.45,
+   "low": 205.9,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -9260,7 +9221,7 @@
    "status": "open",
    "passed": false,
    "high": 1449.6,
-   "low": 1436,
+   "low": 1430.2,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -9295,8 +9256,8 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1213,
-   "low": 1199,
+   "high": 1213.5,
+   "low": 1198.5,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -9331,7 +9292,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1492,
+   "high": 1515,
    "low": 1454,
    "nifty": 0.12,
    "source": "Auto HA BRK Daily",
@@ -9439,7 +9400,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 105.26,
+   "high": 107.25,
    "low": 102.25,
    "nifty": 0.12,
    "source": "Auto HA BRK Daily",
@@ -9475,7 +9436,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 83.71,
+   "high": 83.92,
    "low": 81.42,
    "nifty": 0.12,
    "source": "Auto HA BRK Daily",
@@ -9547,7 +9508,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 96.1,
+   "high": 96.87,
    "low": 92.3,
    "nifty": 0.12,
    "source": "Auto HA BRK Daily",
@@ -9584,7 +9545,7 @@
    "status": "open",
    "passed": false,
    "high": 1303.3,
-   "low": 1282.9,
+   "low": 1279.1,
    "nifty": 0.12,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -9656,7 +9617,7 @@
    "status": "open",
    "passed": false,
    "high": 171.3,
-   "low": 168.5,
+   "low": 166.31,
    "nifty": 0.12,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -9692,7 +9653,7 @@
    "status": "open",
    "passed": false,
    "high": 1124.1,
-   "low": 1107.4,
+   "low": 1101,
    "nifty": 0.12,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -9728,7 +9689,7 @@
    "status": "open",
    "passed": false,
    "high": 811,
-   "low": 799.2,
+   "low": 799.1,
    "nifty": 0.14,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -9800,7 +9761,7 @@
    "status": "open",
    "passed": false,
    "high": 811,
-   "low": 799.2,
+   "low": 799.1,
    "nifty": 0.14,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -9986,7 +9947,7 @@
    "status": "open",
    "passed": false,
    "high": 1661.9,
-   "low": 1601.7,
+   "low": 1594,
    "nifty": 0.06,
    "source": "Auto 2H",
    "timeframes": [
@@ -10022,7 +9983,7 @@
    "status": "open",
    "passed": false,
    "high": 1661.9,
-   "low": 1601.7,
+   "low": 1594,
    "nifty": 0.06,
    "source": "Auto 2H",
    "timeframes": [
@@ -10058,7 +10019,7 @@
    "status": "open",
    "passed": false,
    "high": 1661.9,
-   "low": 1601.7,
+   "low": 1594,
    "nifty": 0.06,
    "source": "Auto 2H",
    "timeframes": [
@@ -10097,7 +10058,7 @@
    "status": "open",
    "passed": false,
    "high": 985,
-   "low": 953.2,
+   "low": 952.4,
    "nifty": 0.06,
    "source": "Auto 2H",
    "timeframes": [
@@ -10133,7 +10094,7 @@
    "status": "open",
    "passed": false,
    "high": 985,
-   "low": 953.2,
+   "low": 952.4,
    "nifty": 0.06,
    "source": "Auto 2H",
    "timeframes": [
@@ -10169,7 +10130,7 @@
    "status": "open",
    "passed": false,
    "high": 985,
-   "low": 953.2,
+   "low": 952.4,
    "nifty": 0.06,
    "source": "Auto 2H",
    "timeframes": [
@@ -10208,7 +10169,7 @@
    "status": "open",
    "passed": false,
    "high": 985,
-   "low": 953.2,
+   "low": 952.4,
    "nifty": 0.06,
    "source": "Auto 4H",
    "timeframes": [
@@ -10244,7 +10205,7 @@
    "status": "open",
    "passed": false,
    "high": 985,
-   "low": 953.2,
+   "low": 952.4,
    "nifty": 0.06,
    "source": "Auto 4H",
    "timeframes": [
@@ -10280,7 +10241,7 @@
    "status": "open",
    "passed": false,
    "high": 985,
-   "low": 953.2,
+   "low": 952.4,
    "nifty": 0.06,
    "source": "Auto 4H",
    "timeframes": [
@@ -10355,7 +10316,7 @@
    "status": "open",
    "passed": false,
    "high": 5245.0,
-   "low": 5150.5,
+   "low": 5150,
    "nifty": 0.2,
    "source": "Auto 2H",
    "timeframes": [
@@ -10391,7 +10352,7 @@
    "status": "open",
    "passed": false,
    "high": 5245.0,
-   "low": 5150.5,
+   "low": 5150,
    "nifty": 0.2,
    "source": "Auto 2H",
    "timeframes": [
@@ -10427,7 +10388,7 @@
    "status": "open",
    "passed": false,
    "high": 136.8,
-   "low": 133.6,
+   "low": 132.9,
    "nifty": 0.32,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -10682,7 +10643,7 @@
    "status": "open",
    "passed": false,
    "high": 984,
-   "low": 953.2,
+   "low": 952.4,
    "nifty": 0.33,
    "source": "Auto Daily",
    "timeframes": [
@@ -10718,7 +10679,7 @@
    "status": "open",
    "passed": false,
    "high": 984,
-   "low": 953.2,
+   "low": 952.4,
    "nifty": 0.33,
    "source": "Auto Daily",
    "timeframes": [
@@ -10754,7 +10715,7 @@
    "status": "open",
    "passed": false,
    "high": 984,
-   "low": 953.2,
+   "low": 952.4,
    "nifty": 0.33,
    "source": "Auto Daily",
    "timeframes": [
@@ -10793,7 +10754,7 @@
    "status": "open",
    "passed": false,
    "high": 1704.1,
-   "low": 1662.1,
+   "low": 1658.7,
    "nifty": 0.33,
    "source": "Auto Weekly",
    "timeframes": [
@@ -10829,7 +10790,7 @@
    "status": "open",
    "passed": false,
    "high": 1704.1,
-   "low": 1662.1,
+   "low": 1658.7,
    "nifty": 0.33,
    "source": "Auto Weekly",
    "timeframes": [
@@ -10865,7 +10826,7 @@
    "status": "open",
    "passed": false,
    "high": 1704.1,
-   "low": 1662.1,
+   "low": 1658.7,
    "nifty": 0.33,
    "source": "Auto Weekly",
    "timeframes": [
@@ -11051,7 +11012,7 @@
    "status": "open",
    "passed": false,
    "high": 1659,
-   "low": 1601.7,
+   "low": 1594,
    "nifty": 0.31,
    "source": "Auto 4H",
    "timeframes": [
@@ -11087,7 +11048,7 @@
    "status": "open",
    "passed": false,
    "high": 1659,
-   "low": 1601.7,
+   "low": 1594,
    "nifty": 0.31,
    "source": "Auto 4H",
    "timeframes": [
@@ -11123,7 +11084,7 @@
    "status": "open",
    "passed": false,
    "high": 1659,
-   "low": 1601.7,
+   "low": 1594,
    "nifty": 0.31,
    "source": "Auto 4H",
    "timeframes": [
@@ -11158,7 +11119,7 @@
    "time": 1794890137079,
    "status": "open",
    "passed": false,
-   "high": 1113.95,
+   "high": 1118.95,
    "low": 1104.1,
    "nifty": 0.34,
    "source": "Auto HA BRK Daily",
@@ -11420,7 +11381,7 @@
    "status": "open",
    "passed": false,
    "high": 909.65,
-   "low": 897.2,
+   "low": 892.05,
    "nifty": 0.45,
    "source": "Auto 2H",
    "timeframes": [
@@ -11456,7 +11417,7 @@
    "status": "open",
    "passed": false,
    "high": 909.65,
-   "low": 897.2,
+   "low": 892.05,
    "nifty": 0.45,
    "source": "Auto 2H",
    "timeframes": [
@@ -11492,7 +11453,7 @@
    "status": "open",
    "passed": false,
    "high": 909.65,
-   "low": 897.2,
+   "low": 892.05,
    "nifty": 0.45,
    "source": "Auto 2H",
    "timeframes": [
@@ -11678,7 +11639,7 @@
    "status": "open",
    "passed": false,
    "high": 2151.6,
-   "low": 2097.6,
+   "low": 2097.3,
    "nifty": 0.49,
    "source": "Auto 2H",
    "timeframes": [
@@ -11714,7 +11675,7 @@
    "status": "open",
    "passed": false,
    "high": 2151.6,
-   "low": 2097.6,
+   "low": 2097.3,
    "nifty": 0.49,
    "source": "Auto 2H",
    "timeframes": [
@@ -11750,7 +11711,7 @@
    "status": "open",
    "passed": false,
    "high": 2151.6,
-   "low": 2097.6,
+   "low": 2097.3,
    "nifty": 0.49,
    "source": "Auto 2H",
    "timeframes": [
@@ -11894,7 +11855,7 @@
    "status": "open",
    "passed": false,
    "high": 4096.0,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.41,
    "source": "Auto 2H",
    "timeframes": [
@@ -12044,7 +12005,7 @@
    "status": "open",
    "passed": false,
    "high": 1704.1,
-   "low": 1662.1,
+   "low": 1658.7,
    "nifty": 0.41,
    "source": "Auto 2H",
    "timeframes": [
@@ -12080,7 +12041,7 @@
    "status": "open",
    "passed": false,
    "high": 1704.1,
-   "low": 1662.1,
+   "low": 1658.7,
    "nifty": 0.41,
    "source": "Auto 2H",
    "timeframes": [
@@ -12116,7 +12077,7 @@
    "status": "open",
    "passed": false,
    "high": 1704.1,
-   "low": 1662.1,
+   "low": 1658.7,
    "nifty": 0.41,
    "source": "Auto 2H",
    "timeframes": [
@@ -12485,7 +12446,7 @@
    "status": "open",
    "passed": false,
    "high": 5665.4,
-   "low": 5561.9,
+   "low": 5558.1,
    "nifty": 0.42,
    "source": "Auto 2H",
    "timeframes": [
@@ -12521,7 +12482,7 @@
    "status": "open",
    "passed": false,
    "high": 5665.4,
-   "low": 5561.9,
+   "low": 5558.1,
    "nifty": 0.42,
    "source": "Auto 2H",
    "timeframes": [
@@ -12557,7 +12518,7 @@
    "status": "open",
    "passed": false,
    "high": 5665.4,
-   "low": 5561.9,
+   "low": 5558.1,
    "nifty": 0.42,
    "source": "Auto 2H",
    "timeframes": [
@@ -12596,7 +12557,7 @@
    "status": "open",
    "passed": false,
    "high": 2151.6,
-   "low": 2097.6,
+   "low": 2097.3,
    "nifty": 0.42,
    "source": "Auto 4H",
    "timeframes": [
@@ -12632,7 +12593,7 @@
    "status": "open",
    "passed": false,
    "high": 2151.6,
-   "low": 2097.6,
+   "low": 2097.3,
    "nifty": 0.42,
    "source": "Auto 4H",
    "timeframes": [
@@ -12668,7 +12629,7 @@
    "status": "open",
    "passed": false,
    "high": 2151.6,
-   "low": 2097.6,
+   "low": 2097.3,
    "nifty": 0.42,
    "source": "Auto 4H",
    "timeframes": [
@@ -12928,7 +12889,7 @@
    "time": 1794893455340,
    "status": "open",
    "passed": false,
-   "high": 1433.8,
+   "high": 1438,
    "low": 1411.2,
    "nifty": 0.44,
    "source": "Auto 2H",
@@ -12964,7 +12925,7 @@
    "time": 1794893455340,
    "status": "open",
    "passed": false,
-   "high": 1433.8,
+   "high": 1438,
    "low": 1411.2,
    "nifty": 0.44,
    "source": "Auto 2H",
@@ -13000,7 +12961,7 @@
    "time": 1794893455340,
    "status": "open",
    "passed": false,
-   "high": 1433.8,
+   "high": 1438,
    "low": 1411.2,
    "nifty": 0.44,
    "source": "Auto 2H",
@@ -13079,7 +13040,7 @@
    "status": "open",
    "passed": false,
    "high": 146.62,
-   "low": 145.14,
+   "low": 144.15,
    "nifty": 0.44,
    "source": "Auto 4H",
    "timeframes": [
@@ -13115,7 +13076,7 @@
    "status": "open",
    "passed": false,
    "high": 146.62,
-   "low": 145.14,
+   "low": 144.15,
    "nifty": 0.44,
    "source": "Auto 4H",
    "timeframes": [
@@ -13334,7 +13295,7 @@
    "status": "open",
    "passed": false,
    "high": 772,
-   "low": 739,
+   "low": 738.4,
    "nifty": 0.49,
    "source": "Auto 4H",
    "timeframes": [
@@ -13370,7 +13331,7 @@
    "status": "open",
    "passed": false,
    "high": 772,
-   "low": 739,
+   "low": 738.4,
    "nifty": 0.49,
    "source": "Auto 4H",
    "timeframes": [
@@ -13406,7 +13367,7 @@
    "status": "open",
    "passed": false,
    "high": 772,
-   "low": 739,
+   "low": 738.4,
    "nifty": 0.49,
    "source": "Auto 4H",
    "timeframes": [
@@ -13631,7 +13592,7 @@
    "status": "open",
    "passed": false,
    "high": 4079.9,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.55,
    "source": "Auto 4H",
    "timeframes": [
@@ -13667,7 +13628,7 @@
    "status": "open",
    "passed": false,
    "high": 4079.9,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.55,
    "source": "Auto 4H",
    "timeframes": [
@@ -13706,7 +13667,7 @@
    "status": "open",
    "passed": false,
    "high": 1479.9,
-   "low": 1437,
+   "low": 1436.6,
    "nifty": 0.55,
    "source": "Auto Weekly",
    "timeframes": [
@@ -13742,7 +13703,7 @@
    "status": "open",
    "passed": false,
    "high": 1479.9,
-   "low": 1437,
+   "low": 1436.6,
    "nifty": 0.55,
    "source": "Auto Weekly",
    "timeframes": [
@@ -14330,7 +14291,7 @@
    "status": "open",
    "passed": false,
    "high": 1060.3,
-   "low": 1037.3,
+   "low": 1034.7,
    "nifty": 0.61,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -14366,7 +14327,7 @@
    "status": "open",
    "passed": false,
    "high": 909.6,
-   "low": 897.2,
+   "low": 892.05,
    "nifty": 0.6,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -14401,8 +14362,8 @@
    "time": 1794896443351,
    "status": "open",
    "passed": false,
-   "high": 44.1,
-   "low": 43.8,
+   "high": 44.98,
+   "low": 43.77,
    "nifty": 0.63,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -14585,7 +14546,7 @@
    "status": "open",
    "passed": false,
    "high": 770.75,
-   "low": 739,
+   "low": 738.4,
    "nifty": 0.78,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -14657,7 +14618,7 @@
    "status": "open",
    "passed": false,
    "high": 918.95,
-   "low": 914.75,
+   "low": 910.8,
    "nifty": 0.8,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -14693,7 +14654,7 @@
    "status": "open",
    "passed": false,
    "high": 20239,
-   "low": 19662,
+   "low": 19603,
    "nifty": 0.77,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -14954,7 +14915,7 @@
    "status": "open",
    "passed": false,
    "high": 767.4,
-   "low": 739,
+   "low": 738.4,
    "nifty": 0.8,
    "source": "Auto Daily",
    "timeframes": [
@@ -14990,7 +14951,7 @@
    "status": "open",
    "passed": false,
    "high": 767.4,
-   "low": 739,
+   "low": 738.4,
    "nifty": 0.8,
    "source": "Auto Daily",
    "timeframes": [
@@ -15026,7 +14987,7 @@
    "status": "open",
    "passed": false,
    "high": 767.4,
-   "low": 739,
+   "low": 738.4,
    "nifty": 0.8,
    "source": "Auto Daily",
    "timeframes": [
@@ -15245,7 +15206,7 @@
    "status": "open",
    "passed": false,
    "high": 1135.8,
-   "low": 1125.3,
+   "low": 1113,
    "nifty": 0.69,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -15284,7 +15245,7 @@
    "status": "open",
    "passed": false,
    "high": 5375.5,
-   "low": 5280.5,
+   "low": 5277,
    "nifty": 0.69,
    "source": "Auto 2H",
    "timeframes": [
@@ -15392,7 +15353,7 @@
    "status": "open",
    "passed": false,
    "high": 1364.2,
-   "low": 1350.6,
+   "low": 1333.4,
    "nifty": 0.65,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -15464,7 +15425,7 @@
    "status": "open",
    "passed": false,
    "high": 259.5,
-   "low": 257,
+   "low": 256.6,
    "nifty": 0.64,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -15500,7 +15461,7 @@
    "status": "open",
    "passed": false,
    "high": 191.91,
-   "low": 190.01,
+   "low": 187.1,
    "nifty": 0.64,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -15536,7 +15497,7 @@
    "status": "open",
    "passed": false,
    "high": 191.91,
-   "low": 190.01,
+   "low": 187.1,
    "nifty": 0.66,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -15574,8 +15535,8 @@
    "time": 1794900344820,
    "status": "open",
    "passed": false,
-   "high": 1433.8,
-   "low": 1417.3,
+   "high": 1438,
+   "low": 1412,
    "nifty": 0.66,
    "source": "Auto 4H",
    "timeframes": [
@@ -15610,8 +15571,8 @@
    "time": 1794900344820,
    "status": "open",
    "passed": false,
-   "high": 1433.8,
-   "low": 1417.3,
+   "high": 1438,
+   "low": 1412,
    "nifty": 0.66,
    "source": "Auto 4H",
    "timeframes": [
@@ -15646,8 +15607,8 @@
    "time": 1794900344820,
    "status": "open",
    "passed": false,
-   "high": 1433.8,
-   "low": 1417.3,
+   "high": 1438,
+   "low": 1412,
    "nifty": 0.66,
    "source": "Auto 4H",
    "timeframes": [
@@ -15758,7 +15719,7 @@
    "status": "open",
    "passed": false,
    "high": 93.8,
-   "low": 92.9,
+   "low": 91.62,
    "nifty": 0.3,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -15796,7 +15757,7 @@
    "time": 1794901241689,
    "status": "open",
    "passed": false,
-   "high": 1394.8,
+   "high": 1397.3,
    "low": 1382.3,
    "nifty": 0.3,
    "source": "Auto 2H",
@@ -15832,7 +15793,7 @@
    "time": 1794901241689,
    "status": "open",
    "passed": false,
-   "high": 1394.8,
+   "high": 1397.3,
    "low": 1382.3,
    "nifty": 0.3,
    "source": "Auto 2H",
@@ -15868,7 +15829,7 @@
    "time": 1794901241689,
    "status": "open",
    "passed": false,
-   "high": 1394.8,
+   "high": 1397.3,
    "low": 1382.3,
    "nifty": 0.3,
    "source": "Auto 2H",
@@ -16199,7 +16160,7 @@
    "status": "open",
    "passed": false,
    "high": 1361.1,
-   "low": 1351.1,
+   "low": 1333.4,
    "nifty": 0.34,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -16271,7 +16232,7 @@
    "status": "open",
    "passed": false,
    "high": 31075,
-   "low": 30675,
+   "low": 30620,
    "nifty": 0.34,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -16307,7 +16268,7 @@
    "status": "open",
    "passed": false,
    "high": 1361.1,
-   "low": 1351.1,
+   "low": 1333.4,
    "nifty": 0.34,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -16415,7 +16376,7 @@
    "status": "open",
    "passed": false,
    "high": 31075,
-   "low": 30675,
+   "low": 30620,
    "nifty": 0.34,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -16454,7 +16415,7 @@
    "status": "open",
    "passed": false,
    "high": 4079.9,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.34,
    "source": "Auto Daily",
    "timeframes": [
@@ -16490,7 +16451,7 @@
    "status": "open",
    "passed": false,
    "high": 4079.9,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.34,
    "source": "Auto Daily",
    "timeframes": [
@@ -16526,7 +16487,7 @@
    "status": "open",
    "passed": false,
    "high": 4079.9,
-   "low": 3985.8,
+   "low": 3982.1,
    "nifty": 0.34,
    "source": "Auto Daily",
    "timeframes": [
@@ -16562,7 +16523,7 @@
    "status": "open",
    "passed": false,
    "high": 12.36,
-   "low": 12.22,
+   "low": 12.18,
    "nifty": 0.37,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -16634,7 +16595,7 @@
    "status": "open",
    "passed": false,
    "high": 12.36,
-   "low": 12.22,
+   "low": 12.18,
    "nifty": 0.37,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -16706,7 +16667,7 @@
    "status": "open",
    "passed": false,
    "high": 623.85,
-   "low": 615.4,
+   "low": 615.35,
    "nifty": 0.37,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -16850,7 +16811,7 @@
    "status": "open",
    "passed": false,
    "high": 165.03,
-   "low": 161,
+   "low": 156.16,
    "nifty": 1.17,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -16958,7 +16919,7 @@
    "status": "open",
    "passed": false,
    "high": 165.03,
-   "low": 161,
+   "low": 156.16,
    "nifty": 1.17,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -16993,8 +16954,8 @@
    "time": 1794903935966,
    "status": "open",
    "passed": false,
-   "high": 1815.0,
-   "low": 1790.8,
+   "high": 1810,
+   "low": 1790.6,
    "nifty": 1.25,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -17029,8 +16990,8 @@
    "time": 1794903935966,
    "status": "open",
    "passed": false,
-   "high": 1815.0,
-   "low": 1790.8,
+   "high": 1810,
+   "low": 1790.6,
    "nifty": 1.25,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -17066,7 +17027,7 @@
    "status": "open",
    "passed": false,
    "high": 2757.2,
-   "low": 2709,
+   "low": 2708.4,
    "nifty": 1.24,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -17101,7 +17062,7 @@
    "time": 1794904252233,
    "status": "open",
    "passed": false,
-   "high": 1393.4,
+   "high": 1397.3,
    "low": 1382.3,
    "nifty": 1.24,
    "source": "Auto HA BRK 2H",
@@ -17138,7 +17099,7 @@
    "status": "open",
    "passed": false,
    "high": 2757.2,
-   "low": 2709,
+   "low": 2708.4,
    "nifty": 1.24,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -17174,7 +17135,7 @@
    "status": "open",
    "passed": false,
    "high": 7848,
-   "low": 7743,
+   "low": 7742,
    "nifty": 1.24,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -17209,7 +17170,7 @@
    "time": 1794904252233,
    "status": "open",
    "passed": false,
-   "high": 1393.9,
+   "high": 1397.3,
    "low": 1382.3,
    "nifty": 1.24,
    "source": "Auto HA BRK 4H",
@@ -17246,7 +17207,7 @@
    "status": "open",
    "passed": false,
    "high": 393.45,
-   "low": 388.05,
+   "low": 388,
    "nifty": 1.26,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -17282,7 +17243,7 @@
    "status": "open",
    "passed": false,
    "high": 393.45,
-   "low": 388.05,
+   "low": 388,
    "nifty": 1.26,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -17318,7 +17279,7 @@
    "status": "open",
    "passed": false,
    "high": 1694.7,
-   "low": 1685.1,
+   "low": 1672.5,
    "nifty": 1.2,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -17357,7 +17318,7 @@
    "status": "open",
    "passed": false,
    "high": 230.69,
-   "low": 228.71,
+   "low": 225.68,
    "nifty": 1.23,
    "source": "Auto 2H",
    "timeframes": [
@@ -17393,7 +17354,7 @@
    "status": "open",
    "passed": false,
    "high": 230.69,
-   "low": 228.71,
+   "low": 225.68,
    "nifty": 1.23,
    "source": "Auto 2H",
    "timeframes": [
@@ -17429,7 +17390,7 @@
    "status": "open",
    "passed": false,
    "high": 230.69,
-   "low": 228.71,
+   "low": 225.68,
    "nifty": 1.23,
    "source": "Auto 2H",
    "timeframes": [
@@ -17759,7 +17720,7 @@
    "status": "open",
    "passed": false,
    "high": 1051.4,
-   "low": 1037.3,
+   "low": 1034.7,
    "nifty": 1.21,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -17795,7 +17756,7 @@
    "status": "open",
    "passed": false,
    "high": 1112.9,
-   "low": 1107.4,
+   "low": 1101,
    "nifty": 1.15,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -17906,7 +17867,7 @@
    "status": "open",
    "passed": false,
    "high": 1388.2,
-   "low": 1382.3,
+   "low": 1377.7,
    "nifty": 1.09,
    "source": "Auto 2H",
    "timeframes": [
@@ -17942,7 +17903,7 @@
    "status": "open",
    "passed": false,
    "high": 1388.2,
-   "low": 1382.3,
+   "low": 1377.7,
    "nifty": 1.09,
    "source": "Auto 2H",
    "timeframes": [
@@ -17978,7 +17939,7 @@
    "status": "open",
    "passed": false,
    "high": 1388.2,
-   "low": 1382.3,
+   "low": 1377.7,
    "nifty": 1.09,
    "source": "Auto 2H",
    "timeframes": [
@@ -18017,7 +17978,7 @@
    "status": "open",
    "passed": false,
    "high": 134.25,
-   "low": 133.6,
+   "low": 132.9,
    "nifty": 1.09,
    "source": "Auto Daily",
    "timeframes": [
@@ -18053,7 +18014,7 @@
    "status": "open",
    "passed": false,
    "high": 134.25,
-   "low": 133.6,
+   "low": 132.9,
    "nifty": 1.09,
    "source": "Auto Daily",
    "timeframes": [
@@ -18089,7 +18050,7 @@
    "status": "open",
    "passed": false,
    "high": 134.25,
-   "low": 133.6,
+   "low": 132.9,
    "nifty": 1.09,
    "source": "Auto Daily",
    "timeframes": [
@@ -18163,8 +18124,8 @@
    "time": 1794907535358,
    "status": "open",
    "passed": false,
-   "high": 208.3,
-   "low": 207.45,
+   "high": 208.85,
+   "low": 206.37,
    "nifty": 1.13,
    "source": "Auto 4H",
    "timeframes": [
@@ -18199,8 +18160,8 @@
    "time": 1794907535358,
    "status": "open",
    "passed": false,
-   "high": 208.3,
-   "low": 207.45,
+   "high": 208.85,
+   "low": 206.37,
    "nifty": 1.13,
    "source": "Auto 4H",
    "timeframes": [
@@ -18235,8 +18196,8 @@
    "time": 1794907535358,
    "status": "open",
    "passed": false,
-   "high": 208.3,
-   "low": 207.45,
+   "high": 208.85,
+   "low": 206.37,
    "nifty": 1.13,
    "source": "Auto 4H",
    "timeframes": [
@@ -18272,7 +18233,7 @@
    "status": "open",
    "passed": false,
    "high": 25373.55,
-   "low": 25281.8,
+   "low": 25267.15,
    "nifty": -0.07,
    "source": "Auto HA IDX BRK 15m",
    "timeframes": [
@@ -18341,10 +18302,10 @@
    "system": "RSI",
    "stop": 204.55,
    "time": 1794973542173,
-   "status": "waiting",
+   "status": "open",
    "passed": false,
-   "high": 208.05,
-   "low": 208.05,
+   "high": 208.85,
+   "low": 206.4,
    "nifty": -0.07,
    "source": "Auto 2H",
    "timeframes": [
@@ -18377,10 +18338,10 @@
    "system": "RSI",
    "stop": 204.55,
    "time": 1794973542173,
-   "status": "waiting",
+   "status": "open",
    "passed": false,
-   "high": 208.05,
-   "low": 208.05,
+   "high": 208.85,
+   "low": 206.4,
    "nifty": -0.07,
    "source": "Auto 2H",
    "timeframes": [
@@ -18419,7 +18380,7 @@
    "status": "open",
    "passed": false,
    "high": 358.4,
-   "low": 356.95,
+   "low": 356.65,
    "nifty": -0.07,
    "source": "Auto 2H",
    "timeframes": [
@@ -18455,7 +18416,7 @@
    "status": "open",
    "passed": false,
    "high": 358.4,
-   "low": 356.95,
+   "low": 356.65,
    "nifty": -0.07,
    "source": "Auto 2H",
    "timeframes": [
@@ -18491,7 +18452,7 @@
    "status": "open",
    "passed": false,
    "high": 358.4,
-   "low": 356.95,
+   "low": 356.65,
    "nifty": -0.07,
    "source": "Auto 2H",
    "timeframes": [
@@ -18527,10 +18488,10 @@
    "system": "RSI Daily",
    "stop": 204.55,
    "time": 1794973542173,
-   "status": "waiting",
+   "status": "open",
    "passed": false,
-   "high": 208.05,
-   "low": 208.05,
+   "high": 208.85,
+   "low": 206.4,
    "nifty": -0.07,
    "source": "Auto Daily",
    "timeframes": [
@@ -18563,10 +18524,10 @@
    "system": "RSI Daily",
    "stop": 204.55,
    "time": 1794973542173,
-   "status": "waiting",
+   "status": "open",
    "passed": false,
-   "high": 208.05,
-   "low": 208.05,
+   "high": 208.85,
+   "low": 206.4,
    "nifty": -0.07,
    "source": "Auto Daily",
    "timeframes": [
@@ -18599,10 +18560,10 @@
    "system": "RSI Daily",
    "stop": 204.55,
    "time": 1794973542173,
-   "status": "waiting",
+   "status": "open",
    "passed": false,
-   "high": 208.05,
-   "low": 208.05,
+   "high": 208.85,
+   "low": 206.4,
    "nifty": -0.07,
    "source": "Auto Daily",
    "timeframes": [
@@ -18616,45 +18577,6 @@
    "first_seen": {
     "time": 1794973542173,
     "price": 208.07
-   }
-  },
-  {
-   "id": "1794973542173-3495",
-   "symbol": "KAYNES",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 150,
-   "entry": 2858.0,
-   "sl": 2900.85,
-   "tp": 2772.25,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 42.85,
-    "step": 14.3
-   },
-   "style": "trail",
-   "system": "RSI Daily",
-   "stop": 2900.85,
-   "time": 1794973542173,
-   "status": "open",
-   "passed": false,
-   "high": 2895.5,
-   "low": 2858.0,
-   "nifty": -0.07,
-   "source": "Auto Daily",
-   "timeframes": [
-    "DAILY"
-   ],
-   "strategies": [
-    "DAILY RSI BEARISH STRATEGY"
-   ],
-   "agrees": "Yes",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794973542173,
-    "price": 2858.0
    }
   },
   {
@@ -19121,10 +19043,10 @@
    "system": "RSI Weekly",
    "stop": 212.1,
    "time": 1794974140512,
-   "status": "waiting",
+   "status": "open",
    "passed": false,
    "high": 208.95,
-   "low": 208.95,
+   "low": 206.19,
    "nifty": -0.23,
    "source": "Auto Weekly",
    "timeframes": [
@@ -19157,10 +19079,10 @@
    "system": "RSI Weekly",
    "stop": 212.1,
    "time": 1794974140512,
-   "status": "waiting",
+   "status": "open",
    "passed": false,
    "high": 208.95,
-   "low": 208.95,
+   "low": 206.19,
    "nifty": -0.23,
    "source": "Auto Weekly",
    "timeframes": [
@@ -19193,10 +19115,10 @@
    "system": "RSI Weekly",
    "stop": 212.1,
    "time": 1794974140512,
-   "status": "waiting",
+   "status": "open",
    "passed": false,
    "high": 208.95,
-   "low": 208.95,
+   "low": 206.19,
    "nifty": -0.23,
    "source": "Auto Weekly",
    "timeframes": [
@@ -19232,7 +19154,7 @@
    "status": "open",
    "passed": false,
    "high": 62176.3,
-   "low": 62144.8,
+   "low": 62000.95,
    "nifty": -0.28,
    "source": "Auto HA IDX PURE 15m",
    "timeframes": [
@@ -19268,7 +19190,7 @@
    "system": "RSI",
    "stop": 43.25,
    "time": 1794974458842,
-   "status": "waiting",
+   "status": "open",
    "passed": false,
    "high": 43.9,
    "low": 43.9,
@@ -19304,7 +19226,7 @@
    "system": "RSI",
    "stop": 43.25,
    "time": 1794974458842,
-   "status": "waiting",
+   "status": "open",
    "passed": false,
    "high": 43.9,
    "low": 43.9,
@@ -19340,7 +19262,7 @@
    "system": "RSI",
    "stop": 43.25,
    "time": 1794974458842,
-   "status": "waiting",
+   "status": "open",
    "passed": false,
    "high": 43.9,
    "low": 43.9,
@@ -20582,10 +20504,124 @@
     "time": 1794974741142,
     "price": 17.6
    }
+  },
+  {
+   "id": "1794975042928-3549",
+   "symbol": "GAIL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 3550,
+   "entry": 187.0,
+   "sl": 184.2,
+   "tp": 192.6,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 2.8,
+    "step": 0.95
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 184.2,
+   "time": 1794975042928,
+   "status": "open",
+   "passed": false,
+   "high": 187.0,
+   "low": 187.0,
+   "nifty": -0.47,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794975042928,
+    "price": 187.0
+   }
+  },
+  {
+   "id": "1794975042928-3550",
+   "symbol": "GAIL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 3550,
+   "entry": 187.0,
+   "sl": 184.2,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma8",
+   "system": "RSI",
+   "stop": 184.2,
+   "time": 1794975042928,
+   "status": "open",
+   "passed": false,
+   "high": 187.0,
+   "low": 187.0,
+   "nifty": -0.47,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794975042928,
+    "price": 187.0
+   }
+  },
+  {
+   "id": "1794975042928-3551",
+   "symbol": "GAIL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 3550,
+   "entry": 187.0,
+   "sl": 184.2,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma20",
+   "system": "RSI",
+   "stop": 184.2,
+   "time": 1794975042928,
+   "status": "open",
+   "passed": false,
+   "high": 187.0,
+   "low": 187.0,
+   "nifty": -0.47,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1794975042928,
+    "price": 187.0
+   }
   }
  ],
- "seq": 3548,
+ "seq": 3551,
  "log": [
+  "18 Nov 09:40  GAIL: RSI BUY 3550 at 187.0, SL 184.2 (2 HOUR; trail, sma8, sma20)",
+  "18 Nov 09:40  KAYNES: Stop loss at 2900.85 (Hold \u00b7 trail)",
+  "18 Nov 09:40  GMRAIRPORT: TSL after target at 105.45 (Hold \u00b7 trail)",
   "18 Nov 09:35  YESBANK: HA PURE 4H SELL 31100 at 17.6, SL 17.85 (30m candle)",
   "18 Nov 09:35  VEDL: HA PURE 4H SELL 1150 at 250.85, SL 257.9 (30m candle)",
   "18 Nov 09:35  UPL: HA PURE 4H SELL 1355 at 539.55, SL 571.0 (30m candle)",
@@ -20882,13 +20918,10 @@
   "17 Nov 14:50  BANKNIFTY: HA IDX BRK SELL 30 at 62281.6, SL 62353.9 (HA candle, 15m)",
   "17 Nov 14:50  BANKNIFTY: HA IDX PURE SELL 30 at 62281.6, SL 62409.25 (1.1 ATR, 15m)",
   "17 Nov 14:50  NIFTY: HA IDX BRK SELL 65 at 25418.05, SL 25450.35 (HA candle, 15m)",
-  "17 Nov 14:50  NIFTY: HA IDX PURE SELL 65 at 25418.05, SL 25462.0 (1.1 ATR, 15m)",
-  "17 Nov 14:50  TRENT: Stop loss at 3181.05 (HA BRK 4H)",
-  "17 Nov 14:50  PAGEIND: 30m trailing SL at 30960.0 (HA PURE 4H)",
-  "17 Nov 14:50  KFINTECH: 30m trailing SL at 961.0 (HA PURE 4H)"
+  "17 Nov 14:50  NIFTY: HA IDX PURE SELL 65 at 25418.05, SL 25462.0 (1.1 ATR, 15m)"
  ],
- "page_run": 1794974741142,
- "updated": 1794974741142,
+ "page_run": 1794975042928,
+ "updated": 1794975042928,
  "unattended": true,
  "peak_margin": 123141526.22
 }
