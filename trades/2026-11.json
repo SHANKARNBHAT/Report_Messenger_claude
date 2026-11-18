@@ -101425,5 +101425,42 @@
   "gross": 48330.0,
   "charges": 507.56,
   "net": 47822.44
+ },
+ {
+  "id": "1794801656114-1783",
+  "symbol": "KPITTECH",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 775,
+  "entry": 543.45,
+  "exit": 529.1,
+  "entry_time": 1794801656114,
+  "exit_time": 1794986700000,
+  "reason": "TSL after target",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 551.8,
+  "tp": 527.15,
+  "high": 547.45,
+  "low": 520.1,
+  "nifty": 0.42,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794801656114,
+   "price": 543.45
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 11121.25,
+  "charges": 283.94,
+  "net": 10837.31
  }
 ]
