@@ -101166,5 +101166,79 @@
   "gross": 11471.25,
   "charges": 327.68,
   "net": 11143.57
+ },
+ {
+  "id": "1794904252233-3436",
+  "symbol": "UNOMINDA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1393.4,
+  "exit": 1376.2,
+  "entry_time": 1794904252233,
+  "exit_time": 1794985500000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1368.15,
+  "tp": null,
+  "high": 1401.4,
+  "low": 1376.2,
+  "nifty": 1.24,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794904252233,
+   "price": 1393.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -9460.0,
+  "charges": 473.88,
+  "net": -9933.88
+ },
+ {
+  "id": "1794371138474-1005",
+  "symbol": "BSE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 200,
+  "entry": 3887.0,
+  "exit": 3750.5,
+  "entry_time": 1794371138474,
+  "exit_time": 1794986155000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 3756.1,
+  "tp": 4003.6,
+  "high": 4003.2,
+  "low": 3750.5,
+  "nifty": 1.24,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794371138474,
+   "price": 3887.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 70.06,
+  "gross": -27300.0,
+  "charges": 470.78,
+  "net": -27770.78
  }
 ]
