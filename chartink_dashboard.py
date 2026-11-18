@@ -164,12 +164,15 @@ VOLUME_PROFILE_PERIODS = ("Weekly", "Monthly", "3M", "6M", "1Y")
 VOLUME_PROFILE_TAB = "VOLUME PROFILE"
 # HA TREND tab: each F&O stock's Heikin Ashi trend on four timeframes. Bullish: a green HA candle with
 # no lower wick; bearish: a red one with no upper wick. The running candle on 2H and 4H, the last
-# finished one on Daily and Weekly (ha_trend_candle).
+# finished one on Daily and Weekly (ha_trend_at). Daily and Weekly also read HA_TREND_HISTORY candles,
+# to count how long each colour run has lasted.
 HA_TREND_TAB = "HA TREND"
 HA_TREND_COLUMNS = {"2 HOUR": "[0] 2 hour", "4 HOUR": "[0] 4 hour", "DAILY": "daily", "WEEKLY": "weekly"}
 HA_TREND_NAMES = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily", "WEEKLY": "Weekly"}
 HA_TREND_RUNNING = ("2 HOUR", "4 HOUR")
 HA_TREND_CANDLES = 3
+HA_TREND_HISTORY = 40
+HA_TREND_UNITS = {"DAILY": ("day", "days"), "WEEKLY": ("week", "weeks")}
 DAY_CLOSE = time(15, 30)
 # Chart site -> link to a stock's chart on it, given the snapshot's name.
 CHART_SITES = {
@@ -439,34 +442,38 @@ def fetch_ha_tf_candles(timeframe: str, link: str = HA_DASHBOARD) -> dict[str, l
 
 @st.cache_data(ttl=50, show_spinner=False)
 def fetch_ha_trend(link: str = HA_DASHBOARD) -> dict[str, dict]:
-    """timeframe -> {"rows": symbol -> its last HA_TREND_CANDLES candles (fetch_vp_candles' rows),
-    "error": None or why there are none}, for each of HA_TREND_COLUMNS."""
+    """timeframe -> {"rows": symbol -> its last candles (fetch_vp_candles' rows): HA_TREND_CANDLES of
+    2H and 4H, HA_TREND_HISTORY of Daily and Weekly; "error": None or why there are none}."""
     found = {}
     with requests.Session() as session:
         session.headers.update(CHARTINK_HEADERS)
         url, token, _, raw_widgets = open_dashboard(session, link)
         for timeframe, column in HA_TREND_COLUMNS.items():
             widget = {"query": HA_TF_QUERY.format(column), "id": raw_widgets[0].get("id")}
-            try:
-                payload = widget_payload(session, url, token, widget, PRICE_WIDGET_ROWS, HA_TREND_CANDLES)
-                if not (isinstance(payload, dict) and payload.get("groupData")):
-                    raise ChartinkError("no candles")
-                found[timeframe] = {"rows": vp_rows(payload), "error": None}
-            except (requests.RequestException, ValueError, ChartinkError) as exc:
-                found[timeframe] = {"rows": {}, "error": str(exc) or type(exc).__name__}
+            wanted = HA_TREND_CANDLES if timeframe in HA_TREND_RUNNING else HA_TREND_HISTORY
+            found[timeframe] = {"rows": {}, "error": "no candles"}
+            for size in dict.fromkeys((wanted, wanted // 2, HA_TREND_CANDLES)):
+                try:
+                    payload = widget_payload(session, url, token, widget, PRICE_WIDGET_ROWS, size)
+                except (requests.RequestException, ValueError) as exc:
+                    found[timeframe]["error"] = str(exc) or type(exc).__name__
+                    continue
+                if isinstance(payload, dict) and payload.get("groupData"):
+                    found[timeframe] = {"rows": vp_rows(payload), "error": None}
+                    break
     return found
 
 
-def ha_trend_candle(timeframe: str, rows: list[tuple], now: datetime) -> tuple | None:
-    """The candle a timeframe's trend is read from: the running (last) one on 2H and 4H; on Daily and
-    Weekly the last finished one, the one before the last while today's (this week's) is still open,
-    that is before 3:30 PM (before Friday 3:30 PM)."""
+def ha_trend_at(timeframe: str, rows: list[tuple], now: datetime) -> int | None:
+    """Index of the candle a timeframe's trend is read from: the running (last) one on 2H and 4H; on
+    Daily and Weekly the last finished one, the one before the last while today's (this week's) is
+    still open, that is before 3:30 PM (before Friday 3:30 PM)."""
     if not rows:
         return None
-    last = rows[-1]
+    last = len(rows) - 1
     if timeframe in HA_TREND_RUNNING:
         return last
-    start = datetime.fromtimestamp(last[0], IST).date()
+    start = datetime.fromtimestamp(rows[last][0], IST).date()
     today = now.date()
     if timeframe == "DAILY":
         running = start == today and now.time() < DAY_CLOSE
@@ -475,7 +482,7 @@ def ha_trend_candle(timeframe: str, rows: list[tuple], now: datetime) -> tuple |
         running = start >= monday and (today.weekday() < 4 or (today.weekday() == 4 and now.time() < DAY_CLOSE))
     if not running:
         return last
-    return rows[-2] if len(rows) > 1 else None
+    return last - 1 if last > 0 else None
 
 
 def ha_trend_side(candle: tuple | None) -> str:
@@ -490,36 +497,88 @@ def ha_trend_side(candle: tuple | None) -> str:
     return ""
 
 
-def ha_trend_table(found: dict[str, dict], now: datetime) -> tuple[pd.DataFrame, dict[str, str]]:
-    """One row per stock bullish or bearish on at least one timeframe: its mark on each and how many
-    agree, most aligned first; and timeframe -> the candle read ("Tue 17 Nov 13:15")."""
-    sides: dict[str, dict[str, str]] = {}
-    read: dict[str, str] = {}
+def ha_colour(candle: tuple) -> int:
+    """1 for a green HA candle, -1 for a red one, 0 for neither."""
+    return (candle[7] > candle[4]) - (candle[7] < candle[4])
+
+
+def colour_run(rows: list[tuple], i: int) -> tuple[int, bool]:
+    """How many candles in a row, ending at rows[i], have its HA colour; and whether the run reaches
+    back past the candles read (so it is at least that long)."""
+    colour = ha_colour(rows[i])
+    if not colour:
+        return 0, False
+    n = 0
+    while i - n >= 0 and ha_colour(rows[i - n]) == colour:
+        n += 1
+    return n, i - n < 0
+
+
+def ha_trend_reads(found: dict[str, dict], now: datetime) -> tuple[dict, dict[str, str]]:
+    """symbol -> timeframe -> {"side", "run", "more", "before", "more_before"} for each stock with a
+    strong candle (ha_trend_side): run, the candles of its colour so far (more: at least that many);
+    before, the run of the other colour before it. And timeframe -> the candle read, as text."""
+    reads: dict[str, dict[str, dict]] = {}
+    latest: dict[str, int] = {}
     for timeframe, got in found.items():
         for symbol, rows in got["rows"].items():
-            candle = ha_trend_candle(timeframe, rows, now)
-            side = ha_trend_side(candle)
-            if candle is not None:
-                when = datetime.fromtimestamp(candle[0], IST)
-                read[timeframe] = max(read.get(timeframe, ""), when.strftime("%Y-%m-%d %H:%M"))
-            if side:
-                sides.setdefault(symbol, {})[timeframe] = side
-    names = list(HA_TREND_NAMES.values())
-    table_rows = []
-    for symbol, by_tf in sides.items():
-        bulls = sum(s == "Bullish" for s in by_tf.values())
-        bears = sum(s == "Bearish" for s in by_tf.values())
-        lead = "Bullish" if bulls >= bears else "Bearish"
-        aligned = f"{max(bulls, bears)} {lead.lower()}" + (f" · {min(bulls, bears)} {'bearish' if lead == 'Bullish' else 'bullish'}"
-                                                         if bulls and bears else "")
-        table_rows.append({"Symbol": symbol,
-                           **{HA_TREND_NAMES[tf]: MARKS.get(by_tf.get(tf, ""), "") for tf in HA_TREND_COLUMNS},
-                           "Aligned": aligned, "_n": max(bulls, bears) - min(bulls, bears), "_bull": lead == "Bullish"})
-    table = pd.DataFrame(table_rows, columns=["Symbol", *names, "Aligned", "_n", "_bull"])
-    table = table.sort_values(["_n", "_bull", "Symbol"], ascending=[False, False, True])
+            i = ha_trend_at(timeframe, rows, now)
+            if i is None:
+                continue
+            latest[timeframe] = max(latest.get(timeframe, 0), rows[i][0])
+            side = ha_trend_side(rows[i])
+            if not side:
+                continue
+            run, more = colour_run(rows, i)
+            before, more_before = colour_run(rows, i - run) if i - run >= 0 else (0, False)
+            reads.setdefault(symbol, {})[timeframe] = {"side": side, "run": run, "more": more,
+                                                       "before": before, "more_before": more_before}
     formats = {"DAILY": "%a %d %b", "WEEKLY": "week of %d %b"}
-    shown = {tf: pd.Timestamp(read[tf]).strftime(formats.get(tf, "%a %d %b %H:%M")) for tf in read}
-    return table.drop(columns=["_n", "_bull"]).reset_index(drop=True), shown
+    shown = {tf: datetime.fromtimestamp(t, IST).strftime(formats.get(tf, "%a %d %b %H:%M")) for tf, t in latest.items()}
+    return reads, shown
+
+
+def ha_trend_table(found: dict[str, dict], now: datetime) -> tuple[pd.DataFrame, pd.DataFrame, dict[str, str]]:
+    """The HA TREND tables: one row per stock with a strong candle on at least one timeframe (its mark
+    on each, how long the Daily and Weekly colour has run, and how many agree), most aligned first;
+    the stocks whose last Daily or Weekly candle turned the trend (the first of its colour); and
+    timeframe -> the candle read."""
+    reads, shown = ha_trend_reads(found, now)
+    rows = []
+    for symbol, by_tf in reads.items():
+        bulls = sum(r["side"] == "Bullish" for r in by_tf.values())
+        bears = sum(r["side"] == "Bearish" for r in by_tf.values())
+        lead = "Bullish" if bulls >= bears else "Bearish"
+        other = "bearish" if lead == "Bullish" else "bullish"
+        row = {"Symbol": symbol}
+        for tf, name in HA_TREND_NAMES.items():
+            row[name] = MARKS.get(by_tf.get(tf, {}).get("side", ""), "")
+            if tf in HA_TREND_UNITS:
+                row[f"{name} since"] = by_tf[tf]["run"] if tf in by_tf else None
+        row["Aligned"] = f"{max(bulls, bears)} {lead.lower()}" + (f" · {min(bulls, bears)} {other}" if bulls and bears else "")
+        row["_n"], row["_bull"] = max(bulls, bears) - min(bulls, bears), lead == "Bullish"
+        rows.append(row)
+    columns = ["Symbol", "2H", "4H", "Daily", "Daily since", "Weekly", "Weekly since", "Aligned", "_n", "_bull"]
+    table = pd.DataFrame(rows, columns=columns).astype({"Daily since": "Int64", "Weekly since": "Int64"})
+    table = table.sort_values(["_n", "_bull", "Symbol"], ascending=[False, False, True])
+    table = table.drop(columns=["_n", "_bull"]).reset_index(drop=True)
+
+    turned = []
+    for symbol, by_tf in reads.items():
+        for tf in ("WEEKLY", "DAILY"):
+            r = by_tf.get(tf)
+            if not r or r["run"] != 1:
+                continue
+            singular, plural = HA_TREND_UNITS[tf]
+            was = "red" if r["side"] == "Bullish" else "green"
+            after = (f"{r['before']}{'+' if r['more_before'] else ''} {was} {singular if r['before'] == 1 else plural}"
+                     if r["before"] else "a flat candle")
+            marks = table.loc[table["Symbol"] == symbol, ["2H", "4H", "Daily", "Weekly"]].iloc[0].to_dict()
+            turned.append({"Symbol": symbol, "Turned": f"{MARKS[r['side']]} on {HA_TREND_NAMES[tf]}",
+                           "After": after, **marks, "_w": tf == "WEEKLY", "_bull": r["side"] == "Bullish"})
+    turned = pd.DataFrame(turned, columns=["Symbol", "Turned", "After", "2H", "4H", "Daily", "Weekly", "_w", "_bull"])
+    turned = turned.sort_values(["_w", "_bull", "Symbol"], ascending=[False, False, True])
+    return table, turned.drop(columns=["_w", "_bull"]).reset_index(drop=True), shown
 
 
 @st.cache_data(ttl=50, show_spinner=False)
@@ -868,7 +927,8 @@ def show_volume_profile(widgets: list[dict]) -> None:
 
 
 def show_ha_trend() -> None:
-    """HA TREND tab: the F&O stocks with a strong Heikin Ashi candle on 2H, 4H, Daily or Weekly."""
+    """HA TREND tab: the F&O stocks whose Daily or Weekly Heikin Ashi trend just turned, then every one
+    with a strong Heikin Ashi candle on 2H, 4H, Daily or Weekly."""
     try:
         with st.spinner("Loading the Heikin Ashi candles from Chartink..."):
             found = cached_ha_trend()
@@ -878,7 +938,18 @@ def show_ha_trend() -> None:
     for timeframe, got in found.items():
         if got["error"]:
             st.warning(f"No {HA_TREND_NAMES[timeframe]} candles: {got['error']}")
-    table, read = ha_trend_table(found, datetime.now(IST))
+    table, turned, read = ha_trend_table(found, datetime.now(IST))
+
+    st.subheader("🆕 Just turned on Daily / Weekly")
+    st.caption(f"The first strong HA candle of a new colour: the Daily candle of {read.get('DAILY', '-')}, the "
+               f"Weekly candle of the {read.get('WEEKLY', '-')}. Today's Daily candle counts from 3:30 PM, this "
+               "week's Weekly candle from Friday 3:30 PM. After: the run of the other colour it ended.")
+    if turned.empty:
+        st.info("No stock turned on its last Daily or Weekly candle.")
+    else:
+        show_table(turned)
+
+    st.subheader("All trends")
     side_col, aligned_col = st.columns([2, 1], vertical_alignment="bottom")
     side = side_col.segmented_control("Show", ["All", "Bullish", "Bearish"], default="All", key="ha_trend_side") or "All"
     least = aligned_col.selectbox("Aligned on at least", [1, 2, 3, 4], index=0, key="ha_trend_least",
@@ -886,7 +957,6 @@ def show_ha_trend() -> None:
     names = list(HA_TREND_NAMES.values())
     marks = table[names]
     bulls, bears = marks.eq(MARKS["Bullish"]).sum(axis=1), marks.eq(MARKS["Bearish"]).sum(axis=1)
-    keep = pd.Series(True, index=table.index)
     if side == "Bullish":
         keep = (bulls >= least) & (bears == 0)
     elif side == "Bearish":
@@ -904,8 +974,10 @@ def show_ha_trend() -> None:
     st.caption("Bullish 🟢: a green Heikin Ashi candle with no lower wick (HA low = HA open). Bearish 🔴: a red one "
                "with no upper wick (HA high = HA open). A blank: neither, as a candle with wicks on both sides. 2H and "
                "4H read the running candle, so they can change before it closes; Daily and Weekly the last finished "
-               "candle (today's after 3:30 PM, this week's after Friday 3:30 PM). Bullish or Bearish with a side "
-               "chosen: only stocks with none the other way. F&O stocks, NIFTY and BANKNIFTY, from Chartink.")
+               "candle (today's after 3:30 PM, this week's after Friday 3:30 PM). Daily since / Weekly since: the "
+               f"candles of that colour in a row so far, 1 the first (a {HA_TREND_HISTORY} may be more). Bullish or "
+               "Bearish with a side chosen: only stocks with none the other way. F&O stocks, NIFTY and BANKNIFTY, "
+               "from Chartink.")
 
 
 @st.cache_data(ttl=50, show_spinner=False)
