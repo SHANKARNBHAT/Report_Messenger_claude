@@ -99279,5 +99279,42 @@
   "gross": -12137.5,
   "charges": 409.31,
   "net": -12546.81
+ },
+ {
+  "id": "1794887738404-2611",
+  "symbol": "HDFCAMC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 300,
+  "entry": 2687.8,
+  "exit": 2673.4,
+  "entry_time": 1794887738404,
+  "exit_time": 1794979800000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 2649.2,
+  "tp": null,
+  "high": 2758.7,
+  "low": 2673.38,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 2690.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4320.0,
+  "charges": 499.07,
+  "net": -4819.07
  }
 ]
