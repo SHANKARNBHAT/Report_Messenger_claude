@@ -101240,5 +101240,190 @@
   "gross": -27300.0,
   "charges": 470.78,
   "net": -27770.78
+ },
+ {
+  "id": "1794887738404-2590",
+  "symbol": "AXISBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1351.3,
+  "exit": 1362.0,
+  "entry_time": 1794887738404,
+  "exit_time": 1794985800000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1338.3,
+  "tp": null,
+  "high": 1374.8,
+  "low": 1351,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 1353.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 6687.5,
+  "charges": 526.34,
+  "net": 6161.16
+ },
+ {
+  "id": "1794887738404-2691",
+  "symbol": "MARICO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1200,
+  "entry": 913.3,
+  "exit": 904.25,
+  "entry_time": 1794887738404,
+  "exit_time": 1794985800000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 904.25,
+  "tp": null,
+  "high": 918.95,
+  "low": 904.25,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 913.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -10860.0,
+  "charges": 658.77,
+  "net": -11518.77
+ },
+ {
+  "id": "1794887738404-2698",
+  "symbol": "PETRONET",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1900,
+  "entry": 329.85,
+  "exit": 326.3,
+  "entry_time": 1794887738404,
+  "exit_time": 1794985800000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 326.3,
+  "tp": null,
+  "high": 330.8,
+  "low": 326.3,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 329.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6745.0,
+  "charges": 396.64,
+  "net": -7141.64
+ },
+ {
+  "id": "1794887738404-2725",
+  "symbol": "PETRONET",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1900,
+  "entry": 329.85,
+  "exit": 326.25,
+  "entry_time": 1794887738404,
+  "exit_time": 1794985800000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 326.25,
+  "tp": null,
+  "high": 330.8,
+  "low": 326.25,
+  "nifty": 0.12,
+  "strategies": [
+   "Daily HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 329.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6840.0,
+  "charges": 396.59,
+  "net": -7236.59
+ },
+ {
+  "id": "1793942142020-781",
+  "symbol": "MCX",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 225,
+  "entry": 3434.0,
+  "exit": 3648.8,
+  "entry_time": 1793942142020,
+  "exit_time": 1794986443156,
+  "reason": "RSI exit (2H 57.5)",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "rsi",
+  "passed": false,
+  "carried": false,
+  "sl": 3370.0,
+  "tp": null,
+  "high": 3773.3,
+  "low": 3400.9,
+  "nifty": 0.35,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793942142020,
+   "price": 3434.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 48330.0,
+  "charges": 507.56,
+  "net": 47822.44
  }
 ]
