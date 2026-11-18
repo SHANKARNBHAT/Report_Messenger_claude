@@ -100944,5 +100944,153 @@
   "gross": -172.5,
   "charges": 1097.39,
   "net": -1269.89
+ },
+ {
+  "id": "1794983728700-3610",
+  "symbol": "NIFTY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25236.85,
+  "exit": 25215.4,
+  "entry_time": 1794983728700,
+  "exit_time": 1794985200000,
+  "reason": "HA doji",
+  "source": "Auto HA IDX PURE 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX PURE",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 25288.8,
+  "tp": null,
+  "high": 25271.1,
+  "low": 25215.4,
+  "nifty": -0.59,
+  "strategies": [
+   "15m HA IDX PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794977137710,
+   "price": 25271.05
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1394.25,
+  "charges": 970.99,
+  "net": 423.26
+ },
+ {
+  "id": "1794984648113-3614",
+  "symbol": "BANKNIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 62223.45,
+  "exit": 62121.35,
+  "entry_time": 1794984648113,
+  "exit_time": 1794985200000,
+  "reason": "HA doji",
+  "source": "Auto HA IDX 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 62067.95,
+  "tp": null,
+  "high": 62223.45,
+  "low": 62121.35,
+  "nifty": -0.59,
+  "strategies": [
+   "15m HA IDX Bullish"
+  ],
+  "first_seen": {
+   "time": 1794981040591,
+   "price": 62224.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3063.0,
+  "charges": 1096.91,
+  "net": -4159.91
+ },
+ {
+  "id": "1794984648113-3615",
+  "symbol": "BANKNIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 62223.45,
+  "exit": 62121.35,
+  "entry_time": 1794984648113,
+  "exit_time": 1794985200000,
+  "reason": "HA doji",
+  "source": "Auto HA IDX PURE 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX PURE",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 62067.95,
+  "tp": null,
+  "high": 62223.45,
+  "low": 62121.35,
+  "nifty": -0.59,
+  "strategies": [
+   "15m HA IDX PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794981040591,
+   "price": 62224.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3063.0,
+  "charges": 1096.91,
+  "net": -4159.91
+ },
+ {
+  "id": "1794895250757-3106",
+  "symbol": "ICICIBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 700,
+  "entry": 1606.3,
+  "exit": 1599.0,
+  "entry_time": 1794895250757,
+  "exit_time": 1794984600000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1588.4,
+  "tp": null,
+  "high": 1613.9,
+  "low": 1598.5,
+  "nifty": 0.59,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794895250757,
+   "price": 1606.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5110.0,
+  "charges": 677.79,
+  "net": -5787.79
  }
 ]
