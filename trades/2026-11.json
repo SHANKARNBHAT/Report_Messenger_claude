@@ -105902,5 +105902,79 @@
   "gross": 19400.0,
   "charges": 603.1,
   "net": 18796.9
+ },
+ {
+  "id": "1794988534439-3695",
+  "symbol": "MANKIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2633.3,
+  "exit": 2633.0,
+  "entry_time": 1794988534439,
+  "exit_time": 1794992100000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2628.1,
+  "tp": null,
+  "high": 2636.2,
+  "low": 2629.2,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 2631.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -75.0,
+  "charges": 417.92,
+  "net": -492.92
+ },
+ {
+  "id": "1794887738404-2702",
+  "symbol": "POWERINDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 25,
+  "entry": 30505.0,
+  "exit": 30860.0,
+  "entry_time": 1794887738404,
+  "exit_time": 1794992100000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 30953.35,
+  "tp": null,
+  "high": 30860,
+  "low": 29890,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 30715.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -8875.0,
+  "charges": 477.07,
+  "net": -9352.07
  }
 ]
