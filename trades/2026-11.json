@@ -99834,5 +99834,42 @@
   "gross": -432.25,
   "charges": 971.86,
   "net": -1404.11
+ },
+ {
+  "id": "1794887738404-2586",
+  "symbol": "ADANIGREEN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 600,
+  "entry": 1407.1,
+  "exit": 1412.0,
+  "entry_time": 1794887738404,
+  "exit_time": 1794982200000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1398.35,
+  "tp": null,
+  "high": 1438,
+  "low": 1407.1,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 1411.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2940.0,
+  "charges": 524.21,
+  "net": 2415.79
  }
 ]
