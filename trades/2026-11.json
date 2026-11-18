@@ -99094,5 +99094,42 @@
   "gross": 10200.0,
   "charges": 349.21,
   "net": 9850.79
+ },
+ {
+  "id": "1794904252233-3435",
+  "symbol": "ADANIENT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 309,
+  "entry": 2720.3,
+  "exit": 2681.8,
+  "entry_time": 1794904252233,
+  "exit_time": 1794978600000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 2681.8,
+  "tp": null,
+  "high": 2757.2,
+  "low": 2681.8,
+  "nifty": 1.24,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794904252233,
+   "price": 2709.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -11896.5,
+  "charges": 514.4,
+  "net": -12410.9
  }
 ]
