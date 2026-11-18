@@ -658,45 +658,6 @@
    }
   },
   {
-   "id": "1794374144475-1106",
-   "symbol": "KOTAKBANK",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 2000,
-   "entry": 484.55,
-   "sl": 475.0,
-   "tp": 499.1,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 7.25,
-    "step": 2.4
-   },
-   "style": "trail",
-   "system": "HA",
-   "stop": 494.25,
-   "time": 1794374144475,
-   "status": "open",
-   "passed": true,
-   "high": 502.95,
-   "low": 482.8,
-   "nifty": 1.28,
-   "source": "Auto HA 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA Bullish scan"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": 68.63,
-   "first_seen": {
-    "time": 1794374144475,
-    "price": 484.55
-   }
-  },
-  {
    "id": "1794374733560-1126",
    "symbol": "INDUSINDBK",
    "side": "BUY",
@@ -2180,7 +2141,7 @@
    "status": "open",
    "passed": false,
    "high": 348.8,
-   "low": 338.8,
+   "low": 338.6,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2216,7 +2177,7 @@
    "status": "open",
    "passed": false,
    "high": 348.8,
-   "low": 338.8,
+   "low": 338.6,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -2252,7 +2213,7 @@
    "status": "open",
    "passed": false,
    "high": 348.8,
-   "low": 338.8,
+   "low": 338.6,
    "nifty": 0.58,
    "source": "Auto Daily",
    "timeframes": [
@@ -3809,7 +3770,7 @@
    "status": "open",
    "passed": false,
    "high": 348.8,
-   "low": 338.8,
+   "low": 338.6,
    "nifty": 0.6,
    "source": "Auto Weekly",
    "timeframes": [
@@ -3845,7 +3806,7 @@
    "status": "open",
    "passed": false,
    "high": 348.8,
-   "low": 338.8,
+   "low": 338.6,
    "nifty": 0.6,
    "source": "Auto Weekly",
    "timeframes": [
@@ -3881,7 +3842,7 @@
    "status": "open",
    "passed": false,
    "high": 348.8,
-   "low": 338.8,
+   "low": 338.6,
    "nifty": 0.6,
    "source": "Auto Weekly",
    "timeframes": [
@@ -5579,7 +5540,7 @@
    "status": "open",
    "passed": false,
    "high": 323,
-   "low": 305,
+   "low": 304.95,
    "nifty": 0.14,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -6269,7 +6230,7 @@
    "status": "open",
    "passed": false,
    "high": 3992.2,
-   "low": 3722.3,
+   "low": 3721.2,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -6376,7 +6337,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1135.4,
+   "high": 1136.8,
    "low": 1094.85,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
@@ -6953,7 +6914,7 @@
    "status": "open",
    "passed": false,
    "high": 3992.2,
-   "low": 3722.3,
+   "low": 3721.2,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -7097,7 +7058,7 @@
    "status": "open",
    "passed": false,
    "high": 323,
-   "low": 305,
+   "low": 304.95,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -7276,7 +7237,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 1135.4,
+   "high": 1136.8,
    "low": 1094.85,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
@@ -7637,7 +7598,7 @@
    "status": "open",
    "passed": false,
    "high": 3992.2,
-   "low": 3722.3,
+   "low": 3721.2,
    "nifty": 0.12,
    "source": "Auto HA BRK Daily",
    "timeframes": [
@@ -8731,7 +8692,7 @@
    "time": 1794890137079,
    "status": "open",
    "passed": false,
-   "high": 1135.4,
+   "high": 1136.8,
    "low": 1104.1,
    "nifty": 0.34,
    "source": "Auto HA BRK Daily",
@@ -11498,7 +11459,7 @@
    "status": "open",
    "passed": true,
    "high": 3938.1,
-   "low": 3722.3,
+   "low": 3721.2,
    "nifty": 0.8,
    "source": "Auto Daily",
    "timeframes": [
@@ -11534,7 +11495,7 @@
    "status": "open",
    "passed": false,
    "high": 3938.1,
-   "low": 3722.3,
+   "low": 3721.2,
    "nifty": 0.8,
    "source": "Auto Daily",
    "timeframes": [
@@ -11570,7 +11531,7 @@
    "status": "open",
    "passed": false,
    "high": 3938.1,
-   "low": 3722.3,
+   "low": 3721.2,
    "nifty": 0.8,
    "source": "Auto Daily",
    "timeframes": [
@@ -12119,7 +12080,7 @@
    "status": "open",
    "passed": false,
    "high": 344.75,
-   "low": 338.8,
+   "low": 338.6,
    "nifty": 0.65,
    "source": "Auto HA BRK 4H",
    "timeframes": [
@@ -16595,7 +16556,7 @@
    "status": "open",
    "passed": false,
    "high": 3190,
-   "low": 3169.7,
+   "low": 3169.6,
    "nifty": -0.59,
    "source": "Auto 4H",
    "timeframes": [
@@ -16855,7 +16816,7 @@
    "time": 1794985257625,
    "status": "open",
    "passed": false,
-   "high": 1170.4,
+   "high": 1170.9,
    "low": 1155,
    "nifty": -0.7,
    "source": "Auto 4H",
@@ -16891,7 +16852,7 @@
    "time": 1794985257625,
    "status": "open",
    "passed": false,
-   "high": 1170.4,
+   "high": 1170.9,
    "low": 1155,
    "nifty": -0.7,
    "source": "Auto 4H",
@@ -16927,7 +16888,7 @@
    "time": 1794985257625,
    "status": "open",
    "passed": false,
-   "high": 1170.4,
+   "high": 1170.9,
    "low": 1155,
    "nifty": -0.7,
    "source": "Auto 4H",
@@ -17221,7 +17182,7 @@
    "time": 1794988534439,
    "status": "open",
    "passed": false,
-   "high": 769.9,
+   "high": 770.5,
    "low": 763.2,
    "nifty": -0.8,
    "source": "Auto HA PURE 4H",
@@ -17691,7 +17652,7 @@
    "run": null,
    "style": "atr",
    "system": "HA IDX PURE",
-   "stop": 25194.7,
+   "stop": 25197.6,
    "time": 1794990940045,
    "status": "open",
    "passed": false,
@@ -17862,6 +17823,7 @@
  ],
  "seq": 3741,
  "log": [
+  "18 Nov 14:30  KOTAKBANK: TSL after target at 494.25 (Hold \u00b7 trail)",
   "18 Nov 14:25  MFSL: 30m trailing SL at 1431.1 (HA PURE 4H)",
   "18 Nov 14:25  ENRIN: 30m trailing SL at 2975.0 (HA PURE 4H)",
   "18 Nov 14:20  OIL: 30m trailing SL at 435.55 (HA PURE 4H)",
@@ -18160,11 +18122,10 @@
   "18 Nov 11:15  PGEL: 30m RSI SMA 37.8 < 40 at 541.65 (Hold \u00b7 2H SMA 20 exit)",
   "18 Nov 11:15  PGEL: 30m RSI SMA 37.8 < 40 at 541.65 (Hold \u00b7 2H SMA 8 exit)",
   "18 Nov 11:15  PGEL: 30m RSI SMA 37.8 < 40 at 541.65 (Hold \u00b7 trail)",
-  "18 Nov 11:15  MARICO: Stop loss at 905.1 (HA BRK Daily)",
-  "18 Nov 11:15  NIFTY: HA doji at 25238.9 (HA IDX PURE)"
+  "18 Nov 11:15  MARICO: Stop loss at 905.1 (HA BRK Daily)"
  ],
- "page_run": 1794992135889,
- "updated": 1794992135889,
+ "page_run": 1794992450924,
+ "updated": 1794992450924,
  "unattended": true,
  "peak_margin": 123141526.22
 }
