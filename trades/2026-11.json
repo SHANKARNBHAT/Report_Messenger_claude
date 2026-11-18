@@ -97244,5 +97244,227 @@
   "gross": 14950.0,
   "charges": 391.28,
   "net": 14558.72
+ },
+ {
+  "id": "1794975345850-3552",
+  "symbol": "BANKNIFTY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 30,
+  "entry": 61808.5,
+  "exit": 62121.0,
+  "entry_time": 1794975345850,
+  "exit_time": 1794975900000,
+  "reason": "Stop loss",
+  "source": "Auto HA IDX BRK 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX BRK",
+  "style": "ha_brk_idx",
+  "passed": false,
+  "carried": false,
+  "sl": 62121.0,
+  "tp": null,
+  "high": 62121.0,
+  "low": 61808.5,
+  "nifty": -0.66,
+  "strategies": [
+   "15m HA IDX BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794975345850,
+   "price": 61808.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -9375.0,
+  "charges": 1091.88,
+  "net": -10466.88
+ },
+ {
+  "id": "1794974741142-3518",
+  "symbol": "BANDHANBNK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3600,
+  "entry": 172.55,
+  "exit": 172.65,
+  "entry_time": 1794974741142,
+  "exit_time": 1794975600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 174.8,
+  "tp": null,
+  "high": 172.65,
+  "low": 171.92,
+  "nifty": -0.34,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794974741142,
+   "price": 172.71
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -360.0,
+  "charges": 397.06,
+  "net": -757.06
+ },
+ {
+  "id": "1794974741142-3527",
+  "symbol": "HINDZINC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1225,
+  "entry": 535.1,
+  "exit": 532.2,
+  "entry_time": 1794974741142,
+  "exit_time": 1794975600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 552.7,
+  "tp": null,
+  "high": 535.1,
+  "low": 530,
+  "nifty": -0.34,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794974741142,
+   "price": 532.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 3552.5,
+  "charges": 416.22,
+  "net": 3136.28
+ },
+ {
+  "id": "1794974741142-3533",
+  "symbol": "MOTHERSON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 160.15,
+  "exit": 159.8,
+  "entry_time": 1794974741142,
+  "exit_time": 1794975600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 163.9,
+  "tp": null,
+  "high": 160.15,
+  "low": 159.01,
+  "nifty": -0.34,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794974741142,
+   "price": 159.72
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2152.5,
+  "charges": 601.81,
+  "net": 1550.69
+ },
+ {
+  "id": "1794370245977-949",
+  "symbol": "BHARTIARTL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 2103.2,
+  "exit": 2134.75,
+  "entry_time": 1794370245977,
+  "exit_time": 1794975900000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 2041.7,
+  "tp": 2166.3,
+  "high": 2172.2,
+  "low": 2070.9,
+  "nifty": 1.43,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794370245977,
+   "price": 2103.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 14986.25,
+  "charges": 617.65,
+  "net": 14368.6
+ },
+ {
+  "id": "1794370245977-954",
+  "symbol": "BHARTIARTL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 2103.2,
+  "exit": 2134.75,
+  "entry_time": 1794370245977,
+  "exit_time": 1794975900000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 2041.7,
+  "tp": 2166.3,
+  "high": 2172.2,
+  "low": 2070.9,
+  "nifty": 1.43,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794370245977,
+   "price": 2103.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 70.06,
+  "gross": 14986.25,
+  "charges": 617.65,
+  "net": 14368.6
  }
 ]
