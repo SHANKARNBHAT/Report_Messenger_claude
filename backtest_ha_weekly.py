@@ -11,7 +11,7 @@ import sys
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, time, timedelta
 
-sys.path.insert(0, r"C:\Users\shank\Report_Messenger_claude")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import futures_simulator as fs  # noqa: E402
 import ha_pure  # noqa: E402
 import ha_weekly as hw  # noqa: E402
