@@ -99612,5 +99612,79 @@
   "gross": -3678.75,
   "charges": 451.3,
   "net": -4130.05
+ },
+ {
+  "id": "1794894053949-2892",
+  "symbol": "CDSL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 1472.2,
+  "exit": 1423.0,
+  "entry_time": 1794894053949,
+  "exit_time": 1794981300000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1423.0,
+  "tp": 1516.35,
+  "high": 1479.9,
+  "low": 1423.0,
+  "nifty": 0.55,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794894053949,
+   "price": 1472.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -23370.0,
+  "charges": 428.84,
+  "net": -23798.84
+ },
+ {
+  "id": "1794894053949-2894",
+  "symbol": "CDSL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 1472.2,
+  "exit": 1423.0,
+  "entry_time": 1794894053949,
+  "exit_time": 1794981300000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 1423.0,
+  "tp": null,
+  "high": 1479.9,
+  "low": 1423.0,
+  "nifty": 0.55,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794894053949,
+   "price": 1472.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -23370.0,
+  "charges": 428.84,
+  "net": -23798.84
  }
 ]
