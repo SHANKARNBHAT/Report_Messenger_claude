@@ -101462,5 +101462,42 @@
   "gross": 11121.25,
   "charges": 283.94,
   "net": 10837.31
+ },
+ {
+  "id": "1794887738404-2689",
+  "symbol": "M&M",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 200,
+  "entry": 3385.4,
+  "exit": 3335.1,
+  "entry_time": 1794887738404,
+  "exit_time": 1794987000000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 3335.1,
+  "tp": null,
+  "high": 3435.4,
+  "low": 3335.1,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 3384.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -10060.0,
+  "charges": 423.28,
+  "net": -10483.28
  }
 ]
