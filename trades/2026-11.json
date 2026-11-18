@@ -100611,5 +100611,301 @@
   "gross": -13125.0,
   "charges": 531.74,
   "net": -13656.74
+ },
+ {
+  "id": "1794887738404-2625",
+  "symbol": "LT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4165.2,
+  "exit": 4150.2,
+  "entry_time": 1794887738404,
+  "exit_time": 1794983400000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 4132.3,
+  "tp": null,
+  "high": 4213.8,
+  "low": 4143.9,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 4155.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2625.0,
+  "charges": 456.34,
+  "net": -3081.34
+ },
+ {
+  "id": "1794887738404-2626",
+  "symbol": "M&M",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 200,
+  "entry": 3385.4,
+  "exit": 3356.2,
+  "entry_time": 1794887738404,
+  "exit_time": 1794983400000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 3329.35,
+  "tp": null,
+  "high": 3435.4,
+  "low": 3356.2,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 3384.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5840.0,
+  "charges": 425.48,
+  "net": -6265.48
+ },
+ {
+  "id": "1794888059593-2738",
+  "symbol": "DABUR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1250,
+  "entry": 387.95,
+  "exit": 379.0,
+  "entry_time": 1794888059593,
+  "exit_time": 1794983400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 379.0,
+  "tp": 399.6,
+  "high": 387.95,
+  "low": 379.0,
+  "nifty": 0.14,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794888059593,
+   "price": 387.95
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11187.5,
+  "charges": 314.48,
+  "net": -11501.98
+ },
+ {
+  "id": "1794888059593-2739",
+  "symbol": "DABUR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1250,
+  "entry": 387.95,
+  "exit": 379.0,
+  "entry_time": 1794888059593,
+  "exit_time": 1794983400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 379.0,
+  "tp": null,
+  "high": 387.95,
+  "low": 379.0,
+  "nifty": 0.14,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794888059593,
+   "price": 387.95
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11187.5,
+  "charges": 314.48,
+  "net": -11501.98
+ },
+ {
+  "id": "1794888059593-2740",
+  "symbol": "DABUR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1250,
+  "entry": 387.95,
+  "exit": 379.0,
+  "entry_time": 1794888059593,
+  "exit_time": 1794983400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 379.0,
+  "tp": null,
+  "high": 387.95,
+  "low": 379.0,
+  "nifty": 0.14,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794888059593,
+   "price": 387.95
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11187.5,
+  "charges": 314.48,
+  "net": -11501.98
+ },
+ {
+  "id": "1794891055688-2808",
+  "symbol": "INDHOTEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 901.3,
+  "exit": 882.05,
+  "entry_time": 1794891055688,
+  "exit_time": 1794983400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 882.05,
+  "tp": 928.35,
+  "high": 909.65,
+  "low": 882.05,
+  "nifty": 0.45,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794891055688,
+   "price": 901.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -19250.0,
+  "charges": 544.76,
+  "net": -19794.76
+ },
+ {
+  "id": "1794891055688-2809",
+  "symbol": "INDHOTEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 901.3,
+  "exit": 882.05,
+  "entry_time": 1794891055688,
+  "exit_time": 1794983400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 882.05,
+  "tp": null,
+  "high": 909.65,
+  "low": 882.05,
+  "nifty": 0.45,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794891055688,
+   "price": 901.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -19250.0,
+  "charges": 544.76,
+  "net": -19794.76
+ },
+ {
+  "id": "1794891055688-2810",
+  "symbol": "INDHOTEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 901.3,
+  "exit": 882.05,
+  "entry_time": 1794891055688,
+  "exit_time": 1794983400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 882.05,
+  "tp": null,
+  "high": 909.65,
+  "low": 882.05,
+  "nifty": 0.45,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794891055688,
+   "price": 901.3
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -19250.0,
+  "charges": 544.76,
+  "net": -19794.76
  }
 ]
