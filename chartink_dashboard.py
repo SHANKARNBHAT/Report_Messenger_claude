@@ -93,7 +93,7 @@ VP_QUERY = ("select [0] 2 hour Close as 'Close', [0] 2 hour High as 'High', [0] 
 VP_CANDLES = 300  # slots: about 230 candles (older days have an empty 3:15 PM slot), for SMA 200 of the 2H closes
 VP_LIVE = 5  # the latest candles, the running one with them: a long series leaves it out
 # The 4H and Daily candles of the HA PURE strategies (ha_pure.py), as VP_QUERY's rows (volume 0).
-HA_TF_COLUMNS = {"4 HOUR": "[0] 4 hour", "DAILY": "daily"}
+HA_TF_COLUMNS = {"4 HOUR": "[0] 4 hour", "DAILY": "daily", "WEEKLY": "weekly"}  # WEEKLY: HA WK BRK (ha_weekly.py)
 HA_TF_QUERY = ("select {0} Close as 'Close', {0} High as 'High', {0} Low as 'Low', {0} ha-open as 'HA open', "
                "{0} ha-high as 'HA high', {0} ha-low as 'HA low', {0} ha-close as 'HA close' "
                "WHERE( {{33489}} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")

@@ -65,6 +65,7 @@ import ha_break
 import ha_index
 import ha_pure
 import ha_vp
+import ha_weekly
 from chartink_dashboard import NO_VALUE
 
 TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY", "WEEKLY")
@@ -400,10 +401,11 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
             note(f"No 30-minute RSI for the RSI exits: {exc}")
     settle_index(files, account, now, note)
     settle_vp(files, account, now, note)
-    for module in HELD_MODULES:
+    for module in (*HELD_MODULES, ha_weekly):
         settle_pure(files, account, now, note, module)
     for result in fs.check_positions([p for p in account["positions"]
-                                      if p.get("system") not in (*INDEX_SYSTEMS, *ha_vp.SYSTEMS, *ha_pure.SYSTEMS, *ha_break.SYSTEMS)], now, settle=False):
+                                      if p.get("system") not in (*INDEX_SYSTEMS, *ha_vp.SYSTEMS, *ha_pure.SYSTEMS, *ha_break.SYSTEMS,
+                                                                 *ha_weekly.SYSTEMS)], now, settle=False):
         position = next(p for p in account["positions"] if p["id"] == result["id"])
         # A candle that went past since the last run may have come before what the bars show.
         due = (ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS
@@ -806,6 +808,91 @@ def enter_pure_signals(files: Files, account: dict, seen: dict, now: datetime, t
         note(f"{symbol}: {system} {side} {qty} at {entry}, SL {sl} ({module.SL_NOTE})")
 
 
+def enter_weekly_signals(files: Files, account: dict, seen: dict, now: datetime, trading: bool, note) -> None:
+    """HA WK BRK (ha_weekly.py): arm each stock or index whose 4H HA close this week crossed last week's
+    red (green) Weekly HA candle's HA high (low), kept in account["wk_armed"]; then enter an armed one
+    on a 5-minute bar that pulled back to the 30-minute SMA 8, once per stock and week."""
+    if now.time() >= LAST_ENTRY:
+        return
+    system = ha_weekly.SYSTEM
+    week = ha_weekly.monday_of(now.date()).isoformat()
+    armed = {s: a for s, a in account.get("wk_armed", {}).items() if a["week"] == week}
+    account["wk_armed"] = armed
+    try:
+        weekly = fs.fetch_ha_tf_candles("WEEKLY")
+        four = pure_candles("4 HOUR")
+    except fs.ChartinkError as exc:
+        note(f"No Weekly / 4H candles for the {system} entries: {exc}")
+        return
+    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    current = candle_key("4 HOUR", int(now.timestamp()))
+    for symbol, rows in sorted(four.items()):
+        if symbol not in instruments or symbol in armed:
+            continue
+        found = ha_weekly.setup(weekly.get(symbol, []), now, fs.IST)
+        if not found:
+            continue
+        side, level = found
+        start = ha_weekly.crossed(rows, side, level, now, fs.IST)
+        if start is None:
+            continue
+        # The running candle arms it now; a finished one (a run missed) when it ended.
+        at = int(now.timestamp()) if candle_key("4 HOUR", start) == current else int(candle_end("4 HOUR", start))
+        armed[symbol] = {"week": week, "side": side, "level": round(level, 2), "time": at, "entered": False}
+        note(f"{symbol}: {system} armed {side} (4H HA close past last week's HA {'high' if side == 'BUY' else 'low'} {level:.2f})")
+    waiting = {s: a for s, a in armed.items() if not a["entered"]}
+    if not waiting:
+        return
+    bars = entry_bars(set(waiting), now)
+    nifty = None
+    for symbol, setup in sorted(waiting.items()):
+        side = setup["side"]
+        bias = "Bullish" if side == "BUY" else "Bearish"
+        signal = {"symbol": symbol, "timeframe": "4 HOUR", "bias": bias, "system": system,
+                  "strategy": f"4H {system} {bias}", "fno": True, "agrees": "—"}
+        record_seen(seen, [signal], None, now)
+        hit = ha_weekly.pullback(bars.get(symbol) or [], side, setup["time"], now, fs.IST)
+        if not hit:
+            mark(seen, [signal], "Armed: waiting for the 30m SMA 8 pullback")
+            continue
+        if not trading:
+            mark(seen, [signal], "Not traded: switch off, page closed")
+            continue
+        held = next((p for p in account["positions"] if p.get("system") == system and p["symbol"] == symbol), None)
+        if held and held["side"] == side:
+            setup["entered"] = True
+            mark(seen, [signal], "Already open")
+            continue
+        bar, fill, sma = hit
+        entry, long = tick(fill), side == "BUY"
+        at = bar + ha_weekly.BAR  # from the end of the pullback bar: the SL is checked from the next one
+        sl = ha_weekly.initial_stop(bars.get(symbol) or [], four.get(symbol, []), entry, long, bar, fs.IST)
+        if sl is None:
+            mark(seen, [signal], "No SL")
+            continue
+        sl = tick(sl)
+        if held:
+            close(files, account, held, entry, at * 1000, "Reverse signal")
+            note(f"{symbol}: {system} {held['side']} closed at {entry} (reverse signal)")
+        first = seen.get(signal_key(signal))
+        qty = LOTS * instruments[symbol]["lot"]
+        if nifty is None:
+            nifty = fs.nifty_change()
+        account["seq"] += 1
+        account["positions"].append({
+            "id": f"{at * 1000}-{account['seq']}", "symbol": symbol, "side": side, "lots": LOTS,
+            "qty": qty, "entry": entry, "sl": sl, "tp": None, "tsl": {"on": False}, "run": None,
+            "style": ha_weekly.STYLE, "system": system, "stop": sl,
+            "time": at * 1000, "status": "open", "passed": False, "high": entry, "low": entry,
+            "nifty": nifty, "source": f"Auto {system}", "timeframes": ["WEEKLY", "4 HOUR"],
+            "strategies": [signal["strategy"]], "agrees": "—", "sma_rsi": None, "level": setup["level"],
+            "first_seen": first and {"time": first["time"], "price": first["price"]},
+        })
+        setup["entered"] = True
+        mark(seen, [signal], "Traded")
+        note(f"{symbol}: {system} {side} {qty} at {entry} (30m SMA 8 {sma:.2f}), SL {sl} ({ha_weekly.SL_NOTE})")
+
+
 def test_chartink(note) -> None:
     """Fetch the dashboard and the 5-minute bars from here (GitHub), and note what came back."""
     dashboard, error = fs.load_dashboard()
@@ -999,6 +1086,7 @@ def main() -> None:
         enter_vp_signals(files, account, seen, now, trading, note)
         for module in HELD_MODULES:
             enter_pure_signals(files, account, seen, now, trading, note, module)
+        enter_weekly_signals(files, account, seen, now, trading, note)
         files.changed.add(day_file)
         if dashboard:
             instruments = {i["symbol"]: i for i in fs.load_instruments()}

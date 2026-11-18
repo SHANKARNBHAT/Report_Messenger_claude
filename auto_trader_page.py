@@ -70,7 +70,7 @@ RETIRED_SYSTEMS = {"HA": "Heikin Ashi (retired)", "HA MTF": "HA multi-timeframe 
                    "HA BRK Daily": "HA breakout Daily (retired)", "HA VP": "HA + volume profile (retired)",
                    "HA VP TRAIL": "HA VP · trail past target (retired)"}
 SYSTEM_NAMES = {"RSI": "RSI 2H", "RSI 4H": "RSI 4H", "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
-                "HA PURE 4H": "HA pure 4H",
+                "HA PURE 4H": "HA pure 4H", "HA WK BRK": "HA weekly breakout",
                 **(RETIRED_SYSTEMS if SHOW_RETIRED else {})}
 INDEX_SYSTEM = "HA IDX"
 # The 15-minute index strategies (auto_trader.INDEX_SYSTEMS): name, and its rule (ha_index.rule_signal):
@@ -337,7 +337,7 @@ NEW_SINCE = datetime(2026, 11, 16, tzinfo=fs.IST)
 NEW_STRATEGIES = {"HA PURE 4H": "HA pure 4H",
                   "HA IDX PURE": "HA IDX · no SMA (15m index)", "RSI": "RSI 2H", "RSI 4H": "RSI 4H",
                   "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
-                  "HA IDX BRK": "HA IDX · breakout (15m index)"}
+                  "HA IDX BRK": "HA IDX · breakout (15m index)", "HA WK BRK": "HA weekly breakout"}
 
 
 def show_new(history: pd.DataFrame, positions: list[dict]) -> None:
@@ -380,7 +380,10 @@ def show_new(history: pd.DataFrame, positions: list[dict]) -> None:
                "candle (green no lower wick / red no upper wick) closing past the previous HA high / low, no SMA "
                "filter, SL trailed to the previous HA candle's low / high, no other exit, on 15-minute NIFTY / "
                "BANKNIFTY intraday (the 2H / 4H / Daily stock version retired). RSI: with the 30-minute RSI "
-               "SMA exit (below 40 long, above 60 short) added this day.")
+               "SMA exit (below 40 long, above 60 short) added this day. HA weekly breakout (from 18 Nov): last week's Weekly HA "
+               "candle red (green), armed when a 4H HA close goes above its HA high (below its HA low), entered on a "
+               "pullback to the 30-minute SMA 8; SL the 30-minute candle's low (high), at least 1% away, moved to "
+               "breakeven at +1R and then trailed on 30-minute lows (highs); held to expiry.")
 
 
 def show_sma_filter(trades: pd.DataFrame) -> None:
