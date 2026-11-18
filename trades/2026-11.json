@@ -105791,5 +105791,79 @@
   "gross": -630.0,
   "charges": 390.64,
   "net": -1020.64
+ },
+ {
+  "id": "1794988534439-3668",
+  "symbol": "ENRIN",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 2978.2,
+  "exit": 2975.0,
+  "entry_time": 1794988534439,
+  "exit_time": 1794991500000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2984.1,
+  "tp": null,
+  "high": 2978.2,
+  "low": 2965.1,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 2979.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 560.0,
+  "charges": 340.7,
+  "net": 219.3
+ },
+ {
+  "id": "1794988534439-3699",
+  "symbol": "MFSL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1434.0,
+  "exit": 1431.1,
+  "entry_time": 1794988534439,
+  "exit_time": 1794991500000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1423.3,
+  "tp": null,
+  "high": 1437.2,
+  "low": 1429.3,
+  "nifty": -0.8,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794988534439,
+   "price": 1432.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1160.0,
+  "charges": 369.64,
+  "net": -1529.64
  }
 ]
