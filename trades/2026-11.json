@@ -98539,5 +98539,42 @@
   "gross": -9143.75,
   "charges": 662.85,
   "net": -9806.6
+ },
+ {
+  "id": "1794887738404-2628",
+  "symbol": "MARICO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1200,
+  "entry": 913.3,
+  "exit": 908.2,
+  "entry_time": 1794887738404,
+  "exit_time": 1794977700000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 904.8,
+  "tp": null,
+  "high": 918.95,
+  "low": 907.55,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 913.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6120.0,
+  "charges": 661.24,
+  "net": -6781.24
  }
 ]
