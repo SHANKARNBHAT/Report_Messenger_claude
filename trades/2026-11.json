@@ -100500,5 +100500,42 @@
   "gross": -12425.0,
   "charges": 456.68,
   "net": -12881.68
+ },
+ {
+  "id": "1794887738404-2602",
+  "symbol": "DELHIVERY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2075,
+  "entry": 443.35,
+  "exit": 449.0,
+  "entry_time": 1794887738404,
+  "exit_time": 1794982800000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 437.45,
+  "tp": null,
+  "high": 465.8,
+  "low": 443.35,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 446.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 11723.75,
+  "charges": 571.42,
+  "net": 11152.33
  }
 ]
