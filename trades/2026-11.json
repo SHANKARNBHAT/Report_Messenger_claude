@@ -95875,5 +95875,79 @@
   "gross": -8580.0,
   "charges": 358.81,
   "net": -8938.81
+ },
+ {
+  "id": "1794887738404-2632",
+  "symbol": "NIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25344.1,
+  "exit": 25288.9,
+  "entry_time": 1794887738404,
+  "exit_time": 1794974100000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 25225.0,
+  "tp": null,
+  "high": 25501.35,
+  "low": 25288.9,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 25323.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3588.0,
+  "charges": 973.11,
+  "net": -4561.11
+ },
+ {
+  "id": "1794887738404-2679",
+  "symbol": "HINDUNILVR",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 300,
+  "entry": 2012.7,
+  "exit": 1989.45,
+  "entry_time": 1794887738404,
+  "exit_time": 1794974100000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1989.45,
+  "tp": null,
+  "high": 2022,
+  "low": 1989.45,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 2016.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6975.0,
+  "charges": 383.62,
+  "net": -7358.62
  }
 ]
