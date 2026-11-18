@@ -105976,5 +105976,116 @@
   "gross": -8875.0,
   "charges": 477.07,
   "net": -9352.07
+ },
+ {
+  "id": "1794898857444-3153",
+  "symbol": "CAMS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 825,
+  "entry": 767.4,
+  "exit": 720.25,
+  "entry_time": 1794898857444,
+  "exit_time": 1794992400000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 720.25,
+  "tp": 790.4,
+  "high": 767.4,
+  "low": 720.25,
+  "nifty": 0.8,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794898857444,
+   "price": 767.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -38898.75,
+  "charges": 383.47,
+  "net": -39282.22
+ },
+ {
+  "id": "1794898857444-3154",
+  "symbol": "CAMS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 825,
+  "entry": 767.4,
+  "exit": 720.25,
+  "entry_time": 1794898857444,
+  "exit_time": 1794992400000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 720.25,
+  "tp": null,
+  "high": 767.4,
+  "low": 720.25,
+  "nifty": 0.8,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794898857444,
+   "price": 767.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -38898.75,
+  "charges": 383.47,
+  "net": -39282.22
+ },
+ {
+  "id": "1794898857444-3155",
+  "symbol": "CAMS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 825,
+  "entry": 767.4,
+  "exit": 720.25,
+  "entry_time": 1794898857444,
+  "exit_time": 1794992400000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 720.25,
+  "tp": null,
+  "high": 767.4,
+  "low": 720.25,
+  "nifty": 0.8,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794898857444,
+   "price": 767.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -38898.75,
+  "charges": 383.47,
+  "net": -39282.22
  }
 ]
