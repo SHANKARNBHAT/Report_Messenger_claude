@@ -96023,5 +96023,153 @@
   "gross": -6427.5,
   "charges": 288.91,
   "net": -6716.41
+ },
+ {
+  "id": "1794887738404-2621",
+  "symbol": "IOC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4875,
+  "entry": 145.85,
+  "exit": 143.95,
+  "entry_time": 1794887738404,
+  "exit_time": 1794974700000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 143.05,
+  "tp": null,
+  "high": 146.62,
+  "low": 143.95,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 145.49
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -9262.5,
+  "charges": 442.81,
+  "net": -9705.31
+ },
+ {
+  "id": "1794906054944-3449",
+  "symbol": "JIOFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2350,
+  "entry": 229.0,
+  "exit": 225.55,
+  "entry_time": 1794906054944,
+  "exit_time": 1794974700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 225.55,
+  "tp": 235.85,
+  "high": 230.69,
+  "low": 225.55,
+  "nifty": 1.23,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794906054944,
+   "price": 229.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8107.5,
+  "charges": 346.05,
+  "net": -8453.55
+ },
+ {
+  "id": "1794906054944-3450",
+  "symbol": "JIOFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2350,
+  "entry": 229.0,
+  "exit": 225.55,
+  "entry_time": 1794906054944,
+  "exit_time": 1794974700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 225.55,
+  "tp": null,
+  "high": 230.69,
+  "low": 225.55,
+  "nifty": 1.23,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794906054944,
+   "price": 229.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8107.5,
+  "charges": 346.05,
+  "net": -8453.55
+ },
+ {
+  "id": "1794906054944-3451",
+  "symbol": "JIOFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2350,
+  "entry": 229.0,
+  "exit": 225.55,
+  "entry_time": 1794906054944,
+  "exit_time": 1794974700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 225.55,
+  "tp": null,
+  "high": 230.69,
+  "low": 225.55,
+  "nifty": 1.23,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794906054944,
+   "price": 229.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8107.5,
+  "charges": 346.05,
+  "net": -8453.55
  }
 ]
