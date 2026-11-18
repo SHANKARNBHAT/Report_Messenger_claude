@@ -106087,5 +106087,190 @@
   "gross": -38898.75,
   "charges": 383.47,
   "net": -39282.22
+ },
+ {
+  "id": "1794990940045-3737",
+  "symbol": "NIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25229.35,
+  "exit": 25240.35,
+  "entry_time": 1794990940045,
+  "exit_time": 1794993300000,
+  "reason": "HA doji",
+  "source": "Auto HA IDX PURE 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX PURE",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 25177.05,
+  "tp": null,
+  "high": 25270.15,
+  "low": 25218.55,
+  "nifty": -0.24,
+  "strategies": [
+   "15m HA IDX PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794981656136,
+   "price": 25265.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 715.0,
+  "charges": 971.15,
+  "net": -256.15
+ },
+ {
+  "id": "1794990940045-3738",
+  "symbol": "BANKNIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 61940.15,
+  "exit": 62031.35,
+  "entry_time": 1794990940045,
+  "exit_time": 1794993300000,
+  "reason": "HA doji",
+  "source": "Auto HA IDX PURE 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX PURE",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 61780.35,
+  "tp": null,
+  "high": 62135.45,
+  "low": 61940.15,
+  "nifty": -0.24,
+  "strategies": [
+   "15m HA IDX PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1794981040591,
+   "price": 62224.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2736.0,
+  "charges": 1095.15,
+  "net": 1640.85
+ },
+ {
+  "id": "1794973542173-3489",
+  "symbol": "NYKAA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3125,
+  "entry": 358.0,
+  "exit": 353.45,
+  "entry_time": 1794973542173,
+  "exit_time": 1794993300000,
+  "reason": "30m RSI SMA 39.4 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 352.65,
+  "tp": 368.75,
+  "high": 358.65,
+  "low": 353.25,
+  "nifty": -0.07,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794973542173,
+   "price": 358.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -14218.75,
+  "charges": 669.85,
+  "net": -14888.6
+ },
+ {
+  "id": "1794973542173-3490",
+  "symbol": "NYKAA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3125,
+  "entry": 358.0,
+  "exit": 353.45,
+  "entry_time": 1794973542173,
+  "exit_time": 1794993300000,
+  "reason": "30m RSI SMA 39.4 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 352.65,
+  "tp": null,
+  "high": 358.65,
+  "low": 353.25,
+  "nifty": -0.07,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794973542173,
+   "price": 358.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -14218.75,
+  "charges": 669.85,
+  "net": -14888.6
+ },
+ {
+  "id": "1794973542173-3491",
+  "symbol": "NYKAA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3125,
+  "entry": 358.0,
+  "exit": 353.45,
+  "entry_time": 1794973542173,
+  "exit_time": 1794993300000,
+  "reason": "30m RSI SMA 39.4 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 352.65,
+  "tp": null,
+  "high": 358.65,
+  "low": 353.25,
+  "nifty": -0.07,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794973542173,
+   "price": 358.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -14218.75,
+  "charges": 669.85,
+  "net": -14888.6
  }
 ]
