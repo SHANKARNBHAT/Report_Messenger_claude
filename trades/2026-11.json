@@ -99205,5 +99205,79 @@
   "gross": -5771.25,
   "charges": 487.83,
   "net": -6259.08
+ },
+ {
+  "id": "1794902143717-3368",
+  "symbol": "POLYCAB",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 7806.0,
+  "exit": 7518.5,
+  "entry_time": 1794902143717,
+  "exit_time": 1794979500000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 7849.0,
+  "tp": null,
+  "high": 7818,
+  "low": 7478,
+  "nifty": 0.34,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 7807.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 35937.5,
+  "charges": 595.24,
+  "net": 35342.26
+ },
+ {
+  "id": "1794887738404-2656",
+  "symbol": "ASIANPAINT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2616.8,
+  "exit": 2568.25,
+  "entry_time": 1794887738404,
+  "exit_time": 1794979500000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 2568.25,
+  "tp": null,
+  "high": 2665.5,
+  "low": 2568.25,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 2615.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -12137.5,
+  "charges": 409.31,
+  "net": -12546.81
  }
 ]
