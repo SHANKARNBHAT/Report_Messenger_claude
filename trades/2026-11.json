@@ -99131,5 +99131,79 @@
   "gross": -11896.5,
   "charges": 514.4,
   "net": -12410.9
+ },
+ {
+  "id": "1794979238426-3577",
+  "symbol": "BANKNIFTY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 30,
+  "entry": 62035.05,
+  "exit": 62044.35,
+  "entry_time": 1794979238426,
+  "exit_time": 1794979800000,
+  "reason": "HA doji",
+  "source": "Auto HA IDX PURE 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX PURE",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 62206.6,
+  "tp": null,
+  "high": 62102.8,
+  "low": 62026.9,
+  "nifty": -0.61,
+  "strategies": [
+   "15m HA IDX PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1794974458842,
+   "price": 62176.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -279.0,
+  "charges": 1095.33,
+  "net": -1374.33
+ },
+ {
+  "id": "1794887144216-2398",
+  "symbol": "HINDPETRO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2025,
+  "entry": 389.0,
+  "exit": 386.15,
+  "entry_time": 1794887144216,
+  "exit_time": 1794979200000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 386.15,
+  "tp": null,
+  "high": 395.3,
+  "low": 386.15,
+  "nifty": 0.14,
+  "strategies": [
+   "Daily HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887144216,
+   "price": 391.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5771.25,
+  "charges": 487.83,
+  "net": -6259.08
  }
 ]
