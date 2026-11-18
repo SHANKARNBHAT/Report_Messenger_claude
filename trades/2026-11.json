@@ -93470,5 +93470,42 @@
   "gross": -2650.0,
   "charges": 393.39,
   "net": -3043.39
+ },
+ {
+  "id": "1794376243503-1155",
+  "symbol": "VMM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4850,
+  "entry": 95.5,
+  "exit": 92.15,
+  "entry_time": 1794376243503,
+  "exit_time": 1794973549000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 92.2,
+  "tp": 98.35,
+  "high": 97.8,
+  "low": 92.15,
+  "nifty": 1.35,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794372948156,
+   "price": 94.32
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 60.65,
+  "gross": -16247.5,
+  "charges": 299.58,
+  "net": -16547.08
  }
 ]
