@@ -63,10 +63,14 @@ YOU = "You (simulator)"
 # HA and HA MTF take no new trades (HA VP replaced them), nor RSI's EOD and RSI exit styles
 # (futures_simulator.RETIRED_STYLES): hidden from the results for now, their trades kept.
 SHOW_RETIRED = False
-RETIRED_SYSTEMS = {"HA": "Heikin Ashi (retired)", "HA MTF": "HA multi-timeframe (retired)"}
+# Retired on 18 Nov 2026 for their losses (auto_trader.RETIRED): HA pure 2H and Daily, HA breakout, HA VP.
+RETIRED_SYSTEMS = {"HA": "Heikin Ashi (retired)", "HA MTF": "HA multi-timeframe (retired)",
+                   "HA PURE 2H": "HA pure 2H (retired)", "HA PURE Daily": "HA pure Daily (retired)",
+                   "HA BRK 2H": "HA breakout 2H (retired)", "HA BRK 4H": "HA breakout 4H (retired)",
+                   "HA BRK Daily": "HA breakout Daily (retired)", "HA VP": "HA + volume profile (retired)",
+                   "HA VP TRAIL": "HA VP · trail past target (retired)"}
 SYSTEM_NAMES = {"RSI": "RSI 2H", "RSI 4H": "RSI 4H", "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
-                "HA PURE 2H": "HA pure 2H", "HA PURE 4H": "HA pure 4H", "HA PURE Daily": "HA pure Daily",
-                "HA BRK 2H": "HA breakout 2H", "HA BRK 4H": "HA breakout 4H", "HA BRK Daily": "HA breakout Daily", "HA VP": "HA + volume profile", "HA VP TRAIL": "HA VP · trail past target",
+                "HA PURE 4H": "HA pure 4H",
                 **(RETIRED_SYSTEMS if SHOW_RETIRED else {})}
 INDEX_SYSTEM = "HA IDX"
 # The 15-minute index strategies (auto_trader.INDEX_SYSTEMS): name, and its rule (ha_index.rule_signal):
@@ -330,10 +334,9 @@ def show_versus(history: pd.DataFrame, positions: list[dict]) -> None:
 # The strategies started (or changed: RSI's 30-minute RSI exit) on 16 Nov 2026, tracked apart from
 # that day on, by the trades entered since.
 NEW_SINCE = datetime(2026, 11, 16, tzinfo=fs.IST)
-NEW_STRATEGIES = {"HA PURE 2H": "HA pure 2H", "HA PURE 4H": "HA pure 4H", "HA PURE Daily": "HA pure Daily",
+NEW_STRATEGIES = {"HA PURE 4H": "HA pure 4H",
                   "HA IDX PURE": "HA IDX · no SMA (15m index)", "RSI": "RSI 2H", "RSI 4H": "RSI 4H",
                   "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
-                  "HA BRK 2H": "HA breakout 2H", "HA BRK 4H": "HA breakout 4H", "HA BRK Daily": "HA breakout Daily",
                   "HA IDX BRK": "HA IDX · breakout (15m index)"}
 
 
@@ -371,12 +374,12 @@ def show_new(history: pd.DataFrame, positions: list[dict]) -> None:
                  column_config={c: st.column_config.NumberColumn(format="%d") for c in
                                 ("Net P&L closed ₹", "Open P&L ₹", "Total ₹")})
     st.caption(f"Trades entered from {NEW_SINCE:%d %b %Y} only, 1 lot each, after charges (closed) and at the LTP "
-               "(open). HA pure: the HA entry pattern without the SMA trend on 2H / 4H / Daily, SL trailed on "
+               "(open). HA pure: the HA entry pattern without the SMA trend on 4H (2H and Daily retired), SL trailed on "
                "30-minute candles, out at the first HA doji, held overnight. HA IDX · no SMA: the same on 15-minute "
                "NIFTY / BANKNIFTY, intraday (also on the Autotrader NIFTY\\BNF tab). HA breakout: a wickless HA "
                "candle (green no lower wick / red no upper wick) closing past the previous HA high / low, no SMA "
-               "filter, SL trailed to the previous HA candle's low / high, no other exit; 2H / 4H / Daily held "
-               "overnight, HA IDX · breakout on 15-minute NIFTY / BANKNIFTY intraday. RSI: with the 30-minute RSI "
+               "filter, SL trailed to the previous HA candle's low / high, no other exit, on 15-minute NIFTY / "
+               "BANKNIFTY intraday (the 2H / 4H / Daily stock version retired). RSI: with the 30-minute RSI "
                "SMA exit (below 40 long, above 60 short) added this day.")
 
 
@@ -1064,8 +1067,10 @@ def main() -> None:
     signals = load_signals()
     every_trade, every_position = history, account["positions"]
     # The index strategy has its own tab (index_trader_page.py): this page is the stock strategies.
-    history = history[~history["System"].isin(list(INDEX_SYSTEMS))]
-    positions = [p for p in account["positions"] if p.get("system") not in INDEX_SYSTEMS]
+    # Retired strategies are hidden too, with any positions they still hold until their exits.
+    hidden = [*INDEX_SYSTEMS, *({} if SHOW_RETIRED else RETIRED_SYSTEMS)]
+    history = history[~history["System"].isin(hidden)]
+    positions = [p for p in account["positions"] if p.get("system", "RSI") not in hidden]
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
     quotes = fs.latest_prices({p["symbol"] for p in positions}, instruments, None) if positions else {}
 

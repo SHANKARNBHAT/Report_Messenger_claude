@@ -441,6 +441,9 @@ INDEX_SYSTEM = "HA IDX"
 INDEX_SYSTEMS = {INDEX_SYSTEM: "trend", "HA IDX PURE": "pure", ha_break.INDEX_SYSTEM: "break"}
 # The held HA strategies of 2H, 4H and Daily candles: HA PURE (30-minute trail, doji exit), HA BRK.
 HELD_MODULES = (ha_pure, ha_break)
+# Retired on 18 Nov 2026 for their losses: no new trades. Their open positions still close on their own
+# exits, and their trades are kept; the page hides them (auto_trader_page.RETIRED_SYSTEMS).
+RETIRED = {"HA PURE 2H", "HA PURE Daily", "HA BRK 2H", "HA BRK 4H", "HA BRK Daily", "HA VP", "HA VP TRAIL"}
 
 
 def index_bars(note) -> dict[str, list]:
@@ -583,7 +586,7 @@ def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, tra
     """Trade the HA VP signals, a stock or index whose running 2H HA candle meets ha_vp.signal, in each of
     ha_vp.SYSTEMS. One position per stock in each: an opposite signal closes it and enters the
     other way; no second entry on a candle."""
-    if now.time() >= LAST_ENTRY:
+    if now.time() >= LAST_ENTRY or set(ha_vp.SYSTEMS) <= RETIRED:
         return
     try:
         candles = fs.fetch_vp_candles()
@@ -613,6 +616,8 @@ def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, tra
         entry = tick(rows[-1][ha_vp.CLOSE])
         long = side == "BUY"
         for system, style in ha_vp.SYSTEMS.items():
+            if system in RETIRED:
+                continue
             signal = {"symbol": symbol, "timeframe": ha_vp.TIMEFRAME, "bias": bias, "system": system,
                       "strategy": f"2H {system} {bias}", "fno": True, "agrees": "—"}
             record_seen(seen, [signal], None, now)
@@ -737,6 +742,8 @@ def enter_pure_signals(files: Files, account: dict, seen: dict, now: datetime, t
     month = trades_of(files, now.strftime("%Y-%m"))
     found = []
     for system, timeframe in module.SYSTEMS.items():
+        if system in RETIRED:
+            continue
         try:
             candles = pure_candles(timeframe)
         except fs.ChartinkError as exc:
