@@ -96171,5 +96171,190 @@
   "gross": -8107.5,
   "charges": 346.05,
   "net": -8453.55
+ },
+ {
+  "id": "1794887144216-2410",
+  "symbol": "VOLTAS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1159.0,
+  "exit": 1127.75,
+  "entry_time": 1794887144216,
+  "exit_time": 1794975000000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1127.75,
+  "tp": null,
+  "high": 1176,
+  "low": 1127.75,
+  "nifty": 0.14,
+  "strategies": [
+   "Daily HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887144216,
+   "price": 1161.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -11718.75,
+  "charges": 285.86,
+  "net": -12004.61
+ },
+ {
+  "id": "1794887738404-2672",
+  "symbol": "GODREJCP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 904.0,
+  "exit": 881.3,
+  "entry_time": 1794887738404,
+  "exit_time": 1794974700000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 881.3,
+  "tp": null,
+  "high": 904.0,
+  "low": 881.3,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 898.75
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -11350.0,
+  "charges": 295.84,
+  "net": -11645.84
+ },
+ {
+  "id": "1794895842571-3121",
+  "symbol": "INDHOTEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 908.5,
+  "exit": 890.8,
+  "entry_time": 1794895842571,
+  "exit_time": 1794974700000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 890.8,
+  "tp": null,
+  "high": 909.6,
+  "low": 890.8,
+  "nifty": 0.6,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794895842571,
+   "price": 907.95
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -17700.0,
+  "charges": 549.62,
+  "net": -18249.62
+ },
+ {
+  "id": "1794906944491-3462",
+  "symbol": "TATACONSUM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1109.1,
+  "exit": 1114.65,
+  "entry_time": 1794906944491,
+  "exit_time": 1794974700000,
+  "reason": "Stop loss",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1114.65,
+  "tp": null,
+  "high": 1114.65,
+  "low": 1101,
+  "nifty": 1.15,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794906944491,
+   "price": 1108.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3052.5,
+  "charges": 390.87,
+  "net": -3443.37
+ },
+ {
+  "id": "1794899444764-3169",
+  "symbol": "HEROMOTOCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 150,
+  "entry": 5356.0,
+  "exit": 5273.5,
+  "entry_time": 1794899444764,
+  "exit_time": 1794974700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 5275.65,
+  "tp": 5516.7,
+  "high": 5375.5,
+  "low": 5273.5,
+  "nifty": 0.69,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794899444764,
+   "price": 5356.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12375.0,
+  "charges": 493.21,
+  "net": -12868.21
  }
 ]
