@@ -110136,5 +110136,42 @@
   "gross": 10202.5,
   "charges": 481.97,
   "net": 9720.53
+ },
+ {
+  "id": "1794800741223-1624",
+  "symbol": "RECLTD",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1575,
+  "entry": 301.85,
+  "exit": 295.85,
+  "entry_time": 1794800741223,
+  "exit_time": 1795065900000,
+  "reason": "TSL after target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 306.4,
+  "tp": 292.8,
+  "high": 301.85,
+  "low": 289.9,
+  "nifty": 0.58,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 301.85
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 9450.0,
+  "charges": 314.55,
+  "net": 9135.45
  }
 ]
