@@ -866,7 +866,7 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict], rule: str = "t
     marks = {"BUY": [], "SELL": []}
     for i in shown:
         side = ha_index.rule_signal(rows[: i + 1], rule)
-        if side:
+        if side and ha_index.candle_agrees(rows[i], side):
             marks[side].append(i)
     gap = 0.04 * (max(ha[i][1] for i in shown) - min(ha[i][2] for i in shown))  # off the candle's wick
     for side, found in marks.items():
@@ -917,7 +917,8 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict], rule: str = "t
         st.caption(f"{symbol} spot, 15-minute Heikin Ashi candles from Yahoo's 5-minute bars: what the strategy "
                    "trades on. Amber marker (below: buy, above: short): a green HA candle with no lower wick closing "
                    "above the previous HA high (buy); a red one with no upper wick closing below the previous HA low "
-                   "(short). A run checks the running candle every few minutes, so it can enter on a star's candle "
+                   "(short); the normal 15-minute candle must be green (buy) / red (short) too. A run checks the "
+                   "running candle every few minutes, so it can enter on a star's candle "
                    "before it closes, or miss one that only crossed in its last minutes. Dotted line: the stop, "
                    "moved to each finished HA candle's low (long) / high (short).")
         return
@@ -926,7 +927,8 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict], rule: str = "t
                "both sides; the new body at least the doji's) or a red HA candle (closing above its body)"
                + (", with SMA 20 > 50 and the close above SMA 200" if use_trend else "") +
                " (buy); a red one with no upper wick after a doji or a green one (closing below its body)"
-               + (", the SMAs the other way" if use_trend else "") + " (short). A run checks the running candle every few minutes, so it can enter on a star's candle "
+               + (", the SMAs the other way" if use_trend else "") + " (short); the normal 15-minute candle must "
+               "be green (buy) / red (short) too. A run checks the running candle every few minutes, so it can enter on a star's candle "
                "before it closes, or miss one that only crossed in its last minutes. Dotted line: the ATR stop, "
                "moved at each 15-minute close.")
 

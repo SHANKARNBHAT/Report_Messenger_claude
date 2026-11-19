@@ -16,6 +16,8 @@ BANKNIFTY (auto_trader.py, enter_index_signals and settle), made from Yahoo Fina
   * 4H filter (since 19 Nov 2026, all three strategies): a long only when the previous (finished) 4H
     HA candle is solid green, with no lower wick; a short only when it is solid red, with no upper
     wick (htf_side). 4H candles run 9:15 AM to 1:15 PM and 1:15 PM to the close.
+  * Normal-candle filter (since 20 Nov 2026, all three strategies): the plain 15-minute candle
+    must be the entry's colour too, green for a long, red for a short (candle_agrees).
 
 HA IDX BRK (rule "break"): ha_break's breakout entry on these 15-minute HA candles, SL at the
 HA candle's low / high, trailed to each finished 15-minute HA candle's low / high (break_replay);
@@ -85,6 +87,14 @@ def htf_side(bars: list[tuple], tz, now_ts: int) -> str | None:
     if ha_close < ha_open and ha_high <= ha_open:
         return "SELL"
     return None
+
+
+def candle_agrees(row: list, side: str) -> bool:
+    """Whether the plain (not HA) 15-minute candle `row` [start, open, high, low, close] is the
+    entry's colour: green (close above open) for a long, red for a short. The normal-candle filter
+    of the entries: an HA candle can be red while the index is rising on the candle."""
+    _, open_, _, _, close = row
+    return close > open_ if side == "BUY" else close < open_
 
 
 def atr(rows: list[list]) -> list[float | None]:

@@ -9,7 +9,8 @@ trails it, with a fixed SL MTF_SL_PCT from the entry until then). A stock on sev
 each, so that each strategy's results stay its own. A fourth, HA IDX (ha_index.py), trades
 NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles with an ATR trailing SL, intraday; HA IDX PURE
 the same without the SMA trend filter (INDEX_SYSTEMS); all of them only when the previous 4H HA
-candle is solid green (long) or red (short) (ha_index.htf_side). HA PURE 2H, 4H and Daily (ha_pure.py) trade
+candle is solid green (long) or red (short) (ha_index.htf_side), and the plain 15-minute candle is
+green (long) or red (short) too (ha_index.candle_agrees). HA PURE 2H, 4H and Daily (ha_pure.py) trade
 that rule on the F&O stocks, NIFTY and BANKNIFTY on those timeframes, held overnight, SL trailed
 on 30-minute candles. HA BRK 2H, 4H and Daily (ha_break.py) trade the HA breakout (a wickless HA
 candle closing past the previous HA high / low) the same way, SL trailed to the previous HA
@@ -505,6 +506,9 @@ def enter_index_signals(files: Files, account: dict, seen: dict, now: datetime, 
         record_seen(seen, [signal], None, now)
         if ha_index.htf_side(bars, fs.IST, int(now.timestamp())) != side:
             mark(seen, [signal], f"Previous 4H HA candle not solid {'green' if side == 'BUY' else 'red'}")
+            continue
+        if not ha_index.candle_agrees(rows[-1], side):
+            mark(seen, [signal], f"Normal 15m candle not {'green' if side == 'BUY' else 'red'}")
             continue
         if not trading:
             mark(seen, [signal], "Not traded: switch off, page closed")
