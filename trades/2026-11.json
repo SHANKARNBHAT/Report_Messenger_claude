@@ -116436,5 +116436,116 @@
   "gross": -405.0,
   "charges": 490.57,
   "net": -895.57
+ },
+ {
+  "id": "1795074699148-4054",
+  "symbol": "ASHOKLEY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 5000,
+  "entry": 166.3,
+  "exit": 166.75,
+  "entry_time": 1795074699148,
+  "exit_time": 1795080300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 165.95,
+  "tp": null,
+  "high": 167.35,
+  "low": 166.22,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 166.26
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2250.0,
+  "charges": 516.66,
+  "net": 1733.34
+ },
+ {
+  "id": "1795074699148-4105",
+  "symbol": "KOTAKBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2000,
+  "entry": 499.3,
+  "exit": 500.0,
+  "entry_time": 1795074699148,
+  "exit_time": 1795080300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 498.35,
+  "tp": null,
+  "high": 502.9,
+  "low": 498.95,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 499.95
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1400.0,
+  "charges": 610.33,
+  "net": 789.67
+ },
+ {
+  "id": "1795074933104-4154",
+  "symbol": "ABCAPITAL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3100,
+  "entry": 415.25,
+  "exit": 415.75,
+  "entry_time": 1795074933104,
+  "exit_time": 1795080300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 414.5,
+  "tp": null,
+  "high": 417.1,
+  "low": 415,
+  "nifty": 0.54,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074933104,
+   "price": 415.65
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1550.0,
+  "charges": 772.99,
+  "net": 777.01
  }
 ]
