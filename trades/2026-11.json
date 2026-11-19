@@ -110062,5 +110062,79 @@
   "gross": -7920.0,
   "charges": 337.75,
   "net": -8257.75
+ },
+ {
+  "id": "1794887738404-2699",
+  "symbol": "PFC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1300,
+  "entry": 329.3,
+  "exit": 330.0,
+  "entry_time": 1794887738404,
+  "exit_time": 1795065600000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 333.8,
+  "tp": null,
+  "high": 330.65,
+  "low": 319.8,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 329.25
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -910.0,
+  "charges": 288.33,
+  "net": -1198.33
+ },
+ {
+  "id": "1794891945765-2837",
+  "symbol": "APLAPOLLO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2207.8,
+  "exit": 2178.65,
+  "entry_time": 1794891945765,
+  "exit_time": 1795060800000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 2257.8,
+  "tp": null,
+  "high": 2216.0,
+  "low": 2150.0,
+  "nifty": 0.34,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794891945765,
+   "price": 2203.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 10202.5,
+  "charges": 481.97,
+  "net": 9720.53
  }
 ]
