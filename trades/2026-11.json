@@ -115175,5 +115175,79 @@
   "gross": 49096.25,
   "charges": 381.04,
   "net": 48715.21
+ },
+ {
+  "id": "1795074699148-4059",
+  "symbol": "BAJAJFINSV",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 300,
+  "entry": 1880.2,
+  "exit": 1879.1,
+  "entry_time": 1795074699148,
+  "exit_time": 1795078200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1875.0,
+  "tp": null,
+  "high": 1886.5,
+  "low": 1878.3,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 1880.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -330.0,
+  "charges": 364.7,
+  "net": -694.7
+ },
+ {
+  "id": "1795074699148-4082",
+  "symbol": "DRREDDY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1390.1,
+  "exit": 1387.5,
+  "entry_time": 1795074699148,
+  "exit_time": 1795078500000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1393.1,
+  "tp": null,
+  "high": 1391.6,
+  "low": 1383.8,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 1390.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1625.0,
+  "charges": 536.44,
+  "net": 1088.56
  }
 ]
