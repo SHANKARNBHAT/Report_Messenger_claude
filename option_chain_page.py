@@ -139,7 +139,7 @@ def chain_view() -> None:
     styled = (table.style.apply(shade, axis=1)
               .map(updown, subset=["CE OI chg (L)", "CE Chg", "PE Chg", "PE OI chg (L)"])
               .format(precision=2, na_rep="–"))
-    st.dataframe(styled, hide_index=True, width="stretch", height=min(38 * (len(table) + 1), 900))
+    st.dataframe(styled, hide_index=True, width="stretch", height=min(35 * (len(table) + 1) + 3, 900))
     st.caption(f"Dhan, {at} IST · expiry {expiry} · shaded: in the money · highlighted: ATM · OI and volume in lakh.")
 
     st.subheader("ATM CE / PE on 15-minute Heikin Ashi")
