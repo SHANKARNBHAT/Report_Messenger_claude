@@ -111101,5 +111101,42 @@
   "gross": -6592.0,
   "charges": 395.69,
   "net": -6987.69
+ },
+ {
+  "id": "1794903646591-3424",
+  "symbol": "POLYCAB",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 7767.0,
+  "exit": 7438.75,
+  "entry_time": 1794903646591,
+  "exit_time": 1795069800000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 7855.55,
+  "tp": null,
+  "high": 7795,
+  "low": 7238,
+  "nifty": 1.17,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794903646591,
+   "price": 7786.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 41031.25,
+  "charges": 592.28,
+  "net": 40438.97
  }
 ]
