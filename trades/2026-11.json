@@ -116696,5 +116696,42 @@
   "gross": -4320.0,
   "charges": 290.45,
   "net": -4610.45
+ },
+ {
+  "id": "1795074699148-4100",
+  "symbol": "INDIGO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 5477.1,
+  "exit": 5471.0,
+  "entry_time": 1795074699148,
+  "exit_time": 1795080900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 5550.0,
+  "tp": null,
+  "high": 5494.9,
+  "low": 5451,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 5482.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 915.0,
+  "charges": 509.86,
+  "net": 405.14
  }
 ]
