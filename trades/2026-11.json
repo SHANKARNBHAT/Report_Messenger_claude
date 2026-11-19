@@ -111323,5 +111323,42 @@
   "gross": 18477.5,
   "charges": 349.74,
   "net": 18127.76
+ },
+ {
+  "id": "1794896443351-3127",
+  "symbol": "SAGILITY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 12000,
+  "entry": 44.1,
+  "exit": 44.6,
+  "entry_time": 1794896443351,
+  "exit_time": 1795070700000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 43.4,
+  "tp": null,
+  "high": 45.5,
+  "low": 43.77,
+  "nifty": 0.63,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794896443351,
+   "price": 44.06
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 6000.0,
+  "charges": 348.37,
+  "net": 5651.63
  }
 ]
