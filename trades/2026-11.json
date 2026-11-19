@@ -107500,5 +107500,42 @@
   "gross": 11800.0,
   "charges": 312.08,
   "net": 11487.92
+ },
+ {
+  "id": "1794801047178-1699",
+  "symbol": "COLPAL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1710.9,
+  "exit": 1736.55,
+  "entry_time": 1794801047178,
+  "exit_time": 1795061400000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1736.55,
+  "tp": 1659.55,
+  "high": 1736.55,
+  "low": 1680.8,
+  "nifty": 0.43,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794801047178,
+   "price": 1710.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -7053.75,
+  "charges": 312.47,
+  "net": -7366.22
  }
 ]
