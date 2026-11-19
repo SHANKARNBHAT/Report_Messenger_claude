@@ -114322,5 +114322,301 @@
   "gross": -2575.0,
   "charges": 384.38,
   "net": -2959.38
+ },
+ {
+  "id": "1795074699148-4068",
+  "symbol": "BRITANNIA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4879.3,
+  "exit": 4885.0,
+  "entry_time": 1795074699148,
+  "exit_time": 1795077300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 4856.8,
+  "tp": null,
+  "high": 4905,
+  "low": 4879.3,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795060537156,
+   "price": 4703.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 712.5,
+  "charges": 391.07,
+  "net": 321.43
+ },
+ {
+  "id": "1795074699148-4111",
+  "symbol": "MAXHEALTH",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 525,
+  "entry": 1036.15,
+  "exit": 1034.05,
+  "entry_time": 1795074699148,
+  "exit_time": 1795077300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1030.25,
+  "tp": null,
+  "high": 1039.75,
+  "low": 1034.05,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 1037.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1102.5,
+  "charges": 352.99,
+  "net": -1455.49
+ },
+ {
+  "id": "1795059941932-3765",
+  "symbol": "SWIGGY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1825,
+  "entry": 180.5,
+  "exit": 183.2,
+  "entry_time": 1795059941932,
+  "exit_time": 1795077300000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 183.2,
+  "tp": 175.1,
+  "high": 183.2,
+  "low": 177.5,
+  "nifty": -0.14,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 180.49
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -4927.5,
+  "charges": 232.93,
+  "net": -5160.43
+ },
+ {
+  "id": "1795059941932-3766",
+  "symbol": "SWIGGY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1825,
+  "entry": 180.5,
+  "exit": 183.2,
+  "entry_time": 1795059941932,
+  "exit_time": 1795077300000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 183.2,
+  "tp": null,
+  "high": 183.2,
+  "low": 177.5,
+  "nifty": -0.14,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 180.49
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -4927.5,
+  "charges": 232.93,
+  "net": -5160.43
+ },
+ {
+  "id": "1795059941932-3767",
+  "symbol": "SWIGGY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1825,
+  "entry": 180.5,
+  "exit": 183.2,
+  "entry_time": 1795059941932,
+  "exit_time": 1795077300000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 183.2,
+  "tp": null,
+  "high": 183.2,
+  "low": 177.5,
+  "nifty": -0.14,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 180.49
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -4927.5,
+  "charges": 232.93,
+  "net": -5160.43
+ },
+ {
+  "id": "1795076203247-4164",
+  "symbol": "TITAN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4669.0,
+  "exit": 4660.3,
+  "entry_time": 1795076203247,
+  "exit_time": 1795077900000,
+  "reason": "30m RSI SMA 23.0 < 40",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 4598.95,
+  "tp": 4809.05,
+  "high": 4669.0,
+  "low": 4656.9,
+  "nifty": 0.01,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795076203247,
+   "price": 4669.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -1522.5,
+  "charges": 506.57,
+  "net": -2029.07
+ },
+ {
+  "id": "1795076203247-4165",
+  "symbol": "TITAN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4669.0,
+  "exit": 4660.3,
+  "entry_time": 1795076203247,
+  "exit_time": 1795077900000,
+  "reason": "30m RSI SMA 23.0 < 40",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 4598.95,
+  "tp": null,
+  "high": 4669.0,
+  "low": 4656.9,
+  "nifty": 0.01,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795076203247,
+   "price": 4669.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -1522.5,
+  "charges": 506.57,
+  "net": -2029.07
+ },
+ {
+  "id": "1795076203247-4166",
+  "symbol": "TITAN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4669.0,
+  "exit": 4660.3,
+  "entry_time": 1795076203247,
+  "exit_time": 1795077900000,
+  "reason": "30m RSI SMA 23.0 < 40",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 4598.95,
+  "tp": null,
+  "high": 4669.0,
+  "low": 4656.9,
+  "nifty": 0.01,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795076203247,
+   "price": 4669.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -1522.5,
+  "charges": 506.57,
+  "net": -2029.07
  }
 ]
