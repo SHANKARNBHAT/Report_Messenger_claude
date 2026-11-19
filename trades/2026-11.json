@@ -108876,5 +108876,42 @@
   "gross": -1155.0,
   "charges": 476.27,
   "net": -1631.27
+ },
+ {
+  "id": "1795060537156-3796",
+  "symbol": "TORNTPHARM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4604.2,
+  "exit": 4613.1,
+  "entry_time": 1795060537156,
+  "exit_time": 1795063200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 4651.8,
+  "tp": null,
+  "high": 4613.1,
+  "low": 4592.6,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795060537156,
+   "price": 4611.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1112.5,
+  "charges": 371.38,
+  "net": -1483.88
  }
 ]
