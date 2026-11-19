@@ -108134,5 +108134,116 @@
   "gross": 1200.0,
   "charges": 352.96,
   "net": 847.04
+ },
+ {
+  "id": "1795060537156-3780",
+  "symbol": "HCLTECH",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1328.8,
+  "exit": 1324.0,
+  "entry_time": 1795060537156,
+  "exit_time": 1795062000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1350.7,
+  "tp": null,
+  "high": 1328.8,
+  "low": 1317.6,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795060537156,
+   "price": 1321.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1920.0,
+  "charges": 346.47,
+  "net": 1573.53
+ },
+ {
+  "id": "1795061137748-3831",
+  "symbol": "INDUSTOWER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1700,
+  "entry": 387.7,
+  "exit": 389.35,
+  "entry_time": 1795061137748,
+  "exit_time": 1795062000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 392.0,
+  "tp": null,
+  "high": 389.35,
+  "low": 387.3,
+  "nifty": -0.21,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795061137748,
+   "price": 388.55
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2805.0,
+  "charges": 418.51,
+  "net": -3223.51
+ },
+ {
+  "id": "1794888638113-2760",
+  "symbol": "KAYNES",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 2927.9,
+  "exit": 2916.8,
+  "entry_time": 1794888638113,
+  "exit_time": 1795061400000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 3101.7,
+  "tp": null,
+  "high": 2949.6,
+  "low": 2850.1,
+  "nifty": 0.2,
+  "strategies": [
+   "4H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794888638113,
+   "price": 2940.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1665.0,
+  "charges": 294.47,
+  "net": 1370.53
  }
 ]
