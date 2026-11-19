@@ -110767,5 +110767,228 @@
   "gross": 19306.25,
   "charges": 318.49,
   "net": 18987.76
+ },
+ {
+  "id": "1794887738404-2623",
+  "symbol": "KEI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 3992.2,
+  "exit": 3790.0,
+  "entry_time": 1794887738404,
+  "exit_time": 1795068600000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 4034.2,
+  "tp": null,
+  "high": 3992.2,
+  "low": 3657.8,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 3975.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 35385.0,
+  "charges": 439.19,
+  "net": 34945.81
+ },
+ {
+  "id": "1794903646591-3422",
+  "symbol": "HAL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 4742.6,
+  "exit": 4738.0,
+  "entry_time": 1794903646591,
+  "exit_time": 1795068300000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 4777.2,
+  "tp": null,
+  "high": 4768.6,
+  "low": 4644.1,
+  "nifty": 1.17,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794903646591,
+   "price": 4743.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 690.0,
+  "charges": 447.82,
+  "net": 242.18
+ },
+ {
+  "id": "1795060200000-3816",
+  "symbol": "TATAELXSI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 3678.45,
+  "exit": 3715.25,
+  "entry_time": 1795060200000,
+  "exit_time": 1795068300000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 3715.25,
+  "tp": null,
+  "high": 3715.25,
+  "low": 3642.1,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 3664.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4600.0,
+  "charges": 306.35,
+  "net": -4906.35
+ },
+ {
+  "id": "1795068400920-3980",
+  "symbol": "BHEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2625,
+  "entry": 429.25,
+  "exit": 429.5,
+  "entry_time": 1795068400920,
+  "exit_time": 1795068900000,
+  "reason": "30m RSI SMA 38.3 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 419.0,
+  "tp": 442.15,
+  "high": 429.5,
+  "low": 429.25,
+  "nifty": 0.41,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795068400920,
+   "price": 429.25
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 656.25,
+  "charges": 682.13,
+  "net": -25.88
+ },
+ {
+  "id": "1795068400920-3981",
+  "symbol": "BHEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2625,
+  "entry": 429.25,
+  "exit": 429.5,
+  "entry_time": 1795068400920,
+  "exit_time": 1795068900000,
+  "reason": "30m RSI SMA 38.3 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 419.0,
+  "tp": null,
+  "high": 429.5,
+  "low": 429.25,
+  "nifty": 0.41,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795068400920,
+   "price": 429.25
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 656.25,
+  "charges": 682.13,
+  "net": -25.88
+ },
+ {
+  "id": "1795068400920-3982",
+  "symbol": "BHEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2625,
+  "entry": 429.25,
+  "exit": 429.5,
+  "entry_time": 1795068400920,
+  "exit_time": 1795068900000,
+  "reason": "30m RSI SMA 38.3 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 419.0,
+  "tp": null,
+  "high": 429.5,
+  "low": 429.25,
+  "nifty": 0.41,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795068400920,
+   "price": 429.25
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 656.25,
+  "charges": 682.13,
+  "net": -25.88
  }
 ]
