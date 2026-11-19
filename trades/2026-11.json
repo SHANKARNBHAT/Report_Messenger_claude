@@ -114285,5 +114285,42 @@
   "gross": 8100.0,
   "charges": 350.38,
   "net": 7749.62
+ },
+ {
+  "id": "1795074699148-4045",
+  "symbol": "360ONE",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1197.0,
+  "exit": 1202.15,
+  "entry_time": 1795074699148,
+  "exit_time": 1795077300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1205.85,
+  "tp": null,
+  "high": 1202.15,
+  "low": 1197.0,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 1199.65
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2575.0,
+  "charges": 384.38,
+  "net": -2959.38
  }
 ]
