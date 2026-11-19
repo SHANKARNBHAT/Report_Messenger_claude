@@ -110693,5 +110693,79 @@
   "gross": -9193.75,
   "charges": 565.45,
   "net": -9759.2
+ },
+ {
+  "id": "1794905445204-3443",
+  "symbol": "ICICIGI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1688.0,
+  "exit": 1681.0,
+  "entry_time": 1794905445204,
+  "exit_time": 1795068000000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1697.5,
+  "tp": null,
+  "high": 1694.7,
+  "low": 1645.2,
+  "nifty": 1.2,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794905445204,
+   "price": 1688.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2275.0,
+  "charges": 356.07,
+  "net": 1918.93
+ },
+ {
+  "id": "1794455145928-1237",
+  "symbol": "TATAELXSI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 3865.0,
+  "exit": 3710.55,
+  "entry_time": 1794455145928,
+  "exit_time": 1795068300000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 3906.15,
+  "tp": 3749.05,
+  "high": 3899.3,
+  "low": 3642.1,
+  "nifty": -0.11,
+  "strategies": [
+   "2H HA Bearish scan"
+  ],
+  "first_seen": {
+   "time": 1794455145928,
+   "price": 3865.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 60.66,
+  "gross": 19306.25,
+  "charges": 318.49,
+  "net": 18987.76
  }
 ]
