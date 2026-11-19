@@ -111546,5 +111546,43 @@
   "gross": -8372.5,
   "charges": 519.22,
   "net": -8891.72
+ },
+ {
+  "id": "1795061700000-3852",
+  "symbol": "HINDALCO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 700,
+  "entry": 903.45,
+  "exit": 899.4,
+  "entry_time": 1795061700000,
+  "exit_time": 1795073100000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 912.5,
+  "tp": null,
+  "high": 906.65,
+  "low": 893.85,
+  "nifty": 0.04,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 881.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2835.0,
+  "charges": 403.25,
+  "net": 2431.75
  }
 ]
