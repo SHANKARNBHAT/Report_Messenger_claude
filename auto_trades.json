@@ -18957,10 +18957,122 @@
     "time": 1795064459567,
     "price": 2339.1
    }
+  },
+  {
+   "id": "1795064512372-3928",
+   "symbol": "HAVELLS",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 500,
+   "entry": 1171.1,
+   "sl": 1134.8,
+   "tp": 1206.25,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 17.55,
+    "step": 5.85
+   },
+   "style": "trail",
+   "system": "RSI 4H",
+   "stop": 1134.8,
+   "time": 1795064512372,
+   "status": "open",
+   "passed": false,
+   "high": 1171.1,
+   "low": 1171.1,
+   "nifty": 0.09,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795064512372,
+    "price": 1171.1
+   }
+  },
+  {
+   "id": "1795064512372-3929",
+   "symbol": "HAVELLS",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 500,
+   "entry": 1171.1,
+   "sl": 1134.8,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma8",
+   "system": "RSI 4H",
+   "stop": 1134.8,
+   "time": 1795064512372,
+   "status": "open",
+   "passed": false,
+   "high": 1171.1,
+   "low": 1171.1,
+   "nifty": 0.09,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795064512372,
+    "price": 1171.1
+   }
+  },
+  {
+   "id": "1795064512372-3930",
+   "symbol": "HAVELLS",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 500,
+   "entry": 1171.1,
+   "sl": 1134.8,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma20",
+   "system": "RSI 4H",
+   "stop": 1134.8,
+   "time": 1795064512372,
+   "status": "open",
+   "passed": false,
+   "high": 1171.1,
+   "low": 1171.1,
+   "nifty": 0.09,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795064512372,
+    "price": 1171.1
+   }
   }
  ],
- "seq": 3927,
+ "seq": 3930,
  "log": [
+  "19 Nov 10:31  HAVELLS: RSI 4H BUY 500 at 1171.1, SL 1134.8 (4 HOUR; trail, sma8, sma20)",
   "19 Nov 10:30  MPHASIS: RSI 4H SELL 275 at 2339.1, SL 2399.3 (4 HOUR; trail, sma8, sma20)",
   "19 Nov 10:30  MOTHERSON: RSI 4H BUY 6150 at 163.1, SL 156.75 (4 HOUR; trail, sma8, sma20)",
   "19 Nov 10:30  EICHERMOT: RSI 4H BUY 100 at 7912.5, SL 7670.5 (4 HOUR; trail, sma8, sma20)",
@@ -19259,11 +19371,10 @@
   "18 Nov 14:40  MARICO: RSI BUY 1200 at 911.2, SL 897.55 (2 HOUR; sma8)",
   "18 Nov 14:40  CAMS: Stop loss at 720.25 (Hold \u00b7 2H SMA 20 exit)",
   "18 Nov 14:40  CAMS: Stop loss at 720.25 (Hold \u00b7 2H SMA 8 exit)",
-  "18 Nov 14:40  CAMS: Stop loss at 720.25 (Hold \u00b7 trail)",
-  "18 Nov 14:35  POWERINDIA: HA candle trail at 30860.0 (HA BRK 4H)"
+  "18 Nov 14:40  CAMS: Stop loss at 720.25 (Hold \u00b7 trail)"
  ],
- "page_run": 1795064459567,
- "updated": 1795064459567,
+ "page_run": 1795064512372,
+ "updated": 1795064512372,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
