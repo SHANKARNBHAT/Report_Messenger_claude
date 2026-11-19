@@ -111286,5 +111286,42 @@
   "gross": -750.0,
   "charges": 511.44,
   "net": -1261.44
+ },
+ {
+  "id": "1795060537156-3790",
+  "symbol": "PGEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 950,
+  "entry": 547.45,
+  "exit": 566.9,
+  "entry_time": 1795060537156,
+  "exit_time": 1795070400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 533.6,
+  "tp": null,
+  "high": 576.5,
+  "low": 547.45,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795060537156,
+   "price": 561.85
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 18477.5,
+  "charges": 349.74,
+  "net": 18127.76
  }
 ]
