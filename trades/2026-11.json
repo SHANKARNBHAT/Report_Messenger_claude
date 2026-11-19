@@ -111064,5 +111064,42 @@
   "gross": 12397.5,
   "charges": 333.93,
   "net": 12063.57
+ },
+ {
+  "id": "1794902143717-3393",
+  "symbol": "PAGEIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 20,
+  "entry": 30915.0,
+  "exit": 31244.6,
+  "entry_time": 1794902143717,
+  "exit_time": 1795068900000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 31519.25,
+  "tp": null,
+  "high": 31244.62,
+  "low": 30485,
+  "nifty": 0.34,
+  "strategies": [
+   "4H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 30900.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6592.0,
+  "charges": 395.69,
+  "net": -6987.69
  }
 ]
