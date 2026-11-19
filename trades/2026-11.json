@@ -116103,5 +116103,116 @@
   "gross": 2835.0,
   "charges": 310.44,
   "net": 2524.56
+ },
+ {
+  "id": "1795074699148-4062",
+  "symbol": "BANKNIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 62621.4,
+  "exit": 62869.45,
+  "entry_time": 1795074699148,
+  "exit_time": 1795079700000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 62572.85,
+  "tp": null,
+  "high": 62984.6,
+  "low": 62619.65,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 62635.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 7441.5,
+  "charges": 1109.11,
+  "net": 6332.39
+ },
+ {
+  "id": "1795074699148-4086",
+  "symbol": "GMRAIRPORT",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6975,
+  "entry": 103.35,
+  "exit": 103.45,
+  "entry_time": 1795074699148,
+  "exit_time": 1795079700000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 103.6,
+  "tp": null,
+  "high": 103.51,
+  "low": 103.28,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 103.37
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -697.5,
+  "charges": 453.21,
+  "net": -1150.71
+ },
+ {
+  "id": "1795074699148-4128",
+  "symbol": "PRESTIGE",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 450,
+  "entry": 1658.5,
+  "exit": 1657.5,
+  "entry_time": 1795074699148,
+  "exit_time": 1795079700000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1662.5,
+  "tp": null,
+  "high": 1659.9,
+  "low": 1653.2,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 1656.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 450.0,
+  "charges": 467.5,
+  "net": -17.5
  }
 ]
