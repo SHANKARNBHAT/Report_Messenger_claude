@@ -111508,5 +111508,43 @@
   "gross": 11942.5,
   "charges": 436.73,
   "net": 11505.77
+ },
+ {
+  "id": "1795060200000-3808",
+  "symbol": "LUPIN",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 425,
+  "entry": 1970.6,
+  "exit": 1990.3,
+  "entry_time": 1795060200000,
+  "exit_time": 1795071900000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 1990.3,
+  "tp": null,
+  "high": 1990.3,
+  "low": 1956.4,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 1977.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -8372.5,
+  "charges": 519.22,
+  "net": -8891.72
  }
 ]
