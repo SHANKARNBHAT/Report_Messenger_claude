@@ -111732,5 +111732,79 @@
   "gross": -14950.0,
   "charges": 328.97,
   "net": -15278.97
+ },
+ {
+  "id": "1794887738404-2652",
+  "symbol": "ADANIENSOL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 675,
+  "entry": 1457.7,
+  "exit": 1470.1,
+  "entry_time": 1794887738404,
+  "exit_time": 1795074300000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1438.05,
+  "tp": null,
+  "high": 1515,
+  "low": 1454,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 1465.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 8370.0,
+  "charges": 605.71,
+  "net": 7764.29
+ },
+ {
+  "id": "1794893739893-2874",
+  "symbol": "COALINDIA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1350,
+  "entry": 391.7,
+  "exit": 391.45,
+  "entry_time": 1794893739893,
+  "exit_time": 1795074300000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 400.4,
+  "tp": null,
+  "high": 393.2,
+  "low": 386.55,
+  "nifty": 0.49,
+  "strategies": [
+   "4H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794893739893,
+   "price": 390.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 337.5,
+  "charges": 345.0,
+  "net": -7.5
  }
 ]
