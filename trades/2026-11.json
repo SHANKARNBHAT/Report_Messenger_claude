@@ -116547,5 +116547,116 @@
   "gross": 1550.0,
   "charges": 772.99,
   "net": 777.01
+ },
+ {
+  "id": "1795074699148-4069",
+  "symbol": "CANBK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6750,
+  "entry": 135.4,
+  "exit": 135.95,
+  "entry_time": 1795074699148,
+  "exit_time": 1795080600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 135.25,
+  "tp": null,
+  "high": 136.6,
+  "low": 135.35,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 135.39
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 3712.5,
+  "charges": 563.86,
+  "net": 3148.64
+ },
+ {
+  "id": "1795074699148-4118",
+  "symbol": "NTPC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1500,
+  "entry": 321.35,
+  "exit": 323.75,
+  "entry_time": 1795074699148,
+  "exit_time": 1795080600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 320.85,
+  "tp": null,
+  "high": 324.5,
+  "low": 321,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 321.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 3600.0,
+  "charges": 320.55,
+  "net": 3279.45
+ },
+ {
+  "id": "1795078242922-4181",
+  "symbol": "LODHA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1194.5,
+  "exit": 1191.0,
+  "entry_time": 1795078242922,
+  "exit_time": 1795080600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1200.0,
+  "tp": null,
+  "high": 1194.5,
+  "low": 1184.9,
+  "nifty": 0.2,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795060537156,
+   "price": 1195.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2187.5,
+  "charges": 467.56,
+  "net": 1719.94
  }
 ]
