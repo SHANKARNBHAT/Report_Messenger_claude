@@ -111584,5 +111584,42 @@
   "gross": 2835.0,
   "charges": 403.25,
   "net": 2431.75
+ },
+ {
+  "id": "1795060537156-3775",
+  "symbol": "BRITANNIA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4709.6,
+  "exit": 4875.0,
+  "entry_time": 1795060537156,
+  "exit_time": 1795074300000,
+  "reason": "HA doji",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 4685.6,
+  "tp": null,
+  "high": 4880,
+  "low": 4691.8,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795060537156,
+   "price": 4703.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 20675.0,
+  "charges": 389.53,
+  "net": 20285.47
  }
 ]
