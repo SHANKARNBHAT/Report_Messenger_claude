@@ -116955,5 +116955,192 @@
   "gross": 250.0,
   "charges": 461.06,
   "net": -211.06
+ },
+ {
+  "id": "1795074699148-4137",
+  "symbol": "SOLARINDS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 50,
+  "entry": 18825.0,
+  "exit": 18875.0,
+  "entry_time": 1795074699148,
+  "exit_time": 1795081200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 18770.0,
+  "tp": null,
+  "high": 18928,
+  "low": 18825.0,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 18842.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2500.0,
+  "charges": 578.6,
+  "net": 1921.4
+ },
+ {
+  "id": "1794895540666-3118",
+  "symbol": "KALYANKJIL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1350,
+  "entry": 682.35,
+  "exit": 658.75,
+  "entry_time": 1794895540666,
+  "exit_time": 1795081200000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 702.45,
+  "tp": null,
+  "high": 687.45,
+  "low": 638.6,
+  "nifty": 0.61,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794895540666,
+   "price": 681.75
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 31860.0,
+  "charges": 564.67,
+  "net": 31295.33
+ },
+ {
+  "id": "1794903046526-3413",
+  "symbol": "KPITTECH",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 775,
+  "entry": 532.0,
+  "exit": 523.8,
+  "entry_time": 1794903046526,
+  "exit_time": 1795081200000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 538.3,
+  "tp": null,
+  "high": 533.9,
+  "low": 512.05,
+  "nifty": 1.07,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794903046526,
+   "price": 532.75
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 6355.0,
+  "charges": 279.14,
+  "net": 6075.86
+ },
+ {
+  "id": "1795073100000-4032",
+  "symbol": "KPITTECH",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 775,
+  "entry": 519.15,
+  "exit": 524.35,
+  "entry_time": 1795073100000,
+  "exit_time": 1795081200000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 524.35,
+  "tp": null,
+  "high": 524.35,
+  "low": 518.75,
+  "nifty": 0.57,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 518.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4030.0,
+  "charges": 273.96,
+  "net": -4303.96
+ },
+ {
+  "id": "1795078200000-4185",
+  "symbol": "NATIONALUM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1875,
+  "entry": 302.85,
+  "exit": 305.9,
+  "entry_time": 1795078200000,
+  "exit_time": 1795081200000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 305.9,
+  "tp": null,
+  "high": 305.9,
+  "low": 302.2,
+  "nifty": 0.23,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 298.85
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5718.75,
+  "charges": 367.24,
+  "net": -6085.99
  }
 ]
