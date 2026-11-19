@@ -111621,5 +111621,116 @@
   "gross": 20675.0,
   "charges": 389.53,
   "net": 20285.47
+ },
+ {
+  "id": "1794982244419-3601",
+  "symbol": "NBCC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6500,
+  "entry": 76.8,
+  "exit": 79.1,
+  "entry_time": 1794982244419,
+  "exit_time": 1795074300000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 79.1,
+  "tp": 74.5,
+  "high": 79.1,
+  "low": 76.8,
+  "nifty": -0.53,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794982244419,
+   "price": 76.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -14950.0,
+  "charges": 328.97,
+  "net": -15278.97
+ },
+ {
+  "id": "1794982244419-3602",
+  "symbol": "NBCC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6500,
+  "entry": 76.8,
+  "exit": 79.1,
+  "entry_time": 1794982244419,
+  "exit_time": 1795074300000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 79.1,
+  "tp": null,
+  "high": 79.1,
+  "low": 76.8,
+  "nifty": -0.53,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794982244419,
+   "price": 76.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -14950.0,
+  "charges": 328.97,
+  "net": -15278.97
+ },
+ {
+  "id": "1794982244419-3603",
+  "symbol": "NBCC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6500,
+  "entry": 76.8,
+  "exit": 79.1,
+  "entry_time": 1794982244419,
+  "exit_time": 1795074300000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 79.1,
+  "tp": null,
+  "high": 79.1,
+  "low": 76.8,
+  "nifty": -0.53,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794982244419,
+   "price": 76.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -14950.0,
+  "charges": 328.97,
+  "net": -15278.97
  }
 ]
