@@ -110173,5 +110173,191 @@
   "gross": 9450.0,
   "charges": 314.55,
   "net": 9135.45
+ },
+ {
+  "id": "1794887738404-2644",
+  "symbol": "TATASTEEL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2750,
+  "entry": 181.75,
+  "exit": 181.4,
+  "entry_time": 1794887738404,
+  "exit_time": 1795066200000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 183.6,
+  "tp": null,
+  "high": 183.22,
+  "low": 177.17,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 182.15
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 962.5,
+  "charges": 328.65,
+  "net": 633.85
+ },
+ {
+  "id": "1795061100000-3832",
+  "symbol": "SUZLON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 12700,
+  "entry": 36.35,
+  "exit": 36.7,
+  "entry_time": 1795061100000,
+  "exit_time": 1795066200000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 36.7,
+  "tp": null,
+  "high": 36.7,
+  "low": 36.26,
+  "nifty": -0.21,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 36.05
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4445.0,
+  "charges": 307.38,
+  "net": -4752.38
+ },
+ {
+  "id": "1795059941932-3762",
+  "symbol": "SUZLON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 12700,
+  "entry": 36.15,
+  "exit": 36.7,
+  "entry_time": 1795059941932,
+  "exit_time": 1795066200000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 36.7,
+  "tp": 35.05,
+  "high": 36.7,
+  "low": 36.05,
+  "nifty": -0.14,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 36.13
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6985.0,
+  "charges": 306.05,
+  "net": -7291.05
+ },
+ {
+  "id": "1795059941932-3763",
+  "symbol": "SUZLON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 12700,
+  "entry": 36.15,
+  "exit": 36.7,
+  "entry_time": 1795059941932,
+  "exit_time": 1795066200000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 36.7,
+  "tp": null,
+  "high": 36.7,
+  "low": 36.05,
+  "nifty": -0.14,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 36.13
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6985.0,
+  "charges": 306.05,
+  "net": -7291.05
+ },
+ {
+  "id": "1795059941932-3764",
+  "symbol": "SUZLON",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 12700,
+  "entry": 36.15,
+  "exit": 36.7,
+  "entry_time": 1795059941932,
+  "exit_time": 1795066200000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 36.7,
+  "tp": null,
+  "high": 36.7,
+  "low": 36.05,
+  "nifty": -0.14,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 36.13
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -6985.0,
+  "charges": 306.05,
+  "net": -7291.05
  }
 ]
