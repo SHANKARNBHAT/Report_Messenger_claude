@@ -109876,5 +109876,43 @@
   "gross": 1750.0,
   "charges": 377.89,
   "net": 1372.11
+ },
+ {
+  "id": "1795062900000-3894",
+  "symbol": "TATAPOWER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1450,
+  "entry": 339.1,
+  "exit": 342.5,
+  "entry_time": 1795062900000,
+  "exit_time": 1795065000000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 342.5,
+  "tp": null,
+  "high": 342.5,
+  "low": 338.25,
+  "nifty": 0.2,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 337.05
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4930.0,
+  "charges": 324.32,
+  "net": -5254.32
  }
 ]
