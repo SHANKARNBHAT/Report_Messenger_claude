@@ -6,6 +6,7 @@ Entry point of the dashboard. A menu at the top switches between:
   * Fundamentals        fundamentals_page.py: stocks institutions are buying (long term)
   * Futures simulator   futures_simulator.py: paper trading of NSE futures and 2H signals
   * Auto trader         auto_trader_page.py: the account auto_trader.py trades on a schedule
+  * Option chain        option_chain_page.py: NIFTY option chain and ATM CE/PE HA from Dhan
 """
 
 import streamlit as st
@@ -103,5 +104,6 @@ pages = [
     st.Page("futures_simulator.py", title="Futures simulator", icon="🧪", url_path="simulator"),
     st.Page("auto_trader_page.py", title="Auto trader", icon="🤖", url_path="auto"),
     st.Page("index_trader_page.py", title="Autotrader NIFTY\\BNF", icon="📈", url_path="auto-index"),
+    st.Page("option_chain_page.py", title="Option chain", icon="🧮", url_path="option-chain"),
 ]
 st.navigation(pages, position="top").run()
