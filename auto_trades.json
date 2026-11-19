@@ -322,12 +322,12 @@
    },
    "style": "trail",
    "system": "HA",
-   "stop": 1742.4,
+   "stop": 1733.3,
    "time": 1794201341716,
    "status": "open",
    "passed": true,
    "high": 1819.0,
-   "low": 1709.0,
+   "low": 1703.1,
    "nifty": -0.49,
    "source": "Auto HA 2H",
    "timeframes": [
@@ -2389,7 +2389,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 97.58,
+   "high": 97.75,
    "low": 91.27,
    "nifty": 0.58,
    "source": "Auto Weekly",
@@ -2425,7 +2425,7 @@
    "time": 1794800741223,
    "status": "open",
    "passed": false,
-   "high": 97.58,
+   "high": 97.75,
    "low": 91.27,
    "nifty": 0.58,
    "source": "Auto Weekly",
@@ -4018,7 +4018,7 @@
    "time": 1794810039591,
    "status": "open",
    "passed": false,
-   "high": 12485.0,
+   "high": 12493.0,
    "low": 12227.0,
    "nifty": 0.29,
    "source": "Auto 4H",
@@ -4054,7 +4054,7 @@
    "time": 1794810039591,
    "status": "open",
    "passed": false,
-   "high": 12485.0,
+   "high": 12493.0,
    "low": 12227.0,
    "nifty": 0.29,
    "source": "Auto 4H",
@@ -4387,7 +4387,7 @@
    "time": 1794813643420,
    "status": "open",
    "passed": false,
-   "high": 12485.0,
+   "high": 12493.0,
    "low": 12227.0,
    "nifty": 0.46,
    "source": "Auto 2H",
@@ -4423,7 +4423,7 @@
    "time": 1794813643420,
    "status": "open",
    "passed": false,
-   "high": 12485.0,
+   "high": 12493.0,
    "low": 12227.0,
    "nifty": 0.46,
    "source": "Auto 2H",
@@ -5584,7 +5584,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 97.58,
+   "high": 97.75,
    "low": 92.3,
    "nifty": 0.12,
    "source": "Auto HA BRK 2H",
@@ -5599,42 +5599,6 @@
    "first_seen": {
     "time": 1794887738404,
     "price": 92.65
-   }
-  },
-  {
-   "id": "1794887738404-2635",
-   "symbol": "PFC",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 1300,
-   "entry": 329.3,
-   "sl": 332.55,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_brk",
-   "system": "HA BRK 2H",
-   "stop": 327.3,
-   "time": 1794887738404,
-   "status": "open",
-   "passed": false,
-   "high": 330.65,
-   "low": 319.8,
-   "nifty": 0.12,
-   "source": "Auto HA BRK 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H HA BRK Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794887738404,
-    "price": 329.25
    }
   },
   {
@@ -6088,7 +6052,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 97.58,
+   "high": 97.75,
    "low": 92.3,
    "nifty": 0.12,
    "source": "Auto HA BRK 4H",
@@ -6592,7 +6556,7 @@
    "time": 1794887738404,
    "status": "open",
    "passed": false,
-   "high": 97.58,
+   "high": 97.75,
    "low": 92.3,
    "nifty": 0.12,
    "source": "Auto HA BRK Daily",
@@ -7252,7 +7216,7 @@
    "time": 1794889848670,
    "status": "open",
    "passed": false,
-   "high": 3452.9,
+   "high": 3465,
    "low": 3331,
    "nifty": 0.31,
    "source": "Auto 2H",
@@ -7288,7 +7252,7 @@
    "time": 1794889848670,
    "status": "open",
    "passed": false,
-   "high": 3452.9,
+   "high": 3465,
    "low": 3331,
    "nifty": 0.31,
    "source": "Auto 2H",
@@ -7324,7 +7288,7 @@
    "time": 1794889848670,
    "status": "open",
    "passed": false,
-   "high": 3452.9,
+   "high": 3465,
    "low": 3331,
    "nifty": 0.31,
    "source": "Auto 2H",
@@ -9205,7 +9169,7 @@
    "time": 1794894053949,
    "status": "open",
    "passed": false,
-   "high": 4088,
+   "high": 4090.6,
    "low": 3965,
    "nifty": 0.55,
    "source": "Auto 4H",
@@ -9241,7 +9205,7 @@
    "time": 1794894053949,
    "status": "open",
    "passed": false,
-   "high": 4088,
+   "high": 4090.6,
    "low": 3965,
    "nifty": 0.55,
    "source": "Auto 4H",
@@ -9974,7 +9938,7 @@
    "status": "open",
    "passed": false,
    "high": 433,
-   "low": 417.3,
+   "low": 417.25,
    "nifty": 0.65,
    "source": "Auto HA BRK 2H",
    "timeframes": [
@@ -10705,7 +10669,7 @@
    "time": 1794902143717,
    "status": "open",
    "passed": false,
-   "high": 4088,
+   "high": 4090.6,
    "low": 3965,
    "nifty": 0.34,
    "source": "Auto Daily",
@@ -10741,7 +10705,7 @@
    "time": 1794902143717,
    "status": "open",
    "passed": false,
-   "high": 4088,
+   "high": 4090.6,
    "low": 3965,
    "nifty": 0.34,
    "source": "Auto Daily",
@@ -10777,7 +10741,7 @@
    "time": 1794902143717,
    "status": "open",
    "passed": false,
-   "high": 4088,
+   "high": 4090.6,
    "low": 3965,
    "nifty": 0.34,
    "source": "Auto Daily",
@@ -11116,42 +11080,6 @@
    "first_seen": {
     "time": 1794903646591,
     "price": 7786.5
-   }
-  },
-  {
-   "id": "1794903646591-3425",
-   "symbol": "ASHOKLEY",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 5000,
-   "entry": 164.6,
-   "sl": 168.9,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_brk",
-   "system": "HA BRK 4H",
-   "stop": 166.2,
-   "time": 1794903646591,
-   "status": "open",
-   "passed": false,
-   "high": 165.8,
-   "low": 156.16,
-   "nifty": 1.17,
-   "source": "Auto HA BRK 4H",
-   "timeframes": [
-    "4 HOUR"
-   ],
-   "strategies": [
-    "4H HA BRK Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794903646591,
-    "price": 164.64
    }
   },
   {
@@ -12424,7 +12352,7 @@
    "time": 1794977137710,
    "status": "open",
    "passed": false,
-   "high": 418,
+   "high": 418.2,
    "low": 407.5,
    "nifty": -0.46,
    "source": "Auto Weekly",
@@ -12460,7 +12388,7 @@
    "time": 1794977137710,
    "status": "open",
    "passed": false,
-   "high": 418,
+   "high": 418.2,
    "low": 407.5,
    "nifty": -0.46,
    "source": "Auto Weekly",
@@ -12496,7 +12424,7 @@
    "time": 1794977137710,
    "status": "open",
    "passed": false,
-   "high": 418,
+   "high": 418.2,
    "low": 407.5,
    "nifty": -0.46,
    "source": "Auto Weekly",
@@ -14050,7 +13978,7 @@
    "time": 1794985849672,
    "status": "open",
    "passed": false,
-   "high": 567.75,
+   "high": 568.85,
    "low": 558.2,
    "nifty": -0.75,
    "source": "Auto Weekly",
@@ -14086,7 +14014,7 @@
    "time": 1794985849672,
    "status": "open",
    "passed": false,
-   "high": 567.75,
+   "high": 568.85,
    "low": 558.2,
    "nifty": -0.75,
    "source": "Auto Weekly",
@@ -14122,7 +14050,7 @@
    "time": 1794985849672,
    "status": "open",
    "passed": false,
-   "high": 567.75,
+   "high": 568.85,
    "low": 558.2,
    "nifty": -0.75,
    "source": "Auto Weekly",
@@ -14680,7 +14608,7 @@
    "time": 1795059941932,
    "status": "open",
    "passed": false,
-   "high": 418,
+   "high": 418.2,
    "low": 410.25,
    "nifty": -0.14,
    "source": "Auto 2H",
@@ -14716,7 +14644,7 @@
    "time": 1795059941932,
    "status": "open",
    "passed": false,
-   "high": 418,
+   "high": 418.2,
    "low": 410.25,
    "nifty": -0.14,
    "source": "Auto 2H",
@@ -14752,7 +14680,7 @@
    "time": 1795059941932,
    "status": "open",
    "passed": false,
-   "high": 418,
+   "high": 418.2,
    "low": 410.25,
    "nifty": -0.14,
    "source": "Auto 2H",
@@ -15667,7 +15595,7 @@
    "time": 1795060537156,
    "status": "open",
    "passed": false,
-   "high": 570.9,
+   "high": 571,
    "low": 547.45,
    "nifty": -0.29,
    "source": "Auto HA PURE 4H",
@@ -15811,7 +15739,7 @@
    "time": 1795060537156,
    "status": "open",
    "passed": false,
-   "high": 1192.9,
+   "high": 1196.3,
    "low": 1170,
    "nifty": -0.29,
    "source": "Auto HA PURE 4H",
@@ -15961,7 +15889,7 @@
    "time": 1795060200000,
    "status": "open",
    "passed": false,
-   "high": 74.8,
+   "high": 74.84,
    "low": 73.87,
    "nifty": -0.29,
    "source": "Auto HA WK BRK",
@@ -16016,44 +15944,6 @@
    "first_seen": {
     "time": 1795059941932,
     "price": 223.8
-   }
-  },
-  {
-   "id": "1795060200000-3814",
-   "symbol": "RECLTD",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 1575,
-   "entry": 291.0,
-   "sl": 293.9,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_wk",
-   "system": "HA WK BRK",
-   "stop": 293.9,
-   "time": 1795060200000,
-   "status": "open",
-   "passed": false,
-   "high": 293.35,
-   "low": 290.3,
-   "nifty": -0.29,
-   "source": "Auto HA WK BRK",
-   "timeframes": [
-    "WEEKLY",
-    "4 HOUR"
-   ],
-   "strategies": [
-    "4H HA WK BRK Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "level": 293.66,
-   "first_seen": {
-    "time": 1795059941932,
-    "price": 290.95
    }
   },
   {
@@ -16116,7 +16006,7 @@
    "time": 1795060537156,
    "status": "open",
    "passed": false,
-   "high": 1192.9,
+   "high": 1196.3,
    "low": 1170,
    "nifty": -0.29,
    "source": "Auto 2H",
@@ -16152,7 +16042,7 @@
    "time": 1795060537156,
    "status": "open",
    "passed": false,
-   "high": 1192.9,
+   "high": 1196.3,
    "low": 1170,
    "nifty": -0.29,
    "source": "Auto 2H",
@@ -16188,7 +16078,7 @@
    "time": 1795060537156,
    "status": "open",
    "passed": false,
-   "high": 1192.9,
+   "high": 1196.3,
    "low": 1170,
    "nifty": -0.29,
    "source": "Auto 2H",
@@ -16227,7 +16117,7 @@
    "time": 1795060848169,
    "status": "open",
    "passed": false,
-   "high": 570.9,
+   "high": 571,
    "low": 559.25,
    "nifty": -0.38,
    "source": "Auto 2H",
@@ -16263,7 +16153,7 @@
    "time": 1795060848169,
    "status": "open",
    "passed": false,
-   "high": 570.9,
+   "high": 571,
    "low": 559.25,
    "nifty": -0.38,
    "source": "Auto 2H",
@@ -16299,7 +16189,7 @@
    "time": 1795060848169,
    "status": "open",
    "passed": false,
-   "high": 570.9,
+   "high": 571,
    "low": 559.25,
    "nifty": -0.38,
    "source": "Auto 2H",
@@ -16338,7 +16228,7 @@
    "time": 1795060848169,
    "status": "open",
    "passed": false,
-   "high": 570.9,
+   "high": 571,
    "low": 559.25,
    "nifty": -0.38,
    "source": "Auto 4H",
@@ -16374,7 +16264,7 @@
    "time": 1795060848169,
    "status": "open",
    "passed": false,
-   "high": 570.9,
+   "high": 571,
    "low": 559.25,
    "nifty": -0.38,
    "source": "Auto 4H",
@@ -16410,7 +16300,7 @@
    "time": 1795060848169,
    "status": "open",
    "passed": false,
-   "high": 570.9,
+   "high": 571,
    "low": 559.25,
    "nifty": -0.38,
    "source": "Auto 4H",
@@ -16484,7 +16374,7 @@
    "time": 1795061100000,
    "status": "open",
    "passed": false,
-   "high": 2922.9,
+   "high": 2924.3,
    "low": 2899.7,
    "nifty": -0.01,
    "source": "Auto HA WK BRK",
@@ -16747,7 +16637,7 @@
    "time": 1795061440293,
    "status": "open",
    "passed": false,
-   "high": 570.9,
+   "high": 571,
    "low": 559.5,
    "nifty": -0.01,
    "source": "Auto Daily",
@@ -16783,7 +16673,7 @@
    "time": 1795061440293,
    "status": "open",
    "passed": false,
-   "high": 570.9,
+   "high": 571,
    "low": 559.5,
    "nifty": -0.01,
    "source": "Auto Daily",
@@ -16819,7 +16709,7 @@
    "time": 1795061440293,
    "status": "open",
    "passed": false,
-   "high": 570.9,
+   "high": 571,
    "low": 559.5,
    "nifty": -0.01,
    "source": "Auto Daily",
@@ -16935,7 +16825,7 @@
    "status": "open",
    "passed": false,
    "high": 5439.0,
-   "low": 5401.5,
+   "low": 5399.5,
    "nifty": 0.04,
    "source": "Auto 2H",
    "timeframes": [
@@ -16971,7 +16861,7 @@
    "status": "open",
    "passed": false,
    "high": 5439.0,
-   "low": 5401.5,
+   "low": 5399.5,
    "nifty": 0.04,
    "source": "Auto 2H",
    "timeframes": [
@@ -17007,7 +16897,7 @@
    "status": "open",
    "passed": false,
    "high": 5439.0,
-   "low": 5401.5,
+   "low": 5399.5,
    "nifty": 0.04,
    "source": "Auto 2H",
    "timeframes": [
@@ -17195,7 +17085,7 @@
    "status": "open",
    "passed": false,
    "high": 2187.0,
-   "low": 2175.9,
+   "low": 2175.4,
    "nifty": 0.2,
    "source": "Auto 2H",
    "timeframes": [
@@ -17231,7 +17121,7 @@
    "status": "open",
    "passed": false,
    "high": 2187.0,
-   "low": 2175.9,
+   "low": 2175.4,
    "nifty": 0.2,
    "source": "Auto 2H",
    "timeframes": [
@@ -17267,7 +17157,7 @@
    "status": "open",
    "passed": false,
    "high": 2187.0,
-   "low": 2175.9,
+   "low": 2175.4,
    "nifty": 0.2,
    "source": "Auto 2H",
    "timeframes": [
@@ -18469,10 +18359,237 @@
     "time": 1795062656569,
     "price": 13257.0
    }
+  },
+  {
+   "id": "1795062942427-3888",
+   "symbol": "IRFC",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 5425,
+   "entry": 82.95,
+   "sl": 81.0,
+   "tp": 85.45,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 1.25,
+    "step": 0.4
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 81.0,
+   "time": 1795062942427,
+   "status": "open",
+   "passed": false,
+   "high": 82.95,
+   "low": 82.95,
+   "nifty": 0.21,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795062942427,
+    "price": 82.96
+   }
+  },
+  {
+   "id": "1795062942427-3889",
+   "symbol": "IRFC",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 5425,
+   "entry": 82.95,
+   "sl": 81.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma8",
+   "system": "RSI",
+   "stop": 81.0,
+   "time": 1795062942427,
+   "status": "open",
+   "passed": false,
+   "high": 82.95,
+   "low": 82.95,
+   "nifty": 0.21,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795062942427,
+    "price": 82.96
+   }
+  },
+  {
+   "id": "1795062942427-3890",
+   "symbol": "IRFC",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 5425,
+   "entry": 82.95,
+   "sl": 81.0,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma20",
+   "system": "RSI",
+   "stop": 81.0,
+   "time": 1795062942427,
+   "status": "open",
+   "passed": false,
+   "high": 82.95,
+   "low": 82.95,
+   "nifty": 0.21,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795062942427,
+    "price": 82.96
+   }
+  },
+  {
+   "id": "1795062942427-3891",
+   "symbol": "M&M",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 200,
+   "entry": 3469.7,
+   "sl": 3332.9,
+   "tp": 3573.8,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 52.05,
+    "step": 17.35
+   },
+   "style": "trail",
+   "system": "RSI 4H",
+   "stop": 3332.9,
+   "time": 1795062942427,
+   "status": "open",
+   "passed": false,
+   "high": 3469.7,
+   "low": 3469.7,
+   "nifty": 0.21,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795062942427,
+    "price": 3469.7
+   }
+  },
+  {
+   "id": "1795062942427-3892",
+   "symbol": "M&M",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 200,
+   "entry": 3469.7,
+   "sl": 3332.9,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma8",
+   "system": "RSI 4H",
+   "stop": 3332.9,
+   "time": 1795062942427,
+   "status": "open",
+   "passed": false,
+   "high": 3469.7,
+   "low": 3469.7,
+   "nifty": 0.21,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795062942427,
+    "price": 3469.7
+   }
+  },
+  {
+   "id": "1795062942427-3893",
+   "symbol": "M&M",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 200,
+   "entry": 3469.7,
+   "sl": 3332.9,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma20",
+   "system": "RSI 4H",
+   "stop": 3332.9,
+   "time": 1795062942427,
+   "status": "open",
+   "passed": false,
+   "high": 3469.7,
+   "low": 3469.7,
+   "nifty": 0.21,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795062942427,
+    "price": 3469.7
+   }
   }
  ],
- "seq": 3887,
+ "seq": 3893,
  "log": [
+  "19 Nov 10:05  M&M: RSI 4H BUY 200 at 3469.7, SL 3332.9 (4 HOUR; trail, sma8, sma20)",
+  "19 Nov 10:05  IRFC: RSI BUY 5425 at 82.95, SL 81.0 (2 HOUR; trail, sma8, sma20)",
+  "19 Nov 10:05  RECLTD: Stop loss at 293.9 (HA WK BRK)",
+  "19 Nov 10:05  ASHOKLEY: HA candle trail at 166.2 (HA BRK 4H)",
+  "19 Nov 10:05  PFC: HA candle trail at 327.3 (HA BRK 2H)",
   "19 Nov 10:02  PAYTM: 30m trailing SL at 1782.4 (HA PURE 4H)",
   "19 Nov 10:00  MARUTI: RSI 4H BUY 50 at 13257.0, SL 12633.0 (4 HOUR; trail, sma8, sma20)",
   "19 Nov 10:00  HEROMOTOCO: RSI 4H BUY 150 at 5418.5, SL 5233.5 (4 HOUR; trail, sma8, sma20)",
@@ -18767,15 +18884,10 @@
   "18 Nov 14:00  LT: 30m trailing SL at 4135.6 (HA PURE 4H)",
   "18 Nov 14:00  JIOFIN: 30m trailing SL at 223.6 (HA PURE 4H)",
   "18 Nov 14:00  IRFC: 30m trailing SL at 81.2 (HA PURE 4H)",
-  "18 Nov 14:00  ICICIBANK: 30m trailing SL at 1593.3 (HA PURE 4H)",
-  "18 Nov 14:00  HDFCBANK: 30m trailing SL at 809.3 (HA PURE 4H)",
-  "18 Nov 14:00  HDFCAMC: 30m trailing SL at 2642.0 (HA PURE 4H)",
-  "18 Nov 14:00  HAVELLS: 30m trailing SL at 1138.0 (HA PURE 4H)",
-  "18 Nov 14:00  GVT&D: 30m trailing SL at 4247.1 (HA PURE 4H)",
-  "18 Nov 14:00  FORTIS: 30m trailing SL at 794.8 (HA PURE 4H)"
+  "18 Nov 14:00  ICICIBANK: 30m trailing SL at 1593.3 (HA PURE 4H)"
  ],
- "page_run": 1795062721920,
- "updated": 1795062721920,
+ "page_run": 1795062942427,
+ "updated": 1795062942427,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
