@@ -114618,5 +114618,117 @@
   "gross": -1522.5,
   "charges": 506.57,
   "net": -2029.07
+ },
+ {
+  "id": "1795074699148-4095",
+  "symbol": "HYUNDAI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 2193.9,
+  "exit": 2194.5,
+  "entry_time": 1795074699148,
+  "exit_time": 1795077600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2189.9,
+  "tp": null,
+  "high": 2203.1,
+  "low": 2193.9,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 2196.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 165.0,
+  "charges": 387.07,
+  "net": -222.07
+ },
+ {
+  "id": "1794903935966-3429",
+  "symbol": "SBILIFE",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1803.2,
+  "exit": 1803.75,
+  "entry_time": 1794903935966,
+  "exit_time": 1795065300000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1815.7,
+  "tp": null,
+  "high": 1815.0,
+  "low": 1779.8,
+  "nifty": 1.25,
+  "strategies": [
+   "4H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794903935966,
+   "price": 1809.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -206.25,
+  "charges": 428.04,
+  "net": -634.29
+ },
+ {
+  "id": "1795073100000-4033",
+  "symbol": "LTM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 4037.05,
+  "exit": 4077.4,
+  "entry_time": 1795073100000,
+  "exit_time": 1795077600000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 4077.4,
+  "tp": null,
+  "high": 4077.4,
+  "low": 4020.2,
+  "nifty": 0.57,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 4038.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6052.5,
+  "charges": 388.49,
+  "net": -6440.99
  }
 ]
