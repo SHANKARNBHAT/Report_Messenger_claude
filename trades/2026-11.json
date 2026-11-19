@@ -106014,5 +106014,79 @@
   "gross": -14932.5,
   "charges": 600.44,
   "net": -15532.94
+ },
+ {
+  "id": "1794887738404-2688",
+  "symbol": "KOTAKBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2000,
+  "entry": 495.95,
+  "exit": 492.2,
+  "entry_time": 1794887738404,
+  "exit_time": 1795060500000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 491.55,
+  "tp": null,
+  "high": 503.05,
+  "low": 492.2,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 494.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -7500.0,
+  "charges": 601.91,
+  "net": -8101.91
+ },
+ {
+  "id": "1794801047178-1702",
+  "symbol": "TMPV",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1600,
+  "entry": 264.85,
+  "exit": 255.65,
+  "entry_time": 1794801047178,
+  "exit_time": 1795060500000,
+  "reason": "TSL after target",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 292.5,
+  "tp": 256.9,
+  "high": 269.15,
+  "low": 251.5,
+  "nifty": 0.43,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794801047178,
+   "price": 264.85
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 14720.0,
+  "charges": 285.24,
+  "net": 14434.76
  }
 ]
