@@ -109395,5 +109395,486 @@
   "gross": 10150.0,
   "charges": 330.96,
   "net": 9819.04
+ },
+ {
+  "id": "1795060537156-3771",
+  "symbol": "ADANIENSOL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 675,
+  "entry": 1486.3,
+  "exit": 1481.7,
+  "entry_time": 1795060537156,
+  "exit_time": 1795064700000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1474.2,
+  "tp": null,
+  "high": 1493,
+  "low": 1475.1,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795060537156,
+   "price": 1483.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3105.0,
+  "charges": 610.6,
+  "net": -3715.6
+ },
+ {
+  "id": "1795063840182-3907",
+  "symbol": "HAVELLS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1171.0,
+  "exit": 1174.6,
+  "entry_time": 1795063840182,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 39.6 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1134.8,
+  "tp": 1206.15,
+  "high": 1176,
+  "low": 1169,
+  "nifty": 0.2,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795063840182,
+   "price": 1171.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 1800.0,
+  "charges": 377.89,
+  "net": 1422.11
+ },
+ {
+  "id": "1795063840182-3908",
+  "symbol": "HAVELLS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1171.0,
+  "exit": 1174.6,
+  "entry_time": 1795063840182,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 39.6 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 1134.8,
+  "tp": null,
+  "high": 1176,
+  "low": 1169,
+  "nifty": 0.2,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795063840182,
+   "price": 1171.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 1800.0,
+  "charges": 377.89,
+  "net": 1422.11
+ },
+ {
+  "id": "1795063840182-3909",
+  "symbol": "HAVELLS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1171.0,
+  "exit": 1174.6,
+  "entry_time": 1795063840182,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 39.6 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 1134.8,
+  "tp": null,
+  "high": 1176,
+  "low": 1169,
+  "nifty": 0.2,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795063840182,
+   "price": 1171.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 1800.0,
+  "charges": 377.89,
+  "net": 1422.11
+ },
+ {
+  "id": "1795064137463-3913",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 162.5,
+  "exit": 162.55,
+  "entry_time": 1795064137463,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 34.3 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 156.75,
+  "tp": 167.4,
+  "high": 162.72,
+  "low": 162.25,
+  "nifty": 0.2,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795064137463,
+   "price": 162.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 307.5,
+  "charges": 610.2,
+  "net": -302.7
+ },
+ {
+  "id": "1795064137463-3914",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 162.5,
+  "exit": 162.55,
+  "entry_time": 1795064137463,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 34.3 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 156.75,
+  "tp": null,
+  "high": 162.72,
+  "low": 162.25,
+  "nifty": 0.2,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795064137463,
+   "price": 162.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 307.5,
+  "charges": 610.2,
+  "net": -302.7
+ },
+ {
+  "id": "1795064137463-3915",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 162.5,
+  "exit": 162.55,
+  "entry_time": 1795064137463,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 34.3 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 156.75,
+  "tp": null,
+  "high": 162.72,
+  "low": 162.25,
+  "nifty": 0.2,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795064137463,
+   "price": 162.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 307.5,
+  "charges": 610.2,
+  "net": -302.7
+ },
+ {
+  "id": "1795064459567-3922",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 163.1,
+  "exit": 162.55,
+  "entry_time": 1795064459567,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 34.3 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 156.75,
+  "tp": 168.0,
+  "high": 163.1,
+  "low": 162.4,
+  "nifty": 0.07,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795064459567,
+   "price": 163.09
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -3382.5,
+  "charges": 610.35,
+  "net": -3992.85
+ },
+ {
+  "id": "1795064459567-3923",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 163.1,
+  "exit": 162.55,
+  "entry_time": 1795064459567,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 34.3 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 156.75,
+  "tp": null,
+  "high": 163.1,
+  "low": 162.4,
+  "nifty": 0.07,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795064459567,
+   "price": 163.09
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -3382.5,
+  "charges": 610.35,
+  "net": -3992.85
+ },
+ {
+  "id": "1795064459567-3924",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 163.1,
+  "exit": 162.55,
+  "entry_time": 1795064459567,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 34.3 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 156.75,
+  "tp": null,
+  "high": 163.1,
+  "low": 162.4,
+  "nifty": 0.07,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795064459567,
+   "price": 163.09
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -3382.5,
+  "charges": 610.35,
+  "net": -3992.85
+ },
+ {
+  "id": "1795064512372-3928",
+  "symbol": "HAVELLS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1171.1,
+  "exit": 1174.6,
+  "entry_time": 1795064512372,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 39.6 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1134.8,
+  "tp": 1206.25,
+  "high": 1176,
+  "low": 1171.1,
+  "nifty": 0.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795064512372,
+   "price": 1171.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 1750.0,
+  "charges": 377.89,
+  "net": 1372.11
+ },
+ {
+  "id": "1795064512372-3929",
+  "symbol": "HAVELLS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1171.1,
+  "exit": 1174.6,
+  "entry_time": 1795064512372,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 39.6 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 1134.8,
+  "tp": null,
+  "high": 1176,
+  "low": 1171.1,
+  "nifty": 0.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795064512372,
+   "price": 1171.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 1750.0,
+  "charges": 377.89,
+  "net": 1372.11
+ },
+ {
+  "id": "1795064512372-3930",
+  "symbol": "HAVELLS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1171.1,
+  "exit": 1174.6,
+  "entry_time": 1795064512372,
+  "exit_time": 1795065300000,
+  "reason": "30m RSI SMA 39.6 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 1134.8,
+  "tp": null,
+  "high": 1176,
+  "low": 1171.1,
+  "nifty": 0.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795064512372,
+   "price": 1171.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 1750.0,
+  "charges": 377.89,
+  "net": 1372.11
  }
 ]
