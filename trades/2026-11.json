@@ -112583,5 +112583,153 @@
   "gross": -3025.0,
   "charges": 477.51,
   "net": -3502.51
+ },
+ {
+  "id": "1795074699148-4049",
+  "symbol": "ALKEM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 5165.0,
+  "exit": 5177.5,
+  "entry_time": 1795074699148,
+  "exit_time": 1795074900000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 5177.5,
+  "tp": null,
+  "high": 5177.5,
+  "low": 5165.0,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 5169.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1562.5,
+  "charges": 410.87,
+  "net": -1973.37
+ },
+ {
+  "id": "1795074699148-4122",
+  "symbol": "PAGEIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 20,
+  "entry": 31065.0,
+  "exit": 31040.0,
+  "entry_time": 1795074699148,
+  "exit_time": 1795074900000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 31040.0,
+  "tp": null,
+  "high": 31065.0,
+  "low": 31040.0,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 31065.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -500.0,
+  "charges": 396.85,
+  "net": -896.85
+ },
+ {
+  "id": "1795074699148-4134",
+  "symbol": "SBILIFE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1806.8,
+  "exit": 1804.3,
+  "entry_time": 1795074699148,
+  "exit_time": 1795074900000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1804.3,
+  "tp": null,
+  "high": 1806.8,
+  "low": 1804.3,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 1805.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -937.5,
+  "charges": 428.3,
+  "net": -1365.8
+ },
+ {
+  "id": "1795074699148-4150",
+  "symbol": "YESBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 31100,
+  "entry": 17.85,
+  "exit": 17.85,
+  "entry_time": 1795074699148,
+  "exit_time": 1795074900000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 17.85,
+  "tp": null,
+  "high": 17.85,
+  "low": 17.85,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 17.87
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 0.0,
+  "charges": 359.85,
+  "net": -359.85
  }
 ]
