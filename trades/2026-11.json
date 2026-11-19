@@ -115398,5 +115398,79 @@
   "gross": -6370.0,
   "charges": 406.77,
   "net": -6776.77
+ },
+ {
+  "id": "1795074699148-4103",
+  "symbol": "IRFC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 5425,
+  "entry": 83.35,
+  "exit": 84.1,
+  "entry_time": 1795074699148,
+  "exit_time": 1795078800000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 83.25,
+  "tp": null,
+  "high": 84.89,
+  "low": 83.35,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 83.36
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 4068.75,
+  "charges": 303.98,
+  "net": 3764.77
+ },
+ {
+  "id": "1794902457426-3400",
+  "symbol": "IDEA",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 71475,
+  "entry": 12.25,
+  "exit": 12.1,
+  "entry_time": 1794902457426,
+  "exit_time": 1795078800000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 12.45,
+  "tp": null,
+  "high": 12.36,
+  "low": 11.95,
+  "nifty": 0.37,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794902457426,
+   "price": 12.27
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 10721.25,
+  "charges": 539.86,
+  "net": 10181.39
  }
 ]
