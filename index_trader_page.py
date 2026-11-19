@@ -1,7 +1,8 @@
 """
 Autotrader NIFTY\\BNF page: the Auto trader's HA IDX strategies (ha_index.py; HA IDX PURE
 without the SMA trend filter), NIFTY and
-BANKNIFTY on 15-minute Heikin Ashi candles, apart from the stock strategies of the Auto
+BANKNIFTY on 15-minute Heikin Ashi candles, entered only when the previous 4H HA candle is solid
+green (long) or red (short) (ha_index.htf_side), apart from the stock strategies of the Auto
 trader page (auto_trader_page.py, whose account, runs and helpers it shares).
 
 While open in market hours it starts a run every few minutes, as the Auto trader page does,

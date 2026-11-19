@@ -376,10 +376,11 @@ def show_new(history: pd.DataFrame, positions: list[dict]) -> None:
     st.caption(f"Trades entered from {NEW_SINCE:%d %b %Y} only, 1 lot each, after charges (closed) and at the LTP "
                "(open). HA pure: the HA entry pattern without the SMA trend on 4H (2H and Daily retired), SL trailed on "
                "30-minute candles, out at the first HA doji, held overnight. HA IDX · no SMA: the same on 15-minute "
-               "NIFTY / BANKNIFTY, intraday (also on the Autotrader NIFTY\\BNF tab). HA breakout: a wickless HA "
+               "NIFTY / BANKNIFTY, intraday, only with the previous 4H HA candle solid green / red (also on the "
+               "Autotrader NIFTY\\BNF tab). HA breakout: a wickless HA "
                "candle (green no lower wick / red no upper wick) closing past the previous HA high / low, no SMA "
                "filter, SL trailed to the previous HA candle's low / high, no other exit, on 15-minute NIFTY / "
-               "BANKNIFTY intraday (the 2H / 4H / Daily stock version retired). RSI: with the 30-minute RSI "
+               "BANKNIFTY intraday with the same 4H filter (the 2H / 4H / Daily stock version retired). RSI: with the 30-minute RSI "
                "SMA exit (below 40 long, above 60 short) added this day. HA weekly breakout (from 18 Nov): last week's Weekly HA "
                "candle red (green), armed when a 4H HA close goes above its HA high (below its HA low), entered on a "
                "pullback to the 30-minute SMA 8; SL the 30-minute candle's low (high), at least 1% away, moved to "
@@ -935,6 +936,9 @@ def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, rule: st
     """An HA IDX strategy (INDEX_SYSTEMS), NIFTY and BANKNIFTY on 15-minute Heikin Ashi candles
     (ha_index.py): its own totals, open positions and closed trades, apart from the stock strategies."""
     use_trend = rule == "trend"
+    st.caption("**4H filter (from 19 Nov 2026, history reset that day):** a long only when the previous 4H Heikin Ashi "
+               "candle (9:15 AM–1:15 PM or 1:15 PM–close) is solid green with no lower wick, a short only when it is "
+               "solid red with no upper wick.")
     if rule == "break":
         st.caption("A green 15-minute HA candle with no lower wick whose HA close is above the previous HA candle's high "
                    "(long); a red one with no upper wick closing below the previous HA low (short), no SMA filter. SL "
