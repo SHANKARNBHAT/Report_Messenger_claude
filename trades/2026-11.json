@@ -113027,5 +113027,42 @@
   "gross": -960.0,
   "charges": 508.16,
   "net": -1468.16
+ },
+ {
+  "id": "1795074699148-4058",
+  "symbol": "BAJAJ-AUTO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 75,
+  "entry": 10760.0,
+  "exit": 10756.0,
+  "entry_time": 1795074699148,
+  "exit_time": 1795075800000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 10756.0,
+  "tp": null,
+  "high": 10774,
+  "low": 10756.0,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 10759.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -300.0,
+  "charges": 501.54,
+  "net": -801.54
  }
 ]
