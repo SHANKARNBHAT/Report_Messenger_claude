@@ -110618,5 +110618,80 @@
   "gross": 2295.0,
   "charges": 344.92,
   "net": 1950.08
+ },
+ {
+  "id": "1794894936100-3097",
+  "symbol": "GODREJPROP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1900.0,
+  "exit": 1872.4,
+  "entry_time": 1794894936100,
+  "exit_time": 1795067700000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1856.0,
+  "tp": null,
+  "high": 1912.4,
+  "low": 1856.5,
+  "nifty": 0.61,
+  "strategies": [
+   "2H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794894936100,
+   "price": 1897.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -8970.0,
+  "charges": 390.29,
+  "net": -9360.29
+ },
+ {
+  "id": "1795062000000-3859",
+  "symbol": "POLYCAB",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 7356.25,
+  "exit": 7429.8,
+  "entry_time": 1795062000000,
+  "exit_time": 1795067700000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 7429.8,
+  "tp": null,
+  "high": 7429.8,
+  "low": 7322,
+  "nifty": 0.13,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 7244.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -9193.75,
+  "charges": 565.45,
+  "net": -9759.2
  }
 ]
