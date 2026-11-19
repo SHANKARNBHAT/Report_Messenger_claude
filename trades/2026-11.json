@@ -116658,5 +116658,43 @@
   "gross": 2187.5,
   "charges": 467.56,
   "net": 1719.94
+ },
+ {
+  "id": "1795076400000-4172",
+  "symbol": "INFY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1079.0,
+  "exit": 1089.8,
+  "entry_time": 1795076400000,
+  "exit_time": 1795080900000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 1089.8,
+  "tp": null,
+  "high": 1089.8,
+  "low": 1076.1,
+  "nifty": -0.0,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 1091.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4320.0,
+  "charges": 290.45,
+  "net": -4610.45
  }
 ]
