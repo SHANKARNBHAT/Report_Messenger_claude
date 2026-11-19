@@ -108245,5 +108245,42 @@
   "gross": 1665.0,
   "charges": 294.47,
   "net": 1370.53
+ },
+ {
+  "id": "1795060537156-3789",
+  "symbol": "PAYTM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 725,
+  "entry": 1773.8,
+  "exit": 1782.4,
+  "entry_time": 1795060537156,
+  "exit_time": 1795062300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1895.0,
+  "tp": null,
+  "high": 1782.4,
+  "low": 1768,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795060537156,
+   "price": 1779.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6235.0,
+  "charges": 771.72,
+  "net": -7006.72
  }
 ]
