@@ -112731,5 +112731,190 @@
   "gross": 0.0,
   "charges": 359.85,
   "net": -359.85
+ },
+ {
+  "id": "1795074699148-4079",
+  "symbol": "DELHIVERY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2075,
+  "entry": 455.8,
+  "exit": 455.1,
+  "entry_time": 1795074699148,
+  "exit_time": 1795075200000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 455.1,
+  "tp": null,
+  "high": 455.8,
+  "low": 455.1,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 455.45
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1452.5,
+  "charges": 579.1,
+  "net": -2031.6
+ },
+ {
+  "id": "1795074699148-4088",
+  "symbol": "GODREJPROP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1865.4,
+  "exit": 1871.7,
+  "entry_time": 1795074699148,
+  "exit_time": 1795075200000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1871.7,
+  "tp": null,
+  "high": 1871.7,
+  "low": 1863.7,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 1863.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2047.5,
+  "charges": 388.72,
+  "net": -2436.22
+ },
+ {
+  "id": "1795074699148-4089",
+  "symbol": "GRASIM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 3104.1,
+  "exit": 3092.0,
+  "entry_time": 1795074699148,
+  "exit_time": 1795075200000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 3092.0,
+  "tp": null,
+  "high": 3104.1,
+  "low": 3092.0,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 3098.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3025.0,
+  "charges": 482.67,
+  "net": -3507.67
+ },
+ {
+  "id": "1795074699148-4110",
+  "symbol": "MARUTI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 50,
+  "entry": 13440.0,
+  "exit": 13411.0,
+  "entry_time": 1795074699148,
+  "exit_time": 1795075200000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 13411.0,
+  "tp": null,
+  "high": 13445,
+  "low": 13411.0,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 13444.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1450.0,
+  "charges": 424.91,
+  "net": -1874.91
+ },
+ {
+  "id": "1795074699148-4112",
+  "symbol": "MFSL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1385.3,
+  "exit": 1392.3,
+  "entry_time": 1795074699148,
+  "exit_time": 1795075200000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1392.3,
+  "tp": null,
+  "high": 1392.3,
+  "low": 1385.3,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 1387.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2800.0,
+  "charges": 359.39,
+  "net": -3159.39
  }
 ]
