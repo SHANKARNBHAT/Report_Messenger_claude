@@ -109914,5 +109914,153 @@
   "gross": -4930.0,
   "charges": 324.32,
   "net": -5254.32
+ },
+ {
+  "id": "1795060537156-3783",
+  "symbol": "KPITTECH",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 775,
+  "entry": 516.3,
+  "exit": 515.85,
+  "entry_time": 1795060537156,
+  "exit_time": 1795065300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 529.2,
+  "tp": null,
+  "high": 520.2,
+  "low": 512.05,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795060537156,
+   "price": 515.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 348.75,
+  "charges": 272.54,
+  "net": 76.21
+ },
+ {
+  "id": "1794891658470-2825",
+  "symbol": "APOLLOHOSP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 8812.0,
+  "exit": 8725.25,
+  "entry_time": 1794891658470,
+  "exit_time": 1794978300000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 8668.3,
+  "tp": null,
+  "high": 8897.0,
+  "low": 8712.5,
+  "nifty": 0.41,
+  "strategies": [
+   "4H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794891658470,
+   "price": 8808.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -10843.75,
+  "charges": 661.9,
+  "net": -11505.65
+ },
+ {
+  "id": "1794903935966-3428",
+  "symbol": "SBILIFE",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1803.2,
+  "exit": 1804.4,
+  "entry_time": 1794903935966,
+  "exit_time": 1795065300000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1817.35,
+  "tp": null,
+  "high": 1810,
+  "low": 1779.8,
+  "nifty": 1.25,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794903935966,
+   "price": 1809.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -450.0,
+  "charges": 428.05,
+  "net": -878.05
+ },
+ {
+  "id": "1794801656114-1777",
+  "symbol": "DMART",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 150,
+  "entry": 3435.5,
+  "exit": 3488.3,
+  "entry_time": 1794801656114,
+  "exit_time": 1795065956000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 3487.05,
+  "tp": 3332.45,
+  "high": 3488.3,
+  "low": 3427.0,
+  "nifty": 0.42,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794801656114,
+   "price": 3435.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -7920.0,
+  "charges": 337.75,
+  "net": -8257.75
  }
 ]
