@@ -108394,5 +108394,43 @@
   "gross": -4567.5,
   "charges": 305.51,
   "net": -4873.01
+ },
+ {
+  "id": "1795061400000-3845",
+  "symbol": "SAIL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 4700,
+  "entry": 163.55,
+  "exit": 165.2,
+  "entry_time": 1795061400000,
+  "exit_time": 1795062600000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 165.2,
+  "tp": null,
+  "high": 165.2,
+  "low": 163.42,
+  "nifty": 0.04,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 161.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -7755.0,
+  "charges": 480.44,
+  "net": -8235.44
  }
 ]
