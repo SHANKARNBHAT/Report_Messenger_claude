@@ -13,6 +13,9 @@ BANKNIFTY (auto_trader.py, enter_index_signals and settle), made from Yahoo Fina
   * Doji exit: at the close of the first 15-minute HA candle, the entry candle included, with
     wicks on both sides (ha_vp.doji), at that close.
   * Squared off at 3:15 PM: intraday only.
+  * 4H filter (since 19 Nov 2026, all three strategies): a long only when the previous (finished) 4H
+    HA candle is solid green, with no lower wick; a short only when it is solid red, with no upper
+    wick (htf_side). 4H candles run 9:15 AM to 1:15 PM and 1:15 PM to the close.
 
 HA IDX BRK (rule "break"): ha_break's breakout entry on these 15-minute HA candles, SL at the
 HA candle's low / high, trailed to each finished 15-minute HA candle's low / high (break_replay);
@@ -29,28 +32,29 @@ import ha_vp
 SYMBOLS = ("NIFTY", "BANKNIFTY")
 TIMEFRAME = "15 MIN"
 MINUTES = 15
+HTF_MINUTES = 240  # the 4H filter (htf_side)
 ATR_PERIOD = 14
 ATR_MULT = 1.1
 SESSION_OPEN, SESSION_END, SQUARE_OFF = time(9, 15), time(15, 30), time(15, 15)
 BAR = 300  # seconds in a 5-minute bar
 
 
-def candle_start(ts: int, tz) -> int:
-    """Start (seconds) of the 15-minute candle a time is in, from 9:15 AM."""
+def candle_start(ts: int, tz, minutes: int = MINUTES) -> int:
+    """Start (seconds) of the 15-minute (or `minutes`) candle a time is in, from 9:15 AM."""
     moment = datetime.fromtimestamp(ts, tz)
     session = datetime.combine(moment.date(), SESSION_OPEN, tz)
-    return int((session + (moment - session) // timedelta(minutes=MINUTES) * timedelta(minutes=MINUTES)).timestamp())
+    return int((session + (moment - session) // timedelta(minutes=minutes) * timedelta(minutes=minutes)).timestamp())
 
 
-def candles(bars: list[tuple], tz) -> list[list]:
-    """15-minute candles [start, open, high, low, close] from 5-minute bars (start, open, high,
-    low, close), session hours only; the last one may still be running."""
+def candles(bars: list[tuple], tz, minutes: int = MINUTES) -> list[list]:
+    """15-minute (or `minutes`) candles [start, open, high, low, close] from 5-minute bars (start, open,
+    high, low, close), session hours only; the last one may still be running."""
     out: list[list] = []
     for start, open_, high, low, close in bars:
         moment = datetime.fromtimestamp(start, tz).time()
         if not SESSION_OPEN <= moment < SESSION_END:
             continue
-        key = candle_start(start, tz)
+        key = candle_start(start, tz, minutes)
         if out and out[-1][0] == key:
             out[-1][2], out[-1][3], out[-1][4] = max(out[-1][2], high), min(out[-1][3], low), close
         else:
@@ -66,6 +70,21 @@ def heikin_ashi(rows: list[list]) -> list[tuple]:
         ha_open = (open_ + close) / 2 if i == 0 else (out[-1][0] + out[-1][3]) / 2
         out.append((ha_open, max(high, ha_open, ha_close), min(low, ha_open, ha_close), ha_close))
     return out
+
+
+def htf_side(bars: list[tuple], tz, now_ts: int) -> str | None:
+    """"BUY" if the previous (finished) 4H HA candle is green with no lower wick, "SELL" if red with
+    no upper wick, else None: the 4H filter of the entries."""
+    rows = candles([b for b in bars if b[0] <= now_ts], tz, HTF_MINUTES)
+    done = [row for row in rows if row[0] < candle_start(now_ts, tz, HTF_MINUTES)]
+    if not done:
+        return None
+    ha_open, ha_high, ha_low, ha_close = heikin_ashi(done)[-1]
+    if ha_close > ha_open and ha_low >= ha_open:
+        return "BUY"
+    if ha_close < ha_open and ha_high <= ha_open:
+        return "SELL"
+    return None
 
 
 def atr(rows: list[list]) -> list[float | None]:
