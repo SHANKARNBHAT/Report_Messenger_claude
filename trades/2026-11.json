@@ -114730,5 +114730,116 @@
   "gross": -6052.5,
   "charges": 388.49,
   "net": -6440.99
+ },
+ {
+  "id": "1795074699148-4136",
+  "symbol": "SIEMENS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 3570.9,
+  "exit": 3595.0,
+  "entry_time": 1795074699148,
+  "exit_time": 1795077900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 3566.1,
+  "tp": null,
+  "high": 3608.1,
+  "low": 3570.9,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 3576.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 4217.5,
+  "charges": 401.34,
+  "net": 3816.16
+ },
+ {
+  "id": "1795074699148-4141",
+  "symbol": "SUZLON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 12700,
+  "entry": 36.85,
+  "exit": 37.05,
+  "entry_time": 1795074699148,
+  "exit_time": 1795077900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 36.85,
+  "tp": null,
+  "high": 37.19,
+  "low": 36.85,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 36.91
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2540.0,
+  "charges": 312.09,
+  "net": 2227.91
+ },
+ {
+  "id": "1795074699148-4149",
+  "symbol": "WAAREEENER",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 2432.4,
+  "exit": 2441.6,
+  "entry_time": 1795074699148,
+  "exit_time": 1795077900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2428.6,
+  "tp": null,
+  "high": 2447.5,
+  "low": 2432.4,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 2432.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1610.0,
+  "charges": 287.77,
+  "net": 1322.23
  }
 ]
