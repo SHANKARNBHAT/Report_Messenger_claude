@@ -116214,5 +116214,190 @@
   "gross": 450.0,
   "charges": 467.5,
   "net": -17.5
+ },
+ {
+  "id": "1795074699148-4061",
+  "symbol": "BANKBARODA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2925,
+  "entry": 281.0,
+  "exit": 282.75,
+  "entry_time": 1795074699148,
+  "exit_time": 1795080000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 280.1,
+  "tp": null,
+  "high": 283.84,
+  "low": 281.0,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 281.02
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 5118.75,
+  "charges": 512.77,
+  "net": 4605.98
+ },
+ {
+  "id": "1795074699148-4064",
+  "symbol": "BHARATFORG",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1727.2,
+  "exit": 1726.7,
+  "entry_time": 1795074699148,
+  "exit_time": 1795080000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1719.4,
+  "tp": null,
+  "high": 1734.5,
+  "low": 1724.9,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 1725.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -250.0,
+  "charges": 533.44,
+  "net": -783.44
+ },
+ {
+  "id": "1795074699148-4087",
+  "symbol": "GODFRYPHLP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1776.3,
+  "exit": 1780.7,
+  "entry_time": 1795074699148,
+  "exit_time": 1795080000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1774.5,
+  "tp": null,
+  "high": 1787.8,
+  "low": 1776.3,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 1779.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1210.0,
+  "charges": 322.94,
+  "net": 887.06
+ },
+ {
+  "id": "1795074699148-4097",
+  "symbol": "IDFCFIRSTB",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 9275,
+  "entry": 85.7,
+  "exit": 86.35,
+  "entry_time": 1795074699148,
+  "exit_time": 1795080000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 85.4,
+  "tp": null,
+  "high": 86.73,
+  "low": 85.67,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 85.74
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 6028.75,
+  "charges": 498.0,
+  "net": 5530.75
+ },
+ {
+  "id": "1795078303263-4184",
+  "symbol": "INOXWIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6400,
+  "entry": 57.0,
+  "exit": 57.0,
+  "entry_time": 1795078303263,
+  "exit_time": 1795080000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 57.1,
+  "tp": null,
+  "high": 57.0,
+  "low": 56.9,
+  "nifty": 0.23,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795078303263,
+   "price": 56.95
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 0.0,
+  "charges": 252.65,
+  "net": -252.65
  }
 ]
