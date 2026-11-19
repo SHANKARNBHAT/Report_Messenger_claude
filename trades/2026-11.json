@@ -112916,5 +112916,116 @@
   "gross": -2800.0,
   "charges": 359.39,
   "net": -3159.39
+ },
+ {
+  "id": "1795060537156-3800",
+  "symbol": "VOLTAS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1179.9,
+  "exit": 1225.8,
+  "entry_time": 1795060537156,
+  "exit_time": 1795075500000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1130.0,
+  "tp": null,
+  "high": 1233.9,
+  "low": 1170,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795060537156,
+   "price": 1179.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 17212.5,
+  "charges": 305.37,
+  "net": 16907.13
+ },
+ {
+  "id": "1795074699148-4053",
+  "symbol": "APOLLOHOSP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 8737.5,
+  "exit": 8745.5,
+  "entry_time": 1795074699148,
+  "exit_time": 1795075500000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 8745.5,
+  "tp": null,
+  "high": 8745.5,
+  "low": 8736,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 8740.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1000.0,
+  "charges": 662.35,
+  "net": -1662.35
+ },
+ {
+  "id": "1795074699148-4078",
+  "symbol": "CUMMINSIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 200,
+  "entry": 4096.9,
+  "exit": 4092.1,
+  "entry_time": 1795074699148,
+  "exit_time": 1795075500000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 4092.1,
+  "tp": null,
+  "high": 4099.3,
+  "low": 4092.1,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 4096.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -960.0,
+  "charges": 508.16,
+  "net": -1468.16
  }
 ]
