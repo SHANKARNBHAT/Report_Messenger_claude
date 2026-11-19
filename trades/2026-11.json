@@ -106975,5 +106975,42 @@
   "gross": -17415.0,
   "charges": 511.79,
   "net": -17926.79
+ },
+ {
+  "id": "1794461730631-1371",
+  "symbol": "SHRIRAMFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 825,
+  "entry": 1000.8,
+  "exit": 958.35,
+  "entry_time": 1794461730631,
+  "exit_time": 1795059950000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 962.0,
+  "tp": 1030.8,
+  "high": 1006.5,
+  "low": 958.35,
+  "nifty": 0.24,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794461730631,
+   "price": 1000.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 71.31,
+  "gross": -35021.25,
+  "charges": 493.93,
+  "net": -35515.18
  }
 ]
