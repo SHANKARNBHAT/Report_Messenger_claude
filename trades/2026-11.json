@@ -107314,5 +107314,191 @@
   "gross": -8268.75,
   "charges": 358.1,
   "net": -8626.85
+ },
+ {
+  "id": "1794887738404-2601",
+  "symbol": "CUMMINSIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 4166.1,
+  "exit": 4023.7,
+  "entry_time": 1794887738404,
+  "exit_time": 1795060500000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 4243.7,
+  "tp": null,
+  "high": 4166.1,
+  "low": 3966.2,
+  "nifty": 0.12,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 4172.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 28480.0,
+  "charges": 515.27,
+  "net": 27964.73
+ },
+ {
+  "id": "1794887738404-2666",
+  "symbol": "CUMMINSIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 4166.1,
+  "exit": 4072.5,
+  "entry_time": 1794887738404,
+  "exit_time": 1795061812000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 4261.2,
+  "tp": null,
+  "high": 4166.1,
+  "low": 3966.2,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 4172.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 18720.0,
+  "charges": 515.68,
+  "net": 18204.32
+ },
+ {
+  "id": "1794887738404-2718",
+  "symbol": "ASIANPAINT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2616.8,
+  "exit": 2560.4,
+  "entry_time": 1794887738404,
+  "exit_time": 1795059900000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 2560.2,
+  "tp": null,
+  "high": 2665.5,
+  "low": 2560.4,
+  "nifty": 0.12,
+  "strategies": [
+   "Daily HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 2615.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -14100.0,
+  "charges": 408.28,
+  "net": -14508.28
+ },
+ {
+  "id": "1795060200000-3812",
+  "symbol": "PFC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1300,
+  "entry": 322.35,
+  "exit": 326.0,
+  "entry_time": 1795060200000,
+  "exit_time": 1795061400000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 326.0,
+  "tp": null,
+  "high": 326.0,
+  "low": 322.35,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 323.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4745.0,
+  "charges": 283.4,
+  "net": -5028.4
+ },
+ {
+  "id": "1794800741223-1651",
+  "symbol": "COCHINSHIP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1178.0,
+  "exit": 1148.5,
+  "entry_time": 1794800741223,
+  "exit_time": 1795061400000,
+  "reason": "TSL after target",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1195.65,
+  "tp": 1142.65,
+  "high": 1178.0,
+  "low": 1128.4,
+  "nifty": 0.58,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 1178.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 11800.0,
+  "charges": 312.08,
+  "net": 11487.92
  }
 ]
