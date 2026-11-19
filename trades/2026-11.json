@@ -116399,5 +116399,42 @@
   "gross": 0.0,
   "charges": 252.65,
   "net": -252.65
+ },
+ {
+  "id": "1795077644841-4179",
+  "symbol": "HINDPETRO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 2025,
+  "entry": 388.95,
+  "exit": 388.75,
+  "entry_time": 1795077644841,
+  "exit_time": 1795080300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 388.2,
+  "tp": null,
+  "high": 389.35,
+  "low": 388.75,
+  "nifty": 0.2,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795077644841,
+   "price": 389.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -405.0,
+  "charges": 490.57,
+  "net": -895.57
  }
 ]
