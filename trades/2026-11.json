@@ -117142,5 +117142,116 @@
   "gross": -5718.75,
   "charges": 367.24,
   "net": -6085.99
+ },
+ {
+  "id": "1794902143717-3394",
+  "symbol": "CUMMINSIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 4067.0,
+  "exit": 4141.5,
+  "entry_time": 1794902143717,
+  "exit_time": 1795082100000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 4128.0,
+  "tp": 3945.0,
+  "high": 4141.5,
+  "low": 3966.2,
+  "nifty": 0.34,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 4067.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -14900.0,
+  "charges": 505.92,
+  "net": -15405.92
+ },
+ {
+  "id": "1794902143717-3395",
+  "symbol": "CUMMINSIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 4067.0,
+  "exit": 4141.5,
+  "entry_time": 1794902143717,
+  "exit_time": 1795082100000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 4128.0,
+  "tp": null,
+  "high": 4141.5,
+  "low": 3966.2,
+  "nifty": 0.34,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 4067.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -14900.0,
+  "charges": 505.92,
+  "net": -15405.92
+ },
+ {
+  "id": "1794902143717-3396",
+  "symbol": "CUMMINSIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 4067.0,
+  "exit": 4141.5,
+  "entry_time": 1794902143717,
+  "exit_time": 1795082100000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 4128.0,
+  "tp": null,
+  "high": 4141.5,
+  "low": 3966.2,
+  "nifty": 0.34,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794902143717,
+   "price": 4067.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -14900.0,
+  "charges": 505.92,
+  "net": -15405.92
  }
 ]

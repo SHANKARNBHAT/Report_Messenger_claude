@@ -4515,7 +4515,7 @@
    "run": null,
    "style": "ha_brk",
    "system": "HA BRK Daily",
-   "stop": 4195.05,
+   "stop": 4141.5,
    "time": 1794887144216,
    "status": "open",
    "passed": false,
@@ -7278,7 +7278,7 @@
    "run": null,
    "style": "ha_brk",
    "system": "HA BRK Daily",
-   "stop": 8675.0,
+   "stop": 8690.0,
    "time": 1794891658470,
    "status": "open",
    "passed": false,
@@ -7318,7 +7318,7 @@
    "time": 1794891658470,
    "status": "open",
    "passed": false,
-   "high": 4116.2,
+   "high": 4141.5,
    "low": 3966.2,
    "nifty": 0.41,
    "source": "Auto 2H",
@@ -8392,7 +8392,7 @@
    "time": 1794894053949,
    "status": "open",
    "passed": false,
-   "high": 4116.2,
+   "high": 4141.5,
    "low": 3966.2,
    "nifty": 0.55,
    "source": "Auto 4H",
@@ -8428,7 +8428,7 @@
    "time": 1794894053949,
    "status": "open",
    "passed": false,
-   "high": 4116.2,
+   "high": 4141.5,
    "low": 3966.2,
    "nifty": 0.55,
    "source": "Auto 4H",
@@ -9655,117 +9655,6 @@
    }
   },
   {
-   "id": "1794902143717-3394",
-   "symbol": "CUMMINSIND",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 200,
-   "entry": 4067.0,
-   "sl": 4128.0,
-   "tp": 3945.0,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 61.0,
-    "step": 20.35
-   },
-   "style": "trail",
-   "system": "RSI Daily",
-   "stop": 4128.0,
-   "time": 1794902143717,
-   "status": "open",
-   "passed": false,
-   "high": 4116.2,
-   "low": 3966.2,
-   "nifty": 0.34,
-   "source": "Auto Daily",
-   "timeframes": [
-    "DAILY"
-   ],
-   "strategies": [
-    "DAILY RSI BEARISH STRATEGY"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794902143717,
-    "price": 4067.0
-   }
-  },
-  {
-   "id": "1794902143717-3395",
-   "symbol": "CUMMINSIND",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 200,
-   "entry": 4067.0,
-   "sl": 4128.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "sma8",
-   "system": "RSI Daily",
-   "stop": 4128.0,
-   "time": 1794902143717,
-   "status": "open",
-   "passed": false,
-   "high": 4116.2,
-   "low": 3966.2,
-   "nifty": 0.34,
-   "source": "Auto Daily",
-   "timeframes": [
-    "DAILY"
-   ],
-   "strategies": [
-    "DAILY RSI BEARISH STRATEGY"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794902143717,
-    "price": 4067.0
-   }
-  },
-  {
-   "id": "1794902143717-3396",
-   "symbol": "CUMMINSIND",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 200,
-   "entry": 4067.0,
-   "sl": 4128.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "sma20",
-   "system": "RSI Daily",
-   "stop": 4128.0,
-   "time": 1794902143717,
-   "status": "open",
-   "passed": false,
-   "high": 4116.2,
-   "low": 3966.2,
-   "nifty": 0.34,
-   "source": "Auto Daily",
-   "timeframes": [
-    "DAILY"
-   ],
-   "strategies": [
-    "DAILY RSI BEARISH STRATEGY"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794902143717,
-    "price": 4067.0
-   }
-  },
-  {
    "id": "1794902457426-3403",
    "symbol": "IDEA",
    "side": "SELL",
@@ -9924,7 +9813,7 @@
    "run": null,
    "style": "ha_brk",
    "system": "HA BRK 4H",
-   "stop": 7675.0,
+   "stop": 7795.55,
    "time": 1794904252233,
    "status": "open",
    "passed": false,
@@ -21397,6 +21286,9 @@
  ],
  "seq": 4205,
  "log": [
+  "19 Nov 17:45  CUMMINSIND: Stop loss at 4141.5 (Hold \u00b7 2H SMA 20 exit)",
+  "19 Nov 17:45  CUMMINSIND: Stop loss at 4141.5 (Hold \u00b7 2H SMA 8 exit)",
+  "19 Nov 17:45  CUMMINSIND: Stop loss at 4141.5 (Hold \u00b7 trail)",
   "19 Nov 15:20  NATIONALUM: Stop loss at 305.9 (HA WK BRK)",
   "19 Nov 15:20  KPITTECH: Stop loss at 524.35 (HA WK BRK)",
   "19 Nov 15:20  KPITTECH: HA candle trail at 523.8 (HA BRK 2H)",
@@ -21693,13 +21585,10 @@
   "19 Nov 13:05  HINDZINC: HA WK BRK SELL 1225 at 520.8 (30m SMA 8 520.81), SL 526.0 (30m candle)",
   "19 Nov 13:05  HINDALCO: 30m trailing SL at 899.4 (HA WK BRK)",
   "19 Nov 13:00  BAJAJFINSV: RSI 4H BUY 300 at 1879.0, SL 1850.8 (4 HOUR; trail, sma8, sma20)",
-  "19 Nov 13:00  LTM: HA WK BRK SELL 150 at 4037.05 (30m SMA 8 4037.05), SL 4077.4 (30m candle)",
-  "19 Nov 13:00  KPITTECH: HA WK BRK SELL 775 at 519.15 (30m SMA 8 519.14), SL 524.35 (30m candle)",
-  "19 Nov 12:55  NAUKRI: RSI SELL 550 at 1150.4, SL 1167.65 (2 HOUR; trail, sma8, sma20)",
-  "19 Nov 12:55  BANDHANBNK: RSI BUY 3600 at 174.5, SL 169.1 (2 HOUR; trail, sma8, sma20)"
+  "19 Nov 13:00  LTM: HA WK BRK SELL 150 at 4037.05 (30m SMA 8 4037.05), SL 4077.4 (30m candle)"
  ],
  "page_run": 1795083932977,
- "updated": 1795083932977,
+ "updated": 1795090524150,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
