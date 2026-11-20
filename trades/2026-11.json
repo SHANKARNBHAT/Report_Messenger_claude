@@ -127031,5 +127031,79 @@
   "gross": -802.75,
   "charges": 989.4,
   "net": -1792.15
+ },
+ {
+  "id": "1795161338138-4441",
+  "symbol": "AXISBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1439.8,
+  "exit": 1434.1,
+  "entry_time": 1795161338138,
+  "exit_time": 1795165200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1430.0,
+  "tp": null,
+  "high": 1442,
+  "low": 1432.7,
+  "nifty": 0.75,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795161338138,
+   "price": 1435.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3562.5,
+  "charges": 552.14,
+  "net": -4114.64
+ },
+ {
+  "id": "1795161338138-4506",
+  "symbol": "PHOENIXLTD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2295.0,
+  "exit": 2288.0,
+  "entry_time": 1795161338138,
+  "exit_time": 1795165200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2285.8,
+  "tp": null,
+  "high": 2297,
+  "low": 2286.6,
+  "nifty": 0.75,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795161338138,
+   "price": 2293.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2450.0,
+  "charges": 498.3,
+  "net": -2948.3
  }
 ]
