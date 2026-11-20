@@ -123146,5 +123146,79 @@
   "gross": -490.0,
   "charges": 500.33,
   "net": -990.33
+ },
+ {
+  "id": "1795155937508-4368",
+  "symbol": "NIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25600.55,
+  "exit": 25693.65,
+  "entry_time": 1795155937508,
+  "exit_time": 1795161000000,
+  "reason": "HA candle trail",
+  "source": "Auto HA IDX BRK 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX BRK",
+  "style": "ha_brk_idx",
+  "passed": false,
+  "carried": false,
+  "sl": 25547.0,
+  "tp": null,
+  "high": 25745.75,
+  "low": 25600.55,
+  "nifty": 0.34,
+  "strategies": [
+   "15m HA IDX BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1795148441096,
+   "price": 25523.45
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 6051.5,
+  "charges": 987.52,
+  "net": 5063.98
+ },
+ {
+  "id": "1794887738404-2686",
+  "symbol": "JINDALSTEL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1130.9,
+  "exit": 1116.0,
+  "entry_time": 1794887738404,
+  "exit_time": 1795160700000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1143.6,
+  "tp": null,
+  "high": 1141.4,
+  "low": 1082.2,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 1133.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 9312.5,
+  "charges": 444.88,
+  "net": 8867.62
  }
 ]
