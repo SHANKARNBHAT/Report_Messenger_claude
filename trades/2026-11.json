@@ -127586,5 +127586,190 @@
   "gross": 2090.0,
   "charges": 468.21,
   "net": 1621.79
+ },
+ {
+  "id": "1794977440842-3568",
+  "symbol": "IEX",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4350,
+  "entry": 114.4,
+  "exit": 112.7,
+  "entry_time": 1794977440842,
+  "exit_time": 1795166700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 112.7,
+  "tp": null,
+  "high": 119,
+  "low": 112.7,
+  "nifty": -0.52,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794977440842,
+   "price": 114.4
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": -7395.0,
+  "charges": 323.61,
+  "net": -7718.61
+ },
+ {
+  "id": "1794977440842-3569",
+  "symbol": "IEX",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4350,
+  "entry": 114.4,
+  "exit": 112.7,
+  "entry_time": 1794977440842,
+  "exit_time": 1795166700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 112.7,
+  "tp": null,
+  "high": 119,
+  "low": 112.7,
+  "nifty": -0.52,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794977440842,
+   "price": 114.4
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": -7395.0,
+  "charges": 323.61,
+  "net": -7718.61
+ },
+ {
+  "id": "1795074040520-4041",
+  "symbol": "JUBLFOOD",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1250,
+  "entry": 420.5,
+  "exit": 426.8,
+  "entry_time": 1795074040520,
+  "exit_time": 1795166700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 426.8,
+  "tp": 407.9,
+  "high": 426.8,
+  "low": 418.75,
+  "nifty": 0.51,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795074040520,
+   "price": 420.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -7875.0,
+  "charges": 343.55,
+  "net": -8218.55
+ },
+ {
+  "id": "1795074040520-4042",
+  "symbol": "JUBLFOOD",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1250,
+  "entry": 420.5,
+  "exit": 426.8,
+  "entry_time": 1795074040520,
+  "exit_time": 1795166700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 426.8,
+  "tp": null,
+  "high": 426.8,
+  "low": 418.75,
+  "nifty": 0.51,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795074040520,
+   "price": 420.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -7875.0,
+  "charges": 343.55,
+  "net": -8218.55
+ },
+ {
+  "id": "1795074040520-4043",
+  "symbol": "JUBLFOOD",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1250,
+  "entry": 420.5,
+  "exit": 426.8,
+  "entry_time": 1795074040520,
+  "exit_time": 1795166700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 426.8,
+  "tp": null,
+  "high": 426.8,
+  "low": 418.75,
+  "nifty": 0.51,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795074040520,
+   "price": 420.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -7875.0,
+  "charges": 343.55,
+  "net": -8218.55
  }
 ]
