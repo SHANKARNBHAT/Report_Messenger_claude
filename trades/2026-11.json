@@ -122404,5 +122404,42 @@
   "gross": 18056.25,
   "charges": 555.32,
   "net": 17500.93
+ },
+ {
+  "id": "1795074699148-4139",
+  "symbol": "SRF",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 200,
+  "entry": 2500.9,
+  "exit": 2517.1,
+  "entry_time": 1795074699148,
+  "exit_time": 1795153800000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2485.9,
+  "tp": null,
+  "high": 2536.8,
+  "low": 2497.7,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795074699148,
+   "price": 2502.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 3240.0,
+  "charges": 330.59,
+  "net": 2909.41
  }
 ]
