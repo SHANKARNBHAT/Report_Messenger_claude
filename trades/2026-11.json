@@ -122516,5 +122516,42 @@
   "gross": -21000.0,
   "charges": 359.4,
   "net": -21359.4
+ },
+ {
+  "id": "1795146941328-4258",
+  "symbol": "KALYANKJIL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1350,
+  "entry": 639.25,
+  "exit": 621.8,
+  "entry_time": 1795146941328,
+  "exit_time": 1795155600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 663.0,
+  "tp": null,
+  "high": 639.25,
+  "low": 617,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 638.65
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 23557.5,
+  "charges": 532.24,
+  "net": 23025.26
  }
 ]
