@@ -119364,5 +119364,228 @@
   "gross": -960.0,
   "charges": 351.63,
   "net": -1311.63
+ },
+ {
+  "id": "1795146941328-4236",
+  "symbol": "ADANIENSOL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 675,
+  "entry": 1473.8,
+  "exit": 1481.2,
+  "entry_time": 1795146941328,
+  "exit_time": 1795147200000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1478.4,
+  "tp": null,
+  "high": 1481.2,
+  "low": 1473.8,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 1480.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -4995.0,
+  "charges": 607.68,
+  "net": -5602.68
+ },
+ {
+  "id": "1795060200000-3807",
+  "symbol": "JUBLFOOD",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1250,
+  "entry": 419.8,
+  "exit": 424.0,
+  "entry_time": 1795060200000,
+  "exit_time": 1795147200000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 424.0,
+  "tp": null,
+  "high": 424.0,
+  "low": 418.3,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 418.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5250.0,
+  "charges": 342.95,
+  "net": -5592.95
+ },
+ {
+  "id": "1794985257625-3630",
+  "symbol": "NAUKRI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1156.7,
+  "exit": 1174.05,
+  "entry_time": 1794985257625,
+  "exit_time": 1795147200000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1174.05,
+  "tp": 1122.0,
+  "high": 1174.05,
+  "low": 1140,
+  "nifty": -0.7,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794985257625,
+   "price": 1156.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -9542.5,
+  "charges": 405.89,
+  "net": -9948.39
+ },
+ {
+  "id": "1794985257625-3631",
+  "symbol": "NAUKRI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1156.7,
+  "exit": 1174.05,
+  "entry_time": 1794985257625,
+  "exit_time": 1795147200000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 1174.05,
+  "tp": null,
+  "high": 1174.05,
+  "low": 1140,
+  "nifty": -0.7,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794985257625,
+   "price": 1156.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -9542.5,
+  "charges": 405.89,
+  "net": -9948.39
+ },
+ {
+  "id": "1794985257625-3632",
+  "symbol": "NAUKRI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1156.7,
+  "exit": 1174.05,
+  "entry_time": 1794985257625,
+  "exit_time": 1795147200000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 1174.05,
+  "tp": null,
+  "high": 1174.05,
+  "low": 1140,
+  "nifty": -0.7,
+  "strategies": [
+   "4h RSI  BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794985257625,
+   "price": 1156.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -9542.5,
+  "charges": 405.89,
+  "net": -9948.39
+ },
+ {
+  "id": "1794993342412-3744",
+  "symbol": "NATIONALUM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1875,
+  "entry": 304.8,
+  "exit": 300.2,
+  "entry_time": 1794993342412,
+  "exit_time": 1795147200000,
+  "reason": "TSL after target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 312.65,
+  "tp": 295.65,
+  "high": 307.7,
+  "low": 294.5,
+  "nifty": -0.22,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794993342412,
+   "price": 304.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 8625.0,
+  "charges": 368.7,
+  "net": 8256.3
  }
 ]
