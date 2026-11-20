@@ -122219,5 +122219,153 @@
   "gross": 15010.0,
   "charges": 619.22,
   "net": 14390.78
+ },
+ {
+  "id": "1795152046508-4331",
+  "symbol": "NIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25568.8,
+  "exit": 25525.4,
+  "entry_time": 1795152046508,
+  "exit_time": 1795153500000,
+  "reason": "HA doji",
+  "source": "Auto HA IDX 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 25512.5,
+  "tp": null,
+  "high": 25571.75,
+  "low": 25517.85,
+  "nifty": 0.22,
+  "strategies": [
+   "15m HA IDX Bullish"
+  ],
+  "first_seen": {
+   "time": 1795148441096,
+   "price": 25523.45
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2821.0,
+  "charges": 981.73,
+  "net": -3802.73
+ },
+ {
+  "id": "1795152046508-4332",
+  "symbol": "NIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25568.8,
+  "exit": 25525.4,
+  "entry_time": 1795152046508,
+  "exit_time": 1795153500000,
+  "reason": "HA doji",
+  "source": "Auto HA IDX PURE 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX PURE",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 25512.5,
+  "tp": null,
+  "high": 25571.75,
+  "low": 25517.85,
+  "nifty": 0.22,
+  "strategies": [
+   "15m HA IDX PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795148441096,
+   "price": 25523.45
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2821.0,
+  "charges": 981.73,
+  "net": -3802.73
+ },
+ {
+  "id": "1795152046508-4334",
+  "symbol": "BANKNIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 63409.1,
+  "exit": 63322.1,
+  "entry_time": 1795152046508,
+  "exit_time": 1795153500000,
+  "reason": "HA doji",
+  "source": "Auto HA IDX 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 63231.1,
+  "tp": null,
+  "high": 63419.35,
+  "low": 63249.75,
+  "nifty": 0.22,
+  "strategies": [
+   "15m HA IDX Bullish"
+  ],
+  "first_seen": {
+   "time": 1795148441096,
+   "price": 63231.35
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2610.0,
+  "charges": 1117.18,
+  "net": -3727.18
+ },
+ {
+  "id": "1795152046508-4335",
+  "symbol": "BANKNIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 63409.1,
+  "exit": 63322.1,
+  "entry_time": 1795152046508,
+  "exit_time": 1795153500000,
+  "reason": "HA doji",
+  "source": "Auto HA IDX PURE 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX PURE",
+  "style": "atr",
+  "passed": false,
+  "carried": false,
+  "sl": 63231.1,
+  "tp": null,
+  "high": 63419.35,
+  "low": 63249.75,
+  "nifty": 0.22,
+  "strategies": [
+   "15m HA IDX PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795148441096,
+   "price": 63231.35
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2610.0,
+  "charges": 1117.18,
+  "net": -3727.18
  }
 ]
