@@ -121329,5 +121329,154 @@
   "gross": 22125.0,
   "charges": 307.93,
   "net": 21817.07
+ },
+ {
+  "id": "1795148441096-4287",
+  "symbol": "NIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25523.45,
+  "exit": 25481.6,
+  "entry_time": 1795148441096,
+  "exit_time": 1795150200000,
+  "reason": "HA candle trail",
+  "source": "Auto HA IDX BRK 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX BRK",
+  "style": "ha_brk_idx",
+  "passed": false,
+  "carried": false,
+  "sl": 25454.9,
+  "tp": null,
+  "high": 25543.35,
+  "low": 25481.6,
+  "nifty": 0.04,
+  "strategies": [
+   "15m HA IDX BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1795148441096,
+   "price": 25523.45
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2720.25,
+  "charges": 980.12,
+  "net": -3700.37
+ },
+ {
+  "id": "1795146941328-4254",
+  "symbol": "ICICIBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 700,
+  "entry": 1610.5,
+  "exit": 1609.1,
+  "entry_time": 1795146941328,
+  "exit_time": 1795149900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1602.7,
+  "tp": null,
+  "high": 1616,
+  "low": 1608,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 1610.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -980.0,
+  "charges": 681.6,
+  "net": -1661.6
+ },
+ {
+  "id": "1795146941328-4279",
+  "symbol": "TITAN",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4595.9,
+  "exit": 4558.0,
+  "entry_time": 1795146941328,
+  "exit_time": 1795149900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 4689.3,
+  "tp": null,
+  "high": 4595.9,
+  "low": 4524,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 4565.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 6632.5,
+  "charges": 499.89,
+  "net": 6132.61
+ },
+ {
+  "id": "1795074600000-4152",
+  "symbol": "VEDL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1150,
+  "entry": 243.0,
+  "exit": 236.2,
+  "entry_time": 1795074600000,
+  "exit_time": 1795149900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 245.45,
+  "tp": null,
+  "high": 243.6,
+  "low": 231.85,
+  "nifty": 0.52,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795060537156,
+   "price": 242.18
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 7820.0,
+  "charges": 204.26,
+  "net": 7615.74
  }
 ]
