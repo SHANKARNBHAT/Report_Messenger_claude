@@ -1,6 +1,6 @@
 """
 NIFTY and BANKNIFTY option data from Dhan (DhanHQ API v2), for the option chain page
-(option_chain_page.py) and the planned ATM option HA strategy. Only these two indices are kept.
+(option_chain_page.py) and the planned ATM option HA strategy; also F&O stocks (stock()).
 
 Credentials, read from the environment (GitHub Actions secrets) or else st.secrets:
   DHAN_CLIENT_ID      always
@@ -49,9 +49,17 @@ except ImportError:
 API = "https://api.dhan.co/v2"
 IST = ZoneInfo("Asia/Kolkata")
 # BANKNIFTY has monthly expiries only (NSE stopped its weekly ones in Nov 2024).
-NIFTY = {"name": "NIFTY", "id": 13, "segment": "IDX_I", "step": 50, "expiry_flag": "WEEK"}
-BANKNIFTY = {"name": "BANKNIFTY", "id": 25, "segment": "IDX_I", "step": 100, "expiry_flag": "MONTH"}
+NIFTY = {"name": "NIFTY", "id": 13, "segment": "IDX_I", "step": 50, "expiry_flag": "WEEK", "instrument": "OPTIDX"}
+BANKNIFTY = {"name": "BANKNIFTY", "id": 25, "segment": "IDX_I", "step": 100, "expiry_flag": "MONTH",
+             "instrument": "OPTIDX"}
 INDICES = {i["name"]: i for i in (NIFTY, BANKNIFTY)}
+
+
+def stock(name: str, security_id: int, step: float) -> dict:
+    """An F&O stock as an underlying: its NSE equity security id on Dhan and its regular strike
+    interval (both from strike_steps.json). Stock options expire monthly."""
+    return {"name": name, "id": int(security_id), "segment": "NSE_EQ", "step": step,
+            "expiry_flag": "MONTH", "instrument": "OPTSTK"}
 TIMEOUT = 15
 
 
@@ -244,11 +252,11 @@ def _bars(data: dict) -> list[tuple]:
     return [(int(cols[0][i]), cols[1][i], cols[2][i], cols[3][i], cols[4][i], vols[i]) for i in range(n)]
 
 
-def candles(security_id: int | str, minutes: int = 15, days: int = 5) -> list[tuple]:
+def candles(security_id: int | str, minutes: int = 15, days: int = 5, instrument: str = "OPTIDX") -> list[tuple]:
     """Intraday candles of one NSE option contract, oldest first, from `days` ago up to now."""
     now = datetime.now(IST)
     data = post("/charts/intraday", {
-        "securityId": str(security_id), "exchangeSegment": "NSE_FNO", "instrument": "OPTIDX",
+        "securityId": str(security_id), "exchangeSegment": "NSE_FNO", "instrument": instrument,
         "interval": str(minutes), "oi": False,
         "fromDate": (now - timedelta(days=days)).strftime("%Y-%m-%d 09:15:00"),
         "toDate": now.strftime("%Y-%m-%d %H:%M:%S"),
@@ -267,7 +275,7 @@ def atm_candles(side: str, start: date, end: date, minutes: int = 15, strike: st
         if day.weekday() < 5:
             data = post("/charts/rollingoption", {
                 "exchangeSegment": "NSE_FNO", "interval": str(minutes), "securityId": str(underlying["id"]),
-                "instrument": "OPTIDX", "expiryFlag": expiry_flag or underlying["expiry_flag"],
+                "instrument": underlying.get("instrument", "OPTIDX"), "expiryFlag": expiry_flag or underlying["expiry_flag"],
                 "expiryCode": str(expiry_code), "strike": strike,
                 "drvOptionType": "CALL" if side.upper() == "CE" else "PUT",
                 "requiredData": ["open", "high", "low", "close", "volume", "strike", "spot"],

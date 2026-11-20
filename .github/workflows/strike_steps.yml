@@ -1,0 +1,50 @@
+name: Strike intervals
+
+# Refreshes strike_steps.json (the option strike interval of each F&O stock) for the F&O ATR
+# page. NSE revises intervals now and then and adds stocks to F&O, so once a month, on the
+# 2nd (always after the last-Tuesday monthly expiry has rolled the series), plus by hand.
+on:
+  schedule:
+    - cron: '37 4 2 * *'  # 10:07 AM IST on the 2nd of every month
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: strike-steps
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          pip install requests
+
+      - name: Build strike intervals
+        run: |
+          python strike_steps.py
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add strike_steps.json
+          git commit -m "Strike intervals $(TZ=Asia/Kolkata date '+%d %b %Y') [skip ci]" || { echo "No changes"; exit 0; }
+          for i in 1 2 3; do
+            git pull --rebase -X theirs origin main && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          echo "Push failed after 3 attempts"
+          exit 1

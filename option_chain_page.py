@@ -1,5 +1,5 @@
 """
-Option chain page: the NIFTY or BANKNIFTY option chain from Dhan (dhan_data.py), the ATM strike and
+Option chain page: the NIFTY, BANKNIFTY or a top-ATR F&O stock's option chain from Dhan (dhan_data.py), the ATM strike and
 5 strikes each side of it, with OI, volume, IV and premium changes; and below it the ATM call and put
 on 15-minute Heikin Ashi candles, flagging the planned strategy's entry candle (the first
 solid green HA candle, no lower wick, after a red one).
@@ -16,6 +16,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import dhan_data as dd
+import strike_steps
 
 st.set_page_config(page_title="Option chain", page_icon="🧮", layout="wide")
 st.title("🧮 Option chain")
@@ -37,28 +38,50 @@ SETUP = """
 """
 
 
+TOP_STOCKS = 15  # F&O stocks offered besides the indices: the biggest ATR ÷ strike interval
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def load_underlyings() -> dict[str, dict]:
+    """NIFTY, BANKNIFTY and the TOP_STOCKS F&O stocks whose daily ATR covers the most strikes
+    (strike_steps.fno_atr, as on the F&O ATR page), each with a label for the picker."""
+    out = {name: {**u, "label": name} for name, u in dd.INDICES.items()}
+    try:
+        frame, _, _ = strike_steps.fno_atr()
+    except Exception:  # no database or strike intervals: the indices only
+        return out
+    for row in frame.dropna(subset=["dhan_id"]).head(TOP_STOCKS).itertuples():
+        out[row.symbol] = {**dd.stock(row.symbol, row.dhan_id, row.step),
+                           "label": f"{row.symbol} · ATR {row.ratio:.1f}× strike"}
+    return out
+
+
 @st.cache_data(ttl=600, show_spinner=False)
-def load_expiries(index: str) -> list[str]:
-    return dd.expiries(dd.INDICES[index])
+def load_expiries(name: str) -> list[str]:
+    return dd.expiries(UNDERLYINGS[name])
 
 
 @st.cache_data(ttl=5, show_spinner=False)  # Dhan allows one chain request every 3 seconds
-def load_chain(index: str, expiry: str) -> tuple[float, list[dict], str]:
-    price, rows = dd.option_chain(expiry, dd.INDICES[index])
+def load_chain(name: str, expiry: str) -> tuple[float, list[dict], str]:
+    price, rows = dd.option_chain(expiry, UNDERLYINGS[name])
     return price, rows, datetime.now(dd.IST).strftime("%H:%M:%S")
 
 
 @st.cache_data(ttl=60, show_spinner=False)
-def load_candles(security_id: int) -> list[tuple]:
-    return dd.candles(security_id, minutes=15, days=5)
+def load_candles(security_id: int, instrument: str) -> list[tuple]:
+    return dd.candles(security_id, minutes=15, days=5, instrument=instrument)
 
 
 if not dd.secret("DHAN_CLIENT_ID") or not (dd.can_make_token() or dd.secret("DHAN_ACCESS_TOKEN")):
     st.info(SETUP)
     st.stop()
 
-index = st.segmented_control("Index", list(dd.INDICES), default="NIFTY", key="oc-index") or "NIFTY"
-underlying = dd.INDICES[index]
+UNDERLYINGS = load_underlyings()
+index = st.selectbox("Index / stock", list(UNDERLYINGS), index=0, key="oc-underlying",
+                     format_func=lambda n: UNDERLYINGS[n]["label"],
+                     help=f"NIFTY, BANKNIFTY and the {TOP_STOCKS} F&O stocks whose daily ATR covers the most "
+                          "strike intervals (see the F&O ATR page).")
+underlying = UNDERLYINGS[index]
 
 try:
     expiries = load_expiries(index)
@@ -137,6 +160,12 @@ def chain_view() -> None:
         st.warning("Empty option chain from Dhan.")
         return
     df = pd.DataFrame(rows)
+    # Regular strikes only: after a dividend NSE also lists adjusted ones (e.g. 364.75 by 365).
+    step = underlying["step"]
+    df = df[((df["strike"] / step) - (df["strike"] / step).round()).abs() < 1e-6].reset_index(drop=True)
+    if df.empty:
+        st.warning("No regular strikes in Dhan's option chain.")
+        return
     atm = dd.atm_strike(price, underlying)
     i = (df["strike"] - atm).abs().idxmin()
     view = df.iloc[max(0, i - AROUND): i + AROUND + 1].reset_index(drop=True)
@@ -203,7 +232,7 @@ def chain_view() -> None:
                 st.caption("No security id from Dhan.")
                 continue
             try:
-                ha = dd.heikin_ashi(load_candles(int(sid)))
+                ha = dd.heikin_ashi(load_candles(int(sid), underlying["instrument"]))
             except dd.DhanError as e:
                 st.error(str(e))
                 continue
