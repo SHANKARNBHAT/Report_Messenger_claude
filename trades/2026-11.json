@@ -122441,5 +122441,43 @@
   "gross": 3240.0,
   "charges": 330.59,
   "net": 2909.41
+ },
+ {
+  "id": "1795060200000-3811",
+  "symbol": "ONGC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 2250,
+  "entry": 224.5,
+  "exit": 223.85,
+  "entry_time": 1795060200000,
+  "exit_time": 1795154400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 226.75,
+  "tp": null,
+  "high": 225.5,
+  "low": 221.95,
+  "nifty": -0.29,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 223.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1462.5,
+  "charges": 331.62,
+  "net": 1130.88
  }
 ]
