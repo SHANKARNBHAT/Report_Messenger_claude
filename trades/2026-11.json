@@ -117253,5 +117253,42 @@
   "gross": -14900.0,
   "charges": 505.92,
   "net": -15405.92
+ },
+ {
+  "id": "1794887144216-2393",
+  "symbol": "CUMMINSIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 4140.0,
+  "exit": 4141.5,
+  "entry_time": 1794887144216,
+  "exit_time": 1795082400000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 4278.55,
+  "tp": null,
+  "high": 4193.0,
+  "low": 3966.2,
+  "nifty": 0.14,
+  "strategies": [
+   "Daily HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887144216,
+   "price": 4169.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -300.0,
+  "charges": 513.53,
+  "net": -813.53
  }
 ]

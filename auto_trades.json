@@ -4501,42 +4501,6 @@
    }
   },
   {
-   "id": "1794887144216-2393",
-   "symbol": "CUMMINSIND",
-   "side": "SELL",
-   "lots": 1,
-   "qty": 200,
-   "entry": 4140.0,
-   "sl": 4278.55,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "ha_brk",
-   "system": "HA BRK Daily",
-   "stop": 4141.5,
-   "time": 1794887144216,
-   "status": "open",
-   "passed": false,
-   "high": 4193.0,
-   "low": 3966.2,
-   "nifty": 0.14,
-   "source": "Auto HA BRK Daily",
-   "timeframes": [
-    "DAILY"
-   ],
-   "strategies": [
-    "Daily HA BRK Bearish"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794887144216,
-    "price": 4169.9
-   }
-  },
-  {
    "id": "1794887144216-2394",
    "symbol": "FORTIS",
    "side": "BUY",
@@ -21286,6 +21250,7 @@
  ],
  "seq": 4205,
  "log": [
+  "20 Nov 09:10  CUMMINSIND: HA candle trail at 4141.5 (HA BRK Daily)",
   "19 Nov 17:45  CUMMINSIND: Stop loss at 4141.5 (Hold \u00b7 2H SMA 20 exit)",
   "19 Nov 17:45  CUMMINSIND: Stop loss at 4141.5 (Hold \u00b7 2H SMA 8 exit)",
   "19 Nov 17:45  CUMMINSIND: Stop loss at 4141.5 (Hold \u00b7 trail)",
@@ -21584,11 +21549,10 @@
   "19 Nov 13:10  HDFCBANK: RSI BUY 650 at 815.45, SL 803.2 (2 HOUR; trail, sma8, sma20)",
   "19 Nov 13:05  HINDZINC: HA WK BRK SELL 1225 at 520.8 (30m SMA 8 520.81), SL 526.0 (30m candle)",
   "19 Nov 13:05  HINDALCO: 30m trailing SL at 899.4 (HA WK BRK)",
-  "19 Nov 13:00  BAJAJFINSV: RSI 4H BUY 300 at 1879.0, SL 1850.8 (4 HOUR; trail, sma8, sma20)",
-  "19 Nov 13:00  LTM: HA WK BRK SELL 150 at 4037.05 (30m SMA 8 4037.05), SL 4077.4 (30m candle)"
+  "19 Nov 13:00  BAJAJFINSV: RSI 4H BUY 300 at 1879.0, SL 1850.8 (4 HOUR; trail, sma8, sma20)"
  ],
- "page_run": 1795145738361,
- "updated": 1795145738361,
+ "page_run": 1795146042321,
+ "updated": 1795146042321,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
