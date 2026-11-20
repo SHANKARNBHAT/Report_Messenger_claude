@@ -603,7 +603,7 @@ def enter_vp_signals(files: Files, account: dict, seen: dict, now: datetime, tra
     except fs.ChartinkError as exc:
         note(f"No 2H candles for the HA VP entries: {exc}")
         return
-    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    instruments = {i["symbol"]: i for i in fs.entry_instruments()}  # high-ATR stocks only (ATR_STRIKES_ABOVE)
     try:
         found = fs.fetch_volume_profile()
         levels = {row["Symbol"]: row for row in found.get("stocks", []) + found.get("indices", [])}
@@ -748,7 +748,7 @@ def enter_pure_signals(files: Files, account: dict, seen: dict, now: datetime, t
     enters the other way; no second entry on a candle."""
     if now.time() >= LAST_ENTRY:
         return
-    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    instruments = {i["symbol"]: i for i in fs.entry_instruments()}  # high-ATR stocks only (ATR_STRIKES_ABOVE)
     month = trades_of(files, now.strftime("%Y-%m"))
     found = []
     for system, timeframe in module.SYSTEMS.items():
@@ -832,7 +832,7 @@ def enter_weekly_signals(files: Files, account: dict, seen: dict, now: datetime,
     except fs.ChartinkError as exc:
         note(f"No Weekly / 4H candles for the {system} entries: {exc}")
         return
-    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    instruments = {i["symbol"]: i for i in fs.entry_instruments()}  # high-ATR stocks only (ATR_STRIKES_ABOVE)
     current = candle_key("4 HOUR", int(now.timestamp()))
     for symbol, rows in sorted(four.items()):
         if symbol not in instruments or symbol in armed:
@@ -848,7 +848,7 @@ def enter_weekly_signals(files: Files, account: dict, seen: dict, now: datetime,
         at = int(now.timestamp()) if candle_key("4 HOUR", start) == current else int(candle_end("4 HOUR", start))
         armed[symbol] = {"week": week, "side": side, "level": round(level, 2), "time": at, "entered": False}
         note(f"{symbol}: {system} armed {side} (4H HA close past last week's HA {'high' if side == 'BUY' else 'low'} {level:.2f})")
-    waiting = {s: a for s, a in armed.items() if not a["entered"]}
+    waiting = {s: a for s, a in armed.items() if not a["entered"] and s in instruments}
     if not waiting:
         return
     bars = entry_bars(set(waiting), now)
@@ -962,8 +962,11 @@ def ha_sma_rsi(dashboard: dict) -> dict[tuple[str, str], float]:
 def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: dict, seen: dict, now: datetime,
                   trading: bool, note, system: str) -> None:
     """Trade one strategy's signals, and note in `seen` what was done with each."""
-    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    instruments = {i["symbol"]: i for i in fs.entry_instruments()}  # high-ATR stocks only (ATR_STRIKES_ABOVE)
     mark(seen, [s for s in signals if not s["fno"]], "Not F&O")
+    low_atr = [s for s in signals if s["fno"] and s["symbol"] not in instruments]
+    mark(seen, low_atr, f"ATR not above {fs.ATR_STRIKES_ABOVE:g} strikes")
+    signals = [s for s in signals if s not in low_atr]
     traded = TRADED_TIMEFRAMES[system]
     mark(seen, [s for s in signals if s["fno"] and s["timeframe"] not in traded], "Timeframe not traded")
     by_symbol: dict[str, list[dict]] = {}

@@ -105,6 +105,23 @@ def build() -> dict:
             "steps": steps, "ids": {s: ids[s] for s in steps if s in ids}, "not_found": missing}
 
 
+def symbols_above(ratio: float) -> set[str]:
+    """The F&O stocks whose latest daily ATR (14) is more than `ratio` strike intervals: the
+    futures simulator and auto trader trade only these (futures_simulator.ATR_STRIKES_ABOVE).
+    Plain sqlite and json, so it runs in the auto trader's GitHub job as is."""
+    with open(OUT, encoding="utf-8") as f:
+        steps = json.load(f)["steps"]
+    with sqlite3.connect(f"file:{DB}?mode=ro", uri=True) as db:
+        rows = db.execute("SELECT symbol, atr_14 FROM stock_ohlc_indicators "
+                          "WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators) AND atr_14 IS NOT NULL").fetchall()
+    out = set()
+    for symbol, atr in rows:
+        symbol = symbol.removesuffix(".NS")
+        if symbol in steps and atr / steps[symbol] > ratio:
+            out.add(symbol)
+    return out
+
+
 def fno_atr():
     """The latest day's F&O stocks with ATR (14), close, lot, strike interval, ATR ÷ interval and
     Dhan security id, as a DataFrame sorted by ATR ÷ interval (biggest first), and the ATR date

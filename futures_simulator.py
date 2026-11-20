@@ -179,6 +179,37 @@ def load_instruments() -> list[dict]:
     return _load_instruments(FUTURES_CSV.stat().st_mtime)
 
 
+# Only F&O stocks whose daily ATR covers more than this many option strike intervals are traded
+# (here and by the auto trader): see the F&O ATR page. The indices are always kept.
+ATR_STRIKES_ABOVE = 3.0
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def high_atr_symbols() -> frozenset[str] | None:
+    """The stocks allowed by ATR_STRIKES_ABOVE, or None (no filter) if the ATR data or the strike
+    intervals can't be read, so a missing file never stops all trading quietly."""
+    try:
+        import strike_steps
+
+        found = strike_steps.symbols_above(ATR_STRIKES_ABOVE)
+    except Exception:
+        return None
+    return frozenset(found) or None
+
+
+def is_index(instrument: dict) -> bool:
+    return instrument["yahoo"] in INDEX_SYMBOLS or instrument["yahoo"].startswith("^")
+
+
+def entry_instruments(keep: set[str] = frozenset()) -> list[dict]:
+    """The instruments new trades may be opened in: the indices and the high-ATR stocks, plus
+    `keep` (e.g. stocks already held, so they can still be closed)."""
+    allowed = high_atr_symbols()
+    if allowed is None:
+        return load_instruments()
+    return [i for i in load_instruments() if is_index(i) or i["symbol"] in allowed or i["symbol"] in keep]
+
+
 def yahoo_chart(yahoo: str, interval: str, period: str) -> dict:
     response = requests.get(YAHOO_CHART_URL.format(quote(yahoo, safe="")),
                             params={"interval": interval, "range": period},
@@ -638,12 +669,18 @@ _SIMULATOR = st.components.v2.component(
 def main() -> None:
     st.set_page_config(page_title="Futures Simulator", page_icon="🧪", layout="wide",
                        initial_sidebar_state="collapsed")
-    instruments = load_instruments()
+    # Only the indices and the high-ATR stocks (ATR_STRIKES_ABOVE) can be traded, plus any stock
+    # the simulator still holds, so an open position can always be closed.
+    instruments = entry_instruments(set(component_value("symbols") or []))
     by_symbol = {i["symbol"]: i for i in instruments}
+    allowed = high_atr_symbols()
     with st.spinner("Loading signals from Chartink..."):
         dashboard, error = load_dashboard()
         signals, signals_note = signal_rows(dashboard, by_symbol) if dashboard else ([], error)
-        signals = [s for s in signals if s["timeframe"] in SIM_TIMEFRAMES]
+        signals = [s for s in signals if s["timeframe"] in SIM_TIMEFRAMES
+                   and (allowed is None or s["symbol"] in allowed)]
+        if allowed is not None:
+            signals_note += f" · only stocks with ATR above {ATR_STRIKES_ABOVE:g} strikes ({len(allowed)})"
         # Agrees: the stock is on "Common between Chartink and Fundamentals" (chartink_dashboard.fundamentals_matches),
         # that is on a list of the Fundamentals dashboard. (signal_rows' Market reports check stays for the Auto trader.)
         try:
