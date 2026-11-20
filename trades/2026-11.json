@@ -121552,5 +121552,116 @@
   "gross": 204.75,
   "charges": 981.65,
   "net": -776.9
+ },
+ {
+  "id": "1795150542507-4313",
+  "symbol": "WIPRO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3000,
+  "entry": 186.05,
+  "exit": 187.3,
+  "entry_time": 1795150542507,
+  "exit_time": 1795151700000,
+  "reason": "30m RSI SMA 33.9 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 182.15,
+  "tp": 191.65,
+  "high": 187.81,
+  "low": 186.05,
+  "nifty": 0.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795150542507,
+   "price": 186.04
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 3750.0,
+  "charges": 363.5,
+  "net": 3386.5
+ },
+ {
+  "id": "1795150542507-4314",
+  "symbol": "WIPRO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3000,
+  "entry": 186.05,
+  "exit": 187.3,
+  "entry_time": 1795150542507,
+  "exit_time": 1795151700000,
+  "reason": "30m RSI SMA 33.9 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 182.15,
+  "tp": null,
+  "high": 187.81,
+  "low": 186.05,
+  "nifty": 0.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795150542507,
+   "price": 186.04
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 3750.0,
+  "charges": 363.5,
+  "net": 3386.5
+ },
+ {
+  "id": "1795150542507-4315",
+  "symbol": "WIPRO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3000,
+  "entry": 186.05,
+  "exit": 187.3,
+  "entry_time": 1795150542507,
+  "exit_time": 1795151700000,
+  "reason": "30m RSI SMA 33.9 < 40",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 182.15,
+  "tp": null,
+  "high": 187.81,
+  "low": 186.05,
+  "nifty": 0.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795150542507,
+   "price": 186.04
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 3750.0,
+  "charges": 363.5,
+  "net": 3386.5
  }
 ]
