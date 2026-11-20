@@ -126957,5 +126957,42 @@
   "gross": -937.5,
   "charges": 440.94,
   "net": -1378.44
+ },
+ {
+  "id": "1795161338138-4471",
+  "symbol": "GODFRYPHLP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 1792.1,
+  "exit": 1796.0,
+  "entry_time": 1795161338138,
+  "exit_time": 1795164600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1775.2,
+  "tp": null,
+  "high": 1811.4,
+  "low": 1792.1,
+  "nifty": 0.75,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795161338138,
+   "price": 1795.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 1072.5,
+  "charges": 325.31,
+  "net": 747.19
  }
 ]
