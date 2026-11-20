@@ -12,6 +12,7 @@ from __future__ import annotations
 from datetime import datetime
 
 import pandas as pd
+import plotly.graph_objects as go
 import streamlit as st
 
 import dhan_data as dd
@@ -82,6 +83,49 @@ def fmt_lakh(v):
     return None if v is None or pd.isna(v) else round(v / 1e5, 2)
 
 
+CANDLE_UP, CANDLE_DOWN, SIGNAL_COLOR = "#1a9e6f", "#d64545", "#eda100"  # as the Auto trader chart
+CHART_DAYS = 2  # trading days of 15-minute HA candles on the small charts
+
+
+def is_entry(ha: list[dict], k: int) -> bool:
+    """The strategy's entry candle: solid green (no lower wick) right after a red one."""
+    return k > 0 and ha[k]["solid"] and not ha[k - 1]["green"]
+
+
+def ha_chart(ha: list[dict], key: str) -> None:
+    """A small 15-minute HA candle chart of the last CHART_DAYS trading days, the column's width,
+    with an amber star under each entry candle. Times are categories, so nights leave no gap."""
+    days = sorted({datetime.fromtimestamp(c["start"], dd.IST).date() for c in ha})[-CHART_DAYS:]
+    keep = [k for k, c in enumerate(ha) if datetime.fromtimestamp(c["start"], dd.IST).date() in days]
+    if not keep:
+        return
+    label = [datetime.fromtimestamp(ha[k]["start"], dd.IST).strftime("%d %b %H:%M") for k in keep]
+    figure = go.Figure(go.Candlestick(
+        x=label, open=[ha[k]["open"] for k in keep], high=[ha[k]["high"] for k in keep],
+        low=[ha[k]["low"] for k in keep], close=[ha[k]["close"] for k in keep], name="HA",
+        increasing=dict(line=dict(color=CANDLE_UP, width=1), fillcolor=CANDLE_UP),
+        decreasing=dict(line=dict(color=CANDLE_DOWN, width=1), fillcolor=CANDLE_DOWN)))
+    entries = [n for n, k in enumerate(keep) if is_entry(ha, k)]
+    if entries:
+        gap = 0.04 * (max(ha[k]["high"] for k in keep) - min(ha[k]["low"] for k in keep))
+        figure.add_trace(go.Scatter(
+            x=[label[n] for n in entries], y=[ha[keep[n]]["low"] - gap for n in entries], mode="markers",
+            name="Entry", marker=dict(symbol="star-triangle-up", size=10, color=SIGNAL_COLOR,
+                                      line=dict(width=1, color="white")),
+            hovertemplate="Entry candle<br>%{x}<extra></extra>"))
+    day_starts = [n for n in range(len(keep)) if n == 0 or label[n][:6] != label[n - 1][:6]]
+    figure.update_layout(
+        height=230, margin=dict(l=4, r=4, t=4, b=4), showlegend=False, hovermode="x",
+        xaxis=dict(type="category", rangeslider_visible=False, tickangle=0, nticks=6,
+                   tickvals=[label[n] for n in range(0, len(keep), 8)],
+                   ticktext=[label[n][7:] if n not in day_starts else label[n][:6] for n in range(0, len(keep), 8)],
+                   gridcolor="rgba(128,128,128,0.10)"),
+        yaxis=dict(tickformat=",.0f", gridcolor="rgba(128,128,128,0.15)", side="right"))
+    for n in day_starts[1:]:
+        figure.add_vline(x=n - 0.5, line=dict(color="rgba(128,128,128,0.45)", width=1, dash="dot"))
+    st.plotly_chart(figure, width="stretch", key=key, config={"displayModeBar": False})
+
+
 @st.fragment(run_every=15 if auto else None)
 def chain_view() -> None:
     try:
@@ -147,8 +191,8 @@ def chain_view() -> None:
     st.caption(f"Dhan, {at} IST · expiry {expiry} · shaded: in the money · highlighted: ATM · OI and volume in lakh.")
 
     st.subheader("ATM CE / PE on 15-minute Heikin Ashi")
-    st.caption("Strategy entry: the first solid green HA candle (no lower wick) after a red one. SL: that "
-               "candle's previous HA candle's low.")
+    st.caption("Strategy entry (amber star): the first solid green HA candle (no lower wick) after a red one. "
+               "SL: that candle's previous HA candle's low. Charts: the last two trading days.")
     atm_row = df.loc[i]
     cols = st.columns(2)
     for col, side in zip(cols, ("ce", "pe")):
@@ -166,6 +210,7 @@ def chain_view() -> None:
             if not ha:
                 st.caption("No candles yet.")
                 continue
+            ha_chart(ha, key=f"oc-ha-{index}-{side}")
             last = ha[-12:]
             frame = pd.DataFrame({
                 "Time": [datetime.fromtimestamp(c["start"], dd.IST).strftime("%d %b %H:%M") for c in last],
@@ -174,8 +219,7 @@ def chain_view() -> None:
                 "Candle": ["🟢 solid" if c["solid"] else "🟢" if c["green"] else "🔴" for c in last],
             })
             start = len(ha) - len(last)
-            frame["Entry?"] = ["✅" if ha[start + k]["solid"] and start + k > 0 and not ha[start + k - 1]["green"]
-                               else "" for k in range(len(last))]
+            frame["Entry?"] = ["✅" if is_entry(ha, start + k) else "" for k in range(len(last))]
             st.dataframe(frame.iloc[::-1].style.format(precision=2), hide_index=True, width="stretch")
             st.caption("The newest candle (top) may still be forming.")
 

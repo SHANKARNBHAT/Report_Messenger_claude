@@ -31,6 +31,7 @@ import hashlib
 import hmac
 import json
 import os
+import re
 import struct
 import time
 from datetime import date, datetime, timedelta
@@ -60,8 +61,8 @@ class DhanError(RuntimeError):
 
 AUTH = "https://auth.dhan.co/app/generateAccessToken"
 TOKEN_CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".dhan_token.json")
-AUTH_ERRORS = ("DH-901", "807", "808", "809", "invalid token", "token expired", "token invalid",
-               "access token", "authentication failed")
+AUTH_ERRORS = re.compile(r"\b(dh-901|807|808|809)\b|invalid token|token expired|token invalid|"
+                         r"access token|authentication failed")
 _token: dict = {}  # this process's token: {"token": str, "expires": epoch seconds}
 
 
@@ -123,6 +124,10 @@ def new_token() -> str:
     if reply.status_code != 200 or not token:
         detail = (data.get("message") or data.get("errorMessage") or data.get("remarks") or data) \
             if isinstance(data, dict) and data else reply.text[:200]
+        if "2 minutes" in str(detail):
+            raise DhanError("The Dhan token was just renewed somewhere else (another copy of this app, "
+                            "e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and "
+                            "makes at most one every 2 minutes: refresh in 2 minutes.")
         raise DhanError(f"Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one "
                         f"token every 2 minutes): HTTP {reply.status_code} {detail}")
     _token.clear()
@@ -181,7 +186,7 @@ def post(path: str, body: dict, _retry: bool = True) -> dict:
         if "806" in text or "not subscribed" in text:
             raise DhanError(f"Dhan says the Data APIs plan is not active on this account (web.dhan.co -> "
                             f"Trading & Data APIs; then make a new access token): {detail}")
-        if reply.status_code == 401 or any(e.lower() in text for e in AUTH_ERRORS):
+        if reply.status_code == 401 or AUTH_ERRORS.search(text):
             if _retry and can_make_token():
                 credentials(fresh=True)
                 return post(path, body, _retry=False)
