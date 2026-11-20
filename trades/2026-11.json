@@ -127771,5 +127771,42 @@
   "gross": -7875.0,
   "charges": 343.55,
   "net": -8218.55
+ },
+ {
+  "id": "1795161338138-4513",
+  "symbol": "PRESTIGE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 450,
+  "entry": 1674.6,
+  "exit": 1675.2,
+  "entry_time": 1795161338138,
+  "exit_time": 1795167000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1669.9,
+  "tp": null,
+  "high": 1687.4,
+  "low": 1671,
+  "nifty": 0.75,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795161338138,
+   "price": 1673.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 270.0,
+  "charges": 471.74,
+  "net": -201.74
  }
 ]
