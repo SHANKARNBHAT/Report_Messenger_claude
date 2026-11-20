@@ -122479,5 +122479,42 @@
   "gross": 1462.5,
   "charges": 331.62,
   "net": 1130.88
+ },
+ {
+  "id": "1793940938122-767",
+  "symbol": "LICI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1400,
+  "entry": 394.85,
+  "exit": 409.85,
+  "entry_time": 1793940938122,
+  "exit_time": 1795155000000,
+  "reason": "Stop loss",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 409.85,
+  "tp": 383.0,
+  "high": 409.85,
+  "low": 390.55,
+  "nifty": 0.46,
+  "strategies": [
+   "2H HA Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1793940938122,
+   "price": 394.85
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 59.04,
+  "gross": -21000.0,
+  "charges": 359.4,
+  "net": -21359.4
  }
 ]
