@@ -122553,5 +122553,42 @@
   "gross": 23557.5,
   "charges": 532.24,
   "net": 23025.26
+ },
+ {
+  "id": "1795146941328-4265",
+  "symbol": "MCX",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 225,
+  "entry": 3574.3,
+  "exit": 3540.0,
+  "entry_time": 1795146941328,
+  "exit_time": 1795155900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 3633.6,
+  "tp": null,
+  "high": 3574.3,
+  "low": 3525,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 3573.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 7717.5,
+  "charges": 499.8,
+  "net": 7217.7
  }
 ]
