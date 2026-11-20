@@ -119587,5 +119587,79 @@
   "gross": 8625.0,
   "charges": 368.7,
   "net": 8256.3
+ },
+ {
+  "id": "1795147251802-4280",
+  "symbol": "IEX",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 4350,
+  "entry": 114.8,
+  "exit": 115.3,
+  "entry_time": 1795147251802,
+  "exit_time": 1795147500000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 115.3,
+  "tp": null,
+  "high": 115.3,
+  "low": 114.8,
+  "nifty": -0.33,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795147251802,
+   "price": 114.83
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2175.0,
+  "charges": 328.54,
+  "net": -2503.54
+ },
+ {
+  "id": "1794890746411-2797",
+  "symbol": "COFORGE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 2034.2,
+  "exit": 2085.05,
+  "entry_time": 1794890746411,
+  "exit_time": 1795147800000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1984.0,
+  "tp": 2095.25,
+  "high": 2124.0,
+  "low": 2011.2,
+  "nifty": 0.36,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794890746411,
+   "price": 2034.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 24153.75,
+  "charges": 603.98,
+  "net": 23549.77
  }
 ]
