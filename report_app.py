@@ -6,7 +6,7 @@ Entry point of the dashboard. A menu at the top switches between:
   * Fundamentals        fundamentals_page.py: stocks institutions are buying (long term)
   * Futures simulator   futures_simulator.py: paper trading of NSE futures and 2H signals
   * Auto trader         auto_trader_page.py: the account auto_trader.py trades on a schedule
-  * Option chain        option_chain_page.py: NIFTY option chain and ATM CE/PE HA from Dhan
+  * Option chain        option_chain_page.py: NIFTY / BANKNIFTY option chain and ATM CE/PE HA from Dhan
 """
 
 import streamlit as st

@@ -1,10 +1,10 @@
 """
-Option chain page: the NIFTY option chain from Dhan (dhan_data.py), strikes around the
-at-the-money one, with OI, volume, IV and premium changes; and below it the ATM call and put
+Option chain page: the NIFTY or BANKNIFTY option chain from Dhan (dhan_data.py), the ATM strike and
+5 strikes each side of it, with OI, volume, IV and premium changes; and below it the ATM call and put
 on 15-minute Heikin Ashi candles, flagging the planned strategy's entry candle (the first
 solid green HA candle, no lower wick, after a red one).
 
-Needs DHAN_CLIENT_ID and DHAN_ACCESS_TOKEN in the Streamlit secrets.
+Needs DHAN_CLIENT_ID and DHAN_PIN + DHAN_TOTP_SECRET (or DHAN_ACCESS_TOKEN) in the Streamlit secrets.
 """
 
 from __future__ import annotations
@@ -17,31 +17,33 @@ import streamlit as st
 import dhan_data as dd
 
 st.set_page_config(page_title="Option chain", page_icon="🧮", layout="wide")
-st.title("🧮 NIFTY option chain")
+st.title("🧮 Option chain")
 
 SETUP = """
-**Dhan is not connected yet.** To connect it:
+**Dhan is not connected yet.** To connect it (the Dhan Data APIs plan must be active):
 
-1. Log in at [web.dhan.co](https://web.dhan.co) → **My Profile** → **Access DhanHQ APIs**,
-   and generate an access token (valid 24 hours). Note your **Client ID** shown there too.
-   The option chain and candles are Dhan *Data APIs*: activate the Data API plan there if asked.
-2. In Streamlit Cloud: app → **Settings** → **Secrets**, add
+1. On [web.dhan.co](https://web.dhan.co) → **Profile** → **Trading & Data APIs**, note your
+   **Client ID** and set up **TOTP**; keep the secret key shown under the QR code.
+2. In Streamlit Cloud: app → **Settings** → **Secrets** (on this PC: `.streamlit/secrets.toml`), add
    ```toml
    DHAN_CLIENT_ID = "your client id"
-   DHAN_ACCESS_TOKEN = "your token"
+   DHAN_PIN = "your Dhan PIN"
+   DHAN_TOTP_SECRET = "the TOTP secret key"
    ```
+   The access token is then made automatically every day. (Or, instead of the PIN and
+   TOTP key, a token made by hand there: `DHAN_ACCESS_TOKEN = "..."`, valid 24 hours.)
 3. Reload this page.
 """
 
 
 @st.cache_data(ttl=600, show_spinner=False)
-def load_expiries() -> list[str]:
-    return dd.expiries()
+def load_expiries(index: str) -> list[str]:
+    return dd.expiries(dd.INDICES[index])
 
 
 @st.cache_data(ttl=5, show_spinner=False)  # Dhan allows one chain request every 3 seconds
-def load_chain(expiry: str) -> tuple[float, list[dict], str]:
-    price, rows = dd.option_chain(expiry)
+def load_chain(index: str, expiry: str) -> tuple[float, list[dict], str]:
+    price, rows = dd.option_chain(expiry, dd.INDICES[index])
     return price, rows, datetime.now(dd.IST).strftime("%H:%M:%S")
 
 
@@ -50,26 +52,28 @@ def load_candles(security_id: int) -> list[tuple]:
     return dd.candles(security_id, minutes=15, days=5)
 
 
-try:
-    dd.credentials()
-except dd.DhanError:
+if not dd.secret("DHAN_CLIENT_ID") or not (dd.can_make_token() or dd.secret("DHAN_ACCESS_TOKEN")):
     st.info(SETUP)
     st.stop()
 
+index = st.segmented_control("Index", list(dd.INDICES), default="NIFTY", key="oc-index") or "NIFTY"
+underlying = dd.INDICES[index]
+
 try:
-    expiries = load_expiries()
+    expiries = load_expiries(index)
 except dd.DhanError as e:
     st.error(str(e))
     st.stop()
 if not expiries:
-    st.warning("Dhan listed no NIFTY expiries.")
+    st.warning(f"Dhan listed no {index} expiries.")
     st.stop()
 
-top = st.columns([2, 2, 1, 1])
-expiry = top[0].selectbox("Expiry", expiries, index=0, key="oc-expiry")
-around = top[1].slider("Strikes each side of ATM", 3, 25, 10, key="oc-around")
-auto = top[2].toggle("Auto refresh", value=False, key="oc-auto", help="Every 15 seconds")
-if top[3].button("↻ Refresh", width="stretch"):
+AROUND = 5  # strikes shown each side of the ATM one
+
+top = st.columns([3, 1, 1])
+expiry = top[0].selectbox("Expiry", expiries, index=0, key=f"oc-expiry-{index}")
+auto = top[1].toggle("Auto refresh", value=False, key="oc-auto", help="Every 15 seconds")
+if top[2].button("↻ Refresh", width="stretch"):
     load_chain.clear()
     load_candles.clear()
 
@@ -81,7 +85,7 @@ def fmt_lakh(v):
 @st.fragment(run_every=15 if auto else None)
 def chain_view() -> None:
     try:
-        price, rows, at = load_chain(expiry)
+        price, rows, at = load_chain(index, expiry)
     except dd.DhanError as e:
         st.error(str(e))
         return
@@ -89,13 +93,13 @@ def chain_view() -> None:
         st.warning("Empty option chain from Dhan.")
         return
     df = pd.DataFrame(rows)
-    atm = dd.atm_strike(price)
+    atm = dd.atm_strike(price, underlying)
     i = (df["strike"] - atm).abs().idxmin()
-    view = df.iloc[max(0, i - around): i + around + 1].reset_index(drop=True)
+    view = df.iloc[max(0, i - AROUND): i + AROUND + 1].reset_index(drop=True)
 
     ce_oi, pe_oi = df["ce_oi"].fillna(0).sum(), df["pe_oi"].fillna(0).sum()
     m = st.columns(5)
-    m[0].metric("NIFTY", f"{price:,.2f}")
+    m[0].metric(index, f"{price:,.2f}")
     m[1].metric("ATM strike", f"{atm:,.0f}")
     m[2].metric("PCR (OI)", f"{pe_oi / ce_oi:.2f}" if ce_oi else "–")
     m[3].metric("Max call OI (resistance)", f"{df.loc[df['ce_oi'].idxmax(), 'strike']:,.0f}" if ce_oi else "–")
@@ -105,13 +109,13 @@ def chain_view() -> None:
         "CE OI chg (L)": view["ce_oi_chg"].map(fmt_lakh),
         "CE OI (L)": view["ce_oi"].map(fmt_lakh),
         "CE Vol (L)": view["ce_volume"].map(fmt_lakh),
-        "CE IV": view["ce_iv"].round(1),
+        "CE IV": pd.to_numeric(view["ce_iv"], errors="coerce").round(1),
         "CE Chg": view["ce_chg"],
         "CE LTP": view["ce_ltp"],
         "Strike": view["strike"].astype(int),
         "PE LTP": view["pe_ltp"],
         "PE Chg": view["pe_chg"],
-        "PE IV": view["pe_iv"].round(1),
+        "PE IV": pd.to_numeric(view["pe_iv"], errors="coerce").round(1),
         "PE Vol (L)": view["pe_volume"].map(fmt_lakh),
         "PE OI (L)": view["pe_oi"].map(fmt_lakh),
         "PE OI chg (L)": view["pe_oi_chg"].map(fmt_lakh),
@@ -150,7 +154,7 @@ def chain_view() -> None:
     for col, side in zip(cols, ("ce", "pe")):
         sid = atm_row.get(f"{side}_id")
         with col:
-            st.markdown(f"**NIFTY {int(atm_row['strike'])} {side.upper()}** · LTP {atm_row.get(f'{side}_ltp')}")
+            st.markdown(f"**{index} {int(atm_row['strike'])} {side.upper()}** · LTP {atm_row.get(f'{side}_ltp')}")
             if not sid:
                 st.caption("No security id from Dhan.")
                 continue
