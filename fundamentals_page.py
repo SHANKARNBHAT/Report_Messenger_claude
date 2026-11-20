@@ -33,7 +33,7 @@ WIDGET_NOTES = {
         "FIIs or DIIs started buying last quarter: from under 0.5% to at least 1%, in "
         "companies with good fundamentals."
     ),
-    "FII DII Mutual ALL Interest": (
+    "FII DII Mutual Insurance All have new interest": (
         "FIIs and DIIs both raised their holding for 2 quarters in a row, and all "
         "institutions together hold at least 2 points more than a year ago, in companies "
         "with good fundamentals."
