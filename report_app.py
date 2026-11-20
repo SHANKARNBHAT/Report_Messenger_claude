@@ -65,14 +65,21 @@ st.html(
     [data-testid="stToolbar"] .rc-overflow-item:has([data-testid="stTopNavLink"]) { flex: 1 1 0; min-width: 0; }
     [data-testid="stToolbar"] .rc-overflow-item:has([data-testid="stTopNavLink"]) > div,
     [data-testid="stTopNavLinkContainer"] { width: 100%; min-width: 0; }
+    /* All the tabs fit on one row: the text scales with the window (about 1rem on a wide
+       screen, smaller on a laptop) and wraps only between words, never inside one. */
     [data-testid="stTopNavLink"] {
-      width: calc(100% - .5rem); min-width: 0; margin: 0 .25rem; min-height: 3rem; justify-content: center;
-      gap: .5rem; border: 1px solid #dce6f3; border-radius: 12px; overflow: hidden;
+      width: calc(100% - .3rem); min-width: 0; margin: 0 .15rem; min-height: 2.6rem; justify-content: center;
+      gap: .3rem; padding: .2rem .35rem; border: 1px solid #dce6f3; border-radius: 10px; overflow: hidden;
     }
-    [data-testid="stTopNavLink"] * { font-size: 1.05rem !important; font-weight: 600; }
+    [data-testid="stTopNavLink"] * { font-size: clamp(.72rem, .78vw, 1rem) !important; font-weight: 600; }
     [data-testid="stTopNavLink"] > :last-child,
     [data-testid="stTopNavLink"] > :last-child * {
-      min-width: 0; white-space: normal !important; text-align: center; line-height: 1.2; overflow-wrap: anywhere;
+      min-width: 0; white-space: normal !important; text-align: center; line-height: 1.15;
+      overflow-wrap: normal; word-break: normal; hyphens: none;
+    }
+    /* Narrower windows: drop the icons to leave the room to the names. */
+    @media (max-width: 1250px) {
+      [data-testid="stTopNavLink"] > :first-child:not(:last-child) { display: none; }
     }
 
     /* Phones: the page menu moves into the sidebar, so make its button easy to see, and
