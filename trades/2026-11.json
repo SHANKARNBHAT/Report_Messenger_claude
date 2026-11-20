@@ -119661,5 +119661,42 @@
   "gross": 24153.75,
   "charges": 603.98,
   "net": 23549.77
+ },
+ {
+  "id": "1795146941328-4246",
+  "symbol": "COCHINSHIP",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1131.6,
+  "exit": 1140.2,
+  "entry_time": 1795146941328,
+  "exit_time": 1795147800000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1140.2,
+  "tp": null,
+  "high": 1140.2,
+  "low": 1131.6,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 1132.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3440.0,
+  "charges": 302.26,
+  "net": -3742.26
  }
 ]
