@@ -120959,5 +120959,42 @@
   "gross": 15510.0,
   "charges": 482.78,
   "net": 15027.22
+ },
+ {
+  "id": "1795146941328-4267",
+  "symbol": "OIL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1400,
+  "entry": 430.05,
+  "exit": 430.2,
+  "entry_time": 1795146941328,
+  "exit_time": 1795148700000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 437.85,
+  "tp": null,
+  "high": 430.2,
+  "low": 427.85,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 429.15
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -210.0,
+  "charges": 386.29,
+  "net": -596.29
  }
 ]
