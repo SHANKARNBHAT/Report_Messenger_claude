@@ -126772,5 +126772,42 @@
   "gross": -975.0,
   "charges": 339.37,
   "net": -1314.37
+ },
+ {
+  "id": "1795161338138-4486",
+  "symbol": "KAYNES",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 150,
+  "entry": 2912.1,
+  "exit": 2908.5,
+  "entry_time": 1795161338138,
+  "exit_time": 1795163700000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2904.5,
+  "tp": null,
+  "high": 2921,
+  "low": 2908.5,
+  "nifty": 0.75,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795161338138,
+   "price": 2912.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -540.0,
+  "charges": 292.93,
+  "net": -832.93
  }
 ]
