@@ -127549,5 +127549,42 @@
   "gross": 860.0,
   "charges": 359.02,
   "net": 500.98
+ },
+ {
+  "id": "1795161338138-4463",
+  "symbol": "DLF",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 950,
+  "entry": 784.85,
+  "exit": 787.05,
+  "entry_time": 1795161338138,
+  "exit_time": 1795166400000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 779.45,
+  "tp": null,
+  "high": 792,
+  "low": 782,
+  "nifty": 0.75,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795161338138,
+   "price": 783.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2090.0,
+  "charges": 468.21,
+  "net": 1621.79
  }
 ]
