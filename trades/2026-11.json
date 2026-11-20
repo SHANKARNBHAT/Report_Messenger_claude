@@ -122738,5 +122738,190 @@
   "gross": -13050.0,
   "charges": 327.03,
   "net": -13377.03
+ },
+ {
+  "id": "1794899741410-3173",
+  "symbol": "TATAPOWER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1450,
+  "entry": 343.6,
+  "exit": 343.3,
+  "entry_time": 1794899741410,
+  "exit_time": 1795157700000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 348.45,
+  "tp": null,
+  "high": 344.75,
+  "low": 335.65,
+  "nifty": 0.65,
+  "strategies": [
+   "4H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794899741410,
+   "price": 344.05
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 435.0,
+  "charges": 327.77,
+  "net": 107.23
+ },
+ {
+  "id": "1795146345071-4221",
+  "symbol": "TORNTPHARM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4611.0,
+  "exit": 4680.15,
+  "entry_time": 1795146345071,
+  "exit_time": 1795157700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 4680.15,
+  "tp": 4472.65,
+  "high": 4680.15,
+  "low": 4611.0,
+  "nifty": -0.5,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795146345071,
+   "price": 4611.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8643.75,
+  "charges": 372.17,
+  "net": -9015.92
+ },
+ {
+  "id": "1795146345071-4222",
+  "symbol": "TORNTPHARM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4611.0,
+  "exit": 4680.15,
+  "entry_time": 1795146345071,
+  "exit_time": 1795157700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 4680.15,
+  "tp": null,
+  "high": 4680.15,
+  "low": 4611.0,
+  "nifty": -0.5,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795146345071,
+   "price": 4611.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8643.75,
+  "charges": 372.17,
+  "net": -9015.92
+ },
+ {
+  "id": "1795146345071-4223",
+  "symbol": "TORNTPHARM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4611.0,
+  "exit": 4680.15,
+  "entry_time": 1795146345071,
+  "exit_time": 1795157700000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 4680.15,
+  "tp": null,
+  "high": 4680.15,
+  "low": 4611.0,
+  "nifty": -0.5,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795146345071,
+   "price": 4611.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -8643.75,
+  "charges": 372.17,
+  "net": -9015.92
+ },
+ {
+  "id": "1795146345071-4230",
+  "symbol": "PERSISTENT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 5880.0,
+  "exit": 6115.2,
+  "entry_time": 1795146345071,
+  "exit_time": 1795157700000,
+  "reason": "TSL after target",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 5791.8,
+  "tp": 6056.4,
+  "high": 6215,
+  "low": 5880.0,
+  "nifty": -0.5,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795146345071,
+   "price": 5880.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 29400.0,
+  "charges": 476.48,
+  "net": 28923.52
  }
 ]
