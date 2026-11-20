@@ -122590,5 +122590,42 @@
   "gross": 7717.5,
   "charges": 499.8,
   "net": 7217.7
+ },
+ {
+  "id": "1794887144216-2407",
+  "symbol": "TORNTPHARM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4653.1,
+  "exit": 4670.3,
+  "entry_time": 1794887144216,
+  "exit_time": 1795156800000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 4708.35,
+  "tp": null,
+  "high": 4699.5,
+  "low": 4592.6,
+  "nifty": 0.14,
+  "strategies": [
+   "Daily HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887144216,
+   "price": 4672.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2150.0,
+  "charges": 374.86,
+  "net": -2524.86
  }
 ]
