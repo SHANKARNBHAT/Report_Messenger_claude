@@ -126883,5 +126883,79 @@
   "gross": -8337.5,
   "charges": 748.05,
   "net": -9085.55
+ },
+ {
+  "id": "1795161338138-4491",
+  "symbol": "LT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4200.0,
+  "exit": 4199.3,
+  "entry_time": 1795161338138,
+  "exit_time": 1795164300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 4192.0,
+  "tp": null,
+  "high": 4208.7,
+  "low": 4198,
+  "nifty": 0.75,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795161338138,
+   "price": 4198.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -122.5,
+  "charges": 461.08,
+  "net": -583.58
+ },
+ {
+  "id": "1795163134853-4552",
+  "symbol": "JINDALSTEL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1120.0,
+  "exit": 1118.5,
+  "entry_time": 1795163134853,
+  "exit_time": 1795164300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1113.9,
+  "tp": null,
+  "high": 1121.3,
+  "low": 1118.5,
+  "nifty": 1.99,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795163134853,
+   "price": 1120.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -937.5,
+  "charges": 440.94,
+  "net": -1378.44
  }
 ]
