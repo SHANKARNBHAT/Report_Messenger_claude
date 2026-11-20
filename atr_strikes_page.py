@@ -12,6 +12,7 @@ from __future__ import annotations
 import os
 import sqlite3
 from datetime import datetime
+from urllib.parse import quote
 
 import pandas as pd
 import streamlit as st
@@ -62,7 +63,8 @@ m[1].metric("ATR as of", nice(atr_date))
 m[2].metric("Strike intervals as of", nice(steps_date))
 
 table = pd.DataFrame({
-    "Stock": shown["symbol"],
+    # Chartink chart; the name after "#" is what the link shows (so M&M reads M&M, not M%26M)
+    "Stock": [f"https://chartink.com/stocks-new?symbol={quote(s, safe='')}#{s}" for s in shown["symbol"]],
     "Close": shown["close"].round(2),
     "ATR (14)": shown["atr_14"].round(2),
     "ATR %": (100 * shown["atr_14"] / shown["close"]).round(2),
@@ -74,6 +76,7 @@ table = pd.DataFrame({
 st.dataframe(
     table, hide_index=True, width="stretch", height=min(35 * (len(table) + 1) + 3, 760),
     column_config={
+        "Stock": st.column_config.LinkColumn("Stock", display_text=r"#(.+)$", help="Opens the chart on Chartink"),
         "ATR ÷ interval": st.column_config.ProgressColumn(
             "ATR ÷ interval", format="%.2f", min_value=0.0, max_value=max(5.0, float(data["ratio"].max() or 5)),
             help="How many strikes the stock moves on an average day."),
