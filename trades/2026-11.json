@@ -122108,5 +122108,116 @@
   "gross": 39163.75,
   "charges": 619.38,
   "net": 38544.37
+ },
+ {
+  "id": "1795152046508-4333",
+  "symbol": "NIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25568.8,
+  "exit": 25521.5,
+  "entry_time": 1795152046508,
+  "exit_time": 1795152900000,
+  "reason": "Stop loss",
+  "source": "Auto HA IDX BRK 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX BRK",
+  "style": "ha_brk_idx",
+  "passed": false,
+  "carried": false,
+  "sl": 25521.5,
+  "tp": null,
+  "high": 25571.75,
+  "low": 25521.5,
+  "nifty": 0.22,
+  "strategies": [
+   "15m HA IDX BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1795148441096,
+   "price": 25523.45
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3074.5,
+  "charges": 981.6,
+  "net": -4056.1
+ },
+ {
+  "id": "1795146941328-4273",
+  "symbol": "RBLBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3175,
+  "entry": 385.55,
+  "exit": 386.8,
+  "entry_time": 1795146941328,
+  "exit_time": 1795152600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 389.0,
+  "tp": null,
+  "high": 387.2,
+  "low": 384.55,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 386.1
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -3968.75,
+  "charges": 736.78,
+  "net": -4705.53
+ },
+ {
+  "id": "1795148136193-4284",
+  "symbol": "COFORGE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 475,
+  "entry": 2109.0,
+  "exit": 2140.6,
+  "entry_time": 1795148136193,
+  "exit_time": 1795152600000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 2011.2,
+  "tp": 2172.25,
+  "high": 2177.8,
+  "low": 2090.9,
+  "nifty": -0.0,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795146345071,
+   "price": 2041.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 15010.0,
+  "charges": 619.22,
+  "net": 14390.78
  }
 ]
