@@ -121848,5 +121848,191 @@
   "gross": -2125.0,
   "charges": 426.67,
   "net": -2551.67
+ },
+ {
+  "id": "1795146941328-4237",
+  "symbol": "APLAPOLLO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2079.5,
+  "exit": 2061.0,
+  "entry_time": 1795146941328,
+  "exit_time": 1795152000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2187.0,
+  "tp": null,
+  "high": 2081.9,
+  "low": 2037.7,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 2086.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 6475.0,
+  "charges": 456.83,
+  "net": 6018.17
+ },
+ {
+  "id": "1795146941328-4241",
+  "symbol": "AUROPHARMA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1805.1,
+  "exit": 1803.5,
+  "entry_time": 1795146941328,
+  "exit_time": 1795152000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1793.8,
+  "tp": null,
+  "high": 1812.4,
+  "low": 1796,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 1803.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -880.0,
+  "charges": 605.88,
+  "net": -1485.88
+ },
+ {
+  "id": "1795146941328-4257",
+  "symbol": "JSWENERGY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1075,
+  "entry": 510.25,
+  "exit": 506.8,
+  "entry_time": 1795146941328,
+  "exit_time": 1795152000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 515.6,
+  "tp": null,
+  "high": 510.25,
+  "low": 502.1,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 509.25
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 3708.75,
+  "charges": 355.96,
+  "net": 3352.79
+ },
+ {
+  "id": "1795065600000-3941",
+  "symbol": "NMDC",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6750,
+  "entry": 68.3,
+  "exit": 67.5,
+  "entry_time": 1795065600000,
+  "exit_time": 1795152000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 69.0,
+  "tp": null,
+  "high": 68.38,
+  "low": 66.64,
+  "nifty": 0.31,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 67.64
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 5400.0,
+  "charges": 306.62,
+  "net": 5093.38
+ },
+ {
+  "id": "1794892844330-2853",
+  "symbol": "HYUNDAI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 275,
+  "entry": 2130.0,
+  "exit": 2204.55,
+  "entry_time": 1794892844330,
+  "exit_time": 1795152300000,
+  "reason": "TSL after target",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 2069.0,
+  "tp": 2193.9,
+  "high": 2238.1,
+  "low": 2089.9,
+  "nifty": 0.42,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794892844330,
+   "price": 2130.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 20501.25,
+  "charges": 387.78,
+  "net": 20113.47
  }
 ]
