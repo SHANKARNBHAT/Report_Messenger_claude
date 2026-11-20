@@ -122627,5 +122627,116 @@
   "gross": -2150.0,
   "charges": 374.86,
   "net": -2524.86
+ },
+ {
+  "id": "1794984936282-3620",
+  "symbol": "IEX",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4350,
+  "entry": 117.0,
+  "exit": 114.0,
+  "entry_time": 1794984936282,
+  "exit_time": 1795157100000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 114.0,
+  "tp": 120.5,
+  "high": 119,
+  "low": 114.0,
+  "nifty": -0.57,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794984936282,
+   "price": 116.98
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": -13050.0,
+  "charges": 327.03,
+  "net": -13377.03
+ },
+ {
+  "id": "1794984936282-3621",
+  "symbol": "IEX",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4350,
+  "entry": 117.0,
+  "exit": 114.0,
+  "entry_time": 1794984936282,
+  "exit_time": 1795157100000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 114.0,
+  "tp": null,
+  "high": 119,
+  "low": 114.0,
+  "nifty": -0.57,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794984936282,
+   "price": 116.98
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": -13050.0,
+  "charges": 327.03,
+  "net": -13377.03
+ },
+ {
+  "id": "1794984936282-3622",
+  "symbol": "IEX",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4350,
+  "entry": 117.0,
+  "exit": 114.0,
+  "entry_time": 1794984936282,
+  "exit_time": 1795157100000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 114.0,
+  "tp": null,
+  "high": 119,
+  "low": 114.0,
+  "nifty": -0.57,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794984936282,
+   "price": 116.98
+  },
+  "agrees": "No",
+  "sma_rsi": null,
+  "gross": -13050.0,
+  "charges": 327.03,
+  "net": -13377.03
  }
 ]
