@@ -121737,5 +121737,116 @@
   "gross": 10263.75,
   "charges": 356.69,
   "net": 9907.06
+ },
+ {
+  "id": "1795146941328-4238",
+  "symbol": "APOLLOHOSP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 8911.0,
+  "exit": 9093.0,
+  "entry_time": 1795146941328,
+  "exit_time": 1795151700000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 8726.5,
+  "tp": null,
+  "high": 9205,
+  "low": 8911.0,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 8994.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 22750.0,
+  "charges": 686.39,
+  "net": 22063.61
+ },
+ {
+  "id": "1795146941328-4239",
+  "symbol": "ATHERENERG",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1935.7,
+  "exit": 1955.1,
+  "entry_time": 1795146941328,
+  "exit_time": 1795151700000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1909.2,
+  "tp": null,
+  "high": 1972.4,
+  "low": 1932,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 1931.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 7275.0,
+  "charges": 459.81,
+  "net": 6815.19
+ },
+ {
+  "id": "1795146941328-4244",
+  "symbol": "CGPOWER",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 850,
+  "entry": 792.5,
+  "exit": 795.0,
+  "entry_time": 1795146941328,
+  "exit_time": 1795151700000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 813.0,
+  "tp": null,
+  "high": 797,
+  "low": 791.2,
+  "nifty": -0.3,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 794.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2125.0,
+  "charges": 426.67,
+  "net": -2551.67
  }
 ]
