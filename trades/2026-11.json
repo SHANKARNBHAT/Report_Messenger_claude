@@ -121663,5 +121663,79 @@
   "gross": 3750.0,
   "charges": 363.5,
   "net": 3386.5
+ },
+ {
+  "id": "1794895540666-3119",
+  "symbol": "POLICYBZR",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 350,
+  "entry": 1054.8,
+  "exit": 1023.1,
+  "entry_time": 1794895540666,
+  "exit_time": 1795151400000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1076.05,
+  "tp": null,
+  "high": 1060.3,
+  "low": 970.4,
+  "nifty": 0.61,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794895540666,
+   "price": 1054.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 11095.0,
+  "charges": 254.66,
+  "net": 10840.34
+ },
+ {
+  "id": "1794899741410-3172",
+  "symbol": "VBL",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1275,
+  "entry": 431.6,
+  "exit": 423.55,
+  "entry_time": 1794899741410,
+  "exit_time": 1795151400000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA BRK 2H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 436.0,
+  "tp": null,
+  "high": 433,
+  "low": 415.05,
+  "nifty": 0.65,
+  "strategies": [
+   "2H HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794899741410,
+   "price": 432.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 10263.75,
+  "charges": 356.69,
+  "net": 9907.06
  }
 ]
