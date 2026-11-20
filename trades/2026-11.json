@@ -119068,5 +119068,264 @@
   "gross": -9487.5,
   "charges": 403.93,
   "net": -9891.43
+ },
+ {
+  "id": "1794888346531-2743",
+  "symbol": "BLUESTARCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1639.2,
+  "exit": 1791.8,
+  "entry_time": 1794888346531,
+  "exit_time": 1795146600000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1573.5,
+  "tp": 1688.4,
+  "high": 1820,
+  "low": 1594,
+  "nifty": 0.06,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794888346531,
+   "price": 1639.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 49595.0,
+  "charges": 373.1,
+  "net": 49221.9
+ },
+ {
+  "id": "1794889848670-2790",
+  "symbol": "BLUESTARCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1656.0,
+  "exit": 1788.75,
+  "entry_time": 1794889848670,
+  "exit_time": 1795146600000,
+  "reason": "TSL after target",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1573.5,
+  "tp": 1705.7,
+  "high": 1820,
+  "low": 1594,
+  "nifty": 0.31,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794889848670,
+   "price": 1656.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 43143.75,
+  "charges": 372.81,
+  "net": 42770.94
+ },
+ {
+  "id": "1794993342412-3743",
+  "symbol": "MANAPPURAM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3000,
+  "entry": 283.0,
+  "exit": 274.8,
+  "entry_time": 1794993342412,
+  "exit_time": 1795146600000,
+  "reason": "TSL after target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 287.25,
+  "tp": 274.5,
+  "high": 284.4,
+  "low": 270.5,
+  "nifty": -0.22,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794993342412,
+   "price": 283.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 24600.0,
+  "charges": 524.32,
+  "net": 24075.68
+ },
+ {
+  "id": "1795061440293-3838",
+  "symbol": "BLUESTARCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 325,
+  "entry": 1685.0,
+  "exit": 1791.8,
+  "entry_time": 1795061440293,
+  "exit_time": 1795146600000,
+  "reason": "TSL after target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1603.9,
+  "tp": 1735.55,
+  "high": 1820,
+  "low": 1685.0,
+  "nifty": -0.01,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795061440293,
+   "price": 1685.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 34710.0,
+  "charges": 373.72,
+  "net": 34336.28
+ },
+ {
+  "id": "1795146345071-4218",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 165.45,
+  "exit": 162.9,
+  "entry_time": 1795146345071,
+  "exit_time": 1795146600000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 162.9,
+  "tp": 170.4,
+  "high": 165.45,
+  "low": 162.9,
+  "nifty": -0.5,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795146345071,
+   "price": 165.44
+  },
+  "agrees": "Yes",
+  "sma_rsi": null,
+  "gross": -15682.5,
+  "charges": 612.07,
+  "net": -16294.57
+ },
+ {
+  "id": "1795146345071-4219",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 165.45,
+  "exit": 162.9,
+  "entry_time": 1795146345071,
+  "exit_time": 1795146600000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 162.9,
+  "tp": null,
+  "high": 165.45,
+  "low": 162.9,
+  "nifty": -0.5,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795146345071,
+   "price": 165.44
+  },
+  "agrees": "Yes",
+  "sma_rsi": null,
+  "gross": -15682.5,
+  "charges": 612.07,
+  "net": -16294.57
+ },
+ {
+  "id": "1795146345071-4220",
+  "symbol": "MOTHERSON",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 6150,
+  "entry": 165.45,
+  "exit": 162.9,
+  "entry_time": 1795146345071,
+  "exit_time": 1795146600000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 162.9,
+  "tp": null,
+  "high": 165.45,
+  "low": 162.9,
+  "nifty": -0.5,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795146345071,
+   "price": 165.44
+  },
+  "agrees": "Yes",
+  "sma_rsi": null,
+  "gross": -15682.5,
+  "charges": 612.07,
+  "net": -16294.57
  }
 ]
