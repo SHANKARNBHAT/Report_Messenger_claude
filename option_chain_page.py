@@ -10,6 +10,7 @@ Needs DHAN_CLIENT_ID and DHAN_PIN + DHAN_TOTP_SECRET (or DHAN_ACCESS_TOKEN) in t
 from __future__ import annotations
 
 from datetime import datetime
+from urllib.parse import quote
 
 import pandas as pd
 import plotly.graph_objects as go
@@ -37,6 +38,10 @@ SETUP = """
 3. Reload this page.
 """
 
+
+# The Chartink chart snapshot the dashboard's "My indicators" links use (chartink_dashboard.DEFAULT_SNAPSHOT).
+CHARTINK_SNAPSHOT = ("simple-moving-average-simple-moving-average-simple-moving-average-pivot-s2-pivot-copy-pivot-"
+                     "simple-moving-average-volume-weighted-moving-averag-chart-snapshot")
 
 TOP_STOCKS = 15  # F&O stocks offered besides the indices: the biggest ATR ÷ strike interval
 
@@ -82,6 +87,10 @@ index = st.selectbox("Index / stock", list(UNDERLYINGS), index=0, key="oc-underl
                      help=f"NIFTY, BANKNIFTY and the {TOP_STOCKS} F&O stocks whose daily ATR covers the most "
                           "strike intervals (see the F&O ATR page).")
 underlying = UNDERLYINGS[index]
+# The chosen index / stock's chart on Chartink, with the dashboard's indicator snapshot or plain.
+_chartink = "https://chartink.com/stocks-new?symbol=" + quote(index, safe="")
+st.markdown(f"📈 **{index}** chart on Chartink: [my indicators]({_chartink}&load-snapshot={CHARTINK_SNAPSHOT})"
+            f" · [plain]({_chartink})")
 
 try:
     expiries = load_expiries(index)
