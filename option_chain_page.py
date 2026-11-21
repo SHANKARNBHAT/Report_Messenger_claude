@@ -77,6 +77,18 @@ def load_candles(security_id: int, instrument: str) -> list[tuple]:
     return dd.candles(security_id, minutes=15, days=5, instrument=instrument)
 
 
+@st.cache_data(ttl=300, show_spinner=False)
+def load_day_open(name: str) -> tuple[float, str] | None:
+    """The underlying's open on its latest trading day in Dhan's 15-minute candles (today once
+    the market opens), with that day's date; None if Dhan gives no candles."""
+    bars = dd.underlying_candles(UNDERLYINGS[name])
+    if not bars:
+        return None
+    day = datetime.fromtimestamp(bars[-1][0], dd.IST).date()
+    first = next(b for b in bars if datetime.fromtimestamp(b[0], dd.IST).date() == day)
+    return float(first[1]), day.strftime("%d %b")
+
+
 if not dd.secret("DHAN_CLIENT_ID") or not (dd.can_make_token() or dd.secret("DHAN_ACCESS_TOKEN")):
     st.info(SETUP)
     st.stop()
@@ -158,6 +170,38 @@ def ha_chart(ha: list[dict], key: str) -> None:
     st.plotly_chart(figure, width="stretch", key=key, config={"displayModeBar": False})
 
 
+def leg_charts(row: pd.Series, key: str) -> None:
+    """The CE and PE of one strike side by side: HA chart and the last 12 HA candles."""
+    cols = st.columns(2)
+    for col, side in zip(cols, ("ce", "pe")):
+        sid = row.get(f"{side}_id")
+        with col:
+            st.markdown(f"**{index} {int(row['strike'])} {side.upper()}** · LTP {row.get(f'{side}_ltp')}")
+            if not sid:
+                st.caption("No security id from Dhan.")
+                continue
+            try:
+                ha = dd.heikin_ashi(load_candles(int(sid), underlying["instrument"]))
+            except dd.DhanError as e:
+                st.error(str(e))
+                continue
+            if not ha:
+                st.caption("No candles yet.")
+                continue
+            ha_chart(ha, key=f"oc-ha-{key}-{index}-{side}")
+            last = ha[-12:]
+            frame = pd.DataFrame({
+                "Time": [datetime.fromtimestamp(c["start"], dd.IST).strftime("%d %b %H:%M") for c in last],
+                "HA Open": [c["open"] for c in last], "HA High": [c["high"] for c in last],
+                "HA Low": [c["low"] for c in last], "HA Close": [c["close"] for c in last],
+                "Candle": ["🟢 solid" if c["solid"] else "🟢" if c["green"] else "🔴" for c in last],
+            })
+            start = len(ha) - len(last)
+            frame["Entry?"] = ["✅" if is_entry(ha, start + k) else "" for k in range(len(last))]
+            st.dataframe(frame.iloc[::-1].style.format(precision=2), hide_index=True, width="stretch")
+            st.caption("The newest candle (top) may still be forming.")
+
+
 @st.fragment(run_every=15 if auto else None)
 def chain_view() -> None:
     try:
@@ -231,35 +275,29 @@ def chain_view() -> None:
     st.subheader("ATM CE / PE on 15-minute Heikin Ashi")
     st.caption("Strategy entry (amber star): the first solid green HA candle (no lower wick) after a red one. "
                "SL: that candle's previous HA candle's low. Charts: the last two trading days.")
-    atm_row = df.loc[i]
-    cols = st.columns(2)
-    for col, side in zip(cols, ("ce", "pe")):
-        sid = atm_row.get(f"{side}_id")
-        with col:
-            st.markdown(f"**{index} {int(atm_row['strike'])} {side.upper()}** · LTP {atm_row.get(f'{side}_ltp')}")
-            if not sid:
-                st.caption("No security id from Dhan.")
-                continue
-            try:
-                ha = dd.heikin_ashi(load_candles(int(sid), underlying["instrument"]))
-            except dd.DhanError as e:
-                st.error(str(e))
-                continue
-            if not ha:
-                st.caption("No candles yet.")
-                continue
-            ha_chart(ha, key=f"oc-ha-{index}-{side}")
-            last = ha[-12:]
-            frame = pd.DataFrame({
-                "Time": [datetime.fromtimestamp(c["start"], dd.IST).strftime("%d %b %H:%M") for c in last],
-                "HA Open": [c["open"] for c in last], "HA High": [c["high"] for c in last],
-                "HA Low": [c["low"] for c in last], "HA Close": [c["close"] for c in last],
-                "Candle": ["🟢 solid" if c["solid"] else "🟢" if c["green"] else "🔴" for c in last],
-            })
-            start = len(ha) - len(last)
-            frame["Entry?"] = ["✅" if is_entry(ha, start + k) else "" for k in range(len(last))]
-            st.dataframe(frame.iloc[::-1].style.format(precision=2), hide_index=True, width="stretch")
-            st.caption("The newest candle (top) may still be forming.")
+    # First the day's opening (BOD) ATM strike: where the ATM was at the first candle, e.g. 25350
+    # when the day ended at 25800; shown only when it differs from the ATM now. Then the ATM now.
+    try:
+        opened = load_day_open(index)
+    except dd.DhanError as e:
+        opened = None
+        st.caption(f"Opening ATM not available: {e}")
+    if opened:
+        open_price, open_day = opened
+        open_atm = dd.atm_strike(open_price, underlying)
+        j = (df["strike"] - open_atm).abs().idxmin()
+        if open_atm == atm:
+            st.caption(f"Opening ATM ({open_day}, open {open_price:,.2f}) is the same strike, {atm:,.0f}.")
+        elif abs(df.loc[j, "strike"] - open_atm) > 1e-6:
+            st.caption(f"Opening ATM {open_atm:,.0f} is not in Dhan's chain for this expiry.")
+        else:
+            st.markdown(f"[⬇ Jump to Now: ATM {atm:,.0f}](#oc-now)")
+            st.markdown(f"##### At the open ({open_day}, {index} {open_price:,.2f}): ATM {open_atm:,.0f}")
+            leg_charts(df.loc[j], key="open")
+
+    st.markdown('<div id="oc-now"></div>', unsafe_allow_html=True)  # the jump link's target
+    st.markdown(f"##### Now: ATM {atm:,.0f}")
+    leg_charts(df.loc[i], key="now")
 
 
 chain_view()

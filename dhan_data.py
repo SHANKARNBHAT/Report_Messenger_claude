@@ -252,16 +252,24 @@ def _bars(data: dict) -> list[tuple]:
     return [(int(cols[0][i]), cols[1][i], cols[2][i], cols[3][i], cols[4][i], vols[i]) for i in range(n)]
 
 
-def candles(security_id: int | str, minutes: int = 15, days: int = 5, instrument: str = "OPTIDX") -> list[tuple]:
-    """Intraday candles of one NSE option contract, oldest first, from `days` ago up to now."""
+def candles(security_id: int | str, minutes: int = 15, days: int = 5, instrument: str = "OPTIDX",
+            segment: str = "NSE_FNO") -> list[tuple]:
+    """Intraday candles of one NSE option contract (or, with segment and instrument, any security:
+    underlying_candles), oldest first, from `days` ago up to now."""
     now = datetime.now(IST)
     data = post("/charts/intraday", {
-        "securityId": str(security_id), "exchangeSegment": "NSE_FNO", "instrument": instrument,
+        "securityId": str(security_id), "exchangeSegment": segment, "instrument": instrument,
         "interval": str(minutes), "oi": False,
         "fromDate": (now - timedelta(days=days)).strftime("%Y-%m-%d 09:15:00"),
         "toDate": now.strftime("%Y-%m-%d %H:%M:%S"),
     })
     return _bars(data)
+
+
+def underlying_candles(underlying: dict = NIFTY, minutes: int = 15, days: int = 5) -> list[tuple]:
+    """Intraday candles of the index or stock itself (not an option), oldest first."""
+    instrument = "INDEX" if underlying["segment"] == "IDX_I" else "EQUITY"
+    return candles(underlying["id"], minutes, days, instrument=instrument, segment=underlying["segment"])
 
 
 def atm_candles(side: str, start: date, end: date, minutes: int = 15, strike: str = "ATM",
