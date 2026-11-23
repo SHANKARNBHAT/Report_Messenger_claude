@@ -133470,5 +133470,42 @@
   "gross": -8793.75,
   "charges": 377.7,
   "net": -9171.45
+ },
+ {
+  "id": "1794819655987-2301",
+  "symbol": "TATACONSUM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1108.1,
+  "exit": 1141.4,
+  "entry_time": 1794819655987,
+  "exit_time": 1795410900000,
+  "reason": "TSL after target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1091.5,
+  "tp": 1141.35,
+  "high": 1158.8,
+  "low": 1102.7,
+  "nifty": 0.32,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794819655987,
+   "price": 1108.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 18315.0,
+  "charges": 399.99,
+  "net": 17915.01
  }
 ]
