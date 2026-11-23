@@ -133581,5 +133581,79 @@
   "gross": -736.25,
   "charges": 278.36,
   "net": -1014.61
+ },
+ {
+  "id": "1795406139975-4646",
+  "symbol": "TECHM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 600,
+  "entry": 1777.9,
+  "exit": 1798.4,
+  "entry_time": 1795406139975,
+  "exit_time": 1795411200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1728.6,
+  "tp": null,
+  "high": 1808.7,
+  "low": 1771.4,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 1774.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 12300.0,
+  "charges": 654.39,
+  "net": 11645.61
+ },
+ {
+  "id": "1795406139975-4651",
+  "symbol": "WIPRO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 3000,
+  "entry": 187.6,
+  "exit": 188.95,
+  "entry_time": 1795406139975,
+  "exit_time": 1795411200000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 184.2,
+  "tp": null,
+  "high": 190.45,
+  "low": 186.64,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 187.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 4050.0,
+  "charges": 366.27,
+  "net": 3683.73
  }
 ]
