@@ -1811,7 +1811,7 @@
    "status": "open",
    "passed": false,
    "high": 61.09,
-   "low": 54.59,
+   "low": 54.5,
    "nifty": 0.42,
    "source": "Auto Daily",
    "timeframes": [
@@ -1847,7 +1847,7 @@
    "status": "open",
    "passed": false,
    "high": 61.09,
-   "low": 54.59,
+   "low": 54.5,
    "nifty": 0.42,
    "source": "Auto Daily",
    "timeframes": [
@@ -4120,81 +4120,6 @@
    "first_seen": {
     "time": 1794888346531,
     "price": 1639.2
-   }
-  },
-  {
-   "id": "1794888638113-2761",
-   "symbol": "ALKEM",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 125,
-   "entry": 5245.0,
-   "sl": 5111.0,
-   "tp": 5402.35,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 78.7,
-    "step": 26.2
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 5111.0,
-   "time": 1794888638113,
-   "status": "open",
-   "passed": false,
-   "high": 5245.0,
-   "low": 5114.0,
-   "nifty": 0.2,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794888638113,
-    "price": 5245.0
-   }
-  },
-  {
-   "id": "1794888638113-2762",
-   "symbol": "ALKEM",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 125,
-   "entry": 5245.0,
-   "sl": 5111.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "sma8",
-   "system": "RSI",
-   "stop": 5111.0,
-   "time": 1794888638113,
-   "status": "open",
-   "passed": false,
-   "high": 5245.0,
-   "low": 5114.0,
-   "nifty": 0.2,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1794888638113,
-    "price": 5245.0
    }
   },
   {
@@ -9556,7 +9481,7 @@
    "time": 1795061440293,
    "status": "open",
    "passed": false,
-   "high": 1820,
+   "high": 1820.0,
    "low": 1685.0,
    "nifty": -0.01,
    "source": "Auto Daily",
@@ -9592,7 +9517,7 @@
    "time": 1795061440293,
    "status": "open",
    "passed": false,
-   "high": 1820,
+   "high": 1820.0,
    "low": 1685.0,
    "nifty": -0.01,
    "source": "Auto Daily",
@@ -18656,7 +18581,7 @@
    "status": "open",
    "passed": false,
    "high": 519.6,
-   "low": 503.35,
+   "low": 503.2,
    "nifty": 0.87,
    "source": "Auto 2H",
    "timeframes": [
@@ -18692,7 +18617,7 @@
    "status": "open",
    "passed": false,
    "high": 519.6,
-   "low": 503.35,
+   "low": 503.2,
    "nifty": 0.87,
    "source": "Auto 2H",
    "timeframes": [
@@ -18728,7 +18653,7 @@
    "status": "open",
    "passed": false,
    "high": 519.6,
-   "low": 503.35,
+   "low": 503.2,
    "nifty": 0.87,
    "source": "Auto 2H",
    "timeframes": [
@@ -21806,7 +21731,7 @@
    "status": "open",
    "passed": false,
    "high": 9861,
-   "low": 9737.5,
+   "low": 9731,
    "nifty": -0.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -21842,7 +21767,7 @@
    "status": "open",
    "passed": false,
    "high": 9861,
-   "low": 9737.5,
+   "low": 9731,
    "nifty": -0.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -21878,7 +21803,7 @@
    "status": "open",
    "passed": false,
    "high": 9861,
-   "low": 9737.5,
+   "low": 9731,
    "nifty": -0.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -21917,7 +21842,7 @@
    "status": "open",
    "passed": false,
    "high": 36.84,
-   "low": 36.22,
+   "low": 36.2,
    "nifty": -0.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -21953,7 +21878,7 @@
    "status": "open",
    "passed": false,
    "high": 36.84,
-   "low": 36.22,
+   "low": 36.2,
    "nifty": -0.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -21989,7 +21914,7 @@
    "status": "open",
    "passed": false,
    "high": 36.84,
-   "low": 36.22,
+   "low": 36.2,
    "nifty": -0.85,
    "source": "Auto 2H",
    "timeframes": [
@@ -23360,7 +23285,7 @@
    "status": "open",
    "passed": false,
    "high": 1819.2,
-   "low": 1805.6,
+   "low": 1798.2,
    "nifty": -1.04,
    "source": "Auto 4H",
    "timeframes": [
@@ -23396,7 +23321,7 @@
    "status": "open",
    "passed": false,
    "high": 1819.2,
-   "low": 1805.6,
+   "low": 1798.2,
    "nifty": -1.04,
    "source": "Auto 4H",
    "timeframes": [
@@ -23432,7 +23357,7 @@
    "status": "open",
    "passed": false,
    "high": 1819.2,
-   "low": 1805.6,
+   "low": 1798.2,
    "nifty": -1.04,
    "source": "Auto 4H",
    "timeframes": [
@@ -24287,7 +24212,7 @@
    "status": "open",
    "passed": false,
    "high": 2227.2,
-   "low": 2210,
+   "low": 2207.4,
    "nifty": -1.17,
    "source": "Auto Daily",
    "timeframes": [
@@ -24323,7 +24248,7 @@
    "status": "open",
    "passed": false,
    "high": 2227.2,
-   "low": 2210,
+   "low": 2207.4,
    "nifty": -1.17,
    "source": "Auto Daily",
    "timeframes": [
@@ -24359,7 +24284,7 @@
    "status": "open",
    "passed": false,
    "high": 2227.2,
-   "low": 2210,
+   "low": 2207.4,
    "nifty": -1.17,
    "source": "Auto Daily",
    "timeframes": [
@@ -24953,7 +24878,7 @@
    "status": "open",
    "passed": false,
    "high": 1811.4,
-   "low": 1805.6,
+   "low": 1798.2,
    "nifty": -1.32,
    "source": "Auto 2H",
    "timeframes": [
@@ -24989,7 +24914,7 @@
    "status": "open",
    "passed": false,
    "high": 1811.4,
-   "low": 1805.6,
+   "low": 1798.2,
    "nifty": -1.32,
    "source": "Auto 2H",
    "timeframes": [
@@ -25025,7 +24950,7 @@
    "status": "open",
    "passed": false,
    "high": 1811.4,
-   "low": 1805.6,
+   "low": 1798.2,
    "nifty": -1.32,
    "source": "Auto 2H",
    "timeframes": [
@@ -25584,6 +25509,8 @@
  ],
  "seq": 4803,
  "log": [
+  "23 Nov 13:35  ALKEM: Stop loss at 5111.0 (Hold \u00b7 2H SMA 8 exit)",
+  "23 Nov 13:35  ALKEM: Stop loss at 5111.0 (Hold \u00b7 trail)",
   "23 Nov 13:25  WAAREEENER: HA PURE 4H SELL 175 at 2412.1, SL 2417.6 (30m candle)",
   "23 Nov 13:25  UPL: HA PURE 4H SELL 1355 at 563.6, SL 566.3 (30m candle)",
   "23 Nov 13:25  PNB: HA PURE 4H SELL 8000 at 150.3, SL 150.75 (30m candle)",
@@ -25881,12 +25808,10 @@
   "23 Nov 09:15  KPITTECH: RSI Weekly SELL 775 at 519.0, SL 526.8 (WEEKLY; trail)",
   "23 Nov 09:15  KAYNES: RSI Weekly SELL 150 at 2910.0, SL 2953.65 (WEEKLY; trail)",
   "23 Nov 09:15  AXISBANK: RSI Weekly BUY 625 at 1446.0, SL 1424.3 (WEEKLY; trail, sma8, sma20)",
-  "23 Nov 09:15  ADANIGREEN: RSI Weekly BUY 600 at 1435.0, SL 1413.5 (WEEKLY; trail, sma8, sma20)",
-  "23 Nov 09:15  BPCL: RSI 4H BUY 1975 at 314.1, SL 307.5 (4 HOUR; trail, sma8, sma20)",
-  "23 Nov 09:15  TORNTPHARM: RSI SELL 125 at 4689.5, SL 4759.85 (2 HOUR; trail, sma8, sma20)"
+  "23 Nov 09:15  ADANIGREEN: RSI Weekly BUY 600 at 1435.0, SL 1413.5 (WEEKLY; trail, sma8, sma20)"
  ],
- "page_run": 1795420857645,
- "updated": 1795420857645,
+ "page_run": 1795421140488,
+ "updated": 1795421140488,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
