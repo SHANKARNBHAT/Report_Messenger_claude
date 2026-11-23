@@ -133655,5 +133655,153 @@
   "gross": 4050.0,
   "charges": 366.27,
   "net": 3683.73
+ },
+ {
+  "id": "1794807941988-1826",
+  "symbol": "GODREJCP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 882.15,
+  "exit": 917.35,
+  "entry_time": 1794807941988,
+  "exit_time": 1795412400000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 865.3,
+  "tp": 908.6,
+  "high": 933.45,
+  "low": 879.2,
+  "nifty": 0.33,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794807941988,
+   "price": 882.15
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 17600.0,
+  "charges": 304.79,
+  "net": 17295.21
+ },
+ {
+  "id": "1795410948943-4692",
+  "symbol": "NAUKRI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1186.7,
+  "exit": 1193.8,
+  "entry_time": 1795410948943,
+  "exit_time": 1795412700000,
+  "reason": "30m RSI SMA 60.7 > 60",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1204.5,
+  "tp": 1151.1,
+  "high": 1195,
+  "low": 1186.7,
+  "nifty": -0.85,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795410948943,
+   "price": 1186.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -3905.0,
+  "charges": 414.95,
+  "net": -4319.95
+ },
+ {
+  "id": "1795410948943-4693",
+  "symbol": "NAUKRI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1186.7,
+  "exit": 1193.8,
+  "entry_time": 1795410948943,
+  "exit_time": 1795412700000,
+  "reason": "30m RSI SMA 60.7 > 60",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 1204.5,
+  "tp": null,
+  "high": 1195,
+  "low": 1186.7,
+  "nifty": -0.85,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795410948943,
+   "price": 1186.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -3905.0,
+  "charges": 414.95,
+  "net": -4319.95
+ },
+ {
+  "id": "1795410948943-4694",
+  "symbol": "NAUKRI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1186.7,
+  "exit": 1193.8,
+  "entry_time": 1795410948943,
+  "exit_time": 1795412700000,
+  "reason": "30m RSI SMA 60.7 > 60",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 1204.5,
+  "tp": null,
+  "high": 1195,
+  "low": 1186.7,
+  "nifty": -0.85,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795410948943,
+   "price": 1186.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -3905.0,
+  "charges": 414.95,
+  "net": -4319.95
  }
 ]
