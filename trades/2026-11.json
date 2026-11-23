@@ -133803,5 +133803,79 @@
   "gross": -3905.0,
   "charges": 414.95,
   "net": -4319.95
+ },
+ {
+  "id": "1795061740784-3849",
+  "symbol": "PIDILITIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1569.6,
+  "exit": 1601.0,
+  "entry_time": 1795061740784,
+  "exit_time": 1795412400000,
+  "reason": "TSL after target",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1524.8,
+  "tp": 1616.7,
+  "high": 1630,
+  "low": 1564.1,
+  "nifty": 0.04,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795061740784,
+   "price": 1569.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 15700.0,
+  "charges": 497.38,
+  "net": 15202.62
+ },
+ {
+  "id": "1795063244894-3901",
+  "symbol": "PIDILITIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1578.4,
+  "exit": 1602.05,
+  "entry_time": 1795063244894,
+  "exit_time": 1795412400000,
+  "reason": "TSL after target",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1524.8,
+  "tp": 1625.75,
+  "high": 1630,
+  "low": 1564.1,
+  "nifty": 0.2,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795063244894,
+   "price": 1578.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 11825.0,
+  "charges": 497.84,
+  "net": 11327.16
  }
 ]
