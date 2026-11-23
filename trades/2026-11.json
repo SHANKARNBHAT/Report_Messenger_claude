@@ -135877,5 +135877,42 @@
   "gross": -2400.0,
   "charges": 724.48,
   "net": -3124.48
+ },
+ {
+  "id": "1795420535955-4790",
+  "symbol": "AXISBANK",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1401.5,
+  "exit": 1404.2,
+  "entry_time": 1795420535955,
+  "exit_time": 1795422300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1406.0,
+  "tp": null,
+  "high": 1404.2,
+  "low": 1400.6,
+  "nifty": -1.38,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795420535955,
+   "price": 1401.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1687.5,
+  "charges": 540.59,
+  "net": -2228.09
  }
 ]
