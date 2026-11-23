@@ -1,5 +1,5 @@
 """
-Option chain page: the NIFTY, BANKNIFTY or a top-ATR F&O stock's option chain from Dhan (dhan_data.py), the ATM strike and
+Option chain page: the NIFTY, BANKNIFTY or an F&O stock (ATR above the saved F&O ATR ratio)'s option chain from Dhan (dhan_data.py), the ATM strike and
 5 strikes each side of it, with OI, volume, IV and premium changes; and below it the ATM call and put
 on 15-minute Heikin Ashi candles, flagging the planned strategy's entry candle (the first
 solid green HA candle, no lower wick, after a red one).
@@ -17,6 +17,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import dhan_data as dd
+import futures_simulator as fs
 import strike_steps
 
 st.set_page_config(page_title="Option chain", page_icon="🧮", layout="wide")
@@ -43,22 +44,20 @@ SETUP = """
 CHARTINK_SNAPSHOT = ("simple-moving-average-simple-moving-average-simple-moving-average-pivot-s2-pivot-copy-pivot-"
                      "simple-moving-average-volume-weighted-moving-averag-chart-snapshot")
 
-TOP_STOCKS = 15  # F&O stocks offered besides the indices: the biggest ATR ÷ strike interval
-
-
 @st.cache_data(ttl=3600, show_spinner=False)
-def load_underlyings() -> dict[str, dict]:
-    """NIFTY, BANKNIFTY and the TOP_STOCKS F&O stocks whose daily ATR covers the most strikes
-    (strike_steps.fno_atr, as on the F&O ATR page), each with a label for the picker."""
+def load_underlyings(ratio: float) -> tuple[dict[str, dict], str | None]:
+    """NIFTY, BANKNIFTY and the F&O stocks whose daily ATR covers more than `ratio` strikes (the
+    ratio saved on the F&O ATR page, which the simulator and auto trader trade), biggest first,
+    each with a label for the picker; and why the stocks are missing, if they are."""
     out = {name: {**u, "label": name} for name, u in dd.INDICES.items()}
     try:
         frame, _, _ = strike_steps.fno_atr()
-    except Exception:  # no database or strike intervals: the indices only
-        return out
-    for row in frame.dropna(subset=["dhan_id"]).head(TOP_STOCKS).itertuples():
+    except Exception as e:  # no database or strike intervals: the indices only
+        return out, f"Could not read the F&O ATR data ({e}): indices only."
+    for row in frame[frame["ratio"] > ratio].dropna(subset=["dhan_id"]).itertuples():
         out[row.symbol] = {**dd.stock(row.symbol, row.dhan_id, row.step),
                            "label": f"{row.symbol} · ATR {row.ratio:.1f}× strike"}
-    return out
+    return out, None
 
 
 @st.cache_data(ttl=600, show_spinner=False)
@@ -93,11 +92,14 @@ if not dd.secret("DHAN_CLIENT_ID") or not (dd.can_make_token() or dd.secret("DHA
     st.info(SETUP)
     st.stop()
 
-UNDERLYINGS = load_underlyings()
+RATIO = fs.atr_strikes_above()
+UNDERLYINGS, missing = load_underlyings(RATIO)
+if missing:
+    st.warning(missing)
 index = st.selectbox("Index / stock", list(UNDERLYINGS), index=0, key="oc-underlying",
                      format_func=lambda n: UNDERLYINGS[n]["label"],
-                     help=f"NIFTY, BANKNIFTY and the {TOP_STOCKS} F&O stocks whose daily ATR covers the most "
-                          "strike intervals (see the F&O ATR page).")
+                     help=f"NIFTY, BANKNIFTY and the {len(UNDERLYINGS) - len(dd.INDICES)} F&O stocks whose daily "
+                          f"ATR is above {RATIO:g} strike intervals (the ratio saved on the F&O ATR page).")
 underlying = UNDERLYINGS[index]
 # The chosen index / stock's chart on Chartink, with the dashboard's indicator snapshot or plain.
 _chartink = "https://chartink.com/stocks-new?symbol=" + quote(index, safe="")
