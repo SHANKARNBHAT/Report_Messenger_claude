@@ -133174,5 +133174,79 @@
   "gross": -10991.25,
   "charges": 454.07,
   "net": -11445.32
+ },
+ {
+  "id": "1795407347126-4661",
+  "symbol": "ATHERENERG",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 375,
+  "entry": 1954.8,
+  "exit": 1955.5,
+  "entry_time": 1795407347126,
+  "exit_time": 1795409700000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1936.0,
+  "tp": null,
+  "high": 1967.6,
+  "low": 1954.8,
+  "nifty": -0.53,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795407347126,
+   "price": 1957.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 262.5,
+  "charges": 460.18,
+  "net": -197.68
+ },
+ {
+  "id": "1794371740162-1036",
+  "symbol": "TATACONSUM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 550,
+  "entry": 1096.1,
+  "exit": 1141.95,
+  "entry_time": 1794371740162,
+  "exit_time": 1795410000000,
+  "reason": "TSL after target",
+  "source": "Auto HA 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "HA",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 1074.0,
+  "tp": 1129.0,
+  "high": 1158.8,
+  "low": 1076.1,
+  "nifty": 1.26,
+  "strategies": [
+   "2H HA Bullish scan"
+  ],
+  "first_seen": {
+   "time": 1794371740162,
+   "price": 1096.1
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": 73.05,
+  "gross": 25217.5,
+  "charges": 399.87,
+  "net": 24817.63
  }
 ]
