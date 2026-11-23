@@ -134174,5 +134174,79 @@
   "gross": -19550.0,
   "charges": 1149.48,
   "net": -20699.48
+ },
+ {
+  "id": "1795406139975-4645",
+  "symbol": "SHRIRAMFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 825,
+  "entry": 996.5,
+  "exit": 997.4,
+  "entry_time": 1795406139975,
+  "exit_time": 1795414800000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 962.3,
+  "tp": null,
+  "high": 1003.5,
+  "low": 985.55,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 993.65
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 742.5,
+  "charges": 510.59,
+  "net": 231.91
+ },
+ {
+  "id": "1794887738404-2722",
+  "symbol": "KEI",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 175,
+  "entry": 3992.2,
+  "exit": 3834.9,
+  "entry_time": 1794887738404,
+  "exit_time": 1795415100000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 4062.1,
+  "tp": null,
+  "high": 3992.2,
+  "low": 3657.8,
+  "nifty": 0.12,
+  "strategies": [
+   "Daily HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 3975.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 27527.5,
+  "charges": 439.52,
+  "net": 27087.98
  }
 ]
