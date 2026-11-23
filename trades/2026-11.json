@@ -127993,5 +127993,42 @@
   "gross": 15040.0,
   "charges": 257.25,
   "net": 14782.75
+ },
+ {
+  "id": "1795405547121-4585",
+  "symbol": "BANKNIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 65039.95,
+  "exit": 64389.95,
+  "entry_time": 1795405547121,
+  "exit_time": 1795405850000,
+  "reason": "Stop loss",
+  "source": "Auto HA IDX BRK 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "HA IDX BRK",
+  "style": "ha_brk_idx",
+  "passed": false,
+  "carried": false,
+  "sl": 64606.7,
+  "tp": null,
+  "high": 65039.95,
+  "low": 64389.95,
+  "nifty": 0.6,
+  "strategies": [
+   "15m HA IDX BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1795405547121,
+   "price": 65039.95
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -19500.0,
+  "charges": 1135.92,
+  "net": -20635.92
  }
 ]
