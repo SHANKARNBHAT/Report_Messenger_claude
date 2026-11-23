@@ -133507,5 +133507,79 @@
   "gross": 18315.0,
   "charges": 399.99,
   "net": 17915.01
+ },
+ {
+  "id": "1795406139975-4632",
+  "symbol": "INFY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1113.1,
+  "exit": 1121.1,
+  "entry_time": 1795406139975,
+  "exit_time": 1795410900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1090.7,
+  "tp": null,
+  "high": 1132.4,
+  "low": 1106.2,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 1112.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 3200.0,
+  "charges": 299.62,
+  "net": 2900.38
+ },
+ {
+  "id": "1795406139975-4636",
+  "symbol": "KPITTECH",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 775,
+  "entry": 530.5,
+  "exit": 529.55,
+  "entry_time": 1795406139975,
+  "exit_time": 1795410900000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 518.5,
+  "tp": null,
+  "high": 536.15,
+  "low": 523.5,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 529.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -736.25,
+  "charges": 278.36,
+  "net": -1014.61
  }
 ]
