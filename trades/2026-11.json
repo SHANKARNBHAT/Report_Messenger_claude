@@ -132878,5 +132878,79 @@
   "gross": 32750.0,
   "charges": 466.19,
   "net": 32283.81
+ },
+ {
+  "id": "1795406139975-4635",
+  "symbol": "KALYANKJIL",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1350,
+  "entry": 664.5,
+  "exit": 660.35,
+  "entry_time": 1795406139975,
+  "exit_time": 1795409100000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 636.0,
+  "tp": null,
+  "high": 668.15,
+  "low": 656.4,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 663.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5602.5,
+  "charges": 549.5,
+  "net": -6152.0
+ },
+ {
+  "id": "1795147251802-4281",
+  "symbol": "APOLLOHOSP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 8994.0,
+  "exit": 9263.75,
+  "entry_time": 1795147251802,
+  "exit_time": 1795409100000,
+  "reason": "TSL after target",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 8726.5,
+  "tp": 9263.8,
+  "high": 9410,
+  "low": 8994.0,
+  "nifty": -0.33,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1795147251802,
+   "price": 8994.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 33718.75,
+  "charges": 697.95,
+  "net": 33020.8
  }
 ]
