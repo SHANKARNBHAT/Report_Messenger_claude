@@ -86,7 +86,7 @@ def strike_step(listed: set[float], price: float) -> float | None:
 def latest_closes() -> dict[str, float]:
     with sqlite3.connect(f"file:{DB}?mode=ro", uri=True) as db:
         rows = db.execute("SELECT symbol, close FROM stock_ohlc_indicators "
-                          "WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators)").fetchall()
+                          "WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators WHERE atr_14 IS NOT NULL)").fetchall()
     return {symbol.removesuffix(".NS"): close for symbol, close in rows if close}
 
 
@@ -113,7 +113,8 @@ def symbols_above(ratio: float) -> set[str]:
         steps = json.load(f)["steps"]
     with sqlite3.connect(f"file:{DB}?mode=ro", uri=True) as db:
         rows = db.execute("SELECT symbol, atr_14 FROM stock_ohlc_indicators "
-                          "WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators) AND atr_14 IS NOT NULL").fetchall()
+                          "WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators WHERE atr_14 IS NOT NULL) "
+                          "AND atr_14 IS NOT NULL").fetchall()
     out = set()
     for symbol, atr in rows:
         symbol = symbol.removesuffix(".NS")
@@ -131,7 +132,8 @@ def fno_atr():
     with sqlite3.connect(f"file:{DB}?mode=ro", uri=True) as db:
         frame = pd.read_sql_query(
             "SELECT symbol, date, close, atr_14, lot_size FROM stock_ohlc_indicators "
-            "WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators) AND atr_14 IS NOT NULL", db)
+            "WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators WHERE atr_14 IS NOT NULL) "
+            "AND atr_14 IS NOT NULL", db)
     with open(OUT, encoding="utf-8") as f:
         saved = json.load(f)
     frame["symbol"] = frame["symbol"].str.removesuffix(".NS")
