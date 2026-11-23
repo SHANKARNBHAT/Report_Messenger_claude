@@ -132804,5 +132804,79 @@
   "gross": 2480.0,
   "charges": 287.11,
   "net": 2192.89
+ },
+ {
+  "id": "1795406139975-4647",
+  "symbol": "TIINDIA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 200,
+  "entry": 2248.0,
+  "exit": 2245.1,
+  "entry_time": 1795406139975,
+  "exit_time": 1795408800000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2218.2,
+  "tp": null,
+  "high": 2264.9,
+  "low": 2245.1,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 2238.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -580.0,
+  "charges": 300.11,
+  "net": -880.11
+ },
+ {
+  "id": "1794543343115-1498",
+  "symbol": "POWERINDIA",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 25,
+  "entry": 28545.0,
+  "exit": 29855.0,
+  "entry_time": 1794543343115,
+  "exit_time": 1795409100000,
+  "reason": "30m RSI SMA 39.9 < 40",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 28116.8,
+  "tp": null,
+  "high": 32250.0,
+  "low": 28545.0,
+  "nifty": -0.42,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1794543343115,
+   "price": 28545.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 32750.0,
+  "charges": 466.19,
+  "net": 32283.81
  }
 ]
