@@ -135433,5 +135433,264 @@
   "gross": -19231.25,
   "charges": 372.16,
   "net": -19603.41
+ },
+ {
+  "id": "1795420535955-4798",
+  "symbol": "LAURUSLABS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 850,
+  "entry": 2359.3,
+  "exit": 2352.7,
+  "entry_time": 1795420535955,
+  "exit_time": 1795421400000,
+  "reason": "Stop loss",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2352.7,
+  "tp": null,
+  "high": 2362,
+  "low": 2352.7,
+  "nifty": -1.38,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795420535955,
+   "price": 2357.4
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -5610.0,
+  "charges": 1173.69,
+  "net": -6783.69
+ },
+ {
+  "id": "1795158341904-4388",
+  "symbol": "INDIANB",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 958.5,
+  "exit": 933.8,
+  "entry_time": 1795158341904,
+  "exit_time": 1795421400000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 933.8,
+  "tp": 987.25,
+  "high": 964.45,
+  "low": 933.8,
+  "nifty": 0.77,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1795158341904,
+   "price": 958.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -24700.0,
+  "charges": 574.13,
+  "net": -25274.13
+ },
+ {
+  "id": "1795158341904-4389",
+  "symbol": "INDIANB",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 958.5,
+  "exit": 933.8,
+  "entry_time": 1795158341904,
+  "exit_time": 1795421400000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 933.8,
+  "tp": null,
+  "high": 964.45,
+  "low": 933.8,
+  "nifty": 0.77,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1795158341904,
+   "price": 958.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -24700.0,
+  "charges": 574.13,
+  "net": -25274.13
+ },
+ {
+  "id": "1795158341904-4390",
+  "symbol": "INDIANB",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 958.5,
+  "exit": 933.8,
+  "entry_time": 1795158341904,
+  "exit_time": 1795421400000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 933.8,
+  "tp": null,
+  "high": 964.45,
+  "low": 933.8,
+  "nifty": 0.77,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1795158341904,
+   "price": 958.5
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -24700.0,
+  "charges": 574.13,
+  "net": -25274.13
+ },
+ {
+  "id": "1795159242518-4403",
+  "symbol": "JSWENERGY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1075,
+  "entry": 513.2,
+  "exit": 502.1,
+  "entry_time": 1795159242518,
+  "exit_time": 1795421400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 502.1,
+  "tp": 528.6,
+  "high": 519.6,
+  "low": 502.1,
+  "nifty": 0.87,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795159242518,
+   "price": 513.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11932.5,
+  "charges": 351.68,
+  "net": -12284.18
+ },
+ {
+  "id": "1795159242518-4404",
+  "symbol": "JSWENERGY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1075,
+  "entry": 513.2,
+  "exit": 502.1,
+  "entry_time": 1795159242518,
+  "exit_time": 1795421400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 502.1,
+  "tp": null,
+  "high": 519.6,
+  "low": 502.1,
+  "nifty": 0.87,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795159242518,
+   "price": 513.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11932.5,
+  "charges": 351.68,
+  "net": -12284.18
+ },
+ {
+  "id": "1795159242518-4405",
+  "symbol": "JSWENERGY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1075,
+  "entry": 513.2,
+  "exit": 502.1,
+  "entry_time": 1795159242518,
+  "exit_time": 1795421400000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 502.1,
+  "tp": null,
+  "high": 519.6,
+  "low": 502.1,
+  "nifty": 0.87,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795159242518,
+   "price": 513.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11932.5,
+  "charges": 351.68,
+  "net": -12284.18
  }
 ]
