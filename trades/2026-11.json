@@ -132212,5 +132212,116 @@
   "gross": -1046.25,
   "charges": 448.32,
   "net": -1494.57
+ },
+ {
+  "id": "1795406139975-4628",
+  "symbol": "GVT&D",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 125,
+  "entry": 4198.3,
+  "exit": 4178.7,
+  "entry_time": 1795406139975,
+  "exit_time": 1795407300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 4242.5,
+  "tp": null,
+  "high": 4198.3,
+  "low": 4141.3,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 4171.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 2450.0,
+  "charges": 342.65,
+  "net": 2107.35
+ },
+ {
+  "id": "1795406139975-4633",
+  "symbol": "ITC",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1725,
+  "entry": 300.9,
+  "exit": 299.3,
+  "entry_time": 1795406139975,
+  "exit_time": 1795407300000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 298.35,
+  "tp": null,
+  "high": 301.35,
+  "low": 299.3,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 300.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2760.0,
+  "charges": 338.08,
+  "net": -3098.08
+ },
+ {
+  "id": "1794888059593-2736",
+  "symbol": "AUBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 980.0,
+  "exit": 969.1,
+  "entry_time": 1794888059593,
+  "exit_time": 1795060200000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 963.3,
+  "tp": null,
+  "high": 999.95,
+  "low": 969.1,
+  "nifty": 0.14,
+  "strategies": [
+   "Daily HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794888059593,
+   "price": 981.9
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -10900.0,
+  "charges": 593.44,
+  "net": -11493.44
  }
 ]
