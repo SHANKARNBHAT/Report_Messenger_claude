@@ -132323,5 +132323,116 @@
   "gross": -10900.0,
   "charges": 593.44,
   "net": -11493.44
+ },
+ {
+  "id": "1795406139975-4637",
+  "symbol": "LICHSGFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 617.55,
+  "exit": 611.45,
+  "entry_time": 1795406139975,
+  "exit_time": 1795407600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 610.1,
+  "tp": null,
+  "high": 617.55,
+  "low": 611.45,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 614.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -6100.0,
+  "charges": 391.82,
+  "net": -6491.82
+ },
+ {
+  "id": "1795406139975-4643",
+  "symbol": "RELIANCE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 1384.3,
+  "exit": 1367.0,
+  "entry_time": 1795406139975,
+  "exit_time": 1795407600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 1365.1,
+  "tp": null,
+  "high": 1384.3,
+  "low": 1367,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 1381.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -8650.0,
+  "charges": 432.5,
+  "net": -9082.5
+ },
+ {
+  "id": "1794810039591-2074",
+  "symbol": "ULTRACEMCO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 50,
+  "entry": 12286.0,
+  "exit": 12715.0,
+  "entry_time": 1794810039591,
+  "exit_time": 1795408262000,
+  "reason": "TSL after target",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 12101.7,
+  "tp": 12654.6,
+  "high": 12948.0,
+  "low": 12227.0,
+  "nifty": 0.29,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794810039591,
+   "price": 12286.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 21450.0,
+  "charges": 404.35,
+  "net": 21045.65
  }
 ]
