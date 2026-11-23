@@ -135729,5 +135729,153 @@
   "gross": -13500.0,
   "charges": 389.05,
   "net": -13889.05
+ },
+ {
+  "id": "1795420535955-4791",
+  "symbol": "BANKNIFTY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 30,
+  "entry": 63082.15,
+  "exit": 63145.05,
+  "entry_time": 1795420535955,
+  "exit_time": 1795422000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 63303.3,
+  "tp": null,
+  "high": 63145.05,
+  "low": 63048.6,
+  "nifty": -1.38,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795420535955,
+   "price": 63081.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1887.0,
+  "charges": 1113.09,
+  "net": -3000.09
+ },
+ {
+  "id": "1795420535955-4794",
+  "symbol": "GRASIM",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 250,
+  "entry": 3086.4,
+  "exit": 3092.0,
+  "entry_time": 1795420535955,
+  "exit_time": 1795422000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 3096.8,
+  "tp": null,
+  "high": 3092,
+  "low": 3086.4,
+  "nifty": -1.38,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795420535955,
+   "price": 3087.2
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -1400.0,
+  "charges": 481.81,
+  "net": -1881.81
+ },
+ {
+  "id": "1795420535955-4800",
+  "symbol": "NIFTY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 65,
+  "entry": 25453.5,
+  "exit": 25468.2,
+  "entry_time": 1795420535955,
+  "exit_time": 1795422000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 25516.45,
+  "tp": null,
+  "high": 25468.2,
+  "low": 25432.45,
+  "nifty": -1.38,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795420535955,
+   "price": 25446.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -955.5,
+  "charges": 979.02,
+  "net": -1934.52
+ },
+ {
+  "id": "1795420535955-4801",
+  "symbol": "PNB",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 8000,
+  "entry": 150.3,
+  "exit": 150.6,
+  "entry_time": 1795420535955,
+  "exit_time": 1795422000000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 150.75,
+  "tp": null,
+  "high": 150.6,
+  "low": 150.27,
+  "nifty": -1.38,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795420535955,
+   "price": 150.38
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2400.0,
+  "charges": 724.48,
+  "net": -3124.48
  }
 ]
