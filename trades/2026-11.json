@@ -135692,5 +135692,42 @@
   "gross": -11932.5,
   "charges": 351.68,
   "net": -12284.18
+ },
+ {
+  "id": "1794902457426-3405",
+  "symbol": "LICHSGFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 619.5,
+  "exit": 606.0,
+  "entry_time": 1794902457426,
+  "exit_time": 1795146900000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 583.65,
+  "tp": null,
+  "high": 623.6,
+  "low": 606.0,
+  "nifty": 0.37,
+  "strategies": [
+   "Daily HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794902457426,
+   "price": 620.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -13500.0,
+  "charges": 389.05,
+  "net": -13889.05
  }
 ]
