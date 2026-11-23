@@ -134099,5 +134099,80 @@
   "gross": -1725.75,
   "charges": 984.97,
   "net": -2710.72
+ },
+ {
+  "id": "1795406139975-4641",
+  "symbol": "PATANJALI",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1075,
+  "entry": 405.9,
+  "exit": 405.95,
+  "entry_time": 1795406139975,
+  "exit_time": 1795414500000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 402.25,
+  "tp": null,
+  "high": 409.8,
+  "low": 402.85,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 407.75
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 53.75,
+  "charges": 292.97,
+  "net": -239.22
+ },
+ {
+  "id": "1795074300000-4044",
+  "symbol": "LAURUSLABS",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 850,
+  "entry": 2300.9,
+  "exit": 2323.9,
+  "entry_time": 1795074300000,
+  "exit_time": 1795414500000,
+  "reason": "Stop loss",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 2323.9,
+  "tp": null,
+  "high": 2323.9,
+  "low": 2286.8,
+  "nifty": 0.54,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795059941932,
+   "price": 2304.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -19550.0,
+  "charges": 1149.48,
+  "net": -20699.48
  }
 ]
