@@ -134840,5 +134840,42 @@
   "gross": 6800.0,
   "charges": 302.78,
   "net": 6497.22
+ },
+ {
+  "id": "1794899741410-3174",
+  "symbol": "HCLTECH",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1364.2,
+  "exit": 1362.3,
+  "entry_time": 1794899741410,
+  "exit_time": 1795405500000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1389.05,
+  "tp": null,
+  "high": 1364.2,
+  "low": 1310.0,
+  "nifty": 0.65,
+  "strategies": [
+   "Daily HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794899741410,
+   "price": 1360.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 760.0,
+  "charges": 354.49,
+  "net": 405.51
  }
 ]
