@@ -127956,5 +127956,42 @@
   "gross": 17155.0,
   "charges": 492.5,
   "net": 16662.5
+ },
+ {
+  "id": "1794801656114-1774",
+  "symbol": "INOXWIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 6400,
+  "entry": 58.45,
+  "exit": 56.1,
+  "entry_time": 1794801656114,
+  "exit_time": 1795405500000,
+  "reason": "TSL after target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 65.3,
+  "tp": 56.7,
+  "high": 61.09,
+  "low": 55.1,
+  "nifty": 0.42,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794801656114,
+   "price": 58.47
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 15040.0,
+  "charges": 257.25,
+  "net": 14782.75
  }
 ]
