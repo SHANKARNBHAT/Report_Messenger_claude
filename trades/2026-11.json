@@ -135914,5 +135914,42 @@
   "gross": -1687.5,
   "charges": 540.59,
   "net": -2228.09
+ },
+ {
+  "id": "1794889244264-2773",
+  "symbol": "PNB",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 8000,
+  "entry": 149.25,
+  "exit": 150.15,
+  "entry_time": 1794889244264,
+  "exit_time": 1795422900000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 142.0,
+  "tp": null,
+  "high": 156.46,
+  "low": 148.48,
+  "nifty": 0.32,
+  "strategies": [
+   "Daily HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794889244264,
+   "price": 149.57
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 7200.0,
+  "charges": 723.4,
+  "net": 6476.6
  }
 ]
