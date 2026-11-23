@@ -136876,5 +136876,375 @@
   "gross": -8950.0,
   "charges": 378.74,
   "net": -9328.74
+ },
+ {
+  "id": "1794890137079-2796",
+  "symbol": "SBIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 750,
+  "entry": 1110.75,
+  "exit": 1129.1,
+  "entry_time": 1794890137079,
+  "exit_time": 1795426800000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1079.8,
+  "tp": null,
+  "high": 1181.3,
+  "low": 1104.1,
+  "nifty": 0.34,
+  "strategies": [
+   "Daily HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794890137079,
+   "price": 1112.6
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 13762.5,
+  "charges": 523.55,
+  "net": 13238.95
+ },
+ {
+  "id": "1794891055688-2811",
+  "symbol": "CHOLAFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1880.9,
+  "exit": 1822.5,
+  "entry_time": 1794891055688,
+  "exit_time": 1795427103000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1828.2,
+  "tp": 1937.35,
+  "high": 1896.9,
+  "low": 1822.5,
+  "nifty": 0.45,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794891055688,
+   "price": 1880.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -36500.0,
+  "charges": 690.22,
+  "net": -37190.22
+ },
+ {
+  "id": "1794891055688-2812",
+  "symbol": "CHOLAFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1880.9,
+  "exit": 1822.5,
+  "entry_time": 1794891055688,
+  "exit_time": 1795427103000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 1828.2,
+  "tp": null,
+  "high": 1896.9,
+  "low": 1822.5,
+  "nifty": 0.45,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794891055688,
+   "price": 1880.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -36500.0,
+  "charges": 690.22,
+  "net": -37190.22
+ },
+ {
+  "id": "1794891055688-2813",
+  "symbol": "CHOLAFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 625,
+  "entry": 1880.9,
+  "exit": 1822.5,
+  "entry_time": 1794891055688,
+  "exit_time": 1795427103000,
+  "reason": "Stop loss",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 1828.2,
+  "tp": null,
+  "high": 1896.9,
+  "low": 1822.5,
+  "nifty": 0.45,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1794891055688,
+   "price": 1880.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -36500.0,
+  "charges": 690.22,
+  "net": -37190.22
+ },
+ {
+  "id": "1795070745720-4001",
+  "symbol": "LT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4175.2,
+  "exit": 4112.0,
+  "entry_time": 1795070745720,
+  "exit_time": 1795426800000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 4112.0,
+  "tp": 4300.45,
+  "high": 4230.4,
+  "low": 4112.0,
+  "nifty": 0.53,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795070745720,
+   "price": 4175.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11060.0,
+  "charges": 452.93,
+  "net": -11512.93
+ },
+ {
+  "id": "1795070745720-4002",
+  "symbol": "LT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4175.2,
+  "exit": 4112.0,
+  "entry_time": 1795070745720,
+  "exit_time": 1795426800000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 4112.0,
+  "tp": null,
+  "high": 4230.4,
+  "low": 4112.0,
+  "nifty": 0.53,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795070745720,
+   "price": 4175.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11060.0,
+  "charges": 452.93,
+  "net": -11512.93
+ },
+ {
+  "id": "1795070745720-4003",
+  "symbol": "LT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 175,
+  "entry": 4175.2,
+  "exit": 4112.0,
+  "entry_time": 1795070745720,
+  "exit_time": 1795426800000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 4112.0,
+  "tp": null,
+  "high": 4230.4,
+  "low": 4112.0,
+  "nifty": 0.53,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795070745720,
+   "price": 4175.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -11060.0,
+  "charges": 452.93,
+  "net": -11512.93
+ },
+ {
+  "id": "1795149055702-4300",
+  "symbol": "MANKIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2655.2,
+  "exit": 2615.35,
+  "entry_time": 1795149055702,
+  "exit_time": 1795426500000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2615.35,
+  "tp": 2734.85,
+  "high": 2673,
+  "low": 2615.35,
+  "nifty": 0.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795149055702,
+   "price": 2655.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -9962.5,
+  "charges": 415.85,
+  "net": -10378.35
+ },
+ {
+  "id": "1795149055702-4301",
+  "symbol": "MANKIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2655.2,
+  "exit": 2615.35,
+  "entry_time": 1795149055702,
+  "exit_time": 1795426500000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 2615.35,
+  "tp": null,
+  "high": 2673,
+  "low": 2615.35,
+  "nifty": 0.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795149055702,
+   "price": 2655.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -9962.5,
+  "charges": 415.85,
+  "net": -10378.35
+ },
+ {
+  "id": "1795149055702-4302",
+  "symbol": "MANKIND",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2655.2,
+  "exit": 2615.35,
+  "entry_time": 1795149055702,
+  "exit_time": 1795426500000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 2615.35,
+  "tp": null,
+  "high": 2673,
+  "low": 2615.35,
+  "nifty": 0.09,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795149055702,
+   "price": 2655.2
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -9962.5,
+  "charges": 415.85,
+  "net": -10378.35
  }
 ]
