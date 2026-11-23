@@ -132582,5 +132582,227 @@
   "gross": -6097.5,
   "charges": 480.64,
   "net": -6578.14
+ },
+ {
+  "id": "1795406139975-4627",
+  "symbol": "GODREJCP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 500,
+  "entry": 930.45,
+  "exit": 926.0,
+  "entry_time": 1795406139975,
+  "exit_time": 1795408500000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 917.95,
+  "tp": null,
+  "high": 931.25,
+  "low": 926,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 929.45
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -2225.0,
+  "charges": 308.05,
+  "net": -2533.05
+ },
+ {
+  "id": "1794800741223-1634",
+  "symbol": "TMPV",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1600,
+  "entry": 287.4,
+  "exit": 264.8,
+  "entry_time": 1794800741223,
+  "exit_time": 1795409100000,
+  "reason": "30m RSI SMA 60.0 > 60",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 292.5,
+  "tp": null,
+  "high": 287.4,
+  "low": 251.95,
+  "nifty": 0.58,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 287.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 36160.0,
+  "charges": 304.67,
+  "net": 35855.33
+ },
+ {
+  "id": "1794800741223-1635",
+  "symbol": "TMPV",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1600,
+  "entry": 287.4,
+  "exit": 264.8,
+  "entry_time": 1794800741223,
+  "exit_time": 1795409100000,
+  "reason": "30m RSI SMA 60.0 > 60",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 292.5,
+  "tp": null,
+  "high": 287.4,
+  "low": 251.95,
+  "nifty": 0.58,
+  "strategies": [
+   "DAILY RSI BEARISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794800741223,
+   "price": 287.4
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 36160.0,
+  "charges": 304.67,
+  "net": 35855.33
+ },
+ {
+  "id": "1794801047178-1703",
+  "symbol": "TMPV",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1600,
+  "entry": 264.85,
+  "exit": 264.8,
+  "entry_time": 1794801047178,
+  "exit_time": 1795409100000,
+  "reason": "30m RSI SMA 60.0 > 60",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 292.5,
+  "tp": null,
+  "high": 269.15,
+  "low": 251.95,
+  "nifty": 0.43,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794801047178,
+   "price": 264.85
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 80.0,
+  "charges": 285.85,
+  "net": -205.85
+ },
+ {
+  "id": "1794801047178-1704",
+  "symbol": "TMPV",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1600,
+  "entry": 264.85,
+  "exit": 264.8,
+  "entry_time": 1794801047178,
+  "exit_time": 1795409100000,
+  "reason": "30m RSI SMA 60.0 > 60",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 292.5,
+  "tp": null,
+  "high": 269.15,
+  "low": 251.95,
+  "nifty": 0.43,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1794801047178,
+   "price": 264.85
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 80.0,
+  "charges": 285.85,
+  "net": -205.85
+ },
+ {
+  "id": "1795405547121-4620",
+  "symbol": "TMPV",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 1600,
+  "entry": 266.35,
+  "exit": 264.8,
+  "entry_time": 1795405547121,
+  "exit_time": 1795409100000,
+  "reason": "30m RSI SMA 60.0 > 60",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 270.35,
+  "tp": 258.35,
+  "high": 266.35,
+  "low": 263,
+  "nifty": 0.6,
+  "strategies": [
+   "WEEKLY RSI BEARISH"
+  ],
+  "first_seen": {
+   "time": 1795405547121,
+   "price": 266.35
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 2480.0,
+  "charges": 287.11,
+  "net": 2192.89
  }
 ]
