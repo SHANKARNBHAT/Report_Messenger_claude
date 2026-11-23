@@ -136284,5 +136284,42 @@
   "gross": 1505.0,
   "charges": 284.87,
   "net": 1220.13
+ },
+ {
+  "id": "1795420535955-4789",
+  "symbol": "ASIANPAINT",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2578.1,
+  "exit": 2579.9,
+  "entry_time": 1795420535955,
+  "exit_time": 1795423800000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 2588.1,
+  "tp": null,
+  "high": 2580.1,
+  "low": 2573.3,
+  "nifty": -1.38,
+  "strategies": [
+   "4H HA PURE Bearish"
+  ],
+  "first_seen": {
+   "time": 1795420535955,
+   "price": 2578.7
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": -450.0,
+  "charges": 410.21,
+  "net": -860.21
  }
 ]
