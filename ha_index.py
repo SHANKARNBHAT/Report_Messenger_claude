@@ -18,6 +18,8 @@ BANKNIFTY (auto_trader.py, enter_index_signals and settle), made from Yahoo Fina
     wick (htf_side). 4H candles run 9:15 AM to 1:15 PM and 1:15 PM to the close.
   * Normal-candle filter (since 20 Nov 2026, all three strategies): the plain 15-minute candle
     must be the entry's colour too, green for a long, red for a short (candle_agrees).
+  * 2H filter (since 23 Nov 2026, all three strategies): no entry when the previous (finished) 2H
+    HA candle is the opposite colour, red for a long, green for a short (previous_2h_against).
 
 HA IDX BRK (rule "break"): ha_break's breakout entry on these 15-minute HA candles, SL at the
 HA candle's low / high, trailed to each finished 15-minute HA candle's low / high (break_replay);
@@ -35,6 +37,7 @@ SYMBOLS = ("NIFTY", "BANKNIFTY")
 TIMEFRAME = "15 MIN"
 MINUTES = 15
 HTF_MINUTES = 240  # the 4H filter (htf_side)
+H2_MINUTES = 120  # the 2H filter (previous_2h_against)
 ATR_PERIOD = 14
 ATR_MULT = 1.1
 SESSION_OPEN, SESSION_END, SQUARE_OFF = time(9, 15), time(15, 30), time(15, 15)
@@ -87,6 +90,28 @@ def htf_side(bars: list[tuple], tz, now_ts: int) -> str | None:
     if ha_close < ha_open and ha_high <= ha_open:
         return "SELL"
     return None
+
+
+def previous_2h_against(bars: list[tuple], tz, now_ts: int, side: str) -> bool:
+    """Whether the previous (finished) 2H HA candle is the opposite colour of the entry: red for a
+    long, green for a short (a doji, open = close, is neither). The 2H filter of the entries.
+    2H candles run 9:15, 11:15, 1:15 PM, with the 3:15 PM stub joined to the 1:15 PM one (as Chartink)."""
+    rows: list[list] = []
+    for row in candles([b for b in bars if b[0] <= now_ts], tz, H2_MINUTES):
+        start = datetime.fromtimestamp(row[0], tz)
+        if (rows and start.time() >= SQUARE_OFF
+                and datetime.fromtimestamp(rows[-1][0], tz).date() == start.date()):
+            rows[-1][2], rows[-1][3], rows[-1][4] = max(rows[-1][2], row[2]), min(rows[-1][3], row[3]), row[4]
+        else:
+            rows.append(row)
+    current = candle_start(now_ts, tz, H2_MINUTES)
+    if datetime.fromtimestamp(current, tz).time() >= SQUARE_OFF:  # the stub is part of the 1:15 PM candle
+        current -= H2_MINUTES * 60
+    done = [row for row in rows if row[0] < current]
+    if not done:
+        return False
+    ha_open, _, _, ha_close = heikin_ashi(done)[-1]
+    return ha_close < ha_open if side == "BUY" else ha_close > ha_open
 
 
 def candle_agrees(row: list, side: str) -> bool:

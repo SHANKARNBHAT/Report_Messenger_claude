@@ -507,6 +507,9 @@ def enter_index_signals(files: Files, account: dict, seen: dict, now: datetime, 
         if ha_index.htf_side(bars, fs.IST, int(now.timestamp())) != side:
             mark(seen, [signal], f"Previous 4H HA candle not solid {'green' if side == 'BUY' else 'red'}")
             continue
+        if ha_index.previous_2h_against(bars, fs.IST, int(now.timestamp()), side):
+            mark(seen, [signal], f"Previous 2H HA candle {'red' if side == 'BUY' else 'green'}")
+            continue
         if not ha_index.candle_agrees(rows[-1], side):
             mark(seen, [signal], f"Normal 15m candle not {'green' if side == 'BUY' else 'red'}")
             continue

@@ -940,7 +940,8 @@ def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, rule: st
     use_trend = rule == "trend"
     st.caption("**4H filter (from 19 Nov 2026, history reset that day):** a long only when the previous 4H Heikin Ashi "
                "candle (9:15 AM–1:15 PM or 1:15 PM–close) is solid green with no lower wick, a short only when it is "
-               "solid red with no upper wick.")
+               "solid red with no upper wick. **2H filter (from 23 Nov 2026):** no entry when the previous 2H Heikin "
+               "Ashi candle (9:15, 11:15 AM or 1:15 PM–close) is the opposite colour: red for a long, green for a short.")
     if rule == "break":
         st.caption("A green 15-minute HA candle with no lower wick whose HA close is above the previous HA candle's high "
                    "(long); a red one with no upper wick closing below the previous HA low (short), no SMA filter. SL "
