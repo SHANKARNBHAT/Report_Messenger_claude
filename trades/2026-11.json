@@ -134803,5 +134803,42 @@
   "gross": -12780.0,
   "charges": 519.93,
   "net": -13299.93
+ },
+ {
+  "id": "1794899444764-3168",
+  "symbol": "INFY",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 400,
+  "entry": 1135.8,
+  "exit": 1118.8,
+  "entry_time": 1794899444764,
+  "exit_time": 1795405500000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 1148.75,
+  "tp": null,
+  "high": 1135.8,
+  "low": 1072.6,
+  "nifty": 0.69,
+  "strategies": [
+   "Daily HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794899444764,
+   "price": 1133.8
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 6800.0,
+  "charges": 302.78,
+  "net": 6497.22
  }
 ]
