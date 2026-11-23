@@ -1,6 +1,8 @@
 import datetime
 import os
 import sqlite3
+import sys
+import time
 import warnings
 import numpy as np
 import pandas as pd
@@ -173,6 +175,42 @@ def prune_old_database_records(conn, max_days=400):
         print(f"Database pruned: Removed records older than {cutoff_date} (keeping ~400 days)")
 
 
+DOWNLOAD_ATTEMPTS = 3
+RETRY_PAUSE = 60  # seconds before asking Yahoo again for the stocks it left out
+MAX_MISSING_SHARE = 0.1  # more stocks than this without data fails the run
+
+
+def download_with_retry(symbols):
+    """(symbol -> its 2-year daily history, symbols Yahoo sent nothing for). Yahoo often leaves
+    out part of a big batch, or all of it, when it limits GitHub's runners, so the missing ones
+    are asked for again after a pause, up to DOWNLOAD_ATTEMPTS times."""
+    found = {}
+    missing = list(symbols)
+    for attempt in range(DOWNLOAD_ATTEMPTS):
+        if attempt:
+            print(f"Yahoo sent no data for {len(missing)} stocks; retrying in {RETRY_PAUSE}s...")
+            time.sleep(RETRY_PAUSE)
+        try:
+            data = yf.download(missing, period="2y", group_by="ticker", progress=False)
+        except Exception as e:
+            print(f"Warning: Yahoo download failed: {e}")
+            data = None
+        if data is not None and not data.empty:
+            for symbol in missing:
+                if isinstance(data.columns, pd.MultiIndex):
+                    if symbol not in data.columns.get_level_values(0):
+                        continue
+                    hist = data[symbol]
+                else:  # a single stock asked for
+                    hist = data
+                if len(hist.dropna(how="all")) >= 200:
+                    found[symbol] = hist
+        missing = [s for s in missing if s not in found]
+        if not missing:
+            break
+    return found, missing
+
+
 def run_market_update(csv_filename="futures stocks.csv"):
     initialize_database()
     lot_map = load_lot_sizes()
@@ -245,7 +283,7 @@ def run_market_update(csv_filename="futures stocks.csv"):
         print(f"Warning: Could not process Nifty benchmark data: {e}")
 
     print(f"Fetching market data for {len(symbols)} stocks via yfinance...")
-    data = yf.download(symbols, period="2y", group_by="ticker", progress=False)
+    data, missing = download_with_retry(symbols)
 
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -255,8 +293,8 @@ def run_market_update(csv_filename="futures stocks.csv"):
         clean_symbol = symbol.replace(".NS", "").replace(".BO", "").upper()
         lot_size = lot_map.get(clean_symbol, 1)
         try:
-            hist = data[symbol] if len(symbols) > 1 else data
-            if hist.empty or len(hist) < 200:
+            hist = data.get(symbol)
+            if hist is None or hist.empty or len(hist) < 200:
                 continue
             hist = hist.reset_index()
             hist.columns = [str(c).lower() for c in hist.columns]
@@ -356,6 +394,13 @@ def run_market_update(csv_filename="futures stocks.csv"):
     prune_old_database_records(conn, max_days=400)
     conn.close()
     print(f"Database update complete. Synced {updated_records} records.")
+    # Fail the run (nothing is committed, so the next scheduled backup run tries again) rather
+    # than publish reports and an ATR table missing most stocks, as on 20 Nov 2026.
+    if len(missing) > MAX_MISSING_SHARE * len(symbols):
+        sys.exit(f"Error: Yahoo sent no data for {len(missing)} of {len(symbols)} stocks after "
+                 f"{DOWNLOAD_ATTEMPTS} tries (e.g. {', '.join(missing[:5])}); not saving this run.")
+    if missing:
+        print(f"Warning: no data for {len(missing)} stocks: {', '.join(missing)}")
 
 
 # ==========================================
