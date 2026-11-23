@@ -134581,5 +134581,79 @@
   "gross": -9948.75,
   "charges": 421.17,
   "net": -10369.92
+ },
+ {
+  "id": "1795406139975-4631",
+  "symbol": "INDIGO",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 150,
+  "entry": 5540.7,
+  "exit": 5545.1,
+  "entry_time": 1795406139975,
+  "exit_time": 1795416600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 5438.35,
+  "tp": null,
+  "high": 5560,
+  "low": 5514.1,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 5530.3
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 660.0,
+  "charges": 515.61,
+  "net": 144.39
+ },
+ {
+  "id": "1795158947608-4400",
+  "symbol": "TCS",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 225,
+  "entry": 2409.0,
+  "exit": 2457.15,
+  "entry_time": 1795158947608,
+  "exit_time": 1795416600000,
+  "reason": "TSL after target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 2317.0,
+  "tp": 2481.25,
+  "high": 2501.9,
+  "low": 2375.5,
+  "nifty": 0.79,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795158947608,
+   "price": 2409.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 10833.75,
+  "charges": 358.11,
+  "net": 10475.64
  }
 ]
