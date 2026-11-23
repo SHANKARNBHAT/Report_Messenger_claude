@@ -134655,5 +134655,42 @@
   "gross": 10833.75,
   "charges": 358.11,
   "net": 10475.64
+ },
+ {
+  "id": "1795406139975-4650",
+  "symbol": "VMM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 4850,
+  "entry": 92.35,
+  "exit": 94.85,
+  "entry_time": 1795406139975,
+  "exit_time": 1795417800000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA PURE 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA PURE 4H",
+  "style": "ha_pure",
+  "passed": false,
+  "carried": false,
+  "sl": 90.95,
+  "tp": null,
+  "high": 95.58,
+  "low": 92.35,
+  "nifty": -0.22,
+  "strategies": [
+   "4H HA PURE Bullish"
+  ],
+  "first_seen": {
+   "time": 1795406139975,
+   "price": 92.28
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 12125.0,
+  "charges": 305.77,
+  "net": 11819.23
  }
 ]
