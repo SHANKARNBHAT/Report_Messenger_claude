@@ -25,7 +25,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(HERE, "stock_market_data.db")
 STEPS = os.path.join(HERE, "strike_steps.json")
 
-st.title("📏 F&O stocks: ATR vs strike interval")
+st.title("📏 F&O stocks and indices: ATR vs strike interval")
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
@@ -34,11 +34,51 @@ def load(db_mtime: float, steps_mtime: float) -> tuple[pd.DataFrame, str, str]:
     return strike_steps.fno_atr()
 
 
+# The F&O indices and their option strike interval (Dhan's instrument list, Nov 2026; NSE seldom
+# changes these). The market data pipeline keeps no ATR for them, so it is worked out here.
+# Spot names (NSE) and option strike intervals; the futures symbol links the Chartink chart.
+INDEX_STEPS = {"NIFTY": ("NIFTY 50", 50), "BANKNIFTY": ("NIFTY BANK", 100), "FINNIFTY": ("NIFTY FIN SERVICE", 50)}
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def load_indices() -> tuple[pd.DataFrame, list[str]]:
+    """The F&O indices' latest daily ATR (14), from Yahoo's daily candles worked out as the pipeline
+    does for stocks, with close, lot, strike interval and ATR ÷ interval; and the indices Yahoo failed for."""
+    instruments = {i["symbol"]: i for i in fs.load_instruments() if fs.is_index(i)}
+    rows, failed = [], []
+    for name, (spot, step) in INDEX_STEPS.items():
+        if name not in instruments:
+            continue
+        try:
+            chart = fs.yahoo_chart(instruments[name]["yahoo"], "1d", "3mo")
+            quote_ = chart["indicators"]["quote"][0]
+            bars = pd.DataFrame({"high": quote_["high"], "low": quote_["low"], "close": quote_["close"]},
+                                index=pd.to_datetime(chart["timestamp"], unit="s", utc=True)
+                                .tz_convert("Asia/Kolkata")).dropna()
+            true_range = pd.concat([bars["high"] - bars["low"], (bars["high"] - bars["close"].shift()).abs(),
+                                    (bars["low"] - bars["close"].shift()).abs()], axis=1).max(axis=1)
+            atr = true_range.rolling(14).mean().iloc[-1]
+        except Exception:
+            failed.append(name)
+            continue
+        if pd.isna(atr):
+            failed.append(name)
+            continue
+        rows.append({"symbol": name, "date": bars.index[-1].strftime("%Y-%m-%d"), "close": bars["close"].iloc[-1],
+                     "atr_14": atr, "lot_size": instruments[name]["lot"], "step": step, "ratio": atr / step,
+                     "index": True, "name": spot})
+    return pd.DataFrame(rows), failed
+
+
 try:
     data, atr_date, steps_date = load(os.path.getmtime(DB), os.path.getmtime(STEPS))
 except (OSError, sqlite3.Error, ValueError, KeyError) as e:
     st.error(f"Could not read the ATR data or strike intervals: {e}")
     st.stop()
+indices, failed = load_indices()
+if failed:
+    st.caption(f"No index ATR from Yahoo for {', '.join(failed)} right now.")
+data = pd.concat([data.assign(index=False, name=data["symbol"]), indices], ignore_index=True)
 
 
 def nice(day: str) -> str:
@@ -75,17 +115,20 @@ top[3].caption(f"Saved ratio: **{saved_ratio:g}** (Futures simulator and Auto tr
 # "above", as the simulator and auto trader filter, so this table lists exactly the stocks they trade
 shown = data[data["ratio"] > least]
 if search:
-    shown = shown[shown["symbol"].str.contains(search, regex=False)]
-shown = shown.sort_values("ratio", ascending=False)
+    shown = shown[shown["symbol"].str.contains(search, regex=False)
+                  | shown["name"].str.upper().str.contains(search, regex=False)]
+shown = shown.sort_values("ratio", ascending=False).reset_index(drop=True)
 
 m = st.columns(3)
-m[0].metric("Stocks shown", f"{len(shown)} of {len(data)}")
+m[0].metric("Shown", f"{len(shown)} of {len(data)}", help="F&O stocks and indices (NIFTY, BANKNIFTY, "
+            "NIFTY BANK, NIFTY FIN SERVICE) above the ratio")
 m[1].metric("ATR as of", nice(atr_date))
 m[2].metric("Strike intervals as of", nice(steps_date))
 
 table = pd.DataFrame({
     # Chartink chart; the name after "#" is what the link shows (so M&M reads M&M, not M%26M)
-    "Stock": [f"https://chartink.com/stocks-new?symbol={quote(s, safe='')}#{s}" for s in shown["symbol"]],
+    "Stock": [f"https://chartink.com/stocks-new?symbol={quote(s, safe='')}#{n}{' · index' if i else ''}"
+              for s, n, i in zip(shown["symbol"], shown["name"], shown["index"])],
     "Close": shown["close"].round(2),
     "ATR (14)": shown["atr_14"].round(2),
     "ATR %": (100 * shown["atr_14"] / shown["close"]).round(2),
