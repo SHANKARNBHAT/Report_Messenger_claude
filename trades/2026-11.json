@@ -134877,5 +134877,79 @@
   "gross": 760.0,
   "charges": 354.49,
   "net": 405.51
+ },
+ {
+  "id": "1794887738404-2660",
+  "symbol": "BANKNIFTY",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 61808.55,
+  "exit": 63097.25,
+  "entry_time": 1794887738404,
+  "exit_time": 1795419950000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "HA BRK 4H",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 61338.35,
+  "tp": null,
+  "high": 65182.45,
+  "low": 61716.0,
+  "nifty": 0.12,
+  "strategies": [
+   "4H HA BRK Bullish"
+  ],
+  "first_seen": {
+   "time": 1794887738404,
+   "price": 61817.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 38661.0,
+  "charges": 1111.66,
+  "net": 37549.34
+ },
+ {
+  "id": "1794900043737-3183",
+  "symbol": "WIPRO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 3000,
+  "entry": 191.35,
+  "exit": 187.8,
+  "entry_time": 1794900043737,
+  "exit_time": 1795405500000,
+  "reason": "HA candle trail",
+  "source": "Auto HA BRK Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "HA BRK Daily",
+  "style": "ha_brk",
+  "passed": false,
+  "carried": false,
+  "sl": 195.5,
+  "tp": null,
+  "high": 191.91,
+  "low": 180.25,
+  "nifty": 0.64,
+  "strategies": [
+   "Daily HA BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1794900043737,
+   "price": 191.0
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 10650.0,
+  "charges": 370.06,
+  "net": 10279.94
  }
 ]
