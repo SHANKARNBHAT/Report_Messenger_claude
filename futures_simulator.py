@@ -179,22 +179,80 @@ def load_instruments() -> list[dict]:
     return _load_instruments(FUTURES_CSV.stat().st_mtime)
 
 
-# Only F&O stocks whose daily ATR covers more than this many option strike intervals are traded
-# (here and by the auto trader): see the F&O ATR page. The indices are always kept.
-ATR_STRIKES_ABOVE = 3.0
+# Only F&O stocks whose daily ATR covers more than atr_strikes_above() option strike intervals are
+# traded (here and by the auto trader). The indices are always kept. The ratio is set and saved
+# on the F&O ATR page, in SETTINGS on the Auto trader's branch; ATR_STRIKES_DEFAULT until then.
+ATR_STRIKES_DEFAULT = 3.5
+SETTINGS = "settings.json"
+# The auto trader's GitHub job checks the Auto trader's branch out here; the app reads it through the API.
+LOCAL_SETTINGS = Path(__file__).resolve().parent / "data" / SETTINGS
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def atr_strikes_above() -> float:
+    """The saved ATR ÷ strike interval ratio stocks must be above to be traded."""
+    try:
+        if LOCAL_SETTINGS.exists():
+            saved = json.loads(LOCAL_SETTINGS.read_text(encoding="utf-8"))
+        else:
+            response = data_file(SETTINGS)
+            if not response.ok:  # 404: never saved
+                return ATR_STRIKES_DEFAULT
+            saved = response.json()
+        return float(saved["atr_strikes_above"])
+    except (OSError, ValueError, KeyError, TypeError, requests.RequestException):
+        return ATR_STRIKES_DEFAULT
+
+
+def save_atr_strikes_above(ratio: float) -> str | None:
+    """Save the ratio to SETTINGS on the Auto trader's branch (keeping its other settings).
+    Returns an error message, or None when saved."""
+    url = DATA_URL.format(SETTINGS).split("?")[0]
+    for _ in range(3):  # the file can change between reading and writing it
+        try:
+            found = requests.get(url, params={"ref": "auto-trader-data"}, headers=github_headers(raw=False),
+                                 timeout=15)
+            sha, saved = None, {}
+            if found.ok:
+                sha = found.json()["sha"]
+                saved = data_file(SETTINGS).json()
+            elif found.status_code != 404:
+                return f"GitHub answered {found.status_code}: {found.json().get('message', found.text)}"
+            saved["atr_strikes_above"] = float(ratio)
+            body = {"message": f"F&O ATR: trade stocks with ATR above {ratio:g} strikes",
+                    "branch": "auto-trader-data",
+                    "content": base64.b64encode(json.dumps(saved, indent=1).encode()).decode()}
+            if sha:
+                body["sha"] = sha
+            put = requests.put(url, json=body, headers=github_headers(raw=False), timeout=15)
+        except (requests.RequestException, ValueError, KeyError) as exc:
+            return f"Could not reach GitHub: {exc}"
+        if put.ok:
+            atr_strikes_above.clear()
+            return None
+        if put.status_code not in (409, 422):  # 409/422: changed meanwhile, try again
+            message = put.json().get("message", put.text) if put.text else put.reason
+            if put.status_code in (401, 403, 404):
+                message += " The GITHUB_TOKEN secret needs Contents: Read and write on the repository."
+            return f"GitHub answered {put.status_code}: {message}"
+    return "GitHub kept reporting a conflict; try again."
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
-def high_atr_symbols() -> frozenset[str] | None:
-    """The stocks allowed by ATR_STRIKES_ABOVE, or None (no filter) if the ATR data or the strike
-    intervals can't be read, so a missing file never stops all trading quietly."""
+def _high_atr_symbols(ratio: float) -> frozenset[str] | None:
     try:
         import strike_steps
 
-        found = strike_steps.symbols_above(ATR_STRIKES_ABOVE)
+        found = strike_steps.symbols_above(ratio)
     except Exception:
         return None
     return frozenset(found) or None
+
+
+def high_atr_symbols() -> frozenset[str] | None:
+    """The stocks allowed by atr_strikes_above(), or None (no filter) if the ATR data or the strike
+    intervals can't be read, so a missing file never stops all trading quietly."""
+    return _high_atr_symbols(atr_strikes_above())
 
 
 def is_index(instrument: dict) -> bool:
@@ -669,7 +727,7 @@ _SIMULATOR = st.components.v2.component(
 def main() -> None:
     st.set_page_config(page_title="Futures Simulator", page_icon="🧪", layout="wide",
                        initial_sidebar_state="collapsed")
-    # Only the indices and the high-ATR stocks (ATR_STRIKES_ABOVE) can be traded, plus any stock
+    # Only the indices and the high-ATR stocks (atr_strikes_above) can be traded, plus any stock
     # the simulator still holds, so an open position can always be closed.
     instruments = entry_instruments(set(component_value("symbols") or []))
     by_symbol = {i["symbol"]: i for i in instruments}
@@ -680,7 +738,7 @@ def main() -> None:
         signals = [s for s in signals if s["timeframe"] in SIM_TIMEFRAMES
                    and (allowed is None or s["symbol"] in allowed)]
         if allowed is not None:
-            signals_note += f" · only stocks with ATR above {ATR_STRIKES_ABOVE:g} strikes ({len(allowed)})"
+            signals_note += f" · only stocks with ATR above {atr_strikes_above():g} strikes ({len(allowed)})"
         # Agrees: the stock is on "Common between Chartink and Fundamentals" (chartink_dashboard.fundamentals_matches),
         # that is on a list of the Fundamentals dashboard. (signal_rows' Market reports check stays for the Auto trader.)
         try:

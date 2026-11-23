@@ -107,7 +107,7 @@ def build() -> dict:
 
 def symbols_above(ratio: float) -> set[str]:
     """The F&O stocks whose latest daily ATR (14) is more than `ratio` strike intervals: the
-    futures simulator and auto trader trade only these (futures_simulator.ATR_STRIKES_ABOVE).
+    futures simulator and auto trader trade only these (futures_simulator.atr_strikes_above).
     Plain sqlite and json, so it runs in the auto trader's GitHub job as is."""
     with open(OUT, encoding="utf-8") as f:
         steps = json.load(f)["steps"]

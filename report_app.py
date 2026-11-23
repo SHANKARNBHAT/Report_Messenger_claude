@@ -15,7 +15,7 @@ import streamlit as st
 from page_settings import restore
 
 # Choices made on one page, kept while another page is open (see page_settings.py).
-restore(["segment", "refresh", "charts", "snapshot"])
+restore(["segment", "refresh", "charts", "snapshot", "atr-min-ratio", "atr-search"])
 
 # A second sideways scrollbar above every table, moving with the table's own at the bottom:
 # Streamlit's tables only have the bottom one. Checked every second, as tables come and go.

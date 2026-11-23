@@ -17,7 +17,9 @@ from urllib.parse import quote
 import pandas as pd
 import streamlit as st
 
+import futures_simulator as fs
 import strike_steps
+from page_settings import remember
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(HERE, "stock_market_data.db")
@@ -46,13 +48,32 @@ def nice(day: str) -> str:
         return day
 
 
-top = st.columns([2, 2, 3])
-least = top[0].number_input("ATR at least × strike interval", min_value=0.5, max_value=10.0, value=1.0,
-                            step=0.5, key="atr-min-ratio",
-                            help="1 = ATR greater than one strike interval; 3 = ATR covers three strikes.")
-search = top[1].text_input("Find a stock", key="atr-search", placeholder="e.g. RELIANCE").strip().upper()
+saved_ratio = fs.atr_strikes_above()
+# Starts at the saved ratio; kept while another page is open (report_app.py restores both keys).
+st.session_state.setdefault("atr-min-ratio", saved_ratio)
 
-shown = data[data["ratio"] > least] if least == 1.0 else data[data["ratio"] >= least]
+top = st.columns([2, 2, 1.2, 1.8], vertical_alignment="bottom")
+least = top[0].number_input("ATR above × strike interval", min_value=0.5, max_value=10.0,
+                            step=0.5, key="atr-min-ratio", on_change=remember, args=("atr-min-ratio",),
+                            help="1 = ATR greater than one strike interval; 3.5 = ATR covers more than "
+                                 "three and a half strikes.")
+search = top[1].text_input("Find a stock", key="atr-search", placeholder="e.g. RELIANCE",
+                           on_change=remember, args=("atr-search",)).strip().upper()
+if top[2].button("💾 Save ratio", disabled=least == saved_ratio, width="stretch",
+                 help="Use this ratio in the Futures simulator and Auto trader too: they only trade "
+                      "stocks whose ATR is above it."):
+    with st.spinner("Saving..."):
+        error = fs.save_atr_strikes_above(least)
+    if error:
+        st.error(f"Could not save the ratio: {error}")
+    else:
+        st.toast(f"Saved: stocks with ATR above {least:g} strikes are traded")
+        st.rerun()
+top[3].caption(f"Saved ratio: **{saved_ratio:g}** (Futures simulator and Auto trader)"
+               + ("" if least == saved_ratio else " · not saved yet"))
+
+# "above", as the simulator and auto trader filter, so this table lists exactly the stocks they trade
+shown = data[data["ratio"] > least]
 if search:
     shown = shown[shown["symbol"].str.contains(search, regex=False)]
 shown = shown.sort_values("ratio", ascending=False)
