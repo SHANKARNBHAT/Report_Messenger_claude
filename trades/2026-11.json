@@ -134951,5 +134951,43 @@
   "gross": 10650.0,
   "charges": 370.06,
   "net": 10279.94
+ },
+ {
+  "id": "1795158000000-4375",
+  "symbol": "APLAPOLLO",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2095.8,
+  "exit": 1727.7,
+  "entry_time": 1795158000000,
+  "exit_time": 1795419600000,
+  "reason": "30m trailing SL",
+  "source": "Auto HA WK BRK",
+  "timeframes": [
+   "WEEKLY",
+   "4 HOUR"
+  ],
+  "system": "HA WK BRK",
+  "style": "ha_wk",
+  "passed": false,
+  "carried": false,
+  "sl": 2116.75,
+  "tp": null,
+  "high": 2105,
+  "low": 1697.3,
+  "nifty": 0.68,
+  "strategies": [
+   "4H HA WK BRK Bearish"
+  ],
+  "first_seen": {
+   "time": 1795146941328,
+   "price": 2086.5
+  },
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 128835.0,
+  "charges": 454.96,
+  "net": 128380.04
  }
 ]
