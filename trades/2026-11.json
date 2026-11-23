@@ -133248,5 +133248,42 @@
   "gross": 25217.5,
   "charges": 399.87,
   "net": 24817.63
+ },
+ {
+  "id": "1794818437594-2293",
+  "symbol": "APOLLOHOSP",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 125,
+  "entry": 8734.0,
+  "exit": 9257.85,
+  "entry_time": 1794818437594,
+  "exit_time": 1795410300000,
+  "reason": "TSL after target",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": true,
+  "carried": true,
+  "sl": 8603.0,
+  "tp": 8996.0,
+  "high": 9410.0,
+  "low": 8675.0,
+  "nifty": 0.17,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1794818437594,
+   "price": 8734.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": 65481.25,
+  "charges": 696.22,
+  "net": 64785.03
  }
 ]
