@@ -124,16 +124,17 @@ BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/r
 # (ha_vp.py). HA and HA MTF take no new trades: kept so their trades still show and their
 # open positions still close.
 # RSI 4H, RSI Daily and RSI Weekly: entered on the RSI signals of those timeframes, then traded as RSI (2H SL and exits).
-SYSTEMS = {"RSI": ("trail", "sma8", "sma20"), "RSI 4H": ("trail", "sma8", "sma20"),
-           "RSI Daily": ("trail", "sma8", "sma20"), "RSI Weekly": ("trail", "sma8", "sma20"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",), "HA IDX PURE": ("atr",),
+SYSTEMS = {"RSI": ("trail",), "RSI 4H": ("trail",),
+           "RSI Daily": ("trail",), "RSI Weekly": ("trail", "sma8", "sma20"), "HA": ("eod", "trail", "ha"), "HA MTF": ("ha",), "HA IDX": ("atr",), "HA IDX PURE": ("atr",),
            "HA PURE 2H": ("ha_pure",), "HA PURE 4H": ("ha_pure",), "HA PURE Daily": ("ha_pure",),
            "HA BRK 2H": ("ha_brk",), "HA BRK 4H": ("ha_brk",), "HA BRK Daily": ("ha_brk",), "HA IDX BRK": ("ha_brk_idx",),
            "HA WK BRK": ("ha_wk",),
            "HA VP": ("vp",), "HA VP TRAIL": ("vp_trail",)}
 HA_EXITS = ("ha", "ha_green")
 # Styles a strategy no longer trades: their open positions still close by their rules and
-# their past trades still show. RSI's EOD and RSI exit gave way to the SMA exits.
-RETIRED_STYLES = {"RSI": ("eod", "rsi")}
+# their past trades still show. RSI's EOD and RSI exit gave way to the SMA exits; on 24 Nov 2026
+# RSI 2H, 4H and Daily kept only Hold · trail (the SMA 8 / 20 exits lost money).
+RETIRED_STYLES = {"RSI": ("eod", "rsi", "sma8", "sma20"), "RSI 4H": ("sma8", "sma20"), "RSI Daily": ("sma8", "sma20")}
 # The "RSI crossed" widgets list a stock when its RSI on any timeframe crossed the level;
 # their column of each timeframe's RSI tells if the trade's own one is past it.
 RSI_EXITS = {"BUY": (r"rsi crossed below", 60), "SELL": (r"rsi crossed above", 40)}

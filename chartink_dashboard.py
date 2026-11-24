@@ -215,6 +215,8 @@ def timeframe_of(name: str, query: str) -> str | None:
 
 def widget_table(query: str, payload: dict) -> tuple[pd.DataFrame, datetime | None]:
     """One row per stock with the latest value of each widget column, and the data time."""
+    if not isinstance(payload, dict):  # Chartink at times answers a bare (empty) list
+        raise ChartinkError(f"Chartink answered {type(payload).__name__} {str(payload)[:40]}, not a table")
     if payload.get("error"):
         raise ChartinkError(str(payload["error"]))
     meta = (payload.get("metaData") or [{}])[0]
