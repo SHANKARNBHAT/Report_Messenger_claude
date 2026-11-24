@@ -695,6 +695,36 @@ def signal_rows(dashboard: dict, instruments: dict[str, dict]) -> tuple[list[dic
     return rows, f"Updated {dashboard['fetched_at']:%d %b, %H:%M} IST"
 
 
+# The volume condition of the 2H RSI scans: Chartink has no volume for NIFTY and BANKNIFTY, so
+# index_signals runs the scans without it.
+SCAN_VOLUME = re.compile(r"\[0\] 2 hour volume >\s+\[0\] 2 hour sma\(\s+\[0\] 2 hour volume , 5 \) and\s+", re.IGNORECASE)
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def index_signals(scans: tuple[tuple[str, str, bool, str], ...], index_symbols: tuple[str, ...]) -> list[dict]:
+    """The indices (NIFTY, BANKNIFTY: those on Chartink) that meet the signal scans (name, timeframe,
+    bearish, query) with the volume condition left out, as signal_rows' rows."""
+    rows = []
+    if not scans:
+        return rows
+    try:
+        with requests.Session() as session:
+            session.headers.update(CHARTINK_HEADERS)
+            url, token, _, raw = chartink_dashboard.open_dashboard(session, DEFAULT_DASHBOARD)
+            for name, timeframe, bearish, query in scans:
+                query = SCAN_VOLUME.sub("", query)
+                payload = chartink_dashboard.widget_payload(session, url, token, {"query": query, "id": raw[0].get("id")},
+                                                            chartink_dashboard.PRICE_WIDGET_ROWS, 1)
+                table, _ = chartink_dashboard.widget_table(query, payload)
+                bias = "Bearish" if bearish else "Bullish"
+                rows += [{"symbol": symbol, "timeframe": timeframe, "strategy": name, "bias": bias,
+                          "agrees": "Not on watchlist", "fno": True}
+                         for symbol in table["Symbol"] if symbol in index_symbols]
+    except (requests.RequestException, ValueError, ChartinkError):
+        return []
+    return rows
+
+
 # ---------------------------------------------------------------------------
 # Page
 # ---------------------------------------------------------------------------
@@ -735,8 +765,14 @@ def main() -> None:
     with st.spinner("Loading signals from Chartink..."):
         dashboard, error = load_dashboard()
         signals, signals_note = signal_rows(dashboard, by_symbol) if dashboard else ([], error)
+        indices = tuple(sorted(s for s, i in by_symbol.items() if is_index(i)))
+        if dashboard:
+            scans = tuple((w["name"], w["timeframe"], w["bearish"], w["query"]) for w in dashboard["widgets"]
+                          if w["timeframe"] in SIM_TIMEFRAMES and w.get("query"))
+            signals += index_signals(scans, indices)
+        # The indices always trade, whatever their ATR.
         signals = [s for s in signals if s["timeframe"] in SIM_TIMEFRAMES
-                   and (allowed is None or s["symbol"] in allowed)]
+                   and (allowed is None or s["symbol"] in allowed or s["symbol"] in indices)]
         if allowed is not None:
             signals_note += f" · only stocks with ATR above {atr_strikes_above():g} strikes ({len(allowed)})"
         # Agrees: the stock is on "Common between Chartink and Fundamentals" (chartink_dashboard.fundamentals_matches),
