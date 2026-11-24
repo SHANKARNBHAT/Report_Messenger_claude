@@ -89,6 +89,15 @@ CANDLE_MINUTES = {"2 HOUR": 120, "4 HOUR": 240}
 # Held positions close at 3:15 PM on the futures expiry day.
 STYLES = {"eod": "EOD 3:15 PM", "trail": "Hold · trail", "rsi": "Hold · RSI exit"}
 HELD = ("trail", "rsi", "ha", "ha_green", "sma8", "sma20")
+# Profit lock (a position's "protect": {"atr", "cost", "since"}; the Auto trader's RSI positions, see replay):
+# once the price has moved in favour by PROTECT_TRIGGER_R x the first risk (entry to SL), or by
+# PROTECT_TRIGGER_ATR x the daily ATR if that is less, the SL goes to the entry plus the charges ("cost",
+# per unit), then trails PROTECT_TRAIL_ATR x the daily ATR behind the best price since; never back.
+# Tried on the RSI trades of Oct-Nov 2026 (24 Nov): at 1R, 104 losers saved but Rs 2L of winners cut
+# short; at 1.5R, 38 saved and the total up Rs 0.7L; at 2R, 16 saved, up Rs 0.9L.
+PROTECT_TRIGGER_R = 1.5
+PROTECT_TRIGGER_ATR = math.inf  # no ATR trigger
+PROTECT_TRAIL_ATR = 2.5
 # The Auto trader's SMA exits: held until a finished 2H candle closes past the SMA of this many
 # 2H closes (below for a long, above for a short), at that close (auto_trader.sma_exit), for RSI 4H,
 # RSI Daily and RSI Weekly too.
@@ -494,6 +503,8 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
     futures expiry day instead.
     A position with `run` is not closed at its target: from there its stop trails the
     price by run["trail"] in jumps of run["step"], and "passed" is set.
+    A position with `protect` locks its profit (PROTECT_TRIGGER_ATR, PROTECT_TRAIL_ATR) on the
+    bars from protect["since"] (ms) on.
     With `settle`, a position whose session is not over closes at the latest price
     (not a held one).
     Also the highest and lowest price since the entry ("high", "low"; up to the exit).
@@ -508,6 +519,13 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
     run_trail, run_step = float(run.get("trail") or 0), float(run.get("step") or 0)
     entered = datetime.fromtimestamp(position["time"] / 1000, IST)
     high = low = entry
+    protect = position.get("protect") or {}
+    lock_atr, lock_cost = float(protect.get("atr") or 0), float(protect.get("cost") or 0)
+    lock_since = (protect.get("since") or 0) / 1000
+    risk = abs(entry - float(position["sl"])) if position.get("sl") is not None else 0.0
+    lock_trigger = (min(PROTECT_TRIGGER_R * risk, PROTECT_TRIGGER_ATR * lock_atr) if risk > 0
+                    else PROTECT_TRIGGER_ATR * lock_atr)
+    best, locked = None, False
 
     def closed(price, when, reason):
         return {"id": position["id"], "status": "closed", "exit": round(float(price), 2),
@@ -541,7 +559,8 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
         if stop is not None:
             gap = open_ <= stop if long else open_ >= stop
             if gap or (bar_low <= stop if long else bar_high >= stop):
-                reason = "TSL after target" if passed else "Trailing SL" if trailed else "Stop loss"
+                reason = ("TSL after target" if passed else "Profit lock SL" if locked
+                          else "Trailing SL" if trailed else "Stop loss")
                 return closed(open_ if gap else stop, start, reason)
         if target is not None:
             gap = open_ >= target if long else open_ <= target
@@ -564,6 +583,15 @@ def replay(position: dict, bars: list, now: datetime, latest: float | None, sett
                 level = round(anchor - trail if long else anchor + trail, 2)
                 if stop is None or (level > stop if long else level < stop):
                     stop, trailed = level, True
+        if lock_atr > 0 and start >= lock_since:
+            best = (max(best, bar_high) if long else min(best, bar_low)) if best is not None else (
+                bar_high if long else bar_low)
+            if (best - entry if long else entry - best) >= lock_trigger:
+                floor = entry + lock_cost if long else entry - lock_cost
+                behind = best - PROTECT_TRAIL_ATR * lock_atr if long else best + PROTECT_TRAIL_ATR * lock_atr
+                level = round(max(floor, behind) if long else min(floor, behind), 2)
+                if stop is None or (level > stop if long else level < stop):
+                    stop, locked = level, True
 
     if now.timestamp() >= cutoff:
         session = [bar for bar in bars if bar[0] < cutoff and day_of(bar) == day]
@@ -588,6 +616,35 @@ def run_check() -> None:
         fetch_price_bars.clear()
     results = check_positions(request.get("positions") or [], datetime.now(IST), request.get("mode") == "eod")
     st.session_state[RESULT] = {"id": request.get("id"), "mode": request.get("mode"), "results": results}
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def daily_atrs(indices: tuple[tuple[str, str], ...] = ()) -> dict[str, float]:
+    """symbol -> its latest daily ATR (14): the stocks' from the market data pipeline's database
+    (as the F&O ATR page), the indices' (symbol, Yahoo symbol) worked out from Yahoo's daily candles."""
+    import sqlite3
+
+    found = {}
+    try:
+        with sqlite3.connect(f"file:{Path(__file__).with_name('stock_market_data.db')}?mode=ro", uri=True) as db:
+            rows = db.execute("SELECT symbol, atr_14 FROM stock_ohlc_indicators WHERE date = (SELECT MAX(date) "
+                              "FROM stock_ohlc_indicators WHERE atr_14 IS NOT NULL) AND atr_14 IS NOT NULL").fetchall()
+        found = {symbol.removesuffix(".NS"): float(atr) for symbol, atr in rows}
+    except sqlite3.Error:
+        pass
+    for symbol, yahoo in indices:
+        try:
+            chart = yahoo_chart(yahoo, "1d", "3mo")
+            q = chart["indicators"]["quote"][0]
+            bars = pd.DataFrame({"high": q["high"], "low": q["low"], "close": q["close"]}).dropna()
+            true_range = pd.concat([bars["high"] - bars["low"], (bars["high"] - bars["close"].shift()).abs(),
+                                    (bars["low"] - bars["close"].shift()).abs()], axis=1).max(axis=1)
+            atr = true_range.rolling(14).mean().iloc[-1]
+            if pd.notna(atr):
+                found[symbol] = float(atr)
+        except (requests.RequestException, ValueError, KeyError, IndexError):
+            continue
+    return found
 
 
 def check_positions(positions: list[dict], now: datetime, settle: bool) -> list[dict]:

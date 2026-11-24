@@ -95,6 +95,24 @@ def tick(price: float) -> float:
     return round(round(price * 20) / 20, 2)  # NSE futures tick size ₹0.05
 
 
+def protection(position: dict, atrs: dict[str, float], since_ms: int) -> dict | None:
+    """The profit lock of an RSI position (futures_simulator.replay, PROTECT_*): its daily ATR, the
+    round-trip charges per unit plus a tick, and from when; None without an ATR."""
+    atr = atrs.get(position["symbol"])
+    if not atr:
+        return None
+    value = position["entry"] * position["qty"]
+    cost = charges(value, value) / position["qty"] + 0.05
+    return {"atr": round(atr, 2), "cost": round(cost, 2), "since": since_ms}
+
+
+def index_pairs(symbols: set[str]) -> tuple[tuple[str, str], ...]:
+    """(symbol, Yahoo symbol) of the indices among `symbols`, for fs.daily_atrs."""
+    instruments = {i["symbol"]: i for i in fs.load_instruments()}
+    return tuple(sorted((s, instruments[s]["yahoo"]) for s in symbols
+                        if s in instruments and fs.is_index(instruments[s])))
+
+
 def charges(buy_value: float, sell_value: float) -> float:
     """Brokerage and taxes of a round trip (as charges() in futures_simulator.js)."""
     rates = fs.CHARGES
@@ -408,6 +426,14 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
     settle_vp(files, account, now, note)
     for module in (*HELD_MODULES, ha_weekly):
         settle_pure(files, account, now, note, module)
+    # RSI positions from before the profit lock get it now, counting from this run on.
+    bare = [p for p in account["positions"] if p.get("system", "RSI").startswith("RSI") and not p.get("protect")]
+    if bare:
+        atrs = fs.daily_atrs(index_pairs({p["symbol"] for p in bare}))
+        for position in bare:
+            found = protection(position, atrs, int(now.timestamp() * 1000))
+            if found:
+                position["protect"] = found
     for result in fs.check_positions([p for p in account["positions"]
                                       if p.get("system") not in (*INDEX_SYSTEMS, *ha_vp.SYSTEMS, *ha_pure.SYSTEMS, *ha_break.SYSTEMS,
                                                                  *ha_weekly.SYSTEMS)], now, settle=False):
@@ -1060,6 +1086,10 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
                 "strategies": sorted({s["strategy"] for s in found}), "agrees": found[0]["agrees"], "sma_rsi": sma_rsi,
                 "first_seen": first and {"time": first["time"], "price": first["price"]},
             })
+            if system.startswith("RSI"):
+                lock = protection(account["positions"][-1], fs.daily_atrs(index_pairs({symbol})), int(now.timestamp() * 1000))
+                if lock:
+                    account["positions"][-1]["protect"] = lock
         mark(seen, found, "Traded")
         exits = f"; exit on {SHORT[exit_tf]}" if exit_tf else ""
         note(f"{symbol}: {system} {side} {qty} at {entry}, SL {sl} ({', '.join(timeframes)}{exits}; {', '.join(styles)})")

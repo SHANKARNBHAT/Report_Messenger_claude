@@ -224,35 +224,6 @@ SYMBOL_LINK = st.column_config.LinkColumn("Symbol", display_text=r"symbol=(?:NSE
                                           help="Opens the chart")
 
 
-@st.cache_data(ttl=3600, show_spinner=False)
-def daily_atrs(indices: tuple[tuple[str, str], ...]) -> dict[str, float]:
-    """symbol -> its latest daily ATR (14): the stocks' from the market data pipeline's database
-    (as the F&O ATR page), the indices' (symbol, Yahoo symbol) worked out from Yahoo's daily candles."""
-    import sqlite3
-
-    found = {}
-    try:
-        with sqlite3.connect(f"file:{Path(__file__).with_name('stock_market_data.db')}?mode=ro", uri=True) as db:
-            rows = db.execute("SELECT symbol, atr_14 FROM stock_ohlc_indicators WHERE date = (SELECT MAX(date) "
-                              "FROM stock_ohlc_indicators WHERE atr_14 IS NOT NULL) AND atr_14 IS NOT NULL").fetchall()
-        found = {symbol.removesuffix(".NS"): float(atr) for symbol, atr in rows}
-    except sqlite3.Error:
-        pass
-    for symbol, yahoo in indices:
-        try:
-            chart = fs.yahoo_chart(yahoo, "1d", "3mo")
-            q = chart["indicators"]["quote"][0]
-            bars = pd.DataFrame({"high": q["high"], "low": q["low"], "close": q["close"]}).dropna()
-            true_range = pd.concat([bars["high"] - bars["low"], (bars["high"] - bars["close"].shift()).abs(),
-                                    (bars["low"] - bars["close"].shift()).abs()], axis=1).max(axis=1)
-            atr = true_range.rolling(14).mean().iloc[-1]
-            if pd.notna(atr):
-                found[symbol] = float(atr)
-        except (requests.RequestException, ValueError, KeyError, IndexError):
-            continue
-    return found
-
-
 def when(ms) -> str:
     return datetime.fromtimestamp(ms / 1000, fs.IST).strftime("%d %b %H:%M") if ms else "—"
 
@@ -1156,7 +1127,7 @@ def main() -> None:
             Entered=[when(p["time"]) for p in positions])
         table.insert(table.columns.get_loc("Entered"), "Unrealized ₹", [unrealized(p) for p in positions])
         instruments = {i["symbol"]: i for i in fs.load_instruments()}
-        atrs = daily_atrs(tuple(sorted({(p["symbol"], instruments[p["symbol"]]["yahoo"]) for p in positions
+        atrs = fs.daily_atrs(tuple(sorted({(p["symbol"], instruments[p["symbol"]]["yahoo"]) for p in positions
                                         if p["symbol"] in instruments and fs.is_index(instruments[p["symbol"]])})))
         table.insert(table.columns.get_loc("SL / TSL"), "ATR (D)", [atrs.get(p["symbol"]) for p in positions])
         picked = st.dataframe(
