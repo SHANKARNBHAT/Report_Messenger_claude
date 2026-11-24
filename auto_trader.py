@@ -619,9 +619,9 @@ def settle_options(files: Files, account: dict, now: datetime, note) -> None:
 
 
 def enter_option_signals(files: Files, account: dict, now: datetime, trading: bool, note) -> None:
-    """OPT ATM HA (opt_atm.py): buy the nearest expiry's ATM CE or PE of NIFTY and BANKNIFTY at the minute
-    since the last run when its running 15-minute HA candle was solid green and it closed above the
-    previous candle's high; one position at a time in each leg, one entry per leg and candle."""
+    """OPT ATM HA (opt_atm.py): buy the nearest expiry's ATM CE or PE of NIFTY and BANKNIFTY at the close
+    of a 15-minute HA candle, completed since the last run, that was solid green right after a red one
+    (the Option chain page's star); one position at a time in each leg, one entry per leg and candle."""
     checked = account.setdefault("opt_checked", {})
     until = int(now.timestamp())
     if not trading or now.time() >= opt_atm.LAST_ENTRY or opt_atm.SYSTEM in RETIRED:
@@ -673,8 +673,8 @@ def enter_option_signals(files: Files, account: dict, now: datetime, trading: bo
             }
             account["positions"].append(position)
             when_entered = datetime.fromtimestamp(found["time"], fs.IST).strftime("%H:%M")
-            note(f"{symbol}: {opt_atm.SYSTEM} BUY {qty} at {entry} ({when_entered}, above the previous candle's "
-                 f"high {tick(found['trigger'])}), SL {sl}")
+            note(f"{symbol}: {opt_atm.SYSTEM} BUY {qty} at {entry} ({when_entered}, solid green HA after red), "
+                 f"SL {sl}")
             settle_option(files, account, position, bars, now, note)  # it may have hit its SL since
 
 

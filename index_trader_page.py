@@ -48,10 +48,10 @@ def main() -> None:
         st.info(error)
         return
 
-    st.caption(f"**{opt_atm.NAME}** (NIFTY and BANKNIFTY, nearest expiry, 1 lot): buys the ATM CE or PE when its "
-               "running 15-minute Heikin Ashi candle is solid green (no lower wick) and the option closes a minute "
-               "above the previous candle's high. SL at the previous candle's low, moved up to each completed "
-               "candle's low; squared off at 3:15 PM. Prices: Dhan's 1-minute bars, LTP as of the last run.")
+    st.caption(f"**{opt_atm.NAME}** (NIFTY and BANKNIFTY, nearest expiry, 1 lot): buys the ATM CE or PE at the close "
+               "of the Option chain page's star: a 15-minute Heikin Ashi candle that completes solid green (no "
+               "lower wick) right after a red one. SL at the previous HA candle's low, moved up to each completed "
+               "HA candle's low; squared off at 3:15 PM. Prices: Dhan's 1-minute bars, LTP as of the last run.")
     history = atp.load_trades("trades")
     trades = history[history["System"] == opt_atm.SYSTEM]
     positions = [p for p in account["positions"] if p.get("system") == opt_atm.SYSTEM]
