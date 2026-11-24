@@ -830,11 +830,11 @@ def stop_path(trade: dict, rows: list[list], atrs: list, until: float, ha: list 
 
 
 def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
-    """The 15-minute Heikin Ashi candles of NIFTY and BANKNIFTY (ha_index, from Yahoo's 5-minute bars),
+    """The 15-minute Heikin Ashi (or normal) candles of NIFTY and BANKNIFTY (ha_index, from Yahoo's 5-minute bars),
     with the index trades of the day and their SL."""
-    st.markdown("**15-minute Heikin Ashi chart**")
+    st.markdown("**15-minute chart**")
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
-    left, right = st.columns([1, 1])
+    left, middle, right = st.columns([1, 1, 1])
     symbol = left.segmented_control("Index", list(ha_index.SYMBOLS), default=ha_index.SYMBOLS[1],
                                     key="index-chart-symbol") or ha_index.SYMBOLS[1]
     request = (instruments[symbol]["yahoo"], INDEX_CHART_RANGE)
@@ -846,6 +846,9 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
     ha, atrs = ha_index.heikin_ashi(rows), ha_index.atr(rows)
     days = sorted({datetime.fromtimestamp(r[0], fs.IST).date() for r in rows}, reverse=True)
     day = right.selectbox("Day", days, format_func=lambda d: f"{d:%a %d %b %Y}", key="index-chart-day")
+    style = middle.segmented_control("Candles", ["Heikin Ashi", "Normal"], default="Heikin Ashi",
+                                     key="index-chart-candles") or "Heikin Ashi"
+    drawn = ha if style == "Heikin Ashi" else [r[1:5] for r in rows]
     shown = [i for i, r in enumerate(rows) if datetime.fromtimestamp(r[0], fs.IST).date() == day]
     if not shown:
         st.caption("No candles that day.")
@@ -856,8 +859,8 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
 
     times = [at(rows[i][0]) for i in shown]
     figure = go.Figure(go.Candlestick(
-        x=times, open=[ha[i][0] for i in shown], high=[ha[i][1] for i in shown], low=[ha[i][2] for i in shown],
-        close=[ha[i][3] for i in shown], name="HA candle",
+        x=times, open=[drawn[i][0] for i in shown], high=[drawn[i][1] for i in shown], low=[drawn[i][2] for i in shown],
+        close=[drawn[i][3] for i in shown], name="HA candle" if drawn is ha else "Candle",
         increasing=dict(line=dict(color=CANDLE_UP, width=1), fillcolor=CANDLE_UP),
         decreasing=dict(line=dict(color=CANDLE_DOWN, width=1), fillcolor=CANDLE_DOWN)))
 
@@ -894,7 +897,7 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
                          yaxis=dict(tickformat=",.0f", gridcolor="rgba(128,128,128,0.15)"),
                          xaxis=dict(tickformat="%H:%M", gridcolor="rgba(128,128,128,0.10)"))
     st.plotly_chart(figure, width="stretch", key="index-chart")
-    st.caption(f"{symbol} spot, 15-minute Heikin Ashi candles from Yahoo's 5-minute bars, with the index trades "
+    st.caption(f"{symbol} spot, 15-minute {'Heikin Ashi' if drawn is ha else 'normal'} candles from Yahoo's 5-minute bars, with the index trades "
                "of the day. Dotted line: each trade's stop.")
 
 

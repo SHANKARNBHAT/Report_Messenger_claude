@@ -142,24 +142,25 @@ def is_entry(ha: list[dict], k: int) -> bool:
     return k > 0 and ha[k]["solid"] and not ha[k - 1]["green"]
 
 
-def ha_chart(ha: list[dict], key: str) -> None:
-    """A small 15-minute HA candle chart of the last CHART_DAYS trading days, the column's width,
-    with an amber star under each entry candle. Times are categories, so nights leave no gap."""
+def ha_chart(ha: list[dict], key: str, normal: list[dict] | None = None) -> None:
+    """A small 15-minute candle chart (HA, or the `normal` candles) of the last CHART_DAYS trading days,
+    the column's width, with an amber star under each HA entry candle. Times are categories, so nights leave no gap."""
+    shown = normal or ha
     days = sorted({datetime.fromtimestamp(c["start"], dd.IST).date() for c in ha})[-CHART_DAYS:]
     keep = [k for k, c in enumerate(ha) if datetime.fromtimestamp(c["start"], dd.IST).date() in days]
     if not keep:
         return
     label = [datetime.fromtimestamp(ha[k]["start"], dd.IST).strftime("%d %b %H:%M") for k in keep]
     figure = go.Figure(go.Candlestick(
-        x=label, open=[ha[k]["open"] for k in keep], high=[ha[k]["high"] for k in keep],
-        low=[ha[k]["low"] for k in keep], close=[ha[k]["close"] for k in keep], name="HA",
+        x=label, open=[shown[k]["open"] for k in keep], high=[shown[k]["high"] for k in keep],
+        low=[shown[k]["low"] for k in keep], close=[shown[k]["close"] for k in keep], name="Normal" if normal else "HA",
         increasing=dict(line=dict(color=CANDLE_UP, width=1), fillcolor=CANDLE_UP),
         decreasing=dict(line=dict(color=CANDLE_DOWN, width=1), fillcolor=CANDLE_DOWN)))
     entries = [n for n, k in enumerate(keep) if is_entry(ha, k)]
     if entries:
-        gap = 0.04 * (max(ha[k]["high"] for k in keep) - min(ha[k]["low"] for k in keep))
+        gap = 0.04 * (max(shown[k]["high"] for k in keep) - min(shown[k]["low"] for k in keep))
         figure.add_trace(go.Scatter(
-            x=[label[n] for n in entries], y=[ha[keep[n]]["low"] - gap for n in entries], mode="markers",
+            x=[label[n] for n in entries], y=[shown[keep[n]]["low"] - gap for n in entries], mode="markers",
             name="Entry", marker=dict(symbol="star-triangle-up", size=10, color=SIGNAL_COLOR,
                                       line=dict(width=1, color="white")),
             hovertemplate="Entry candle<br>%{x}<extra></extra>"))
@@ -187,14 +188,17 @@ def leg_charts(row: pd.Series, key: str) -> None:
                 st.caption("No security id from Dhan.")
                 continue
             try:
-                ha = dd.heikin_ashi(load_candles(int(sid), underlying["instrument"]))
+                raw = load_candles(int(sid), underlying["instrument"])
+                ha = dd.heikin_ashi(raw)
             except dd.DhanError as e:
                 st.error(str(e))
                 continue
             if not ha:
                 st.caption("No candles yet.")
                 continue
-            ha_chart(ha, key=f"oc-ha-{key}-{index}-{side}")
+            ha_chart(ha, key=f"oc-ha-{key}-{index}-{side}",
+                     normal=[{"start": b[0], "open": b[1], "high": b[2], "low": b[3], "close": b[4]} for b in raw]
+                     if st.session_state.get("oc-leg-candles") == "Normal" else None)
             last = ha[-12:]
             frame = pd.DataFrame({
                 "Time": [datetime.fromtimestamp(c["start"], dd.IST).strftime("%d %b %H:%M") for c in last],
@@ -321,7 +325,10 @@ def chain_view() -> None:
     st.dataframe(styled, hide_index=True, width="stretch", height=min(35 * (len(table) + 1) + 3, 900))
     st.caption(f"Dhan, {at} IST · expiry {expiry} · shaded: in the money · highlighted: ATM · OI and volume in lakh.")
 
-    st.subheader("ATM CE / PE on 15-minute Heikin Ashi")
+    head = st.columns([3, 2])
+    head[0].subheader("ATM CE / PE, 15-minute candles")
+    head[1].segmented_control("Chart candles", ["Heikin Ashi", "Normal"], default="Heikin Ashi",
+                              key="oc-leg-candles", help="The table and the stars stay Heikin Ashi (the strategy's)")
     st.caption("Strategy entry (amber star): the first solid green HA candle (no lower wick) after a red one. "
                "SL: that candle's previous HA candle's low. Charts: the last two trading days.")
     # First the day's opening (BOD) ATM strike: where the ATM was at the first candle, e.g. 25350
