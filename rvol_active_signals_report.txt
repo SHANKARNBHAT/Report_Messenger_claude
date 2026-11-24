@@ -1,25 +1,47 @@
-Generated on: 2026-11-23 22:38:57
+Generated on: 2026-11-24 10:28:48
 • Market Baseline: Nifty 50 is currently Bullish (Close vs 200 SMA & SMA 20 vs SMA 50).
 
-    symbol      strategy    bias last_trigger  lot_size  rvol  atr14 daily_range    close
-ADANIENSOL  RSI_Strategy BULLISH   2026-11-17       675  1.32  44.60       54.50  1476.50
- APLAPOLLO  RSI_Strategy BEARISH   2026-11-23       350 10.26  84.11      321.20  1693.70
-APOLLOHOSP  RSI_Strategy BULLISH   2026-11-18       125  1.05 211.68      160.00  9268.50
-    AUBANK SMA_Crossover BEARISH   2026-11-18      1000  1.07  29.50       33.05   989.60
- BANKINDIA  RSI_Strategy BULLISH   2026-11-09      5200  1.02   5.13        8.60   160.42
-     DABUR  RSI_Strategy BULLISH   2026-11-23      1250  1.58   9.26        7.90   401.55
-FEDERALBNK  RSI_Strategy BULLISH   2026-11-11      2500  1.52   9.16       13.60   366.90
-  HINDALCO SMA_Crossover BEARISH   2026-11-23       700  1.13  29.31       19.00   904.90
-   ICICIGI  RSI_Strategy BULLISH   2026-11-12       325  1.09  40.99       32.00  1746.80
-KALYANKJIL  RSI_Strategy BULLISH   2026-11-19      1350  1.05  37.41       30.80   657.30
-  MAHABANK  RSI_Strategy BULLISH   2026-11-09      6500  1.07   2.90        3.38    97.73
-MANAPPURAM SMA_Crossover BEARISH   2026-11-13      3000  1.19  12.00       11.75   275.40
-    MARUTI  RSI_Strategy BULLISH   2026-11-19        50  1.43 389.71      344.00 14166.00
-NATIONALUM SMA_Crossover BEARISH   2026-11-18      1875  1.07  11.08        8.45   297.60
-      NMDC SMA_Crossover BEARISH   2026-11-18      6750  1.03   1.73        2.30    67.10
-  PRESTIGE  RSI_Strategy BULLISH   2026-11-17       450  1.97  57.61       35.50  1679.10
- TATASTEEL SMA_Crossover BEARISH   2026-11-18      2750  4.49   5.97       13.30   162.40
-       TCS SMA_Crossover BULLISH   2026-11-23       225  1.51  67.30      100.90  2456.20
-     TECHM SMA_Crossover BULLISH   2026-11-23       600  1.02  43.93       51.70  1795.60
- UNIONBANK  RSI_Strategy BULLISH   2026-11-09      4425  1.04   5.70       11.59   210.61
-       VMM SMA_Crossover BEARISH   2026-11-18      4850  1.55   2.80        3.62    94.39
+    symbol      strategy    bias last_trigger  lot_size  rvol   atr14 daily_range    close
+ADANIENSOL  RSI_Strategy BULLISH   2026-11-17       675  1.99   44.74       56.40  1470.00
+ APLAPOLLO  RSI_Strategy BEARISH   2026-11-23       350 11.86   86.63      356.40  1670.00
+APOLLOHOSP  RSI_Strategy BULLISH   2026-11-18       125  1.34  211.68      170.00  9257.00
+    AUBANK SMA_Crossover BEARISH   2026-11-18      1000  1.55   29.50       33.05   983.50
+ BRITANNIA SMA_Crossover BEARISH   2026-11-17       125  1.01  134.41      103.80  4830.70
+     CANBK  RSI_Strategy BULLISH   2026-11-11      6750  1.22    3.91        6.69   133.75
+COCHINSHIP SMA_Crossover BEARISH   2026-11-13       400  1.22   40.98       51.20  1090.00
+     DABUR  RSI_Strategy BULLISH   2026-11-23      1250  3.18    9.34        9.05   399.00
+ EICHERMOT  RSI_Strategy BULLISH   2026-11-19       100  1.28  235.89      149.00  8172.50
+FEDERALBNK  RSI_Strategy BULLISH   2026-11-11      2500  2.21    9.37       16.60   359.80
+HEROMOTOCO SMA_Crossover BULLISH   2026-11-19       150  1.14  134.54      117.50  5535.00
+  HINDALCO SMA_Crossover BEARISH   2026-11-23       700  1.64   29.54       22.25   900.45
+  HINDZINC SMA_Crossover BEARISH   2026-11-18      1225  1.18   18.28       13.60   528.95
+   HYUNDAI  RSI_Strategy BULLISH   2026-11-19       275  1.43   65.25       97.90  2155.00
+   ICICIGI  RSI_Strategy BULLISH   2026-11-12       325  1.73   40.99       32.00  1742.60
+      IDEA SMA_Crossover BEARISH   2026-11-18     71475  1.02    0.35        0.32    11.91
+     IREDA  RSI_Strategy BULLISH   2026-11-17      4525  1.14    5.53        5.53   132.20
+       ITC  RSI_Strategy BULLISH   2026-11-11      1725  1.20    7.16        5.00   301.00
+JINDALSTEL  RSI_Strategy BULLISH   2026-11-11       625  1.27   30.02       29.30  1131.30
+KALYANKJIL  RSI_Strategy BULLISH   2026-11-19      1350  1.23   37.41       30.80   652.90
+       KEI SMA_Crossover BEARISH   2026-11-17       175  1.09  139.31       79.20  3800.60
+ LICHSGFIN  RSI_Strategy BULLISH   2026-11-11      1000  1.18   19.32       17.60   606.00
+       LTF SMA_Crossover BEARISH   2026-11-18      2250  1.15    9.10        7.16   274.00
+     LUPIN SMA_Crossover BEARISH   2026-11-23       425  1.19   41.76       44.00  1975.60
+MANAPPURAM SMA_Crossover BEARISH   2026-11-13      3000  1.94   12.29       15.70   271.00
+    MARUTI  RSI_Strategy BULLISH   2026-11-19        50  1.71  389.71      344.00 14010.00
+   MPHASIS SMA_Crossover BULLISH   2026-11-12       275  1.01   91.54       64.80  2468.40
+MUTHOOTFIN SMA_Crossover BEARISH   2026-11-19       275  1.15  103.62       56.00  2543.30
+NATIONALUM SMA_Crossover BEARISH   2026-11-18      1875  1.75   11.14        9.25   298.65
+      NMDC SMA_Crossover BEARISH   2026-11-18      6750  1.46    1.73        2.30    67.40
+OBEROIRLTY  RSI_Strategy BULLISH   2026-11-23       350  1.21   54.06       28.60  1860.00
+   PAGEIND SMA_Crossover BEARISH   2026-11-12        20  1.54 1212.01     1355.00 30100.00
+       PFC SMA_Crossover BEARISH   2026-11-23      1300  1.20    8.35        9.45   324.25
+   POLYCAB SMA_Crossover BEARISH   2026-11-17       125  1.25  240.18      166.00  7430.00
+  PRESTIGE  RSI_Strategy BULLISH   2026-11-17       450  2.99   57.61       35.50  1687.00
+      RVNL SMA_Crossover BEARISH   2026-11-18      1925  1.32    8.18       10.85   185.10
+       SRF SMA_Crossover BEARISH   2026-11-18       200  1.20   50.26       49.90  2514.80
+ TATASTEEL SMA_Crossover BEARISH   2026-11-18      2750  5.39    5.97       13.30   163.00
+       TCS SMA_Crossover BULLISH   2026-11-23       225  2.10   67.30      100.90  2460.00
+     TECHM SMA_Crossover BULLISH   2026-11-23       600  1.35   43.93       51.70  1777.50
+  UNITDSPR  RSI_Strategy BULLISH   2026-11-23       400  1.10   35.76       33.60  1478.00
+      VEDL SMA_Crossover BEARISH   2026-11-18      1150  1.04    7.37        5.71   235.53
+       VMM SMA_Crossover BEARISH   2026-11-18      4850  2.04    2.80        3.62    94.50

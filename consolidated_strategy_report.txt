@@ -1,24 +1,14 @@
-Generated on: 2026-11-23 22:38:57
+Generated on: 2026-11-24 10:28:48
 • Market Baseline: Nifty 50 is currently Bullish (Close vs 200 SMA & SMA 20 vs SMA 50).
 
 ## bullish_overlaps
+    symbol  lot_size last_close active
+LAURUSLABS       850    2338.00      -
 
 ## bearish_overlaps
 
 ## signal_log
     symbol signal_date strategy_type    bias  lot_size
-     AMBER  2026-11-09 SMA_Crossover BEARISH       100
- BANKINDIA  2026-11-09  RSI_Strategy BULLISH      5200
-     DABUR  2026-11-09 SMA_Crossover BEARISH      1250
-      IRFC  2026-11-09  RSI_Strategy BULLISH      5425
-  JUBLFOOD  2026-11-09 SMA_Crossover BEARISH      1250
-KALYANKJIL  2026-11-09  RSI_Strategy BULLISH      1350
-  MAHABANK  2026-11-09  RSI_Strategy BULLISH      6500
-   MANKIND  2026-11-09  RSI_Strategy BULLISH       250
-       MCX  2026-11-09  RSI_Strategy BULLISH       225
-     NYKAA  2026-11-09  RSI_Strategy BULLISH      3125
-      SBIN  2026-11-09  RSI_Strategy BULLISH       750
- UNIONBANK  2026-11-09  RSI_Strategy BULLISH      4425
     360ONE  2026-11-11  RSI_Strategy BULLISH       500
      ALKEM  2026-11-11  RSI_Strategy BULLISH       125
   BOSCHLTD  2026-11-11  RSI_Strategy BULLISH        25
@@ -130,3 +120,5 @@ POWERINDIA  2026-11-23 SMA_Crossover BEARISH        25
      TECHM  2026-11-23 SMA_Crossover BULLISH       600
   UNITDSPR  2026-11-23  RSI_Strategy BULLISH       400
 WAAREEENER  2026-11-23 SMA_Crossover BEARISH       175
+LAURUSLABS  2026-11-23  RSI_Strategy BULLISH       850
+     TITAN  2026-11-23 SMA_Crossover BULLISH       175
