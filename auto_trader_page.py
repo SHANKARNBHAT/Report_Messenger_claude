@@ -964,6 +964,46 @@ def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, quotes: 
         st.dataframe(summary(sides, "reason").rename_axis("Exit"), width="stretch")
 
 
+TIMEFRAME_COLOURS = ["#2F6FDB", "#E08A00", "#14A38B", "#9B4FC9"]  # fixed order, one per strategy
+
+
+def show_profit_loss_pies(history: pd.DataFrame) -> None:
+    """Two pies over the closed trades: where the profit of the winners came from, and where the
+    loss of the losers, one slice per strategy (timeframe)."""
+    names = [n for s, n in SYSTEM_NAMES.items() if s.startswith("RSI")]
+    systems = [s for s in SYSTEM_NAMES if s.startswith("RSI")]
+    closed = history[history["System"].isin(systems)].dropna(subset=["net"])
+    if closed.empty:
+        st.caption("No closed trades yet.")
+        return
+    colours = dict(zip(names, TIMEFRAME_COLOURS))
+    columns = st.columns(2)
+    for column, title, winners in ((columns[0], "Profit", True), (columns[1], "Loss", False)):
+        part = closed[closed["net"] > 0] if winners else closed[closed["net"] <= 0]
+        rows = [(SYSTEM_NAMES[s], abs(float(part.loc[part["System"] == s, "net"].sum())),
+                 int((part["System"] == s).sum())) for s in systems]
+        rows = [r for r in rows if r[1] > 0]
+        total = sum(r[1] for r in rows)
+        count = sum(r[2] for r in rows)
+        sign = "" if winners else "−"
+        figure = go.Figure(go.Pie(
+            labels=[r[0] for r in rows], values=[r[1] for r in rows], hole=0.45, sort=False, direction="clockwise",
+            marker={"colors": [colours[r[0]] for r in rows], "line": {"color": "rgba(0,0,0,0)", "width": 2}},
+            customdata=[[f"{sign}₹{r[1]:,.0f}", r[2]] for r in rows],
+            texttemplate="%{label}<br>%{customdata[0]}<br>%{percent}", textposition="outside",
+            hovertemplate="%{label}<br>%{customdata[0]} from %{customdata[1]} trades<br>%{percent} of the "
+                          + title.lower() + "<extra></extra>"))
+        figure.update_layout(
+            title={"text": f"{title}: {sign}₹{total:,.0f} from {count:,} {'winning' if winners else 'losing'} trades",
+                   "font": {"size": 15}},
+            showlegend=True, legend={"orientation": "h", "y": -0.1}, margin={"t": 60, "b": 40, "l": 20, "r": 20},
+            height=420,
+            annotations=[{"text": f"{sign}₹{total / 1e5:,.1f}L", "showarrow": False, "font": {"size": 18}}])
+        column.plotly_chart(figure, width="stretch", key=f"pie-{title}")
+    st.caption("Closed trades only, all exit styles. Profit = the winning trades' net after charges; loss = the "
+               "losing trades' (net at or below 0). Each slice is one timeframe's share.")
+
+
 def main() -> None:
     st.set_page_config(page_title="Auto Trader", page_icon="🤖", layout="wide")
     st.title("🤖 Auto trader")
@@ -1149,6 +1189,9 @@ def main() -> None:
                                  width="stretch", disabled=you.empty)
     downloads[2].download_button("⬇ Signal log (CSV)", signals.to_csv(index=False).encode(), "signals.csv",
                                  "text/csv", width="stretch", disabled=signals.empty)
+
+    st.subheader("Profit and loss by timeframe")
+    show_profit_loss_pies(history)
 
     with st.expander("Run log"):
         st.code("\n".join(account.get("log", [])) or "Nothing yet.", language=None)
