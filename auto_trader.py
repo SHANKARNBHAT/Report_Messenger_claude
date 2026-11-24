@@ -68,6 +68,7 @@ import ha_index
 import ha_pure
 import ha_vp
 import ha_weekly
+import opt_atm
 from chartink_dashboard import NO_VALUE
 
 TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY", "WEEKLY")
@@ -197,7 +198,7 @@ def close(files: Files, account: dict, position: dict, price: float, when_ms: in
     qty = position["qty"]
     buy, sell = (position["entry"], price) if position["side"] == "BUY" else (price, position["entry"])
     gross = (sell - buy) * qty
-    cost = charges(buy * qty, sell * qty)
+    cost = (opt_atm.charges if position.get("system") == opt_atm.SYSTEM else charges)(buy * qty, sell * qty)
     high = max(high or position.get("high") or position["entry"], price)
     low = min(low or position.get("low") or position["entry"], price)
     trades_of(files, month_of(when_ms)).append({
@@ -239,6 +240,17 @@ def apply_request(files: Files, account: dict, action: str, position_id: str, no
             return
         position["run"] = None
         note(f"{position['symbol']}: exits at the target")
+    elif action == "exit" and position.get("system") == opt_atm.SYSTEM:
+        try:
+            bars = opt_atm.bars_of(position["security_id"])
+        except opt_atm.dd.DhanError as exc:
+            note(f"{position['symbol']}: no price to exit at ({exc})")
+            return
+        if not bars:
+            note(f"{position['symbol']}: no price to exit at")
+            return
+        close(files, account, position, tick(bars[-1][4]), int(now.timestamp() * 1000), "Manual exit")
+        note(f"{position['symbol']}: exited at {tick(bars[-1][4])}")
     elif action == "exit":
         instruments = {i["symbol"]: i for i in fs.load_instruments()}
         quote = fs.latest_prices({position["symbol"]}, instruments, fs.load_dashboard()[0]).get(position["symbol"])
@@ -423,6 +435,7 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
         except fs.ChartinkError as exc:
             note(f"No 30-minute RSI for the RSI exits: {exc}")
     settle_index(files, account, now, note)
+    settle_options(files, account, now, note)
     settle_vp(files, account, now, note)
     for module in (*HELD_MODULES, ha_weekly):
         settle_pure(files, account, now, note, module)
@@ -436,7 +449,7 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
                 position["protect"] = found
     for result in fs.check_positions([p for p in account["positions"]
                                       if p.get("system") not in (*INDEX_SYSTEMS, *ha_vp.SYSTEMS, *ha_pure.SYSTEMS, *ha_break.SYSTEMS,
-                                                                 *ha_weekly.SYSTEMS)], now, settle=False):
+                                                                 *ha_weekly.SYSTEMS, opt_atm.SYSTEM)], now, settle=False):
         position = next(p for p in account["positions"] if p["id"] == result["id"])
         # A candle that went past since the last run may have come before what the bars show.
         due = (ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS
@@ -477,7 +490,8 @@ HELD_MODULES = (ha_pure, ha_break)
 # Retired on 18 Nov 2026 for their losses: no new trades. Their open positions still close on their own
 # exits, and their trades are kept; the page hides them (auto_trader_page.RETIRED_SYSTEMS).
 RETIRED = {"HA PURE 2H", "HA PURE Daily", "HA BRK 2H", "HA BRK 4H", "HA BRK Daily", "HA VP", "HA VP TRAIL",
-           "HA PURE 4H", "HA WK BRK"}  # the last two on 24 Nov 2026
+           "HA PURE 4H", "HA WK BRK",  # these two on 24 Nov 2026
+           "HA IDX", "HA IDX PURE", "HA IDX BRK"}  # the 15-minute index strategies, also on 24 Nov 2026
 
 
 def index_bars(note) -> dict[str, list]:
@@ -518,12 +532,13 @@ def settle_index(files: Files, account: dict, now: datetime, note) -> None:
 def enter_index_signals(files: Files, account: dict, seen: dict, now: datetime, trading: bool, note) -> None:
     """Trade the signals of each INDEX_SYSTEMS strategy: an index whose running 15-minute candle meets
     ha_index.signal, unless it has a position open in the strategy or was entered on this candle already."""
-    if now.time() >= LAST_ENTRY:
+    live = {system: rule for system, rule in INDEX_SYSTEMS.items() if system not in RETIRED}
+    if now.time() >= LAST_ENTRY or not live:
         return
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
     current = ha_index.candle_start(int(now.timestamp()), fs.IST)
     found = index_bars(note)
-    for (symbol, bars), (system, rule) in ((b, s) for b in found.items() for s in INDEX_SYSTEMS.items()):
+    for (symbol, bars), (system, rule) in ((b, s) for b in found.items() for s in live.items()):
         rows = ha_index.candles([b for b in bars if b[0] <= now.timestamp()], fs.IST)
         if not rows or rows[-1][0] != current:  # no bar of the running candle yet
             continue
@@ -579,6 +594,88 @@ def enter_index_signals(files: Files, account: dict, seen: dict, now: datetime, 
         mark(seen, [signal], "Traded")
         note(f"{symbol}: {system} {side} {qty} at {entry}, SL {sl} "
              f"({'HA candle' if breakout else f'{ha_index.ATR_MULT} ATR'}, 15m)")
+
+
+def settle_option(files: Files, account: dict, position: dict, bars: list, now: datetime, note) -> None:
+    """Close an OPT ATM HA position at its (trailing) SL or the 3:15 PM square-off, else move its SL."""
+    result = opt_atm.replay(position, bars, now)
+    if result["status"] == "closed":
+        close(files, account, position, tick(result["exit"]), result["exit_time"], result["reason"],
+              result["high"], result["low"])
+        note(f"{position['symbol']}: {result['reason']} at {tick(result['exit'])} ({opt_atm.SYSTEM})")
+    else:
+        position.update(stop=tick(result["stop"]), high=result["high"], low=result["low"], ltp=result["ltp"])
+
+
+def settle_options(files: Files, account: dict, now: datetime, note) -> None:
+    """The OPT ATM HA positions (opt_atm.py), on their option's 1-minute bars from Dhan."""
+    for position in [p for p in account["positions"] if p.get("system") == opt_atm.SYSTEM]:
+        try:
+            bars = opt_atm.bars_of(position["security_id"])
+        except opt_atm.dd.DhanError as exc:
+            note(f"{position['symbol']}: no Dhan bars ({exc})")
+            continue
+        settle_option(files, account, position, bars, now, note)
+
+
+def enter_option_signals(files: Files, account: dict, now: datetime, trading: bool, note) -> None:
+    """OPT ATM HA (opt_atm.py): buy the nearest expiry's ATM CE or PE of NIFTY and BANKNIFTY at the minute
+    since the last run when its running 15-minute HA candle was solid green and it closed above the
+    previous candle's high; one position at a time in each leg, one entry per leg and candle."""
+    checked = account.setdefault("opt_checked", {})
+    until = int(now.timestamp())
+    if not trading or now.time() >= opt_atm.LAST_ENTRY or opt_atm.SYSTEM in RETIRED:
+        checked.update({f"{n} {leg}": until for n in opt_atm.UNDERLYINGS for leg in opt_atm.LEGS})
+        return
+    if not opt_atm.dd.secret("DHAN_CLIENT_ID"):
+        note(f"{opt_atm.SYSTEM}: Dhan is not set up for the runs (DHAN_* secrets), no option trades")
+        return
+    month = trades_of(files, now.strftime("%Y-%m"))
+    for name in opt_atm.UNDERLYINGS:
+        try:
+            legs = opt_atm.atm_legs(name)
+        except (opt_atm.dd.DhanError, IndexError) as exc:
+            note(f"{name}: no ATM option from Dhan ({exc})")
+            continue
+        for leg in opt_atm.LEGS:
+            key = f"{name} {leg}"
+            since = max(checked.get(key, 0), until - int(opt_atm.LOOKBACK.total_seconds()))
+            checked[key] = until
+            if any(p.get("system") == opt_atm.SYSTEM and p.get("leg") == key for p in account["positions"]):
+                continue
+            if not legs[leg]:
+                note(f"{key}: no security id for the ATM {legs['strike']:g} in Dhan's chain")
+                continue
+            try:
+                bars = opt_atm.bars_of(legs[leg])
+            except opt_atm.dd.DhanError as exc:
+                note(f"{key}: no Dhan bars ({exc})")
+                continue
+            found = opt_atm.find_entry(bars, since, until)
+            if not found:
+                continue
+            if any(t.get("system") == opt_atm.SYSTEM and t["symbol"].startswith(f"{name} ")
+                   and t["symbol"].endswith(f" {leg}") and opt_atm.candle_start(t["entry_time"] // 1000 - 60) == found["candle"]
+                   for t in month):
+                continue  # already traded on this candle
+            entry, sl = tick(found["entry"]), tick(found["sl"])
+            qty = LOTS * opt_atm.LOT_SIZE[name]
+            symbol = opt_atm.symbol(name, legs["expiry"], legs["strike"], leg)
+            account["seq"] += 1
+            position = {
+                "id": f"{found['time'] * 1000}-{account['seq']}", "symbol": symbol, "side": "BUY", "lots": LOTS,
+                "qty": qty, "entry": entry, "sl": sl, "tp": None, "tsl": {"on": False}, "run": None,
+                "style": "opt_ha", "system": opt_atm.SYSTEM, "stop": sl, "time": found["time"] * 1000,
+                "status": "open", "passed": False, "high": entry, "low": entry, "ltp": entry, "nifty": fs.nifty_change(),
+                "source": f"Auto {opt_atm.SYSTEM} 15m", "timeframes": ["15 MIN"], "strategies": [opt_atm.NAME],
+                "agrees": "—", "sma_rsi": None, "first_seen": None, "leg": key, "underlying": name,
+                "security_id": int(legs[leg]), "expiry": legs["expiry"], "strike": legs["strike"],
+            }
+            account["positions"].append(position)
+            when_entered = datetime.fromtimestamp(found["time"], fs.IST).strftime("%H:%M")
+            note(f"{symbol}: {opt_atm.SYSTEM} BUY {qty} at {entry} ({when_entered}, above the previous candle's "
+                 f"high {tick(found['trigger'])}), SL {sl}")
+            settle_option(files, account, position, bars, now, note)  # it may have hit its SL since
 
 
 def vp_bars(positions: list[dict], now: datetime) -> dict[str, list]:
@@ -1131,6 +1228,7 @@ def main() -> None:
         seen = files.get(day_file, {})
         trading = not args.scheduled or account.get("unattended", True)
         enter_index_signals(files, account, seen, now, trading, note)
+        enter_option_signals(files, account, now, trading, note)
         enter_vp_signals(files, account, seen, now, trading, note)
         for module in HELD_MODULES:
             enter_pure_signals(files, account, seen, now, trading, note, module)
@@ -1148,7 +1246,8 @@ def main() -> None:
         else:
             note(f"No signals: {error}")
 
-    margin = sum(p["entry"] * p["qty"] * fs.MARGIN_RATE for p in account["positions"])
+    margin = sum(p["entry"] * p["qty"] * (1 if p.get("system") == opt_atm.SYSTEM else fs.MARGIN_RATE)
+                 for p in account["positions"])  # a bought option needs its whole premium
     account["peak_margin"] = round(max(account.get("peak_margin", 0), margin), 2)
     account["updated"] = now_ms
     # The last runs' notes, newest first, shown on the Auto trader page.

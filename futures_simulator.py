@@ -113,6 +113,7 @@ BOT_STYLES = {**STYLES, "ha": "Hold · HA exit", "ha_green": "Hold · HA green/r
               "vp_trail": "Intraday · ATR trail, 1.5% trail past VP target, doji, EMA 8",
               "ha_pure": "Hold · 30m candle trail, doji exit", "ha_brk": "Hold · HA candle trail",
               "ha_brk_idx": "Intraday · HA candle trail",
+              "opt_ha": "Intraday · option, previous candle low trail",  # OPT ATM HA (opt_atm.py)
               "ha_wk": "Hold · 30m SMA 8 pullback, 30m trail", "sma8": "Hold · 2H SMA 8 exit", "sma20": "Hold · 2H SMA 20 exit"}
 # HA MTF: the HA signals of 2H, 4H and Daily, held until the HA exit of the highest
 # timeframe that matched (auto_trader.py, enter_signals).
