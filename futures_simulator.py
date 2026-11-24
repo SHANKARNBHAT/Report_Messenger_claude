@@ -484,15 +484,23 @@ def bars_range(entered: datetime, now: datetime) -> str:
 # ---------------------------------------------------------------------------
 # Settlement
 # ---------------------------------------------------------------------------
+# NSE holidays that fall on an expiry Tuesday (the expiry moves to the trading day before).
+# Add the next ones from NSE's holiday list as they come.
+EXPIRY_HOLIDAYS = {date(2026, 11, 24),  # Guru Nanak Jayanti: the November expiry was 23 Nov
+                   date(2027, 1, 26)}   # Republic Day
+
+
 def expiry_after(day: date) -> date:
     """The monthly futures expiry after `day`: the last Tuesday of its month, else of the
-    next month (NSE holidays, which move it a day earlier, are not counted)."""
+    next month; a day earlier while that is an NSE holiday (EXPIRY_HOLIDAYS) or a weekend."""
     for ahead in (0, 1):
         year, month = divmod(day.year * 12 + day.month - 1 + ahead, 12)
         last = date(year, month + 1, calendar.monthrange(year, month + 1)[1])
-        tuesday = last - timedelta(days=(last.weekday() - calendar.TUESDAY) % 7)
-        if tuesday > day:
-            return tuesday
+        expiry = last - timedelta(days=(last.weekday() - calendar.TUESDAY) % 7)
+        while expiry in EXPIRY_HOLIDAYS or expiry.weekday() >= 5:
+            expiry -= timedelta(days=1)
+        if expiry > day:
+            return expiry
 
 
 def replay(position: dict, bars: list, now: datetime, latest: float | None, settle: bool) -> dict:
