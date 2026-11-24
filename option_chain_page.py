@@ -208,6 +208,47 @@ def leg_charts(row: pd.Series, key: str) -> None:
             st.caption("The newest candle (top) may still be forming.")
 
 
+@st.cache_data(ttl=60, show_spinner=False)
+def load_underlying_bars(name: str, minutes: int) -> list[tuple]:
+    return dd.underlying_candles(UNDERLYINGS[name], minutes=minutes, days=5)
+
+
+def day_chart(resistance: float | None, support: float | None) -> None:
+    """The index or stock's latest trading day in normal candles (Dhan), with the max call OI
+    (resistance) and max put OI (support) strikes as lines."""
+    head = st.columns([3, 2])
+    minutes = head[1].segmented_control("Candles", [1, 5, 15], default=5, format_func=lambda m: f"{m} min",
+                                        key="oc-day-minutes") or 5
+    try:
+        bars = load_underlying_bars(index, minutes)
+    except dd.DhanError as e:
+        st.caption(f"No {index} candles from Dhan: {e}")
+        return
+    if not bars:
+        st.caption(f"No {index} candles from Dhan.")
+        return
+    day = datetime.fromtimestamp(bars[-1][0], dd.IST).date()
+    bars = [b for b in bars if datetime.fromtimestamp(b[0], dd.IST).date() == day]
+    head[0].markdown(f"**{index} · {day:%a %d %b}** · open {bars[0][1]:,.2f} · high "
+                     f"{max(b[2] for b in bars):,.2f} · low {min(b[3] for b in bars):,.2f}")
+    times = [datetime.fromtimestamp(b[0], dd.IST).replace(tzinfo=None) for b in bars]
+    figure = go.Figure(go.Candlestick(
+        x=times, open=[b[1] for b in bars], high=[b[2] for b in bars], low=[b[3] for b in bars],
+        close=[b[4] for b in bars], name=index,
+        increasing=dict(line=dict(color=CANDLE_UP, width=1), fillcolor=CANDLE_UP),
+        decreasing=dict(line=dict(color=CANDLE_DOWN, width=1), fillcolor=CANDLE_DOWN)))
+    low, high = min(b[3] for b in bars), max(b[2] for b in bars)
+    for level, label, color in ((resistance, "Max call OI", CANDLE_DOWN), (support, "Max put OI", CANDLE_UP)):
+        # Only a level near the day's range: a far one would squash the candles.
+        if level and low - (high - low) <= level <= high + (high - low):
+            figure.add_hline(y=level, line=dict(color=color, width=1, dash="dash"),
+                             annotation_text=f"{label} {level:,.0f}", annotation_position="top left")
+    figure.update_layout(height=380, margin=dict(l=4, r=4, t=4, b=4), showlegend=False, hovermode="x",
+                         xaxis=dict(rangeslider_visible=False, tickformat="%H:%M", gridcolor="rgba(128,128,128,0.10)"),
+                         yaxis=dict(tickformat=",.0f", gridcolor="rgba(128,128,128,0.15)", side="right"))
+    st.plotly_chart(figure, width="stretch", key=f"oc-day-{index}", config={"displayModeBar": False})
+
+
 @st.fragment(run_every=15 if auto else None)
 def chain_view() -> None:
     try:
@@ -236,6 +277,8 @@ def chain_view() -> None:
     m[2].metric("PCR (OI)", f"{pe_oi / ce_oi:.2f}" if ce_oi else "–")
     m[3].metric("Max call OI (resistance)", f"{df.loc[df['ce_oi'].idxmax(), 'strike']:,.0f}" if ce_oi else "–")
     m[4].metric("Max put OI (support)", f"{df.loc[df['pe_oi'].idxmax(), 'strike']:,.0f}" if pe_oi else "–")
+    day_chart(df.loc[df["ce_oi"].idxmax(), "strike"] if ce_oi else None,
+              df.loc[df["pe_oi"].idxmax(), "strike"] if pe_oi else None)
 
     table = pd.DataFrame({
         "CE OI chg (L)": view["ce_oi_chg"].map(fmt_lakh),
