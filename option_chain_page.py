@@ -109,7 +109,11 @@ st.markdown(f"📈 **{index}** chart on Chartink: [my indicators]({_chartink}&lo
 try:
     expiries = load_expiries(index)
 except dd.DhanError as e:
-    st.error(str(e))
+    if "813" in str(e) or "Invalid SecurityId" in str(e):  # a stock NSE dropped from F&O since strike_steps.json
+        st.warning(f"Dhan lists no {index} options: NSE seems to have dropped it from F&O. It leaves this list "
+                   "when strike_steps.json is rebuilt (monthly, or run the Strike steps workflow).")
+    else:
+        st.error(str(e))
     st.stop()
 if not expiries:
     st.warning(f"Dhan listed no {index} expiries.")
