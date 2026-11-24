@@ -37,16 +37,17 @@ jobs:
         uses: actions/checkout@v3
 
       # A scheduled run stops here if an earlier run already made the reports after
-      # the last market close: 3:30 PM IST = 10:00 UTC today, or yesterday when run
-      # before then ("Generated on" is in UTC, like the runner's clock; the morning
+      # the last market close's data was out: 4:30 PM IST = 11:00 UTC today, or yesterday
+      # when run before then (not 3:30 PM: a late run at 3:56 PM on 24 Nov 2026 still got
+      # the day before's candles, and the later runs then skipped) ("Generated on" is in UTC, like the runner's clock; the morning
       # runs are Tue-Sat, so yesterday is always a weekday). Manual runs always go ahead.
       - name: Check for today's reports
         id: today
         run: |
           generated=$(grep -m1 '^Generated on:' active_stocks_report.txt 2>/dev/null | cut -d' ' -f3-4)
           now=$(date -u +%s)
-          if [ "$(date -u -d "@$now" +%H)" -ge 10 ]; then close_day=$now; else close_day=$((now - 86400)); fi
-          last_close="$(date -u -d "@$close_day" +%F) 10:00"
+          if [ "$(date -u -d "@$now" +%H)" -ge 11 ]; then close_day=$now; else close_day=$((now - 86400)); fi
+          last_close="$(date -u -d "@$close_day" +%F) 11:00"
           echo "Reports last generated: ${generated:-never}; last market close: $last_close (UTC)"
           if [ "${{ github.event_name }}" = "schedule" ] && [[ "$generated" > "$last_close" ]]; then
             echo "The reports for the last market close already exist; nothing to do."
