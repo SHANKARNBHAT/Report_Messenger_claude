@@ -996,8 +996,8 @@ def show_profit_loss_pies(history: pd.DataFrame) -> None:
         figure.update_layout(
             title={"text": f"{title}: {sign}₹{total:,.0f} from {count:,} {'winning' if winners else 'losing'} trades",
                    "font": {"size": 15}},
-            showlegend=True, legend={"orientation": "h", "y": -0.1}, margin={"t": 60, "b": 40, "l": 20, "r": 20},
-            height=420,
+            showlegend=True, legend={"orientation": "h", "y": -0.1}, margin={"t": 110, "b": 40, "l": 20, "r": 20},
+            height=470,
             annotations=[{"text": f"{sign}₹{total / 1e5:,.1f}L", "showarrow": False, "font": {"size": 18}}])
         column.plotly_chart(figure, width="stretch", key=f"pie-{title}")
     st.caption("Closed trades only, all exit styles. Profit = the winning trades' net after charges; loss = the "
