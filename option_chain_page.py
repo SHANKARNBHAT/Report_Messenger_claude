@@ -18,7 +18,6 @@ import streamlit as st
 
 import dhan_data as dd
 import futures_simulator as fs
-import opt_atm
 import strike_steps
 
 st.set_page_config(page_title="Option chain", page_icon="🧮", layout="wide")
@@ -75,19 +74,6 @@ def load_chain(name: str, expiry: str) -> tuple[float, list[dict], str]:
 @st.cache_data(ttl=60, show_spinner=False)
 def load_candles(security_id: int, instrument: str) -> list[tuple]:
     return dd.candles(security_id, minutes=15, days=5, instrument=instrument)
-
-
-@st.cache_data(ttl=60, show_spinner=False)
-def load_entries(security_id: int, instrument: str) -> dict[int, dict]:
-    """Where the Autotrader NIFTY\\BNF strategy (opt_atm.find_entry, on Dhan's 1-minute bars) would buy
-    this option: candle start -> the first trigger in it (entry, time, sl). Every candle that triggered,
-    whether or not a position was already open."""
-    bars = dd.candles(security_id, minutes=1, days=opt_atm.DAYS, instrument=instrument)
-    found, since, until = {}, 0, int(datetime.now(dd.IST).timestamp())
-    while (hit := opt_atm.find_entry(bars, since, until)) is not None:
-        found[hit["candle"]] = hit
-        since = hit["candle"] + opt_atm.MINUTES * 60  # the next candle on
-    return found
 
 
 @st.cache_data(ttl=300, show_spinner=False)
@@ -147,7 +133,12 @@ CANDLE_UP, CANDLE_DOWN, SIGNAL_COLOR = "#1a9e6f", "#d64545", "#eda100"  # as the
 CHART_DAYS = 2  # trading days of 15-minute HA candles on the small charts
 
 
-def ha_chart(ha: list[dict], key: str, entries: dict[int, dict]) -> None:
+def is_entry(ha: list[dict], k: int) -> bool:
+    """The strategy's entry candle: solid green (no lower wick) right after a red one."""
+    return k > 0 and ha[k]["solid"] and not ha[k - 1]["green"]
+
+
+def ha_chart(ha: list[dict], key: str) -> None:
     """A small 15-minute HA candle chart of the last CHART_DAYS trading days, the column's width,
     with an amber star under each entry candle. Times are categories, so nights leave no gap."""
     days = sorted({datetime.fromtimestamp(c["start"], dd.IST).date() for c in ha})[-CHART_DAYS:]
@@ -160,17 +151,14 @@ def ha_chart(ha: list[dict], key: str, entries: dict[int, dict]) -> None:
         low=[ha[k]["low"] for k in keep], close=[ha[k]["close"] for k in keep], name="HA",
         increasing=dict(line=dict(color=CANDLE_UP, width=1), fillcolor=CANDLE_UP),
         decreasing=dict(line=dict(color=CANDLE_DOWN, width=1), fillcolor=CANDLE_DOWN)))
-    marked = [n for n, k in enumerate(keep) if ha[k]["start"] in entries]
-    if marked:
+    entries = [n for n, k in enumerate(keep) if is_entry(ha, k)]
+    if entries:
         gap = 0.04 * (max(ha[k]["high"] for k in keep) - min(ha[k]["low"] for k in keep))
-        hits = [entries[ha[keep[n]]["start"]] for n in marked]
         figure.add_trace(go.Scatter(
-            x=[label[n] for n in marked], y=[ha[keep[n]]["low"] - gap for n in marked], mode="markers",
+            x=[label[n] for n in entries], y=[ha[keep[n]]["low"] - gap for n in entries], mode="markers",
             name="Entry", marker=dict(symbol="star-triangle-up", size=10, color=SIGNAL_COLOR,
                                       line=dict(width=1, color="white")),
-            text=[f"Buy {h['entry']:,.2f} at {datetime.fromtimestamp(h['time'], dd.IST):%H:%M}, SL {h['sl']:,.2f}"
-                  for h in hits],
-            hovertemplate="%{text}<br>%{x}<extra></extra>"))
+            hovertemplate="Entry candle<br>%{x}<extra></extra>"))
     day_starts = [n for n in range(len(keep)) if n == 0 or label[n][:6] != label[n - 1][:6]]
     figure.update_layout(
         height=230, margin=dict(l=4, r=4, t=4, b=4), showlegend=False, hovermode="x",
@@ -196,14 +184,13 @@ def leg_charts(row: pd.Series, key: str) -> None:
                 continue
             try:
                 ha = dd.heikin_ashi(load_candles(int(sid), underlying["instrument"]))
-                entries = load_entries(int(sid), underlying["instrument"])
             except dd.DhanError as e:
                 st.error(str(e))
                 continue
             if not ha:
                 st.caption("No candles yet.")
                 continue
-            ha_chart(ha, key=f"oc-ha-{key}-{index}-{side}", entries=entries)
+            ha_chart(ha, key=f"oc-ha-{key}-{index}-{side}")
             last = ha[-12:]
             frame = pd.DataFrame({
                 "Time": [datetime.fromtimestamp(c["start"], dd.IST).strftime("%d %b %H:%M") for c in last],
@@ -211,9 +198,8 @@ def leg_charts(row: pd.Series, key: str) -> None:
                 "HA Low": [c["low"] for c in last], "HA Close": [c["close"] for c in last],
                 "Candle": ["🟢 solid" if c["solid"] else "🟢" if c["green"] else "🔴" for c in last],
             })
-            frame["Entry?"] = [
-                f"✅ {datetime.fromtimestamp(h['time'], dd.IST):%H:%M} @ {h['entry']:,.2f}, SL {h['sl']:,.2f}"
-                if (h := entries.get(c["start"])) else "" for c in last]
+            start = len(ha) - len(last)
+            frame["Entry?"] = ["✅" if is_entry(ha, start + k) else "" for k in range(len(last))]
             st.dataframe(frame.iloc[::-1].style.format(precision=2), hide_index=True, width="stretch")
             st.caption("The newest candle (top) may still be forming.")
 
@@ -289,10 +275,8 @@ def chain_view() -> None:
     st.caption(f"Dhan, {at} IST · expiry {expiry} · shaded: in the money · highlighted: ATM · OI and volume in lakh.")
 
     st.subheader("ATM CE / PE on 15-minute Heikin Ashi")
-    st.caption("Strategy entry (amber star, as the Autotrader NIFTY\\BNF tab trades it): while the 15-minute HA "
-               "candle is solid green (no lower wick), a 1-minute close above the previous normal candle's high. "
-               "SL: the previous normal candle's low, then each completed candle's low. Every candle that "
-               "triggered is marked, even with a trade already open. Charts: the last two trading days.")
+    st.caption("Strategy entry (amber star): the first solid green HA candle (no lower wick) after a red one. "
+               "SL: that candle's previous HA candle's low. Charts: the last two trading days.")
     # First the day's opening (BOD) ATM strike: where the ATM was at the first candle, e.g. 25350
     # when the day ended at 25800; shown only when it differs from the ATM now. Then the ATM now.
     try:
