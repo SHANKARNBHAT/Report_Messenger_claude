@@ -90,7 +90,9 @@ VP_QUERY = ("select [0] 2 hour Close as 'Close', [0] 2 hour High as 'High', [0] 
             "[0] 2 hour ha-open as 'HA open', [0] 2 hour ha-high as 'HA high', [0] 2 hour ha-low as 'HA low', "
             "[0] 2 hour ha-close as 'HA close', [0] 2 hour Volume as 'Volume' "
             "WHERE( {33489} ( daily close > 0 ) ) GROUP BY symbol ORDER BY 1 desc")
-VP_CANDLES = 300  # slots: about 230 candles (older days have an empty 3:15 PM slot), for SMA 200 of the 2H closes
+# Slots: about 165 candles (older days have an empty 3:15 PM slot). Chartink answers an empty list past
+# about 220 (since Nov 2026; it took 300 before), so fetch_vp_candles steps down from here.
+VP_CANDLES = 220
 VP_LIVE = 5  # the latest candles, the running one with them: a long series leaves it out
 # The 4H and Daily candles of the HA PURE strategies (ha_pure.py), as VP_QUERY's rows (volume 0).
 HA_TF_COLUMNS = {"4 HOUR": "[0] 4 hour", "DAILY": "daily", "WEEKLY": "weekly"}  # WEEKLY: HA WK BRK (ha_weekly.py)
@@ -393,7 +395,7 @@ def fetch_vp_candles(link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
     HA close, volume: 0 when not known, as for an index), oldest first, the running one last, for
     the F&O stocks, NIFTY and BANKNIFTY (ha_vp.py).
 
-    Two requests: Chartink answers a long series (VP_CANDLES, for SMA 200) without the running
+    Two requests: Chartink answers a long series (VP_CANDLES) without the running
     candle, and sometimes with an empty list, so the last VP_LIVE candles come from a short one."""
     with requests.Session() as session:
         session.headers.update(CHARTINK_HEADERS)
@@ -411,7 +413,7 @@ def fetch_vp_candles(link: str = HA_DASHBOARD) -> dict[str, list[tuple]]:
             return None
 
         live = ask((VP_LIVE, VP_LIVE, VP_LIVE + 1))
-        history = ask((VP_CANDLES, VP_CANDLES - 10, VP_CANDLES - 20, VP_CANDLES - 40, VP_CANDLES - 5))
+        history = ask((VP_CANDLES, VP_CANDLES - 20, 150, 100, 60))
     if live is None and history is None:
         raise ChartinkError("No 2H candles")
     candles = {}

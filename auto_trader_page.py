@@ -68,9 +68,9 @@ RETIRED_SYSTEMS = {"HA": "Heikin Ashi (retired)", "HA MTF": "HA multi-timeframe 
                    "HA PURE 2H": "HA pure 2H (retired)", "HA PURE Daily": "HA pure Daily (retired)",
                    "HA BRK 2H": "HA breakout 2H (retired)", "HA BRK 4H": "HA breakout 4H (retired)",
                    "HA BRK Daily": "HA breakout Daily (retired)", "HA VP": "HA + volume profile (retired)",
-                   "HA VP TRAIL": "HA VP · trail past target (retired)"}
+                   "HA VP TRAIL": "HA VP · trail past target (retired)",
+                   "HA PURE 4H": "HA pure 4H (retired)", "HA WK BRK": "HA weekly breakout (retired)"}
 SYSTEM_NAMES = {"RSI": "RSI 2H", "RSI 4H": "RSI 4H", "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
-                "HA PURE 4H": "HA pure 4H", "HA WK BRK": "HA weekly breakout",
                 **(RETIRED_SYSTEMS if SHOW_RETIRED else {})}
 INDEX_SYSTEM = "HA IDX"
 # The 15-minute index strategies (auto_trader.INDEX_SYSTEMS): name, and its rule (ha_index.rule_signal):
@@ -224,6 +224,35 @@ SYMBOL_LINK = st.column_config.LinkColumn("Symbol", display_text=r"symbol=(?:NSE
                                           help="Opens the chart")
 
 
+@st.cache_data(ttl=3600, show_spinner=False)
+def daily_atrs(indices: tuple[tuple[str, str], ...]) -> dict[str, float]:
+    """symbol -> its latest daily ATR (14): the stocks' from the market data pipeline's database
+    (as the F&O ATR page), the indices' (symbol, Yahoo symbol) worked out from Yahoo's daily candles."""
+    import sqlite3
+
+    found = {}
+    try:
+        with sqlite3.connect(f"file:{Path(__file__).with_name('stock_market_data.db')}?mode=ro", uri=True) as db:
+            rows = db.execute("SELECT symbol, atr_14 FROM stock_ohlc_indicators WHERE date = (SELECT MAX(date) "
+                              "FROM stock_ohlc_indicators WHERE atr_14 IS NOT NULL) AND atr_14 IS NOT NULL").fetchall()
+        found = {symbol.removesuffix(".NS"): float(atr) for symbol, atr in rows}
+    except sqlite3.Error:
+        pass
+    for symbol, yahoo in indices:
+        try:
+            chart = fs.yahoo_chart(yahoo, "1d", "3mo")
+            q = chart["indicators"]["quote"][0]
+            bars = pd.DataFrame({"high": q["high"], "low": q["low"], "close": q["close"]}).dropna()
+            true_range = pd.concat([bars["high"] - bars["low"], (bars["high"] - bars["close"].shift()).abs(),
+                                    (bars["low"] - bars["close"].shift()).abs()], axis=1).max(axis=1)
+            atr = true_range.rolling(14).mean().iloc[-1]
+            if pd.notna(atr):
+                found[symbol] = float(atr)
+        except (requests.RequestException, ValueError, KeyError, IndexError):
+            continue
+    return found
+
+
 def when(ms) -> str:
     return datetime.fromtimestamp(ms / 1000, fs.IST).strftime("%d %b %H:%M") if ms else "—"
 
@@ -334,10 +363,9 @@ def show_versus(history: pd.DataFrame, positions: list[dict]) -> None:
 # The strategies started (or changed: RSI's 30-minute RSI exit) on 16 Nov 2026, tracked apart from
 # that day on, by the trades entered since.
 NEW_SINCE = datetime(2026, 11, 16, tzinfo=fs.IST)
-NEW_STRATEGIES = {"HA PURE 4H": "HA pure 4H",
-                  "HA IDX PURE": "HA IDX · no SMA (15m index)", "RSI": "RSI 2H", "RSI 4H": "RSI 4H",
+NEW_STRATEGIES = {"HA IDX PURE": "HA IDX · no SMA (15m index)", "RSI": "RSI 2H", "RSI 4H": "RSI 4H",
                   "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
-                  "HA IDX BRK": "HA IDX · breakout (15m index)", "HA WK BRK": "HA weekly breakout"}
+                  "HA IDX BRK": "HA IDX · breakout (15m index)"}
 
 
 def show_new(history: pd.DataFrame, positions: list[dict]) -> None:
@@ -1127,9 +1155,16 @@ def main() -> None:
             Symbol=[chart_link(p["symbol"]) for p in positions],
             Entered=[when(p["time"]) for p in positions])
         table.insert(table.columns.get_loc("Entered"), "Unrealized ₹", [unrealized(p) for p in positions])
+        instruments = {i["symbol"]: i for i in fs.load_instruments()}
+        atrs = daily_atrs(tuple(sorted({(p["symbol"], instruments[p["symbol"]]["yahoo"]) for p in positions
+                                        if p["symbol"] in instruments and fs.is_index(instruments[p["symbol"]])})))
+        table.insert(table.columns.get_loc("SL / TSL"), "ATR (D)", [atrs.get(p["symbol"]) for p in positions])
         picked = st.dataframe(
             table, hide_index=True, width="stretch", on_select="rerun", selection_mode="single-row",
-            column_config={"Symbol": SYMBOL_LINK, "Unrealized ₹": st.column_config.NumberColumn(format="%.2f")},
+            column_config={"Symbol": SYMBOL_LINK, "Unrealized ₹": st.column_config.NumberColumn(format="%.2f"),
+                           "ATR (D)": st.column_config.NumberColumn(
+                               format="%.2f", help="Daily ATR (14) at the last close: the stocks' from the market "
+                                                   "data pipeline, the indices' from Yahoo's daily candles")},
         )
         rows = picked.selection.rows
         if rows:

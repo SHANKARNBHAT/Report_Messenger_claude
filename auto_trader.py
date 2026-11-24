@@ -395,6 +395,9 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
             two_hour = fs.fetch_vp_candles()
         except fs.ChartinkError as exc:
             note(f"No 2H candles for the SMA exits: {exc}")
+        longest = max((len(rows) for rows in two_hour.values()), default=0)
+        if two_hour and longest < max(fs.SMA_EXITS.values()):
+            note(f"Only {longest} 2H candles from Chartink: too few for the SMA exits")
     rsi30 = {}
     if any(p.get("system", "RSI").startswith("RSI") for p in account["positions"]):
         try:
@@ -447,7 +450,8 @@ INDEX_SYSTEMS = {INDEX_SYSTEM: "trend", "HA IDX PURE": "pure", ha_break.INDEX_SY
 HELD_MODULES = (ha_pure, ha_break)
 # Retired on 18 Nov 2026 for their losses: no new trades. Their open positions still close on their own
 # exits, and their trades are kept; the page hides them (auto_trader_page.RETIRED_SYSTEMS).
-RETIRED = {"HA PURE 2H", "HA PURE Daily", "HA BRK 2H", "HA BRK 4H", "HA BRK Daily", "HA VP", "HA VP TRAIL"}
+RETIRED = {"HA PURE 2H", "HA PURE Daily", "HA BRK 2H", "HA BRK 4H", "HA BRK Daily", "HA VP", "HA VP TRAIL",
+           "HA PURE 4H", "HA WK BRK"}  # the last two on 24 Nov 2026
 
 
 def index_bars(note) -> dict[str, list]:
@@ -823,7 +827,7 @@ def enter_weekly_signals(files: Files, account: dict, seen: dict, now: datetime,
     """HA WK BRK (ha_weekly.py): arm each stock or index whose 4H HA close this week crossed last week's
     red (green) Weekly HA candle's HA high (low), kept in account["wk_armed"]; then enter an armed one
     on a 5-minute bar that pulled back to the 30-minute SMA 8, once per stock and week."""
-    if now.time() >= LAST_ENTRY:
+    if now.time() >= LAST_ENTRY or ha_weekly.SYSTEM in RETIRED:
         return
     system = ha_weekly.SYSTEM
     week = ha_weekly.monday_of(now.date()).isoformat()
