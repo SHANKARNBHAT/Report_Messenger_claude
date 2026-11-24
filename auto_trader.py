@@ -69,6 +69,7 @@ import ha_pure
 import ha_vp
 import ha_weekly
 import opt_atm
+import telegram_alerts
 from chartink_dashboard import NO_VALUE
 
 TIMEFRAMES = ("2 HOUR", "4 HOUR", "DAILY", "WEEKLY")
@@ -89,7 +90,7 @@ RSI30_SINCE = datetime(2026, 11, 16, 11, 30, tzinfo=fs.IST).timestamp()  # rule 
 LAST_ENTRY = time(15, 0)  # no new trades after this, ahead of the 3:15 PM square-off
 SESSION_CLOSE = time(15, 30)
 PAGE_QUIET = 12  # minutes: scheduled runs skip while the page started a run this recently
-ACTIONS = ["run", "trail", "untrail", "exit", "unattended-on", "unattended-off", "test-chartink"]
+ACTIONS = ["run", "trail", "untrail", "exit", "unattended-on", "unattended-off", "test-chartink", "test-telegram"]
 
 
 def tick(price: float) -> float:
@@ -216,6 +217,15 @@ def close(files: Files, account: dict, position: dict, price: float, when_ms: in
     })
     files.changed.add(f"trades/{month_of(when_ms)}.json")
     account["positions"].remove(position)
+    telegram_alerts.exit(trades_of(files, month_of(when_ms))[-1])
+
+
+def alert_problem(account: dict, key: str, text: str, now: datetime) -> None:
+    """A Telegram alert for a problem, at most once a day for each kind (key)."""
+    sent = account.setdefault("alerted", {})
+    if sent.get(key) != now.date().isoformat():
+        sent[key] = now.date().isoformat()
+        telegram_alerts.problem(text)
 
 
 def auto_run(entry: float) -> dict:
@@ -614,6 +624,7 @@ def settle_options(files: Files, account: dict, now: datetime, note) -> None:
             bars = opt_atm.bars_of(position["security_id"])
         except opt_atm.dd.DhanError as exc:
             note(f"{position['symbol']}: no Dhan bars ({exc})")
+            alert_problem(account, "dhan", f"Dhan: {exc} (open {position['symbol']} not checked)", now)
             continue
         settle_option(files, account, position, bars, now, note)
 
@@ -636,6 +647,7 @@ def enter_option_signals(files: Files, account: dict, now: datetime, trading: bo
             legs = opt_atm.atm_legs(name)
         except (opt_atm.dd.DhanError, IndexError) as exc:
             note(f"{name}: no ATM option from Dhan ({exc})")
+            alert_problem(account, "dhan", f"Dhan: no ATM options, so no {opt_atm.SYSTEM} entries ({exc})", now)
             continue
         for leg in opt_atm.LEGS:
             key = f"{name} {leg}"
@@ -672,6 +684,7 @@ def enter_option_signals(files: Files, account: dict, now: datetime, trading: bo
                 "security_id": int(legs[leg]), "expiry": legs["expiry"], "strike": legs["strike"],
             }
             account["positions"].append(position)
+            telegram_alerts.entry(position)
             when_entered = datetime.fromtimestamp(found["time"], fs.IST).strftime("%H:%M")
             note(f"{symbol}: {opt_atm.SYSTEM} BUY {qty} at {entry} ({when_entered}, solid green HA after red), "
                  f"SL {sl}")
@@ -1217,6 +1230,13 @@ def main() -> None:
         note("When the page is closed: " + ("auto-trade" if account["unattended"] else "only close positions"))
     elif args.action == "test-chartink":
         test_chartink(note)
+    elif args.action == "test-telegram":
+        if not telegram_alerts.ready():
+            note("Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not set")
+        elif telegram_alerts.send("✅ Auto trader alerts are working."):
+            note("Telegram: test message sent")
+        else:
+            note("Telegram: the test message was not sent (see the run log)")
     elif args.action != "run":
         apply_request(files, account, args.action, args.position, now, note)
     if not args.scheduled:
@@ -1245,6 +1265,14 @@ def main() -> None:
                               trading, note, system)
         else:
             note(f"No signals: {error}")
+
+    # After the close, once a day: the day's trades on Telegram (nothing on a holiday).
+    today = now.date().isoformat()
+    if now.time() >= SESSION_CLOSE and now.weekday() < 5 and account.get("summary_day") != today:
+        account["summary_day"] = today
+        closed = [t for t in trades_of(files, now.strftime("%Y-%m"))
+                  if datetime.fromtimestamp(t["exit_time"] / 1000, fs.IST).date() == now.date()]
+        telegram_alerts.summary(now.strftime("%d %b"), closed, len(account["positions"]) if closed else 0)
 
     margin = sum(p["entry"] * p["qty"] * (1 if p.get("system") == opt_atm.SYSTEM else fs.MARGIN_RATE)
                  for p in account["positions"])  # a bought option needs its whole premium

@@ -15,7 +15,7 @@ on:
       action:
         description: run, or a request on one position
         type: choice
-        options: [run, trail, untrail, exit, unattended-on, unattended-off, test-chartink]
+        options: [run, trail, untrail, exit, unattended-on, unattended-off, test-chartink, test-telegram]
         default: run
       position:
         description: Position id (for trail, untrail and exit)
@@ -63,6 +63,9 @@ jobs:
           DHAN_PIN: ${{ secrets.DHAN_PIN }}
           DHAN_TOTP_SECRET: ${{ secrets.DHAN_TOTP_SECRET }}
           DHAN_ACCESS_TOKEN: ${{ secrets.DHAN_ACCESS_TOKEN }}
+          # Telegram alerts (telegram_alerts.py): trades, problems and the day's summary.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python auto_trader.py data/auto_trades.json --action "$ACTION" --position "$POSITION" $SCHEDULED
 
@@ -83,3 +86,16 @@ jobs:
           done
           echo "Could not save the account"
           exit 1
+
+      # A run that failed (an error in the code, or the account not saved): say so on Telegram.
+      - name: Alert on failure
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ] || exit 0
+          curl -s -o /dev/null "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=⚠️ Auto trader run failed: ${RUN_URL}"
