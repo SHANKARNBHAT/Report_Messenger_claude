@@ -51,6 +51,16 @@ def exit(trade: dict) -> None:
              f"Entry {trade['entry']} · net ₹{trade['net']:,.0f} · {trade.get('system')}")
 
 
+def rsi_signals(timeframe: str, when: str, signals: list[dict]) -> None:
+    """The stocks an RSI strategy just entered, with the ATM option of the trade's side (auto_trader.atm_of)."""
+    lines = [f"📊 <b>RSI {timeframe} signals</b> · {when}"]
+    for s in signals:
+        arrow = "🟢 BUY" if s["side"] == "BUY" else "🔴 SELL"
+        strike = f"ATM {s['strike']:g} {s['leg']}" if s.get("strike") else "ATM strike unknown"
+        lines.append(f"{arrow} <b>{s['symbol']}</b> @ {s['price']:g} → <b>{strike}</b> · lot {s['lot']}")
+    send("\n".join(lines))
+
+
 def problem(text: str) -> None:
     send(f"⚠️ Auto trader: {text}")
 

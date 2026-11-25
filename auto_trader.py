@@ -1102,6 +1102,22 @@ def ha_sma_rsi(dashboard: dict) -> dict[tuple[str, str], float]:
     return values
 
 
+# RSI strategies whose new trades are sent to Telegram with the ATM option (rsi_alert), and their timeframe.
+RSI_ALERTS = {"RSI": "2H", "RSI 4H": "4H", "RSI Daily": "Daily"}
+INDEX_STEPS = {"NIFTY": 50, "BANKNIFTY": 100}  # strike intervals of the indices (not in strike_steps.json)
+
+
+def atm_of(symbol: str, price: float) -> float | None:
+    """The ATM strike: the price rounded to the symbol's regular strike interval (strike_steps.json)."""
+    step = INDEX_STEPS.get(symbol)
+    if step is None:
+        try:
+            step = json.loads(Path(__file__).with_name("strike_steps.json").read_text(encoding="utf-8"))["steps"].get(symbol)
+        except (OSError, ValueError, KeyError):
+            step = None
+    return round(round(price / step) * step, 2) if step else None
+
+
 def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: dict, seen: dict, now: datetime,
                   trading: bool, note, system: str) -> None:
     """Trade one strategy's signals, and note in `seen` what was done with each."""
@@ -1158,6 +1174,7 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
     except fs.ChartinkError as exc:
         sources = {}
         note(f"No candles for the {system} SL, using {fs.AUTO_SL_PCT}%: {exc}")
+    alerts = []
     for symbol, (side, found, styles) in sorted(wanted.items()):
         exit_tf = None
         if system == "HA MTF":
@@ -1201,8 +1218,13 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
                 if lock:
                     account["positions"][-1]["protect"] = lock
         mark(seen, found, "Traded")
+        if system in RSI_ALERTS:
+            alerts.append({"symbol": symbol, "side": side, "price": entry, "strike": atm_of(symbol, entry),
+                           "leg": "CE" if long else "PE", "lot": instruments[symbol]["lot"]})
         exits = f"; exit on {SHORT[exit_tf]}" if exit_tf else ""
         note(f"{symbol}: {system} {side} {qty} at {entry}, SL {sl} ({', '.join(timeframes)}{exits}; {', '.join(styles)})")
+    if alerts:
+        telegram_alerts.rsi_signals(RSI_ALERTS[system], now.strftime("%d %b %H:%M"), alerts)
 
 
 def main() -> None:
