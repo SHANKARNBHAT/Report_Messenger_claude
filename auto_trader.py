@@ -59,6 +59,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sqlite3
 from datetime import datetime, time, timedelta
 from pathlib import Path
 
@@ -68,6 +69,7 @@ import ha_index
 import ha_pure
 import ha_vp
 import ha_weekly
+import opt_2h_alert
 import opt_atm
 import telegram_alerts
 from chartink_dashboard import NO_VALUE
@@ -691,6 +693,40 @@ def enter_option_signals(files: Files, account: dict, now: datetime, trading: bo
             settle_option(files, account, position, bars, now, note)  # it may have hit its SL since
 
 
+def alert_option_2h(account: dict, now: datetime, note) -> None:
+    """Once per completed 2-hour candle (11:15 AM, 1:15 PM, 3:15 PM): the ATM calls of NIFTY, BANKNIFTY
+    and the high-ATR F&O stocks whose 2H Heikin Ashi candle completed solid green after red, on
+    Telegram (opt_2h_alert.py). Alerts only."""
+    end = opt_2h_alert.last_end(now)
+    done = account.get("opt2h") or {}
+    if end is None or done.get("end") == end and done.get("complete") or not opt_2h_alert.dd.secret("DHAN_CLIENT_ID"):
+        return
+    if done.get("end") != end:
+        done = {"end": end, "checked": [], "complete": False}
+    # Up to an hour after the candle: later the alert is stale and the next candle is near.
+    if now.timestamp() > end + 3600:
+        account["opt2h"] = {**done, "complete": True}
+        return
+    lots = {i["symbol"]: i["lot"] for i in fs.load_instruments()} | opt_atm.LOT_SIZE
+    try:
+        found = opt_2h_alert.scan(now, fs.atr_strikes_above(), lots, note, set(done["checked"]))
+    except (opt_2h_alert.dd.DhanError, OSError, sqlite3.Error) as exc:
+        note(f"2H CE alert: not checked ({exc}); trying again next run")
+        return
+    if found is None:
+        return
+    end, hits, checked, total = found
+    done["checked"] += checked
+    done["complete"] = len(done["checked"]) >= total
+    account["opt2h"] = done
+    start = datetime.fromtimestamp(end, fs.IST) - timedelta(hours=opt_2h_alert.HOURS)
+    window = f"{start:%H:%M}-{datetime.fromtimestamp(end, fs.IST):%H:%M}"
+    note(f"2H CE alert ({window}, {len(done['checked'])} of {total} checked): "
+         + (", ".join(h["option"] for h in hits) if hits else "none"))
+    if hits:
+        telegram_alerts.option_2h(window, hits)
+
+
 def vp_bars(positions: list[dict], now: datetime) -> dict[str, list]:
     """position id -> its 5-minute bars since the entry: Chartink's when they reach back to it,
     else Yahoo Finance's (as futures_simulator.check_positions)."""
@@ -1249,6 +1285,7 @@ def main() -> None:
         trading = not args.scheduled or account.get("unattended", True)
         enter_index_signals(files, account, seen, now, trading, note)
         enter_option_signals(files, account, now, trading, note)
+        alert_option_2h(account, now, note)
         enter_vp_signals(files, account, seen, now, trading, note)
         for module in HELD_MODULES:
             enter_pure_signals(files, account, seen, now, trading, note, module)

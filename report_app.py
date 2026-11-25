@@ -114,5 +114,6 @@ pages = [
     st.Page("atr_strikes_page.py", title="F&O ATR", icon="📏", url_path="fno-atr"),
     st.Page("index_trader_page.py", title="Autotrader NIFTY\\BNF", icon="📈", url_path="auto-index"),
     st.Page("option_chain_page.py", title="Option chain", icon="🧮", url_path="option-chain"),
+    st.Page("ha_2h_page.py", title="2h HA CE PE", icon="🕯️", url_path="2h-ha-ce-pe"),
 ]
 st.navigation(pages, position="top").run()
