@@ -396,10 +396,55 @@
     "cost": 1.04,
     "since": 1795589438937
    }
+  },
+  {
+   "id": "1795598738003-4818",
+   "symbol": "CUMMINSIND",
+   "side": "SELL",
+   "lots": 1,
+   "qty": 200,
+   "entry": 4055.0,
+   "sl": 4115.8,
+   "tp": 3933.35,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 60.8,
+    "step": 20.3
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 4115.8,
+   "time": 1795598738003,
+   "status": "open",
+   "passed": false,
+   "high": 4055.0,
+   "low": 4055.0,
+   "nifty": 1.65,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bearish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795598738003,
+    "price": 4055.0
+   },
+   "protect": {
+    "atr": 186.6,
+    "cost": 2.57,
+    "since": 1795598738003
+   }
   }
  ],
- "seq": 4817,
+ "seq": 4818,
  "log": [
+  "25 Nov 14:55  CUMMINSIND: RSI SELL 200 at 4055.0, SL 4115.8 (2 HOUR; trail)",
   "25 Nov 14:46  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "25 Nov 14:46  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "25 Nov 14:40  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -698,11 +743,10 @@
   "24 Nov 15:15  TATAPOWER: Expiry 3:15 PM at 328.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  SHREECEM: Expiry 3:15 PM at 25150.0 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  SHREECEM: Expiry 3:15 PM at 25150.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ANANDRATHI: Expiry 3:15 PM at 2355.9 (Hold \u00b7 trail)",
-  "24 Nov 15:15  SBILIFE: Expiry 3:15 PM at 1804.9 (Hold \u00b7 trail)"
+  "24 Nov 15:15  ANANDRATHI: Expiry 3:15 PM at 2355.9 (Hold \u00b7 trail)"
  ],
- "page_run": 1795598440779,
- "updated": 1795598440779,
+ "page_run": 1795598738003,
+ "updated": 1795598738003,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -723,10 +767,10 @@
  },
  "summary_day": "2026-11-24",
  "opt_checked": {
-  "NIFTY CE": 1795598440,
-  "NIFTY PE": 1795598440,
-  "BANKNIFTY CE": 1795598440,
-  "BANKNIFTY PE": 1795598440
+  "NIFTY CE": 1795598738,
+  "NIFTY PE": 1795598738,
+  "BANKNIFTY CE": 1795598738,
+  "BANKNIFTY PE": 1795598738
  },
  "alerted": {
   "dhan": "2026-11-25"
