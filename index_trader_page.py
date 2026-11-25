@@ -31,14 +31,13 @@ fs = atp.fs
 
 
 
-def option_charts() -> None:
-    """The NIFTY or BANKNIFTY ATM CE / PE charts the strategy trades (nearest expiry), at the day's
-    opening ATM and the ATM now, as on the Option chain page (option_charts.py)."""
+def option_charts(name: str) -> None:
+    """The index's ATM CE / PE charts the strategy trades (nearest expiry), at the day's opening ATM
+    and the ATM now, as on the Option chain page (option_charts.py)."""
     st.divider()
     if not oc.connected():
         st.caption("ATM CE / PE charts: Dhan is not set up in the app's secrets (see the Option chain page).")
         return
-    name = st.segmented_control("ATM options of", list(dd.INDICES), default="NIFTY", key="index-opt-symbol") or "NIFTY"
     underlying = dd.INDICES[name]
     try:
         expiry = oc.load_expiries(underlying)[0]
@@ -78,9 +77,12 @@ def main() -> None:
                "of the Option chain page's star: a 15-minute Heikin Ashi candle that completes solid green (no "
                "lower wick) right after a red one. SL at the previous HA candle's low, moved up to each completed "
                "HA candle's low; squared off at 3:15 PM. Prices: Dhan's 1-minute bars, LTP as of the last run.")
+    # One index for the whole page: the totals, positions, trades, the index chart and the CE / PE charts.
+    name = st.segmented_control("Index", list(dd.INDICES), default="NIFTY", key="index-page-symbol") or "NIFTY"
     history = atp.load_trades("trades")
-    trades = history[history["System"] == opt_atm.SYSTEM]
-    positions = [p for p in account["positions"] if p.get("system") == opt_atm.SYSTEM]
+    mine = history[history["System"] == opt_atm.SYSTEM]
+    trades = mine[mine["symbol"].astype(str).str.startswith(f"{name} ")]  # e.g. "NIFTY 01DEC 25350 PE"
+    positions = [p for p in account["positions"] if p.get("system") == opt_atm.SYSTEM and p.get("underlying") == name]
     # The option's last price is saved by each run (Dhan), not looked up here.
     quotes = {p["symbol"]: {"price": p.get("ltp"), "prev": None} for p in positions if p.get("ltp")}
 
@@ -88,8 +90,8 @@ def main() -> None:
         q = quotes.get(p["symbol"])
         return None if not q else round((q["price"] - p["entry"]) * p["qty"], 2)
 
-    atp.show_index(trades, positions, unrealized, quotes)
-    option_charts()
+    atp.show_index(trades, positions, unrealized, quotes, symbol=name)
+    option_charts(name)
 
     # The retired HA IDX strategies (24 Nov 2026): their trades, and any position until its exit.
     retired = history[history["System"].isin(list(atp.INDEX_SYSTEMS))]

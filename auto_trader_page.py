@@ -829,14 +829,12 @@ def stop_path(trade: dict, rows: list[list], atrs: list, until: float, ha: list 
     return times, levels
 
 
-def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
+def show_index_chart(trades: pd.DataFrame, positions: list[dict], symbol: str = "NIFTY") -> None:
     """The 15-minute Heikin Ashi (or normal) candles of NIFTY and BANKNIFTY (ha_index, from Yahoo's 5-minute bars),
     with the index trades of the day and their SL."""
     st.markdown("**15-minute chart**")
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
-    left, middle, right = st.columns([1, 1, 1])
-    symbol = left.segmented_control("Index", list(ha_index.SYMBOLS), default=ha_index.SYMBOLS[1],
-                                    key="index-chart-symbol") or ha_index.SYMBOLS[1]
+    _, middle, right = st.columns([1, 1, 1])
     request = (instruments[symbol]["yahoo"], INDEX_CHART_RANGE)
     bars = fs.fetch_bars((request,)).get(request)
     if not isinstance(bars, list) or not bars:
@@ -901,7 +899,8 @@ def show_index_chart(trades: pd.DataFrame, positions: list[dict]) -> None:
                "of the day. Dotted line: each trade's stop.")
 
 
-def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, quotes: dict | None = None) -> None:
+def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, quotes: dict | None = None,
+               symbol: str = "NIFTY") -> None:
     """The NIFTY and BANKNIFTY trades of the index strategies (INDEX_SYSTEMS, all retired on 24 Nov 2026):
     totals, open positions, the 15-minute chart and the closed trades, apart from the stock strategies."""
     def strategy(system):
@@ -941,7 +940,7 @@ def show_index(trades: pd.DataFrame, positions: list[dict], unrealized, quotes: 
     else:
         st.caption("None open.")
 
-    show_index_chart(trades, positions)
+    show_index_chart(trades, positions, symbol)
 
     if trades.empty:
         st.caption("No closed index trades yet.")
