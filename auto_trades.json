@@ -23,7 +23,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2414.2,
+   "high": 2414.4,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 2H",
@@ -67,7 +67,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2414.2,
+   "high": 2414.4,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 4H",
@@ -225,13 +225,13 @@
    "run": null,
    "style": "opt_ha",
    "system": "OPT ATM HA",
-   "stop": 1331.85,
+   "stop": 1391.05,
    "time": 1795579200000,
    "status": "open",
    "passed": false,
    "high": 1599.0,
    "low": 1365.1,
-   "ltp": 1430.9,
+   "ltp": 1463.4,
    "nifty": 1.68,
    "source": "Auto OPT ATM HA 15m",
    "timeframes": [
@@ -316,7 +316,7 @@
    "status": "open",
    "passed": false,
    "high": 2620.6,
-   "low": 2620.6,
+   "low": 2603.1,
    "nifty": 1.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -340,6 +340,7 @@
  ],
  "seq": 4812,
  "log": [
+  "25 Nov 10:15  NIFTY 01DEC 25800 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 10:05  ASIANPAINT: RSI BUY 250 at 2620.6, SL 2565.1 (2 HOUR; trail)",
   "25 Nov 09:55  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 09:55  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -638,11 +639,10 @@
   "24 Nov 15:15  MARUTI: Expiry 3:15 PM at 14010.0 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  BEL: Expiry 3:15 PM at 395.8 (Hold \u00b7 trail)",
-  "24 Nov 15:15  PIDILITIND: Expiry 3:15 PM at 1594.2 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  BEL: Expiry 3:15 PM at 395.8 (Hold \u00b7 trail)"
  ],
- "page_run": 1795581642160,
- "updated": 1795581642160,
+ "page_run": 1795581952230,
+ "updated": 1795581952230,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -663,10 +663,10 @@
  },
  "summary_day": "2026-11-24",
  "opt_checked": {
-  "NIFTY CE": 1795581642,
-  "NIFTY PE": 1795581642,
-  "BANKNIFTY CE": 1795581642,
-  "BANKNIFTY PE": 1795581642
+  "NIFTY CE": 1795581952,
+  "NIFTY PE": 1795581952,
+  "BANKNIFTY CE": 1795581952,
+  "BANKNIFTY PE": 1795581952
  },
  "alerted": {
   "dhan": "2026-11-25"
