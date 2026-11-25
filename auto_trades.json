@@ -477,6 +477,7 @@
  ],
  "seq": 4816,
  "log": [
+  "25 Nov 11:55  NIFTY 01DEC 25800 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 11:35  BANKNIFTY 29DEC 63900 CE: Trailing SL at 1579.0 (OPT ATM HA)",
   "25 Nov 11:20  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 11:20  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -775,11 +776,10 @@
   "24 Nov 15:15  HEROMOTOCO: Expiry 3:15 PM at 5535.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  CANBK: Expiry 3:15 PM at 133.75 (Hold \u00b7 trail)",
-  "24 Nov 15:15  BHARTIARTL: Expiry 3:15 PM at 2128.5 (Hold \u00b7 trail)"
+  "24 Nov 15:15  CANBK: Expiry 3:15 PM at 133.75 (Hold \u00b7 trail)"
  ],
- "page_run": 1795587642436,
- "updated": 1795587642436,
+ "page_run": 1795587939160,
+ "updated": 1795587939160,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -800,10 +800,10 @@
  },
  "summary_day": "2026-11-24",
  "opt_checked": {
-  "NIFTY CE": 1795587642,
-  "NIFTY PE": 1795587642,
-  "BANKNIFTY CE": 1795587642,
-  "BANKNIFTY PE": 1795587642
+  "NIFTY CE": 1795587939,
+  "NIFTY PE": 1795587939,
+  "BANKNIFTY CE": 1795587939,
+  "BANKNIFTY PE": 1795587939
  },
  "alerted": {
   "dhan": "2026-11-25"
