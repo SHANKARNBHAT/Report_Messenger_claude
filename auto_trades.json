@@ -400,6 +400,8 @@
  ],
  "seq": 4817,
  "log": [
+  "25 Nov 13:45  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
+  "25 Nov 13:45  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 13:05  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 13:05  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 12:45  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -697,12 +699,10 @@
   "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 trail)",
   "24 Nov 15:15  SHREECEM: Expiry 3:15 PM at 25150.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  SHREECEM: Expiry 3:15 PM at 25150.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  PETRONET: Expiry 3:15 PM at 326.05 (Hold \u00b7 trail)",
-  "24 Nov 15:15  LT: Expiry 3:15 PM at 4099.9 (Hold \u00b7 trail)"
+  "24 Nov 15:15  SHREECEM: Expiry 3:15 PM at 25150.0 (Hold \u00b7 trail)"
  ],
- "page_run": 1795594241244,
- "updated": 1795594241244,
+ "page_run": 1795594546386,
+ "updated": 1795594546386,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
