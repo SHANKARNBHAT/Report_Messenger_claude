@@ -414,7 +414,7 @@
    "status": "open",
    "passed": false,
    "high": 1649.9,
-   "low": 1641.3,
+   "low": 1639.5,
    "nifty": 2.14,
    "source": "Auto 2H",
    "timeframes": [
@@ -434,10 +434,55 @@
     "cost": 1.04,
     "since": 1795584651629
    }
+  },
+  {
+   "id": "1795589438937-4817",
+   "symbol": "ICICIBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 700,
+   "entry": 1643.7,
+   "sl": 1618.8,
+   "tp": 1693.0,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 24.65,
+    "step": 8.2
+   },
+   "style": "trail",
+   "system": "RSI 4H",
+   "stop": 1618.8,
+   "time": 1795589438937,
+   "status": "open",
+   "passed": false,
+   "high": 1643.7,
+   "low": 1643.7,
+   "nifty": 2.16,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795589438937,
+    "price": 1643.7
+   },
+   "protect": {
+    "atr": 38.38,
+    "cost": 1.04,
+    "since": 1795589438937
+   }
   }
  ],
- "seq": 4816,
+ "seq": 4817,
  "log": [
+  "25 Nov 12:20  ICICIBANK: RSI 4H BUY 700 at 1643.7, SL 1618.8 (4 HOUR; trail)",
   "25 Nov 12:05  NIFTY 01DEC 25800 CE: Trailing SL at 330.0 (OPT ATM HA)",
   "25 Nov 11:55  NIFTY 01DEC 25800 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 11:35  BANKNIFTY 29DEC 63900 CE: Trailing SL at 1579.0 (OPT ATM HA)",
@@ -736,11 +781,10 @@
   "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  HEROMOTOCO: Expiry 3:15 PM at 5535.0 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  HEROMOTOCO: Expiry 3:15 PM at 5535.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 8 exit)"
+  "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795589140987,
- "updated": 1795589140987,
+ "page_run": 1795589438937,
+ "updated": 1795589438937,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -761,10 +805,10 @@
  },
  "summary_day": "2026-11-24",
  "opt_checked": {
-  "NIFTY CE": 1795589140,
-  "NIFTY PE": 1795589140,
-  "BANKNIFTY CE": 1795589140,
-  "BANKNIFTY PE": 1795589140
+  "NIFTY CE": 1795589438,
+  "NIFTY PE": 1795589438,
+  "BANKNIFTY CE": 1795589438,
+  "BANKNIFTY PE": 1795589438
  },
  "alerted": {
   "dhan": "2026-11-25"
