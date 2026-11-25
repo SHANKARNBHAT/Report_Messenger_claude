@@ -17,7 +17,9 @@ import pandas as pd
 import streamlit as st
 
 import auto_trader_page as atp
+import dhan_data as dd
 import opt_atm
+import option_charts as oc
 
 # Streamlit Cloud keeps imported modules in memory when it pulls new code, so an
 # auto_trader_page.py changed since the server started is reloaded here.
@@ -26,6 +28,30 @@ if Path(atp.__file__).stat().st_mtime > getattr(atp, "_loaded_at", 0):
     atp._loaded_at = Path(atp.__file__).stat().st_mtime
 
 fs = atp.fs
+
+
+
+def option_charts() -> None:
+    """The NIFTY or BANKNIFTY ATM CE / PE charts the strategy trades (nearest expiry), at the day's
+    opening ATM and the ATM now, as on the Option chain page (option_charts.py)."""
+    st.divider()
+    if not oc.connected():
+        st.caption("ATM CE / PE charts: Dhan is not set up in the app's secrets (see the Option chain page).")
+        return
+    name = st.segmented_control("ATM options of", list(dd.INDICES), default="NIFTY", key="index-opt-symbol") or "NIFTY"
+    underlying = dd.INDICES[name]
+    try:
+        expiry = oc.load_expiries(underlying)[0]
+        price, rows, at = oc.load_chain(underlying, expiry)
+    except (dd.DhanError, IndexError) as e:
+        st.caption(f"No {name} option chain from Dhan: {e}")
+        return
+    df = oc.regular_strikes(rows, underlying)
+    if df.empty:
+        st.caption(f"Empty {name} option chain from Dhan.")
+        return
+    st.caption(f"{name} {price:,.2f} · nearest expiry {expiry} (the one the strategy trades) · Dhan, {at} IST")
+    oc.atm_section(name, underlying, df, price, prefix="ix")
 
 
 def main() -> None:
@@ -63,6 +89,7 @@ def main() -> None:
         return None if not q else round((q["price"] - p["entry"]) * p["qty"], 2)
 
     atp.show_index(trades, positions, unrealized, quotes)
+    option_charts()
 
     # The retired HA IDX strategies (24 Nov 2026): their trades, and any position until its exit.
     retired = history[history["System"].isin(list(atp.INDEX_SYSTEMS))]
