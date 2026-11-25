@@ -51,19 +51,6 @@ def exit(trade: dict) -> None:
              f"Entry {trade['entry']} · net ₹{trade['net']:,.0f} · {trade.get('system')}")
 
 
-def option_2h(window: str, hits: list[dict]) -> None:
-    """The ATM calls whose 2-hour HA candle just completed solid green after red (opt_2h_alert.scan)."""
-    lines = [f"🟢 <b>2H HA solid green after red · ATM CE</b> ({window})"]
-    for h in hits:
-        extra = " · ".join(x for x in (
-            f"LTP {h['ltp']:g}" if h.get("ltp") is not None else "",
-            f"spot {h['spot']:,.2f}",
-            f"lot {h['lot']}" if h.get("lot") else "",
-            f"ATR {h['ratio']:.1f}× strike" if h.get("ratio") else "") if x)
-        lines.append(f"• <b>{h['option']}</b>\n   2H close {h['candle']['close']:g} · {extra}")
-    send("\n".join(lines))
-
-
 def problem(text: str) -> None:
     send(f"⚠️ Auto trader: {text}")
 
