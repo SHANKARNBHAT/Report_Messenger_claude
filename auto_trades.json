@@ -23,7 +23,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2414.4,
+   "high": 2415.8,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 2H",
@@ -67,7 +67,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2414.4,
+   "high": 2415.8,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 4H",
@@ -186,13 +186,13 @@
    "run": null,
    "style": "opt_ha",
    "system": "OPT ATM HA",
-   "stop": 186.85,
+   "stop": 205.75,
    "time": 1795579200000,
    "status": "open",
    "passed": false,
-   "high": 244.0,
+   "high": 251.4,
    "low": 204.25,
-   "ltp": 213.45,
+   "ltp": 249.45,
    "nifty": 1.68,
    "source": "Auto OPT ATM HA 15m",
    "timeframes": [
@@ -231,7 +231,7 @@
    "passed": false,
    "high": 1599.0,
    "low": 1365.1,
-   "ltp": 1463.4,
+   "ltp": 1506.2,
    "nifty": 1.68,
    "source": "Auto OPT ATM HA 15m",
    "timeframes": [
@@ -316,7 +316,7 @@
    "status": "open",
    "passed": false,
    "high": 2620.6,
-   "low": 2603.1,
+   "low": 2602.9,
    "nifty": 1.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -336,10 +336,55 @@
     "cost": 1.71,
     "since": 1795581341856
    }
+  },
+  {
+   "id": "1795582244158-4813",
+   "symbol": "GLENMARK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 375,
+   "entry": 2724.3,
+   "sl": 2650.3,
+   "tp": 2806.05,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 40.85,
+    "step": 13.6
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 2650.3,
+   "time": 1795582244158,
+   "status": "open",
+   "passed": false,
+   "high": 2724.3,
+   "low": 2724.3,
+   "nifty": 1.77,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795582244158,
+    "price": 2724.3
+   },
+   "protect": {
+    "atr": 89.11,
+    "cost": 1.71,
+    "since": 1795582244158
+   }
   }
  ],
- "seq": 4812,
+ "seq": 4813,
  "log": [
+  "25 Nov 10:20  GLENMARK: RSI BUY 375 at 2724.3, SL 2650.3 (2 HOUR; trail)",
   "25 Nov 10:15  NIFTY 01DEC 25800 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 10:05  ASIANPAINT: RSI BUY 250 at 2620.6, SL 2565.1 (2 HOUR; trail)",
   "25 Nov 09:55  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -638,11 +683,10 @@
   "24 Nov 15:15  MARUTI: Expiry 3:15 PM at 14010.0 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  MARUTI: Expiry 3:15 PM at 14010.0 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  BEL: Expiry 3:15 PM at 395.8 (Hold \u00b7 trail)"
+  "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 8 exit)"
  ],
- "page_run": 1795581952230,
- "updated": 1795581952230,
+ "page_run": 1795582244158,
+ "updated": 1795582244158,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -663,10 +707,10 @@
  },
  "summary_day": "2026-11-24",
  "opt_checked": {
-  "NIFTY CE": 1795581952,
-  "NIFTY PE": 1795581952,
-  "BANKNIFTY CE": 1795581952,
-  "BANKNIFTY PE": 1795581952
+  "NIFTY CE": 1795582244,
+  "NIFTY PE": 1795582244,
+  "BANKNIFTY CE": 1795582244,
+  "BANKNIFTY PE": 1795582244
  },
  "alerted": {
   "dhan": "2026-11-25"
