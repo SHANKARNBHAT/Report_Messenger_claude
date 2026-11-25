@@ -23,7 +23,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2370.7,
+   "high": 2382.1,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 2H",
@@ -67,7 +67,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2370.7,
+   "high": 2382.1,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 4H",
@@ -108,7 +108,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 606.0,
+   "high": 617.95,
    "low": 606.0,
    "nifty": 1.5,
    "source": "Auto Weekly",
@@ -149,7 +149,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 606.0,
+   "high": 617.95,
    "low": 606.0,
    "nifty": 1.5,
    "source": "Auto Weekly",
@@ -174,6 +174,8 @@
  ],
  "seq": 4808,
  "log": [
+  "25 Nov 09:26  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
+  "25 Nov 09:26  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "25 Nov 09:15  LICHSGFIN: RSI Weekly BUY 1000 at 606.0, SL 596.9 (WEEKLY; sma8, sma20)",
   "25 Nov 09:15  LAURUSLABS: RSI 4H BUY 850 at 2370.7, SL 2335.15 (4 HOUR; trail)",
   "25 Nov 09:15  LAURUSLABS: RSI BUY 850 at 2370.7, SL 2335.15 (2 HOUR; trail)",
@@ -471,12 +473,10 @@
   "24 Nov 15:15  PGEL: Expiry 3:15 PM at 586.8 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  PGEL: Expiry 3:15 PM at 586.8 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  PGEL: Expiry 3:15 PM at 586.8 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  VOLTAS: Expiry 3:15 PM at 1218.5 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  FORCEMOT: Expiry 3:15 PM at 20098.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ABCAPITAL: Expiry 3:15 PM at 415.8 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  VOLTAS: Expiry 3:15 PM at 1218.5 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795578938676,
- "updated": 1795578938676,
+ "page_run": 1795579008969,
+ "updated": 1795579008969,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -501,5 +501,8 @@
   "NIFTY PE": 1795578938,
   "BANKNIFTY CE": 1795578938,
   "BANKNIFTY PE": 1795578938
+ },
+ "alerted": {
+  "dhan": "2026-11-25"
  }
 }
