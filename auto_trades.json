@@ -23,7 +23,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2416,
+   "high": 2421.6,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 2H",
@@ -67,7 +67,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2416,
+   "high": 2421.6,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 4H",
@@ -186,13 +186,13 @@
    "run": null,
    "style": "opt_ha",
    "system": "OPT ATM HA",
-   "stop": 226.7,
+   "stop": 243.8,
    "time": 1795579200000,
    "status": "open",
    "passed": false,
-   "high": 283.05,
+   "high": 308.0,
    "low": 204.25,
-   "ltp": 280.0,
+   "ltp": 305.7,
    "nifty": 1.68,
    "source": "Auto OPT ATM HA 15m",
    "timeframes": [
@@ -225,13 +225,13 @@
    "run": null,
    "style": "opt_ha",
    "system": "OPT ATM HA",
-   "stop": 1456.2,
+   "stop": 1493.5,
    "time": 1795579200000,
    "status": "open",
    "passed": false,
    "high": 1599.0,
    "low": 1365.1,
-   "ltp": 1543.65,
+   "ltp": 1598.95,
    "nifty": 1.68,
    "source": "Auto OPT ATM HA 15m",
    "timeframes": [
@@ -271,7 +271,7 @@
    "time": 1795580440392,
    "status": "open",
    "passed": false,
-   "high": 1528,
+   "high": 1530.4,
    "low": 1416.3,
    "nifty": 1.66,
    "source": "Auto Daily",
@@ -315,7 +315,7 @@
    "time": 1795581341856,
    "status": "open",
    "passed": false,
-   "high": 2620.9,
+   "high": 2625.4,
    "low": 2602.9,
    "nifty": 1.58,
    "source": "Auto 2H",
@@ -359,7 +359,7 @@
    "time": 1795582244158,
    "status": "open",
    "passed": false,
-   "high": 2724.8,
+   "high": 2726.5,
    "low": 2715.2,
    "nifty": 1.77,
    "source": "Auto 2H",
@@ -403,8 +403,8 @@
    "time": 1795583748056,
    "status": "open",
    "passed": false,
-   "high": 2616.9,
-   "low": 2616.9,
+   "high": 2625.4,
+   "low": 2614,
    "nifty": 1.94,
    "source": "Auto 4H",
    "timeframes": [
@@ -424,10 +424,100 @@
     "cost": 1.71,
     "since": 1795583748056
    }
+  },
+  {
+   "id": "1795584651629-4815",
+   "symbol": "GRASIM",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 250,
+   "entry": 3154.6,
+   "sl": 3072.4,
+   "tp": 3249.25,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 47.3,
+    "step": 15.75
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 3072.4,
+   "time": 1795584651629,
+   "status": "open",
+   "passed": false,
+   "high": 3154.6,
+   "low": 3154.6,
+   "nifty": 2.14,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795584651629,
+    "price": 3154.6
+   },
+   "protect": {
+    "atr": 72.61,
+    "cost": 2.02,
+    "since": 1795584651629
+   }
+  },
+  {
+   "id": "1795584651629-4816",
+   "symbol": "ICICIBANK",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 700,
+   "entry": 1645.0,
+   "sl": 1586.8,
+   "tp": 1694.35,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 24.7,
+    "step": 8.2
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 1586.8,
+   "time": 1795584651629,
+   "status": "open",
+   "passed": false,
+   "high": 1645.0,
+   "low": 1645.0,
+   "nifty": 2.14,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795584651629,
+    "price": 1645.0
+   },
+   "protect": {
+    "atr": 38.38,
+    "cost": 1.04,
+    "since": 1795584651629
+   }
   }
  ],
- "seq": 4814,
+ "seq": 4816,
  "log": [
+  "25 Nov 11:00  ICICIBANK: RSI BUY 700 at 1645.0, SL 1586.8 (2 HOUR; trail)",
+  "25 Nov 11:00  GRASIM: RSI BUY 250 at 3154.6, SL 3072.4 (2 HOUR; trail)",
   "25 Nov 10:45  ASIANPAINT: RSI 4H BUY 250 at 2616.9, SL 2565.1 (4 HOUR; trail)",
   "25 Nov 10:35  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 10:35  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -725,12 +815,10 @@
   "24 Nov 15:15  BEL: Expiry 3:15 PM at 395.8 (Hold \u00b7 trail)",
   "24 Nov 15:15  M&M: Expiry 3:15 PM at 3487.4 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  M&M: Expiry 3:15 PM at 3487.4 (Hold \u00b7 trail)",
-  "24 Nov 15:15  MARUTI: Expiry 3:15 PM at 14010.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  MARUTI: Expiry 3:15 PM at 14010.0 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  HEROMOTOCO: Expiry 3:15 PM at 5535.0 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  MARUTI: Expiry 3:15 PM at 14010.0 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795584338929,
- "updated": 1795584338929,
+ "page_run": 1795584651629,
+ "updated": 1795584651629,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -751,10 +839,10 @@
  },
  "summary_day": "2026-11-24",
  "opt_checked": {
-  "NIFTY CE": 1795584338,
-  "NIFTY PE": 1795584338,
-  "BANKNIFTY CE": 1795584338,
-  "BANKNIFTY PE": 1795584338
+  "NIFTY CE": 1795584651,
+  "NIFTY PE": 1795584651,
+  "BANKNIFTY CE": 1795584651,
+  "BANKNIFTY PE": 1795584651
  },
  "alerted": {
   "dhan": "2026-11-25"
