@@ -186,13 +186,13 @@
    "run": null,
    "style": "opt_ha",
    "system": "OPT ATM HA",
-   "stop": 216.1,
+   "stop": 226.7,
    "time": 1795579200000,
    "status": "open",
    "passed": false,
-   "high": 269.0,
+   "high": 278.5,
    "low": 204.25,
-   "ltp": 268.2,
+   "ltp": 272.3,
    "nifty": 1.68,
    "source": "Auto OPT ATM HA 15m",
    "timeframes": [
@@ -225,13 +225,13 @@
    "run": null,
    "style": "opt_ha",
    "system": "OPT ATM HA",
-   "stop": 1430.55,
+   "stop": 1456.2,
    "time": 1795579200000,
    "status": "open",
    "passed": false,
    "high": 1599.0,
    "low": 1365.1,
-   "ltp": 1555.0,
+   "ltp": 1548.0,
    "nifty": 1.68,
    "source": "Auto OPT ATM HA 15m",
    "timeframes": [
@@ -271,7 +271,7 @@
    "time": 1795580440392,
    "status": "open",
    "passed": false,
-   "high": 1483.6,
+   "high": 1508.2,
    "low": 1416.3,
    "nifty": 1.66,
    "source": "Auto Daily",
@@ -380,10 +380,55 @@
     "cost": 1.71,
     "since": 1795582244158
    }
+  },
+  {
+   "id": "1795583748056-4814",
+   "symbol": "ASIANPAINT",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 250,
+   "entry": 2616.9,
+   "sl": 2565.1,
+   "tp": 2695.4,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 39.25,
+    "step": 13.1
+   },
+   "style": "trail",
+   "system": "RSI 4H",
+   "stop": 2565.1,
+   "time": 1795583748056,
+   "status": "open",
+   "passed": false,
+   "high": 2616.9,
+   "low": 2616.9,
+   "nifty": 1.94,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795583748056,
+    "price": 2616.9
+   },
+   "protect": {
+    "atr": 70.91,
+    "cost": 1.71,
+    "since": 1795583748056
+   }
   }
  ],
- "seq": 4813,
+ "seq": 4814,
  "log": [
+  "25 Nov 10:45  ASIANPAINT: RSI 4H BUY 250 at 2616.9, SL 2565.1 (4 HOUR; trail)",
   "25 Nov 10:35  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 10:35  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 10:35  BANKNIFTY 29DEC 63900 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -682,11 +727,10 @@
   "24 Nov 15:15  M&M: Expiry 3:15 PM at 3487.4 (Hold \u00b7 trail)",
   "24 Nov 15:15  MARUTI: Expiry 3:15 PM at 14010.0 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  MARUTI: Expiry 3:15 PM at 14010.0 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  HEROMOTOCO: Expiry 3:15 PM at 5535.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  ASIANPAINT: Expiry 3:15 PM at 2580.4 (Hold \u00b7 trail)"
+  "24 Nov 15:15  HEROMOTOCO: Expiry 3:15 PM at 5535.0 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795583444806,
- "updated": 1795583444806,
+ "page_run": 1795583748056,
+ "updated": 1795583748056,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -707,10 +751,10 @@
  },
  "summary_day": "2026-11-24",
  "opt_checked": {
-  "NIFTY CE": 1795583444,
-  "NIFTY PE": 1795583444,
-  "BANKNIFTY CE": 1795583444,
-  "BANKNIFTY PE": 1795583444
+  "NIFTY CE": 1795583748,
+  "NIFTY PE": 1795583748,
+  "BANKNIFTY CE": 1795583748,
+  "BANKNIFTY PE": 1795583748
  },
  "alerted": {
   "dhan": "2026-11-25"
