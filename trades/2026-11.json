@@ -160816,5 +160816,39 @@
   "gross": 150.0,
   "charges": 158.88,
   "net": -8.88
+ },
+ {
+  "id": "1795579200000-4809",
+  "symbol": "NIFTY 01DEC 25800 CE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 65,
+  "entry": 230.85,
+  "exit": 330.0,
+  "entry_time": 1795579200000,
+  "exit_time": 1795588260000,
+  "reason": "Trailing SL",
+  "source": "Auto OPT ATM HA 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "OPT ATM HA",
+  "style": "opt_ha",
+  "passed": false,
+  "carried": false,
+  "sl": 96.6,
+  "tp": null,
+  "high": 364.9,
+  "low": 204.25,
+  "nifty": 1.68,
+  "strategies": [
+   "ATM CE/PE \u00b7 first solid green HA after red"
+  ],
+  "first_seen": null,
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 6444.75,
+  "charges": 94.94,
+  "net": 6349.81
  }
 ]
