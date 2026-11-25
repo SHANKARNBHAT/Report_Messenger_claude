@@ -160782,5 +160782,39 @@
   "gross": -6380.0,
   "charges": 603.94,
   "net": -6983.94
+ },
+ {
+  "id": "1795579200000-4810",
+  "symbol": "BANKNIFTY 29DEC 63900 CE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 1574.0,
+  "exit": 1579.0,
+  "entry_time": 1795579200000,
+  "exit_time": 1795586700000,
+  "reason": "Trailing SL",
+  "source": "Auto OPT ATM HA 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "OPT ATM HA",
+  "style": "opt_ha",
+  "passed": false,
+  "carried": false,
+  "sl": 906.05,
+  "tp": null,
+  "high": 1675.0,
+  "low": 1365.1,
+  "nifty": 1.68,
+  "strategies": [
+   "ATM CE/PE \u00b7 first solid green HA after red"
+  ],
+  "first_seen": null,
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 150.0,
+  "charges": 158.88,
+  "net": -8.88
  }
 ]
