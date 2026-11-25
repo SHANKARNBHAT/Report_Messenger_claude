@@ -23,7 +23,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2389.6,
+   "high": 2392.7,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 2H",
@@ -67,7 +67,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2389.6,
+   "high": 2392.7,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 4H",
@@ -252,6 +252,8 @@
  ],
  "seq": 4810,
  "log": [
+  "25 Nov 09:40  BANKNIFTY 29DEC 63900 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
+  "25 Nov 09:40  NIFTY 01DEC 25800 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 09:35  BANKNIFTY 29DEC 63900 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 09:35  NIFTY 01DEC 25800 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 09:31  BANKNIFTY 29DEC 63900 CE: OPT ATM HA BUY 30 at 1574.0 (09:30, solid green HA after red), SL 906.05",
@@ -549,12 +551,10 @@
   "24 Nov 15:15  BLUESTARCO: Expiry 3:15 PM at 1785.1 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  BLUESTARCO: Expiry 3:15 PM at 1785.1 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  DABUR: Expiry 3:15 PM at 399.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  DABUR: Expiry 3:15 PM at 399.0 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  DABUR: Expiry 3:15 PM at 399.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  PGEL: Expiry 3:15 PM at 586.8 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  DABUR: Expiry 3:15 PM at 399.0 (Hold \u00b7 2H SMA 8 exit)"
  ],
- "page_run": 1795579546159,
- "updated": 1795579546159,
+ "page_run": 1795579845147,
+ "updated": 1795579845147,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -575,10 +575,10 @@
  },
  "summary_day": "2026-11-24",
  "opt_checked": {
-  "NIFTY CE": 1795579546,
-  "NIFTY PE": 1795579546,
-  "BANKNIFTY CE": 1795579546,
-  "BANKNIFTY PE": 1795579546
+  "NIFTY CE": 1795579845,
+  "NIFTY PE": 1795579845,
+  "BANKNIFTY CE": 1795579845,
+  "BANKNIFTY PE": 1795579845
  },
  "alerted": {
   "dhan": "2026-11-25"
