@@ -15,7 +15,7 @@ on:
       action:
         description: run, or a request on one position
         type: choice
-        options: [run, trail, untrail, exit, unattended-on, unattended-off, test-chartink, test-telegram]
+        options: [run, trail, untrail, exit, unattended-on, unattended-off, test-chartink, test-telegram, rsi-today]
         default: run
       position:
         description: Position id (for trail, untrail and exit)

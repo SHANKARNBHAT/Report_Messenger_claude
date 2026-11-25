@@ -90,7 +90,8 @@ RSI30_SINCE = datetime(2026, 11, 16, 11, 30, tzinfo=fs.IST).timestamp()  # rule 
 LAST_ENTRY = time(15, 0)  # no new trades after this, ahead of the 3:15 PM square-off
 SESSION_CLOSE = time(15, 30)
 PAGE_QUIET = 12  # minutes: scheduled runs skip while the page started a run this recently
-ACTIONS = ["run", "trail", "untrail", "exit", "unattended-on", "unattended-off", "test-chartink", "test-telegram"]
+ACTIONS = ["run", "trail", "untrail", "exit", "unattended-on", "unattended-off", "test-chartink", "test-telegram",
+           "rsi-today"]
 
 
 def tick(price: float) -> float:
@@ -1118,6 +1119,25 @@ def atm_of(symbol: str, price: float) -> float | None:
     return round(round(price / step) * step, 2) if step else None
 
 
+def send_rsi_today(files: Files, account: dict, now: datetime, note) -> None:
+    """The day's RSI 2H, 4H and Daily entries (open or closed since) on Telegram, as rsi_signals, by strategy."""
+    lots = {i["symbol"]: i["lot"] for i in fs.load_instruments()}
+    entered = [(p["time"], p) for p in account["positions"]] + [
+        (t["entry_time"], t) for t in trades_of(files, now.strftime("%Y-%m"))]
+    for system, timeframe in RSI_ALERTS.items():
+        found = {}
+        for ms, p in sorted(entered, key=lambda e: e[0]):
+            if p.get("system", "RSI") != system or datetime.fromtimestamp(ms / 1000, fs.IST).date() != now.date():
+                continue
+            found.setdefault((p["symbol"], p["side"]), {
+                "symbol": p["symbol"], "side": p["side"], "price": p["entry"], "strike": atm_of(p["symbol"], p["entry"]),
+                "leg": "CE" if p["side"] == "BUY" else "PE", "lot": lots.get(p["symbol"], p["qty"]),
+                "time": datetime.fromtimestamp(ms / 1000, fs.IST).strftime("%H:%M")})
+        if found:
+            telegram_alerts.rsi_signals(timeframe, f"today, {now:%d %b}", list(found.values()))
+        note(f"Telegram: {len(found)} RSI {timeframe} signals of today sent")
+
+
 def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: dict, seen: dict, now: datetime,
                   trading: bool, note, system: str) -> None:
     """Trade one strategy's signals, and note in `seen` what was done with each."""
@@ -1252,6 +1272,8 @@ def main() -> None:
         note("When the page is closed: " + ("auto-trade" if account["unattended"] else "only close positions"))
     elif args.action == "test-chartink":
         test_chartink(note)
+    elif args.action == "rsi-today":
+        send_rsi_today(files, account, now, note)
     elif args.action == "test-telegram":
         if not telegram_alerts.ready():
             note("Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not set")

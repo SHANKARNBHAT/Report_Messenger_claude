@@ -57,7 +57,8 @@ def rsi_signals(timeframe: str, when: str, signals: list[dict]) -> None:
     for s in signals:
         arrow = "🟢 BUY" if s["side"] == "BUY" else "🔴 SELL"
         strike = f"ATM {s['strike']:g} {s['leg']}" if s.get("strike") else "ATM strike unknown"
-        lines.append(f"{arrow} <b>{s['symbol']}</b> @ {s['price']:g} → <b>{strike}</b> · lot {s['lot']}")
+        at = f"{s['time']} " if s.get("time") else ""
+        lines.append(f"{at}{arrow} <b>{s['symbol']}</b> @ {s['price']:g} → <b>{strike}</b> · lot {s['lot']}")
     send("\n".join(lines))
 
 
