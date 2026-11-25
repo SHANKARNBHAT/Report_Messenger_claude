@@ -1,8 +1,182 @@
 {
  "capital": 1000000,
- "positions": [],
- "seq": 4804,
+ "positions": [
+  {
+   "id": "1795578337381-4805",
+   "symbol": "LAURUSLABS",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 850,
+   "entry": 2370.7,
+   "sl": 2335.15,
+   "tp": 2441.8,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 35.55,
+    "step": 11.85
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 2335.15,
+   "time": 1795578337381,
+   "status": "open",
+   "passed": false,
+   "high": 2370.7,
+   "low": 2370.7,
+   "nifty": 1.5,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795578337381,
+    "price": 2370.7
+   },
+   "protect": {
+    "atr": 84.71,
+    "cost": 1.44,
+    "since": 1795578337381
+   }
+  },
+  {
+   "id": "1795578337381-4806",
+   "symbol": "LAURUSLABS",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 850,
+   "entry": 2370.7,
+   "sl": 2335.15,
+   "tp": 2441.8,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 35.55,
+    "step": 11.85
+   },
+   "style": "trail",
+   "system": "RSI 4H",
+   "stop": 2335.15,
+   "time": 1795578337381,
+   "status": "open",
+   "passed": false,
+   "high": 2370.7,
+   "low": 2370.7,
+   "nifty": 1.5,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795578337381,
+    "price": 2370.7
+   },
+   "protect": {
+    "atr": 84.71,
+    "cost": 1.44,
+    "since": 1795578337381
+   }
+  },
+  {
+   "id": "1795578337381-4807",
+   "symbol": "LICHSGFIN",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1000,
+   "entry": 606.0,
+   "sl": 596.9,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma8",
+   "system": "RSI Weekly",
+   "stop": 596.9,
+   "time": 1795578337381,
+   "status": "open",
+   "passed": false,
+   "high": 606.0,
+   "low": 606.0,
+   "nifty": 1.5,
+   "source": "Auto Weekly",
+   "timeframes": [
+    "WEEKLY"
+   ],
+   "strategies": [
+    "WEEKLY RSI BULLISH"
+   ],
+   "agrees": "Yes",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795578337381,
+    "price": 606.0
+   },
+   "protect": {
+    "atr": 19.32,
+    "cost": 0.44,
+    "since": 1795578337381
+   }
+  },
+  {
+   "id": "1795578337381-4808",
+   "symbol": "LICHSGFIN",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1000,
+   "entry": 606.0,
+   "sl": 596.9,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "sma20",
+   "system": "RSI Weekly",
+   "stop": 596.9,
+   "time": 1795578337381,
+   "status": "open",
+   "passed": false,
+   "high": 606.0,
+   "low": 606.0,
+   "nifty": 1.5,
+   "source": "Auto Weekly",
+   "timeframes": [
+    "WEEKLY"
+   ],
+   "strategies": [
+    "WEEKLY RSI BULLISH"
+   ],
+   "agrees": "Yes",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795578337381,
+    "price": 606.0
+   },
+   "protect": {
+    "atr": 19.32,
+    "cost": 0.44,
+    "since": 1795578337381
+   }
+  }
+ ],
+ "seq": 4808,
  "log": [
+  "25 Nov 09:15  LICHSGFIN: RSI Weekly BUY 1000 at 606.0, SL 596.9 (WEEKLY; sma8, sma20)",
+  "25 Nov 09:15  LAURUSLABS: RSI 4H BUY 850 at 2370.7, SL 2335.15 (4 HOUR; trail)",
+  "25 Nov 09:15  LAURUSLABS: RSI BUY 850 at 2370.7, SL 2335.15 (2 HOUR; trail)",
   "24 Nov 15:15  AUROPHARMA: Expiry 3:15 PM at 1796.5 (Hold \u00b7 trail)",
   "24 Nov 15:15  KALYANKJIL: Expiry 3:15 PM at 652.9 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  KALYANKJIL: Expiry 3:15 PM at 652.9 (Hold \u00b7 trail)",
@@ -299,13 +473,10 @@
   "24 Nov 15:15  PGEL: Expiry 3:15 PM at 586.8 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  VOLTAS: Expiry 3:15 PM at 1218.5 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  FORCEMOT: Expiry 3:15 PM at 20098.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ABCAPITAL: Expiry 3:15 PM at 415.8 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  NATIONALUM: Expiry 3:15 PM at 298.65 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  NATIONALUM: Expiry 3:15 PM at 298.65 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  SAIL: Expiry 3:15 PM at 162.0 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  ABCAPITAL: Expiry 3:15 PM at 415.8 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795578047852,
- "updated": 1795578047852,
+ "page_run": 1795578337381,
+ "updated": 1795578337381,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -324,5 +495,11 @@
    "entered": false
   }
  },
- "summary_day": "2026-11-24"
+ "summary_day": "2026-11-24",
+ "opt_checked": {
+  "NIFTY CE": 1795578337,
+  "NIFTY PE": 1795578337,
+  "BANKNIFTY CE": 1795578337,
+  "BANKNIFTY PE": 1795578337
+ }
 }
