@@ -156,7 +156,7 @@
    "status": "open",
    "passed": false,
    "high": 2633.5,
-   "low": 2602.9,
+   "low": 2602.2,
    "nifty": 1.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -244,7 +244,7 @@
    "status": "open",
    "passed": false,
    "high": 2633.5,
-   "low": 2604,
+   "low": 2602.2,
    "nifty": 1.94,
    "source": "Auto 4H",
    "timeframes": [
@@ -332,7 +332,7 @@
    "status": "open",
    "passed": false,
    "high": 1649.9,
-   "low": 1631.4,
+   "low": 1629.5,
    "nifty": 2.14,
    "source": "Auto 2H",
    "timeframes": [
@@ -376,7 +376,7 @@
    "status": "open",
    "passed": false,
    "high": 1646.3,
-   "low": 1631.4,
+   "low": 1629.5,
    "nifty": 2.16,
    "source": "Auto 4H",
    "timeframes": [
@@ -400,6 +400,8 @@
  ],
  "seq": 4817,
  "log": [
+  "25 Nov 13:05  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
+  "25 Nov 13:05  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 12:45  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 12:40  LICHSGFIN: Profit lock SL at 606.44 (Hold \u00b7 2H SMA 20 exit)",
   "25 Nov 12:40  LICHSGFIN: Profit lock SL at 606.44 (Hold \u00b7 2H SMA 8 exit)",
@@ -697,12 +699,10 @@
   "24 Nov 15:15  SHREECEM: Expiry 3:15 PM at 25150.0 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  SHREECEM: Expiry 3:15 PM at 25150.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  PETRONET: Expiry 3:15 PM at 326.05 (Hold \u00b7 trail)",
-  "24 Nov 15:15  LT: Expiry 3:15 PM at 4099.9 (Hold \u00b7 trail)",
-  "24 Nov 15:15  PNBHOUSING: Expiry 3:15 PM at 1180.2 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  AMBUJACEM: Expiry 3:15 PM at 391.95 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  LT: Expiry 3:15 PM at 4099.9 (Hold \u00b7 trail)"
  ],
- "page_run": 1795591850071,
- "updated": 1795591850071,
+ "page_run": 1795592141530,
+ "updated": 1795592141530,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
