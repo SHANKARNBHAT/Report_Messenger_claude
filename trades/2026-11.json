@@ -160850,5 +160850,79 @@
   "gross": 6444.75,
   "charges": 94.94,
   "net": 6349.81
+ },
+ {
+  "id": "1795578337381-4807",
+  "symbol": "LICHSGFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 606.0,
+  "exit": 606.44,
+  "entry_time": 1795578337381,
+  "exit_time": 1795590000000,
+  "reason": "Profit lock SL",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma8",
+  "passed": false,
+  "carried": false,
+  "sl": 596.9,
+  "tp": null,
+  "high": 620.3,
+  "low": 606.0,
+  "nifty": 1.5,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1795578337381,
+   "price": 606.0
+  },
+  "agrees": "Yes",
+  "sma_rsi": null,
+  "gross": 440.0,
+  "charges": 388.72,
+  "net": 51.28
+ },
+ {
+  "id": "1795578337381-4808",
+  "symbol": "LICHSGFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 606.0,
+  "exit": 606.44,
+  "entry_time": 1795578337381,
+  "exit_time": 1795590000000,
+  "reason": "Profit lock SL",
+  "source": "Auto Weekly",
+  "timeframes": [
+   "WEEKLY"
+  ],
+  "system": "RSI Weekly",
+  "style": "sma20",
+  "passed": false,
+  "carried": false,
+  "sl": 596.9,
+  "tp": null,
+  "high": 620.3,
+  "low": 606.0,
+  "nifty": 1.5,
+  "strategies": [
+   "WEEKLY RSI BULLISH"
+  ],
+  "first_seen": {
+   "time": 1795578337381,
+   "price": 606.0
+  },
+  "agrees": "Yes",
+  "sma_rsi": null,
+  "gross": 440.0,
+  "charges": 388.72,
+  "net": 51.28
  }
 ]
