@@ -23,7 +23,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2428.6,
+   "high": 2439,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 2H",
@@ -67,7 +67,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": false,
-   "high": 2428.6,
+   "high": 2439,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 4H",
@@ -244,7 +244,7 @@
    "status": "open",
    "passed": false,
    "high": 2633.5,
-   "low": 2608.8,
+   "low": 2608.7,
    "nifty": 1.94,
    "source": "Auto 4H",
    "timeframes": [
@@ -288,7 +288,7 @@
    "status": "open",
    "passed": false,
    "high": 3168.5,
-   "low": 3146.6,
+   "low": 3145.1,
    "nifty": 2.14,
    "source": "Auto 2H",
    "timeframes": [
@@ -332,7 +332,7 @@
    "status": "open",
    "passed": false,
    "high": 1649.9,
-   "low": 1638.6,
+   "low": 1636.8,
    "nifty": 2.14,
    "source": "Auto 2H",
    "timeframes": [
@@ -376,7 +376,7 @@
    "status": "open",
    "passed": false,
    "high": 1646.3,
-   "low": 1638.6,
+   "low": 1636.8,
    "nifty": 2.16,
    "source": "Auto 4H",
    "timeframes": [
@@ -400,6 +400,7 @@
  ],
  "seq": 4817,
  "log": [
+  "25 Nov 12:45  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 12:40  LICHSGFIN: Profit lock SL at 606.44 (Hold \u00b7 2H SMA 20 exit)",
   "25 Nov 12:40  LICHSGFIN: Profit lock SL at 606.44 (Hold \u00b7 2H SMA 8 exit)",
   "25 Nov 12:25  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -698,11 +699,10 @@
   "24 Nov 15:15  PETRONET: Expiry 3:15 PM at 326.05 (Hold \u00b7 trail)",
   "24 Nov 15:15  LT: Expiry 3:15 PM at 4099.9 (Hold \u00b7 trail)",
   "24 Nov 15:15  PNBHOUSING: Expiry 3:15 PM at 1180.2 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  AMBUJACEM: Expiry 3:15 PM at 391.95 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  AMBUJACEM: Expiry 3:15 PM at 391.95 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795590637010,
- "updated": 1795590637010,
+ "page_run": 1795590936794,
+ "updated": 1795590936794,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -725,8 +725,8 @@
  "opt_checked": {
   "NIFTY CE": 1795590637,
   "NIFTY PE": 1795590637,
-  "BANKNIFTY CE": 1795590637,
-  "BANKNIFTY PE": 1795590637
+  "BANKNIFTY CE": 1795590936,
+  "BANKNIFTY PE": 1795590936
  },
  "alerted": {
   "dhan": "2026-11-25"
