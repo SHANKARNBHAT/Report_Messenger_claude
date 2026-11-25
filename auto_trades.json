@@ -384,6 +384,8 @@
  ],
  "seq": 4813,
  "log": [
+  "25 Nov 10:30  BANKNIFTY 29DEC 63900 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
+  "25 Nov 10:30  NIFTY 01DEC 25800 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 10:20  GLENMARK: RSI BUY 375 at 2724.3, SL 2650.3 (2 HOUR; trail)",
   "25 Nov 10:15  NIFTY 01DEC 25800 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "25 Nov 10:05  ASIANPAINT: RSI BUY 250 at 2620.6, SL 2565.1 (2 HOUR; trail)",
@@ -681,12 +683,10 @@
   "24 Nov 15:15  HINDUNILVR: Expiry 3:15 PM at 2019.1 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  HINDUNILVR: Expiry 3:15 PM at 2019.1 (Hold \u00b7 trail)",
   "24 Nov 15:15  MARUTI: Expiry 3:15 PM at 14010.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  MARUTI: Expiry 3:15 PM at 14010.0 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 2H SMA 8 exit)"
+  "24 Nov 15:15  MARUTI: Expiry 3:15 PM at 14010.0 (Hold \u00b7 2H SMA 8 exit)"
  ],
- "page_run": 1795582539876,
- "updated": 1795582539876,
+ "page_run": 1795582853288,
+ "updated": 1795582853288,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -707,10 +707,10 @@
  },
  "summary_day": "2026-11-24",
  "opt_checked": {
-  "NIFTY CE": 1795582539,
-  "NIFTY PE": 1795582539,
-  "BANKNIFTY CE": 1795582539,
-  "BANKNIFTY PE": 1795582539
+  "NIFTY CE": 1795582853,
+  "NIFTY PE": 1795582853,
+  "BANKNIFTY CE": 1795582853,
+  "BANKNIFTY PE": 1795582853
  },
  "alerted": {
   "dhan": "2026-11-25"
