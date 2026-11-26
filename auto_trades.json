@@ -551,7 +551,7 @@
    "time": 1795679439065,
    "status": "open",
    "passed": false,
-   "high": 2385.0,
+   "high": 2388.9,
    "low": 2385.0,
    "nifty": 0.23,
    "source": "Auto 2H",
@@ -576,6 +576,8 @@
  ],
  "seq": 4826,
  "log": [
+  "26 Nov 13:31  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
+  "26 Nov 13:31  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 13:25  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 13:21  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 13:21  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
@@ -873,12 +875,10 @@
   "24 Nov 15:15  LODHA: Expiry 3:15 PM at 1219.0 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  LODHA: Expiry 3:15 PM at 1219.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 trail)",
-  "24 Nov 15:15  POWERGRID: Expiry 3:15 PM at 264.85 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 8 exit)"
  ],
- "page_run": 1795680056550,
- "updated": 1795680056550,
+ "page_run": 1795680105172,
+ "updated": 1795680105172,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
