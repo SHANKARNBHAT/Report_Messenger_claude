@@ -156,7 +156,7 @@
    "status": "open",
    "passed": false,
    "high": 2633.5,
-   "low": 2597,
+   "low": 2595,
    "nifty": 1.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -244,7 +244,7 @@
    "status": "open",
    "passed": false,
    "high": 2633.5,
-   "low": 2597,
+   "low": 2595,
    "nifty": 1.94,
    "source": "Auto 4H",
    "timeframes": [
@@ -288,7 +288,7 @@
    "status": "open",
    "passed": false,
    "high": 3169.3,
-   "low": 3132,
+   "low": 3128.6,
    "nifty": 2.14,
    "source": "Auto 2H",
    "timeframes": [
@@ -488,6 +488,8 @@
  ],
  "seq": 4820,
  "log": [
+  "26 Nov 09:41  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
+  "26 Nov 09:41  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 09:40  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 09:40  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 09:31  CUMMINSIND: Stop loss at 4115.8 (Hold \u00b7 trail)",
@@ -785,12 +787,10 @@
   "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 trail)",
   "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  MOTHERSON: Expiry 3:15 PM at 165.76 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  MOTHERSON: Expiry 3:15 PM at 165.76 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  MOTHERSON: Expiry 3:15 PM at 165.76 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ALKEM: Expiry 3:15 PM at 5067.0 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  MOTHERSON: Expiry 3:15 PM at 165.76 (Hold \u00b7 2H SMA 8 exit)"
  ],
- "page_run": 1795666245521,
- "updated": 1795666245521,
+ "page_run": 1795666290812,
+ "updated": 1795666290812,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
