@@ -552,7 +552,7 @@
    "status": "open",
    "passed": false,
    "high": 570.6,
-   "low": 570.6,
+   "low": 567,
    "nifty": 0.37,
    "source": "Auto 4H",
    "timeframes": [
@@ -576,6 +576,8 @@
  ],
  "seq": 4822,
  "log": [
+  "26 Nov 10:41  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
+  "26 Nov 10:41  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 10:30  UPL: RSI 4H BUY 1355 at 570.6, SL 547.35 (4 HOUR; trail)",
   "26 Nov 10:26  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 10:26  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
@@ -873,12 +875,10 @@
   "24 Nov 15:15  PERSISTENT: Expiry 3:15 PM at 6282.5 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  PERSISTENT: Expiry 3:15 PM at 6282.5 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  NYKAA: Expiry 3:15 PM at 357.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  HDFCAMC: Expiry 3:15 PM at 2682.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  HDFCAMC: Expiry 3:15 PM at 2682.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ATHERENERG: Expiry 3:15 PM at 1979.2 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  HDFCAMC: Expiry 3:15 PM at 2682.0 (Hold \u00b7 trail)"
  ],
- "page_run": 1795669840291,
- "updated": 1795669840291,
+ "page_run": 1795669890758,
+ "updated": 1795669890758,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
