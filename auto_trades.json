@@ -576,6 +576,7 @@
  ],
  "seq": 4826,
  "log": [
+  "26 Nov 13:25  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 13:21  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 13:21  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 13:20  WAAREEENER: RSI SELL 175 at 2385.0, SL 2420.9 (2 HOUR; trail)",
@@ -874,11 +875,10 @@
   "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 trail)",
-  "24 Nov 15:15  POWERGRID: Expiry 3:15 PM at 264.85 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  POWERGRID: Expiry 3:15 PM at 264.85 (Hold \u00b7 trail)"
+  "24 Nov 15:15  POWERGRID: Expiry 3:15 PM at 264.85 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795679494839,
- "updated": 1795679494839,
+ "page_run": 1795679752936,
+ "updated": 1795679752936,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -901,8 +901,8 @@
  "opt_checked": {
   "NIFTY CE": 1795679439,
   "NIFTY PE": 1795679439,
-  "BANKNIFTY CE": 1795679439,
-  "BANKNIFTY PE": 1795679439
+  "BANKNIFTY CE": 1795679752,
+  "BANKNIFTY PE": 1795679752
  },
  "alerted": {
   "dhan": "2026-11-26"
