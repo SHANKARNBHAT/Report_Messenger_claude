@@ -419,7 +419,7 @@
    "time": 1795664739629,
    "status": "open",
    "passed": false,
-   "high": 604.8,
+   "high": 605.4,
    "low": 600.55,
    "nifty": -0.09,
    "source": "Auto Daily",
@@ -484,10 +484,55 @@
     "cost": 1.49,
     "since": 1795664739629
    }
+  },
+  {
+   "id": "1795667137066-4821",
+   "symbol": "UPL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1355,
+   "entry": 571.75,
+   "sl": 547.35,
+   "tp": 588.9,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 8.6,
+    "step": 2.85
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 547.35,
+   "time": 1795667137066,
+   "status": "open",
+   "passed": false,
+   "high": 571.75,
+   "low": 571.75,
+   "nifty": 0.08,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795667137066,
+    "price": 571.75
+   },
+   "protect": {
+    "atr": 18.94,
+    "cost": 0.41,
+    "since": 1795667137066
+   }
   }
  ],
- "seq": 4820,
+ "seq": 4821,
  "log": [
+  "26 Nov 09:55  UPL: RSI BUY 1355 at 571.75, SL 547.35 (2 HOUR; trail)",
   "26 Nov 09:41  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 09:41  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 09:40  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -786,11 +831,10 @@
   "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 trail)",
   "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  MOTHERSON: Expiry 3:15 PM at 165.76 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  MOTHERSON: Expiry 3:15 PM at 165.76 (Hold \u00b7 2H SMA 8 exit)"
+  "24 Nov 15:15  MOTHERSON: Expiry 3:15 PM at 165.76 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795666842981,
- "updated": 1795666842981,
+ "page_run": 1795667137066,
+ "updated": 1795667137066,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -811,10 +855,10 @@
  },
  "summary_day": "2026-11-25",
  "opt_checked": {
-  "NIFTY CE": 1795666842,
-  "NIFTY PE": 1795666842,
-  "BANKNIFTY CE": 1795666842,
-  "BANKNIFTY PE": 1795666842
+  "NIFTY CE": 1795667137,
+  "NIFTY PE": 1795667137,
+  "BANKNIFTY CE": 1795667137,
+  "BANKNIFTY PE": 1795667137
  },
  "alerted": {
   "dhan": "2026-11-26"
