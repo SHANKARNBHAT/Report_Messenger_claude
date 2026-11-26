@@ -156,7 +156,7 @@
    "status": "open",
    "passed": false,
    "high": 2633.5,
-   "low": 2588,
+   "low": 2584,
    "nifty": 1.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -244,7 +244,7 @@
    "status": "open",
    "passed": false,
    "high": 2633.5,
-   "low": 2588,
+   "low": 2584,
    "nifty": 1.94,
    "source": "Auto 4H",
    "timeframes": [
@@ -532,6 +532,7 @@
  ],
  "seq": 4821,
  "log": [
+  "26 Nov 10:00  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 09:55  UPL: RSI BUY 1355 at 571.75, SL 547.35 (2 HOUR; trail)",
   "26 Nov 09:41  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 09:41  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -830,11 +831,10 @@
   "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 trail)",
   "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  MOTHERSON: Expiry 3:15 PM at 165.76 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795667137066,
- "updated": 1795667137066,
+ "page_run": 1795667451569,
+ "updated": 1795667451569,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -857,8 +857,8 @@
  "opt_checked": {
   "NIFTY CE": 1795667137,
   "NIFTY PE": 1795667137,
-  "BANKNIFTY CE": 1795667137,
-  "BANKNIFTY PE": 1795667137
+  "BANKNIFTY CE": 1795667451,
+  "BANKNIFTY PE": 1795667451
  },
  "alerted": {
   "dhan": "2026-11-26"
