@@ -332,7 +332,7 @@
    "status": "open",
    "passed": false,
    "high": 1652,
-   "low": 1622.4,
+   "low": 1621.5,
    "nifty": 2.14,
    "source": "Auto 2H",
    "timeframes": [
@@ -376,7 +376,7 @@
    "status": "open",
    "passed": false,
    "high": 1652,
-   "low": 1622.4,
+   "low": 1621.5,
    "nifty": 2.16,
    "source": "Auto 4H",
    "timeframes": [
@@ -596,7 +596,7 @@
    "status": "open",
    "passed": false,
    "high": 2714.4,
-   "low": 2703.9,
+   "low": 2700.5,
    "nifty": 0.38,
    "source": "Auto 2H",
    "timeframes": [
@@ -620,6 +620,7 @@
  ],
  "seq": 4823,
  "log": [
+  "26 Nov 11:50  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 11:41  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 11:41  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 11:31  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
@@ -918,11 +919,10 @@
   "24 Nov 15:15  COFORGE: Expiry 3:15 PM at 2142.3 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  COFORGE: Expiry 3:15 PM at 2142.3 (Hold \u00b7 trail)",
   "24 Nov 15:15  ONGC: Expiry 3:15 PM at 222.85 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  ONGC: Expiry 3:15 PM at 222.85 (Hold \u00b7 trail)",
-  "24 Nov 15:15  SAGILITY: Expiry 3:15 PM at 46.09 (Hold \u00b7 trail)"
+  "24 Nov 15:15  ONGC: Expiry 3:15 PM at 222.85 (Hold \u00b7 trail)"
  ],
- "page_run": 1795673744753,
- "updated": 1795673744753,
+ "page_run": 1795674046894,
+ "updated": 1795674046894,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -945,8 +945,8 @@
  "opt_checked": {
   "NIFTY CE": 1795673744,
   "NIFTY PE": 1795673744,
-  "BANKNIFTY CE": 1795673744,
-  "BANKNIFTY PE": 1795673744
+  "BANKNIFTY CE": 1795674046,
+  "BANKNIFTY PE": 1795674046
  },
  "alerted": {
   "dhan": "2026-11-26"
