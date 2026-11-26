@@ -528,10 +528,55 @@
     "cost": 0.41,
     "since": 1795667137066
    }
+  },
+  {
+   "id": "1795669250248-4822",
+   "symbol": "UPL",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 1355,
+   "entry": 570.6,
+   "sl": 547.35,
+   "tp": 587.7,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 8.55,
+    "step": 2.85
+   },
+   "style": "trail",
+   "system": "RSI 4H",
+   "stop": 547.35,
+   "time": 1795669250248,
+   "status": "open",
+   "passed": false,
+   "high": 570.6,
+   "low": 570.6,
+   "nifty": 0.37,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795669250248,
+    "price": 570.6
+   },
+   "protect": {
+    "atr": 18.94,
+    "cost": 0.41,
+    "since": 1795669250248
+   }
   }
  ],
- "seq": 4821,
+ "seq": 4822,
  "log": [
+  "26 Nov 10:30  UPL: RSI 4H BUY 1355 at 570.6, SL 547.35 (4 HOUR; trail)",
   "26 Nov 10:26  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 10:26  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 10:11  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
@@ -830,11 +875,10 @@
   "24 Nov 15:15  NYKAA: Expiry 3:15 PM at 357.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  HDFCAMC: Expiry 3:15 PM at 2682.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  HDFCAMC: Expiry 3:15 PM at 2682.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ATHERENERG: Expiry 3:15 PM at 1979.2 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  ATHERENERG: Expiry 3:15 PM at 1979.2 (Hold \u00b7 2H SMA 8 exit)"
+  "24 Nov 15:15  ATHERENERG: Expiry 3:15 PM at 1979.2 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795668981390,
- "updated": 1795668981390,
+ "page_run": 1795669250248,
+ "updated": 1795669250248,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -855,10 +899,10 @@
  },
  "summary_day": "2026-11-25",
  "opt_checked": {
-  "NIFTY CE": 1795668935,
-  "NIFTY PE": 1795668935,
-  "BANKNIFTY CE": 1795668935,
-  "BANKNIFTY PE": 1795668935
+  "NIFTY CE": 1795669250,
+  "NIFTY PE": 1795669250,
+  "BANKNIFTY CE": 1795669250,
+  "BANKNIFTY PE": 1795669250
  },
  "alerted": {
   "dhan": "2026-11-26"
