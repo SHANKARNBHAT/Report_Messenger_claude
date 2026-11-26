@@ -23,7 +23,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": true,
-   "high": 2502.8,
+   "high": 2503.8,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 2H",
@@ -67,7 +67,7 @@
    "time": 1795578337381,
    "status": "open",
    "passed": true,
-   "high": 2502.8,
+   "high": 2503.8,
    "low": 2370.7,
    "nifty": 1.5,
    "source": "Auto 4H",
@@ -419,7 +419,7 @@
    "time": 1795664739629,
    "status": "open",
    "passed": false,
-   "high": 606.6,
+   "high": 606.65,
    "low": 600.55,
    "nifty": -0.09,
    "source": "Auto Daily",
@@ -463,7 +463,7 @@
    "time": 1795664739629,
    "status": "open",
    "passed": false,
-   "high": 2502.8,
+   "high": 2503.8,
    "low": 2460.0,
    "nifty": -0.09,
    "source": "Auto Daily",
@@ -532,6 +532,7 @@
  ],
  "seq": 4821,
  "log": [
+  "26 Nov 10:05  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 10:01  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 10:01  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 10:00  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -830,11 +831,10 @@
   "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  ADANIPOWER: Expiry 3:15 PM at 207.9 (Hold \u00b7 trail)"
  ],
- "page_run": 1795667511987,
- "updated": 1795667511987,
+ "page_run": 1795667738304,
+ "updated": 1795667738304,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -857,8 +857,8 @@
  "opt_checked": {
   "NIFTY CE": 1795667137,
   "NIFTY PE": 1795667137,
-  "BANKNIFTY CE": 1795667451,
-  "BANKNIFTY PE": 1795667451
+  "BANKNIFTY CE": 1795667738,
+  "BANKNIFTY PE": 1795667738
  },
  "alerted": {
   "dhan": "2026-11-26"
