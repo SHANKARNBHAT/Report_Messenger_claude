@@ -551,7 +551,7 @@
    "time": 1795679439065,
    "status": "open",
    "passed": false,
-   "high": 2397.9,
+   "high": 2399.9,
    "low": 2379.3,
    "nifty": 0.23,
    "source": "Auto 2H",
@@ -615,6 +615,9 @@
  ],
  "seq": 4827,
  "log": [
+  "26 Nov 14:55  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
+  "26 Nov 14:55  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
+  "26 Nov 14:55  NIFTY 01DEC 25950 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 14:50  NIFTY 01DEC 25950 CE: OPT ATM HA BUY 65 at 171.05 (14:45, solid green HA after red), SL 111.9",
   "26 Nov 14:45  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 14:45  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -911,13 +914,10 @@
   "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 trail)",
   "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ANGELONE: Expiry 3:15 PM at 337.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  HDFCLIFE: Expiry 3:15 PM at 574.95 (Hold \u00b7 trail)"
+  "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 8 exit)"
  ],
- "page_run": 1795684839332,
- "updated": 1795684839332,
+ "page_run": 1795685137204,
+ "updated": 1795685137204,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
