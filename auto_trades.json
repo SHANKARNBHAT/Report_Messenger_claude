@@ -288,7 +288,7 @@
    "status": "open",
    "passed": false,
    "high": 608.9,
-   "low": 596.8,
+   "low": 596.05,
    "nifty": -0.09,
    "source": "Auto Daily",
    "timeframes": [
@@ -572,49 +572,11 @@
     "cost": 1.66,
     "since": 1795679439065
    }
-  },
-  {
-   "id": "1795684500000-4827",
-   "symbol": "NIFTY 01DEC 25950 CE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 65,
-   "entry": 171.05,
-   "sl": 111.9,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "opt_ha",
-   "system": "OPT ATM HA",
-   "stop": 141.65,
-   "time": 1795684500000,
-   "status": "open",
-   "passed": false,
-   "high": 188.8,
-   "low": 161.4,
-   "ltp": 165.3,
-   "nifty": 2.28,
-   "source": "Auto OPT ATM HA 15m",
-   "timeframes": [
-    "15 MIN"
-   ],
-   "strategies": [
-    "ATM CE/PE \u00b7 first solid green HA after red"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": null,
-   "leg": "NIFTY CE",
-   "underlying": "NIFTY",
-   "security_id": 47893,
-   "expiry": "2026-12-01",
-   "strike": 25950.0
   }
  ],
  "seq": 4827,
  "log": [
+  "26 Nov 15:15  NIFTY 01DEC 25950 CE: 3:15 PM square-off at 166.8 (OPT ATM HA)",
   "26 Nov 15:10  NIFTY 01DEC 25950 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 15:00  NIFTY 01DEC 25950 CE: no Dhan bars (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 14:55  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -913,11 +875,10 @@
   "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 trail)"
+  "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 2H SMA 8 exit)"
  ],
- "page_run": 1795686042858,
- "updated": 1795686042858,
+ "page_run": 1795686343312,
+ "updated": 1795686343312,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -938,10 +899,10 @@
  },
  "summary_day": "2026-11-25",
  "opt_checked": {
-  "NIFTY CE": 1795686042,
-  "NIFTY PE": 1795686042,
-  "BANKNIFTY CE": 1795686042,
-  "BANKNIFTY PE": 1795686042
+  "NIFTY CE": 1795686343,
+  "NIFTY PE": 1795686343,
+  "BANKNIFTY CE": 1795686343,
+  "BANKNIFTY PE": 1795686343
  },
  "alerted": {
   "dhan": "2026-11-26"
