@@ -615,6 +615,7 @@
  ],
  "seq": 4827,
  "log": [
+  "26 Nov 15:00  NIFTY 01DEC 25950 CE: no Dhan bars (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 14:55  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 14:55  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 14:55  NIFTY 01DEC 25950 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -913,11 +914,10 @@
   "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 trail)",
-  "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 8 exit)"
+  "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795685137204,
- "updated": 1795685137204,
+ "page_run": 1795685452617,
+ "updated": 1795685452617,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -938,10 +938,10 @@
  },
  "summary_day": "2026-11-25",
  "opt_checked": {
-  "NIFTY CE": 1795684839,
-  "NIFTY PE": 1795684839,
-  "BANKNIFTY CE": 1795684839,
-  "BANKNIFTY PE": 1795684839
+  "NIFTY CE": 1795685452,
+  "NIFTY PE": 1795685452,
+  "BANKNIFTY CE": 1795685452,
+  "BANKNIFTY PE": 1795685452
  },
  "alerted": {
   "dhan": "2026-11-26"
