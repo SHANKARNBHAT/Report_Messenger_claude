@@ -160924,5 +160924,42 @@
   "gross": 440.0,
   "charges": 388.72,
   "net": 51.28
+ },
+ {
+  "id": "1795598738003-4818",
+  "symbol": "CUMMINSIND",
+  "side": "SELL",
+  "lots": 1,
+  "qty": 200,
+  "entry": 4055.0,
+  "exit": 4115.8,
+  "entry_time": 1795598738003,
+  "exit_time": 1795665000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 4115.8,
+  "tp": 3933.35,
+  "high": 4115.8,
+  "low": 4055.0,
+  "nifty": 1.65,
+  "strategies": [
+   "2H RSI Bearish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795598738003,
+   "price": 4055.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12160.0,
+  "charges": 504.45,
+  "net": -12664.45
  }
 ]
