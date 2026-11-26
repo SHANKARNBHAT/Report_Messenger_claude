@@ -551,7 +551,7 @@
    "time": 1795679439065,
    "status": "open",
    "passed": false,
-   "high": 2395.9,
+   "high": 2397.9,
    "low": 2379.3,
    "nifty": 0.23,
    "source": "Auto 2H",
@@ -572,10 +572,50 @@
     "cost": 1.66,
     "since": 1795679439065
    }
+  },
+  {
+   "id": "1795684500000-4827",
+   "symbol": "NIFTY 01DEC 25950 CE",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 65,
+   "entry": 171.05,
+   "sl": 111.9,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "opt_ha",
+   "system": "OPT ATM HA",
+   "stop": 111.9,
+   "time": 1795684500000,
+   "status": "open",
+   "passed": false,
+   "high": 188.8,
+   "low": 171.05,
+   "ltp": 184.3,
+   "nifty": 2.28,
+   "source": "Auto OPT ATM HA 15m",
+   "timeframes": [
+    "15 MIN"
+   ],
+   "strategies": [
+    "ATM CE/PE \u00b7 first solid green HA after red"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": null,
+   "leg": "NIFTY CE",
+   "underlying": "NIFTY",
+   "security_id": 47893,
+   "expiry": "2026-12-01",
+   "strike": 25950.0
   }
  ],
- "seq": 4826,
+ "seq": 4827,
  "log": [
+  "26 Nov 14:50  NIFTY 01DEC 25950 CE: OPT ATM HA BUY 65 at 171.05 (14:45, solid green HA after red), SL 111.9",
   "26 Nov 14:45  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 14:45  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 14:35  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -874,11 +914,10 @@
   "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 trail)",
   "24 Nov 15:15  ANGELONE: Expiry 3:15 PM at 337.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  HDFCLIFE: Expiry 3:15 PM at 574.95 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ETERNAL: Expiry 3:15 PM at 362.1 (Hold \u00b7 trail)"
+  "24 Nov 15:15  HDFCLIFE: Expiry 3:15 PM at 574.95 (Hold \u00b7 trail)"
  ],
- "page_run": 1795684538836,
- "updated": 1795684538836,
+ "page_run": 1795684839332,
+ "updated": 1795684839332,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -899,10 +938,10 @@
  },
  "summary_day": "2026-11-25",
  "opt_checked": {
-  "NIFTY CE": 1795684245,
-  "NIFTY PE": 1795684245,
-  "BANKNIFTY CE": 1795684245,
-  "BANKNIFTY PE": 1795684245
+  "NIFTY CE": 1795684839,
+  "NIFTY PE": 1795684839,
+  "BANKNIFTY CE": 1795684839,
+  "BANKNIFTY PE": 1795684839
  },
  "alerted": {
   "dhan": "2026-11-26"
