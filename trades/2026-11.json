@@ -160961,5 +160961,79 @@
   "gross": -12160.0,
   "charges": 504.45,
   "net": -12664.45
+ },
+ {
+  "id": "1795581341856-4812",
+  "symbol": "ASIANPAINT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2620.6,
+  "exit": 2565.1,
+  "entry_time": 1795581341856,
+  "exit_time": 1795674000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2565.1,
+  "tp": 2699.2,
+  "high": 2633.5,
+  "low": 2565.1,
+  "nifty": 1.58,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795581341856,
+   "price": 2620.6
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -13875.0,
+  "charges": 408.94,
+  "net": -14283.94
+ },
+ {
+  "id": "1795583748056-4814",
+  "symbol": "ASIANPAINT",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 250,
+  "entry": 2616.9,
+  "exit": 2565.1,
+  "entry_time": 1795583748056,
+  "exit_time": 1795674000000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2565.1,
+  "tp": 2695.4,
+  "high": 2633.5,
+  "low": 2565.1,
+  "nifty": 1.94,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795583748056,
+   "price": 2616.9
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12950.0,
+  "charges": 408.9,
+  "net": -13358.9
  }
 ]
