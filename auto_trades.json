@@ -288,7 +288,7 @@
    "status": "open",
    "passed": false,
    "high": 608.9,
-   "low": 597.5,
+   "low": 597.4,
    "nifty": -0.09,
    "source": "Auto Daily",
    "timeframes": [
@@ -551,7 +551,7 @@
    "time": 1795679439065,
    "status": "open",
    "passed": false,
-   "high": 2390.5,
+   "high": 2395.9,
    "low": 2379.3,
    "nifty": 0.23,
    "source": "Auto 2H",
@@ -576,6 +576,8 @@
  ],
  "seq": 4826,
  "log": [
+  "26 Nov 14:45  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
+  "26 Nov 14:45  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 14:35  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 14:35  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 14:25  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -873,12 +875,10 @@
   "24 Nov 15:15  LICI: Expiry 3:15 PM at 407.3 (Hold \u00b7 trail)",
   "24 Nov 15:15  ANGELONE: Expiry 3:15 PM at 337.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  HDFCLIFE: Expiry 3:15 PM at 574.95 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ETERNAL: Expiry 3:15 PM at 362.1 (Hold \u00b7 trail)",
-  "24 Nov 15:15  TCS: Expiry 3:15 PM at 2460.0 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  GRASIM: Expiry 3:15 PM at 3075.2 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  ETERNAL: Expiry 3:15 PM at 362.1 (Hold \u00b7 trail)"
  ],
- "page_run": 1795684245227,
- "updated": 1795684245227,
+ "page_run": 1795684538836,
+ "updated": 1795684538836,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
