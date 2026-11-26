@@ -288,7 +288,7 @@
    "status": "open",
    "passed": false,
    "high": 608.9,
-   "low": 598.6,
+   "low": 598.05,
    "nifty": -0.09,
    "source": "Auto Daily",
    "timeframes": [
@@ -576,6 +576,8 @@
  ],
  "seq": 4826,
  "log": [
+  "26 Nov 14:25  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
+  "26 Nov 14:25  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 14:00  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 14:00  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 13:55  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -873,12 +875,10 @@
   "24 Nov 15:15  TCS: Expiry 3:15 PM at 2460.0 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  GRASIM: Expiry 3:15 PM at 3075.2 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  GRASIM: Expiry 3:15 PM at 3075.2 (Hold \u00b7 trail)",
-  "24 Nov 15:15  LODHA: Expiry 3:15 PM at 1219.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  LODHA: Expiry 3:15 PM at 1219.0 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  LODHA: Expiry 3:15 PM at 1219.0 (Hold \u00b7 trail)"
+  "24 Nov 15:15  LODHA: Expiry 3:15 PM at 1219.0 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795683043381,
- "updated": 1795683043381,
+ "page_run": 1795683339658,
+ "updated": 1795683339658,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
