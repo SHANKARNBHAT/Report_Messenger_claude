@@ -156,7 +156,7 @@
    "status": "open",
    "passed": false,
    "high": 2633.5,
-   "low": 2597.8,
+   "low": 2597,
    "nifty": 1.58,
    "source": "Auto 2H",
    "timeframes": [
@@ -199,7 +199,7 @@
    "time": 1795582244158,
    "status": "open",
    "passed": false,
-   "high": 2743,
+   "high": 2754,
    "low": 2705.4,
    "nifty": 1.77,
    "source": "Auto 2H",
@@ -244,7 +244,7 @@
    "status": "open",
    "passed": false,
    "high": 2633.5,
-   "low": 2597.8,
+   "low": 2597,
    "nifty": 1.94,
    "source": "Auto 4H",
    "timeframes": [
@@ -288,7 +288,7 @@
    "status": "open",
    "passed": false,
    "high": 3169.3,
-   "low": 3132.3,
+   "low": 3132,
    "nifty": 2.14,
    "source": "Auto 2H",
    "timeframes": [
@@ -419,7 +419,7 @@
    "time": 1795664739629,
    "status": "open",
    "passed": false,
-   "high": 603.95,
+   "high": 604,
    "low": 600.55,
    "nifty": -0.09,
    "source": "Auto Daily",
@@ -488,6 +488,8 @@
  ],
  "seq": 4820,
  "log": [
+  "26 Nov 09:40  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
+  "26 Nov 09:40  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 09:31  CUMMINSIND: Stop loss at 4115.8 (Hold \u00b7 trail)",
   "26 Nov 09:26  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "26 Nov 09:26  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
@@ -785,12 +787,10 @@
   "24 Nov 15:15  MOTHERSON: Expiry 3:15 PM at 165.76 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  MOTHERSON: Expiry 3:15 PM at 165.76 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  MOTHERSON: Expiry 3:15 PM at 165.76 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ALKEM: Expiry 3:15 PM at 5067.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  IDFCFIRSTB: Expiry 3:15 PM at 85.4 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  IDFCFIRSTB: Expiry 3:15 PM at 85.4 (Hold \u00b7 trail)"
+  "24 Nov 15:15  ALKEM: Expiry 3:15 PM at 5067.0 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795665932647,
- "updated": 1795665932647,
+ "page_run": 1795666245521,
+ "updated": 1795666245521,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
