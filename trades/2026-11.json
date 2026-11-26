@@ -161069,5 +161069,42 @@
   "gross": -790.5,
   "charges": 153.04,
   "net": -943.54
+ },
+ {
+  "id": "1795589438937-4817",
+  "symbol": "ICICIBANK",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 700,
+  "entry": 1643.7,
+  "exit": 1618.8,
+  "entry_time": 1795589438937,
+  "exit_time": 1795678800000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1618.8,
+  "tp": 1693.0,
+  "high": 1652,
+  "low": 1618.8,
+  "nifty": 2.16,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795589438937,
+   "price": 1643.7
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -17430.0,
+  "charges": 686.11,
+  "net": -18116.11
  }
 ]
