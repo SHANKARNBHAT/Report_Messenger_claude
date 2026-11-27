@@ -696,7 +696,7 @@ def enter_option_signals(files: Files, account: dict, now: datetime, trading: bo
 
 
 def alert_option_ha(account: dict, now: datetime, note) -> None:
-    """Once per completed 1H / 2H / 4H candle end: the ATM calls of NIFTY, BANKNIFTY and the high-ATR
+    """Once per completed 1H / 2H / 4H candle end: the ATM calls and puts of NIFTY, BANKNIFTY and the high-ATR
     F&O stocks whose Heikin Ashi candle on that timeframe completed solid green after red, on
     Telegram (opt_ha_alert.py). Alerts only."""
     latest = opt_ha_alert.last_end(now)
@@ -714,7 +714,7 @@ def alert_option_ha(account: dict, now: datetime, note) -> None:
     try:
         found = opt_ha_alert.scan(now, fs.atr_strikes_above(), lots, note, set(done["checked"]))
     except (opt_ha_alert.dd.DhanError, OSError, sqlite3.Error) as exc:
-        note(f"HA CE alert: not checked ({exc}); trying again next run")
+        note(f"HA CE/PE alert: not checked ({exc}); trying again next run")
         return
     if found is None:
         return
@@ -723,7 +723,7 @@ def alert_option_ha(account: dict, now: datetime, note) -> None:
     done["complete"] = len(done["checked"]) >= total
     account["opt_ha_alert"] = done
     when = f"{datetime.fromtimestamp(end, fs.IST):%H:%M}"
-    note(f"HA CE alert ({'/'.join(frames)} candles ending {when}, {len(done['checked'])} of {total} checked): "
+    note(f"HA CE/PE alert ({'/'.join(frames)} candles ending {when}, {len(done['checked'])} of {total} checked): "
          + (", ".join(f"{h['option']} {h['timeframe']}" for h in hits) if hits else "none"))
     if hits:
         telegram_alerts.option_ha(when, hits)

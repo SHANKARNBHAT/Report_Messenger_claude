@@ -1,5 +1,5 @@
 """
-ATM CE Heikin Ashi alert, 1H / 2H / 4H: after each 1-, 2- or 4-hour candle completes, check the ATM call
+ATM CE / PE Heikin Ashi alert, 1H / 2H / 4H: after each 1-, 2- or 4-hour candle completes, check the ATM call and put
 of NIFTY, BANKNIFTY and every F&O stock whose daily ATR covers more than the saved number of strikes
 (futures_simulator.atr_strikes_above, the F&O ATR page's ratio), and alert on Telegram those whose
 Heikin Ashi candle on that timeframe completed solid green (no lower wick) right after a red one.
@@ -169,18 +169,20 @@ def expiries(underlying: dict) -> list[str]:
     return dd.expiries(underlying)
 
 
-def atm_call(underlying: dict, expiry: str) -> dict:
-    """{"spot", "strike", "id", "ltp"} of the call nearest the price."""
+def atm_options(underlying: dict, expiry: str) -> tuple[float, float, dict[str, dict]]:
+    """(spot, the strike nearest the price, side "CE" / "PE" -> {"id", "ltp"} of the ones listed)."""
     spot, rows = chain(underlying, expiry)
-    rows = [r for r in rows if r.get("ce_id")]
+    rows = [r for r in rows if r.get("ce_id") or r.get("pe_id")]
     if not rows:
-        raise IndexError("no calls in the chain")
+        raise IndexError("no options in the chain")
     row = min(rows, key=lambda r: abs(r["strike"] - spot))
-    return {"spot": spot, "strike": row["strike"], "id": int(row["ce_id"]), "ltp": row.get("ce_ltp")}
+    legs = {side.upper(): {"id": int(row[f"{side}_id"]), "ltp": row.get(f"{side}_ltp")}
+            for side in ("ce", "pe") if row.get(f"{side}_id")}
+    return spot, row["strike"], legs
 
 
-def label(name: str, expiry: str, strike: float) -> str:
-    return f"{name} {datetime.fromisoformat(expiry):%d%b}".upper() + f" {strike:g} CE"
+def label(name: str, expiry: str, strike: float, side: str) -> str:
+    return f"{name} {datetime.fromisoformat(expiry):%d%b}".upper() + f" {strike:g} {side}"
 
 
 def scan(now: datetime, ratio: float, lots: dict[str, int], note, skip: set[str] = frozenset()
@@ -204,18 +206,21 @@ def scan(now: datetime, ratio: float, lots: dict[str, int], note, skip: set[str]
                 expiry = stock_expiry
             else:
                 expiry = nearest_expiry(expiries(u), now.date())
-            call = atm_call(u, expiry)
-            bars = dd.candles(call["id"], minutes=15, days=DAYS, instrument=u["instrument"])
+            spot, strike, legs = atm_options(u, expiry)
+            bars = {side: dd.candles(leg["id"], minutes=15, days=DAYS, instrument=u["instrument"])
+                    for side, leg in legs.items()}
         except (dd.DhanError, IndexError, ValueError, KeyError) as exc:
-            note(f"HA CE alert: {u['name']}: {exc}")
+            note(f"HA CE/PE alert: {u['name']}: {exc}")
             if "renewed somewhere else" in str(exc) or "token" in str(exc).lower():
                 break  # no token now: the rest next run
             continue
         checked.append(u["name"])
-        for frame in frames:
-            hit = turned(bars, TIMEFRAMES[frame], end, now.timestamp())
-            if hit:
-                found.append({"timeframe": frame, "name": u["name"], "option": label(u["name"], expiry, call["strike"]),
-                              "expiry": expiry, "strike": call["strike"], "spot": call["spot"], "ltp": call["ltp"],
-                              "lot": lots.get(u["name"]), "ratio": u["ratio"], "candle": hit})
+        for side, leg in legs.items():
+            for frame in frames:
+                hit = turned(bars[side], TIMEFRAMES[frame], end, now.timestamp())
+                if hit:
+                    found.append({"timeframe": frame, "side": side, "name": u["name"],
+                                  "option": label(u["name"], expiry, strike, side), "expiry": expiry, "strike": strike,
+                                  "spot": spot, "ltp": leg["ltp"], "lot": lots.get(u["name"]), "ratio": u["ratio"],
+                                  "candle": hit})
     return end, frames, found, checked, len(every)
