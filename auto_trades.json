@@ -676,13 +676,13 @@
    "run": null,
    "style": "opt_ha",
    "system": "OPT ATM HA",
-   "stop": 1192.65,
+   "stop": 1236.65,
    "time": 1795756500000,
    "status": "open",
    "passed": false,
    "high": 1359.5,
    "low": 1206.3,
-   "ltp": 1289.55,
+   "ltp": 1302.8,
    "nifty": -0.36,
    "source": "Auto OPT ATM HA 15m",
    "timeframes": [
@@ -723,7 +723,7 @@
    "status": "open",
    "passed": false,
    "high": 148.45,
-   "low": 147.33,
+   "low": 147.1,
    "nifty": -0.54,
    "source": "Auto 4H",
    "timeframes": [
@@ -743,10 +743,55 @@
     "cost": 0.14,
     "since": 1795757134550
    }
+  },
+  {
+   "id": "1795758347813-4834",
+   "symbol": "PAYTM",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 725,
+   "entry": 1786.8,
+   "sl": 1760.0,
+   "tp": 1840.4,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 26.8,
+    "step": 8.95
+   },
+   "style": "trail",
+   "system": "RSI 4H",
+   "stop": 1760.0,
+   "time": 1795758347813,
+   "status": "open",
+   "passed": false,
+   "high": 1786.8,
+   "low": 1786.8,
+   "nifty": -0.58,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795758347813,
+    "price": 1786.8
+   },
+   "protect": {
+    "atr": 72.39,
+    "cost": 1.12,
+    "since": 1795758347813
+   }
   }
  ],
- "seq": 4833,
+ "seq": 4834,
  "log": [
+  "27 Nov 11:15  PAYTM: RSI 4H BUY 725 at 1786.8, SL 1760.0 (4 HOUR; trail)",
   "27 Nov 11:05  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "27 Nov 11:05  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "27 Nov 11:05  BANKNIFTY 29DEC 63600 PE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -1045,11 +1090,10 @@
   "24 Nov 15:15  PATANJALI: Expiry 3:15 PM at 407.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  PIDILITIND: Expiry 3:15 PM at 1594.2 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  PIDILITIND: Expiry 3:15 PM at 1594.2 (Hold \u00b7 trail)",
-  "24 Nov 15:15  GODFRYPHLP: Expiry 3:15 PM at 1746.9 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  GODFRYPHLP: Expiry 3:15 PM at 1746.9 (Hold \u00b7 trail)"
+  "24 Nov 15:15  GODFRYPHLP: Expiry 3:15 PM at 1746.9 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795758046186,
- "updated": 1795758046186,
+ "page_run": 1795758347813,
+ "updated": 1795758347813,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -1070,10 +1114,10 @@
  },
  "summary_day": "2026-11-26",
  "opt_checked": {
-  "NIFTY CE": 1795758046,
-  "NIFTY PE": 1795758046,
-  "BANKNIFTY CE": 1795758046,
-  "BANKNIFTY PE": 1795758046
+  "NIFTY CE": 1795758347,
+  "NIFTY PE": 1795758347,
+  "BANKNIFTY CE": 1795758347,
+  "BANKNIFTY PE": 1795758347
  },
  "alerted": {
   "dhan": "2026-11-27"
