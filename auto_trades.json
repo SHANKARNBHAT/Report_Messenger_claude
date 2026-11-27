@@ -684,7 +684,7 @@
    "status": "open",
    "passed": false,
    "high": 1786.8,
-   "low": 1768.4,
+   "low": 1766.8,
    "nifty": -0.58,
    "source": "Auto 4H",
    "timeframes": [
@@ -727,7 +727,7 @@
    "time": 1795763446005,
    "status": "open",
    "passed": false,
-   "high": 2082.0,
+   "high": 2088.8,
    "low": 2082.0,
    "nifty": -0.71,
    "source": "Auto 4H",
@@ -752,6 +752,7 @@
  ],
  "seq": 4836,
  "log": [
+  "27 Nov 12:55  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "27 Nov 12:40  COFORGE: RSI 4H BUY 475 at 2082.0, SL 2032.0 (4 HOUR; trail)",
   "27 Nov 12:25  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "27 Nov 12:25  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -1050,11 +1051,10 @@
   "24 Nov 15:15  DIXON: Expiry 3:15 PM at 13390.0 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  DIXON: Expiry 3:15 PM at 13390.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ABCAPITAL: Expiry 3:15 PM at 415.8 (Hold \u00b7 trail)",
-  "24 Nov 15:15  TATASTEEL: Expiry 3:15 PM at 163.0 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  ABCAPITAL: Expiry 3:15 PM at 415.8 (Hold \u00b7 trail)"
  ],
- "page_run": 1795764039698,
- "updated": 1795764039698,
+ "page_run": 1795764337327,
+ "updated": 1795764337327,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -1077,8 +1077,8 @@
  "opt_checked": {
   "NIFTY CE": 1795764039,
   "NIFTY PE": 1795764039,
-  "BANKNIFTY CE": 1795764039,
-  "BANKNIFTY PE": 1795764039
+  "BANKNIFTY CE": 1795764337,
+  "BANKNIFTY PE": 1795764337
  },
  "alerted": {
   "dhan": "2026-11-27"
