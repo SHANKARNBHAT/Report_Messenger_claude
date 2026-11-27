@@ -30,7 +30,6 @@ import streamlit as st
 import futures_simulator as fs
 import ha_index
 import ha_vp
-import signal_options
 import trade_report
 
 # Streamlit Cloud keeps imported modules in memory when it pulls new code, so a
@@ -378,7 +377,7 @@ def show_new(history: pd.DataFrame, positions: list[dict]) -> None:
                "(open). HA pure: the HA entry pattern without the SMA trend on 4H (2H and Daily retired), SL trailed on "
                "30-minute candles, out at the first HA doji, held overnight. HA IDX · no SMA: the same on 15-minute "
                "NIFTY / BANKNIFTY, intraday, only with the previous 4H HA candle solid green / red (also on the "
-               "Autotrader NIFTY\\BNF tab). HA breakout: a wickless HA "
+               "Autotrader INDEX\\FUTURES tab). HA breakout: a wickless HA "
                "candle (green no lower wick / red no upper wick) closing past the previous HA high / low, no SMA "
                "filter, SL trailed to the previous HA candle's low / high, no other exit, on 15-minute NIFTY / "
                "BANKNIFTY intraday with the same 4H filter (the 2H / 4H / Daily stock version retired). RSI: with the 30-minute RSI "
@@ -1182,9 +1181,6 @@ def main() -> None:
 
     st.subheader("Signals")
     show_signals(signals)
-
-    st.subheader("2H / 4H signals · ATM CE & PE")
-    signal_options.show(signals, {i["symbol"]: i["lot"] for i in fs.load_instruments()})
 
     downloads = st.columns(3)
     downloads[0].download_button("⬇ Auto trader trades (CSV)", csv(history), "auto_trader_trades.csv", "text/csv",

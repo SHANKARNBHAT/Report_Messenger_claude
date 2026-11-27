@@ -112,7 +112,7 @@ pages = [
     st.Page("futures_simulator.py", title="Futures simulator", icon="🧪", url_path="simulator"),
     st.Page("auto_trader_page.py", title="Auto trader", icon="🤖", url_path="auto"),
     st.Page("atr_strikes_page.py", title="F&O ATR", icon="📏", url_path="fno-atr"),
-    st.Page("index_trader_page.py", title="Autotrader NIFTY\\BNF", icon="📈", url_path="auto-index"),
+    st.Page("index_trader_page.py", title="Autotrader INDEX\\FUTURES", icon="📈", url_path="auto-index"),
     st.Page("option_chain_page.py", title="Option chain", icon="🧮", url_path="option-chain"),
 ]
 st.navigation(pages, position="top").run()

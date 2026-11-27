@@ -1,13 +1,13 @@
 """
 The ATM CE / PE charts on 15-minute candles (Heikin Ashi or normal, from Dhan), at the day's opening ATM
 strike and at the ATM now, with the strategy's entry stars (the first solid green HA candle after a red one,
-opt_atm.py trades it): shared by the Option chain page (option_chain_page.py) and the Autotrader NIFTY\\BNF
+opt_atm.py trades it): shared by the Option chain page (option_chain_page.py) and the Autotrader INDEX\\FUTURES
 page (index_trader_page.py).
 """
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, time, timedelta
 
 import pandas as pd
 import plotly.graph_objects as go
@@ -17,6 +17,35 @@ import dhan_data as dd
 
 CANDLE_UP, CANDLE_DOWN, SIGNAL_COLOR = "#1a9e6f", "#d64545", "#eda100"  # as the Auto trader chart
 CHART_DAYS = 2  # trading days of 15-minute candles on the small charts
+# The CE / PE chart timeframes: minutes -> (calendar days of Dhan's 15-minute bars to ask, trading days shown).
+LEG_TIMEFRAMES = {15: (5, 2), 30: (8, 3), 60: (12, 5), 120: (25, 10), 240: (45, 20)}
+SESSION_OPEN, SESSION_CLOSE = time(9, 15), time(15, 30)
+
+
+def tf_label(minutes: int) -> str:
+    return f"{minutes} min" if minutes < 60 else f"{minutes // 60} hour"
+
+
+def resample(bars: list[tuple], minutes: int) -> list[tuple]:
+    """15-minute bars (start, open, high, low, close, volume) in `minutes` candles from 9:15 AM (as
+    Chartink: 2 hours = 9:15-11:15, 11:15-1:15, 1:15-3:15, 3:15-3:30), oldest first."""
+    if minutes <= 15:
+        return bars
+    out: list[list] = []
+    step = timedelta(minutes=minutes)
+    for start, open_, high, low, close, *rest in bars:
+        moment = datetime.fromtimestamp(start, dd.IST)
+        if not SESSION_OPEN <= moment.time() < SESSION_CLOSE:
+            continue
+        session = datetime.combine(moment.date(), SESSION_OPEN, dd.IST)
+        begins = int((session + (moment - session) // step * step).timestamp())
+        volume = (rest[0] if rest else 0) or 0
+        if not out or out[-1][0] != begins:
+            out.append([begins, open_, high, low, close, volume])
+        else:
+            c = out[-1]
+            c[2], c[3], c[4], c[5] = max(c[2], high), min(c[3], low), close, c[5] + volume
+    return [tuple(c) for c in out]
 
 
 def connected() -> bool:
@@ -35,8 +64,8 @@ def load_chain(underlying: dict, expiry: str) -> tuple[float, list[dict], str]:
 
 
 @st.cache_data(ttl=60, show_spinner=False)
-def load_candles(security_id: int, instrument: str) -> list[tuple]:
-    return dd.candles(security_id, minutes=15, days=5, instrument=instrument)
+def load_candles(security_id: int, instrument: str, days: int = 5) -> list[tuple]:
+    return dd.candles(security_id, minutes=15, days=days, instrument=instrument)
 
 
 @st.cache_data(ttl=300, show_spinner=False)
@@ -66,11 +95,11 @@ def is_entry(ha: list[dict], k: int) -> bool:
     return k > 0 and ha[k]["solid"] and not ha[k - 1]["green"]
 
 
-def ha_chart(ha: list[dict], key: str, normal: list[dict] | None = None) -> None:
-    """A small 15-minute candle chart (HA, or the `normal` candles) of the last CHART_DAYS trading days,
-    the column's width, with an amber star under each HA entry candle. Times are categories, so nights leave no gap."""
+def ha_chart(ha: list[dict], key: str, normal: list[dict] | None = None, days_shown: int = CHART_DAYS) -> None:
+    """A small candle chart (HA, or the `normal` candles) of the last `days_shown` trading days, the
+    column's width, with an amber star under each HA entry candle. Times are categories, so nights leave no gap."""
     shown = normal or ha
-    days = sorted({datetime.fromtimestamp(c["start"], dd.IST).date() for c in ha})[-CHART_DAYS:]
+    days = sorted({datetime.fromtimestamp(c["start"], dd.IST).date() for c in ha})[-days_shown:]
     keep = [k for k, c in enumerate(ha) if datetime.fromtimestamp(c["start"], dd.IST).date() in days]
     if not keep:
         return
@@ -89,19 +118,20 @@ def ha_chart(ha: list[dict], key: str, normal: list[dict] | None = None) -> None
                                       line=dict(width=1, color="white")),
             hovertemplate="Entry candle<br>%{x}<extra></extra>"))
     day_starts = [n for n in range(len(keep)) if n == 0 or label[n][:6] != label[n - 1][:6]]
+    every = max(1, len(keep) // 6)
     figure.update_layout(
         height=230, margin=dict(l=4, r=4, t=4, b=4), showlegend=False, hovermode="x",
         xaxis=dict(type="category", rangeslider_visible=False, tickangle=0, nticks=6,
-                   tickvals=[label[n] for n in range(0, len(keep), 8)],
-                   ticktext=[label[n][7:] if n not in day_starts else label[n][:6] for n in range(0, len(keep), 8)],
+                   tickvals=[label[n] for n in range(0, len(keep), every)],
+                   ticktext=[label[n][7:] if n not in day_starts else label[n][:6] for n in range(0, len(keep), every)],
                    gridcolor="rgba(128,128,128,0.10)"),
         yaxis=dict(tickformat=",.0f", gridcolor="rgba(128,128,128,0.15)", side="right"))
-    for n in day_starts[1:]:
+    for n in (day_starts[1:] if len(days) <= 5 else []):  # day lines only while they stay readable
         figure.add_vline(x=n - 0.5, line=dict(color="rgba(128,128,128,0.45)", width=1, dash="dot"))
     st.plotly_chart(figure, width="stretch", key=key, config={"displayModeBar": False})
 
 
-def leg_charts(index: str, underlying: dict, row: pd.Series, key: str, normal: bool) -> None:
+def leg_charts(index: str, underlying: dict, row: pd.Series, key: str, normal: bool, minutes: int = 15) -> None:
     """The CE and PE of one strike side by side: the chart and the last 12 HA candles."""
     cols = st.columns(2)
     for col, side in zip(cols, ("ce", "pe")):
@@ -112,7 +142,8 @@ def leg_charts(index: str, underlying: dict, row: pd.Series, key: str, normal: b
                 st.caption("No security id from Dhan.")
                 continue
             try:
-                raw = load_candles(int(sid), underlying["instrument"])
+                ask, days_shown = LEG_TIMEFRAMES[minutes]
+                raw = resample(load_candles(int(sid), underlying["instrument"], ask), minutes)
                 ha = dd.heikin_ashi(raw)
             except dd.DhanError as e:
                 st.error(str(e))
@@ -120,9 +151,9 @@ def leg_charts(index: str, underlying: dict, row: pd.Series, key: str, normal: b
             if not ha:
                 st.caption("No candles yet.")
                 continue
-            ha_chart(ha, key=f"{key}-{index}-{side}",
+            ha_chart(ha, key=f"{key}-{index}-{side}-{minutes}",
                      normal=[{"start": b[0], "open": b[1], "high": b[2], "low": b[3], "close": b[4]} for b in raw]
-                     if normal else None)
+                     if normal else None, days_shown=days_shown)
             last = ha[-12:]
             frame = pd.DataFrame({
                 "Time": [datetime.fromtimestamp(c["start"], dd.IST).strftime("%d %b %H:%M") for c in last],
@@ -142,14 +173,18 @@ def atm_section(index: str, underlying: dict, df: pd.DataFrame, price: float, pr
     `prefix` keeps the widget keys of each page apart."""
     atm = dd.atm_strike(price, underlying)
     i = (df["strike"] - atm).abs().idxmin()
-    head = st.columns([3, 2])
-    head[0].subheader("ATM CE / PE, 15-minute candles")
-    style = head[1].segmented_control("Chart candles", ["Heikin Ashi", "Normal"], default="Heikin Ashi",
+    head = st.columns([2, 3, 2])
+    minutes = head[1].segmented_control("Timeframe", list(LEG_TIMEFRAMES), default=15, format_func=tf_label,
+                                        key=f"{prefix}-leg-tf") or 15
+    head[0].subheader(f"ATM CE / PE, {tf_label(minutes)} candles")
+    style = head[2].segmented_control("Chart candles", ["Heikin Ashi", "Normal"], default="Heikin Ashi",
                                       key=f"{prefix}-leg-candles",
                                       help="The table and the stars stay Heikin Ashi (the strategy's)")
     normal = style == "Normal"
-    st.caption("Strategy entry (amber star): the first solid green HA candle (no lower wick) after a red one. "
-               "SL: that candle's previous HA candle's low. Charts: the last two trading days.")
+    st.caption("Strategy entry (amber star): the first solid green HA candle (no lower wick) after a red one "
+               "(the auto trader trades it on 15 minutes). SL: that candle's previous HA candle's low. Charts: the "
+               f"last {LEG_TIMEFRAMES[minutes][1]} trading days; 30 minutes and up are made from Dhan's 15-minute "
+               "candles from 9:15 AM, as Chartink's.")
     # First the day's opening (BOD) ATM strike: where the ATM was at the first candle, e.g. 25350
     # when the day ended at 25800; shown only when it differs from the ATM now. Then the ATM now.
     try:
@@ -168,8 +203,8 @@ def atm_section(index: str, underlying: dict, df: pd.DataFrame, price: float, pr
         else:
             st.markdown(f"[⬇ Jump to Now: ATM {atm:,.0f}](#{prefix}-now)")
             st.markdown(f"##### At the open ({open_day}, {index} {open_price:,.2f}): ATM {open_atm:,.0f}")
-            leg_charts(index, underlying, df.loc[j], key=f"{prefix}-open", normal=normal)
+            leg_charts(index, underlying, df.loc[j], key=f"{prefix}-open", normal=normal, minutes=minutes)
 
     st.markdown(f'<div id="{prefix}-now"></div>', unsafe_allow_html=True)  # the jump link's target
     st.markdown(f"##### Now: ATM {atm:,.0f}")
-    leg_charts(index, underlying, df.loc[i], key=f"{prefix}-now", normal=normal)
+    leg_charts(index, underlying, df.loc[i], key=f"{prefix}-now", normal=normal, minutes=minutes)
