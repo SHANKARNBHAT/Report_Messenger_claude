@@ -161430,5 +161430,42 @@
   "gross": -18000.0,
   "charges": 706.65,
   "net": -18706.65
+ },
+ {
+  "id": "1795764937066-4837",
+  "symbol": "LICHSGFIN",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1000,
+  "entry": 600.0,
+  "exit": 591.0,
+  "entry_time": 1795764937066,
+  "exit_time": 1795772400000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 591.0,
+  "tp": 618.0,
+  "high": 600.35,
+  "low": 591.0,
+  "nifty": -0.75,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795764937066,
+   "price": 600.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -9000.0,
+  "charges": 380.42,
+  "net": -9380.42
  }
 ]

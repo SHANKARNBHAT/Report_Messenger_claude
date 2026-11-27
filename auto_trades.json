@@ -616,54 +616,11 @@
     "cost": 1.32,
     "since": 1795763446005
    }
-  },
-  {
-   "id": "1795764937066-4837",
-   "symbol": "LICHSGFIN",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 1000,
-   "entry": 600.0,
-   "sl": 591.0,
-   "tp": 618.0,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 9.0,
-    "step": 3.0
-   },
-   "style": "trail",
-   "system": "RSI 4H",
-   "stop": 591.0,
-   "time": 1795764937066,
-   "status": "open",
-   "passed": false,
-   "high": 600.35,
-   "low": 593.5,
-   "nifty": -0.75,
-   "source": "Auto 4H",
-   "timeframes": [
-    "4 HOUR"
-   ],
-   "strategies": [
-    "4h RSI BULLISH STRATEGY"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1795764937066,
-    "price": 600.0
-   },
-   "protect": {
-    "atr": 20.03,
-    "cost": 0.44,
-    "since": 1795764937066
-   }
   }
  ],
  "seq": 4837,
  "log": [
+  "27 Nov 15:20  LICHSGFIN: Stop loss at 591.0 (Hold \u00b7 trail)",
   "27 Nov 15:10  PNB: Stop loss at 146.2 (Hold \u00b7 trail)",
   "27 Nov 14:45  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "27 Nov 14:45  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -962,11 +919,10 @@
   "24 Nov 15:15  NMDC: Expiry 3:15 PM at 67.4 (Hold \u00b7 trail)",
   "24 Nov 15:15  TMPV: Expiry 3:15 PM at 259.0 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  IDEA: Expiry 3:15 PM at 11.91 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  IDEA: Expiry 3:15 PM at 11.91 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  IDEA: Expiry 3:15 PM at 11.91 (Hold \u00b7 trail)"
+  "24 Nov 15:15  IDEA: Expiry 3:15 PM at 11.91 (Hold \u00b7 2H SMA 8 exit)"
  ],
- "page_run": 1795772735995,
- "updated": 1795772735995,
+ "page_run": 1795773038128,
+ "updated": 1795773038128,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -987,10 +943,10 @@
  },
  "summary_day": "2026-11-26",
  "opt_checked": {
-  "NIFTY CE": 1795772735,
-  "NIFTY PE": 1795772735,
-  "BANKNIFTY CE": 1795772735,
-  "BANKNIFTY PE": 1795772735
+  "NIFTY CE": 1795773038,
+  "NIFTY PE": 1795773038,
+  "BANKNIFTY CE": 1795773038,
+  "BANKNIFTY PE": 1795773038
  },
  "alerted": {
   "dhan": "2026-11-27"
