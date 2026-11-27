@@ -93,7 +93,7 @@ LAST_ENTRY = time(15, 0)  # no new trades after this, ahead of the 3:15 PM squar
 SESSION_CLOSE = time(15, 30)
 PAGE_QUIET = 12  # minutes: scheduled runs skip while the page started a run this recently
 ACTIONS = ["run", "trail", "untrail", "exit", "unattended-on", "unattended-off", "test-chartink", "test-telegram",
-           "rsi-today"]
+           "rsi-today", "ha-today"]
 
 
 def tick(price: float) -> float:
@@ -726,7 +726,7 @@ def alert_option_ha(account: dict, now: datetime, note) -> None:
     note(f"HA CE/PE alert ({'/'.join(frames)} candles ending {when}, {len(done['checked'])} of {total} checked): "
          + (", ".join(f"{h['option']} {h['timeframe']}" for h in hits) if hits else "none"))
     if hits:
-        telegram_alerts.option_ha(when, hits)
+        telegram_alerts.option_ha(f"candles ending {when}", hits)
 
 
 def vp_bars(positions: list[dict], now: datetime) -> dict[str, list]:
@@ -1175,6 +1175,26 @@ def send_rsi_today(files: Files, account: dict, now: datetime, note) -> None:
         note(f"Telegram: {len(found)} RSI {timeframe} signals of today sent")
 
 
+def send_ha_today(now: datetime, note) -> None:
+    """Replay the day's 1H / 2H / 3H / 4H candles of the ATM CE / PE (opt_ha_alert, the strike as now)
+    and send on Telegram every HA turn-green alert they gave, oldest first."""
+    lots = {i["symbol"]: i["lot"] for i in fs.load_instruments()} | opt_atm.LOT_SIZE
+    upto = min(now, datetime.combine(now.date(), SESSION_CLOSE, fs.IST))
+    ends = opt_ha_alert.day_ends(now.date(), upto)
+    found = opt_ha_alert.scan(upto, fs.atr_strikes_above(), lots, note, ends=ends) if ends else None
+    if found is None:
+        note("HA CE/PE today: no completed candles today")
+        return
+    _, _, hits, checked, total = found
+    hits.sort(key=lambda h: (h["end"], h["timeframe"]))
+    note(f"HA CE/PE today: {len(hits)} alerts on {len(checked)} of {total} underlyings")
+    if hits:
+        telegram_alerts.option_ha(f"today, {now:%d %b} (replay, ATM strike as at the close)", hits)
+    else:
+        telegram_alerts.send(f"🔔 HA turn green · ATM CE / PE · today, {now:%d %b}: no alerts "
+                             f"({len(checked)} of {total} checked)")
+
+
 def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: dict, seen: dict, now: datetime,
                   trading: bool, note, system: str) -> None:
     """Trade one strategy's signals, and note in `seen` what was done with each."""
@@ -1314,6 +1334,8 @@ def main() -> None:
         test_chartink(note)
     elif args.action == "rsi-today":
         send_rsi_today(files, account, now, note)
+    elif args.action == "ha-today":
+        send_ha_today(now, note)
     elif args.action == "test-telegram":
         if not telegram_alerts.ready():
             note("Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not set")

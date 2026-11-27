@@ -12,6 +12,10 @@ from __future__ import annotations
 import os
 
 import requests
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+IST = ZoneInfo("Asia/Kolkata")
 
 API = "https://api.telegram.org/bot{token}/sendMessage"
 APP = "https://reportmessengerclaude.streamlit.app/auto-index"
@@ -65,7 +69,9 @@ def rsi_signals(timeframe: str, when: str, signals: list[dict]) -> None:
 def option_ha(when: str, hits: list[dict]) -> None:
     """The ATM calls and puts whose 1H / 2H / 3H / 4H candle just turned after a red HA one (opt_ha_alert.scan): HA solid
     green, or an HA doji with a solid green normal candle."""
-    lines = [f"🔔 <b>HA turn green · ATM CE / PE</b> · candles ending {when}"]
+    head = f"🔔 <b>HA turn green · ATM CE / PE</b> · {when}"
+    timed = len({h.get("end") for h in hits}) > 1  # a replay of the day: each its candle's end
+    lines = []
     for h in hits:
         extra = " · ".join(x for x in (
             f"LTP {h['ltp']:g}" if h.get("ltp") is not None else "",
@@ -75,8 +81,10 @@ def option_ha(when: str, hits: list[dict]) -> None:
         kind = {"HA doji": "HA doji, candle solid green",
                 "After green doji": "HA solid green after a green HA doji"}.get(h["candle"].get("kind"), "HA solid green")
         mark = "🔴" if h.get("side") == "PE" else "🟢"  # a put premium turning up: the stock turning down
-        lines.append(f"{mark} <b>{h['timeframe']}</b> · <b>{h['option']}</b> · {kind}\n   close {h['candle']['close']:g} · {extra}")
-    send("\n".join(lines))
+        at = f"{datetime.fromtimestamp(h['end'], IST):%H:%M} " if timed and h.get("end") else ""
+        lines.append(f"{mark} {at}<b>{h['timeframe']}</b> · <b>{h['option']}</b> · {kind}\n   close {h['candle']['close']:g} · {extra}")
+    for k in range(0, len(lines), 25):  # Telegram takes up to 4096 characters a message
+        send("\n".join([head + (f" ({k // 25 + 1})" if len(lines) > 25 else ""), *lines[k:k + 25]]))
 
 
 def problem(text: str) -> None:

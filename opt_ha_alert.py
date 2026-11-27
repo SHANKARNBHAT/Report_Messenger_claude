@@ -76,6 +76,16 @@ def last_end(now: datetime) -> tuple[int, list[str]] | None:
     return int(end.timestamp()), ends[end]
 
 
+def day_ends(day: date, upto: datetime) -> list[tuple[int, list[str]]]:
+    """Every candle end of a day up to `upto`, oldest first, with the timeframes ending then (the replay)."""
+    ends: dict[datetime, list[str]] = {}
+    for name, minutes in TIMEFRAMES.items():
+        for end in ends_on(day, minutes):
+            if end <= upto:
+                ends.setdefault(end, []).append(name)
+    return [(int(e.timestamp()), ends[e]) for e in sorted(ends)]
+
+
 def resample(bars: list[tuple], minutes: int, now: float) -> list[dict]:
     """Finished 15-minute bars (start, open, high, low, close, volume) in `minutes` candles, oldest first."""
     out: list[dict] = []
@@ -185,16 +195,18 @@ def label(name: str, expiry: str, strike: float, side: str) -> str:
     return f"{name} {datetime.fromisoformat(expiry):%d%b}".upper() + f" {strike:g} {side}"
 
 
-def scan(now: datetime, ratio: float, lots: dict[str, int], note, skip: set[str] = frozenset()
-         ) -> tuple[int, list[str], list[dict], list[str], int] | None:
+def scan(now: datetime, ratio: float, lots: dict[str, int], note, skip: set[str] = frozenset(),
+         ends: list[tuple[int, list[str]]] | None = None) -> tuple[int, list[str], list[dict], list[str], int] | None:
     """(the candle end, the timeframes ending then, the hits, the names checked, how many underlyings
     in all) for the latest completed candle end, leaving out `skip` (checked already); None before
     the first one today. Each hit: timeframe, name, option, expiry, strike, spot, ltp, lot, ratio and
-    the candle. A name Dhan failed for is not in the checked ones, so the next run tries it again."""
+    the candle. A name Dhan failed for is not in the checked ones, so the next run tries it again.
+    `ends`: candle ends to check instead (day_ends, the replay; the ATM strike is then the one now)."""
     latest = last_end(now)
     if latest is None:
         return None
     end, frames = latest
+    ends = ends or [latest]
     found, checked = [], []
     every = underlyings(ratio)
     stock_expiry = None
@@ -216,11 +228,12 @@ def scan(now: datetime, ratio: float, lots: dict[str, int], note, skip: set[str]
             continue
         checked.append(u["name"])
         for side, leg in legs.items():
-            for frame in frames:
-                hit = turned(bars[side], TIMEFRAMES[frame], end, now.timestamp())
-                if hit:
-                    found.append({"timeframe": frame, "side": side, "name": u["name"],
-                                  "option": label(u["name"], expiry, strike, side), "expiry": expiry, "strike": strike,
-                                  "spot": spot, "ltp": leg["ltp"], "lot": lots.get(u["name"]), "ratio": u["ratio"],
-                                  "candle": hit})
+            for at, at_frames in ends:
+                for frame in at_frames:
+                    hit = turned(bars[side], TIMEFRAMES[frame], at, now.timestamp())
+                    if hit:
+                        found.append({"timeframe": frame, "side": side, "name": u["name"], "end": at,
+                                      "option": label(u["name"], expiry, strike, side), "expiry": expiry,
+                                      "strike": strike, "spot": spot, "ltp": leg["ltp"], "lot": lots.get(u["name"]),
+                                      "ratio": u["ratio"], "candle": hit})
     return end, frames, found, checked, len(every)
