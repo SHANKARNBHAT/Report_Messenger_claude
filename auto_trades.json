@@ -266,50 +266,6 @@
    }
   },
   {
-   "id": "1795664739629-4819",
-   "symbol": "HDFCLIFE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 1100,
-   "entry": 601.3,
-   "sl": 592.3,
-   "tp": 619.35,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 9.0,
-    "step": 3.0
-   },
-   "style": "trail",
-   "system": "RSI Daily",
-   "stop": 592.3,
-   "time": 1795664739629,
-   "status": "open",
-   "passed": false,
-   "high": 608.9,
-   "low": 592.4,
-   "nifty": -0.09,
-   "source": "Auto Daily",
-   "timeframes": [
-    "DAILY"
-   ],
-   "strategies": [
-    "DAILY RSI  BULLISH STRATEGY"
-   ],
-   "agrees": "Yes",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1795664739629,
-    "price": 601.3
-   },
-   "protect": {
-    "atr": 18.27,
-    "cost": 0.43,
-    "since": 1795664739629
-   }
-  },
-  {
    "id": "1795664739629-4820",
    "symbol": "LAURUSLABS",
    "side": "BUY",
@@ -684,7 +640,7 @@
    "status": "open",
    "passed": false,
    "high": 654.7,
-   "low": 652.2,
+   "low": 652.1,
    "nifty": -0.19,
    "source": "Auto 4H",
    "timeframes": [
@@ -708,6 +664,7 @@
  ],
  "seq": 4831,
  "log": [
+  "27 Nov 10:35  HDFCLIFE: Stop loss at 592.3 (Hold \u00b7 trail)",
   "27 Nov 10:25  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "27 Nov 10:25  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "27 Nov 10:10  NIFTY 01DEC 25800 PE: Trailing SL at 134.55 (OPT ATM HA)",
@@ -1006,11 +963,10 @@
   "24 Nov 15:15  MFSL: Expiry 3:15 PM at 1431.9 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  MFSL: Expiry 3:15 PM at 1431.9 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  MFSL: Expiry 3:15 PM at 1431.9 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ASTRAL: Expiry 3:15 PM at 1225.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  ASTRAL: Expiry 3:15 PM at 1225.0 (Hold \u00b7 trail)"
+  "24 Nov 15:15  ASTRAL: Expiry 3:15 PM at 1225.0 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795755660858,
- "updated": 1795755660858,
+ "page_run": 1795755938258,
+ "updated": 1795755938258,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -1031,10 +987,10 @@
  },
  "summary_day": "2026-11-26",
  "opt_checked": {
-  "NIFTY CE": 1795755660,
-  "NIFTY PE": 1795755660,
-  "BANKNIFTY CE": 1795755660,
-  "BANKNIFTY PE": 1795755660
+  "NIFTY CE": 1795755938,
+  "NIFTY PE": 1795755938,
+  "BANKNIFTY CE": 1795755938,
+  "BANKNIFTY PE": 1795755938
  },
  "alerted": {
   "dhan": "2026-11-27"

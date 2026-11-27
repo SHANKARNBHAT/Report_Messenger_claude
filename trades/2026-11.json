@@ -161174,5 +161174,42 @@
   "gross": -1920.75,
   "charges": 68.69,
   "net": -1989.44
+ },
+ {
+  "id": "1795664739629-4819",
+  "symbol": "HDFCLIFE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 1100,
+  "entry": 601.3,
+  "exit": 592.3,
+  "entry_time": 1795664739629,
+  "exit_time": 1795755300000,
+  "reason": "Stop loss",
+  "source": "Auto Daily",
+  "timeframes": [
+   "DAILY"
+  ],
+  "system": "RSI Daily",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 592.3,
+  "tp": 619.35,
+  "high": 608.9,
+  "low": 592.3,
+  "nifty": -0.09,
+  "strategies": [
+   "DAILY RSI  BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795664739629,
+   "price": 601.3
+  },
+  "agrees": "Yes",
+  "sma_rsi": null,
+  "gross": -9900.0,
+  "charges": 414.55,
+  "net": -10314.55
  }
 ]
