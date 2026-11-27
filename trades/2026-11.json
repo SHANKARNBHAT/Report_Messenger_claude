@@ -161248,5 +161248,76 @@
   "gross": -3847.5,
   "charges": 597.61,
   "net": -4445.11
+ },
+ {
+  "id": "1795756500000-4832",
+  "symbol": "BANKNIFTY 29DEC 63600 PE",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 30,
+  "entry": 1223.4,
+  "exit": 1326.25,
+  "entry_time": 1795756500000,
+  "exit_time": 1795761060000,
+  "reason": "Trailing SL",
+  "source": "Auto OPT ATM HA 15m",
+  "timeframes": [
+   "15 MIN"
+  ],
+  "system": "OPT ATM HA",
+  "style": "opt_ha",
+  "passed": false,
+  "carried": false,
+  "sl": 1104.0,
+  "tp": null,
+  "high": 1450.0,
+  "low": 1206.3,
+  "nifty": -0.36,
+  "strategies": [
+   "ATM CE/PE \u00b7 first solid green HA after red"
+  ],
+  "first_seen": null,
+  "agrees": "\u2014",
+  "sma_rsi": null,
+  "gross": 3085.5,
+  "charges": 139.69,
+  "net": 2945.81
+ },
+ {
+  "id": "1795751140169-4828",
+  "symbol": "PHOENIXLTD",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 350,
+  "entry": 2291.0,
+  "exit": 2256.65,
+  "entry_time": 1795751140169,
+  "exit_time": 1795761000000,
+  "reason": "Stop loss",
+  "source": "Auto 2H",
+  "timeframes": [
+   "2 HOUR"
+  ],
+  "system": "RSI",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 2256.65,
+  "tp": 2359.75,
+  "high": 2303,
+  "low": 2256.65,
+  "nifty": -0.07,
+  "strategies": [
+   "2H RSI Bullish Strategy"
+  ],
+  "first_seen": {
+   "time": 1795751140169,
+   "price": 2291.0
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -12022.5,
+  "charges": 492.52,
+  "net": -12515.02
  }
 ]

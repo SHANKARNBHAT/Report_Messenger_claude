@@ -530,50 +530,6 @@
    }
   },
   {
-   "id": "1795751140169-4828",
-   "symbol": "PHOENIXLTD",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 350,
-   "entry": 2291.0,
-   "sl": 2256.65,
-   "tp": 2359.75,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 34.35,
-    "step": 11.45
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 2256.65,
-   "time": 1795751140169,
-   "status": "open",
-   "passed": false,
-   "high": 2303,
-   "low": 2258.4,
-   "nifty": -0.07,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1795751140169,
-    "price": 2291.0
-   },
-   "protect": {
-    "atr": 72.18,
-    "cost": 1.48,
-    "since": 1795751140169
-   }
-  },
-  {
    "id": "1795752335990-4830",
    "symbol": "KALYANKJIL",
    "side": "BUY",
@@ -660,45 +616,6 @@
     "cost": 0.45,
     "since": 1795753855419
    }
-  },
-  {
-   "id": "1795756500000-4832",
-   "symbol": "BANKNIFTY 29DEC 63600 PE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 30,
-   "entry": 1223.4,
-   "sl": 1104.0,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "opt_ha",
-   "system": "OPT ATM HA",
-   "stop": 1326.25,
-   "time": 1795756500000,
-   "status": "open",
-   "passed": false,
-   "high": 1450.0,
-   "low": 1206.3,
-   "ltp": 1326.25,
-   "nifty": -0.36,
-   "source": "Auto OPT ATM HA 15m",
-   "timeframes": [
-    "15 MIN"
-   ],
-   "strategies": [
-    "ATM CE/PE \u00b7 first solid green HA after red"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": null,
-   "leg": "BANKNIFTY PE",
-   "underlying": "BANKNIFTY",
-   "security_id": 59948,
-   "expiry": "2026-12-29",
-   "strike": 63600.0
   },
   {
    "id": "1795757134550-4833",
@@ -791,6 +708,8 @@
  ],
  "seq": 4835,
  "log": [
+  "27 Nov 12:10  PHOENIXLTD: Stop loss at 2256.65 (Hold \u00b7 trail)",
+  "27 Nov 12:10  BANKNIFTY 29DEC 63600 PE: Trailing SL at 1326.25 (OPT ATM HA)",
   "27 Nov 12:05  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "27 Nov 12:05  NIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
   "27 Nov 12:05  BANKNIFTY 29DEC 63600 PE: no Dhan bars (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
@@ -1088,12 +1007,10 @@
   "24 Nov 15:15  TATASTEEL: Expiry 3:15 PM at 163.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  ONGC: Expiry 3:15 PM at 222.85 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  LICHSGFIN: Expiry 3:15 PM at 606.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  SUPREMEIND: Expiry 3:15 PM at 3156.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  SUPREMEIND: Expiry 3:15 PM at 3156.0 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  SUPREMEIND: Expiry 3:15 PM at 3156.0 (Hold \u00b7 trail)"
+  "24 Nov 15:15  SUPREMEIND: Expiry 3:15 PM at 3156.0 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795761332101,
- "updated": 1795761332101,
+ "page_run": 1795761638402,
+ "updated": 1795761638402,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -1114,10 +1031,10 @@
  },
  "summary_day": "2026-11-26",
  "opt_checked": {
-  "NIFTY CE": 1795761051,
-  "NIFTY PE": 1795761051,
-  "BANKNIFTY CE": 1795761051,
-  "BANKNIFTY PE": 1795761051
+  "NIFTY CE": 1795761638,
+  "NIFTY PE": 1795761638,
+  "BANKNIFTY CE": 1795761638,
+  "BANKNIFTY PE": 1795761638
  },
  "alerted": {
   "dhan": "2026-11-27"
