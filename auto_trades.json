@@ -199,7 +199,7 @@
    "time": 1795584651629,
    "status": "open",
    "passed": false,
-   "high": 3212.9,
+   "high": 3221,
    "low": 3128.6,
    "nifty": 2.14,
    "source": "Auto 2H",
@@ -288,7 +288,7 @@
    "status": "open",
    "passed": false,
    "high": 608.9,
-   "low": 592.6,
+   "low": 592.4,
    "nifty": -0.09,
    "source": "Auto Daily",
    "timeframes": [
@@ -463,7 +463,7 @@
    "time": 1795672236308,
    "status": "open",
    "passed": false,
-   "high": 2749.5,
+   "high": 2753.2,
    "low": 2697.1,
    "nifty": 0.38,
    "source": "Auto 2H",
@@ -507,7 +507,7 @@
    "time": 1795677645751,
    "status": "open",
    "passed": false,
-   "high": 2749.5,
+   "high": 2753.2,
    "low": 2697.1,
    "nifty": 0.32,
    "source": "Auto 4H",
@@ -595,7 +595,7 @@
    "time": 1795751140169,
    "status": "open",
    "passed": false,
-   "high": 2291.0,
+   "high": 2303,
    "low": 2291.0,
    "nifty": -0.07,
    "source": "Auto 2H",
@@ -616,10 +616,50 @@
     "cost": 1.48,
     "since": 1795751140169
    }
+  },
+  {
+   "id": "1795752000000-4829",
+   "symbol": "NIFTY 01DEC 25800 PE",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 65,
+   "entry": 164.1,
+   "sl": 113.3,
+   "tp": null,
+   "tsl": {
+    "on": false
+   },
+   "run": null,
+   "style": "opt_ha",
+   "system": "OPT ATM HA",
+   "stop": 113.3,
+   "time": 1795752000000,
+   "status": "open",
+   "passed": false,
+   "high": 164.1,
+   "low": 164.1,
+   "ltp": 164.1,
+   "nifty": -0.26,
+   "source": "Auto OPT ATM HA 15m",
+   "timeframes": [
+    "15 MIN"
+   ],
+   "strategies": [
+    "ATM CE/PE \u00b7 first solid green HA after red"
+   ],
+   "agrees": "\u2014",
+   "sma_rsi": null,
+   "first_seen": null,
+   "leg": "NIFTY PE",
+   "underlying": "NIFTY",
+   "security_id": 47846,
+   "expiry": "2026-12-01",
+   "strike": 25800.0
   }
  ],
- "seq": 4828,
+ "seq": 4829,
  "log": [
+  "27 Nov 09:30  NIFTY 01DEC 25800 PE: OPT ATM HA BUY 65 at 164.1 (09:30, solid green HA after red), SL 113.3",
   "27 Nov 09:15  PHOENIXLTD: RSI BUY 350 at 2291.0, SL 2256.65 (2 HOUR; trail)",
   "26 Nov 15:15  NIFTY 01DEC 25950 CE: 3:15 PM square-off at 166.8 (OPT ATM HA)",
   "26 Nov 15:10  NIFTY 01DEC 25950 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -918,11 +958,10 @@
   "24 Nov 15:15  ENRIN: Expiry 3:15 PM at 2976.5 (Hold \u00b7 trail)",
   "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 trail)"
  ],
- "page_run": 1795751737369,
- "updated": 1795751737369,
+ "page_run": 1795752059639,
+ "updated": 1795752059639,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -943,10 +982,10 @@
  },
  "summary_day": "2026-11-26",
  "opt_checked": {
-  "NIFTY CE": 1795751737,
-  "NIFTY PE": 1795751737,
-  "BANKNIFTY CE": 1795751737,
-  "BANKNIFTY PE": 1795751737
+  "NIFTY CE": 1795752059,
+  "NIFTY PE": 1795752059,
+  "BANKNIFTY CE": 1795752059,
+  "BANKNIFTY PE": 1795752059
  },
  "alerted": {
   "dhan": "2026-11-26"
