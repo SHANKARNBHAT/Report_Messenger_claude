@@ -1341,6 +1341,7 @@ def main() -> None:
             note("Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not set")
         elif telegram_alerts.send("✅ Auto trader alerts are working."):
             note("Telegram: test message sent")
+            telegram_alerts.sample_option_ha()
         else:
             note("Telegram: the test message was not sent (see the run log)")
     elif args.action != "run":
