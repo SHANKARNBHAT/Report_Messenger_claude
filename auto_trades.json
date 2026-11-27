@@ -704,10 +704,55 @@
     "cost": 1.12,
     "since": 1795758347813
    }
+  },
+  {
+   "id": "1795763446005-4836",
+   "symbol": "COFORGE",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 475,
+   "entry": 2082.0,
+   "sl": 2032.0,
+   "tp": 2144.45,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 31.25,
+    "step": 10.4
+   },
+   "style": "trail",
+   "system": "RSI 4H",
+   "stop": 2032.0,
+   "time": 1795763446005,
+   "status": "open",
+   "passed": false,
+   "high": 2082.0,
+   "low": 2082.0,
+   "nifty": -0.71,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795763446005,
+    "price": 2082.0
+   },
+   "protect": {
+    "atr": 72.81,
+    "cost": 1.32,
+    "since": 1795763446005
+   }
   }
  ],
- "seq": 4835,
+ "seq": 4836,
  "log": [
+  "27 Nov 12:40  COFORGE: RSI 4H BUY 475 at 2082.0, SL 2032.0 (4 HOUR; trail)",
   "27 Nov 12:25  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "27 Nov 12:25  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "27 Nov 12:11  BANKNIFTY: no ATM option from Dhan (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
@@ -1006,11 +1051,10 @@
   "24 Nov 15:15  DIXON: Expiry 3:15 PM at 13390.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 trail)",
   "24 Nov 15:15  ABCAPITAL: Expiry 3:15 PM at 415.8 (Hold \u00b7 trail)",
-  "24 Nov 15:15  TATASTEEL: Expiry 3:15 PM at 163.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  TATASTEEL: Expiry 3:15 PM at 163.0 (Hold \u00b7 2H SMA 8 exit)"
+  "24 Nov 15:15  TATASTEEL: Expiry 3:15 PM at 163.0 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795763132663,
- "updated": 1795763132663,
+ "page_run": 1795763446005,
+ "updated": 1795763446005,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -1031,10 +1075,10 @@
  },
  "summary_day": "2026-11-26",
  "opt_checked": {
-  "NIFTY CE": 1795763132,
-  "NIFTY PE": 1795763132,
-  "BANKNIFTY CE": 1795763132,
-  "BANKNIFTY PE": 1795763132
+  "NIFTY CE": 1795763446,
+  "NIFTY PE": 1795763446,
+  "BANKNIFTY CE": 1795763446,
+  "BANKNIFTY PE": 1795763446
  },
  "alerted": {
   "dhan": "2026-11-27"
