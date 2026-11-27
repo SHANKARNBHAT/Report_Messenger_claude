@@ -222,50 +222,6 @@
    }
   },
   {
-   "id": "1795584651629-4816",
-   "symbol": "ICICIBANK",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 700,
-   "entry": 1645.0,
-   "sl": 1586.8,
-   "tp": 1694.35,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 24.7,
-    "step": 8.2
-   },
-   "style": "trail",
-   "system": "RSI",
-   "stop": 1586.8,
-   "time": 1795584651629,
-   "status": "open",
-   "passed": false,
-   "high": 1652,
-   "low": 1591.3,
-   "nifty": 2.14,
-   "source": "Auto 2H",
-   "timeframes": [
-    "2 HOUR"
-   ],
-   "strategies": [
-    "2H RSI Bullish Strategy"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1795584651629,
-    "price": 1645.0
-   },
-   "protect": {
-    "atr": 38.38,
-    "cost": 1.04,
-    "since": 1795584651629
-   }
-  },
-  {
    "id": "1795664739629-4820",
    "symbol": "LAURUSLABS",
    "side": "BUY",
@@ -420,7 +376,7 @@
    "status": "open",
    "passed": false,
    "high": 2753.2,
-   "low": 2697,
+   "low": 2686.4,
    "nifty": 0.38,
    "source": "Auto 2H",
    "timeframes": [
@@ -464,7 +420,7 @@
    "status": "open",
    "passed": false,
    "high": 2753.2,
-   "low": 2697,
+   "low": 2686.4,
    "nifty": 0.32,
    "source": "Auto 4H",
    "timeframes": [
@@ -728,7 +684,7 @@
    "status": "open",
    "passed": false,
    "high": 600.0,
-   "low": 598.6,
+   "low": 598.55,
    "nifty": -0.75,
    "source": "Auto 4H",
    "timeframes": [
@@ -752,6 +708,7 @@
  ],
  "seq": 4837,
  "log": [
+  "27 Nov 13:25  ICICIBANK: Stop loss at 1586.8 (Hold \u00b7 trail)",
   "27 Nov 13:05  LICHSGFIN: RSI 4H BUY 1000 at 600.0, SL 591.0 (4 HOUR; trail)",
   "27 Nov 13:00  PAYTM: Stop loss at 1760.0 (Hold \u00b7 trail)",
   "27 Nov 12:55  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -1050,11 +1007,10 @@
   "24 Nov 15:15  DIVISLAB: Expiry 3:15 PM at 11203.0 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  DIVISLAB: Expiry 3:15 PM at 11203.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  DIXON: Expiry 3:15 PM at 13390.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  DIXON: Expiry 3:15 PM at 13390.0 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  DIXON: Expiry 3:15 PM at 13390.0 (Hold \u00b7 trail)"
+  "24 Nov 15:15  DIXON: Expiry 3:15 PM at 13390.0 (Hold \u00b7 2H SMA 8 exit)"
  ],
- "page_run": 1795765842814,
- "updated": 1795765842814,
+ "page_run": 1795766132856,
+ "updated": 1795766132856,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -1075,10 +1031,10 @@
  },
  "summary_day": "2026-11-26",
  "opt_checked": {
-  "NIFTY CE": 1795765842,
-  "NIFTY PE": 1795765842,
-  "BANKNIFTY CE": 1795765842,
-  "BANKNIFTY PE": 1795765842
+  "NIFTY CE": 1795766132,
+  "NIFTY PE": 1795766132,
+  "BANKNIFTY CE": 1795766132,
+  "BANKNIFTY PE": 1795766132
  },
  "alerted": {
   "dhan": "2026-11-27"
