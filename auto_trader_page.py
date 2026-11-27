@@ -30,6 +30,7 @@ import streamlit as st
 import futures_simulator as fs
 import ha_index
 import ha_vp
+import signal_options
 import trade_report
 
 # Streamlit Cloud keeps imported modules in memory when it pulls new code, so a
@@ -1181,6 +1182,9 @@ def main() -> None:
 
     st.subheader("Signals")
     show_signals(signals)
+
+    st.subheader("2H / 4H signals · ATM CE & PE")
+    signal_options.show(signals, {i["symbol"]: i["lot"] for i in fs.load_instruments()})
 
     downloads = st.columns(3)
     downloads[0].download_button("⬇ Auto trader trades (CSV)", csv(history), "auto_trader_trades.csv", "text/csv",
