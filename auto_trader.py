@@ -696,7 +696,7 @@ def enter_option_signals(files: Files, account: dict, now: datetime, trading: bo
 
 
 def alert_option_ha(account: dict, now: datetime, note) -> None:
-    """Once per completed 1H / 2H / 4H candle end: the ATM calls and puts of NIFTY, BANKNIFTY and the high-ATR
+    """Once per completed 1H / 2H / 3H / 4H candle end: the ATM calls and puts of NIFTY, BANKNIFTY and the high-ATR
     F&O stocks whose Heikin Ashi candle on that timeframe completed solid green after red, on
     Telegram (opt_ha_alert.py). Alerts only."""
     latest = opt_ha_alert.last_end(now)

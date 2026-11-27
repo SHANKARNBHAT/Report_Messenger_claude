@@ -1,10 +1,10 @@
 """
-ATM CE / PE Heikin Ashi alert, 1H / 2H / 4H: after each 1-, 2- or 4-hour candle completes, check the ATM call and put
+ATM CE / PE Heikin Ashi alert, 1H / 2H / 3H / 4H: after each 1-, 2-, 3- or 4-hour candle completes, check the ATM call and put
 of NIFTY, BANKNIFTY and every F&O stock whose daily ATR covers more than the saved number of strikes
 (futures_simulator.atr_strikes_above, the F&O ATR page's ratio), and alert on Telegram those whose
 Heikin Ashi candle on that timeframe completed solid green (no lower wick) right after a red one.
 
-  * Candles from 9:15 AM, as Chartink's: 1H ends 10:15 ... 3:15, 2H 11:15 / 1:15 / 3:15, 4H 1:15
+  * Candles from 9:15 AM, as Chartink's: 1H ends 10:15 ... 3:15, 2H 11:15 / 1:15 / 3:15, 3H 12:15 / 3:15, 4H 1:15
     (the short 3:15-3:30 / 1:15-3:30 candles end at the close, too late, so they are not alerted).
   * The option: the nearest expiry (the next one on its expiry day), the strike nearest the price
     when scanned. Its 1H / 2H / 4H candles are made from Dhan's 15-minute ones, the HA chained over
@@ -29,7 +29,7 @@ from pathlib import Path
 
 import dhan_data as dd
 
-TIMEFRAMES = {"1H": 60, "2H": 120, "4H": 240}  # label -> minutes
+TIMEFRAMES = {"1H": 60, "2H": 120, "3H": 180, "4H": 240}  # label -> minutes
 SESSION_OPEN = time(9, 15)
 SESSION_CLOSE = time(15, 30)
 LAST_ALERT = time(15, 15)  # candles ending later (at the close) are not alerted
