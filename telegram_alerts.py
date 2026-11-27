@@ -62,6 +62,19 @@ def rsi_signals(timeframe: str, when: str, signals: list[dict]) -> None:
     send("\n".join(lines))
 
 
+def option_ha(when: str, hits: list[dict]) -> None:
+    """The ATM calls whose 1H / 2H / 4H HA candle just completed solid green after red (opt_ha_alert.scan)."""
+    lines = [f"🟢 <b>HA solid green after red · ATM CE</b> · candles ending {when}"]
+    for h in hits:
+        extra = " · ".join(x for x in (
+            f"LTP {h['ltp']:g}" if h.get("ltp") is not None else "",
+            f"spot {h['spot']:,.2f}",
+            f"lot {h['lot']}" if h.get("lot") else "",
+            f"ATR {h['ratio']:.1f}× strike" if h.get("ratio") else "") if x)
+        lines.append(f"• <b>{h['timeframe']}</b> · <b>{h['option']}</b>\n   close {h['candle']['close']:g} · {extra}")
+    send("\n".join(lines))
+
+
 def problem(text: str) -> None:
     send(f"⚠️ Auto trader: {text}")
 
