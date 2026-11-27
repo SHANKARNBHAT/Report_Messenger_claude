@@ -70,8 +70,10 @@ RETIRED_SYSTEMS = {"HA": "Heikin Ashi (retired)", "HA MTF": "HA multi-timeframe 
                    "HA BRK Daily": "HA breakout Daily (retired)", "HA VP": "HA + volume profile (retired)",
                    "HA VP TRAIL": "HA VP · trail past target (retired)",
                    "HA PURE 4H": "HA pure 4H (retired)", "HA WK BRK": "HA weekly breakout (retired)"}
-# RSI 2H and 4H take no new trades since 27 Nov 2026 (auto_trader.RETIRED): still shown, with their open positions.
-SYSTEM_NAMES = {"RSI": "RSI 2H (retired)", "RSI 4H": "RSI 4H (retired)", "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
+# RSI 2H and 4H take no new trades since 27 Nov 2026 (auto_trader.RETIRED), and RSI Weekly: hidden from the page
+# (HIDDEN_SYSTEMS), as the others retired.
+HIDDEN_SYSTEMS = {"RSI", "RSI 4H", "RSI Weekly"}
+SYSTEM_NAMES = {"RSI Daily": "RSI Daily",
                 **(RETIRED_SYSTEMS if SHOW_RETIRED else {})}
 INDEX_SYSTEM = "HA IDX"
 # The 15-minute index strategies (auto_trader.INDEX_SYSTEMS): name, and its rule (ha_index.rule_signal):
@@ -335,8 +337,8 @@ def show_versus(history: pd.DataFrame, positions: list[dict]) -> None:
 # The strategies started (or changed: RSI's 30-minute RSI exit) on 16 Nov 2026, tracked apart from
 # that day on, by the trades entered since.
 NEW_SINCE = datetime(2026, 11, 16, tzinfo=fs.IST)
-NEW_STRATEGIES = {"HA IDX PURE": "HA IDX · no SMA (15m index)", "RSI": "RSI 2H (retired)", "RSI 4H": "RSI 4H (retired)",
-                  "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
+NEW_STRATEGIES = {"HA IDX PURE": "HA IDX · no SMA (15m index)",
+                  "RSI Daily": "RSI Daily",
                   "HA IDX BRK": "HA IDX · breakout (15m index)"}
 
 
@@ -1009,8 +1011,8 @@ def main() -> None:
     st.title("🤖 Auto trader")
     chart_site_picker()
     st.caption(
-        f"Paper-trades every Chartink RSI signal, each timeframe its own strategy: **RSI 2H**, **RSI 4H**, **RSI Daily** "
-        f"and **RSI Weekly** (a stock on several gets a trade in each; only the entry signal's timeframe differs, "
+        f"Paper-trades the Chartink RSI signals as **RSI Daily** (RSI 2H and 4H retired on 27 Nov 2026; they and "
+        f"RSI Weekly are hidden from this page; only the entry signal's timeframe differs between them, "
         f"the SL and exits are all 2H), 1 lot, SL at the previous 2H candle (Heikin Ashi: the previous HA "
         f"candle's low / high; RSI: the candle's low / high or {fs.AUTO_SL_PCT}%, whichever is further), in its exit styles "
         f"side by side: **Hold · trail** (held "
@@ -1030,7 +1032,7 @@ def main() -> None:
         f"**HA 15m index** trades NIFTY and BANKNIFTY futures on 15-minute Heikin Ashi candles (from Yahoo 5-minute "
         f"bars: a green HA candle with no lower wick after a doji or a red HA candle (closing above its body), in an SMA 20/50/200 uptrend, or the mirror for shorts), SL 1.1 x ATR(14) trailed from each 15-minute close, out at the close of the first HA doji, "
         f"squared off at 3:15 PM; a new trade once the last one closed, not twice on one candle. "
-        f"A stock is traded once per side, style and strategy per day (RSI Weekly: per week). Runs on GitHub: every {LIVE_EVERY} minutes while "
+        f"A stock is traded once per side, style and strategy per day. Runs on GitHub: every {LIVE_EVERY} minutes while "
         f"this page is open in market hours, else every 15 minutes if the switch below is on.")
 
     account, error = load_account()
@@ -1069,7 +1071,7 @@ def main() -> None:
     every_trade, every_position = history, account["positions"]
     # The index strategy has its own tab (index_trader_page.py): this page is the stock strategies.
     # Retired strategies are hidden too, with any positions they still hold until their exits.
-    hidden = [*INDEX_SYSTEMS, "OPT ATM HA", *({} if SHOW_RETIRED else RETIRED_SYSTEMS)]  # opt_atm.SYSTEM
+    hidden = [*INDEX_SYSTEMS, "OPT ATM HA", *HIDDEN_SYSTEMS, *({} if SHOW_RETIRED else RETIRED_SYSTEMS)]  # opt_atm.SYSTEM
     history = history[~history["System"].isin(hidden)]
     positions = [p for p in account["positions"] if p.get("system", "RSI") not in hidden]
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
@@ -1152,7 +1154,7 @@ def main() -> None:
     if len(history) or len(you):
         st.markdown("**The strategies side by side**")
         show_versus(history, positions)
-        system = st.segmented_control("Strategy", list(SYSTEM_NAMES), format_func=SYSTEM_NAMES.get, default="RSI") or "RSI"
+        system = st.segmented_control("Strategy", list(SYSTEM_NAMES), format_func=SYSTEM_NAMES.get, default="RSI Daily") or "RSI Daily"
         styles = style_names(system)
         trades = history[(history["System"] == system) & history["Style"].isin(styles)]
         held = [p for p in positions if p.get("system", "RSI") == system and series_of(p) in styles]
