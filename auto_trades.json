@@ -618,45 +618,6 @@
    }
   },
   {
-   "id": "1795752000000-4829",
-   "symbol": "NIFTY 01DEC 25800 PE",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 65,
-   "entry": 164.1,
-   "sl": 113.3,
-   "tp": null,
-   "tsl": {
-    "on": false
-   },
-   "run": null,
-   "style": "opt_ha",
-   "system": "OPT ATM HA",
-   "stop": 134.55,
-   "time": 1795752000000,
-   "status": "open",
-   "passed": false,
-   "high": 168.9,
-   "low": 131.5,
-   "ltp": 149.35,
-   "nifty": -0.26,
-   "source": "Auto OPT ATM HA 15m",
-   "timeframes": [
-    "15 MIN"
-   ],
-   "strategies": [
-    "ATM CE/PE \u00b7 first solid green HA after red"
-   ],
-   "agrees": "\u2014",
-   "sma_rsi": null,
-   "first_seen": null,
-   "leg": "NIFTY PE",
-   "underlying": "NIFTY",
-   "security_id": 47846,
-   "expiry": "2026-12-01",
-   "strike": 25800.0
-  },
-  {
    "id": "1795752335990-4830",
    "symbol": "KALYANKJIL",
    "side": "BUY",
@@ -747,6 +708,7 @@
  ],
  "seq": 4831,
  "log": [
+  "27 Nov 10:10  NIFTY 01DEC 25800 PE: Trailing SL at 134.55 (OPT ATM HA)",
   "27 Nov 10:00  KALYANKJIL: RSI 4H BUY 1350 at 653.25, SL 637.45 (4 HOUR; trail)",
   "27 Nov 09:35  KALYANKJIL: RSI BUY 1350 at 657.9, SL 637.45 (2 HOUR; trail)",
   "27 Nov 09:30  NIFTY 01DEC 25800 PE: OPT ATM HA BUY 65 at 164.1 (09:30, solid green HA after red), SL 113.3",
@@ -1045,11 +1007,10 @@
   "24 Nov 15:15  ASTRAL: Expiry 3:15 PM at 1225.0 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  ASTRAL: Expiry 3:15 PM at 1225.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  ENRIN: Expiry 3:15 PM at 2976.5 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  ENRIN: Expiry 3:15 PM at 2976.5 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 2H SMA 20 exit)"
+  "24 Nov 15:15  ENRIN: Expiry 3:15 PM at 2976.5 (Hold \u00b7 trail)"
  ],
- "page_run": 1795754139480,
- "updated": 1795754139480,
+ "page_run": 1795754445462,
+ "updated": 1795754445462,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -1070,10 +1031,10 @@
  },
  "summary_day": "2026-11-26",
  "opt_checked": {
-  "NIFTY CE": 1795754139,
-  "NIFTY PE": 1795754139,
-  "BANKNIFTY CE": 1795754139,
-  "BANKNIFTY PE": 1795754139
+  "NIFTY CE": 1795754445,
+  "NIFTY PE": 1795754445,
+  "BANKNIFTY CE": 1795754445,
+  "BANKNIFTY PE": 1795754445
  },
  "alerted": {
   "dhan": "2026-11-26"
