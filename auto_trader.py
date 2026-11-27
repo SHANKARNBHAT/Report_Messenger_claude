@@ -707,6 +707,38 @@ def log_alerts(files: Files, rows: list[dict]) -> None:
             files.changed.add(f"alerts/{month_of(row['time'])}.json")
 
 
+ALERTS_KEEP_DAYS = 30  # the Alerts log keeps this many days of alerts ...
+ALERTS_KEEP_MAX = 2000  # ... and at most this many, the newest
+
+
+def prune_alerts(files: Files, now: datetime) -> int:
+    """Keep the Alerts log a standard size: drop alerts older than ALERTS_KEEP_DAYS and, past
+    ALERTS_KEEP_MAX, the oldest; a month file left empty is deleted. How many were dropped."""
+    folder = files.folder / "alerts"
+    if not folder.exists():
+        return 0
+    cutoff = int((now - timedelta(days=ALERTS_KEEP_DAYS)).timestamp() * 1000)
+    names = sorted(f"alerts/{p.name}" for p in folder.glob("*.json"))
+    kept = sorted((r["time"] for n in names for r in files.get(n, []) if r["time"] >= cutoff), reverse=True)
+    if len(kept) > ALERTS_KEEP_MAX:
+        cutoff = max(cutoff, kept[ALERTS_KEEP_MAX - 1])
+    dropped = 0
+    for n in names:
+        rows = files.get(n, [])
+        keep = [r for r in rows if r["time"] >= cutoff]
+        if len(keep) == len(rows):
+            continue
+        dropped += len(rows) - len(keep)
+        if keep:
+            files.data[n] = keep
+            files.changed.add(n)
+        else:
+            files.changed.discard(n)
+            files.data.pop(n, None)
+            (files.folder / n).unlink(missing_ok=True)
+    return dropped
+
+
 def ha_rows(hits: list[dict], now: datetime, replay: bool = False) -> list[dict]:
     """opt_ha_alert hits as Alerts log rows."""
     return [{"time": h["end"] * 1000, "sent": int(now.timestamp() * 1000), "type": "HA CE/PE",
@@ -1418,6 +1450,7 @@ def main() -> None:
     stamp = now.strftime("%d %b %H:%M")
     account["log"] = ([f"{stamp}  {line}" for line in reversed(lines)] + account.get("log", []))[:300]
     files.changed.add(name)
+    prune_alerts(files, now)
     files.save()
 
 

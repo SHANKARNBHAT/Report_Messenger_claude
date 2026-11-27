@@ -14,7 +14,7 @@ import streamlit as st
 
 import futures_simulator as fs
 
-MONTHS_BACK = 3  # months of logs read
+MONTHS_BACK = 2  # months of logs read (the bot keeps 30 days: auto_trader.ALERTS_KEEP_DAYS)
 
 
 def months(today: date) -> list[str]:
@@ -58,7 +58,7 @@ def table(rows: list[dict]) -> pd.DataFrame:
 def main() -> None:
     st.title("🔔 Alerts log")
     st.caption("Every alert the Auto trader sent on Telegram: the HA turn-green alerts on the ATM CE / PE "
-               "(1H / 2H / 3H / 4H) and the RSI entries. Logged from 27 Nov 2026; a replayed day (the ha-today "
+               "(1H / 2H / 3H / 4H) and the RSI entries: the last 30 days (at most 2,000 alerts), older ones deleted; a replayed day (the ha-today "
                "action) is marked, its strike being the ATM at the close.")
     if st.button("↻ Refresh", key="alerts-refresh"):
         load.clear()
