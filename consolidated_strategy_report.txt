@@ -1,29 +1,21 @@
-Generated on: 2026-11-26 20:10:53
+Generated on: 2026-11-27 19:57:52
 • Market Baseline: Nifty 50 is currently Bullish (Close vs 200 SMA & SMA 20 vs SMA 50).
 
 ## bullish_overlaps
     symbol  lot_size last_close active
-HEROMOTOCO       150    5556.00 ACTIVE
+   HCLTECH       400    1468.60 ACTIVE
+HEROMOTOCO       150    5556.00      -
+      INFY       400    1183.00 ACTIVE
 LAURUSLABS       850    2338.00      -
-       TCS       225    2456.20      -
+       TCS       225    2456.20 ACTIVE
      TECHM       600    1795.60      -
- ZYDUSLIFE       900    1236.00      -
+     WIPRO      3000     196.54 ACTIVE
+ ZYDUSLIFE       900    1236.00 ACTIVE
 
 ## bearish_overlaps
 
 ## signal_log
     symbol signal_date strategy_type    bias  lot_size
- ABCAPITAL  2026-11-12  RSI_Strategy BULLISH      3100
-       BEL  2026-11-12  RSI_Strategy BULLISH      1425
-GODREJPROP  2026-11-12  RSI_Strategy BULLISH       325
-   ICICIGI  2026-11-12  RSI_Strategy BULLISH       325
-  KFINTECH  2026-11-12  RSI_Strategy BULLISH       575
-     LODHA  2026-11-12  RSI_Strategy BULLISH       625
-   MPHASIS  2026-11-12 SMA_Crossover BULLISH       275
-   PAGEIND  2026-11-12 SMA_Crossover BEARISH        20
-     PAYTM  2026-11-12  RSI_Strategy BULLISH       725
-      PGEL  2026-11-12  RSI_Strategy BULLISH       950
-   SBILIFE  2026-11-12  RSI_Strategy BULLISH       375
      ALKEM  2026-11-13 SMA_Crossover BEARISH       125
 ASIANPAINT  2026-11-13  RSI_Strategy BULLISH       250
        BDL  2026-11-13 SMA_Crossover BEARISH       425
@@ -138,3 +130,24 @@ POWERINDIA  2026-11-25 SMA_Crossover BEARISH        25
      TECHM  2026-11-25  RSI_Strategy BULLISH       600
  ZYDUSLIFE  2026-11-25 SMA_Crossover BULLISH       900
  ZYDUSLIFE  2026-11-25  RSI_Strategy BULLISH       900
+    360ONE  2026-11-26  RSI_Strategy BULLISH       500
+ BRITANNIA  2026-11-26  RSI_Strategy BULLISH       125
+       BSE  2026-11-26  RSI_Strategy BULLISH       200
+      CDSL  2026-11-26  RSI_Strategy BULLISH       475
+   HCLTECH  2026-11-26 SMA_Crossover BULLISH       400
+   HCLTECH  2026-11-26  RSI_Strategy BULLISH       400
+      INFY  2026-11-26 SMA_Crossover BULLISH       400
+      INFY  2026-11-26  RSI_Strategy BULLISH       400
+  KFINTECH  2026-11-26  RSI_Strategy BULLISH       575
+     LODHA  2026-11-26  RSI_Strategy BULLISH       625
+       MCX  2026-11-26  RSI_Strategy BULLISH       225
+      MFSL  2026-11-26  RSI_Strategy BULLISH       400
+     PAYTM  2026-11-26 SMA_Crossover BULLISH       725
+PERSISTENT  2026-11-26  RSI_Strategy BULLISH       125
+    RECLTD  2026-11-26 SMA_Crossover BEARISH      1575
+   SBILIFE  2026-11-26  RSI_Strategy BULLISH       375
+ SUNPHARMA  2026-11-26  RSI_Strategy BULLISH       350
+   TIINDIA  2026-11-26 SMA_Crossover BEARISH       200
+TORNTPHARM  2026-11-26  RSI_Strategy BULLISH       125
+     WIPRO  2026-11-26 SMA_Crossover BULLISH      3000
+     WIPRO  2026-11-26  RSI_Strategy BULLISH      3000
