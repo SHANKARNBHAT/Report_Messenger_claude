@@ -14,6 +14,7 @@ import streamlit as st
 
 import futures_simulator as fs
 
+TABS = {"1H": "1 hour", "2H": "2 hour", "3H": "3 hour", "4H": "4 hour"}  # the timeframe tabs
 MONTHS_BACK = 24  # months of logs looked for (the bot keeps the log under 1 MB: auto_trader.ALERTS_MAX_BYTES)
 
 
@@ -72,34 +73,42 @@ def main() -> None:
         return
     df = table(rows)
 
-    cols = st.columns([2, 2, 2, 3])
+    cols = st.columns([2, 2, 3])
     days = sorted(df["day"].unique(), reverse=True)
     day_pick = cols[0].selectbox("Day", ["All days", *days],
                                  format_func=lambda d: d if isinstance(d, str) else d.strftime("%a %d %b"))
     kinds = cols[1].multiselect("Alert", sorted(df["type"].unique()), placeholder="All")
-    frames = cols[2].multiselect("Timeframe", [t for t in ("1H", "2H", "3H", "4H", "Daily") if t in set(df["timeframe"])],
-                                 placeholder="All")
-    search = cols[3].text_input("Stock", placeholder="e.g. KAYNES").strip().upper()
+    search = cols[2].text_input("Stock", placeholder="e.g. KAYNES").strip().upper()
     shown = df
     if not isinstance(day_pick, str):
         shown = shown[shown["day"] == day_pick]
     if kinds:
         shown = shown[shown["type"].isin(kinds)]
-    if frames:
-        shown = shown[shown["timeframe"].isin(frames)]
     if search:
         shown = shown[shown["symbol"].str.contains(search, regex=False)]
 
+    # A tab per timeframe (RSI Daily only if it has alerts), then all of them together.
+    frames = [*TABS, *(["Daily"] if (shown["timeframe"] == "Daily").any() else [])]
+    tabs = st.tabs([f"{TABS.get(f, f)} ({int((shown['timeframe'] == f).sum())})" for f in frames] + [f"All ({len(shown)})"])
+    for tab, frame in zip(tabs, [*frames, None]):
+        with tab:
+            alerts_view(shown if frame is None else shown[shown["timeframe"] == frame], frame or "all")
+
+
+def alerts_view(shown: pd.DataFrame, key: str) -> None:
+    """One tab: its counts and alerts, newest first."""
+    if shown.empty:
+        st.caption("No alerts on this timeframe yet.")
+        return
     m = st.columns(4)
     m[0].metric("Alerts", len(shown))
     m[1].metric("🟢 Up (CE / buy)", int((shown["direction"] == "🟢 Up").sum()))
     m[2].metric("🔴 Down (PE / sell)", int((shown["direction"] == "🔴 Down").sum()))
     m[3].metric("Stocks", shown["symbol"].nunique())
-
     st.dataframe(
         shown[["when", "type", "timeframe", "direction", "symbol", "option", "rule", "price", "ltp", "spot", "lot",
                "ratio", "replay"]],
-        hide_index=True, width="stretch", height=min(700, 38 + 35 * len(shown)),
+        hide_index=True, width="stretch", height=min(700, 38 + 35 * len(shown)), key=f"alerts-table-{key}",
         column_config={
             "when": st.column_config.DatetimeColumn("Candle / signal", format="DD MMM HH:mm"),
             "type": "Alert", "timeframe": "TF", "direction": "Direction", "symbol": "Stock",
@@ -112,7 +121,7 @@ def main() -> None:
             "replay": st.column_config.CheckboxColumn("Replay"),
         })
     st.download_button("⬇ Download CSV", shown.drop(columns=["day"]).to_csv(index=False).encode(),
-                       file_name=f"alerts_{date.today():%Y%m%d}.csv", mime="text/csv")
+                       file_name=f"alerts_{key}_{date.today():%Y%m%d}.csv", mime="text/csv", key=f"alerts-csv-{key}")
 
 
 if __name__ == "__main__":
