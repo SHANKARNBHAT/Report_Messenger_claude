@@ -502,7 +502,8 @@ HELD_MODULES = (ha_pure, ha_break)
 # exits, and their trades are kept; the page hides them (auto_trader_page.RETIRED_SYSTEMS).
 RETIRED = {"HA PURE 2H", "HA PURE Daily", "HA BRK 2H", "HA BRK 4H", "HA BRK Daily", "HA VP", "HA VP TRAIL",
            "HA PURE 4H", "HA WK BRK",  # these two on 24 Nov 2026
-           "HA IDX", "HA IDX PURE", "HA IDX BRK"}  # the 15-minute index strategies, also on 24 Nov 2026
+           "HA IDX", "HA IDX PURE", "HA IDX BRK",  # the 15-minute index strategies, also on 24 Nov 2026
+           "RSI", "RSI 4H"}  # RSI 2H and 4H on 27 Nov 2026 (RSI Daily kept); the page still shows them
 
 
 def index_bars(note) -> dict[str, list]:
@@ -1152,6 +1153,9 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
     for signal in signals:
         if signal["timeframe"] in traded and signal["fno"]:
             by_symbol.setdefault(signal["symbol"], []).append(signal)
+    if system in RETIRED:
+        mark(seen, [s for found in by_symbol.values() for s in found], "Strategy retired")
+        return
     if not trading:
         mark(seen, [s for found in by_symbol.values() for s in found], "Not traded: switch off, page closed")
         return

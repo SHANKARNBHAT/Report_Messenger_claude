@@ -70,7 +70,8 @@ RETIRED_SYSTEMS = {"HA": "Heikin Ashi (retired)", "HA MTF": "HA multi-timeframe 
                    "HA BRK Daily": "HA breakout Daily (retired)", "HA VP": "HA + volume profile (retired)",
                    "HA VP TRAIL": "HA VP · trail past target (retired)",
                    "HA PURE 4H": "HA pure 4H (retired)", "HA WK BRK": "HA weekly breakout (retired)"}
-SYSTEM_NAMES = {"RSI": "RSI 2H", "RSI 4H": "RSI 4H", "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
+# RSI 2H and 4H take no new trades since 27 Nov 2026 (auto_trader.RETIRED): still shown, with their open positions.
+SYSTEM_NAMES = {"RSI": "RSI 2H (retired)", "RSI 4H": "RSI 4H (retired)", "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
                 **(RETIRED_SYSTEMS if SHOW_RETIRED else {})}
 INDEX_SYSTEM = "HA IDX"
 # The 15-minute index strategies (auto_trader.INDEX_SYSTEMS): name, and its rule (ha_index.rule_signal):
@@ -334,7 +335,7 @@ def show_versus(history: pd.DataFrame, positions: list[dict]) -> None:
 # The strategies started (or changed: RSI's 30-minute RSI exit) on 16 Nov 2026, tracked apart from
 # that day on, by the trades entered since.
 NEW_SINCE = datetime(2026, 11, 16, tzinfo=fs.IST)
-NEW_STRATEGIES = {"HA IDX PURE": "HA IDX · no SMA (15m index)", "RSI": "RSI 2H", "RSI 4H": "RSI 4H",
+NEW_STRATEGIES = {"HA IDX PURE": "HA IDX · no SMA (15m index)", "RSI": "RSI 2H (retired)", "RSI 4H": "RSI 4H (retired)",
                   "RSI Daily": "RSI Daily", "RSI Weekly": "RSI Weekly",
                   "HA IDX BRK": "HA IDX · breakout (15m index)"}
 
