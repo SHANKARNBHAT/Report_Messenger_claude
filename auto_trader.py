@@ -695,7 +695,28 @@ def enter_option_signals(files: Files, account: dict, now: datetime, trading: bo
             settle_option(files, account, position, bars, now, note)  # it may have hit its SL since
 
 
-def alert_option_ha(account: dict, now: datetime, note) -> None:
+def log_alerts(files: Files, rows: list[dict]) -> None:
+    """Add alerts sent on Telegram to alerts/YYYY-MM.json (by the alert's time), once each: the
+    Alerts log page. Each row: time (ms), type ("HA CE/PE" or "RSI"), timeframe, symbol, side, ...."""
+    def key(r):
+        return r["type"], r["symbol"], r["side"], r["timeframe"], r["time"]
+    for row in rows:
+        month = files.get(f"alerts/{month_of(row['time'])}.json", [])
+        if key(row) not in {key(r) for r in month}:
+            month.append(row)
+            files.changed.add(f"alerts/{month_of(row['time'])}.json")
+
+
+def ha_rows(hits: list[dict], now: datetime, replay: bool = False) -> list[dict]:
+    """opt_ha_alert hits as Alerts log rows."""
+    return [{"time": h["end"] * 1000, "sent": int(now.timestamp() * 1000), "type": "HA CE/PE",
+             "timeframe": h["timeframe"], "symbol": h["name"], "side": h["side"], "option": h["option"],
+             "strike": h["strike"], "rule": h["candle"].get("kind", "HA solid green"), "price": h["candle"]["close"],
+             "ltp": h["ltp"], "spot": h["spot"], "lot": h["lot"], "ratio": h["ratio"],
+             **({"replay": True} if replay else {})} for h in hits]
+
+
+def alert_option_ha(files: Files, account: dict, now: datetime, note) -> None:
     """Once per completed 1H / 2H / 3H / 4H candle end: the ATM calls and puts of NIFTY, BANKNIFTY and the high-ATR
     F&O stocks whose Heikin Ashi candle on that timeframe completed solid green after red, on
     Telegram (opt_ha_alert.py). Alerts only."""
@@ -727,6 +748,7 @@ def alert_option_ha(account: dict, now: datetime, note) -> None:
          + (", ".join(f"{h['option']} {h['timeframe']}" for h in hits) if hits else "none"))
     if hits:
         telegram_alerts.option_ha(f"candles ending {when}", hits)
+        log_alerts(files, ha_rows(hits, now))
 
 
 def vp_bars(positions: list[dict], now: datetime) -> dict[str, list]:
@@ -1175,7 +1197,7 @@ def send_rsi_today(files: Files, account: dict, now: datetime, note) -> None:
         note(f"Telegram: {len(found)} RSI {timeframe} signals of today sent")
 
 
-def send_ha_today(now: datetime, note) -> None:
+def send_ha_today(files: Files, now: datetime, note) -> None:
     """Replay the day's 1H / 2H / 3H / 4H candles of the ATM CE / PE (opt_ha_alert, the strike as now)
     and send on Telegram every HA turn-green alert they gave, oldest first."""
     lots = {i["symbol"]: i["lot"] for i in fs.load_instruments()} | opt_atm.LOT_SIZE
@@ -1190,6 +1212,7 @@ def send_ha_today(now: datetime, note) -> None:
     note(f"HA CE/PE today: {len(hits)} alerts on {len(checked)} of {total} underlyings")
     if hits:
         telegram_alerts.option_ha(f"today, {now:%d %b} (replay, ATM strike as at the close)", hits)
+        log_alerts(files, ha_rows(hits, now, replay=True))
     else:
         telegram_alerts.send(f"🔔 HA turn green · ATM CE / PE · today, {now:%d %b}: no alerts "
                              f"({len(checked)} of {total} checked)")
@@ -1305,6 +1328,11 @@ def enter_signals(files: Files, account: dict, signals: list[dict], dashboard: d
         note(f"{symbol}: {system} {side} {qty} at {entry}, SL {sl} ({', '.join(timeframes)}{exits}; {', '.join(styles)})")
     if alerts:
         telegram_alerts.rsi_signals(RSI_ALERTS[system], now.strftime("%d %b %H:%M"), alerts)
+        log_alerts(files, [{"time": int(now.timestamp() * 1000), "sent": int(now.timestamp() * 1000), "type": "RSI",
+                            "timeframe": RSI_ALERTS[system], "symbol": a["symbol"], "side": a["side"],
+                            "option": a["strike"] and f"{a['symbol']} {a['strike']:g} {a['leg']}", "strike": a["strike"],
+                            "rule": f"RSI {RSI_ALERTS[system]} entry", "price": a["price"], "lot": a["lot"]}
+                           for a in alerts])
 
 
 def main() -> None:
@@ -1335,7 +1363,7 @@ def main() -> None:
     elif args.action == "rsi-today":
         send_rsi_today(files, account, now, note)
     elif args.action == "ha-today":
-        send_ha_today(now, note)
+        send_ha_today(files, now, note)
     elif args.action == "test-telegram":
         if not telegram_alerts.ready():
             note("Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not set")
@@ -1356,7 +1384,7 @@ def main() -> None:
         trading = not args.scheduled or account.get("unattended", True)
         enter_index_signals(files, account, seen, now, trading, note)
         enter_option_signals(files, account, now, trading, note)
-        alert_option_ha(account, now, note)
+        alert_option_ha(files, account, now, note)
         enter_vp_signals(files, account, seen, now, trading, note)
         for module in HELD_MODULES:
             enter_pure_signals(files, account, seen, now, trading, note, module)
