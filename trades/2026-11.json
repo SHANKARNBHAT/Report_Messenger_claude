@@ -161319,5 +161319,42 @@
   "gross": -12022.5,
   "charges": 492.52,
   "net": -12515.02
+ },
+ {
+  "id": "1795758347813-4834",
+  "symbol": "PAYTM",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 725,
+  "entry": 1786.8,
+  "exit": 1760.0,
+  "entry_time": 1795758347813,
+  "exit_time": 1795764000000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 1760.0,
+  "tp": 1840.4,
+  "high": 1786.8,
+  "low": 1760.0,
+  "nifty": -0.58,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795758347813,
+   "price": 1786.8
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -19430.0,
+  "charges": 766.64,
+  "net": -20196.64
  }
 ]

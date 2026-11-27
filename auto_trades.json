@@ -595,7 +595,7 @@
    "time": 1795753855419,
    "status": "open",
    "passed": false,
-   "high": 654.7,
+   "high": 656.35,
    "low": 646.9,
    "nifty": -0.19,
    "source": "Auto 4H",
@@ -662,50 +662,6 @@
    }
   },
   {
-   "id": "1795758347813-4834",
-   "symbol": "PAYTM",
-   "side": "BUY",
-   "lots": 1,
-   "qty": 725,
-   "entry": 1786.8,
-   "sl": 1760.0,
-   "tp": 1840.4,
-   "tsl": {
-    "on": false
-   },
-   "run": {
-    "trail": 26.8,
-    "step": 8.95
-   },
-   "style": "trail",
-   "system": "RSI 4H",
-   "stop": 1760.0,
-   "time": 1795758347813,
-   "status": "open",
-   "passed": false,
-   "high": 1786.8,
-   "low": 1766.8,
-   "nifty": -0.58,
-   "source": "Auto 4H",
-   "timeframes": [
-    "4 HOUR"
-   ],
-   "strategies": [
-    "4h RSI BULLISH STRATEGY"
-   ],
-   "agrees": "Not on watchlist",
-   "sma_rsi": null,
-   "first_seen": {
-    "time": 1795758347813,
-    "price": 1786.8
-   },
-   "protect": {
-    "atr": 72.39,
-    "cost": 1.12,
-    "since": 1795758347813
-   }
-  },
-  {
    "id": "1795763446005-4836",
    "symbol": "COFORGE",
    "side": "BUY",
@@ -728,7 +684,7 @@
    "status": "open",
    "passed": false,
    "high": 2088.8,
-   "low": 2082.0,
+   "low": 2080,
    "nifty": -0.71,
    "source": "Auto 4H",
    "timeframes": [
@@ -752,6 +708,7 @@
  ],
  "seq": 4836,
  "log": [
+  "27 Nov 13:00  PAYTM: Stop loss at 1760.0 (Hold \u00b7 trail)",
   "27 Nov 12:55  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "27 Nov 12:40  COFORGE: RSI 4H BUY 475 at 2082.0, SL 2032.0 (4 HOUR; trail)",
   "27 Nov 12:25  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -1050,11 +1007,10 @@
   "24 Nov 15:15  DIXON: Expiry 3:15 PM at 13390.0 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  DIXON: Expiry 3:15 PM at 13390.0 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  DIXON: Expiry 3:15 PM at 13390.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ABCAPITAL: Expiry 3:15 PM at 415.8 (Hold \u00b7 trail)"
+  "24 Nov 15:15  EICHERMOT: Expiry 3:15 PM at 8172.5 (Hold \u00b7 trail)"
  ],
- "page_run": 1795764337327,
- "updated": 1795764337327,
+ "page_run": 1795764651995,
+ "updated": 1795764651995,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -1075,10 +1031,10 @@
  },
  "summary_day": "2026-11-26",
  "opt_checked": {
-  "NIFTY CE": 1795764039,
-  "NIFTY PE": 1795764039,
-  "BANKNIFTY CE": 1795764337,
-  "BANKNIFTY PE": 1795764337
+  "NIFTY CE": 1795764651,
+  "NIFTY PE": 1795764651,
+  "BANKNIFTY CE": 1795764651,
+  "BANKNIFTY PE": 1795764651
  },
  "alerted": {
   "dhan": "2026-11-27"
