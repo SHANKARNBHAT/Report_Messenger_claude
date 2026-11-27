@@ -11,6 +11,9 @@ from __future__ import annotations
 
 import os
 
+from html import escape
+from urllib.parse import quote
+
 import requests
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -19,6 +22,9 @@ IST = ZoneInfo("Asia/Kolkata")
 
 API = "https://api.telegram.org/bot{token}/sendMessage"
 APP = "https://reportmessengerclaude.streamlit.app/auto-index"
+# A stock's Chartink chart with the dashboard's indicators (chartink_dashboard.DEFAULT_SNAPSHOT).
+CHARTINK = ("https://chartink.com/stocks-new?load-snapshot=simple-moving-average-simple-moving-average-simple-moving-"
+            "average-pivot-s2-pivot-copy-pivot-simple-moving-average-volume-weighted-moving-averag-chart-snapshot&symbol={}")
 ALERT_SYSTEMS = {"OPT ATM HA"}  # strategies whose entries and exits are alerted (opt_atm.SYSTEM)
 
 
@@ -42,6 +48,22 @@ def send(text: str) -> bool:
     return False
 
 
+def chart(symbol: str, text: str | None = None) -> str:
+    """`text` (the symbol) as a link to the stock's Chartink chart."""
+    return f'<a href="{CHARTINK.format(quote(symbol, safe=""))}">{escape(text or symbol)}</a>'
+
+
+def send_lines(head: str, lines: list[str]) -> None:
+    """`head` and the lines in as few messages as fit Telegram's 4096 characters, each under the head."""
+    parts: list[list[str]] = [[]]
+    for line in lines:
+        if parts[-1] and len(head) + sum(len(x) + 1 for x in parts[-1]) + len(line) > 3800:
+            parts.append([])
+        parts[-1].append(line)
+    for k, part in enumerate(parts):
+        send("\n".join([head + (f" ({k + 1}/{len(parts)})" if len(parts) > 1 else ""), *part]))
+
+
 def entry(position: dict) -> None:
     if position.get("system") in ALERT_SYSTEMS:
         send(f"🟢 <b>BUY {position['symbol']}</b> × {position['qty']} @ {position['entry']}\n"
@@ -62,8 +84,8 @@ def rsi_signals(timeframe: str, when: str, signals: list[dict]) -> None:
         arrow = "🟢 BUY" if s["side"] == "BUY" else "🔴 SELL"
         strike = f"ATM {s['strike']:g} {s['leg']}" if s.get("strike") else "ATM strike unknown"
         at = f"{s['time']} " if s.get("time") else ""
-        lines.append(f"{at}{arrow} <b>{s['symbol']}</b> @ {s['price']:g} → <b>{strike}</b> · lot {s['lot']}")
-    send("\n".join(lines))
+        lines.append(f"{at}{arrow} <b>{chart(s['symbol'])}</b> @ {s['price']:g} → <b>{strike}</b> · lot {s['lot']}")
+    send_lines(lines[0], lines[1:])
 
 
 def option_ha(when: str, hits: list[dict]) -> None:
@@ -82,9 +104,10 @@ def option_ha(when: str, hits: list[dict]) -> None:
                 "After green doji": "HA solid green after a green HA doji"}.get(h["candle"].get("kind"), "HA solid green")
         mark = "🔴" if h.get("side") == "PE" else "🟢"  # a put premium turning up: the stock turning down
         at = f"{datetime.fromtimestamp(h['end'], IST):%H:%M} " if timed and h.get("end") else ""
-        lines.append(f"{mark} {at}<b>{h['timeframe']}</b> · <b>{h['option']}</b> · {kind}\n   close {h['candle']['close']:g} · {extra}")
-    for k in range(0, len(lines), 25):  # Telegram takes up to 4096 characters a message
-        send("\n".join([head + (f" ({k // 25 + 1})" if len(lines) > 25 else ""), *lines[k:k + 25]]))
+        name = h.get("name") or h["option"].split()[0]
+        option = chart(name) + escape(h["option"][len(name):]) if h["option"].startswith(name) else escape(h["option"])
+        lines.append(f"{mark} {at}<b>{h['timeframe']}</b> · <b>{option}</b> · {kind}\n   close {h['candle']['close']:g} · {extra}")
+    send_lines(head, lines)
 
 
 def sample_option_ha() -> None:
