@@ -1,8 +1,9 @@
 """
 Option chain page: the NIFTY, BANKNIFTY or an F&O stock (ATR above the saved F&O ATR ratio)'s option chain from Dhan (dhan_data.py), the ATM strike and
 5 strikes each side of it, with OI, volume, IV and premium changes; and below it the ATM call and put
-on 15-minute Heikin Ashi candles, flagging the planned strategy's entry candle (the first
-solid green HA candle, no lower wick, after a red one).
+on 15-minute to 4-hour candles, flagging the planned strategy's entry candle (the first
+solid green HA candle, no lower wick, after a red one). At the top, a picker of the recent RSI 2H / 4H
+signals (signal_options.py) switches the index / stock to the signal's.
 
 Needs DHAN_CLIENT_ID and DHAN_PIN + DHAN_TOTP_SECRET (or DHAN_ACCESS_TOKEN) in the Streamlit secrets.
 """
@@ -19,6 +20,7 @@ import streamlit as st
 import dhan_data as dd
 import futures_simulator as fs
 import option_charts as oc
+import signal_options
 import strike_steps
 
 st.set_page_config(page_title="Option chain", page_icon="🧮", layout="wide")
@@ -80,11 +82,19 @@ RATIO = fs.atr_strikes_above()
 UNDERLYINGS, missing = load_underlyings(RATIO)
 if missing:
     st.warning(missing)
+# A recent RSI 2H / 4H signal picked here switches the index / stock below to its stock.
+signal = signal_options.picker(UNDERLYINGS, "oc-underlying")
 index = st.selectbox("Index / stock", list(UNDERLYINGS), index=0, key="oc-underlying",
                      format_func=lambda n: UNDERLYINGS[n]["label"],
                      help=f"NIFTY, BANKNIFTY and the {len(UNDERLYINGS) - len(dd.INDICES)} F&O stocks whose daily "
                           f"ATR is above {RATIO:g} strike intervals (the ratio saved on the F&O ATR page).")
 underlying = UNDERLYINGS[index]
+if signal and signal["symbol"] == index:
+    bullish = signal["bias"] == "Bullish"
+    st.info(f"**{index}**: RSI {signal_options.SYSTEMS[signal['system']]} {signal['bias'].lower()} signal at "
+            f"{datetime.fromtimestamp(signal['time'] / 1000, dd.IST):%d %b %H:%M} @ {signal['price']:g} "
+            f"({signal.get('status') or 'seen'}): its side is the **{'CE' if bullish else 'PE'}**. Set the CE / PE "
+            "charts below to 2 hour or 4 hour to see the signal's timeframe.")
 # The chosen index / stock's chart on Chartink, with the dashboard's indicator snapshot or plain.
 _chartink = "https://chartink.com/stocks-new?symbol=" + quote(index, safe="")
 st.markdown(f"📈 **{index}** chart on Chartink: [my indicators]({_chartink}&load-snapshot={CHARTINK_SNAPSHOT})"

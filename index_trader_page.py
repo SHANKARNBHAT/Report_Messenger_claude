@@ -2,8 +2,7 @@
 Autotrader INDEX\\FUTURES page: the Auto trader's OPT ATM HA strategy (opt_atm.py), the NIFTY and
 BANKNIFTY ATM CE / PE on 15-minute candles from Dhan, apart from the stock strategies of the Auto
 trader page (auto_trader_page.py, whose account, runs and helpers it shares). The retired HA IDX
-strategies' trades are below it, folded. Then the day's RSI 2H and 4H futures signals with their ATM
-CE and PE charts (signal_options.py).
+strategies' trades are below it, folded.
 
 While open in market hours it starts a run every few minutes, as the Auto trader page does,
 so the 15-minute signals are checked on time.
@@ -20,7 +19,6 @@ import streamlit as st
 import auto_trader_page as atp
 import dhan_data as dd
 import opt_atm
-import signal_options
 import option_charts as oc
 
 # Streamlit Cloud keeps imported modules in memory when it pulls new code, so an
@@ -109,10 +107,6 @@ def main() -> None:
                                         Exited=retired["exit_time"].map(atp.when))
                          [["Exited", "symbol", "System", "side", "qty", "entry", "exit", "reason", "net", "Entered"]],
                          hide_index=True, width="stretch")
-
-    st.divider()
-    st.subheader("2H / 4H signals · ATM CE & PE")
-    signal_options.show(atp.load_signals(), {i["symbol"]: i["lot"] for i in fs.load_instruments()})
 
 
 if __name__ == "__main__":
