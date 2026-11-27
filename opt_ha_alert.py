@@ -9,6 +9,9 @@ Heikin Ashi candle on that timeframe completed solid green (no lower wick) right
   * The option: the nearest expiry (the next one on its expiry day), the strike nearest the price
     when scanned. Its 1H / 2H / 4H candles are made from Dhan's 15-minute ones, the HA chained over
     the last days. One download per contract serves every timeframe ending at that time.
+  * Also alerted: the HA candle is a doji (body within DOJI of its range) right after a red one while
+    the normal candle is solid green (green, no lower wick: low within a tick of the open).
+  * Never alerted when the normal candle is red, even if the HA one is solid green.
   * Alerts only: no trades. Each candle end is scanned once (account["opt_ha"]).
 
 Run from auto_trader.py (scan) in market hours. Dhan allows one option chain request every 3 seconds,
@@ -32,6 +35,8 @@ LAST_ALERT = time(15, 15)  # candles ending later (at the close) are not alerted
 DAYS = 14  # calendar days of 15-minute bars: enough 4H candles to chain the HA
 CHAIN_PAUSE = 3.1  # seconds between option chain requests (Dhan: one every 3 seconds)
 HERE = Path(__file__).parent
+DOJI = 0.10  # an HA doji: body at most this share of its high-low range
+TICK = 0.05  # a "no lower wick" normal candle: low at most a tick under its open
 
 
 def window_start(ts: int, minutes: int) -> int:
@@ -91,19 +96,28 @@ def heikin_ashi(candles: list[dict]) -> list[dict]:
         ha_close = (c["open"] + c["high"] + c["low"] + c["close"]) / 4
         ha_open = (c["open"] + c["close"]) / 2 if not out else (out[-1]["open"] + out[-1]["close"]) / 2
         ha_low = min(c["low"], ha_open, ha_close)
+        ha_high = max(c["high"], ha_open, ha_close)
         green = ha_close > ha_open
         out.append({"open": ha_open, "close": ha_close, "low": ha_low, "green": green,
-                    "solid": green and ha_low >= ha_open})
+                    "solid": green and ha_low >= ha_open,
+                    "doji": ha_high > ha_low and abs(ha_close - ha_open) <= DOJI * (ha_high - ha_low)})
     return out
 
 
 def turned(bars: list[tuple], minutes: int, end: int, now: float) -> dict | None:
-    """The `minutes` candle ending at `end`, if its HA candle is solid green right after a red one."""
+    """The `minutes` candle ending at `end`, right after a red HA candle, if its HA candle is solid green
+    with a green normal candle (kind "HA solid green") or an HA doji while the normal candle is solid green (kind "HA doji")."""
     candles = resample(bars, minutes, now)
     ha = heikin_ashi(candles)
     for k in range(1, len(candles)):
-        if window_end(candles[k]["start"], minutes) == end and ha[k]["solid"] and not ha[k - 1]["green"]:
-            return {**candles[k], "ha_open": ha[k]["open"], "ha_close": ha[k]["close"]}
+        c = candles[k]
+        if window_end(c["start"], minutes) != end or ha[k - 1]["green"]:
+            continue
+        normal_green = c["close"] > c["open"]  # a red normal candle is never alerted
+        normal_solid = normal_green and c["low"] >= c["open"] - TICK
+        kind = "HA solid green" if ha[k]["solid"] and normal_green else "HA doji" if ha[k]["doji"] and normal_solid else None
+        if kind:
+            return {**c, "kind": kind, "ha_open": ha[k]["open"], "ha_close": ha[k]["close"]}
     return None
 
 

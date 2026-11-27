@@ -63,15 +63,17 @@ def rsi_signals(timeframe: str, when: str, signals: list[dict]) -> None:
 
 
 def option_ha(when: str, hits: list[dict]) -> None:
-    """The ATM calls whose 1H / 2H / 4H HA candle just completed solid green after red (opt_ha_alert.scan)."""
-    lines = [f"🟢 <b>HA solid green after red · ATM CE</b> · candles ending {when}"]
+    """The ATM calls whose 1H / 2H / 4H candle just turned after a red HA one (opt_ha_alert.scan): HA solid
+    green, or an HA doji with a solid green normal candle."""
+    lines = [f"🟢 <b>HA turn after red · ATM CE</b> · candles ending {when}"]
     for h in hits:
         extra = " · ".join(x for x in (
             f"LTP {h['ltp']:g}" if h.get("ltp") is not None else "",
             f"spot {h['spot']:,.2f}",
             f"lot {h['lot']}" if h.get("lot") else "",
             f"ATR {h['ratio']:.1f}× strike" if h.get("ratio") else "") if x)
-        lines.append(f"• <b>{h['timeframe']}</b> · <b>{h['option']}</b>\n   close {h['candle']['close']:g} · {extra}")
+        kind = "HA doji, candle solid green" if h["candle"].get("kind") == "HA doji" else "HA solid green"
+        lines.append(f"• <b>{h['timeframe']}</b> · <b>{h['option']}</b> · {kind}\n   close {h['candle']['close']:g} · {extra}")
     send("\n".join(lines))
 
 
