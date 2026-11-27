@@ -680,9 +680,9 @@
    "time": 1795756500000,
    "status": "open",
    "passed": false,
-   "high": 1249.8,
+   "high": 1336.1,
    "low": 1206.3,
-   "ltp": 1229.2,
+   "ltp": 1324.65,
    "nifty": -0.36,
    "source": "Auto OPT ATM HA 15m",
    "timeframes": [
@@ -699,10 +699,55 @@
    "security_id": 59948,
    "expiry": "2026-12-29",
    "strike": 63600.0
+  },
+  {
+   "id": "1795757134550-4833",
+   "symbol": "PNB",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 8000,
+   "entry": 148.45,
+   "sl": 146.2,
+   "tp": 152.9,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 2.25,
+    "step": 0.75
+   },
+   "style": "trail",
+   "system": "RSI 4H",
+   "stop": 146.2,
+   "time": 1795757134550,
+   "status": "open",
+   "passed": false,
+   "high": 148.45,
+   "low": 148.45,
+   "nifty": -0.54,
+   "source": "Auto 4H",
+   "timeframes": [
+    "4 HOUR"
+   ],
+   "strategies": [
+    "4h RSI BULLISH STRATEGY"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795757134550,
+    "price": 148.46
+   },
+   "protect": {
+    "atr": 5.2,
+    "cost": 0.14,
+    "since": 1795757134550
+   }
   }
  ],
- "seq": 4832,
+ "seq": 4833,
  "log": [
+  "27 Nov 10:55  PNB: RSI 4H BUY 8000 at 148.45, SL 146.2 (4 HOUR; trail)",
   "27 Nov 10:45  BANKNIFTY 29DEC 63600 PE: OPT ATM HA BUY 30 at 1223.4 (10:45, solid green HA after red), SL 1104.0",
   "27 Nov 10:35  HDFCLIFE: Stop loss at 592.3 (Hold \u00b7 trail)",
   "27 Nov 10:25  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
@@ -1001,11 +1046,10 @@
   "24 Nov 15:15  GODFRYPHLP: Expiry 3:15 PM at 1746.9 (Hold \u00b7 trail)",
   "24 Nov 15:15  NYKAA: Expiry 3:15 PM at 357.0 (Hold \u00b7 trail)",
   "24 Nov 15:15  MFSL: Expiry 3:15 PM at 1431.9 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  MFSL: Expiry 3:15 PM at 1431.9 (Hold \u00b7 2H SMA 8 exit)",
-  "24 Nov 15:15  MFSL: Expiry 3:15 PM at 1431.9 (Hold \u00b7 trail)"
+  "24 Nov 15:15  MFSL: Expiry 3:15 PM at 1431.9 (Hold \u00b7 2H SMA 8 exit)"
  ],
- "page_run": 1795756844600,
- "updated": 1795756844600,
+ "page_run": 1795757134550,
+ "updated": 1795757134550,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -1026,10 +1070,10 @@
  },
  "summary_day": "2026-11-26",
  "opt_checked": {
-  "NIFTY CE": 1795756844,
-  "NIFTY PE": 1795756844,
-  "BANKNIFTY CE": 1795756844,
-  "BANKNIFTY PE": 1795756844
+  "NIFTY CE": 1795757134,
+  "NIFTY PE": 1795757134,
+  "BANKNIFTY CE": 1795757134,
+  "BANKNIFTY PE": 1795757134
  },
  "alerted": {
   "dhan": "2026-11-27"
