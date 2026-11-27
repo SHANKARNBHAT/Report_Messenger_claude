@@ -11,6 +11,7 @@ Heikin Ashi candle on that timeframe completed solid green (no lower wick) right
     the last days. One download per contract serves every timeframe ending at that time.
   * Also alerted: the HA candle is a doji (body within DOJI of its range) right after a red one while
     the normal candle is solid green (green, no lower wick: low within a tick of the open).
+  * Also alerted: the HA candle is solid green right after a green HA doji.
   * Never alerted when the normal candle is red, even if the HA one is solid green.
   * Alerts only: no trades. Each candle end is scanned once (account["opt_ha"]).
 
@@ -105,17 +106,24 @@ def heikin_ashi(candles: list[dict]) -> list[dict]:
 
 
 def turned(bars: list[tuple], minutes: int, end: int, now: float) -> dict | None:
-    """The `minutes` candle ending at `end`, right after a red HA candle, if its HA candle is solid green
-    with a green normal candle (kind "HA solid green") or an HA doji while the normal candle is solid green (kind "HA doji")."""
+    """The `minutes` candle ending at `end`, with a green normal candle (a red one is never alerted), if:
+      * after a red HA candle, its HA candle is solid green (kind "HA solid green"),
+      * after a red HA candle, it is an HA doji and the normal candle solid green (kind "HA doji"),
+      * after a green HA doji, its HA candle is solid green (kind "After green doji")."""
     candles = resample(bars, minutes, now)
     ha = heikin_ashi(candles)
     for k in range(1, len(candles)):
         c = candles[k]
-        if window_end(c["start"], minutes) != end or ha[k - 1]["green"]:
+        if window_end(c["start"], minutes) != end:
             continue
-        normal_green = c["close"] > c["open"]  # a red normal candle is never alerted
+        before = ha[k - 1]
+        normal_green = c["close"] > c["open"]
         normal_solid = normal_green and c["low"] >= c["open"] - TICK
-        kind = "HA solid green" if ha[k]["solid"] and normal_green else "HA doji" if ha[k]["doji"] and normal_solid else None
+        solid = ha[k]["solid"] and normal_green
+        if not before["green"]:
+            kind = "HA solid green" if solid else "HA doji" if ha[k]["doji"] and normal_solid else None
+        else:
+            kind = "After green doji" if before["doji"] and solid else None
         if kind:
             return {**c, "kind": kind, "ha_open": ha[k]["open"], "ha_close": ha[k]["close"]}
     return None
