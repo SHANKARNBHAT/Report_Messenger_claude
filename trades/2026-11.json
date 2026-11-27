@@ -161393,5 +161393,42 @@
   "gross": -40740.0,
   "charges": 674.46,
   "net": -41414.46
+ },
+ {
+  "id": "1795757134550-4833",
+  "symbol": "PNB",
+  "side": "BUY",
+  "lots": 1,
+  "qty": 8000,
+  "entry": 148.45,
+  "exit": 146.2,
+  "entry_time": 1795757134550,
+  "exit_time": 1795772100000,
+  "reason": "Stop loss",
+  "source": "Auto 4H",
+  "timeframes": [
+   "4 HOUR"
+  ],
+  "system": "RSI 4H",
+  "style": "trail",
+  "passed": false,
+  "carried": true,
+  "sl": 146.2,
+  "tp": 152.9,
+  "high": 148.45,
+  "low": 146.2,
+  "nifty": -0.54,
+  "strategies": [
+   "4h RSI BULLISH STRATEGY"
+  ],
+  "first_seen": {
+   "time": 1795757134550,
+   "price": 148.46
+  },
+  "agrees": "Not on watchlist",
+  "sma_rsi": null,
+  "gross": -18000.0,
+  "charges": 706.65,
+  "net": -18706.65
  }
 ]
