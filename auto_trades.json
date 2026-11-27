@@ -684,7 +684,7 @@
    "status": "open",
    "passed": false,
    "high": 654.7,
-   "low": 652.5,
+   "low": 652.4,
    "nifty": -0.19,
    "source": "Auto 4H",
    "timeframes": [
@@ -708,6 +708,8 @@
  ],
  "seq": 4831,
  "log": [
+  "27 Nov 10:25  BANKNIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
+  "27 Nov 10:25  NIFTY: no ATM option from Dhan (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "27 Nov 10:10  NIFTY 01DEC 25800 PE: Trailing SL at 134.55 (OPT ATM HA)",
   "27 Nov 10:00  KALYANKJIL: RSI 4H BUY 1350 at 653.25, SL 637.45 (4 HOUR; trail)",
   "27 Nov 09:35  KALYANKJIL: RSI BUY 1350 at 657.9, SL 637.45 (2 HOUR; trail)",
@@ -1005,12 +1007,10 @@
   "24 Nov 15:15  MFSL: Expiry 3:15 PM at 1431.9 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  MFSL: Expiry 3:15 PM at 1431.9 (Hold \u00b7 trail)",
   "24 Nov 15:15  ASTRAL: Expiry 3:15 PM at 1225.0 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  ASTRAL: Expiry 3:15 PM at 1225.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ENRIN: Expiry 3:15 PM at 2976.5 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  ENRIN: Expiry 3:15 PM at 2976.5 (Hold \u00b7 trail)"
+  "24 Nov 15:15  ASTRAL: Expiry 3:15 PM at 1225.0 (Hold \u00b7 trail)"
  ],
- "page_run": 1795755050417,
- "updated": 1795755050417,
+ "page_run": 1795755340069,
+ "updated": 1795755340069,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -1037,6 +1037,6 @@
   "BANKNIFTY PE": 1795755050
  },
  "alerted": {
-  "dhan": "2026-11-26"
+  "dhan": "2026-11-27"
  }
 }
