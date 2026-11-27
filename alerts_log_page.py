@@ -14,7 +14,7 @@ import streamlit as st
 
 import futures_simulator as fs
 
-MONTHS_BACK = 2  # months of logs read (the bot keeps 30 days: auto_trader.ALERTS_KEEP_DAYS)
+MONTHS_BACK = 24  # months of logs looked for (the bot keeps the log under 1 MB: auto_trader.ALERTS_MAX_BYTES)
 
 
 def months(today: date) -> list[str]:
@@ -33,6 +33,8 @@ def load(today: str) -> tuple[list[dict], str | None]:
         try:
             response = fs.data_file(f"alerts/{month}.json")
             if response.status_code == 404:
+                if rows:  # the oldest months go first, so none before a missing one
+                    break
                 continue
             response.raise_for_status()
             rows += response.json()
@@ -58,7 +60,7 @@ def table(rows: list[dict]) -> pd.DataFrame:
 def main() -> None:
     st.title("🔔 Alerts log")
     st.caption("Every alert the Auto trader sent on Telegram: the HA turn-green alerts on the ATM CE / PE "
-               "(1H / 2H / 3H / 4H) and the RSI entries: the last 30 days (at most 2,000 alerts), older ones deleted; a replayed day (the ha-today "
+               "(1H / 2H / 3H / 4H) and the RSI entries: the log is kept under 1 MB, the oldest alerts deleted past it; a replayed day (the ha-today "
                "action) is marked, its strike being the ATM at the close.")
     if st.button("↻ Refresh", key="alerts-refresh"):
         load.clear()

@@ -145,7 +145,7 @@ class Files:
         for name in self.changed:
             path = self.folder / name
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(json.dumps(self.data[name], indent=None if name.startswith("signals/") else 1),
+            path.write_text(json.dumps(self.data[name], indent=None if name.startswith(("signals/", "alerts/")) else 1),
                             encoding="utf-8")
 
 
@@ -707,28 +707,34 @@ def log_alerts(files: Files, rows: list[dict]) -> None:
             files.changed.add(f"alerts/{month_of(row['time'])}.json")
 
 
-ALERTS_KEEP_DAYS = 30  # the Alerts log keeps this many days of alerts ...
-ALERTS_KEEP_MAX = 2000  # ... and at most this many, the newest
+ALERTS_MAX_BYTES = 1_000_000  # the Alerts log's size limit (all its files): past it, the oldest alerts go
 
 
-def prune_alerts(files: Files, now: datetime) -> int:
-    """Keep the Alerts log a standard size: drop alerts older than ALERTS_KEEP_DAYS and, past
-    ALERTS_KEEP_MAX, the oldest; a month file left empty is deleted. How many were dropped."""
+def alerts_json(rows: list[dict]) -> str:
+    """An alerts file as saved (compact, as Files.save writes alerts/)."""
+    return json.dumps(rows)
+
+
+def prune_alerts(files: Files) -> int:
+    """Keep the Alerts log within ALERTS_MAX_BYTES: past it, delete the oldest alerts until it fits;
+    a month file left empty is deleted. How many were dropped."""
     folder = files.folder / "alerts"
     if not folder.exists():
         return 0
-    cutoff = int((now - timedelta(days=ALERTS_KEEP_DAYS)).timestamp() * 1000)
     names = sorted(f"alerts/{p.name}" for p in folder.glob("*.json"))
-    kept = sorted((r["time"] for n in names for r in files.get(n, []) if r["time"] >= cutoff), reverse=True)
-    if len(kept) > ALERTS_KEEP_MAX:
-        cutoff = max(cutoff, kept[ALERTS_KEEP_MAX - 1])
-    dropped = 0
-    for n in names:
-        rows = files.get(n, [])
-        keep = [r for r in rows if r["time"] >= cutoff]
-        if len(keep) == len(rows):
-            continue
-        dropped += len(rows) - len(keep)
+    total = sum(len(alerts_json(files.get(n, [])).encode()) for n in names)
+    if total <= ALERTS_MAX_BYTES:
+        return 0
+    # The oldest first: each alert's share of the size is its JSON plus the ", " between alerts.
+    oldest = sorted(((r["time"], n, k) for n in names for k, r in enumerate(files.get(n, []))))
+    drop: dict[str, set[int]] = {}
+    for _, n, k in oldest:
+        if total <= ALERTS_MAX_BYTES:
+            break
+        total -= len(json.dumps(files.data[n][k]).encode()) + 2
+        drop.setdefault(n, set()).add(k)
+    for n, ks in drop.items():
+        keep = [r for k, r in enumerate(files.data[n]) if k not in ks]
         if keep:
             files.data[n] = keep
             files.changed.add(n)
@@ -736,7 +742,7 @@ def prune_alerts(files: Files, now: datetime) -> int:
             files.changed.discard(n)
             files.data.pop(n, None)
             (files.folder / n).unlink(missing_ok=True)
-    return dropped
+    return sum(len(ks) for ks in drop.values())
 
 
 def ha_rows(hits: list[dict], now: datetime, replay: bool = False) -> list[dict]:
@@ -1450,7 +1456,7 @@ def main() -> None:
     stamp = now.strftime("%d %b %H:%M")
     account["log"] = ([f"{stamp}  {line}" for line in reversed(lines)] + account.get("log", []))[:300]
     files.changed.add(name)
-    prune_alerts(files, now)
+    prune_alerts(files)
     files.save()
 
 
