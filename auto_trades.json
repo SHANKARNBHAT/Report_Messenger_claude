@@ -572,10 +572,55 @@
     "cost": 1.66,
     "since": 1795679439065
    }
+  },
+  {
+   "id": "1795751140169-4828",
+   "symbol": "PHOENIXLTD",
+   "side": "BUY",
+   "lots": 1,
+   "qty": 350,
+   "entry": 2291.0,
+   "sl": 2256.65,
+   "tp": 2359.75,
+   "tsl": {
+    "on": false
+   },
+   "run": {
+    "trail": 34.35,
+    "step": 11.45
+   },
+   "style": "trail",
+   "system": "RSI",
+   "stop": 2256.65,
+   "time": 1795751140169,
+   "status": "open",
+   "passed": false,
+   "high": 2291.0,
+   "low": 2291.0,
+   "nifty": -0.07,
+   "source": "Auto 2H",
+   "timeframes": [
+    "2 HOUR"
+   ],
+   "strategies": [
+    "2H RSI Bullish Strategy"
+   ],
+   "agrees": "Not on watchlist",
+   "sma_rsi": null,
+   "first_seen": {
+    "time": 1795751140169,
+    "price": 2291.0
+   },
+   "protect": {
+    "atr": 72.18,
+    "cost": 1.48,
+    "since": 1795751140169
+   }
   }
  ],
- "seq": 4827,
+ "seq": 4828,
  "log": [
+  "27 Nov 09:15  PHOENIXLTD: RSI BUY 350 at 2291.0, SL 2256.65 (2 HOUR; trail)",
   "26 Nov 15:15  NIFTY 01DEC 25950 CE: 3:15 PM square-off at 166.8 (OPT ATM HA)",
   "26 Nov 15:10  NIFTY 01DEC 25950 CE: no Dhan bars (Dhan did not make a token (check DHAN_PIN and DHAN_TOTP_SECRET; at most one token every 2 minutes): HTTP 200 Invalid TOTP)",
   "26 Nov 15:00  NIFTY 01DEC 25950 CE: no Dhan bars (The Dhan token was just renewed somewhere else (another copy of this app, e.g. one running on the PC, or GitHub). Dhan keeps one token at a time and makes at most one every 2 minutes: refresh in 2 minutes.)",
@@ -874,11 +919,10 @@
   "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 2H SMA 20 exit)",
   "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 2H SMA 8 exit)",
   "24 Nov 15:15  ADANIPORTS: Expiry 3:15 PM at 1919.0 (Hold \u00b7 trail)",
-  "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 2H SMA 20 exit)",
-  "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 2H SMA 8 exit)"
+  "24 Nov 15:15  ICICIGI: Expiry 3:15 PM at 1742.6 (Hold \u00b7 2H SMA 20 exit)"
  ],
- "page_run": 1795750841672,
- "updated": 1795750841672,
+ "page_run": 1795751140169,
+ "updated": 1795751140169,
  "unattended": true,
  "peak_margin": 123141526.22,
  "wk_armed": {
@@ -899,10 +943,10 @@
  },
  "summary_day": "2026-11-26",
  "opt_checked": {
-  "NIFTY CE": 1795686937,
-  "NIFTY PE": 1795686937,
-  "BANKNIFTY CE": 1795686937,
-  "BANKNIFTY PE": 1795686937
+  "NIFTY CE": 1795751140,
+  "NIFTY PE": 1795751140,
+  "BANKNIFTY CE": 1795751140,
+  "BANKNIFTY PE": 1795751140
  },
  "alerted": {
   "dhan": "2026-11-26"
