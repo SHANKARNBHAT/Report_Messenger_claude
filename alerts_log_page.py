@@ -16,7 +16,7 @@ import streamlit as st
 import futures_simulator as fs
 import telegram_alerts
 
-TABS = {"1H": "1 hour", "2H": "2 hour", "3H": "3 hour", "4H": "4 hour"}  # the timeframe tabs
+TABS = {"15m": "15 min", "30m": "30 min", "1H": "1 hour", "2H": "2 hour", "3H": "3 hour", "4H": "4 hour"}  # the timeframe tabs
 MONTHS_BACK = 24  # months of logs looked for (the bot keeps the log under 1 MB: auto_trader.ALERTS_MAX_BYTES)
 
 
@@ -65,7 +65,7 @@ def table(rows: list[dict]) -> pd.DataFrame:
 def main() -> None:
     st.title("🔔 Alerts log")
     st.caption("Every alert the Auto trader sent on Telegram: the HA turn-green alerts on the ATM CE / PE "
-               "(1H / 2H / 3H / 4H) and the RSI entries: the log is kept under 1 MB, the oldest alerts deleted past it; a replayed day (the ha-today "
+               "(15 min to 4 hours) and the RSI entries: the log is kept under 1 MB, the oldest alerts deleted past it; a replayed day (the ha-today "
                "action) is marked, its strike being the ATM at the close.")
     if st.button("↻ Refresh", key="alerts-refresh"):
         load.clear()

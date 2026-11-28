@@ -89,7 +89,7 @@ def rsi_signals(timeframe: str, when: str, signals: list[dict]) -> None:
 
 
 def option_ha(when: str, hits: list[dict]) -> None:
-    """The ATM calls and puts whose 1H / 2H / 3H / 4H candle just turned after a red HA one (opt_ha_alert.scan): HA solid
+    """The ATM calls and puts whose 15m to 4H candle just turned after a red HA one (opt_ha_alert.scan): HA solid
     green, or an HA doji with a solid green normal candle."""
     head = f"🔔 <b>HA turn green · ATM CE / PE</b> · {when}"
     timed = len({h.get("end") for h in hits}) > 1  # a replay of the day: each its candle's end

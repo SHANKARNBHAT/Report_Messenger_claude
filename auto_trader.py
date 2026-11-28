@@ -755,36 +755,46 @@ def ha_rows(hits: list[dict], now: datetime, replay: bool = False) -> list[dict]
 
 
 def alert_option_ha(files: Files, account: dict, now: datetime, note) -> None:
-    """Once per completed 1H / 2H / 3H / 4H candle end: the ATM calls and puts of NIFTY, BANKNIFTY and the high-ATR
-    F&O stocks whose Heikin Ashi candle on that timeframe completed solid green after red, on
-    Telegram (opt_ha_alert.py). Alerts only."""
+    """Once per completed 15m / 30m / 1H / 2H / 3H / 4H candle end: the ATM calls and puts of NIFTY,
+    BANKNIFTY and the high-ATR F&O stocks whose Heikin Ashi candle on that timeframe turned green
+    (opt_ha_alert.turned), on Telegram (opt_ha_alert.py). Alerts only. A candle end a run did not
+    finish (Dhan's token renewed elsewhere) is finished by the next one, with the new end, within the hour."""
     latest = opt_ha_alert.last_end(now)
     done = account.get("opt_ha_alert") or {}
     if latest is None or done.get("end") == latest[0] and done.get("complete") or not opt_ha_alert.dd.secret("DHAN_CLIENT_ID"):
         return
-    end = latest[0]
+    end, frames = latest
+    ends, carried = [], None
     if done.get("end") != end:
-        done = {"end": end, "checked": [], "complete": False}
-    # Up to an hour after the candle: later the alert is stale and the next candle is near.
+        # Up to an hour after the candle: later the alert is stale.
+        if done.get("end") and not done.get("complete") and done.get("frames") and now.timestamp() <= done["end"] + 3600:
+            carried = done
+            ends.append((done["end"], done["frames"]))
+        done = {"end": end, "frames": frames, "checked": [], "complete": False}
     if now.timestamp() > end + 3600:
         account["opt_ha_alert"] = {**done, "complete": True}
         return
+    ends.append((end, frames))
     lots = {i["symbol"]: i["lot"] for i in fs.load_instruments()} | opt_atm.LOT_SIZE
     try:
-        found = opt_ha_alert.scan(now, fs.atr_strikes_above(), lots, note, set(done["checked"]))
+        found = opt_ha_alert.scan(now, fs.atr_strikes_above(), lots, note, set(done["checked"]), ends=ends)
     except (opt_ha_alert.dd.DhanError, OSError, sqlite3.Error) as exc:
         note(f"HA CE/PE alert: not checked ({exc}); trying again next run")
         return
     if found is None:
         return
-    end, frames, hits, checked, total = found
+    _, _, hits, checked, total = found
+    if carried:  # the earlier end: only the names it had not checked
+        hits = [h for h in hits if h["end"] != carried["end"] or h["name"] not in carried["checked"]]
     done["checked"] += checked
     done["complete"] = len(done["checked"]) >= total
     account["opt_ha_alert"] = done
     when = f"{datetime.fromtimestamp(end, fs.IST):%H:%M}"
-    note(f"HA CE/PE alert ({'/'.join(frames)} candles ending {when}, {len(done['checked'])} of {total} checked): "
+    extra = f" + the {datetime.fromtimestamp(carried['end'], fs.IST):%H:%M} ones left" if carried else ""
+    note(f"HA CE/PE alert ({'/'.join(frames)} candles ending {when}{extra}, {len(done['checked'])} of {total} checked): "
          + (", ".join(f"{h['option']} {h['timeframe']}" for h in hits) if hits else "none"))
     if hits:
+        hits.sort(key=lambda h: (h["end"], list(opt_ha_alert.TIMEFRAMES).index(h["timeframe"])))
         telegram_alerts.option_ha(f"candles ending {when}", hits)
         log_alerts(files, ha_rows(hits, now))
 
@@ -1236,7 +1246,7 @@ def send_rsi_today(files: Files, account: dict, now: datetime, note) -> None:
 
 
 def send_ha_today(files: Files, now: datetime, note) -> None:
-    """Replay the day's 1H / 2H / 3H / 4H candles of the ATM CE / PE (opt_ha_alert, the strike as now)
+    """Replay the day's 15m to 4H candles of the ATM CE / PE (opt_ha_alert, the strike as now)
     and send on Telegram every HA turn-green alert they gave, oldest first."""
     lots = {i["symbol"]: i["lot"] for i in fs.load_instruments()} | opt_atm.LOT_SIZE
     upto = min(now, datetime.combine(now.date(), SESSION_CLOSE, fs.IST))
@@ -1246,7 +1256,7 @@ def send_ha_today(files: Files, now: datetime, note) -> None:
         note("HA CE/PE today: no completed candles today")
         return
     _, _, hits, checked, total = found
-    hits.sort(key=lambda h: (h["end"], h["timeframe"]))
+    hits.sort(key=lambda h: (h["end"], list(opt_ha_alert.TIMEFRAMES).index(h["timeframe"])))
     note(f"HA CE/PE today: {len(hits)} alerts on {len(checked)} of {total} underlyings")
     if hits:
         telegram_alerts.option_ha(f"today, {now:%d %b} (replay, ATM strike as at the close)", hits)
