@@ -123,7 +123,7 @@ def alerts_view(shown: pd.DataFrame, key: str) -> None:
             "ltp": st.column_config.NumberColumn("LTP", help="The option's last price when the alert was sent"),
             "spot": st.column_config.NumberColumn("Spot", format="%.2f"),
             "lot": st.column_config.NumberColumn("Lot"),
-            "atr": st.column_config.NumberColumn("ATR ₹", format="%.0f", help="Daily ATR (14) in rupees: stocks above ₹100 are scanned"),
+            "atr": st.column_config.NumberColumn("Stock ATR ₹", format="%.0f", help="The stock's daily ATR (14) in rupees, not the option's: stocks above ₹100 are scanned"),
             "ratio": st.column_config.NumberColumn("ATR ×", format="%.1f", help="Daily ATR in strike intervals"),
             "replay": st.column_config.CheckboxColumn("Replay"),
         })

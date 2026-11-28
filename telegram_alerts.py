@@ -101,7 +101,7 @@ def option_ha(when: str, hits: list[dict]) -> None:
             f"LTP {h['ltp']:g}" if h.get("ltp") is not None else "",
             f"spot {h['spot']:,.2f}",
             f"lot {h['lot']}" if h.get("lot") else "",
-            f"ATR ₹{h['atr']:,.0f}" if h.get("atr") else f"ATR {h['ratio']:.1f}× strike" if h.get("ratio") else "") if x)
+            f"stock ATR ₹{h['atr']:,.0f}" if h.get("atr") else f"ATR {h['ratio']:.1f}× strike" if h.get("ratio") else "") if x)
         kind = {"HA doji": "HA doji, candle solid green",
                 "After green doji": "HA solid green after a green HA doji"}.get(h["candle"].get("kind"), "HA solid green")
         mark = "🔴" if h.get("side") == "PE" else "🟢"  # a put premium turning up: the stock turning down
