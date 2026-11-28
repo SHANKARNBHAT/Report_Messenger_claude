@@ -1,5 +1,5 @@
 """
-Option chain page: the NIFTY, BANKNIFTY or an F&O stock (ATR above the saved F&O ATR ratio)'s option chain from Dhan (dhan_data.py), the ATM strike and
+Option chain page: the NIFTY, BANKNIFTY or an F&O stock (daily ATR above ₹100, opt_ha_alert.MIN_ATR)'s option chain from Dhan (dhan_data.py), the ATM strike and
 5 strikes each side of it, with OI, volume, IV and premium changes; and below it the ATM call and put
 on 15-minute to 4-hour candles, flagging the planned strategy's entry candle (the first
 solid green HA candle, no lower wick, after a red one). At the top, a picker of the recent RSI 2H / 4H
@@ -18,7 +18,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import dhan_data as dd
-import futures_simulator as fs
+import opt_ha_alert
 import option_charts as oc
 import signal_options
 import strike_steps
@@ -48,18 +48,19 @@ CHARTINK_SNAPSHOT = ("simple-moving-average-simple-moving-average-simple-moving-
                      "simple-moving-average-volume-weighted-moving-averag-chart-snapshot")
 
 @st.cache_data(ttl=3600, show_spinner=False)
-def load_underlyings(ratio: float) -> tuple[dict[str, dict], str | None]:
-    """NIFTY, BANKNIFTY and the F&O stocks whose daily ATR covers more than `ratio` strikes (the
-    ratio saved on the F&O ATR page, which the simulator and auto trader trade), biggest first,
-    each with a label for the picker; and why the stocks are missing, if they are."""
+def load_underlyings(min_atr: float) -> tuple[dict[str, dict], str | None]:
+    """NIFTY, BANKNIFTY and the F&O stocks whose daily ATR (14) is above `min_atr` rupees (as the HA CE / PE
+    alerts and OPT RSI), biggest ATR first, each with a label for the picker; and why the stocks are
+    missing, if they are."""
     out = {name: {**u, "label": name} for name, u in dd.INDICES.items()}
     try:
         frame, _, _ = strike_steps.fno_atr()
     except Exception as e:  # no database or strike intervals: the indices only
         return out, f"Could not read the F&O ATR data ({e}): indices only."
-    for row in frame[frame["ratio"] > ratio].dropna(subset=["dhan_id"]).itertuples():
+    picked = frame[frame["atr_14"] > min_atr].dropna(subset=["dhan_id"]).sort_values("atr_14", ascending=False)
+    for row in picked.itertuples():
         out[row.symbol] = {**dd.stock(row.symbol, row.dhan_id, row.step),
-                           "label": f"{row.symbol} · ATR {row.ratio:.1f}× strike"}
+                           "label": f"{row.symbol} · ATR ₹{row.atr_14:,.0f}"}
     return out, None
 
 
@@ -78,8 +79,8 @@ if not dd.secret("DHAN_CLIENT_ID") or not (dd.can_make_token() or dd.secret("DHA
     st.info(SETUP)
     st.stop()
 
-RATIO = fs.atr_strikes_above()
-UNDERLYINGS, missing = load_underlyings(RATIO)
+MIN_ATR = opt_ha_alert.MIN_ATR
+UNDERLYINGS, missing = load_underlyings(MIN_ATR)
 if missing:
     st.warning(missing)
 # A recent RSI 2H / 4H signal picked here switches the index / stock below to its stock.
@@ -87,7 +88,7 @@ signal = signal_options.picker(UNDERLYINGS, "oc-underlying")
 index = st.selectbox("Index / stock", list(UNDERLYINGS), index=0, key="oc-underlying",
                      format_func=lambda n: UNDERLYINGS[n]["label"],
                      help=f"NIFTY, BANKNIFTY and the {len(UNDERLYINGS) - len(dd.INDICES)} F&O stocks whose daily "
-                          f"ATR is above {RATIO:g} strike intervals (the ratio saved on the F&O ATR page).")
+                          f"ATR (14) is above ₹{MIN_ATR:g}, biggest first (as the HA CE / PE alerts and OPT RSI).")
 underlying = UNDERLYINGS[index]
 if signal and signal["symbol"] == index:
     bullish = signal["bias"] == "Bullish"
