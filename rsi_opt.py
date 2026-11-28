@@ -2,7 +2,7 @@
 OPT RSI: the RSI 2H / 4H / Daily triggers of the futures stocks and indices, entered through their ATM
 option once the option agrees. Paper-traded by the Auto trader (auto_trader.enter_rsi_opt), no capital cap.
 
-  * Trigger: a stock (F&O, any ATR) or NIFTY / BANKNIFTY on the RSI dashboard's 2H, 4H or Daily
+  * Trigger: an F&O stock with a daily ATR (14) above MIN_ATR rupees, or NIFTY / BANKNIFTY, on the RSI dashboard's 2H, 4H or Daily
     widgets today. Bullish -> watch its ATM CE; bearish -> its ATM PE. Watched from the run that first
     saw the trigger until LAST_ENTRY that day (same day only), then dropped.
   * Confirmation, on the option's own 15-minute or 30-minute candle ending after the trigger was seen:
@@ -23,6 +23,7 @@ the monthly). Dhan: one option chain request every 3 seconds (opt_ha_alert.chain
 from __future__ import annotations
 
 import json
+import sqlite3
 from datetime import date, datetime, time, timedelta
 from pathlib import Path
 
@@ -33,10 +34,22 @@ SYSTEM = "OPT RSI"  # not "RSI ...": the RSI strategies' exits (auto_trader.sett
 NAME = "RSI trigger · ATM option HA strong or higher high"
 TRIGGER_TIMEFRAMES = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily"}
 FRAMES = {"15m": 15, "30m": 30}  # the option's confirming candles
+MIN_ATR = 100  # stocks only with a daily ATR (14) above this many rupees (the indices always)
 LAST_ENTRY = time(15, 0)
 LOOKBACK = timedelta(minutes=30)  # candles completed at most this long ago (a late run makes no stale entry)
 DAYS = 5  # days of 15-minute option bars: enough to chain the HA
 HERE = Path(__file__).parent
+
+
+def atrs() -> dict[str, float]:
+    """The stocks' latest daily ATR (14) in rupees (stock_market_data.db); {} if it can't be read."""
+    try:
+        with sqlite3.connect(f"file:{HERE / 'stock_market_data.db'}?mode=ro", uri=True) as db:
+            rows = db.execute("SELECT symbol, atr_14 FROM stock_ohlc_indicators WHERE date = (SELECT MAX(date) FROM "
+                              "stock_ohlc_indicators WHERE atr_14 IS NOT NULL) AND atr_14 IS NOT NULL").fetchall()
+    except sqlite3.Error:
+        return {}
+    return {s.removesuffix(".NS"): a for s, a in rows}
 
 
 def leg_of(bias: str) -> str:

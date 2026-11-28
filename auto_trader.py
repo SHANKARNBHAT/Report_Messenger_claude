@@ -724,8 +724,11 @@ def enter_rsi_opt(files: Files, account: dict, signals: list[dict], seen: dict, 
     first = {(v["symbol"], v["timeframe"], v["bias"]): v["time"] / 1000 for v in seen.values()
              if isinstance(v, dict) and v.get("time")}
     until = int(now.timestamp())
+    atr = rsi_opt.atrs()
     for key, t in rsi_opt.triggers(signals, first).items():
-        w = watch.setdefault(key, {**t, "since": t["since"] or until, "status": "watching", "checked": 0})
+        low = t["symbol"] not in rsi_opt.dd.INDICES and atr.get(t["symbol"], 0) <= rsi_opt.MIN_ATR
+        w = watch.setdefault(key, {**t, "since": t["since"] or until, "checked": 0,
+                                   "status": f"ATR {atr.get(t['symbol'], 0):.0f} ≤ {rsi_opt.MIN_ATR}" if low else "watching"})
         w["timeframes"] = sorted(set(w["timeframes"]) | set(t["timeframes"]))
     if not trading or now.time() >= rsi_opt.LAST_ENTRY or rsi_opt.SYSTEM in RETIRED:
         return

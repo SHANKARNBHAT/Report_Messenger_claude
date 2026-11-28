@@ -59,7 +59,7 @@ def show_rsi_opt(history: pd.DataFrame, account: dict) -> None:
     ATM CE / PE once its 15m / 30m candle agrees. Totals, open positions, today's watched triggers, trades."""
     st.divider()
     st.subheader("OPT RSI · RSI trigger, confirmed on the ATM option")
-    st.caption("A stock or index on the RSI 2H, 4H or Daily scans today: bullish → its ATM CE, bearish → its ATM PE. "
+    st.caption(f"An F&O stock with a daily ATR above ₹{rsi_opt.MIN_ATR}, or NIFTY / BANKNIFTY, on the RSI 2H, 4H or Daily scans today: bullish → its ATM CE, bearish → its ATM PE. "
                "Bought (1 lot) at the close of the option's first 15m or 30m candle after the trigger that is a strong HA "
                "candle (as the HA CE / PE alerts) or a green candle with a higher high. SL the previous HA candle's low, "
                "trailed to each 15-minute HA low; squared off at 3:15 PM. Same-day triggers only, one entry per side a day.")
