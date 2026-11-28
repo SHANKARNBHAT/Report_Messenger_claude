@@ -153,5 +153,6 @@ def symbol(name: str, expiry: str, strike: float, leg: str) -> str:
     return f"{name} {datetime.fromisoformat(expiry):%d%b}".upper() + f" {strike:g} {leg}"
 
 
-def bars_of(security_id) -> list[tuple]:
-    return dd.candles(int(security_id), minutes=1, days=DAYS, instrument="OPTIDX")
+def bars_of(security_id, instrument: str = "OPTIDX") -> list[tuple]:
+    """1-minute bars of an option contract (instrument "OPTSTK" for a stock option: OPT RSI)."""
+    return dd.candles(int(security_id), minutes=1, days=DAYS, instrument=instrument)

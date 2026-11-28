@@ -71,6 +71,7 @@ import ha_vp
 import ha_weekly
 import opt_atm
 import opt_ha_alert
+import rsi_opt
 import telegram_alerts
 from chartink_dashboard import NO_VALUE
 
@@ -202,7 +203,7 @@ def close(files: Files, account: dict, position: dict, price: float, when_ms: in
     qty = position["qty"]
     buy, sell = (position["entry"], price) if position["side"] == "BUY" else (price, position["entry"])
     gross = (sell - buy) * qty
-    cost = (opt_atm.charges if position.get("system") == opt_atm.SYSTEM else charges)(buy * qty, sell * qty)
+    cost = (opt_atm.charges if position.get("system") in OPTION_SYSTEMS else charges)(buy * qty, sell * qty)
     high = max(high or position.get("high") or position["entry"], price)
     low = min(low or position.get("low") or position["entry"], price)
     trades_of(files, month_of(when_ms)).append({
@@ -253,9 +254,9 @@ def apply_request(files: Files, account: dict, action: str, position_id: str, no
             return
         position["run"] = None
         note(f"{position['symbol']}: exits at the target")
-    elif action == "exit" and position.get("system") == opt_atm.SYSTEM:
+    elif action == "exit" and position.get("system") in OPTION_SYSTEMS:
         try:
-            bars = opt_atm.bars_of(position["security_id"])
+            bars = opt_atm.bars_of(position["security_id"], position.get("instrument", "OPTIDX"))
         except opt_atm.dd.DhanError as exc:
             note(f"{position['symbol']}: no price to exit at ({exc})")
             return
@@ -462,7 +463,7 @@ def settle(files: Files, account: dict, now: datetime, note) -> None:
                 position["protect"] = found
     for result in fs.check_positions([p for p in account["positions"]
                                       if p.get("system") not in (*INDEX_SYSTEMS, *ha_vp.SYSTEMS, *ha_pure.SYSTEMS, *ha_break.SYSTEMS,
-                                                                 *ha_weekly.SYSTEMS, opt_atm.SYSTEM)], now, settle=False):
+                                                                 *ha_weekly.SYSTEMS, *OPTION_SYSTEMS)], now, settle=False):
         position = next(p for p in account["positions"] if p["id"] == result["id"])
         # A candle that went past since the last run may have come before what the bars show.
         due = (ha_exit(position, candles, now) if position.get("style") in fs.HA_EXITS
@@ -500,6 +501,7 @@ INDEX_SYSTEM = "HA IDX"
 INDEX_SYSTEMS = {INDEX_SYSTEM: "trend", "HA IDX PURE": "pure", ha_break.INDEX_SYSTEM: "break"}
 # The held HA strategies of 2H, 4H and Daily candles: HA PURE (30-minute trail, doji exit), HA BRK.
 HELD_MODULES = (ha_pure, ha_break)
+OPTION_SYSTEMS = (opt_atm.SYSTEM, rsi_opt.SYSTEM)  # bought options: premium as margin, option charges, Dhan bars
 # Retired on 18 Nov 2026 for their losses: no new trades. Their open positions still close on their own
 # exits, and their trades are kept; the page hides them (auto_trader_page.RETIRED_SYSTEMS).
 RETIRED = {"HA PURE 2H", "HA PURE Daily", "HA BRK 2H", "HA BRK 4H", "HA BRK Daily", "HA VP", "HA VP TRAIL",
@@ -611,21 +613,21 @@ def enter_index_signals(files: Files, account: dict, seen: dict, now: datetime, 
 
 
 def settle_option(files: Files, account: dict, position: dict, bars: list, now: datetime, note) -> None:
-    """Close an OPT ATM HA position at its (trailing) SL or the 3:15 PM square-off, else move its SL."""
+    """Close an option position (OPT ATM HA, OPT RSI) at its (trailing) SL or the 3:15 PM square-off, else move its SL."""
     result = opt_atm.replay(position, bars, now)
     if result["status"] == "closed":
         close(files, account, position, tick(result["exit"]), result["exit_time"], result["reason"],
               result["high"], result["low"])
-        note(f"{position['symbol']}: {result['reason']} at {tick(result['exit'])} ({opt_atm.SYSTEM})")
+        note(f"{position['symbol']}: {result['reason']} at {tick(result['exit'])} ({position['system']})")
     else:
         position.update(stop=tick(result["stop"]), high=result["high"], low=result["low"], ltp=result["ltp"])
 
 
 def settle_options(files: Files, account: dict, now: datetime, note) -> None:
-    """The OPT ATM HA positions (opt_atm.py), on their option's 1-minute bars from Dhan."""
-    for position in [p for p in account["positions"] if p.get("system") == opt_atm.SYSTEM]:
+    """The option positions (OPT ATM HA, OPT RSI), on their option's 1-minute bars from Dhan."""
+    for position in [p for p in account["positions"] if p.get("system") in OPTION_SYSTEMS]:
         try:
-            bars = opt_atm.bars_of(position["security_id"])
+            bars = opt_atm.bars_of(position["security_id"], position.get("instrument", "OPTIDX"))
         except opt_atm.dd.DhanError as exc:
             note(f"{position['symbol']}: no Dhan bars ({exc})")
             alert_problem(account, "dhan", f"Dhan: {exc} (open {position['symbol']} not checked)", now)
@@ -693,6 +695,119 @@ def enter_option_signals(files: Files, account: dict, now: datetime, trading: bo
             note(f"{symbol}: {opt_atm.SYSTEM} BUY {qty} at {entry} ({when_entered}, solid green HA after red), "
                  f"SL {sl}")
             settle_option(files, account, position, bars, now, note)  # it may have hit its SL since
+
+
+def rsi_opt_signals(dashboard: dict, signals: list[dict], note) -> list[dict]:
+    """OPT RSI's triggers: the F&O stocks' RSI 2H / 4H / Daily rows, plus NIFTY and BANKNIFTY on the same
+    scans (futures_simulator.index_signals: Chartink lists no index in the widgets)."""
+    scans = tuple((w["name"], w["timeframe"], w["bearish"], w["query"]) for w in dashboard["widgets"]
+                  if w["timeframe"] in rsi_opt.TRIGGER_TIMEFRAMES and w.get("query"))
+    try:
+        indices = fs.index_signals(scans, tuple(rsi_opt.dd.INDICES))
+    except Exception as exc:  # the stocks still go on without the indices
+        note(f"{rsi_opt.SYSTEM}: no index RSI signals ({exc})")
+        indices = []
+    return [s for s in signals if s["timeframe"] in rsi_opt.TRIGGER_TIMEFRAMES] + indices
+
+
+def enter_rsi_opt(files: Files, account: dict, signals: list[dict], seen: dict, now: datetime, trading: bool,
+                  note) -> None:
+    """OPT RSI (rsi_opt.py): watch today's RSI 2H / 4H / Daily triggers' ATM CE (bullish) or PE (bearish),
+    and buy it at the close of its first 15m / 30m candle after the trigger that is a strong HA candle or
+    a green higher high. One entry per underlying and side a day; same-day triggers only."""
+    today = now.date().isoformat()
+    state = account.get("rsi_opt") or {}
+    if state.get("day") != today:
+        state = {"day": today, "watch": {}}
+    account["rsi_opt"] = state
+    watch = state["watch"]
+    first = {(v["symbol"], v["timeframe"], v["bias"]): v["time"] / 1000 for v in seen.values()
+             if isinstance(v, dict) and v.get("time")}
+    until = int(now.timestamp())
+    for key, t in rsi_opt.triggers(signals, first).items():
+        w = watch.setdefault(key, {**t, "since": t["since"] or until, "status": "watching", "checked": 0})
+        w["timeframes"] = sorted(set(w["timeframes"]) | set(t["timeframes"]))
+    if not trading or now.time() >= rsi_opt.LAST_ENTRY or rsi_opt.SYSTEM in RETIRED:
+        return
+    if not rsi_opt.dd.secret("DHAN_CLIENT_ID"):
+        note(f"{rsi_opt.SYSTEM}: Dhan is not set up for the runs (DHAN_* secrets), no option trades")
+        return
+    lots = {i["symbol"]: i["lot"] for i in fs.load_instruments()} | opt_atm.LOT_SIZE
+    stock_expiry, entered = None, []
+    for key, w in watch.items():
+        if w["status"] != "watching":
+            continue
+        if any(p.get("system") == rsi_opt.SYSTEM and p.get("leg") == key for p in account["positions"]):
+            w["status"] = "entered"
+            continue
+        u = rsi_opt.underlying(w["symbol"])
+        if u is None:
+            w["status"] = "no strike data"
+            continue
+        try:
+            if u["instrument"] == "OPTSTK":
+                stock_expiry = stock_expiry or opt_ha_alert.nearest_expiry(opt_ha_alert.expiries(u), now.date())
+                expiry = stock_expiry
+            else:
+                expiry = opt_ha_alert.nearest_expiry(opt_ha_alert.expiries(u), now.date())
+            spot, strike, legs = opt_ha_alert.atm_options(u, expiry)
+            leg = legs.get(w["leg"])
+            if not leg:
+                note(f"{rsi_opt.SYSTEM} {key}: no ATM {strike:g} {w['leg']} in Dhan's chain")
+                continue
+            bars = rsi_opt.dd.candles(leg["id"], minutes=15, days=rsi_opt.DAYS, instrument=u["instrument"])
+        except (rsi_opt.dd.DhanError, IndexError, ValueError, KeyError) as exc:
+            note(f"{rsi_opt.SYSTEM} {key}: {exc}")
+            if "renewed somewhere else" in str(exc) or "token" in str(exc).lower():
+                break  # no token now: the rest next run
+            continue
+        since = max(w["since"], w["checked"], until - rsi_opt.LOOKBACK.total_seconds())
+        w["checked"] = until
+        found = rsi_opt.confirm(bars, since, until)
+        if not found:
+            continue
+        entry, sl = tick(found["entry"]), tick(found["sl"])
+        if not 0 < sl < entry:
+            note(f"{rsi_opt.SYSTEM} {key}: confirmed but SL {sl} not below the entry {entry}, skipped")
+            continue
+        lot = lots.get(w["symbol"])
+        if not lot:
+            note(f"{rsi_opt.SYSTEM} {key}: no lot size, skipped")
+            w["status"] = "no lot size"
+            continue
+        symbol = opt_ha_alert.label(w["symbol"], expiry, strike, w["leg"])
+        trigger = "/".join(w["timeframes"])
+        why = f"RSI {trigger} {w['bias'].lower()} → {w['leg']} {found['frame']} {found['rule']}"
+        account["seq"] += 1
+        position = {
+            "id": f"{found['time'] * 1000}-{account['seq']}", "symbol": symbol, "side": "BUY", "lots": LOTS,
+            "qty": LOTS * lot, "entry": entry, "sl": sl, "tp": None, "tsl": {"on": False}, "run": None,
+            "style": "opt_ha", "system": rsi_opt.SYSTEM, "stop": sl, "time": found["time"] * 1000,
+            "status": "open", "passed": False, "high": entry, "low": entry, "ltp": entry, "nifty": fs.nifty_change(),
+            "source": f"Auto {rsi_opt.SYSTEM} {found['frame']}", "timeframes": [found["frame"]],
+            "strategies": [why], "agrees": "—", "sma_rsi": None,
+            "first_seen": {"time": int(w["since"] * 1000), "price": None},
+            "leg": key, "underlying": w["symbol"], "instrument": u["instrument"], "security_id": int(leg["id"]),
+            "expiry": expiry, "strike": strike, "spot": spot, "why": why,
+        }
+        account["positions"].append(position)
+        w["status"] = "entered"
+        entered.append(position)
+        telegram_alerts.entry(position)
+        note(f"{symbol}: {rsi_opt.SYSTEM} BUY {position['qty']} at {entry} "
+             f"({datetime.fromtimestamp(found['time'], fs.IST):%H:%M}, {why}), SL {sl}")
+        try:
+            settle_option(files, account, position, opt_atm.bars_of(leg["id"], u["instrument"]), now, note)
+        except rsi_opt.dd.DhanError as exc:  # checked next run
+            note(f"{symbol}: no 1-minute bars yet ({exc})")
+    if entered:
+        log_alerts(files, [{"time": p["time"], "sent": int(now.timestamp() * 1000), "type": rsi_opt.SYSTEM,
+                            "timeframe": p["timeframes"][0], "symbol": p["underlying"],
+                            "side": p["leg"].split("|")[1], "option": p["symbol"], "strike": p["strike"],
+                            "rule": p["why"], "price": p["entry"], "spot": p["spot"], "lot": p["qty"]}
+                           for p in entered])
+    waiting = sum(w["status"] == "watching" for w in watch.values())
+    note(f"{rsi_opt.SYSTEM}: {len(entered)} entered, {waiting} triggers still watched")
 
 
 def log_alerts(files: Files, rows: list[dict]) -> None:
@@ -1447,6 +1562,7 @@ def main() -> None:
             for system in TRADED_TIMEFRAMES:
                 enter_signals(files, account, [s for s in signals if s["system"] == system], dashboard, seen, now,
                               trading, note, system)
+            enter_rsi_opt(files, account, rsi_opt_signals(dashboard, signals, note), seen, now, trading, note)
         else:
             note(f"No signals: {error}")
 
@@ -1458,7 +1574,7 @@ def main() -> None:
                   if datetime.fromtimestamp(t["exit_time"] / 1000, fs.IST).date() == now.date()]
         telegram_alerts.summary(now.strftime("%d %b"), closed, len(account["positions"]) if closed else 0)
 
-    margin = sum(p["entry"] * p["qty"] * (1 if p.get("system") == opt_atm.SYSTEM else fs.MARGIN_RATE)
+    margin = sum(p["entry"] * p["qty"] * (1 if p.get("system") in OPTION_SYSTEMS else fs.MARGIN_RATE)
                  for p in account["positions"])  # a bought option needs its whole premium
     account["peak_margin"] = round(max(account.get("peak_margin", 0), margin), 2)
     account["updated"] = now_ms

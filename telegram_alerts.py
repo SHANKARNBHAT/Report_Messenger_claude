@@ -25,7 +25,7 @@ APP = "https://reportmessengerclaude.streamlit.app/auto-index"
 # A stock's Chartink chart with the dashboard's indicators (chartink_dashboard.DEFAULT_SNAPSHOT).
 CHARTINK = ("https://chartink.com/stocks-new?load-snapshot=simple-moving-average-simple-moving-average-simple-moving-"
             "average-pivot-s2-pivot-copy-pivot-simple-moving-average-volume-weighted-moving-averag-chart-snapshot&symbol={}")
-ALERT_SYSTEMS = {"OPT ATM HA"}  # strategies whose entries and exits are alerted (opt_atm.SYSTEM)
+ALERT_SYSTEMS = {"OPT ATM HA", "OPT RSI"}  # strategies whose entries and exits are alerted (opt_atm, rsi_opt)
 
 
 def ready() -> bool:
@@ -66,8 +66,10 @@ def send_lines(head: str, lines: list[str]) -> None:
 
 def entry(position: dict) -> None:
     if position.get("system") in ALERT_SYSTEMS:
-        send(f"🟢 <b>BUY {position['symbol']}</b> × {position['qty']} @ {position['entry']}\n"
-             f"SL {position['sl']} · {position.get('system')}\n<a href=\"{APP}\">Open the app</a>")
+        name = position.get("underlying")
+        why = f"\n{chart(name)} · {escape(position['why'])}" if position.get("why") and name else ""
+        send(f"🟢 <b>BUY {escape(position['symbol'])}</b> × {position['qty']} @ {position['entry']}\n"
+             f"SL {position['sl']} · {position.get('system')}{why}\n<a href=\"{APP}\">Open the app</a>")
 
 
 def exit(trade: dict) -> None:

@@ -19,6 +19,7 @@ import streamlit as st
 import auto_trader_page as atp
 import dhan_data as dd
 import opt_atm
+import rsi_opt
 import option_charts as oc
 
 # Streamlit Cloud keeps imported modules in memory when it pulls new code, so an
@@ -51,6 +52,43 @@ def option_charts(name: str) -> None:
         return
     st.caption(f"{name} {price:,.2f} · nearest expiry {expiry} (the one the strategy trades) · Dhan, {at} IST")
     oc.atm_section(name, underlying, df, price, prefix="ix")
+
+
+def show_rsi_opt(history: pd.DataFrame, account: dict) -> None:
+    """OPT RSI (rsi_opt.py): the RSI 2H / 4H / Daily triggers of the stocks and indices, bought through the
+    ATM CE / PE once its 15m / 30m candle agrees. Totals, open positions, today's watched triggers, trades."""
+    st.divider()
+    st.subheader("OPT RSI · RSI trigger, confirmed on the ATM option")
+    st.caption("A stock or index on the RSI 2H, 4H or Daily scans today: bullish → its ATM CE, bearish → its ATM PE. "
+               "Bought (1 lot) at the close of the option's first 15m or 30m candle after the trigger that is a strong HA "
+               "candle (as the HA CE / PE alerts) or a green candle with a higher high. SL the previous HA candle's low, "
+               "trailed to each 15-minute HA low; squared off at 3:15 PM. Same-day triggers only, one entry per side a day.")
+    trades = history[history["System"] == rsi_opt.SYSTEM]
+    positions = [p for p in account["positions"] if p.get("system") == rsi_opt.SYSTEM]
+    open_pnl = sum((p["ltp"] - p["entry"]) * p["qty"] for p in positions if p.get("ltp"))
+    m = st.columns(4)
+    m[0].metric("Net P&L (closed)", f"₹{trades['net'].sum():,.0f}")
+    m[1].metric("Open P&L", f"₹{open_pnl:,.0f}")
+    m[2].metric("Trades closed", len(trades))
+    m[3].metric("Win rate", f"{100 * (trades['net'] > 0).mean():.1f}%" if len(trades) else "—")
+    if positions:
+        st.markdown(f"**Open ({len(positions)})**")
+        st.dataframe(pd.DataFrame([{"Entered": atp.when(p["time"]), "Option": p["symbol"], "Why": p.get("why"),
+                                    "Qty": p["qty"], "Entry": p["entry"], "SL now": p.get("stop"), "LTP": p.get("ltp"),
+                                    "P&L ₹": round((p["ltp"] - p["entry"]) * p["qty"]) if p.get("ltp") else None}
+                                   for p in positions]), hide_index=True, width="stretch")
+    watch = (account.get("rsi_opt") or {}).get("watch") or {}
+    if watch:
+        with st.expander(f"Triggers of {account['rsi_opt']['day']}: {len(watch)}"):
+            st.dataframe(pd.DataFrame([{"Underlying": w["symbol"], "Option": w["leg"], "RSI": "/".join(w["timeframes"]),
+                                        "Seen": atp.when(w["since"] * 1000), "Status": w["status"]}
+                                       for w in watch.values()]), hide_index=True, width="stretch")
+    if not trades.empty:
+        st.markdown(f"**Closed ({len(trades)})**")
+        st.dataframe(trades.assign(Entered=trades["entry_time"].map(atp.when), Exited=trades["exit_time"].map(atp.when),
+                                   Why=trades["strategies"].map(lambda v: v[0] if isinstance(v, list) and v else None))
+                     [["Exited", "symbol", "Why", "qty", "entry", "exit", "reason", "net", "Entered"]],
+                     hide_index=True, width="stretch")
 
 
 def main() -> None:
@@ -92,6 +130,7 @@ def main() -> None:
 
     atp.show_index(trades, positions, unrealized, quotes, symbol=name)
     option_charts(name)
+    show_rsi_opt(history, account)
 
     # The retired HA IDX strategies (24 Nov 2026): their trades, and any position until its exit.
     retired = history[history["System"].isin(list(atp.INDEX_SYSTEMS))]

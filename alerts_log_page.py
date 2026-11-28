@@ -65,7 +65,7 @@ def table(rows: list[dict]) -> pd.DataFrame:
 def main() -> None:
     st.title("🔔 Alerts log")
     st.caption("Every alert the Auto trader sent on Telegram: the HA turn-green alerts on the ATM CE / PE "
-               "(15 min to 4 hours) and the RSI entries: the log is kept under 1 MB, the oldest alerts deleted past it; a replayed day (the ha-today "
+               "(15 min to 4 hours), the RSI entries and the OPT RSI option buys: the log is kept under 1 MB, the oldest alerts deleted past it; a replayed day (the ha-today "
                "action) is marked, its strike being the ATM at the close.")
     if st.button("↻ Refresh", key="alerts-refresh"):
         load.clear()

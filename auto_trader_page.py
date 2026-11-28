@@ -1071,7 +1071,7 @@ def main() -> None:
     every_trade, every_position = history, account["positions"]
     # The index strategy has its own tab (index_trader_page.py): this page is the stock strategies.
     # Retired strategies are hidden too, with any positions they still hold until their exits.
-    hidden = [*INDEX_SYSTEMS, "OPT ATM HA", *HIDDEN_SYSTEMS, *({} if SHOW_RETIRED else RETIRED_SYSTEMS)]  # opt_atm.SYSTEM
+    hidden = [*INDEX_SYSTEMS, "OPT ATM HA", "OPT RSI", *HIDDEN_SYSTEMS, *({} if SHOW_RETIRED else RETIRED_SYSTEMS)]  # opt_atm.SYSTEM
     history = history[~history["System"].isin(hidden)]
     positions = [p for p in account["positions"] if p.get("system", "RSI") not in hidden]
     instruments = {i["symbol"]: i for i in fs.load_instruments()}
