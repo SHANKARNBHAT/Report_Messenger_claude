@@ -868,7 +868,7 @@ def ha_rows(hits: list[dict], now: datetime, replay: bool = False) -> list[dict]
     return [{"time": h["end"] * 1000, "sent": int(now.timestamp() * 1000), "type": "HA CE/PE",
              "timeframe": h["timeframe"], "symbol": h["name"], "side": h["side"], "option": h["option"],
              "strike": h["strike"], "rule": h["candle"].get("kind", "HA solid green"), "price": h["candle"]["close"],
-             "ltp": h["ltp"], "spot": h["spot"], "lot": h["lot"], "ratio": h["ratio"],
+             "ltp": h["ltp"], "spot": h["spot"], "lot": h["lot"], "ratio": h["ratio"], "atr": h.get("atr"),
              **({"replay": True} if replay else {})} for h in hits]
 
 
@@ -895,7 +895,7 @@ def alert_option_ha(files: Files, account: dict, now: datetime, note) -> None:
     ends.append((end, frames))
     lots = {i["symbol"]: i["lot"] for i in fs.load_instruments()} | opt_atm.LOT_SIZE
     try:
-        found = opt_ha_alert.scan(now, fs.atr_strikes_above(), lots, note, set(done["checked"]), ends=ends)
+        found = opt_ha_alert.scan(now, opt_ha_alert.MIN_ATR, lots, note, set(done["checked"]), ends=ends)
     except (opt_ha_alert.dd.DhanError, OSError, sqlite3.Error) as exc:
         note(f"HA CE/PE alert: not checked ({exc}); trying again next run")
         return
@@ -1369,7 +1369,7 @@ def send_ha_today(files: Files, now: datetime, note) -> None:
     lots = {i["symbol"]: i["lot"] for i in fs.load_instruments()} | opt_atm.LOT_SIZE
     upto = min(now, datetime.combine(now.date(), SESSION_CLOSE, fs.IST))
     ends = opt_ha_alert.day_ends(now.date(), upto)
-    found = opt_ha_alert.scan(upto, fs.atr_strikes_above(), lots, note, ends=ends) if ends else None
+    found = opt_ha_alert.scan(upto, opt_ha_alert.MIN_ATR, lots, note, ends=ends) if ends else None
     if found is None:
         note("HA CE/PE today: no completed candles today")
         return

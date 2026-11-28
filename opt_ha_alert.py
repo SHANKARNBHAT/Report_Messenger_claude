@@ -1,7 +1,7 @@
 """
 ATM CE / PE Heikin Ashi alert, 15m / 30m / 1H / 2H / 3H / 4H: after each such candle completes, check the ATM call and put
-of NIFTY, BANKNIFTY and every F&O stock whose daily ATR covers more than the saved number of strikes
-(futures_simulator.atr_strikes_above, the F&O ATR page's ratio), and alert on Telegram those whose
+of NIFTY, BANKNIFTY and every F&O stock whose daily ATR (14) is above MIN_ATR rupees (since 29 Nov 2026;
+before, the ATR / strike ratio of the retired F&O ATR page), and alert on Telegram those whose
 Heikin Ashi candle on that timeframe completed solid green (no lower wick) right after a red one.
 
   * Candles from 9:15 AM, as Chartink's: 15m ends 9:30 ... 3:15, 30m 9:45 ... 3:15, 1H ends 10:15 ... 3:15, 2H 11:15 / 1:15 / 3:15, 3H 12:15 / 3:15, 4H 1:15
@@ -40,6 +40,7 @@ HERE = Path(__file__).parent
 DOJI = 0.10  # an HA doji: body at most this share of its high-low range ...
 DOJI_WICK = 0.10  # ... and both its upper and lower wicks longer than this share of the body
 TICK = 0.05  # a "no lower wick" normal candle: low at most a tick under its open
+MIN_ATR = 100  # stocks only with a daily ATR (14) above this many rupees (the indices always)
 
 
 def window_start(ts: int, minutes: int) -> int:
@@ -147,9 +148,10 @@ def turned(bars: list[tuple], minutes: int, end: int, now: float) -> dict | None
     return None
 
 
-def underlyings(ratio: float) -> list[dict]:
-    """NIFTY, BANKNIFTY, then the F&O stocks with ATR (14) > `ratio` strike intervals, biggest ratio first."""
-    out = [{**u, "ratio": None} for u in dd.INDICES.values()]
+def underlyings(min_atr: float = MIN_ATR) -> list[dict]:
+    """NIFTY, BANKNIFTY, then the F&O stocks with a daily ATR (14) above `min_atr` rupees, biggest first
+    (each with its ATR and ATR / strike ratio)."""
+    out = [{**u, "ratio": None, "atr": None} for u in dd.INDICES.values()]
     with open(HERE / "strike_steps.json", encoding="utf-8") as f:
         saved = json.load(f)
     steps, ids = saved["steps"], saved["ids"]
@@ -159,9 +161,9 @@ def underlyings(ratio: float) -> list[dict]:
     stocks = []
     for symbol, atr in rows:
         symbol = symbol.removesuffix(".NS")
-        if symbol in steps and symbol in ids and atr / steps[symbol] > ratio:
-            stocks.append({**dd.stock(symbol, ids[symbol], steps[symbol]), "ratio": atr / steps[symbol]})
-    return out + sorted(stocks, key=lambda u: -u["ratio"])
+        if symbol in steps and symbol in ids and atr > min_atr:
+            stocks.append({**dd.stock(symbol, ids[symbol], steps[symbol]), "ratio": atr / steps[symbol], "atr": atr})
+    return out + sorted(stocks, key=lambda u: -u["atr"])
 
 
 def nearest_expiry(expiries: list[str], today: date) -> str:
@@ -203,11 +205,11 @@ def label(name: str, expiry: str, strike: float, side: str) -> str:
     return f"{name} {datetime.fromisoformat(expiry):%d%b}".upper() + f" {strike:g} {side}"
 
 
-def scan(now: datetime, ratio: float, lots: dict[str, int], note, skip: set[str] = frozenset(),
+def scan(now: datetime, min_atr: float, lots: dict[str, int], note, skip: set[str] = frozenset(),
          ends: list[tuple[int, list[str]]] | None = None) -> tuple[int, list[str], list[dict], list[str], int] | None:
     """(the candle end, the timeframes ending then, the hits, the names checked, how many underlyings
     in all) for the latest completed candle end, leaving out `skip` (checked already); None before
-    the first one today. Each hit: timeframe, name, option, expiry, strike, spot, ltp, lot, ratio and
+    the first one today. Each hit: timeframe, name, option, expiry, strike, spot, ltp, lot, atr, ratio and
     the candle. A name Dhan failed for is not in the checked ones, so the next run tries it again.
     `ends`: candle ends to check instead (day_ends, the replay; the ATM strike is then the one now)."""
     latest = last_end(now)
@@ -216,7 +218,7 @@ def scan(now: datetime, ratio: float, lots: dict[str, int], note, skip: set[str]
     end, frames = latest
     ends = ends or [latest]
     found, checked = [], []
-    every = underlyings(ratio)
+    every = underlyings(min_atr)
     stock_expiry = None
     for u in [u for u in every if u["name"] not in skip]:
         try:
@@ -243,5 +245,5 @@ def scan(now: datetime, ratio: float, lots: dict[str, int], note, skip: set[str]
                         found.append({"timeframe": frame, "side": side, "name": u["name"], "end": at,
                                       "option": label(u["name"], expiry, strike, side), "expiry": expiry,
                                       "strike": strike, "spot": spot, "ltp": leg["ltp"], "lot": lots.get(u["name"]),
-                                      "ratio": u["ratio"], "candle": hit})
+                                      "ratio": u["ratio"], "atr": u["atr"], "candle": hit})
     return end, frames, found, checked, len(every)

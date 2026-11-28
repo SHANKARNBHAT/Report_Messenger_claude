@@ -34,7 +34,7 @@ SYSTEM = "OPT RSI"  # not "RSI ...": the RSI strategies' exits (auto_trader.sett
 NAME = "RSI trigger · ATM option HA strong or higher high"
 TRIGGER_TIMEFRAMES = {"2 HOUR": "2H", "4 HOUR": "4H", "DAILY": "Daily"}
 FRAMES = {"15m": 15, "30m": 30}  # the option's confirming candles
-MIN_ATR = 100  # stocks only with a daily ATR (14) above this many rupees (the indices always)
+MIN_ATR = oha.MIN_ATR  # stocks only with a daily ATR (14) above this many rupees (the indices always)
 LAST_ENTRY = time(15, 0)
 LOOKBACK = timedelta(minutes=30)  # candles completed at most this long ago (a late run makes no stale entry)
 DAYS = 5  # days of 15-minute option bars: enough to chain the HA

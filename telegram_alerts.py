@@ -101,7 +101,7 @@ def option_ha(when: str, hits: list[dict]) -> None:
             f"LTP {h['ltp']:g}" if h.get("ltp") is not None else "",
             f"spot {h['spot']:,.2f}",
             f"lot {h['lot']}" if h.get("lot") else "",
-            f"ATR {h['ratio']:.1f}× strike" if h.get("ratio") else "") if x)
+            f"ATR ₹{h['atr']:,.0f}" if h.get("atr") else f"ATR {h['ratio']:.1f}× strike" if h.get("ratio") else "") if x)
         kind = {"HA doji": "HA doji, candle solid green",
                 "After green doji": "HA solid green after a green HA doji"}.get(h["candle"].get("kind"), "HA solid green")
         mark = "🔴" if h.get("side") == "PE" else "🟢"  # a put premium turning up: the stock turning down
@@ -114,13 +114,13 @@ def option_ha(when: str, hits: list[dict]) -> None:
 
 def sample_option_ha() -> None:
     """A made-up HA CE / PE alert, one line of each kind, to see how it looks (test-telegram)."""
-    def hit(timeframe, side, option, kind, close, ltp, spot, lot, ratio):
+    def hit(timeframe, side, option, kind, close, ltp, spot, lot, atr):
         return {"timeframe": timeframe, "side": side, "option": option, "ltp": ltp, "spot": spot, "lot": lot,
-                "ratio": ratio, "candle": {"kind": kind, "close": close}}
+                "atr": atr, "candle": {"kind": kind, "close": close}}
     option_ha("candles ending 13:15 · <i>SAMPLE, not a real alert</i>", [
-        hit("4H", "CE", "KAYNES 29DEC 6000 CE", "HA solid green", 212, 210.5, 5990, 100, 4.2),
+        hit("4H", "CE", "KAYNES 29DEC 6000 CE", "HA solid green", 212, 210.5, 5990, 100, 146),
         hit("2H", "PE", "NIFTY 01DEC 26200 PE", "HA doji", 95.4, 96, 26190.5, 65, None),
-        hit("1H", "CE", "MANAPPURAM 29DEC 300 CE", "After green doji", 8.45, 8.5, 298.6, 3000, 3.8),
+        hit("1H", "CE", "DIXON 29DEC 13000 CE", "After green doji", 384.5, 386, 12985, 50, 413),
     ])
 
 

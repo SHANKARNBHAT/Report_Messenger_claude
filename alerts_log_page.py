@@ -48,7 +48,7 @@ def load(today: str) -> tuple[list[dict], str | None]:
 
 def table(rows: list[dict]) -> pd.DataFrame:
     df = pd.DataFrame(rows)
-    for column in ("option", "rule", "price", "ltp", "spot", "lot", "ratio", "replay"):
+    for column in ("option", "rule", "price", "ltp", "spot", "lot", "atr", "ratio", "replay"):
         if column not in df:
             df[column] = None
     df["when"] = pd.to_datetime(df["time"], unit="ms", utc=True).dt.tz_convert(fs.IST).dt.tz_localize(None)
@@ -111,7 +111,7 @@ def alerts_view(shown: pd.DataFrame, key: str) -> None:
     m[3].metric("Stocks", shown["symbol"].nunique())
     st.dataframe(
         shown[["when", "type", "timeframe", "direction", "chart", "option", "rule", "price", "ltp", "spot", "lot",
-               "ratio", "replay"]],
+               "atr", "ratio", "replay"]],
         hide_index=True, width="stretch", height=min(700, 38 + 35 * len(shown)), key=f"alerts-table-{key}",
         column_config={
             "when": st.column_config.DatetimeColumn("Candle / signal", format="DD MMM HH:mm"),
@@ -123,6 +123,7 @@ def alerts_view(shown: pd.DataFrame, key: str) -> None:
             "ltp": st.column_config.NumberColumn("LTP", help="The option's last price when the alert was sent"),
             "spot": st.column_config.NumberColumn("Spot", format="%.2f"),
             "lot": st.column_config.NumberColumn("Lot"),
+            "atr": st.column_config.NumberColumn("ATR ₹", format="%.0f", help="Daily ATR (14) in rupees: stocks above ₹100 are scanned"),
             "ratio": st.column_config.NumberColumn("ATR ×", format="%.1f", help="Daily ATR in strike intervals"),
             "replay": st.column_config.CheckboxColumn("Replay"),
         })
