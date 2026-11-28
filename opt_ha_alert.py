@@ -9,9 +9,10 @@ Heikin Ashi candle on that timeframe completed solid green (no lower wick) right
   * The option: the nearest expiry (the next one on its expiry day), the strike nearest the price
     when scanned. Its 1H / 2H / 4H candles are made from Dhan's 15-minute ones, the HA chained over
     the last days. One download per contract serves every timeframe ending at that time.
-  * Also alerted: the HA candle is a doji (body within DOJI of its range) right after a red one while
-    the normal candle is solid green (green, no lower wick: low within a tick of the open).
-  * Also alerted: the HA candle is solid green right after a green HA doji.
+  * A strong HA candle: solid green HA with a green normal candle, or an HA doji (a body within DOJI of
+    its range and wicks at both ends, each over DOJI_WICK of the body) with a solid green normal candle
+    (green, no lower wick: low within a tick of the open). Alerted right after a red HA candle or a
+    green HA doji.
   * Never alerted when the normal candle is red, even if the HA one is solid green.
   * Alerts only: no trades. Each candle end is scanned once (account["opt_ha"]).
 
@@ -36,7 +37,8 @@ LAST_ALERT = time(15, 15)  # candles ending later (at the close) are not alerted
 DAYS = 14  # calendar days of 15-minute bars: enough 4H candles to chain the HA
 CHAIN_PAUSE = 3.1  # seconds between option chain requests (Dhan: one every 3 seconds)
 HERE = Path(__file__).parent
-DOJI = 0.10  # an HA doji: body at most this share of its high-low range
+DOJI = 0.10  # an HA doji: body at most this share of its high-low range ...
+DOJI_WICK = 0.10  # ... and both its upper and lower wicks longer than this share of the body
 TICK = 0.05  # a "no lower wick" normal candle: low at most a tick under its open
 
 
@@ -109,17 +111,22 @@ def heikin_ashi(candles: list[dict]) -> list[dict]:
         ha_low = min(c["low"], ha_open, ha_close)
         ha_high = max(c["high"], ha_open, ha_close)
         green = ha_close > ha_open
+        body = abs(ha_close - ha_open)
+        upper, lower = ha_high - max(ha_open, ha_close), min(ha_open, ha_close) - ha_low
         out.append({"open": ha_open, "close": ha_close, "low": ha_low, "green": green,
                     "solid": green and ha_low >= ha_open,
-                    "doji": ha_high > ha_low and abs(ha_close - ha_open) <= DOJI * (ha_high - ha_low)})
+                    # A doji: a small body (at most DOJI of the range) with wicks at both ends, each more than
+                    # DOJI_WICK of the body: indecision.
+                    "doji": ha_high > ha_low and body <= DOJI * (ha_high - ha_low)
+                            and upper > DOJI_WICK * body and lower > DOJI_WICK * body})
     return out
 
 
 def turned(bars: list[tuple], minutes: int, end: int, now: float) -> dict | None:
-    """The `minutes` candle ending at `end`, with a green normal candle (a red one is never alerted), if:
-      * after a red HA candle, its HA candle is solid green (kind "HA solid green"),
-      * after a red HA candle, it is an HA doji and the normal candle solid green (kind "HA doji"),
-      * after a green HA doji, its HA candle is solid green (kind "After green doji")."""
+    """The `minutes` candle ending at `end`, if it is a strong HA candle right after a red HA candle or a
+    green HA doji. Strong: a solid green HA candle with a green normal candle (kind "HA solid green"), or
+    an HA doji with a solid green normal candle (kind "HA doji"). A red normal candle is never alerted.
+    After a green HA doji the kind is "After green doji"."""
     candles = resample(bars, minutes, now)
     ha = heikin_ashi(candles)
     for k in range(1, len(candles)):
@@ -129,11 +136,12 @@ def turned(bars: list[tuple], minutes: int, end: int, now: float) -> dict | None
         before = ha[k - 1]
         normal_green = c["close"] > c["open"]
         normal_solid = normal_green and c["low"] >= c["open"] - TICK
-        solid = ha[k]["solid"] and normal_green
+        strong = ("HA solid green" if ha[k]["solid"] and normal_green
+                  else "HA doji" if ha[k]["doji"] and normal_solid else None)
         if not before["green"]:
-            kind = "HA solid green" if solid else "HA doji" if ha[k]["doji"] and normal_solid else None
+            kind = strong
         else:
-            kind = "After green doji" if before["doji"] and solid else None
+            kind = "After green doji" if before["doji"] and strong else None
         if kind:
             return {**c, "kind": kind, "ha_open": ha[k]["open"], "ha_close": ha[k]["close"]}
     return None
