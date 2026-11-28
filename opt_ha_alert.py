@@ -29,6 +29,7 @@ from datetime import date, datetime, time, timedelta
 from pathlib import Path
 
 import dhan_data as dd
+import strike_steps
 
 TIMEFRAMES = {"15m": 15, "30m": 30, "1H": 60, "2H": 120, "3H": 180, "4H": 240}  # label -> minutes
 SESSION_OPEN = time(9, 15)
@@ -155,9 +156,7 @@ def underlyings(min_atr: float = MIN_ATR) -> list[dict]:
     with open(HERE / "strike_steps.json", encoding="utf-8") as f:
         saved = json.load(f)
     steps, ids = saved["steps"], saved["ids"]
-    with sqlite3.connect(f"file:{HERE / 'stock_market_data.db'}?mode=ro", uri=True) as db:
-        rows = db.execute("SELECT symbol, atr_14 FROM stock_ohlc_indicators WHERE date = (SELECT MAX(date) FROM "
-                          "stock_ohlc_indicators WHERE atr_14 IS NOT NULL) AND atr_14 IS NOT NULL").fetchall()
+    rows = strike_steps.db_rows(strike_steps.LATEST_ATR.format("symbol, atr_14"))
     stocks = []
     for symbol, atr in rows:
         symbol = symbol.removesuffix(".NS")

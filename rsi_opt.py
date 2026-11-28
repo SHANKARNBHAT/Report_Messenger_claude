@@ -29,6 +29,7 @@ from pathlib import Path
 
 import dhan_data as dd
 import opt_ha_alert as oha
+import strike_steps
 
 SYSTEM = "OPT RSI"  # not "RSI ...": the RSI strategies' exits (auto_trader.settle) must not apply
 NAME = "RSI trigger · ATM option HA strong or higher high"
@@ -44,9 +45,7 @@ HERE = Path(__file__).parent
 def atrs() -> dict[str, float]:
     """The stocks' latest daily ATR (14) in rupees (stock_market_data.db); {} if it can't be read."""
     try:
-        with sqlite3.connect(f"file:{HERE / 'stock_market_data.db'}?mode=ro", uri=True) as db:
-            rows = db.execute("SELECT symbol, atr_14 FROM stock_ohlc_indicators WHERE date = (SELECT MAX(date) FROM "
-                              "stock_ohlc_indicators WHERE atr_14 IS NOT NULL) AND atr_14 IS NOT NULL").fetchall()
+        rows = strike_steps.db_rows(strike_steps.LATEST_ATR.format("symbol, atr_14"))
     except sqlite3.Error:
         return {}
     return {s.removesuffix(".NS"): a for s, a in rows}

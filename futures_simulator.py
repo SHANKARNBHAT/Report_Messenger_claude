@@ -636,9 +636,9 @@ def daily_atrs(indices: tuple[tuple[str, str], ...] = ()) -> dict[str, float]:
 
     found = {}
     try:
-        with sqlite3.connect(f"file:{Path(__file__).with_name('stock_market_data.db')}?mode=ro", uri=True) as db:
-            rows = db.execute("SELECT symbol, atr_14 FROM stock_ohlc_indicators WHERE date = (SELECT MAX(date) "
-                              "FROM stock_ohlc_indicators WHERE atr_14 IS NOT NULL) AND atr_14 IS NOT NULL").fetchall()
+        import strike_steps
+
+        rows = strike_steps.db_rows(strike_steps.LATEST_ATR.format("symbol, atr_14"))
         found = {symbol.removesuffix(".NS"): float(atr) for symbol, atr in rows}
     except sqlite3.Error:
         pass

@@ -21,7 +21,10 @@ import math
 import os
 import sqlite3
 import sys
+import tempfile
+import time
 from collections import defaultdict
+from contextlib import closing
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -38,6 +41,37 @@ MASTER = "https://images.dhan.co/api-data/api-scrip-master.csv"
 HERE = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(HERE, "stock_market_data.db")
 OUT = os.path.join(HERE, "strike_steps.json")
+# GitHub's copy of the database: read when the local one is broken (e.g. the app's checkout replaced it mid-read).
+DB_URL = "https://raw.githubusercontent.com/SHANKARNBHAT/Report_Messenger_claude/main/stock_market_data.db"
+DB_COPY = os.path.join(tempfile.gettempdir(), "stock_market_data_github.db")
+LATEST_ATR = ("SELECT {} FROM stock_ohlc_indicators WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators "
+              "WHERE atr_14 IS NOT NULL) AND atr_14 IS NOT NULL")
+
+
+def _rows(path: str, sql: str) -> list[tuple]:
+    with closing(sqlite3.connect(f"file:{path}?mode=ro", uri=True)) as db:  # closed: no stale pages kept
+        return db.execute(sql).fetchall()
+
+
+def db_rows(sql: str) -> list[tuple]:
+    """Rows of a query on stock_market_data.db. If the file can't be read ("database disk image is
+    malformed": replaced while open), tries again, then reads GitHub's copy (downloaded at most hourly)."""
+    for attempt in range(3):
+        try:
+            return _rows(DB, sql)
+        except sqlite3.DatabaseError as exc:
+            error = exc
+            time.sleep(1 + attempt)
+    try:
+        if not os.path.exists(DB_COPY) or time.time() - os.path.getmtime(DB_COPY) > 3600:
+            response = requests.get(DB_URL, timeout=60)
+            response.raise_for_status()
+            with open(DB_COPY + ".part", "wb") as f:
+                f.write(response.content)
+            os.replace(DB_COPY + ".part", DB_COPY)
+        return _rows(DB_COPY, sql)
+    except (requests.RequestException, OSError, sqlite3.DatabaseError) as exc:
+        raise sqlite3.DatabaseError(f"{error}; GitHub's copy: {exc}") from exc
 STEPS = [500, 250, 100, 50, 20, 10, 5, 2.5, 1, 0.5]  # NSE's stock option strike intervals
 
 
@@ -84,9 +118,8 @@ def strike_step(listed: set[float], price: float) -> float | None:
 
 
 def latest_closes() -> dict[str, float]:
-    with sqlite3.connect(f"file:{DB}?mode=ro", uri=True) as db:
-        rows = db.execute("SELECT symbol, close FROM stock_ohlc_indicators "
-                          "WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators WHERE atr_14 IS NOT NULL)").fetchall()
+    rows = db_rows("SELECT symbol, close FROM stock_ohlc_indicators "
+                   "WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators WHERE atr_14 IS NOT NULL)")
     return {symbol.removesuffix(".NS"): close for symbol, close in rows if close}
 
 
@@ -111,10 +144,7 @@ def symbols_above(ratio: float) -> set[str]:
     Plain sqlite and json, so it runs in the auto trader's GitHub job as is."""
     with open(OUT, encoding="utf-8") as f:
         steps = json.load(f)["steps"]
-    with sqlite3.connect(f"file:{DB}?mode=ro", uri=True) as db:
-        rows = db.execute("SELECT symbol, atr_14 FROM stock_ohlc_indicators "
-                          "WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators WHERE atr_14 IS NOT NULL) "
-                          "AND atr_14 IS NOT NULL").fetchall()
+    rows = db_rows(LATEST_ATR.format("symbol, atr_14"))
     out = set()
     for symbol, atr in rows:
         symbol = symbol.removesuffix(".NS")
@@ -129,11 +159,8 @@ def fno_atr():
     and the strike intervals' date. For the F&O ATR and Option chain pages."""
     import pandas as pd  # the monthly job only needs requests
 
-    with sqlite3.connect(f"file:{DB}?mode=ro", uri=True) as db:
-        frame = pd.read_sql_query(
-            "SELECT symbol, date, close, atr_14, lot_size FROM stock_ohlc_indicators "
-            "WHERE date = (SELECT MAX(date) FROM stock_ohlc_indicators WHERE atr_14 IS NOT NULL) "
-            "AND atr_14 IS NOT NULL", db)
+    columns = ["symbol", "date", "close", "atr_14", "lot_size"]
+    frame = pd.DataFrame(db_rows(LATEST_ATR.format(", ".join(columns))), columns=columns)
     with open(OUT, encoding="utf-8") as f:
         saved = json.load(f)
     frame["symbol"] = frame["symbol"].str.removesuffix(".NS")
