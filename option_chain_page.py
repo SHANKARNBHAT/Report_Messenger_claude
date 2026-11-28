@@ -82,6 +82,7 @@ if not dd.secret("DHAN_CLIENT_ID") or not (dd.can_make_token() or dd.secret("DHA
 MIN_ATR = opt_ha_alert.MIN_ATR
 UNDERLYINGS, missing = load_underlyings(MIN_ATR)
 if missing:
+    load_underlyings.clear()  # a failed read is not kept: the next rerun tries again
     st.warning(missing)
 # A recent RSI 2H / 4H signal picked here switches the index / stock below to its stock.
 signal = signal_options.picker(UNDERLYINGS, "oc-underlying")
